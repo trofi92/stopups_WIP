@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Header from "../../components/Header/Header";
 import {
@@ -30,17 +30,12 @@ import {
 } from "../../styled/Login/Login";
 import { Footer } from "../../components/Footer/Footer";
 import { LJButton } from "../../styled/Button";
+// import { setCookie } from "../../storage/Cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
-  // const sendLoginRequest = async () => {
-  //     await axios
-  //         .post("http://localhost:8000/auth/login")
-  //         .then((res) => console.log("login=> ", res));
-  // };
 
   const handleEmailChange = (e) => {
     checkEmail(e);
@@ -62,10 +57,6 @@ const Login = () => {
     }
   };
 
-  // useEffect(() => {
-  //     sendLoginRequest();
-  // }, []);
-
   const submitIdPassword = (e) => {
     e.preventDefault();
     if (email === "") {
@@ -83,7 +74,14 @@ const Login = () => {
         })
         .then((res) => {
           console.log("로그인 성공", res);
-          // localStorage.setItem("email", email);
+          // if (res?.data?.token) {
+          //   setCookie("token", res.data.token, {
+          //     path: "/",
+          //     secure: true,
+          //     sameSite: "none",
+          //   });
+          // }
+          localStorage.setItem("token", res.data.token);
           navigate("/", { replace: true });
         })
         .catch((error) => {

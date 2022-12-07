@@ -10,9 +10,10 @@ const { login } = require("../controllers/login");
 
 const router = express.Router();
 
+//test
 router.post(
   "/",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt"),
   async (req, res, next) => {
     try {
       res.json({ result: true });

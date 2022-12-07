@@ -31,22 +31,34 @@ const login = async (req, res, next) => {
           // 비밀번호 에러
           if (loginError) {
             console.error("로그인에 loginError=>", loginError);
-            return res.status(305).send(loginError);
+            return res.status(400).send({ loginError });
           }
         });
-        // 클라이언트에게 JWT생성 후 반환
+        // JWT생성 후 클라이언트에게 반환
         const token = jwt.sign(
           { id: user.email, name: user.name, auth: user.auth },
-          process.env.JWT_SECRET
+          process.env.JWT_SECRET,
+          { expiresIn: "1h" }
         );
-        res.json({ token });
-        return res.status(200).send("로그인 성공");
+        // res.cookie("jwt", jwt, { httpOnly: true, secure: true });
+        return res.status(200).json({ token });
       } catch (err) {
         console.error(err);
-        next(err);
       }
     }
   )(req, res, next); // 미들웨어 내의 미들웨어에는 (req, res, next)를 붙입니다.
 };
 
 module.exports = { login };
+
+//  req.login(payload, {session: false}, (error) => {
+//         if (error) {
+//           res.status(400).send({ error });
+//         }
+
+//         /** generate a signed json web token and return it in the response */
+//         const token = jwt.sign(JSON.stringify(payload), keys.secret);
+
+//         /** assign our jwt to the cookie */
+//         res.cookie('jwt', jwt, { httpOnly: true, secure: true });
+//         res.status(200).send({ username });

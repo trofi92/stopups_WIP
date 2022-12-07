@@ -1,25 +1,34 @@
-const { verify } = require("../utils/jwt-util");
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
 
 const authJWT = (req, res, next) => {
-  if (req.headers.authorization) {
-    const token = req.headers.authorization.split("Bearer ")[1];
-    // header에서 access token을 가져옴
-    const result = verify(token);
-    // token을 검증
-    if (result.ok) {
-      // token이 검증되었으면 req에 값을 세팅하고, 다음 콜백함수로 이동.
-      req.email = result.email;
-      next();
-    } else {
-      // 검증에 실패하거나 토큰이 만료되었다면
-      // 클라이언트에게 메세지를 담아서 응답
-      res.status(401).send({
-        ok: false,
-        message: result.message,
-        // jwt가 만료되었다면 메세지는 'jwt expired'로 표시됨.
+  // 인증 완료
+  try {
+    // 요청 헤더에 저장된 토큰(req.headers.authorization)과
+    // 비밀키를 사용하여 토큰을 req.decoded에 반환
+    // req.decoded = jwt.verify(req.headers.authorization, JWT_KEY);
+    // 쿠키에 user 이름으로 JWT 저장
+    req.decoded = jwt.verify(
+      req.cookies.user,
+      process.env.JWT_SECRET
+    );
+    return next();
+  } catch (error) {
+    // 인증 실패
+    // 유효시간이 초과된 경우
+    if (error.name === "TokenExpiredError") {
+      return res.status(419).json({
+        code: 419,
+        message: "토큰이 만료되었습니다.",
+      });
+    }
+    // 토큰의 비밀키가 일치하지 않는 경우
+    if (error.name === "JsonWebTokenError") {
+      return res.status(401).json({
+        code: 401,
+        message: "유효하지 않은 토큰입니다.",
       });
     }
   }
 };
-
 module.exports = authJWT;

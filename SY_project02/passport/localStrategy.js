@@ -1,6 +1,9 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const { ExtractJwt, Strategy: JWTStrategy } = require("passport-jwt");
+const {
+  ExtractJwt: ExtractJwt,
+  Strategy: JWTStrategy,
+} = require("passport-jwt");
 const User = require("../models/User");
 const decrypt = require("../middlewares/crypto");
 
@@ -13,9 +16,9 @@ module.exports = () => {
       },
       async (jwtPayload, done) => {
         try {
-          // payload의 id값으로 유저의 데이터 조회
+          // payload의 email값으로 유저의 데이터 조회
           const user = await User.findOne({
-            where: { id: jwtPayload.email },
+            where: { email: jwtPayload.email },
           });
           // 유저 데이터가 있다면 유저 데이터 객체 전송
           if (user) {
@@ -41,6 +44,7 @@ module.exports = () => {
       {
         usernameField: "email",
         passwordField: "password",
+        session: false,
       },
       async (email, password, done) => {
         try {
@@ -49,10 +53,7 @@ module.exports = () => {
             if (email === decrypt(element.email)) {
               if (exUser) {
                 const result = password === decrypt(element.password);
-                console.log(
-                  "로컬에 비밀번호 비교 결과 result=>",
-                  result
-                );
+                console.log("로컬에 비밀번호 비교 결과 =>", result);
                 if (result) {
                   console.log("로컬에 유저 O->", result);
                   done(null, element);
@@ -64,7 +65,7 @@ module.exports = () => {
                   });
                 }
               } else {
-                console.log("로컬에 유저 X->");
+                console.log("로컬에 유저 X->", result);
                 done(null, false, {
                   message: "가입되지 않은 회원입니다.",
                 });
