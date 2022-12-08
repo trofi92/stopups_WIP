@@ -9,6 +9,7 @@ const authJWT = (req, res, next) => {
     // req.decoded = jwt.verify(req.headers.authorization, JWT_KEY);
     // 쿠키에 user 이름으로 JWT 저장
     req.decoded = jwt.verify(
+      // req.headers.authorization,
       req.cookies.user,
       process.env.JWT_SECRET
     );
