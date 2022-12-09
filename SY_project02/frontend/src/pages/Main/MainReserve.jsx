@@ -10,7 +10,7 @@ export const MainReserve = () => {
                 <MRText2></MRText2>
                 <MRIImg></MRIImg>
                 <MRButtonBox>
-                    <Link to={"#"} style={{textDecoration: "none"}}>
+                    <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <MRButton>자세히 보기</MRButton>
                     </Link>
                 </MRButtonBox>

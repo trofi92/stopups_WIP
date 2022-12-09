@@ -16,7 +16,7 @@ export const MSPromotionBanner = () => {
                         르완다, 페루, 웨스트 자바의 혼합 커피
                     </SPBTP>
                     <SPBTButtonBox>
-                        <Link to={"#"} style={{textDecoration: "none"}}>
+                        <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                             <SPBTButton>자세히 보기</SPBTButton>
                         </Link>
                     </SPBTButtonBox>

@@ -153,7 +153,6 @@ export const MINSAgreeLabel = styled.label`
   z-index: 4;
   appearance: none;
   outline: none;
-  margin: 3px 3px 3px 4px;
 `
 
 export const MINAgreeBox = styled.div`

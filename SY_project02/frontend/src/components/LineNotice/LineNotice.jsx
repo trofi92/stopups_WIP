@@ -5,12 +5,36 @@ import {
     LNLeftInnerDl,
     LNLeftInnerLDt,
     LNLeftInnerLDtImg,
-    LNLeftInnerP, LNLeftInnerPImg, LNRight, LNRightA, LNRightAImg, LNRightSpan, LNRightSpanImg, PB
+    LNLeftInnerP,
+    LNLeftInnerPImg,
+    LNRight,
+    LNRightA,
+    LNRightAImg,
+    LNRightSpan,
+    LNRightSpanImg,
+    PB,
+    PBCLi,
+    PBCLImg,
+    PBCont,
+    PBContBox,
+    PBCUl,
+    PBInnerBox,
+    PBSCBox,
+    PBSCDDiv,
+    PBSCDDP,
+    PBSCDiv,
+    PBSCNextBtn,
+    PBSCPageBox,
+    PBSCPIP,
+    PBSCPItem,
+    PBSCPrevBtn,
+    PBSlicerController
 } from "../../styled/LineNotice";
 import MLNLeft from "../../image/LineNotice/MLNLeft.png";
 import MLNLeftButton from "../../image/LineNotice/MLNLeftButton.png";
 import MLNRight from "../../image/LineNotice/MLNRight.png";
 import MLNRightToggle1 from "../../image/LineNotice/MLNRightToggle1.png";
+import MPBImg1 from "../../image/Main/MPromotionBanner/MPBImg1.png"
 import {useState} from "react";
 import {Link} from "react-router-dom";
 
@@ -59,7 +83,42 @@ export const LineNotice = () => {
             {/*라인 토글 버튼 클릭 시 뜨는 프로모션 창*/}
             {openPromotion === true ?
                 <PB>
-
+                    <PBInnerBox>
+                        {/*프로모션 내용*/}
+                        <PBContBox>
+                            <PBCont>
+                                <PBCUl>
+                                    <PBCLi>
+                                        <PBCLImg src={MPBImg1} alt={"MPBImg1"}/>
+                                    </PBCLi>
+                                </PBCUl>
+                            </PBCont>
+                        </PBContBox>
+                        {/*프로모션 양옆에 살짝 보이는 부분*/}{/*하나밖에 없음*/}
+                        {/*슬라이드 컨트롤러*/}
+                        <PBSlicerController>
+                            {/*일시정지*/}
+                            <PBSCBox>
+                                <PBSCDiv>
+                                    <PBSCDDiv>
+                                        <PBSCDDP/>
+                                    </PBSCDDiv>
+                                </PBSCDiv>
+                            </PBSCBox>
+                            {/*페이지 버튼*/}
+                            <PBSCPageBox>
+                                <PBSCDDiv>
+                                    <PBSCPItem>
+                                        <PBSCPIP/>
+                                    </PBSCPItem>
+                                </PBSCDDiv>
+                            </PBSCPageBox>
+                        </PBSlicerController>
+                        {/*왼쪽 버튼*/}
+                        <PBSCPrevBtn/>
+                        {/*오른쪽 버튼*/}
+                        <PBSCNextBtn/>
+                    </PBInnerBox>
                 </PB> : null}
         </>
     );

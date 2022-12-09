@@ -27,6 +27,7 @@ import {
 } from "../../styled/MyInfo/MyInfo";
 import {LJButton} from "../../styled/Button";
 import {Footer} from "../../components/Footer/Footer";
+import {NickAgree} from "../Join/NickAgree";
 
 const MyInfo = () => {
     return (
@@ -93,13 +94,7 @@ const MyInfo = () => {
                                                 <MINSAgreeLabel/>
                                             </MINSAgree>
                                             {/*닉네임 이용약관 동의*/}
-                                            <MINAgreeBox>
-                                                <MINABDiv>
-                                                    <MINAInner>
-
-                                                    </MINAInner>
-                                                </MINABDiv>
-                                            </MINAgreeBox>
+                                            <NickAgree/>
                                         </MINIckSection>
                                         {/*체크박스 선택 시 입력 가능*/}
                                         <NINInput
@@ -108,7 +103,7 @@ const MyInfo = () => {
                                     </RFSectionDiv>
                                 </RFSection>
                                 <RFormP>
-                                    <b>* 필수항목을 모두 입력해야 회원 가입이 가능합니다.</b>
+                                    <b>* 필수항목을 모두 입력해야 스탑업스 서비스를 이용하실 수 있습니다.</b>
                                 </RFormP>
                                 <LJButton>정보수정</LJButton>
                                 <MIUnsubscribe>스탑업스 리워드 서비스 이용내역 일괄삭제</MIUnsubscribe>

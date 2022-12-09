@@ -22,6 +22,13 @@ import ScrollToTop from "./util/ScrollToTop";
 import { Success } from "./pages/payment/Success";
 import { Failed } from "./pages/payment/Failed";
 import { Payment } from "./pages/payment/Payment";
+import ServiceReady from "./pages/ServiceReady";
+import LFindIdAgree from "./pages/Login/LFindId/LFindIdAgree";
+import LIdPass from "./pages/Login/LFindId/LIdPass";
+import LFindId from "./pages/Login/LFindId/LFindId";
+import LFindPwAgree from "./pages/Login/LFindPw/LFindPwAgree";
+import LPwPass from "./pages/Login/LFindPw/LPwPass";
+import LFindPw from "./pages/Login/LFindPw/LFindPw";
 
 function App() {
   return (
@@ -30,22 +37,53 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/test" element={<Test />} />
+        <Route path="/*" element={<NotFound />} />
+        {/*로그인*/}
         <Route path={"/login"} element={<Login />} />
-        <Route path={"/loginPlease"} element={<LPlease />} />
+        {/*로그인 요청*/}
+        <Route path={"/loginPlease"} element={<LPlease/>} />
+        {/*아이디 찾기 동의*/}
+        <Route path={"/findIdAgree"} element={<LFindIdAgree/>} />
+        {/*아이디 찾기 인증*/}
+        <Route path={"/idPass"} element={<LIdPass/>} />
+        {/*아이디 찾기 성공*/}
+        <Route path={"/findId"} element={<LFindId/>} />
+        {/*비밀번호 찾기 동의*/}
+        <Route path={"/findPwAgree"} element={<LFindPwAgree/>} />
+        {/*비밀번호 찾기 인증*/}
+        <Route path={"/pwPass"} element={<LPwPass/>}/>
+        {/*비밀번호 수정*/}
+        <Route path={"/findPw"} element={<LFindPw/>} />
+        {/*회원가입 동의*/}
         <Route path={"/joinAgree"} element={<JoinAgree />} />
+        {/*회원가입 인증*/}
+        <Route path={"/joinPass"} element={<JPass/>} />
+        {/*회원가입*/}
         <Route path={"/join"} element={<Join />} />
-        <Route path={"/cart"} element={<Cart />} />
-        <Route path={"/joinSuccess"} element={<JoinSuccess />} />
-        <Route path={"/favorite"} element={<Favorite />} />
-        <Route path={"/notice"} element={<Notice />} />
-        <Route path={"/event"} element={<Event />} />
-        <Route path={"/summerEvent"} element={<ESummer />} />
-        <Route path={"/joinPass"} element={<JPass />} />
-        <Route path={"/myInfoAgree"} element={<MyInfoAgree />} />
-        <Route path={"/myInfo"} element={<MyInfo />} />
-        <Route path={"/myInfoPass"} element={<MIPass />} />
-        <Route path={"/myInfoPassword"} element={<MIPassword />} />
-        <Route path={"/myStopUps"} element={<MyStopUps />} />
+        {/*회원가입 성공*/}
+        <Route path={"/joinSuccess"} element={<JoinSuccess/>} />
+        {/*장바구니*/}
+        <Route path={"/cart"} element={<Cart/>} />
+        {/*찜목록*/}
+        <Route path={"/favorite"} element={<Favorite/>} />
+        {/*공지*/}
+        <Route path={"/notice"} element={<Notice/>} />
+        {/*이벤트*/}
+        <Route path={"/event"} element={<Event/>} />
+        {/*이벤트 - 여름 이벤트*/}
+        <Route path={"/summerEvent"} element={<ESummer/>} />
+        {/*개인정보확인 및 수정 동의*/}
+        <Route path={"/myInfoAgree"} element={<MyInfoAgree/>} />
+        {/*개인정보 확인 및 수정 인증*/}
+        <Route path={"/myInfoPass"} element={<MIPass/>} />
+        {/*개인정보 확인 및 수정*/}
+        <Route path={"/myInfo"} element={<MyInfo/>} />
+        {/*비밀번호 변경*/}
+        <Route path={"/myInfoPassword"} element={<MIPassword/>} />
+        {/*MyStopUps 한눈에 보기*/}
+        <Route path={"/myStopUps"} element={<MyStopUps/>} />
+        {/*서비스 준비중*/}
+        <Route path={"/serviceReady"} element={<ServiceReady/>} />
         <Route
           path="/payment"
           element={<Payment name={"payment"} />}

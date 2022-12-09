@@ -3,12 +3,12 @@ import {
     AgreeInput, AgreeLabel,
     AgreeSpan,
     RFSection,
-    RFSectionDiv,
     RFSectionImg,
     RFSectionP,
     RFSectionSpan,
-    RFSectionStrong,
-    RFStrong
+    RFStrong,
+    RFSectionDiv,
+    RFSectionStrong
 } from "../../styled/Join/Join";
 import {LFB, LFFFieldset, LFInner} from "../../styled/Login/Login";
 import {Footer} from "../../components/Footer/Footer";
@@ -24,7 +24,9 @@ import {
     PPFImg,
     PPPButtonBox,
     PPPText,
-    PPPTitle
+    PPPTitle,
+    RFSNoticeUl,
+    RFSNoticeLi,
 } from "../../styled/Join/JoinAgreeBox";
 import PhonePassImg from "../../image/Join/PhonePassImg.png"
 
@@ -74,11 +76,24 @@ const JoinAgree = () => {
                                       {/*동의 약관 내용 박스*/}
                                       <UserAgree/>
                                   </RFSectionDiv>
+                                  
                                   <RFSectionDiv>
                                       <RFSectionStrong>
                                           회원가입 유의 사항
                                       </RFSectionStrong>
+                                      <RFSNoticeUl>
+                                      	<RFSNoticeLi>
+                                      			반드시 회원님 명의로 된 휴대폰, 아이핀을 이용해주세요.
+                                      	</RFSNoticeLi>
+                                      	<RFSNoticeLi>
+                                      			타인의 개인정보를 도용하여 가입할 경우 향후 적발 시 서비스 이용제한 및 법적 제재를 받으실 수 있습니다.
+                                      	</RFSNoticeLi>
+                                      	<RFSNoticeLi>
+                                      			스탑업스 코리아의 공식 홈페이지는 Internet Explorer 9.0이상, Chrome, Firefox, Safari 브라우저에 최적화 되어있습니다.
+                                      	</RFSNoticeLi>
+                                      </RFSNoticeUl>
                                   </RFSectionDiv>
+                                  
                                   {/*인증방식 선택 박스*/}
                                   <RFSectionDiv>
                                       <RFSectionStrong>

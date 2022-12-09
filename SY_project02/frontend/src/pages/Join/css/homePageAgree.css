@@ -1,0 +1,255 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+li {
+    list-style: none;
+}
+
+input {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    vertical-align: top;
+    border-radius: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+colgroup {
+    display: table-column-group;
+}
+
+
+
+.privacy_cont p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+}
+
+.privacy_cont p.tit {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222222;
+    margin-bottom: 15px;
+}
+
+.privacy_cont p.t1 {
+    margin-bottom: 25px;
+}
+
+.privacy_cont p.pri_tit {
+    font-size: 18px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.privacy_cont p.sub_tit {
+    font-weight: bold;
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.privacy_cont li {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+}
+
+.mb40 {
+    margin-bottom: 40px;
+}
+
+.privacy_cont ol.pri_con > li {
+    margin-bottom: 5px;
+}
+
+.privacy_cont ol.pri_con ol li {
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
+
+.login-toggle-wrap .acco_tit_box {
+    position: relative;
+}
+
+.login-toggle-wrap .toggle-input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+.login-toggle-wrap .taggle-label {
+    position: relative;
+    display: inline-block;
+    min-width: 150px;
+    background: #006633;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    margin: 5px 0;
+    padding: 6px 44px 6px 24px;
+    text-align: center;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+.login-toggle-wrap .toggle-input[type="checkbox"] + label:before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 24px;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(-315deg);
+}
+
+.login-toggle-wrap.acco_ToggleWrap .acco_cont {
+    display: none;
+}
+
+.login-toggle-wrap.acco_ToggleWrap .pri_cont_tit {
+    margin: 20px 0 7px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.login-toggle-wrap .pri_cont_tbl {
+    border-top: 2px solid #a5916e;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.hid {
+    position: absolute;
+    left: -9999px;
+    font-size: 0;
+    width: 0;
+    height: 0;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.login-toggle-wrap .pri_cont_tbl thead tr th {
+    background: #dedad1;
+    border-bottom: 1px solid #cac5c1;
+    border-right: 1px solid #cac5c1;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    height: 35px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.renew_joinform_v2 .mem_agreement_wrap thead tr th, .renew_joinform_v2 .mem_agreement_wrap tr td {
+    vertical-align: middle;
+    word-break: keep-all;
+}
+
+.login-toggle-wrap .pri_cont_tbl thead tr th.nbr, .login-toggle-wrap .pri_cont_tbl tbody tr td.nbr {
+    border-right: none;
+}
+
+
+.for_mob {
+    display: none !important;
+}
+
+.login-toggle-wrap .pri_cont_tbl {
+    border-top: 2px solid #a5916e;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.mb15 {
+   margin-bottom: 15px;
+}
+
+.fontBold {
+    font-weight: bold;
+}
+
+.underLine {
+    text-decoration: underline;
+}
+
+table.vod_tb_ag {
+    width: 100%;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+table.vod_tb_ag tbody th, table.vod_tb_ag tbody td {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #666;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    vertical-align: middle;
+    line-height: 1.4;
+    text-align: center;
+    font-weight: normal;
+}
+
+table.vod_tb_ag tbody td:last-child {
+    border-right: 0;
+}
+
+table.vod_tb_ag tbody td {
+    text-align: left;
+}
+
+.pointFont {
+    font-size: 17px !important;
+    font-weight: bold !important;
+}
+
+.privacy_cont ul.pri_con ul li {
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
+
+table.vod_tb_ag thead th {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #222;
+    background: #f4f4f2;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.pl20 {
+    padding-left: 20px !important;
+}
+
+
+
