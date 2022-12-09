@@ -107,7 +107,7 @@ export const MSRInner = styled.div`
   margin: 0 auto;
   padding: 0;
   vertical-align: baseline;
-  
+
   :after {
     content: "";
     display: block;
@@ -278,7 +278,7 @@ export const MSRCGBP = styled.p`
   padding: 0;
   vertical-align: baseline;
   cursor: pointer;
-  
+
   :hover {
     text-decoration: underline;
     color: #fff;
@@ -306,11 +306,23 @@ export const SPBBox = styled.div`
   vertical-align: baseline;
 `
 
+const fadeInRight = keyframes`
+  0%{
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+`
+
 export const SPBText = styled.div`
   position: relative;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  animation: ${fadeInRight} 1s
 `
 
 export const SPBTP = styled.p`
@@ -371,6 +383,16 @@ export const MRInner = styled.div`
   width: 1280px;
 `
 
+const fadeInDown = keyframes`
+  0%{
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+`
 export const MRText1 = styled.div`
   top: 734px;
   background: url(${MRIText1}) no-repeat;
@@ -381,10 +403,21 @@ export const MRText1 = styled.div`
   position: absolute;
   width: 350px;
   z-index: 7;
+  animation: ${fadeInDown} 0.9s;
+`
+
+const fadeInUp = keyframes`
+  0%{
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
 `
 
 export const MRText2 = styled.div`
-  //opacity: 0;
   top: 838px;
   background: url(${MRIText2}) no-repeat;
   background-size: 100% auto;
@@ -394,6 +427,7 @@ export const MRText2 = styled.div`
   position: absolute;
   width: 440px;
   z-index: 7;
+  animation: ${fadeInUp} 0.9s;
 `
 
 export const MRIImg = styled.div`
@@ -409,10 +443,7 @@ export const MRIImg = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   z-index: 7;
-  opacity: 0;
-  animation: ${fadeIn} 0.9s;
-  animation-delay: 0s;
-  animation-fill-mode: forwards;
+  animation: ${fadeInDown} 0.9s;
 `
 
 export const MRButtonBox = styled.div`
@@ -436,7 +467,7 @@ export const MRButton = styled.p`
   line-height: 34px;
   text-align: center;
   width: 100%;
-  
+
   :hover {
     text-decoration: underline;
     color: #302F35;
@@ -466,7 +497,7 @@ export const RMInner = styled.div`
   margin: 0 auto;
   padding: 0;
   vertical-align: baseline;
-  
+
   :after {
     content: "";
     display: block;
@@ -528,7 +559,7 @@ export const RMBBIP = styled.p`
   border: 2px solid #000;
   border-radius: 5px;
   box-sizing: border-box;
-  
+
   :hover {
     text-decoration: underline;
     color: #fff;
@@ -616,6 +647,7 @@ export const MSDiv5 = styled.div`
   z-index: 4;
   right: 149px;
   overflow: hidden;
+  animation: ${fadeInDown} 0.9s;
 `
 
 export const MSDiv6 = styled.div`
@@ -630,6 +662,7 @@ export const MSDiv6 = styled.div`
   z-index: 4;
   right: 168px;
   overflow: hidden;
+  animation: ${fadeInUp} 0.9s;
 `
 
 export const MSButton = styled.div`

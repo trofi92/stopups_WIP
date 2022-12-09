@@ -161,12 +161,12 @@ const Login = () => {
                         </Link>
                       </LFBLi>
                       <LFBLi>
-                        <Link style={{ textDecoration: "none" }}>
+                        <Link to={"/findIdAgree"} style={{ textDecoration: "none" }}>
                           <LFBListP>아이디 찾기</LFBListP>
                         </Link>
                       </LFBLi>
                       <LFBLi>
-                        <Link style={{ textDecoration: "none" }}>
+                        <Link to={"/findPwAgree"} style={{ textDecoration: "none" }}>
                           <LFBListP>비밀번호 찾기</LFBListP>
                         </Link>
                       </LFBLi>

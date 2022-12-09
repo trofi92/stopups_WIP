@@ -11,7 +11,7 @@ export const MRMagazine = () => {
                 </RMVisual>
                 <RMButtonBox>
                     <RMBBInner>
-                        <Link to={"#"} style={{textDecoration: "none"}}>
+                        <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                             <RMBBIP>자세히 보기</RMBBIP>
                         </Link>
                     </RMBBInner>

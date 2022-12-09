@@ -68,7 +68,7 @@ export const MSReword = () => {
                             </MSRCGP>
                         </MSRCGText>
                         <MSRCGButton>
-                            <Link to={"#"} style={{textDecoration: "none"}}>
+                            <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                                 <MSRCGBP>e-Gift Card 선물하기</MSRCGBP>
                             </Link>
                         </MSRCGButton>

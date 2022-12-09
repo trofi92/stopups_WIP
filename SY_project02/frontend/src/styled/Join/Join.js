@@ -53,7 +53,7 @@ export const RFSectionP = styled.p`
   margin: 0;
 `
 
-export const RFSectionDiv = styled.div`
+export const RFSectionDiv = styled.section`
   background: #fff;
   border-bottom: 1px solid #ddd;
   padding: 20px 20px;
@@ -150,5 +150,4 @@ export const AgreeLabel = styled.label`
   z-index: 4;
   appearance: none;
   outline: none;
-  margin: 3px 3px 3px 4px;
 `
