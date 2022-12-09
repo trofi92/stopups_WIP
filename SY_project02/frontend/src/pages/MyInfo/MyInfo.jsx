@@ -27,6 +27,7 @@ import {
 } from "../../styled/MyInfo/MyInfo";
 import {LJButton} from "../../styled/Button";
 import {Footer} from "../../components/Footer/Footer";
+import {NickAgree} from "../Join/NickAgree";
 
 const MyInfo = () => {
     return (
@@ -93,12 +94,7 @@ const MyInfo = () => {
                                                 <MINSAgreeLabel/>
                                             </MINSAgree>
                                             {/*닉네임 이용약관 동의*/}
-                                            <MINAgreeBox>
-                                                <MINABDiv>
-                                                    <MINAInner>
-                                                    </MINAInner>
-                                                </MINABDiv>
-                                            </MINAgreeBox>
+                                            <NickAgree/>
                                         </MINIckSection>
                                         {/*체크박스 선택 시 입력 가능*/}
                                         <NINInput
