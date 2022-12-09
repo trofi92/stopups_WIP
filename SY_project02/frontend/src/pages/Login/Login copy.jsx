@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 import Header from "../../components/Header/Header";
 import {
   checkEmail,
@@ -29,11 +30,7 @@ import {
 } from "../../styled/Login/Login";
 import { Footer } from "../../components/Footer/Footer";
 import { LJButton } from "../../styled/Button";
-import axios from "axios";
-import jwt_decode from "jwt-decode";
-
-axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
-axios.defaults.withCredentials = true;
+import { setCookie } from "../../storage/Cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -60,7 +57,7 @@ const Login = () => {
     }
   };
 
-  const submitIdPassword = (e) => {
+  const submitIdPassword = async (e) => {
     e.preventDefault();
     if (email === "") {
       alert("이메일을 입력해주세요");
@@ -71,35 +68,28 @@ const Login = () => {
         email,
         password,
       };
-      try {
-        axios
-          .post(
-            "http://localhost:8000/auth/login",
-            {
-              data: post,
-            }
-            // { withCredentials: true }
-          )
-          .then((res) => {
-            const jwtToken = res.data.token;
-            console.log("로그인 성공");
-
-            console.log(document.cookie);
-            // const decodedUserInfo = jwt_decode(jwtToken);
-            // setCookie("accessJwtToken", jwtToken);
-            localStorage.setItem(
-              "userInfo",
-              JSON.stringify(jwtToken)
-            );
-            navigate("/", { replace: true });
-            return res;
-          });
-      } catch (err) {
-        console.error(err);
-        alert(
-          "로그인이 실패했습니다. 정보가 올바른지 다시 확인해주세요"
-        );
-      }
+      await axios
+        .post(
+          "http://localhost:8000/auth/login",
+          {
+            data: post,
+          }
+          // { withCredentials: true }
+        )
+        .then((res) => {
+          console.log("로그인 성공", res);
+          // setCookie("user", null, {
+          //   path: "/",
+          //   secure: true,
+          //   sameSite: "none",
+          // });
+          localStorage.setItem("token", res.data.token);
+          navigate("/", { replace: true });
+        })
+        .catch((error) => {
+          console.log("로그인 실패", error);
+          alert(error);
+        });
     } //정리할것
   };
 

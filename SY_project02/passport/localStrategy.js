@@ -10,7 +10,7 @@ module.exports = () => {
       {
         usernameField: "email",
         passwordField: "password",
-        session: false,
+        session: true,
       },
       async (email, password, done) => {
         try {

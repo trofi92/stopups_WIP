@@ -22,12 +22,8 @@ export const getCookie = () => {
 };
 
 export const removeCookie = () => {
-  return cookies.remove();
+  return cookies.remove("refresh_token", {
+    sameSite: "strict",
+    path: "/",
+  });
 };
-
-// export const removeCookie = () => {
-//   return cookies.remove("refresh_token", {
-//     sameSite: "strict",
-//     path: "/",
-//   });
-// };

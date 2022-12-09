@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
+const helmet = require("helmet");
 require("dotenv").config();
 
 const index = require("./routes/index");
@@ -17,13 +18,14 @@ const swaggerFile = require("./swagger-output");
 const { sequelize } = require("./models");
 const passport = require("passport");
 const passportConfig = require("./passport");
-const authJWT = require("./middlewares/authJWT");
+const authJwt = require("./middlewares/authJwt");
 
 const app = express();
+app.use(helmet());
 app.use(
   cors({
-    origin: "*",
-    credentials: "true",
+    origin: true,
+    credentials: true,
   })
 );
 
@@ -50,11 +52,9 @@ app.use(
     //모든 request마다 기존에 있던 session에 아무런 변경사항이 없을 시에도
     //해당 session을 다시 저장하는 옵션
     //(request마다 저장), false로 고정해둘것
-
     saveUninitializeed: false,
     //request 접수시 새롭게 생성된 session에 아무런 작업이 이루어지지 않음
     //empty session이 저장되는 것을 방지하기 위해 false로 고정
-
     secret: process.env.COOKIE_SECRET,
     cookie: {
       httpOnly: true,
@@ -62,6 +62,7 @@ app.use(
     },
   })
 );
+app.use(authJwt);
 
 app.use(passport.initialize());
 app.use(passport.session());
