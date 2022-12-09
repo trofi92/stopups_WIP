@@ -2,13 +2,14 @@
 
 ### `공지사항`
 
-~api 서버에서 데이터 받아오기~
-useParams 사용 or 각 페이지 다 만들어서 연결
+~api 서버에서 데이터 받아오기~\
+useParams 사용 or 각 페이지 다 만들어서 연결\
 NoticeInner에서 해당하는 info를 NoticeInnerText로 전달
 
 ### `이벤트`
-api 서버에서 데이터 받아오기
-useParams 사용 or 각 페이지 다 만들어서 연결
+
+api 서버에서 데이터 받아오기\
+useParams 사용 or 각 페이지 다 만들어서 연결\
 Event에서 해당하는 event를 ESummber로 전달
 
 ### `Footer`
