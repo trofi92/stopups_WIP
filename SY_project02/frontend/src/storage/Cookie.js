@@ -17,13 +17,17 @@ export const setCookie = () => {
   return cookies.set();
 };
 
-export const getCookieToken = () => {
+export const getCookie = () => {
   return cookies.get("refresh_token");
 };
 
-export const removeCookieToken = () => {
-  return cookies.remove("refresh_token", {
-    sameSite: "strict",
-    path: "/",
-  });
+export const removeCookie = () => {
+  return cookies.remove();
 };
+
+// export const removeCookie = () => {
+//   return cookies.remove("refresh_token", {
+//     sameSite: "strict",
+//     path: "/",
+//   });
+// };

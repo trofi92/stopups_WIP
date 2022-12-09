@@ -30,7 +30,7 @@ import {
 } from "../../styled/Login/Login";
 import { Footer } from "../../components/Footer/Footer";
 import { LJButton } from "../../styled/Button";
-// import { setCookie } from "../../storage/Cookie";
+import { setCookie } from "../../storage/Cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -72,23 +72,24 @@ const Login = () => {
         .post("http://localhost:8000/auth/login", {
           data: post,
         })
-        .then((res) => {
+        .then((req, res) => {
           console.log("로그인 성공", res);
-          // if (res?.data?.token) {
-          //   setCookie("token", res.data.token, {
-          //     path: "/",
-          //     secure: true,
-          //     sameSite: "none",
-          //   });
-          // }
-          localStorage.setItem("token", res.data.token);
+
+          // setCookie("user", req.cookies, {
+          //   path: "/",
+          //   secure: true,
+          //   sameSite: "none",
+          // });
+
+          // console.log(res.headers);
+          // localStorage.setItem("token", JSON.parse(res.data.token));
           navigate("/", { replace: true });
         })
         .catch((error) => {
           console.log("로그인 실패", error);
           alert(error.response.data);
         });
-    }
+    } //정리할것
   };
 
   const onLoginSubmit = (e) => {

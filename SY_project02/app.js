@@ -17,6 +17,7 @@ const swaggerFile = require("./swagger-output");
 const { sequelize } = require("./models");
 const passport = require("passport");
 const passportConfig = require("./passport");
+const authJWT = require("./middlewares/authJWT");
 
 const app = express();
 app.use(

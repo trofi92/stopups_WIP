@@ -1,45 +1,11 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const {
-  ExtractJwt: ExtractJwt,
-  Strategy: JWTStrategy,
-} = require("passport-jwt");
 const User = require("../models/User");
 const decrypt = require("../middlewares/crypto");
 
 module.exports = () => {
   passport.use(
-    new JWTStrategy(
-      {
-        jwtFromRequest: ExtractJwt.fromHeader("authorization"),
-        secretOrKey: process.env.JWT_SECRET,
-      },
-      async (jwtPayload, done) => {
-        try {
-          // payload의 email값으로 유저의 데이터 조회
-          const user = await User.findOne({
-            where: { email: jwtPayload.email },
-          });
-          // 유저 데이터가 있다면 유저 데이터 객체 전송
-          if (user) {
-            done(null, user);
-            return;
-          }
-          // 유저 데이터가 없을 경우 에러 표시
-          done(null, false, {
-            reason: "올바르지 않은 인증정보 입니다.",
-          });
-        } catch (error) {
-          console.error(error);
-          done(error);
-        }
-      }
-    )
-  );
-};
-
-module.exports = () => {
-  passport.use(
+    "local",
     new LocalStrategy(
       {
         usernameField: "email",
