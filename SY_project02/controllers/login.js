@@ -32,6 +32,7 @@ const login = async (req, res, next) => {
             return res.status(305).send({ loginError });
           }
         });
+
         const token = jwt.sign(
           { id: user.email, name: user.name },
           process.env.JWT_SECRET,
@@ -40,7 +41,6 @@ const login = async (req, res, next) => {
           }
         );
 
-        //response
         res.cookie("accessJwtToken", token, {
           maxAge: 1000 * 60 * 60 * 24 * 7,
           httpOnly: true,

@@ -18,7 +18,7 @@ const swaggerFile = require("./swagger-output");
 const { sequelize } = require("./models");
 const passport = require("passport");
 const passportConfig = require("./passport");
-const authJwt = require("./middlewares/authJwt");
+// const authJwt = require("./middlewares/authJwt");
 
 const app = express();
 app.use(helmet());
@@ -62,7 +62,7 @@ app.use(
     },
   })
 );
-app.use(authJwt);
+// app.use(authJwt);
 
 app.use(passport.initialize());
 app.use(passport.session());

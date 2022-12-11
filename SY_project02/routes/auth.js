@@ -6,7 +6,7 @@ const {
 } = require("../middlewares/loggedIn");
 const { join } = require("../controllers/join");
 const { login, logout } = require("../controllers/login");
-
+const { login2 } = require("../controllers/login2");
 const router = express.Router();
 
 router.post("/join", isNotLoggedIn, join);
