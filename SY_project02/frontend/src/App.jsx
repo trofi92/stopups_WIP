@@ -29,6 +29,8 @@ import LFindId from "./pages/Login/LFindId/LFindId";
 import LFindPwAgree from "./pages/Login/LFindPw/LFindPwAgree";
 import LPwPass from "./pages/Login/LFindPw/LPwPass";
 import LFindPw from "./pages/Login/LFindPw/LFindPw";
+import NoticeInnerText from "./pages/Notice/NoticeInnerText";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -68,6 +70,9 @@ function App() {
         <Route path={"/favorite"} element={<Favorite/>} />
         {/*공지*/}
         <Route path={"/notice"} element={<Notice/>} />
+        {/*공지 내용*/} {/*임시*/}
+        {/*api에서 공지글 받아 내려서 각 id값에 따라 /:id로 연결되게끔..?*/}
+        <Route path={"/noticeText"} element={<NoticeInnerText/>}/>
         {/*이벤트*/}
         <Route path={"/event"} element={<Event/>} />
         {/*이벤트 - 여름 이벤트*/}
@@ -84,6 +89,8 @@ function App() {
         <Route path={"/myStopUps"} element={<MyStopUps/>} />
         {/*서비스 준비중*/}
         <Route path={"/serviceReady"} element={<ServiceReady/>} />
+        {/*검색 페이지*/}
+        <Route path={"/search"} element={<Search/>} />
         <Route
           path="/payment"
           element={<Payment name={"payment"} />}

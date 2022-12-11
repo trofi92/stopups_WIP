@@ -11,7 +11,7 @@ import {
     HMSInner,
     HMSIP, Nav, NLiFirstTitle, NLiTitle, NLiTitleP, NUl
 } from "../../../styled/HeaderModal";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {HMTButton} from "../../../styled/Button";
 import {MyStopUps} from "./MyStopUps/MyStopUps";
 import {Coffee} from "./Coffee/Coffee";
@@ -21,8 +21,12 @@ import {Responsibility} from "./Responsibility/Responsibility";
 import {StopUpsRewards} from "./StopUpsRewards/StopUpsRewards";
 import {CorporateSales} from "./CorporateSales/CorporateSales";
 import {WhatsNew} from "./WhatsNew/WhatsNew";
+import {useNavigate} from "react-router-dom";
 
 const HeaderModal = ({modalClose}) => {
+    const [search, setSearch] = useState("");
+    const searchRef = useRef(null);
+    const navigate = useNavigate();
 
     const [openMyStopUps, setOpenMyStopUps] = useState(false);
     const myStopUpsToggle = () => {
@@ -64,15 +68,21 @@ const HeaderModal = ({modalClose}) => {
         setOpenWhatsNew(!openWhatsNew);
     }
 
-    const onLogoutHandler = () => {
-        axios.get("http://localhost:8000/", {}).then((res) => {
-            console.log("로그아웃", res);
-            localStorage.removeItem("email")
-        })
-            .catch((error) => {
-                console.error(error);
-            });
-    };
+    const handleSearch = (e) => {
+        e.preventDefault()
+        setSearch(e.target.value);
+    }
+
+    // 여기 값 /search로 보내주기
+    const onSearchSubmit = () => {
+        if (search === "") {
+            alert("검색어를 입력하세요.")
+            searchRef.current.focus();
+        } else {
+            searchRef.current.focus();
+            navigate("/search");
+        }
+    }
 
     return (
         <HM>
@@ -86,12 +96,17 @@ const HeaderModal = ({modalClose}) => {
                         <HMBIAsideP onClick={modalClose}/>
                     </HMBIAside>
                     {/*검색*/}
+                    {/*공백일 경우 alert(검색어를 입력하세요.)*/}
+                    {/*공백이 아닐 경우 값과 함께 /serach 페이지로 이동*/}
                     <HMSearch>
                         <HMSInner>
                             <HMSIInput
                                 type={"text"}
+                                onChange={handleSearch}
+                                ref={searchRef}
+                                search={search}
                                 />
-                            <HMSIP>Search</HMSIP>
+                            <HMSIP onClick={onSearchSubmit}>Search</HMSIP>
                         </HMSInner>
                     </HMSearch>
                     {/*Nav*/}

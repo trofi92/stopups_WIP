@@ -177,7 +177,7 @@ export const NTBTDLeft = styled.td`
   line-height: 1.8;
 `
 
-export const NTBTDLA = styled.a`
+export const NTBTDLA = styled.p`
   color: #666;
   font-size: 16px;
   margin: 0;

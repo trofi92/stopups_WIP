@@ -53,6 +53,38 @@ export const LNLeftInnerLDd = styled.dd`
   text-indent: 15px;
   overflow: hidden;
 `
+
+export const LNLeftInnerLDUl = styled.ul`
+  direction: ltr;
+  font-size: 13px;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+`
+
+export const LNLeftInnerLDLi = styled.li`
+  display: block;
+  width: 40%;
+  height: 24px;
+  line-height: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  vertical-align: baseline;
+`
+
+export const LNLeftInnerLDLP = styled.p`
+  color: #fff;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  font-size: 14px;
+`
+
 // 라인 공지 왼쪽의 오른쪽 버튼
 export const LNLeftInnerP = styled.p`
   height: 44px;

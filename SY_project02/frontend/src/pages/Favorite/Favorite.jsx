@@ -44,6 +44,8 @@ const Favorite = () => {
                     </FHTitle>
                 </FHeader>
 
+
+
                 {/*My 메뉴의 내용*/}
                 <FContentsAllBox>
                     <FCBox>

@@ -228,16 +228,14 @@ export const ESBP = styled.p`
   right: 50px;
   top: 0;
   padding: 0;
-`
-
-export const ESBPButton = styled.p`
   display: block;
   font-size: 14px;
   color: #fff;
   font-weight: bold;
   text-align: center;
-  height: 45px;
   line-height: 45px;
-  width: 100%;
-  margin: 0;
+
+  :hover {
+    text-decoration: underline;
+  }
 `

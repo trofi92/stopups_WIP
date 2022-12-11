@@ -2,9 +2,9 @@ import {
     LN,
     LNLeft,
     LNLeftInner,
-    LNLeftInnerDl,
+    LNLeftInnerDl, LNLeftInnerLDd, LNLeftInnerLDLi, LNLeftInnerLDLP,
     LNLeftInnerLDt,
-    LNLeftInnerLDtImg,
+    LNLeftInnerLDtImg, LNLeftInnerLDUl,
     LNLeftInnerP,
     LNLeftInnerPImg,
     LNRight,
@@ -55,8 +55,17 @@ export const LineNotice = () => {
                             <LNLeftInnerLDt>
                                 <LNLeftInnerLDtImg src={MLNLeft}
                                                    alt={"mainPromotionBannerLeft"}/>
-                                {/*나중에 공지사항 생기면 dd 추가 + 움직임 이벤트 + 해당 공지사항 이동 링크*/}
                             </LNLeftInnerLDt>
+                            {/*나중에 공지사항 생기면 dd 추가 + 움직임 이벤트 + 해당 공지사항 이동 링크*/}
+                            <LNLeftInnerLDd>
+                                <LNLeftInnerLDUl>
+                                    <LNLeftInnerLDLi>
+                                        <Link to={"/noticeText"} style={{textDecoration: "none"}}>
+                                            <LNLeftInnerLDLP>공지사항</LNLeftInnerLDLP>
+                                        </Link>
+                                    </LNLeftInnerLDLi>
+                                </LNLeftInnerLDUl>
+                            </LNLeftInnerLDd>
                         </LNLeftInnerDl>
                         {/*라인 공지 왼쪽의 오른쪽 버튼*/} {/*추후 공지사항으로 이동 링크*/}
                         <LNLeftInnerP>

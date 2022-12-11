@@ -13,7 +13,7 @@ import {
     NTIImg,
     NTInner,
     NTitleBox, NTr
-} from "../../styled/Notice";
+} from "../../styled/Notice/Notice";
 import NTitleImg from "../../image/Notice/Ntitle.jpg"
 import NNext from "../../image/Notice/NNext.jpg"
 import {Footer} from "../../components/Footer/Footer";

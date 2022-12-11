@@ -147,32 +147,34 @@ export const FAside = styled.aside`
   width: 100%;
 `
 
-export const FAsideAGreen = styled.a`
+export const FAsideAGreen = styled.span`
   border-right: 1px solid #393939;
   font-size: 12px;
   padding: 0 10px;
   color: #00b050 !important;
   font-weight: bold;
   cursor: pointer;
+  margin: 0;
 
   :hover {
     text-decoration: underline;
   }
 `
 
-export const FAsideA = styled.a`
+export const FAsideA = styled.span`
   border-right: 1px solid #393939;
   font-size: 12px;
   padding: 0 10px;
   color: #ccc;
   cursor: pointer;
-
+  margin: 0;
+  
   :hover {
     text-decoration: underline;
   }
 `
 
-export const FAButtonA = styled.a`
+export const FAButtonA = styled.p`
   background: none;
   border: 2px solid #fff;
   border-radius: 3px;

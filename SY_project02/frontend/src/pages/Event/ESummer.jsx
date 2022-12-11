@@ -1,7 +1,7 @@
 import {AllBox} from "../../styled/AllBox";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
-import {NTIH2, NTIImg, NTInner, NTitleBox} from "../../styled/Notice";
+import {NTIH2, NTIImg, NTInner, NTitleBox} from "../../styled/Notice/Notice";
 import ETitle from "../../image/Event/ETitle.jpg";
 import {
     ESADImg,
@@ -100,11 +100,11 @@ const ESummer = () => {
                         </ESArticle>
                         {/*목록 버튼*/}
                         <ESButtonBox>
-                            <ESBP>
-                                <Link to={"/event"} style={{textDecoration: "none"}}>
-                                    <ESBPButton>목록</ESBPButton>
-                                </Link>
-                            </ESBP>
+                            <Link to={"/event"} style={{textDecoration: "none"}}>
+                                <ESBP>
+                                    목록
+                                </ESBP>
+                            </Link>
                         </ESButtonBox>
                     </ESSection>
                 </ESBPosition>

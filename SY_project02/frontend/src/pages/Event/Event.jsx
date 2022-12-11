@@ -1,6 +1,6 @@
 import {AllBox} from "../../styled/AllBox";
 import Header from "../../components/Header/Header";
-import {NTIH2, NTIImg, NTInner, NTitleBox} from "../../styled/Notice";
+import {NTIH2, NTIImg, NTInner, NTitleBox} from "../../styled/Notice/Notice";
 import ETitle from "../../image/Event/ETitle.jpg";
 import {
     EBox,

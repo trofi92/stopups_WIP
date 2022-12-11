@@ -104,6 +104,7 @@ export const HMSIP = styled.p`
   text-align: center;
   width: 125px;
   margin: 0;
+  cursor: pointer;
 `
 
 // nav

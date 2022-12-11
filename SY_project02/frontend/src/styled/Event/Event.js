@@ -213,7 +213,7 @@ export const ESDLDt = styled.dt`
   overflow: hidden;
 `
 
-export const ESDLA = styled.a`
+export const ESDLA = styled.p`
   margin: 0;
   padding: 0;
   font-size: 100%;
