@@ -7,7 +7,7 @@ const login = async (req, res, next) => {
   req.body.password = password;
   passport.authenticate(
     "local",
-    { session: true },
+    { session: false },
     (authError, user, info) => {
       try {
         console.log("로그인에 authError=>", authError);
@@ -36,7 +36,7 @@ const login = async (req, res, next) => {
           { id: user.email, name: user.name },
           process.env.JWT_SECRET,
           {
-            expiresIn: "7d", // 만료시간 12시간
+            expiresIn: "7d", // 만료시간 7일
           }
         );
 
@@ -57,35 +57,13 @@ const login = async (req, res, next) => {
   )(req, res, next);
   // 미들웨어 내의 미들웨어에는 (req, res, next) 삽입
 };
-///////////////////s
-const generateToken = async (res, req, next) => {
-  const { email, name } = req.app.locals;
-  console.log();
-  const token = jwt.sign(
-    { id: email, name: name },
-    process.env.JWT_SECRET,
-    {
-      expiresIn: "7d", // 만료시간 12시간
-    }
-  );
-
-  //response
-  res.cookie("accessJwtToken", token, {
-    maxAge: 1000 * 60 * 60 * 24 * 7,
-    httpOnly: true,
-  });
-  return res.status(200).json({
-    code: 200,
-    message: "토큰이 발급되었습니다.",
-    token: token,
-  });
-};
 
 const logout = async (req, res, next) => {
   res.cookie("accessJwtToken");
   res.status = 204;
 };
 
+// 로그인 확인용 함수(테스트)
 const check = async (req, res) => {
   // authJwt에서 감지한 jwt payload가져오기
   const { email } = req.app.locals;
@@ -99,4 +77,4 @@ const check = async (req, res) => {
   console.log(res.body);
 };
 
-module.exports = { login, logout, check, generateToken };
+module.exports = { login, logout, check };

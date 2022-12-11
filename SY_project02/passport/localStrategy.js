@@ -10,11 +10,13 @@ module.exports = () => {
       {
         usernameField: "email",
         passwordField: "password",
-        session: true,
+        session: false,
       },
       async (email, password, done) => {
         try {
-          const exUser = await User.findAll();
+          const exUser = await User.findAll({
+            attributes: ["email", "name", "password"],
+          });
           exUser.find((element) => {
             if (email === decrypt(element.email)) {
               if (exUser) {

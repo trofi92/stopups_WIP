@@ -30,7 +30,6 @@ import {
 import { Footer } from "../../components/Footer/Footer";
 import { LJButton } from "../../styled/Button";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 
 axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
 axios.defaults.withCredentials = true;
@@ -77,20 +76,12 @@ const Login = () => {
             "http://localhost:8000/auth/login",
             {
               data: post,
-            }
-            // { withCredentials: true }
+            },
+            { withCredentials: true }
           )
           .then((res) => {
-            const jwtToken = res.data.token;
             console.log("로그인 성공");
 
-            console.log(document.cookie);
-            // const decodedUserInfo = jwt_decode(jwtToken);
-            // setCookie("accessJwtToken", jwtToken);
-            localStorage.setItem(
-              "userInfo",
-              JSON.stringify(jwtToken)
-            );
             navigate("/", { replace: true });
             return res;
           });
@@ -100,7 +91,7 @@ const Login = () => {
           "로그인이 실패했습니다. 정보가 올바른지 다시 확인해주세요"
         );
       }
-    } //정리할것
+    }
   };
 
   const onLoginSubmit = (e) => {
@@ -173,12 +164,18 @@ const Login = () => {
                         </Link>
                       </LFBLi>
                       <LFBLi>
-                        <Link to={"/findIdAgree"} style={{ textDecoration: "none" }}>
+                        <Link
+                          to={"/findIdAgree"}
+                          style={{ textDecoration: "none" }}
+                        >
                           <LFBListP>아이디 찾기</LFBListP>
                         </Link>
                       </LFBLi>
                       <LFBLi>
-                        <Link to={"/findPwAgree"} style={{ textDecoration: "none" }}>
+                        <Link
+                          to={"/findPwAgree"}
+                          style={{ textDecoration: "none" }}
+                        >
                           <LFBListP>비밀번호 찾기</LFBListP>
                         </Link>
                       </LFBLi>

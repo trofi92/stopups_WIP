@@ -4,37 +4,33 @@ const User = "../models/User.js";
 
 const authJwt = async (req, res, next) => {
   const token = req.cookies.accessJwtToken;
-  // console.log(req.cookies.accessJwtToken);
+  console.log(req.cookies.accessJwtToken);
 
   if (!token) return next();
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     console.log(decoded);
-    req.app.locals = {
+    //바깥으로 verify 내용을 export하기 위한 req.app.locals메소드 사용
+    const decodedInfo = (req.app.locals = {
       id: decoded.id, //email
       name: decoded.name, //username
-    };
-    // console.log(req.app.locals);
+    });
+    console.log(decoded.exp);
 
+    //재발급
     const now = Math.floor(Date.now() / 1000);
+    // 사용자에게 발급된 쿠키의 유효기간이 3.5일 미만으로 남은 경우
+    // 7일의 유효기간을 지닌 새로운 쿠키 발급
     if (decoded.exp - now < 60 * 60 * 24 * 3.5) {
-      const user = await User.findOne(decoded.id);
-      const token = jwt.sign(
-        {
-          id: user,
-          name: decoded.name,
-        },
-        process.env.JWT_SECRET,
-        {
-          expiresIn: "7d", // 만료시간 12시간
-        }
-      );
+      const token = jwt.sign(decodedInfo, process.env.JWT_SECRET, {
+        expiresIn: "7d", // 만료시간
+      });
       res.cookie("accessJwtToken", token, {
         maxAge: 1000 * 60 * 60 * 24 * 7,
         httpOnly: true,
+        overwrite: true,
       });
     }
-
     return next();
   } catch (err) {
     console.error(err);
