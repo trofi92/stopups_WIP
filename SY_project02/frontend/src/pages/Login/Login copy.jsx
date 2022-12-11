@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 import Header from "../../components/Header/Header";
 import {
   checkEmail,
@@ -29,10 +30,7 @@ import {
 } from "../../styled/Login/Login";
 import { Footer } from "../../components/Footer/Footer";
 import { LJButton } from "../../styled/Button";
-import axios from "axios";
-
-axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
-axios.defaults.withCredentials = true;
+import { setCookie } from "../../storage/Cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -59,7 +57,7 @@ const Login = () => {
     }
   };
 
-  const submitIdPassword = (e) => {
+  const submitIdPassword = async (e) => {
     e.preventDefault();
     if (email === "") {
       alert("이메일을 입력해주세요");
@@ -70,28 +68,29 @@ const Login = () => {
         email,
         password,
       };
-      try {
-        axios
-          .post(
-            "http://localhost:8000/auth/login",
-            {
-              data: post,
-            },
-            { withCredentials: true }
-          )
-          .then((res) => {
-            console.log("로그인 성공");
-
-            navigate("/", { replace: true });
-            return res;
-          });
-      } catch (err) {
-        console.error(err);
-        alert(
-          "로그인이 실패했습니다. 정보가 올바른지 다시 확인해주세요"
-        );
-      }
-    }
+      await axios
+        .post(
+          "http://localhost:8000/auth/login",
+          {
+            data: post,
+          }
+          // { withCredentials: true }
+        )
+        .then((res) => {
+          console.log("로그인 성공", res);
+          // setCookie("user", null, {
+          //   path: "/",
+          //   secure: true,
+          //   sameSite: "none",
+          // });
+          localStorage.setItem("token", res.data.token);
+          navigate("/", { replace: true });
+        })
+        .catch((error) => {
+          console.log("로그인 실패", error);
+          alert(error);
+        });
+    } //정리할것
   };
 
   const onLoginSubmit = (e) => {
@@ -164,18 +163,12 @@ const Login = () => {
                         </Link>
                       </LFBLi>
                       <LFBLi>
-                        <Link
-                          to={"/findIdAgree"}
-                          style={{ textDecoration: "none" }}
-                        >
+                        <Link style={{ textDecoration: "none" }}>
                           <LFBListP>아이디 찾기</LFBListP>
                         </Link>
                       </LFBLi>
                       <LFBLi>
-                        <Link
-                          to={"/findPwAgree"}
-                          style={{ textDecoration: "none" }}
-                        >
+                        <Link style={{ textDecoration: "none" }}>
                           <LFBListP>비밀번호 찾기</LFBListP>
                         </Link>
                       </LFBLi>

@@ -1,8 +1,8 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../models/User");
-const decrypt = require("../middlewares/crypto");
-
+const { decrypt } = require("../middlewares/crypto");
+// const redisClient = require("../utils/redis.util");
 module.exports = () => {
   passport.use(
     "local",
@@ -14,7 +14,9 @@ module.exports = () => {
       },
       async (email, password, done) => {
         try {
-          const exUser = await User.findAll();
+          const exUser = await User.findAll({
+            attributes: ["email", "name", "password"],
+          });
           exUser.find((element) => {
             if (email === decrypt(element.email)) {
               if (exUser) {
