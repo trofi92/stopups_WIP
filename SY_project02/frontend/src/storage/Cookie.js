@@ -21,6 +21,8 @@ export const getCookie = () => {
   return cookies.get("refresh_token");
 };
 
+
+
 export const removeCookie = () => {
   return cookies.remove("refresh_token", {
     sameSite: "strict",

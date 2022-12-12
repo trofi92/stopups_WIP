@@ -17,9 +17,35 @@ import {
 } from "../../styled/Event/Event";
 import ESTitle from "../../image/Event/ESTitle.jpg"
 import {Link} from "react-router-dom";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 const Event = () => {
     // 각 이벤트 버튼 클릭 시 버튼 ESAClicked로 변경 및 ESArticle display:block 변경
+    // const [event, setEvent] = useState([]);
+    // const getEvent = async () => {
+    //     const res = await axios.get('http://stopupsapi.tk:8080/api/?apikey=TeamYN1670397914440&MImage=ALL&Name=&ImageId=');
+    //     setEvent(res.data)
+    // }
+    // useEffect(() => {
+    //         getEvent().then(r => console.log("111111=>", r));
+    //     }
+    //     , []
+    // )
+
+    const imageView = async () => {
+        // 이미지 조회 시 카테고리 지정 및 검색 값에 따른 DB 조회
+        const image = await axios.get('http://stopupsapi.tk:8080/api/?apikey=TeamYN1670397914440&MImage=ALL&Name=&ImageId=');
+        console.log(image.data);
+    };
+
+    useEffect(() => {
+            imageView().then(r => console.log("111111=>", r));
+        }
+        , []
+    )
+
+    // console.log("2222222222=>", event);
 
     return (
         <AllBox>

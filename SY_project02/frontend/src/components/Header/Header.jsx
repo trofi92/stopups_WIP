@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import logo from "../../image/Header/logo.png";
 import userLogo from "../../image/Header/headerUser.png"
 import spotLogo from "../../image/Header/headerSpot.png"
@@ -33,15 +33,13 @@ const Header = () => {
                 <HNPosition>
                     <HNUl>
                         <HNLi></HNLi>
-                        {/*if 로그인 안했으면 로그인 페이지, 로그인 했으면 마이 스탑업스로 이동*/}
                         <HNLi>
                             <Link to={"/login"}>
                                 <HIconUser src={userLogo} alt={"userLogo"}/>
                             </Link>
                         </HNLi>
-
                         <HNLi>
-                            <Link to={"/"}>
+                            <Link to={"/map"}>
                                 <HIconSpot src={spotLogo} alt={"spotLogo"}/>
                             </Link>
                         </HNLi>

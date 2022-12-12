@@ -34,6 +34,21 @@ export const CFood = styled.a`
   text-decoration: none;
 `
 
+export const CFoodG = styled.a`
+  width: 100% !important;
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #444;
+  background: #fff;
+  border-bottom: 3px solid #006633;
+  text-decoration: none;
+`
+
 // 주문 메뉴 박스
 export const CFBoxs = styled.div`
   width: 100%;
@@ -304,6 +319,21 @@ export const CGoods = styled.a`
   text-decoration: none;
 `
 
+export const CGoodsG = styled.a`
+  width: 100% !important;
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #444;
+  background: #fff;
+  border-bottom: 3px solid #006633;
+  text-decoration: none;
+`
+
 // 상품 박스
 export const GBoxs = styled.div`
   width: 100%;
@@ -348,6 +378,7 @@ export const GBButton= styled.button`
   font-size: 18px;
   float: left;
   margin-top: 15px;
+  cursor: pointer;
 `
 
 export const GBImg = styled.div`
