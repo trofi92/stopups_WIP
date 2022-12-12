@@ -4,7 +4,7 @@ import {Footer} from "../../components/Footer/Footer";
 import {
     FBox,
     FCBox,
-    FContentsAllBox, FCSA1, FCSA2, FCSA3, FCSDl, FCSDt1, FCSDt2, FCSDt3,
+    FContentsAllBox, FCSA1, FCSA1G, FCSA2, FCSA2G, FCSA3, FCSA3G, FCSDl, FCSDt1, FCSDt2, FCSDt3,
     FCSection1, FCSection2,
     FCSectionP, FCSH5,
     FHeader,
@@ -16,17 +16,21 @@ import MyMenu from "../../image/Favorite/MyMenu.png"
 import {FDrink} from "./FDrink";
 import {FFood} from "./FFood";
 import {FGoods} from "./FGoods";
-import {useEffect, useState} from "react";
+import {useState} from "react";
+import {current} from "@reduxjs/toolkit";
 
 const Favorite = () => {
-    const [drink, setDrink] = useState(true);
-    const [food, setFood] = useState(false);
-    const [goods, setGoods] = useState(false);
+    const [state, setState] = useState(1);
 
-    const [color, setColor] = useState(false);
+    const onClick = (id) => {
+        setState(id);
+    }
 
-
-
+    const obj = {
+        1: <FDrink/>,
+        2: <FFood/>,
+        3: <FGoods/>
+    };
 
     return (
         <AllBox>
@@ -61,27 +65,46 @@ const Favorite = () => {
                                 <FCSDl>
                                     <FCSDt1>
                                         <FCSH5>
-                                            <FCSA1 href={"#"}>나만의 음료</FCSA1>
+                                            {state === 1 ? (
+                                                <FCSA1G href={"#"} onClick={() => onClick(1)}>
+                                                    나만의 음료
+                                                </FCSA1G>
+                                            ) : (
+                                                <FCSA1 href={"#"} onClick={() => onClick(1)}>
+                                                    나만의 음료
+                                                </FCSA1>
+                                            )}
                                         </FCSH5>
                                     </FCSDt1>
-                                    {/*음료 테이블*/}
-                                    <FDrink id={"drink"}/>
-
                                     <FCSDt2>
                                         <FCSH5>
-                                            <FCSA2 href={"#"}>나만의 푸드</FCSA2>
+                                            {state === 2 ? (
+                                                <FCSA2G href={"#"} onClick={() => onClick(2)}>
+                                                    나만의 푸드
+                                                </FCSA2G>
+                                            ) : (
+                                                <FCSA2 href={"#"} onClick={() => onClick(2)}>
+                                                    나만의 푸드
+                                                </FCSA2>
+                                            )}
                                         </FCSH5>
                                     </FCSDt2>
-                                    {/*푸드 테이블*/}
-                                    <FFood id={"food"}/>
-
                                     <FCSDt3>
                                         <FCSH5>
-                                            <FCSA3 href={"#"}>나만의 상품</FCSA3>
+                                            {state === 3 ? (
+                                                <FCSA3G href={"#"} onClick={() => onClick(3)}>
+                                                    나만의 상품
+                                                </FCSA3G>
+                                            ) : (
+                                                <FCSA3 href={"#"} onClick={() => onClick(3)}>
+                                                    나만의 상품
+                                                </FCSA3>
+                                            )}
                                         </FCSH5>
                                     </FCSDt3>
-                                    {/*상품 테이블*/}
-                                    <FGoods id={"goods"}/>
+
+                                    {/*각 테이블*/}
+                                    {obj[state]}
                                 </FCSDl>
                             </div>
                         </FCSection2>

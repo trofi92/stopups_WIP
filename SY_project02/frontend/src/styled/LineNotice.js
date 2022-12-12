@@ -83,6 +83,7 @@ export const LNLeftInnerLDLP = styled.p`
   white-space: nowrap;
   width: 100%;
   font-size: 14px;
+  margin: 0;
 `
 
 // 라인 공지 왼쪽의 오른쪽 버튼
@@ -181,7 +182,7 @@ export const PBCont = styled.div`
   width: 100%;
   overflow: hidden;
   position: relative;
-  height: 346px;
+  height: 362px;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
@@ -196,7 +197,6 @@ export const PBCUl = styled.ul`
 `
 
 export const PBCLi = styled.li`
-  float: left;
   list-style: none;
   position: relative;
   margin: 0 5px;

@@ -6,7 +6,7 @@ import {
     FCDTable1,
     FCDTHead1,
     FCDTHTr1,
-    FCDTColgroup, FCDTHTh1, FCDTHThDiv1, FCDTHThDInput1, FCDTHTbody1, FCDTHTbodyTd1,
+    FCDTColgroup, FCDTHTh1, FCDTHThDiv1, FCDTHThDInput1, FCDTHTbody1, FCDTHTbodyTd1, FCDTHTbodyTdOK,
 } from "../../styled/Favorite";
 
 export const FDrink = () => {

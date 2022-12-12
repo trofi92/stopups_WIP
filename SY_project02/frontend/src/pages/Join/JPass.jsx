@@ -30,7 +30,7 @@ const JPass = () => {
         setRnd(rnd_number.toString()); // 인증 번호 문자열로 저장
         if (phone_number !== "") {
             // 값이 존재하면 SMS 인증을 위해 POST로 전달
-            await axios.post(`http://192.168.10.63:8080/sms/`, {
+            await axios.post(`http://stopupsapi.tk:8080/sms/`, {
                 phone_number,
                 rnd_number,
             });

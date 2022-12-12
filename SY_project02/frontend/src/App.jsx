@@ -31,6 +31,7 @@ import LPwPass from "./pages/Login/LFindPw/LPwPass";
 import LFindPw from "./pages/Login/LFindPw/LFindPw";
 import NoticeInnerText from "./pages/Notice/NoticeInnerText";
 import Search from "./pages/Search";
+import Map from "./pages/Map";
 
 function App() {
   return (
@@ -91,6 +92,8 @@ function App() {
         <Route path={"/serviceReady"} element={<ServiceReady/>} />
         {/*검색 페이지*/}
         <Route path={"/search"} element={<Search/>} />
+        {/*지도 페이지*/}
+        <Route path={"/map"} element={<Map/>} />
         <Route
           path="/payment"
           element={<Payment name={"payment"} />}

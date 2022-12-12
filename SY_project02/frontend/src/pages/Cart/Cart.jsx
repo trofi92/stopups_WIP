@@ -16,41 +16,48 @@ import {
 } from "../../styled/Favorite";
 import CTitle from "../../image/Cart/CTitle.png"
 import {
+    CBTitle,
+    CBTSpan,
+    CBTSpanColor,
     CDiv,
+    CFACInput,
+    CFAllCheck,
+    CFAllCheckBox,
+    CFAllCheckText, CFBAmount, CFBAmountColor,
+    CFBox,
+    CFBoxs, CFBTotal, CFButton, CFButtonBox,
+    CFCAllDelete,
+    CFCDelete, CFMCMinus, CFMCount, CFMCountBox, CFMCPlus, CFMCup,
+    CFMenuBox, CFMIceHot,
+    CFMImg, CFMMoney, CFMOption, CFMSize, CFMText, CFMTitle, CFMTotalMoney,
     CFood,
-    CFoodBox1,
+    CFoodBox1, CFoodG,
     CGoods,
-    CGoodsBox,
+    CGoodsBox, CGoodsG,
+    CMBox,
+    CMCheck,
+    CMCInput,
 
 } from "../../styled/Cart";
 import {CNoDF} from "./CNoDF";
+import {useState} from "react";
+import {FDrink} from "../Favorite/FDrink";
+import {FFood} from "../Favorite/FFood";
+import {FGoods} from "../Favorite/FGoods";
+import {CNoG} from "./CNoG";
+import {AiOutlineMinusCircle, AiOutlinePlusCircle} from "react-icons/ai";
 
 const Favorite = () => {
-    // const [drink, setDrink] = useState();
-    // const [food, setFood] = useState();
-    // const [goods, setGoods] = useState();
+    const [state, setState] = useState(1);
 
-    // const [btn, setBtn] = useState("drink");
-    //
-    // const onClick = (event: React.FormEvent<HTMLAnchorElement>) => {
-    //     const {
-    //         currentTarget: { id },
-    //     } = event;
-    //     setBtn(id);
-    // };
-    //
-    // useEffect(() => {
-    //     const allBtnArr = ["drink", "food", "goods"];
-    //     const nonTargetedBtnArr = allBtnArr.filter((item) => item !== btn);
-    //     document.getElementById(btn).style.backgroundColor = "#006633";
-    //     document.getElementById(btn).style.color = "#fff";
-    //     nonTargetedBtnArr.map((item) => {
-    //         document.getElementById(item).style.backgroundColor = "white";
-    //         document.getElementById(btn).style.color = "#444";
-    //         return null;
-    //     });
-    // }, [btn]);
+    const onClick = (id) => {
+        setState(id);
+    }
 
+    const obj = {
+        1: <CNoDF/>,
+        2: <CNoG/>,
+    };
 
     return (
         <AllBox>
@@ -84,88 +91,35 @@ const Favorite = () => {
                                     <CFoodBox1>
                                         <FCSH5>
                                             {/*버튼 클릭 시 border-bottom: 3px solid #006633*/}
-                                            <CFood href={"#"} id={"DF"}>
-                                                음료/푸드
-                                            </CFood>
+                                            {state === 1 ? (
+                                                <CFoodG href={"#"} onClick={() => onClick(1)}>
+                                                    음료/푸드
+                                                </CFoodG>
+                                            ) : (
+                                                <CFood href={"#"} onClick={() => onClick(1)}>
+                                                    음료/푸드
+                                                </CFood>
+                                            )}
                                         </FCSH5>
                                     </CFoodBox1>
-
-                                    {/*음료/푸드에 아무것도 없을 때*/}
-                                    <CNoDF/>
-                                    {/*상품을 클릭했을 때*/}
-                                    {/*<CNoG/>*/}
-
-                                    {/*음료/푸드에 상품이 있을 때*/}
-                                    {/*상품 클릭시 GBoxs만 보이고 여기부터 hide*/}
-                                    {/*<CFBoxs>*/}
-                                    {/*    /!*주문 메뉴*!/*/}
-                                    {/*    <CFBox>*/}
-                                    {/*        <CBTitle>주문 메뉴</CBTitle>*/}
-                                    {/*        <CBTSpan>총 주문 가능 수량 <CBTSpanColor>20</CBTSpanColor>개</CBTSpan>*/}
-                                    {/*    </CFBox>*/}
-                                    {/*    /!*전체 선택, 선택삭제, 전체삭제*!/*/}
-                                    {/*    <CFAllCheckBox>*/}
-                                    {/*        <CFAllCheck>*/}
-                                    {/*            <CFACInput*/}
-                                    {/*                type={"checkbox"}*/}
-                                    {/*                title={"전체 선택"}*/}
-                                    {/*            />*/}
-                                    {/*        </CFAllCheck>*/}
-                                    {/*        <CFAllCheckText>전체선택</CFAllCheckText>*/}
-                                    {/*        <CFCDelete>선택삭제</CFCDelete>*/}
-                                    {/*        <CFCAllDelete>전체삭제</CFCAllDelete>*/}
-                                    {/*    </CFAllCheckBox>*/}
-
-                                    {/*    /!*메뉴 map 사용*!/*/}
-                                    {/*    <CFMenuBox>*/}
-                                    {/*        <CMCheck>*/}
-                                    {/*            <CMCInput*/}
-                                    {/*                type={"checkbox"}*/}
-                                    {/*                title={"개별 선택"}*/}
-                                    {/*            />*/}
-                                    {/*        </CMCheck>*/}
-                                    {/*        /!*상품 이미지, 이름 등*!/*/}
-                                    {/*        <CMBox>*/}
-                                    {/*            <CFMImg/>*/}
-                                    {/*            <CFMText>*/}
-                                    {/*                <CFMTitle>블루밍 프루트 유스베리 티</CFMTitle>*/}
-                                    {/*                <CFMOption>*/}
-                                    {/*                    <CFMIceHot>ICED</CFMIceHot>*/}
-                                    {/*                    <CFMSize>Tall</CFMSize>*/}
-                                    {/*                    <CFMCup>일회용 컵</CFMCup>*/}
-                                    {/*                    <CFMMoney>6,700원</CFMMoney>*/}
-                                    {/*                </CFMOption>*/}
-                                    {/*                <CFMCountBox>*/}
-                                    {/*                    /!*수량이 1일 때 color #c3c3c3 밑 버튼 비활성화*!/*/}
-                                    {/*                    <CFMCMinus><AiOutlineMinusCircle style={{fontSize: "30px"}}/></CFMCMinus>*/}
-                                    {/*                    <CFMCount>1</CFMCount>*/}
-                                    {/*                    <CFMCPlus><AiOutlinePlusCircle style={{fontSize: "30px"}}/></CFMCPlus>*/}
-                                    {/*                    <CFMTotalMoney>6,700원</CFMTotalMoney>*/}
-                                    {/*                </CFMCountBox>*/}
-                                    {/*            </CFMText>*/}
-                                    {/*        </CMBox>*/}
-                                    {/*    </CFMenuBox>*/}
-                                    {/*    /!*여기까지 map*!/*/}
-
-                                    {/*    /!*총 갯수 박스*!/*/}
-                                    {/*    <CFButtonBox>*/}
-                                    {/*        <CFBAmount>총 <CFBAmountColor>0</CFBAmountColor>개 / 20개</CFBAmount>*/}
-                                    {/*        <CFBTotal>0원</CFBTotal>*/}
-                                    {/*    </CFButtonBox>*/}
-                                    {/*    /!*체크된 상품이 없을 때 color #c3c3c3*에 버튼 비활성화*!/*/}
-                                    {/*    <CFButton>주문하기</CFButton>*/}
-                                    {/*</CFBoxs>*/}
-
 
                                     {/*상품 버튼*/}
                                     <CGoodsBox>
                                         <FCSH5>
                                             {/*버튼 클릭 시 border-bottom: 3px solid #006633*/}
-                                            <CGoods href={"#"} id={"G"}>상품</CGoods>
+                                            {state === 2 ? (
+                                                <CGoodsG href={"#"} onClick={() => onClick(2)}>
+                                                    상품
+                                                </CGoodsG>
+                                            ) : (
+                                                <CGoods href={"#"} onClick={() => onClick(2)}>
+                                                    상품
+                                                </CGoods>
+                                            )}
                                         </FCSH5>
                                     </CGoodsBox>
 
-
+                                    {obj[state]}
                                 </CDiv>
                             </div>
                         </FCSection2>

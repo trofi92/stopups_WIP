@@ -120,6 +120,31 @@ export const FCSA1 = styled.a`
   text-decoration: none;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
+  
+  :hover {
+    text-decoration: underline;
+  }
+`
+
+export const FCSA1G = styled.a`
+  width: 100% !important;
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background: #006633;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  
+  :hover {
+    text-decoration: underline;
+  }
 `
 
 // 나만의 음료 표
@@ -267,7 +292,26 @@ export const FCSA2 = styled.a`
   border-bottom: 1px solid #ddd;
   text-decoration: none;
   
-  background-color ${(props) => (props.backColor ? "#006633" : "#fff")};
+  :hover {
+    text-decoration: underline;
+  }
+`
+
+export const FCSA2G = styled.a`
+  width: 100% !important;
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background: #006633;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  text-decoration: none;
   
   :hover {
     text-decoration: underline;
@@ -302,4 +346,32 @@ export const FCSA3 = styled.a`
   text-decoration: none;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
+  
+  :hover {
+    text-decoration: underline;
+  }
+`
+
+export const FCSA3G = styled.a`
+  width: 100% !important;
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background: #006633;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  text-decoration: none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  
+  :hover {
+    text-decoration: underline;
+  }
 `

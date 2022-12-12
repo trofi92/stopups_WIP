@@ -13,18 +13,6 @@ import {
 import {Link} from "react-router-dom";
 
 export const Footer = () => {
-    // 로그아웃
-    // const onLogoutHandler = () => {
-    //     axios.get("http://localhost:8000/", {}).then((res) => {
-    //         console.log("로그아웃", res);
-    //         localStorage.removeItem("email")
-    //     })
-    //         .catch((error) => {
-    //             console.error(error);
-    //         });
-    // };
-
-
     // 삼항연산자 사용
     // 로그인시 home이랑 sigOut 버튼만
     // 로그아웃시 home sing in join us 버튼
@@ -198,11 +186,11 @@ export const Footer = () => {
                             </Link>
                         </FUBLi>
                         {/*로그인 O*/}
-                        {/*<FUBLi>*/}
-                        {/*    <Link to={"/"} style={{textDecoration: "none", color: "#fff"}}>*/}
-                        {/*        <FUBLiP>Sign Out</FUBLiP>*/}
-                        {/*    </Link>*/}
-                        {/*</FUBLi>*/}
+                        <FUBLi>
+                            <Link to={"/"} style={{textDecoration: "none", color: "#fff"}}>
+                                <FUBLiP>Sign Out</FUBLiP>
+                            </Link>
+                        </FUBLi>
                     </FUBUl>
                 </FUButton>
 

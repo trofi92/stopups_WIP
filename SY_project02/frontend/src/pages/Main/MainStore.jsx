@@ -23,7 +23,7 @@ export const MainStore = () => {
                 <MSDiv5/>
                 <MSDiv6/>
                 <MSButton>
-                    <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
+                    <Link to={"/map"} style={{textDecoration: "none"}}>
                         <MSButtonP>매장 찾기</MSButtonP>
                     </Link>
                 </MSButton>
