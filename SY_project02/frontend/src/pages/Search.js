@@ -3,15 +3,37 @@ import Header from "../components/Header/Header";
 import {FContentsAllBox, FHeader, FHTInner, FHTInnerH4, FHTitle} from "../styled/Favorite";
 import SearchTitle from "../image/SearchTitle.png"
 import {
-    SBox, SEDHeader, SEDHH3, SEDHSpan, SEDiv, SEDPDate, SEDPLink, SEDPP, SEFigure, SEFImg, SFBLi, SFBLP, SFBLPGreen,
-    SFBox, SFBUl,
+    SBox, SDDiv, SDDPText,
+    SDFigure, SDFImg, SDHeader,
+    SEDHeader,
+    SEDHH3,
+    SEDHSpan,
+    SEDiv,
+    SEDPDate,
+    SEDPLink,
+    SEDPP,
+    SEFigure,
+    SEFImg,
+    SFBLi,
+    SFBLP,
+    SFBLPGreen,
+    SFBox,
+    SFBUl,
     SFButtonBox,
     SFieldset,
     SFInput,
     SFInputBox,
     SFIP,
     SFStrong,
-    SInnerBox, SNoResult, SSection, SSHeader, SSHH2, SSHP, SSLi, SSLP, SSUl
+    SInnerBox,
+    SNoResult,
+    SSection,
+    SSHeader,
+    SSHH2,
+    SSHP,
+    SSLi,
+    SSLP,
+    SSUl, SYellow
 } from "../styled/Search";
 import {Link} from "react-router-dom";
 import {Footer} from "../components/Footer/Footer";
@@ -215,6 +237,30 @@ const Search = ({search}) => {
                             <SSLi>
                                 <SSLP>검색 결과가 없습니다.</SSLP>
                             </SSLi>
+                            {/*음료 검색 결과 있을 때*/}
+                            <SSLi>
+                                <SDFigure>
+                                    {/*이미지 넣기*/}
+                                    <SDFImg/>
+                                </SDFigure>
+                                <SDDiv>
+                                    <SEDHeader>
+                                        <SEDHH3>
+                                            나이트로 <SYellow>바닐라</SYellow> 크림
+                                        </SEDHH3>
+                                    </SEDHeader>
+                                    <SDDPText>
+                                        부드러운 목넘김의 나이트로 커피와
+                                        <SYellow>바닐라</SYellow>
+                                        크림의 매력을 한번에 느껴보세요!
+                                    </SDDPText>
+                                    <Link to={"#"}>
+                                        <SEDPLink>
+                                            메뉴 링크
+                                        </SEDPLink>
+                                    </Link>
+                                </SDDiv>
+                            </SSLi>
                         </SSUl>
                     </SSection>
                     {/*푸드*/}
@@ -232,6 +278,28 @@ const Search = ({search}) => {
                                 <SSLP>검색 결과가 없습니다.</SSLP>
                             </SSLi>
                         </SSUl>
+                        {/*푸드 있을 때*/}
+                        <SSLi>
+                            <SDFigure>
+                                {/*이미지 넣기*/}
+                                <SDFImg/>
+                            </SDFigure>
+                            <SDDiv>
+                                <SEDHeader>
+                                    <SEDHH3>
+                                        유기농 아이스크림 <SYellow>바닐라</SYellow>
+                                    </SEDHH3>
+                                </SEDHeader>
+                                <SDDPText>
+                                    부드럽고 깔끔한 맛의 유기농 아이스크림을 즐기세요.
+                                </SDDPText>
+                                <Link to={"#"}>
+                                    <SEDPLink>
+                                        메뉴 링크
+                                    </SEDPLink>
+                                </Link>
+                            </SDDiv>
+                        </SSLi>
                     </SSection>
                     {/*상품*/}
                     <SSection>

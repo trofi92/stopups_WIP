@@ -263,6 +263,14 @@ export const SEDHH3 = styled.h3`
   vertical-align: baseline;
 `
 
+// 검색 단어와 같은 단어 노란색 표시
+export const SYellow = styled.span`
+  background: #ffef00;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+`
+
 export const SEDHSpan = styled.span`
   background: #006633;
   border-radius: 3px;
@@ -304,10 +312,6 @@ export const SEDPLink = styled.p`
   }
 `
 
-export const SEDPP = styled.p`
-
-`
-
 // 뉴스 검색 결과가 있을 때
 
 
@@ -318,7 +322,38 @@ export const SEDPP = styled.p`
 
 
 // 음료 검색 결과가 있을 때
+export const SDFigure = styled.figure`
+  float: left;
+  height: 110px;
+  width: 110px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+`
 
+export const SDFImg = styled.img`
+  width: 100%;
+  vertical-align: top;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+`
+
+export const SDDiv = styled.div`
+  margin-left: 20px;
+  width: 76%;
+  float: left;
+  padding: 0;
+  vertical-align: baseline;
+  display: block;
+`
+
+export const SDDPText = styled.p`
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+`
 
 // 푸드 검색 결과가 있을 때
 
