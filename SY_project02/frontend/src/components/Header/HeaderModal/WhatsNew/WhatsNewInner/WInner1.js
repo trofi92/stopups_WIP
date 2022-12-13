@@ -43,4 +43,4 @@ export const WInner1 = () => {
             </styled_HM.NLUl>
         </>
     )
-}
+};

@@ -29,4 +29,4 @@ export const CSInner1 = () => {
             </styled_HM.NLUl>
         </>
     )
-}
+};

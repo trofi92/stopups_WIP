@@ -1,8 +1,8 @@
 import * as styled_F from "../../styled/Favorite";
 
 export const FDrink = () => {
-    // 데이터 끌어오기
-    // 데이터 있을 때 없을 때 삼항연산자로 구현
+  // 데이터 끌어오기
+  // 데이터 있을 때 없을 때 삼항연산자로 구현
 
     return (
         <styled_F.FCDd1>

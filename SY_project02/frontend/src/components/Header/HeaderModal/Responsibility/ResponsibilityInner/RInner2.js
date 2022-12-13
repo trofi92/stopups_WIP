@@ -29,4 +29,4 @@ export const RInner2 = () => {
             </styled_HM.NLUl>
         </>
     )
-}
+};

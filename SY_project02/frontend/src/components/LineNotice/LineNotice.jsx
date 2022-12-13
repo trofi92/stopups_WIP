@@ -3,19 +3,19 @@ import MLNLeft from "../../image/LineNotice/MLNLeft.png";
 import MLNLeftButton from "../../image/LineNotice/MLNLeftButton.png";
 import MLNRight from "../../image/LineNotice/MLNRight.png";
 import MLNRightToggle1 from "../../image/LineNotice/MLNRightToggle1.png";
-import MPBImg1 from "../../image/Main/MPromotionBanner/MPBImg1.png"
-import {useState} from "react";
-import {Link} from "react-router-dom";
+import MPBImg1 from "../../image/Main/MPromotionBanner/MPBImg1.png";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import MPBImg2 from "../../image/Main/MPromotionBanner/MPBImg2.png"
+import MPBImg2 from "../../image/Main/MPromotionBanner/MPBImg2.png";
 
 export const LineNotice = () => {
-    const [openPromotion, setOpenPromotion] = useState(false);
-    const promotionToggle = () => {
-        setOpenPromotion(!openPromotion);
-    }
+  const [openPromotion, setOpenPromotion] = useState(false);
+  const promotionToggle = () => {
+    setOpenPromotion(!openPromotion);
+  };
 
     const settings = {
         dots: true,

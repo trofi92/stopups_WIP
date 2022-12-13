@@ -64,4 +64,4 @@ export const MInner2 = () => {
             </styled_HM.NLUl>
         </>
     )
-}
+};

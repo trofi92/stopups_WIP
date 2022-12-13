@@ -5,10 +5,10 @@ import {useState} from "react";
 import {CSInner1} from "./CorporateSalesInner/CSInner1";
 
 export const CorporateSales = () => {
-    const [open1, setOpen1] = useState(false);
-    const openToggle1 = () => {
-        setOpen1(!open1);
-    }
+  const [open1, setOpen1] = useState(false);
+  const openToggle1 = () => {
+    setOpen1(!open1);
+  };
 
     return (
         <>

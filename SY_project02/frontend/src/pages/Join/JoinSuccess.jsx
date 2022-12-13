@@ -38,7 +38,7 @@ const JoinSuccess = () => {
             <Footer/>
 
         </styled_AB.AllBox>
-    )
+    );
 };
 
 export default JoinSuccess;

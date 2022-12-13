@@ -5,7 +5,6 @@ import * as styled_LOGP from "../../styled/Login/LPlease";
 import * as styled_BU from "../../styled/Button";
 import {Link} from "react-router-dom";
 
-
 const LPlease = () => {
     return (
         <styled_AB.AllBox>
@@ -16,8 +15,8 @@ const LPlease = () => {
                     <styled_LOGP.LPIFigure/>
                     <styled_LOGP.LPIBox>
                         <styled_LOGP.LPIBStrong>
-                            <styled_LOGP.LPIBSSpan>로그인 </styled_LOGP.LPIBSSpan>
-                             시 이용 가능합니다.
+                            <styled_LOGP.LPIBSSpan>로그인</styled_LOGP.LPIBSSpan>
+                            시 이용 가능합니다.
                         </styled_LOGP.LPIBStrong>
                         <styled_LOGP.LPIBoxP>
                             해당 서비스를 이용하시려면

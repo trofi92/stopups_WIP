@@ -99,6 +99,6 @@ const LFindPw = () => {
             <Footer/>
         </styled_AB.AllBox>
     );
-}
+};
 
 export default LFindPw;

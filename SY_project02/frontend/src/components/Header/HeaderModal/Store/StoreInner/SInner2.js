@@ -15,4 +15,4 @@ export const SInner2 = () => {
             </styled_HM.NLUl>
         </>
     )
-}
+};

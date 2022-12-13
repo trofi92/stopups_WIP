@@ -99,6 +99,6 @@ const ESummer = () => {
             <Footer/>
         </styled_AB.AllBox>
     );
-}
+};
 
 export default ESummer;

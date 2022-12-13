@@ -36,4 +36,4 @@ export const SRInner1 = () => {
             </styled_HM.NLUl>
         </>
     )
-}
+};

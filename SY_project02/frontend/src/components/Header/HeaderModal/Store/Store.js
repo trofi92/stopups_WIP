@@ -6,15 +6,15 @@ import {SInner1} from "./StoreInner/SInner1";
 import {SInner2} from "./StoreInner/SInner2";
 
 export const Store = () => {
-    const [open1, setOpen1] = useState(false);
-    const openToggle1 = () => {
-        setOpen1(!open1);
-    }
+  const [open1, setOpen1] = useState(false);
+  const openToggle1 = () => {
+    setOpen1(!open1);
+  };
 
-    const [open2, setOpen2] = useState(false);
-    const openToggle2 = () => {
-        setOpen2(!open2);
-    }
+  const [open2, setOpen2] = useState(false);
+  const openToggle2 = () => {
+    setOpen2(!open2);
+  };
 
     return (
         <>

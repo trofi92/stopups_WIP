@@ -7,20 +7,20 @@ import {WInner2} from "./WhatsNewInner/WInner2";
 import {WInner3} from "./WhatsNewInner/WInner3";
 
 export const WhatsNew = () => {
-    const [open1, setOpen1] = useState(false);
-    const openToggle1 = () => {
-        setOpen1(!open1);
-    }
+  const [open1, setOpen1] = useState(false);
+  const openToggle1 = () => {
+    setOpen1(!open1);
+  };
 
-    const [open2, setOpen2] = useState(false);
-    const openToggle2 = () => {
-        setOpen2(!open2);
-    }
+  const [open2, setOpen2] = useState(false);
+  const openToggle2 = () => {
+    setOpen2(!open2);
+  };
 
-    const [open3, setOpen3] = useState(false);
-    const openToggle3 = () => {
-        setOpen3(!open3);
-    }
+  const [open3, setOpen3] = useState(false);
+  const openToggle3 = () => {
+    setOpen3(!open3);
+  };
 
     return (
         <>

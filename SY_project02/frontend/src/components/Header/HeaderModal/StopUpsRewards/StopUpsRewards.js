@@ -7,20 +7,20 @@ import {SRInner2} from "./StopUpsRewardsInner/SRInner2";
 import {SRInner3} from "./StopUpsRewardsInner/SRInner3";
 
 export const StopUpsRewards = () => {
-    const [open1, setOpen1] = useState(false);
-    const openToggle1 = () => {
-        setOpen1(!open1);
-    }
+  const [open1, setOpen1] = useState(false);
+  const openToggle1 = () => {
+    setOpen1(!open1);
+  };
 
-    const [open2, setOpen2] = useState(false);
-    const openToggle2 = () => {
-        setOpen2(!open2);
-    }
+  const [open2, setOpen2] = useState(false);
+  const openToggle2 = () => {
+    setOpen2(!open2);
+  };
 
-    const [open3, setOpen3] = useState(false);
-    const openToggle3 = () => {
-        setOpen3(!open3);
-    }
+  const [open3, setOpen3] = useState(false);
+  const openToggle3 = () => {
+    setOpen3(!open3);
+  };
 
     return (
         <>

@@ -12,66 +12,66 @@ import {CorporateSales} from "./CorporateSales/CorporateSales";
 import {WhatsNew} from "./WhatsNew/WhatsNew";
 import {useNavigate} from "react-router-dom";
 
-const HeaderModal = ({modalClose}) => {
-    const [search, setSearch] = useState("");
-    const searchRef = useRef(null);
-    const navigate = useNavigate();
+const HeaderModal = ({ modalClose }) => {
+  const [search, setSearch] = useState("");
+  const searchRef = useRef(null);
+  const navigate = useNavigate();
 
-    const [openMyStopUps, setOpenMyStopUps] = useState(false);
-    const myStopUpsToggle = () => {
-        setOpenMyStopUps(!openMyStopUps);
-    }
+  const [openMyStopUps, setOpenMyStopUps] = useState(false);
+  const myStopUpsToggle = () => {
+    setOpenMyStopUps(!openMyStopUps);
+  };
 
-    const [openCoffee, setOpenCoffee] = useState(false);
-    const coffeeToggle = () => {
-        setOpenCoffee(!openCoffee);
-    }
+  const [openCoffee, setOpenCoffee] = useState(false);
+  const coffeeToggle = () => {
+    setOpenCoffee(!openCoffee);
+  };
 
-    const [openMenu, setOpenMenu] = useState(false);
-    const menuToggle = () => {
-        setOpenMenu(!openMenu);
-    }
+  const [openMenu, setOpenMenu] = useState(false);
+  const menuToggle = () => {
+    setOpenMenu(!openMenu);
+  };
 
-    const [openStore, setOpenStore] = useState(false);
-    const storeToggle = () => {
-        setOpenStore(!openStore);
-    }
+  const [openStore, setOpenStore] = useState(false);
+  const storeToggle = () => {
+    setOpenStore(!openStore);
+  };
 
-    const [openResponsibility, setOpenResponsibility] = useState(false);
-    const responsibilityToggle = () => {
-        setOpenResponsibility(!openResponsibility);
-    }
+  const [openResponsibility, setOpenResponsibility] = useState(false);
+  const responsibilityToggle = () => {
+    setOpenResponsibility(!openResponsibility);
+  };
 
-    const [openStopUpsRewards, setOpenStopUpsRewards] = useState(false);
-    const stopUpsRewardsToggle = () => {
-        setOpenStopUpsRewards(!openStopUpsRewards);
-    }
+  const [openStopUpsRewards, setOpenStopUpsRewards] = useState(false);
+  const stopUpsRewardsToggle = () => {
+    setOpenStopUpsRewards(!openStopUpsRewards);
+  };
 
-    const [openCorporateSales, setOpenCorporateSales] = useState(false);
-    const corporateSalesToggle = () => {
-        setOpenCorporateSales(!openCorporateSales);
-    }
+  const [openCorporateSales, setOpenCorporateSales] = useState(false);
+  const corporateSalesToggle = () => {
+    setOpenCorporateSales(!openCorporateSales);
+  };
 
-    const [openWhatsNew, setOpenWhatsNew] = useState(false);
-    const whatsNewToggle = () => {
-        setOpenWhatsNew(!openWhatsNew);
-    }
+  const [openWhatsNew, setOpenWhatsNew] = useState(false);
+  const whatsNewToggle = () => {
+    setOpenWhatsNew(!openWhatsNew);
+  };
 
-    const handleSearch = (e) => {
-        e.preventDefault()
-        setSearch(e.target.value);
-    }
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+  };
 
-    // 여기 값 /search로 보내주기
-    const onSearchSubmit = () => {
-        if (search === "") {
-            alert("검색어를 입력하세요.")
-            searchRef.current.focus();
-        } else {
-            searchRef.current.focus();
-            navigate("/search");
-        }
+  // 여기 값 /search로 보내주기
+  const onSearchSubmit = () => {
+    if (search === "") {
+      alert("검색어를 입력하세요.");
+      searchRef.current.focus();
+    } else {
+      searchRef.current.focus();
+      navigate("/search");
     }
+  };
 
     return (
         <styled_HM.HM>

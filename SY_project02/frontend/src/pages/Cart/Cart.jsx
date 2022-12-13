@@ -9,16 +9,16 @@ import {useState} from "react";
 import {CNoG} from "./CNoG";
 
 const Favorite = () => {
-    const [state, setState] = useState(1);
+  const [state, setState] = useState(1);
 
-    const onClick = (id) => {
-        setState(id);
-    }
+  const onClick = (id) => {
+    setState(id);
+  };
 
-    const obj = {
-        1: <CNoDF/>,
-        2: <CNoG/>,
-    };
+  const obj = {
+    1: <CNoDF />,
+    2: <CNoG />,
+  };
 
     return (
         <styled_AB.AllBox>

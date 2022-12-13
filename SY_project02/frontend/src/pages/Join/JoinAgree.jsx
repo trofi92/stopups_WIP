@@ -101,9 +101,8 @@ const JoinAgree = () => {
           </styled_JoinAB.JABox>
 
           <Footer/>
-
       </styled_AB.AllBox>
-  )
+  );
 };
 
 export default JoinAgree;

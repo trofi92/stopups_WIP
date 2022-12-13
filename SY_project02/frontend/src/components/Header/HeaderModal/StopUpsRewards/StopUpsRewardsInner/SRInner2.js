@@ -50,4 +50,4 @@ export const SRInner2 = () => {
             </styled_HM.NLUl>
         </>
     )
-}
+};

@@ -29,4 +29,4 @@ export const MSInner3 = () => {
             </styled_HM.NLUl>
         </>
     )
-}
+};

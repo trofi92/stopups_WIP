@@ -10,35 +10,35 @@ import {MSInner4} from "./MyStopUpsInner/MSInner4";
 import {MSInner5} from "./MyStopUpsInner/MSInner5";
 
 export const MyStopUps = () => {
-    const [open1, setOpen1] = useState(false);
-    const openToggle1 = () => {
-        setOpen1(!open1);
-    }
+  const [open1, setOpen1] = useState(false);
+  const openToggle1 = () => {
+    setOpen1(!open1);
+  };
 
-    const [open2, setOpen2] = useState(false);
-    const openToggle2 = () => {
-        setOpen2(!open2);
-    }
+  const [open2, setOpen2] = useState(false);
+  const openToggle2 = () => {
+    setOpen2(!open2);
+  };
 
-    const [open3, setOpen3] = useState(false);
-    const openToggle3 = () => {
-        setOpen3(!open3);
-    }
+  const [open3, setOpen3] = useState(false);
+  const openToggle3 = () => {
+    setOpen3(!open3);
+  };
 
-    const [open4, setOpen4] = useState(false);
-    const openToggle4 = () => {
-        setOpen4(!open4);
-    }
+  const [open4, setOpen4] = useState(false);
+  const openToggle4 = () => {
+    setOpen4(!open4);
+  };
 
-    const [open5, setOpen5] = useState(false);
-    const openToggle5 = () => {
-        setOpen5(!open5);
-    }
+  const [open5, setOpen5] = useState(false);
+  const openToggle5 = () => {
+    setOpen5(!open5);
+  };
 
-    const [open6, setOpen6] = useState(false);
-    const openToggle6 = () => {
-        setOpen6(!open6);
-    }
+  const [open6, setOpen6] = useState(false);
+  const openToggle6 = () => {
+    setOpen6(!open6);
+  };
 
     return (
         <>

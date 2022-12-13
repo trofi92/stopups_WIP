@@ -10,17 +10,17 @@ import {useState} from "react";
 import {current} from "@reduxjs/toolkit";
 
 const Favorite = () => {
-    const [state, setState] = useState(1);
+  const [state, setState] = useState(1);
 
-    const onClick = (id) => {
-        setState(id);
-    }
+  const onClick = (id) => {
+    setState(id);
+  };
 
-    const obj = {
-        1: <FDrink/>,
-        2: <FFood/>,
-        3: <FGoods/>
-    };
+  const obj = {
+    1: <FDrink />,
+    2: <FFood />,
+    3: <FGoods />,
+  };
 
     return (
         <styled_AB.AllBox>
@@ -37,7 +37,6 @@ const Favorite = () => {
                         </styled_F.FHTInner>
                     </styled_F.FHTitle>
                 </styled_F.FHeader>
-
 
                 {/*My 메뉴의 내용*/}
                 <styled_F.FContentsAllBox>

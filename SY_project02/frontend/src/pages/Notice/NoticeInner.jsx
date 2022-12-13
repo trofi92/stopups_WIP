@@ -1,26 +1,25 @@
 import * as styled_Notice from "../../styled/Notice/Notice";
 import {Link} from "react-router-dom";
 import axios from "axios";
-import {useEffect, useState} from "react";
-
+import { useEffect, useState } from "react";
 
 export const NoticeInner = () => {
-    const [info, setInfo] = useState([]);
-    const getInfo = async () => {
-        const res = await axios.get('http://54.180.86.156:8080/api/?apikey=TeamYN1670397914440&Notice=ALL&Title=&writeId=');
-        setInfo(res.data)
-    }
-    useEffect(() => {
-            getInfo().then(r => console.log("111111=>", r));
-        }
-        , []
-    )
+  const [info, setInfo] = useState([]);
+  const getInfo = async () => {
+    const res = await axios.get(
+      "http://54.180.86.156:8080/api/?apikey=TeamYN1670397914440&Notice=ALL&Title=&writeId="
+    );
+    setInfo(res.data);
+  };
+  useEffect(() => {
+    getInfo().then((r) => console.log("111111=>", r));
+  }, []);
 
-    console.log("2222222222=>", info);
+  console.log("2222222222=>", info);
 
-    // 조회수 세션스토리지 카운트
+  // 조회수 세션스토리지 카운트
 
-    //
+  //
 
     return (
         <>
@@ -41,4 +40,3 @@ export const NoticeInner = () => {
         </>
     );
 };
-

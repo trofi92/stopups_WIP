@@ -9,30 +9,30 @@ import {CInner4} from "./CoffeeInner/CInner4";
 import {CInner5} from "./CoffeeInner/CInner5";
 
 export const Coffee = () => {
-    const [open1, setOpen1] = useState(false);
-    const openToggle1 = () => {
-        setOpen1(!open1);
-    }
+  const [open1, setOpen1] = useState(false);
+  const openToggle1 = () => {
+    setOpen1(!open1);
+  };
 
-    const [open2, setOpen2] = useState(false);
-    const openToggle2 = () => {
-        setOpen2(!open2);
-    }
+  const [open2, setOpen2] = useState(false);
+  const openToggle2 = () => {
+    setOpen2(!open2);
+  };
 
-    const [open3, setOpen3] = useState(false);
-    const openToggle3 = () => {
-        setOpen3(!open3);
-    }
+  const [open3, setOpen3] = useState(false);
+  const openToggle3 = () => {
+    setOpen3(!open3);
+  };
 
-    const [open4, setOpen4] = useState(false);
-    const openToggle4 = () => {
-        setOpen4(!open4);
-    }
+  const [open4, setOpen4] = useState(false);
+  const openToggle4 = () => {
+    setOpen4(!open4);
+  };
 
-    const [open5, setOpen5] = useState(false);
-    const openToggle5 = () => {
-        setOpen5(!open5);
-    }
+  const [open5, setOpen5] = useState(false);
+  const openToggle5 = () => {
+    setOpen5(!open5);
+  };
 
     return (
         <>

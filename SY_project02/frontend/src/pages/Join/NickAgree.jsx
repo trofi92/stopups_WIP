@@ -75,5 +75,5 @@ export const NickAgree = () => {
                 </styled_JoinAB.ABSBox>
             </styled_JoinAB.ABox>
         </>
-    )
-}
+    );
+};

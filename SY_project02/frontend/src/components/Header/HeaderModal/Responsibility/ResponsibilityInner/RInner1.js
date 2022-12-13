@@ -50,4 +50,4 @@ export const RInner1 = () => {
             </styled_HM.NLUl>
         </>
     )
-}
+};

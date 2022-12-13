@@ -43,4 +43,4 @@ export const CInner5 = () => {
             </styled_HM.NLUl>
         </>
     )
-}
+};

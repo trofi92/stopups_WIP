@@ -1,9 +1,9 @@
 import * as styled_AB from "../../styled/AllBox";
 import Header from "../../components/Header/Header";
 import * as styled_Notice from "../../styled/Notice/Notice";
-import ETitle from "../../image/Event/ETitle.jpg";
 import * as styled_Event from "../../styled/Event/Event";
-import {useEffect, useState} from "react";
+import ETitle from "../../image/Event/ETitle.jpg";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import {EAll} from "./EAll";
 import {ESCard} from "./ESCard";
@@ -17,8 +17,6 @@ const Event = () => {
         setState(id);
     }
 
-    // 지금은 전체 빼고 에빈트 없어서 이렇게 해놓음
-    // 나중에 추가 시 스탑업스 카드, 리워드, 온라인 각 컴포넌트 파서 추가하기
     const obj = {
         1: <EAll/>,
         2: <ESCard/>,
@@ -26,19 +24,19 @@ const Event = () => {
         4: <EOnline/>,
     };
 
-    const imageView = async () => {
-        // 이미지 조회 시 카테고리 지정 및 검색 값에 따른 DB 조회
-        const image = await axios.get('http://stopupsapi.tk:8080/api/?apikey=TeamYN1670397914440&MImage=ALL&Name=&ImageId=');
-        console.log(image.data);
-    };
+  const imageView = async () => {
+    // 이미지 조회 시 카테고리 지정 및 검색 값에 따른 DB 조회
+    const image = await axios.get(
+      "http://stopupsapi.tk:8080/api/?apikey=TeamYN1670397914440&MImage=ALL&Name=&ImageId="
+    );
+    console.log(image.data);
+  };
 
-    useEffect(() => {
-            imageView().then(r => console.log("111111=>", r));
-        }
-        , []
-    )
+  useEffect(() => {
+    imageView().then((r) => console.log("111111=>", r));
+  }, []);
 
-    // console.log("2222222222=>", event);
+  // console.log("2222222222=>", event);
 
     return (
         <styled_AB.AllBox>

@@ -5,20 +5,20 @@ import {Footer} from "../components/Footer/Footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import MBImg from "../image/MBImg.png"
+import MBImg from "../image/MBImg.png";
 
 const Map = () => {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        arrows: true,
-        draggable: false,
-        autoplay: true,
-        autoplaySpeed: 2000
-    };
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    arrows: true,
+    draggable: false,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  };
 
     return (
         <styled_AB.AllBox>
@@ -77,4 +77,3 @@ const Map = () => {
 };
 
 export default Map;
-

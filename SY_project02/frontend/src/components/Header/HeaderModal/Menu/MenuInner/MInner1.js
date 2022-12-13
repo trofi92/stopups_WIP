@@ -85,4 +85,4 @@ export const MInner1 = () => {
             </styled_HM.NLUl>
         </>
     )
-}
+};

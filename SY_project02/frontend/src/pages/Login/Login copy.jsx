@@ -30,7 +30,6 @@ import {
 } from "../../styled/Login/Login";
 import { Footer } from "../../components/Footer/Footer";
 import { LJButton } from "../../styled/Button";
-import { setCookie } from "../../storage/Cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");

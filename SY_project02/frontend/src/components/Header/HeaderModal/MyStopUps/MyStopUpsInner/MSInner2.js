@@ -36,4 +36,4 @@ export const MSInner2 = () => {
             </styled_HM.NLUl>
         </>
     )
-}
+};

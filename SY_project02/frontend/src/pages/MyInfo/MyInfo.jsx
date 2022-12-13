@@ -93,7 +93,7 @@ const MyInfo = () => {
 
             <Footer/>
         </styled_AB.AllBox>
-    )
+    );
 };
 
 export default MyInfo;

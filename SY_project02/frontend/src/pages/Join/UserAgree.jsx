@@ -80,5 +80,5 @@ export const UserAgree = () => {
                 </styled_JoinAB.ABSBox>
             </styled_JoinAB.ABox>
         </>
-    )
-}
+    );
+};
