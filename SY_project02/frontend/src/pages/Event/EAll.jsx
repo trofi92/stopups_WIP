@@ -1,52 +1,40 @@
-import {
-    ESArticle,
-    ESDd,
-    ESDl,
-    ESDLA, ESDLDd,
-    ESDLDl,
-    ESDLDt, ESDLH4,
-    ESDLi,
-    ESDLImg, ESDLP,
-    ESDt,
-    ESDUl,
-    ESList
-} from "../../styled/Event/Event";
+import * as styled_Event from "../../styled/Event/Event";
 import {Link} from "react-router-dom";
 import ESTitle from "../../image/Event/ESTitle.jpg";
 
 
 export const EAll = () => {
     return (
-        <ESArticle>
-            <ESList>
-                <ESDl>
+        <styled_Event.ESArticle>
+            <styled_Event.ESList>
+                <styled_Event.ESDl>
                     {/*진행 이벤트*/}
-                    <ESDt>진행 이벤트</ESDt>
-                    <ESDd>
-                        <ESDUl>
+                    <styled_Event.ESDt>진행 이벤트</styled_Event.ESDt>
+                    <styled_Event.ESDd>
+                        <styled_Event.ESDUl>
                             {/*각각 이벤트*/}
-                            <ESDLi>
-                                <ESDLDl>
-                                    <ESDLDt>
-                                        <ESDLA>
+                            <styled_Event.ESDLi>
+                                <styled_Event.ESDLDl>
+                                    <styled_Event.ESDLDt>
+                                        <styled_Event.ESDLA>
                                             <Link to={"/summerEvent"}>
-                                                <ESDLImg src={ESTitle} alt={"ESTitle"}/>
+                                                <styled_Event.ESDLImg src={ESTitle} alt={"ESTitle"}/>
                                             </Link>
-                                        </ESDLA>
-                                    </ESDLDt>
-                                    <ESDLDd>
-                                        <ESDLH4>서머 2 프로모션</ESDLH4>
-                                        <ESDLP>2022-07-26~2022-09-01</ESDLP>
-                                    </ESDLDd>
-                                </ESDLDl>
-                            </ESDLi>
-                        </ESDUl>
-                    </ESDd>
+                                        </styled_Event.ESDLA>
+                                    </styled_Event.ESDLDt>
+                                    <styled_Event.ESDLDd>
+                                        <styled_Event.ESDLH4>서머 2 프로모션</styled_Event.ESDLH4>
+                                        <styled_Event.ESDLP>2022-07-26~2022-09-01</styled_Event.ESDLP>
+                                    </styled_Event.ESDLDd>
+                                </styled_Event.ESDLDl>
+                            </styled_Event.ESDLi>
+                        </styled_Event.ESDUl>
+                    </styled_Event.ESDd>
                     {/*종료 이벤트*/}
-                    <ESDt>종료 이벤트</ESDt>
-                    <ESDd></ESDd>
-                </ESDl>
-            </ESList>
-        </ESArticle>
+                    <styled_Event.ESDt>종료 이벤트</styled_Event.ESDt>
+                    <styled_Event.ESDd></styled_Event.ESDd>
+                </styled_Event.ESDl>
+            </styled_Event.ESList>
+        </styled_Event.ESArticle>
     );
 };

@@ -1,20 +1,20 @@
-import {MRButton, MRButtonBox, MReserve, MRIImg, MRInner, MRText1, MRText2} from "../../styled/Main";
+import * as styled_Main from "../../styled/Main";
 import {Link} from "react-router-dom";
 
 export const MainReserve = () => {
     return (
-        <MReserve>
-            <MRInner>
+        <styled_Main.MReserve>
+            <styled_Main.MRInner>
                 {/*애니메이션*/}
-                <MRText1></MRText1>
-                <MRText2></MRText2>
-                <MRIImg></MRIImg>
-                <MRButtonBox>
+                <styled_Main.MRText1></styled_Main.MRText1>
+                <styled_Main.MRText2></styled_Main.MRText2>
+                <styled_Main.MRIImg></styled_Main.MRIImg>
+                <styled_Main.MRButtonBox>
                     <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
-                        <MRButton>자세히 보기</MRButton>
+                        <styled_Main.MRButton>자세히 보기</styled_Main.MRButton>
                     </Link>
-                </MRButtonBox>
-            </MRInner>
-        </MReserve>
+                </styled_Main.MRButtonBox>
+            </styled_Main.MRInner>
+        </styled_Main.MReserve>
     );
 };

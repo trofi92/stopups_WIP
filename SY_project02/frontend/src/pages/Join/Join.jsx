@@ -10,29 +10,14 @@ import {
 import { useState } from "react";
 import axios from "axios";
 import Header from "../../components/Header/Header";
-import { AllBox } from "../../styled/AllBox";
-import {
-  AgreeInput,
-  AgreeLabel,
-  AgreeSpan,
-  RB,
-  RFormP,
-  RFSDFigure,
-  RFSDInput,
-  RFSDivP,
-  RFSection,
-  RFSectionDiv,
-  RFSectionImg,
-  RFSectionP,
-  RFSectionSpan,
-  RFSectionStrong,
-  RFStrong,
-} from "../../styled/Join/Join";
-import { LFB, LFFFieldset, LFInner } from "../../styled/Login/Login";
+import * as styled_AB from "../../styled/AllBox";
+import * as styled_Join from "../../styled/Join/Join";
+import * as styled_LOG from "../../styled/Login/Login";
 import { Footer } from "../../components/Footer/Footer";
-import { LJButton } from "../../styled/Button";
+import * as styled_BU from "../../styled/Button";
 import { NickAgree } from "./NickAgree";
-import { encrypt } from "../../util/chiper"; // DB에 저장 시 암호화, 조회시 복호화
+import { encrypt } from "../../util/chiper";
+import {AIN, ALN} from "../../styled/Join/Join"; // DB에 저장 시 암호화, 조회시 복호화
 
 const Join = () => {
   const [email, setEmail] = useState("");
@@ -41,6 +26,7 @@ const Join = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [telephone, setTelephone] = useState("");
+  const [checkedNick, setCheckedNick] = useState(false);
 
   const navigate = useNavigate();
 
@@ -74,6 +60,11 @@ const Join = () => {
     setTelephone(e.target.value);
   };
 
+  const onClickCheckedNick = () => {
+    setCheckedNick(!checkedNick);
+    console.log("home=>",!checkedNick);
+  };
+
   const eEmail = encrypt(email);
   const eName = encrypt(name);
   const eNickname = encrypt(nickname);
@@ -96,6 +87,8 @@ const Join = () => {
       alert("비밀번호와 비밀번호 확인이 일치하지 않습니다");
     } else if (telephone === "") {
       alert("전화번호를 입력해주세요");
+    } else if (checkedNick !== true) {
+      alert("닉네임 이용약관에 동의하셔야 합니다. ")
     } else {
       const post = {
         eEmail,
@@ -122,25 +115,25 @@ const Join = () => {
     e.preventDefault();
   };
   return (
-    <AllBox>
+    <styled_AB.AllBox>
       <Header />
 
-      <RB>
-        <LFB>
-          <LFInner>
+      <styled_Join.RB>
+        <styled_LOG.LFB>
+          <styled_LOG.LFInner>
             {/*회원가입 폼*/}
             <form method={"post"} onSubmit={onJoinSubmit}>
-              <LFFFieldset>
-                <RFStrong>회원가입</RFStrong>
-                <RFSection>
-                  <RFSectionImg></RFSectionImg>
-                  <RFSectionP>회원정보를 입력해 주세요.</RFSectionP>
-                  <RFSectionDiv>
-                    <RFSectionStrong>
+              <styled_LOG.LFFFieldset>
+                <styled_Join.RFStrong>회원가입</styled_Join.RFStrong>
+                <styled_Join.RFSection>
+                  <styled_Join.RFSectionImg></styled_Join.RFSectionImg>
+                  <styled_Join.RFSectionP>회원정보를 입력해 주세요.</styled_Join.RFSectionP>
+                  <styled_Join.RFSectionDiv>
+                    <styled_Join.RFSectionStrong>
                       이메일
-                      <RFSectionSpan>(필수)</RFSectionSpan>
-                    </RFSectionStrong>
-                    <RFSDInput
+                      <styled_Join.RFSectionSpan>(필수)</styled_Join.RFSectionSpan>
+                    </styled_Join.RFSectionStrong>
+                    <styled_Join.RFSDInput
                       type={"email"}
                       id={"registerEmail"}
                       name={"email"}
@@ -148,13 +141,13 @@ const Join = () => {
                       onChange={handleEmailChange}
                       required
                     />
-                  </RFSectionDiv>
-                  <RFSectionDiv>
-                    <RFSectionStrong>
+                  </styled_Join.RFSectionDiv>
+                  <styled_Join.RFSectionDiv>
+                    <styled_Join.RFSectionStrong>
                       비밀번호
-                      <RFSectionSpan>(필수)</RFSectionSpan>
-                    </RFSectionStrong>
-                    <RFSDInput
+                      <styled_Join.RFSectionSpan>(필수)</styled_Join.RFSectionSpan>
+                    </styled_Join.RFSectionStrong>
+                    <styled_Join.RFSDInput
                       type={"password"}
                       id={"registerPassword"}
                       name={"password"}
@@ -164,13 +157,13 @@ const Join = () => {
                       onChange={handlePasswordChange}
                       required
                     />
-                  </RFSectionDiv>
-                  <RFSectionDiv>
-                    <RFSectionStrong>
+                  </styled_Join.RFSectionDiv>
+                  <styled_Join.RFSectionDiv>
+                    <styled_Join.RFSectionStrong>
                       비밀번호 확인
-                      <RFSectionSpan>(필수)</RFSectionSpan>
-                    </RFSectionStrong>
-                    <RFSDInput
+                      <styled_Join.RFSectionSpan>(필수)</styled_Join.RFSectionSpan>
+                    </styled_Join.RFSectionStrong>
+                    <styled_Join.RFSDInput
                       type={"password"}
                       id={"registerPasswordConfirm"}
                       name={"passwordConfirm"}
@@ -180,13 +173,13 @@ const Join = () => {
                       onChange={handlePasswordConfirmChange}
                       required
                     />
-                  </RFSectionDiv>
-                  <RFSectionDiv>
-                    <RFSectionStrong>
+                  </styled_Join.RFSectionDiv>
+                  <styled_Join.RFSectionDiv>
+                    <styled_Join.RFSectionStrong>
                       이름
-                      <RFSectionSpan>(필수)</RFSectionSpan>
-                    </RFSectionStrong>
-                    <RFSDInput
+                      <styled_Join.RFSectionSpan>(필수)</styled_Join.RFSectionSpan>
+                    </styled_Join.RFSectionStrong>
+                    <styled_Join.RFSDInput
                       type={"name"}
                       id={"registerName"}
                       name={"name"}
@@ -194,13 +187,13 @@ const Join = () => {
                       onChange={handleNameChange}
                       required
                     />
-                  </RFSectionDiv>
-                  <RFSectionDiv>
-                    <RFSectionStrong>
+                  </styled_Join.RFSectionDiv>
+                  <styled_Join.RFSectionDiv>
+                    <styled_Join.RFSectionStrong>
                       휴대폰
-                      <RFSectionSpan>(필수)</RFSectionSpan>
-                    </RFSectionStrong>
-                    <RFSDInput
+                      <styled_Join.RFSectionSpan>(필수)</styled_Join.RFSectionSpan>
+                    </styled_Join.RFSectionStrong>
+                    <styled_Join.RFSDInput
                       type={"text"}
                       id={"registerPhone"}
                       name={"telephone"}
@@ -208,21 +201,21 @@ const Join = () => {
                       onChange={handleTelephoneChange}
                       required
                     />
-                  </RFSectionDiv>
-                </RFSection>
-                <RFSection>
-                  <RFSDFigure />
-                  <RFSDivP>
+                  </styled_Join.RFSectionDiv>
+                </styled_Join.RFSection>
+                <styled_Join.RFSection>
+                  <styled_Join.RFSDFigure />
+                  <styled_Join.RFSDivP>
                     주문하신 제품을 찾으실 때,
                     <br />
                     파트너가 등록하신 닉네임을 불러드립니다.
-                  </RFSDivP>
-                  <RFSectionDiv>
-                    <RFSectionStrong>
+                  </styled_Join.RFSDivP>
+                  <styled_Join.RFSectionDiv>
+                    <styled_Join.RFSectionStrong>
                       닉네임
-                      <RFSectionSpan>(필수)</RFSectionSpan>
-                    </RFSectionStrong>
-                    <RFSDInput
+                      <styled_Join.RFSectionSpan>(필수)</styled_Join.RFSectionSpan>
+                    </styled_Join.RFSectionStrong>
+                    <styled_Join.RFSDInput
                       type={"nickname"}
                       id={"registerNickname"}
                       name={"nickname"}
@@ -230,29 +223,35 @@ const Join = () => {
                       onChange={handleNicknameChange}
                       required
                     />
-                    <AgreeSpan>
+                    <styled_Join.AgreeSpan>
                       {/*체크 토글 버튼 만들기*/}
-                      <AgreeInput type={"checkbox"} />
-                      <AgreeLabel />
-                    </AgreeSpan>
+                      <styled_Join.AIN
+                          type={"checkbox"}
+                          checkedNick={checkedNick}
+                      />
+                      <styled_Join.ALN
+                        onClick={onClickCheckedNick}
+                        checkedNick={checkedNick}
+                      />
+                    </styled_Join.AgreeSpan>
                     {/*닉네임 이용약관 동의*/}
                     <NickAgree />
-                  </RFSectionDiv>
-                </RFSection>
-              </LFFFieldset>
-              <RFormP>
+                  </styled_Join.RFSectionDiv>
+                </styled_Join.RFSection>
+              </styled_LOG.LFFFieldset>
+              <styled_Join.RFormP>
                 <b>
                   * 필수항목을 모두 입력해야 회원 가입이 가능합니다.
                 </b>
-              </RFormP>
-              <LJButton onClick={submitIdPassword}>가입하기</LJButton>
+              </styled_Join.RFormP>
+              <styled_BU.LJButton onClick={submitIdPassword}>가입하기</styled_BU.LJButton>
             </form>
-          </LFInner>
-        </LFB>
-      </RB>
+          </styled_LOG.LFInner>
+        </styled_LOG.LFB>
+      </styled_Join.RB>
 
       <Footer />
-    </AllBox>
+    </styled_AB.AllBox>
   );
 };
 

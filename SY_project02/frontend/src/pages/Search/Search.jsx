@@ -1,43 +1,9 @@
-import {AllBox} from "../../styled/AllBox";
+import * as styled_AB from "../../styled/AllBox";
 import Header from "../../components/Header/Header";
-import {FContentsAllBox, FHeader, FHTInner, FHTInnerH4, FHTitle} from "../../styled/Favorite";
+import * as styled_F from "../../styled/Favorite";
 import SearchTitle from "../../image/SearchTitle.png"
-import {
-    SBox, SDDiv, SDDPText,
-    SDFigure, SDFImg, SDHeader,
-    SEDHeader,
-    SEDHH3,
-    SEDHSpan,
-    SEDiv,
-    SEDPDate,
-    SEDPLink,
-    SEDPP,
-    SEFigure,
-    SEFImg,
-    SFBLi,
-    SFBLP, SFBLPA, SFBLPAG, SFBLPE, SFBLPEG,
-    SFBLPGreen,
-    SFBox,
-    SFBUl,
-    SFButtonBox,
-    SFieldset,
-    SFInput,
-    SFInputBox,
-    SFIP,
-    SFStrong,
-    SInnerBox,
-    SNoResult,
-    SSection,
-    SSHeader,
-    SSHH2,
-    SSHP,
-    SSLi,
-    SSLP,
-    SSUl, SYellow
-} from "../../styled/Search";
-import {Link} from "react-router-dom";
+import * as styled_Search from "../../styled/Search";
 import {Footer} from "../../components/Footer/Footer";
-import ESTitle from "../../image/Event/ESTitle.jpg"
 import {useState} from "react";
 import {SEvent} from "./SEvent";
 import {SNews} from "./SNews";
@@ -88,142 +54,142 @@ const Search = ({search}) => {
     }
 
     return (
-        <AllBox>
+        <styled_AB.AllBox>
             <Header/>
 
-            <SBox>
+            <styled_Search.SBox>
                 {/*통합검색 헤더*/}
-                <FHeader>
-                    <FHTitle>
-                        <FHTInner>
-                            <FHTInnerH4>
+                <styled_F.FHeader>
+                    <styled_F.FHTitle>
+                        <styled_F.FHTInner>
+                            <styled_F.FHTInnerH4>
                                 <img src={SearchTitle} alt={"MyMenu"}/>
-                            </FHTInnerH4>
-                        </FHTInner>
-                    </FHTitle>
-                </FHeader>
-            </SBox>
+                            </styled_F.FHTInnerH4>
+                        </styled_F.FHTInner>
+                    </styled_F.FHTitle>
+                </styled_F.FHeader>
+            </styled_Search.SBox>
 
-            <FContentsAllBox>
-                <SInnerBox>
+            <styled_F.FContentsAllBox>
+                <styled_Search.SInnerBox>
                     {/*통합검색 입력*/}
-                    <SFieldset>
-                        <SFBox>
-                            <SFStrong>원하시는 검색어를 입력하신 후 검색 버튼을 클릭하세요.</SFStrong>
+                    <styled_Search.SFieldset>
+                        <styled_Search.SFBox>
+                            <styled_Search.SFStrong>원하시는 검색어를 입력하신 후 검색 버튼을 클릭하세요.</styled_Search.SFStrong>
                             {/*인풋*/}
-                            <SFInputBox>
-                                <SFInput
+                            <styled_Search.SFInputBox>
+                                <styled_Search.SFInput
                                     type={"text"}
                                     value={search}
                                     onChange={onChange}
                                 />
                                 {/*검색 버튼 나중에 onSubmit?? 이벤트 걸기*/}
-                                <SFIP/>
-                            </SFInputBox>
+                                <styled_Search.SFIP/>
+                            </styled_Search.SFInputBox>
                             {/*버튼*/}
-                            <SFButtonBox>
-                                <SFBUl>
-                                    <SFBLi>
+                            <styled_Search.SFButtonBox>
+                                <styled_Search.SFBUl>
+                                    <styled_Search.SFBLi>
                                         {state === 1 ? (
-                                            <SFBLPAG onClick={() => onClick(1)}>통합검색</SFBLPAG>
+                                            <styled_Search.SFBLPAG onClick={() => onClick(1)}>통합검색</styled_Search.SFBLPAG>
                                             ) : (
-                                            <SFBLPA onClick={() => onClick(1)}>통합검색</SFBLPA>
+                                            <styled_Search.SFBLPA onClick={() => onClick(1)}>통합검색</styled_Search.SFBLPA>
                                             )}
-                                    </SFBLi>
-                                </SFBUl>
-                                <SFBUl>
-                                    <SFBLi>
+                                    </styled_Search.SFBLi>
+                                </styled_Search.SFBUl>
+                                <styled_Search.SFBUl>
+                                    <styled_Search.SFBLi>
                                         {state === 2 ? (
-                                            <SFBLPAG onClick={() => onClick(2)}>이벤트</SFBLPAG>
+                                            <styled_Search.SFBLPAG onClick={() => onClick(2)}>이벤트</styled_Search.SFBLPAG>
                                             ) : (
-                                            <SFBLPA onClick={() => onClick(2)}>이벤트</SFBLPA>
+                                            <styled_Search.SFBLPA onClick={() => onClick(2)}>이벤트</styled_Search.SFBLPA>
                                             )}
-                                    </SFBLi>
-                                </SFBUl>
-                                <SFBUl>
-                                    <SFBLi>
+                                    </styled_Search.SFBLi>
+                                </styled_Search.SFBUl>
+                                <styled_Search.SFBUl>
+                                    <styled_Search.SFBLi>
                                         {state === 3 ? (
-                                            <SFBLPAG onClick={() => onClick(3)}>뉴스</SFBLPAG>
+                                            <styled_Search.SFBLPAG onClick={() => onClick(3)}>뉴스</styled_Search.SFBLPAG>
                                             ) : (
-                                            <SFBLPA onClick={() => onClick(3)}>뉴스</SFBLPA>
+                                            <styled_Search.SFBLPA onClick={() => onClick(3)}>뉴스</styled_Search.SFBLPA>
                                             )}
-                                    </SFBLi>
-                                </SFBUl>
-                                <SFBUl>
-                                    <SFBLi>
+                                    </styled_Search.SFBLi>
+                                </styled_Search.SFBUl>
+                                <styled_Search.SFBUl>
+                                    <styled_Search.SFBLi>
                                         {state === 3 ? (
-                                            <SFBLPAG onClick={() => onClick(4)}>매장이벤트</SFBLPAG>
+                                            <styled_Search.SFBLPAG onClick={() => onClick(4)}>매장이벤트</styled_Search.SFBLPAG>
                                         ) : (
-                                            <SFBLPA onClick={() => onClick(4)}>매장이벤트</SFBLPA>
+                                            <styled_Search.SFBLPA onClick={() => onClick(4)}>매장이벤트</styled_Search.SFBLPA>
                                         )}
-                                    </SFBLi>
-                                </SFBUl>
-                                <SFBUl>
-                                    <SFBLi>
+                                    </styled_Search.SFBLi>
+                                </styled_Search.SFBUl>
+                                <styled_Search.SFBUl>
+                                    <styled_Search.SFBLi>
                                         {state === 5 ? (
-                                            <SFBLPAG onClick={() => onClick(5)}>원두</SFBLPAG>
+                                            <styled_Search.SFBLPAG onClick={() => onClick(5)}>원두</styled_Search.SFBLPAG>
                                         ) : (
-                                            <SFBLPA onClick={() => onClick(5)}>원두</SFBLPA>
+                                            <styled_Search.SFBLPA onClick={() => onClick(5)}>원두</styled_Search.SFBLPA>
                                         )}
-                                    </SFBLi>
-                                </SFBUl>
-                                <SFBUl>
-                                    <SFBLi>
+                                    </styled_Search.SFBLi>
+                                </styled_Search.SFBUl>
+                                <styled_Search.SFBUl>
+                                    <styled_Search.SFBLi>
                                         {state === 6 ? (
-                                            <SFBLPAG onClick={() => onClick(6)}>음료</SFBLPAG>
+                                            <styled_Search.SFBLPAG onClick={() => onClick(6)}>음료</styled_Search.SFBLPAG>
                                         ) : (
-                                            <SFBLPA onClick={() => onClick(6)}>음료</SFBLPA>
+                                            <styled_Search.SFBLPA onClick={() => onClick(6)}>음료</styled_Search.SFBLPA>
                                         )}
-                                    </SFBLi>
-                                </SFBUl>
-                                <SFBUl>
-                                    <SFBLi>
+                                    </styled_Search.SFBLi>
+                                </styled_Search.SFBUl>
+                                <styled_Search.SFBUl>
+                                    <styled_Search.SFBLi>
                                         {state === 7 ? (
-                                            <SFBLPAG onClick={() => onClick(7)}>푸드</SFBLPAG>
+                                            <styled_Search.SFBLPAG onClick={() => onClick(7)}>푸드</styled_Search.SFBLPAG>
                                         ) : (
-                                            <SFBLPA onClick={() => onClick(7)}>푸드</SFBLPA>
+                                            <styled_Search.SFBLPA onClick={() => onClick(7)}>푸드</styled_Search.SFBLPA>
                                         )}
-                                    </SFBLi>
-                                </SFBUl>
-                                <SFBUl>
-                                    <SFBLi>
+                                    </styled_Search.SFBLi>
+                                </styled_Search.SFBUl>
+                                <styled_Search.SFBUl>
+                                    <styled_Search.SFBLi>
                                         {state === 8 ? (
-                                            <SFBLPAG onClick={() => onClick(8)}>상품</SFBLPAG>
+                                            <styled_Search.SFBLPAG onClick={() => onClick(8)}>상품</styled_Search.SFBLPAG>
                                         ) : (
-                                            <SFBLPA onClick={() => onClick(8)}>상품</SFBLPA>
+                                            <styled_Search.SFBLPA onClick={() => onClick(8)}>상품</styled_Search.SFBLPA>
                                         )}
-                                    </SFBLi>
-                                </SFBUl>
-                                <SFBUl>
-                                    <SFBLi>
+                                    </styled_Search.SFBLi>
+                                </styled_Search.SFBUl>
+                                <styled_Search.SFBUl>
+                                    <styled_Search.SFBLi>
                                         {state === 9 ? (
-                                            <SFBLPAG onClick={() => onClick(9)}>카드</SFBLPAG>
+                                            <styled_Search.SFBLPAG onClick={() => onClick(9)}>카드</styled_Search.SFBLPAG>
                                         ) : (
-                                            <SFBLPA onClick={() => onClick(9)}>카드</SFBLPA>
+                                            <styled_Search.SFBLPA onClick={() => onClick(9)}>카드</styled_Search.SFBLPA>
                                         )}
-                                    </SFBLi>
-                                </SFBUl>
-                                <SFBUl>
-                                    <SFBLi>
+                                    </styled_Search.SFBLi>
+                                </styled_Search.SFBUl>
+                                <styled_Search.SFBUl>
+                                    <styled_Search.SFBLi>
                                         {state === 10 ? (
-                                            <SFBLPAG onClick={() => onClick(10)}>매장</SFBLPAG>
+                                            <styled_Search.SFBLPAG onClick={() => onClick(10)}>매장</styled_Search.SFBLPAG>
                                         ) : (
-                                            <SFBLPA onClick={() => onClick(10)}>매장</SFBLPA>
+                                            <styled_Search.SFBLPA onClick={() => onClick(10)}>매장</styled_Search.SFBLPA>
                                         )}
-                                    </SFBLi>
-                                </SFBUl>
-                            </SFButtonBox>
-                        </SFBox>
-                    </SFieldset>
+                                    </styled_Search.SFBLi>
+                                </styled_Search.SFBUl>
+                            </styled_Search.SFButtonBox>
+                        </styled_Search.SFBox>
+                    </styled_Search.SFieldset>
 
                     {/*각 내용*/}
                     {obj[state]}
 
-                </SInnerBox>
-            </FContentsAllBox>
+                </styled_Search.SInnerBox>
+            </styled_F.FContentsAllBox>
 
             <Footer/>
-        </AllBox>
+        </styled_AB.AllBox>
     );
 };
 

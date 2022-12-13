@@ -1,10 +1,10 @@
-import { NLi, NLiP } from "../../../../styled/HeaderModal";
-import { Link } from "react-router-dom";
-import { HMButton } from "../../../../styled/Button";
-import { useState } from "react";
-import { SRInner1 } from "./StopUpsRewardsInner/SRInner1";
-import { SRInner2 } from "./StopUpsRewardsInner/SRInner2";
-import { SRInner3 } from "./StopUpsRewardsInner/SRInner3";
+import * as styled_HM from "../../../../styled/HeaderModal";
+import {Link} from "react-router-dom";
+import * as styled_BU from "../../../../styled/Button";
+import {useState} from "react";
+import {SRInner1} from "./StopUpsRewardsInner/SRInner1";
+import {SRInner2} from "./StopUpsRewardsInner/SRInner2";
+import {SRInner3} from "./StopUpsRewardsInner/SRInner3";
 
 export const StopUpsRewards = () => {
   const [open1, setOpen1] = useState(false);
@@ -22,34 +22,34 @@ export const StopUpsRewards = () => {
     setOpen3(!open3);
   };
 
-  return (
-    <>
-      <NLi>
-        <Link to={"/"} style={{ textDecoration: "none" }}>
-          <NLiP>한눈에 보기</NLiP>
-        </Link>
-      </NLi>
-      <NLi>
-        <NLiP onClick={openToggle1}>
-          스탑업스 리워드
-          <HMButton />
-        </NLiP>
-      </NLi>
-      {open1 === true ? <SRInner1 /> : null}
-      <NLi>
-        <NLiP onClick={openToggle2}>
-          스탑업스 카드
-          <HMButton />
-        </NLiP>
-      </NLi>
-      {open2 === true ? <SRInner2 /> : null}
-      <NLi>
-        <NLiP onClick={openToggle3}>
-          스탑업스 e-Gift Card
-          <HMButton />
-        </NLiP>
-      </NLi>
-      {open3 === true ? <SRInner3 /> : null}
-    </>
-  );
+    return (
+        <>
+            <styled_HM.NLi>
+                <Link to={"/"} style={{textDecoration: "none"}}>
+                    <styled_HM.NLiP>한눈에 보기</styled_HM.NLiP>
+                </Link>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle1}>
+                    스탑업스 리워드
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
+            {open1 === true ? <SRInner1/> : null}
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle2}>
+                    스탑업스 카드
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
+            {open2 === true ? <SRInner2/> : null}
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle3}>
+                    스탑업스 e-Gift Card
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
+            {open3 === true ? <SRInner3/> : null}
+        </>
+    );
 };

@@ -1,72 +1,12 @@
-import { AllBox } from "../../styled/AllBox";
+import * as styled_AB from "../../styled/AllBox";
 import Header from "../../components/Header/Header";
-import { Footer } from "../../components/Footer/Footer";
-import {
-  FBox,
-  FCBox,
-  FContentsAllBox,
-  FCSection1,
-  FCSection2,
-  FCSectionP,
-  FCSH5,
-  FHeader,
-  FHTInner,
-  FHTInnerH4,
-  FHTitle,
-} from "../../styled/Favorite";
-import CTitle from "../../image/Cart/CTitle.png";
-import {
-  CBTitle,
-  CBTSpan,
-  CBTSpanColor,
-  CDiv,
-  CFACInput,
-  CFAllCheck,
-  CFAllCheckBox,
-  CFAllCheckText,
-  CFBAmount,
-  CFBAmountColor,
-  CFBox,
-  CFBoxs,
-  CFBTotal,
-  CFButton,
-  CFButtonBox,
-  CFCAllDelete,
-  CFCDelete,
-  CFMCMinus,
-  CFMCount,
-  CFMCountBox,
-  CFMCPlus,
-  CFMCup,
-  CFMenuBox,
-  CFMIceHot,
-  CFMImg,
-  CFMMoney,
-  CFMOption,
-  CFMSize,
-  CFMText,
-  CFMTitle,
-  CFMTotalMoney,
-  CFood,
-  CFoodBox1,
-  CFoodG,
-  CGoods,
-  CGoodsBox,
-  CGoodsG,
-  CMBox,
-  CMCheck,
-  CMCInput,
-} from "../../styled/Cart";
-import { CNoDF } from "./CNoDF";
-import { useState } from "react";
-import { FDrink } from "../Favorite/FDrink";
-import { FFood } from "../Favorite/FFood";
-import { FGoods } from "../Favorite/FGoods";
-import { CNoG } from "./CNoG";
-import {
-  AiOutlineMinusCircle,
-  AiOutlinePlusCircle,
-} from "react-icons/ai";
+import {Footer} from "../../components/Footer/Footer";
+import * as styled_F from "../../styled/Favorite";
+import CTitle from "../../image/Cart/CTitle.png"
+import * as styled_C from "../../styled/Cart";
+import {CNoDF} from "./CNoDF";
+import {useState} from "react";
+import {CNoG} from "./CNoG";
 
 const Favorite = () => {
   const [state, setState] = useState(1);
@@ -80,22 +20,23 @@ const Favorite = () => {
     2: <CNoG />,
   };
 
-  return (
-    <AllBox>
-      <Header />
+    return (
+        <styled_AB.AllBox>
+            <Header/>
 
-      <FBox>
-        {/*My 장바구니 헤더*/}
-        <FHeader>
-          <FHTitle>
-            <FHTInner>
-              <FHTInnerH4>
-                <img src={CTitle} alt={"MyMenu"} />
-              </FHTInnerH4>
-            </FHTInner>
-          </FHTitle>
-        </FHeader>
+            <styled_F.FBox>
+                {/*My 장바구니 헤더*/}
+                <styled_F.FHeader>
+                    <styled_F.FHTitle>
+                        <styled_F.FHTInner>
+                            <styled_F.FHTInnerH4>
+                                <img src={CTitle} alt={"MyMenu"}/>
+                            </styled_F.FHTInnerH4>
+                        </styled_F.FHTInner>
+                    </styled_F.FHTitle>
+                </styled_F.FHeader>
 
+<<<<<<< HEAD
         {/*My 장바구니 내용*/}
         <FContentsAllBox>
           <FCBox>
@@ -140,18 +81,61 @@ const Favorite = () => {
                       )}
                     </FCSH5>
                   </CGoodsBox>
+=======
+                {/*My 장바구니 내용*/}
+                <styled_F.FContentsAllBox>
+                    <styled_F.FCBox>
+                        {/**/}
+                        <styled_F.FCSection1>
+                            <styled_F.FCSectionP>
+                                {/*strong 3개 더 들어가야하는데 샘플이 없어서 못 만드는 중*/}
+                            </styled_F.FCSectionP>
+                        </styled_F.FCSection1>
+                        {/*장바구니 내역*/}
+                        <styled_F.FCSection2>
+                            <div>
+                                <styled_C.CDiv>
+                                    <styled_C.CFoodBox1>
+                                        <styled_F.FCSH5>
+                                            {state === 1 ? (
+                                                <styled_C.CFoodG href={"#"} onClick={() => onClick(1)}>
+                                                    음료/푸드
+                                                </styled_C.CFoodG>
+                                            ) : (
+                                                <styled_C.CFood href={"#"} onClick={() => onClick(1)}>
+                                                    음료/푸드
+                                                </styled_C.CFood>
+                                            )}
+                                        </styled_F.FCSH5>
+                                    </styled_C.CFoodBox1>
 
-                  {obj[state]}
-                </CDiv>
-              </div>
-            </FCSection2>
-          </FCBox>
-        </FContentsAllBox>
-      </FBox>
+                                    {/*상품 버튼*/}
+                                    <styled_C.CGoodsBox>
+                                        <styled_F.FCSH5>
+                                            {state === 2 ? (
+                                                <styled_C.CGoodsG href={"#"} onClick={() => onClick(2)}>
+                                                    상품
+                                                </styled_C.CGoodsG>
+                                            ) : (
+                                                <styled_C.CGoods href={"#"} onClick={() => onClick(2)}>
+                                                    상품
+                                                </styled_C.CGoods>
+                                            )}
+                                        </styled_F.FCSH5>
+                                    </styled_C.CGoodsBox>
+>>>>>>> b639be62fec1072b1779ab43e79d271e9e5ef8f6
 
-      <Footer />
-    </AllBox>
-  );
+                                    {obj[state]}
+                                </styled_C.CDiv>
+                            </div>
+                        </styled_F.FCSection2>
+                    </styled_F.FCBox>
+                </styled_F.FContentsAllBox>
+            </styled_F.FBox>
+
+            <Footer/>
+        </styled_AB.AllBox>
+    );
 };
 
 export default Favorite;

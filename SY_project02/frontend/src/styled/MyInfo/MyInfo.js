@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import MIIcon from "../../image/MyInfo/MIIcon.png"
 import MIAgree from "../../image/MyInfo/MIAgree.png"
 
@@ -60,7 +60,7 @@ export const MIPhoneDiv = styled.div`
   }
 `
 
-export const MIPhoneInput = styled.p`
+export const MIPhoneInput = styled.input`
   background: #f4f4f2;
   border: 1px solid #ddd;
   box-sizing: border-box;
@@ -123,29 +123,29 @@ export const MINSAgree = styled.span`
   top: 0;
 `
 
+// 닉네임 이용약관 동의 버튼
 export const MINSAgreeInput = styled.input`
-  position: absolute;
-  width: 26px;
-  height: 26px;
-  top: 0;
-  left: 0;
-  padding: 0;
-  border: 0 none;
-  //background: #fff;
-  cursor: pointer;
-  appearance: none;
-  outline: none;
-  background: red;
+  visibility: hidden;
+  ${({checkedNick}) =>
+          checkedNick
+                  ? css`
+                    background-color: #66bb6a;
+                    border-color: #66bb6a;
+
+                    &:after {
+                      opacity: 1;
+                    }
+                  `
+                  : null}
 `
 
 export const MINSAgreeLabel = styled.label`
   position: absolute;
   display: inline-block;
+  border-radius: 50%;
   width: 26px;
   height: 26px;
   line-height: 26px;
-  background: #fff url(${MIAgree}) 0 0 no-repeat;
-  color: #3f4141;
   cursor: pointer;
   vertical-align: top;
   background-size: 26px;
@@ -153,6 +153,44 @@ export const MINSAgreeLabel = styled.label`
   z-index: 4;
   appearance: none;
   outline: none;
+  right: 0;
+  ${({checkedNick}) =>
+          checkedNick
+                  ? css`
+                    background-color: #006633;
+                    border-color: #006633;
+
+                    &:after {
+                      border: 3px solid #fff;
+                      border-top: none;
+                      border-right: none;
+                      content: "";
+                      height: 6px;
+                      left: 6px;
+                      position: absolute;
+                      top: 7px;
+                      right: 0;
+                      transform: rotate(-45deg);
+                      width: 12px;
+                    }
+                  `
+                  : css`
+                    background-color: #C1C1C1 !important;
+
+                    &:after {
+                      opacity: 1;
+                      border: 3px solid #fff;
+                      border-top: none;
+                      border-right: none;
+                      content: "";
+                      height: 6px;
+                      left: 6px;
+                      position: absolute;
+                      top: 7px;
+                      transform: rotate(-45deg);
+                      width: 12px;
+                    }
+                  `}
 `
 
 export const MINAgreeBox = styled.div`
@@ -192,9 +230,6 @@ export const MINAInner = styled.div`
   vertical-align: baseline;
 `
 
-export const MINAScroll = styled.div`
-  
-`
 
 export const NINInput = styled.input`
   border: 1px solid #ddd;
@@ -207,6 +242,7 @@ export const NINInput = styled.input`
   background: #f4f4f2;
   color: #222222;
 `
+
 
 // 회원탈퇴 버튼
 export const MIUnsubscribe = styled.button`

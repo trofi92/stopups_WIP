@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
-import { AllBox } from "../../styled/AllBox";
+import * as styled_AB from "../../styled/AllBox";
 import { LineNotice } from "../../components/LineNotice/LineNotice";
 import { Footer } from "../../components/Footer/Footer";
 import { MSeason } from "./MSeason";
@@ -12,7 +12,7 @@ import { MainReserve } from "./MainReserve";
 
 export const Main = () => {
   return (
-    <AllBox>
+    <styled_AB.AllBox>
       {/*헤더*/}
       <Header />
 
@@ -48,6 +48,6 @@ export const Main = () => {
       <Link to="/asdf">
         <button>not found</button>
       </Link>
-    </AllBox>
+    </styled_AB.AllBox>
   );
 };

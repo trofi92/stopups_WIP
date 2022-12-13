@@ -64,6 +64,11 @@ export const PPPButtonBox = styled.p`
   font-weight: bold;
   color: #fff;
   text-align: center;
+  cursor: pointer;
+  
+  :hover {
+    text-decoration: underline;
+  }
 `
 
 

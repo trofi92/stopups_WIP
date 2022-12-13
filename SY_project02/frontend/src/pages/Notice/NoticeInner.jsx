@@ -1,10 +1,5 @@
-import {
-  NTBTd,
-  NTBTDLA,
-  NTBTDLeft,
-  NTBTr,
-} from "../../styled/Notice/Notice";
-import { Link, useParams } from "react-router-dom";
+import * as styled_Notice from "../../styled/Notice/Notice";
+import {Link} from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -26,25 +21,22 @@ export const NoticeInner = () => {
 
   //
 
-  return (
-    <>
-      {info.map((infos, idx) => {
-        return (
-          <NTBTr key={idx}>
-            <NTBTd>{idx + 1}</NTBTd>
-            <NTBTDLeft>
-              <Link
-                to={`/noticeText`}
-                style={{ textDecoration: "none" }}
-              >
-                <NTBTDLA>{infos.Title}</NTBTDLA>
-              </Link>
-            </NTBTDLeft>
-            <NTBTd>{infos.Date}</NTBTd>
-            <NTBTd>조회수</NTBTd>
-          </NTBTr>
-        );
-      })}
-    </>
-  );
+    return (
+        <>
+            {info.map((infos, idx) => {
+                return (
+                    <styled_Notice.NTBTr key={idx}>
+                        <styled_Notice.NTBTd>{idx + 1}</styled_Notice.NTBTd>
+                        <styled_Notice.NTBTDLeft>
+                            <Link to={`/noticeText`} style={{textDecoration: "none"}}>
+                                <styled_Notice.NTBTDLA>{infos.Title}</styled_Notice.NTBTDLA>
+                            </Link>
+                        </styled_Notice.NTBTDLeft>
+                        <styled_Notice.NTBTd>{infos.Date}</styled_Notice.NTBTd>
+                        <styled_Notice.NTBTd>조회수</styled_Notice.NTBTd>
+                    </styled_Notice.NTBTr>
+                );
+            })}
+        </>
+    );
 };

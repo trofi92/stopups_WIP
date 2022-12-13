@@ -1,117 +1,86 @@
-import { AllBox } from "../../styled/AllBox";
+import * as styled_AB from "../../styled/AllBox";
 import Header from "../../components/Header/Header";
-import {
-  NB,
-  NBPosition,
-  NColgroup,
-  NInput,
-  NIP,
-  NIPA,
-  NIPInput,
-  NNLFirst,
-  NNoticeList,
-  NPA,
-  NPAClicked,
-  NPagination,
-  NPANext,
-  NPLi,
-  NPLNA,
-  NPLNAImg,
-  NPLNext,
-  NPUl,
-  NTable,
-  NTbody,
-  NTBTd,
-  NTBTDLA,
-  NTBTDLeft,
-  NTBTr,
-  NTh,
-  NThead,
-  NTIH2,
-  NTIImg,
-  NTInner,
-  NTitleBox,
-  NTr,
-} from "../../styled/Notice/Notice";
-import NTitleImg from "../../image/Notice/Ntitle.jpg";
-import NNext from "../../image/Notice/NNext.jpg";
-import { Footer } from "../../components/Footer/Footer";
-import { NoticeInner } from "./NoticeInner";
+import * as styled_Notice from "../../styled/Notice/Notice";
+import NTitleImg from "../../image/Notice/Ntitle.jpg"
+import NNext from "../../image/Notice/NNext.jpg"
+import {Footer} from "../../components/Footer/Footer";
+import {NoticeInner} from "./NoticeInner";
 
 const Notice = () => {
-  return (
-    <AllBox>
-      <Header />
-      {/*공지사항 타이틀*/}
-      <NTitleBox>
-        <NTInner>
-          <NTIH2>
-            <NTIImg src={NTitleImg} alt={"NTitleImg"} />
-          </NTIH2>
-        </NTInner>
-      </NTitleBox>
+    return (
+        <styled_AB.AllBox>
+            <Header/>
 
-      {/*공지사항*/}
-      <NB>
-        <NBPosition>
-          {/*공지사항 검색창*/}
-          <NInput>
-            <NIP>
-              <NIPInput
-                type={"text"}
-                placeholder={"검색어를 입력해 주세요."}
-              />
-              <NIPA href={"#"}>검색</NIPA>
-            </NIP>
-          </NInput>
-          {/*공지사항 게시글들*/}
-          <NTable>
-            {/*넓이*/}
-            <NColgroup>
-              <col width={"5.45454%"} />
-              <col width={"74.5454%"} />
-              <col width={"10.90909%"} />
-              <col width={"*"} />
-            </NColgroup>
-            {/*게시글들 헤드*/}
-            <NThead>
-              <NTr>
-                <NTh scope={"col"}>NO</NTh>
-                <NTh scope={"col"}>제목</NTh>
-                <NTh scope={"col"}>날짜</NTh>
-                <NTh scope={"col"}>조회수</NTh>
-              </NTr>
-            </NThead>
-            {/*게시글들 박스*/}
-            <NTbody>
-              {/*각각 게시글*/}
-              <NoticeInner />
-            </NTbody>
-          </NTable>
-          {/*게시글 페이지*/}
-          <NPagination>
-            {/*숫자*/}
-            <NPUl>
-              <NPLi>
-                <NPAClicked>1</NPAClicked>
-              </NPLi>
-              <NPLi>
-                <NPA>2</NPA>
-              </NPLi>
-              {/*다음 버튼*/}
-              <NPLNext>
-                <NPLNA href={"#"}>
-                  <NPLNAImg src={NNext} alt={"NNext"} />
-                </NPLNA>
-              </NPLNext>
-            </NPUl>
-          </NPagination>
-        </NBPosition>
-      </NB>
+            {/*공지사항 타이틀*/}
+            <styled_Notice.NTitleBox>
+                <styled_Notice.NTInner>
+                    <styled_Notice.NTIH2>
+                        <styled_Notice.NTIImg src={NTitleImg} alt={"NTitleImg"}/>
+                    </styled_Notice.NTIH2>
+                </styled_Notice.NTInner>
+            </styled_Notice.NTitleBox>
 
-      <Footer />
-    </AllBox>
-  );
+            {/*공지사항*/}
+            <styled_Notice.NB>
+                <styled_Notice.NBPosition>
+                    {/*공지사항 검색창*/}
+                    <styled_Notice.NInput>
+                        <styled_Notice.NIP>
+                            <styled_Notice.NIPInput
+                                type={"text"}
+                                placeholder={"검색어를 입력해 주세요."}
+                            />
+                            <styled_Notice.NIPA href={"#"}>검색</styled_Notice.NIPA>
+                        </styled_Notice.NIP>
+                    </styled_Notice.NInput>
+                    {/*공지사항 게시글들*/}
+                    <styled_Notice.NTable>
+                        {/*넓이*/}
+                        <styled_Notice.NColgroup>
+                            <col width={"5.45454%"}/>
+                            <col width={"74.5454%"}/>
+                            <col width={"10.90909%"}/>
+                            <col width={"*"}/>
+                        </styled_Notice.NColgroup>
+                        {/*게시글들 헤드*/}
+                        <styled_Notice.NThead>
+                            <styled_Notice.NTr>
+                                <styled_Notice.NTh scope={"col"}>NO</styled_Notice.NTh>
+                                <styled_Notice.NTh scope={"col"}>제목</styled_Notice.NTh>
+                                <styled_Notice.NTh scope={"col"}>날짜</styled_Notice.NTh>
+                                <styled_Notice.NTh scope={"col"}>조회수</styled_Notice.NTh>
+                            </styled_Notice.NTr>
+                        </styled_Notice.NThead>
+                        {/*게시글들 박스*/}
+                        <styled_Notice.NTbody>
+                            {/*각각 게시글*/}
+                            <NoticeInner/>
+                        </styled_Notice.NTbody>
+                    </styled_Notice.NTable>
+                    {/*게시글 페이지*/}
+                    <styled_Notice.NPagination>
+                        {/*숫자*/}
+                        <styled_Notice.NPUl>
+                            <styled_Notice.NPLi>
+                                <styled_Notice.NPAClicked>1</styled_Notice.NPAClicked>
+                            </styled_Notice.NPLi>
+                            <styled_Notice.NPLi>
+                                <styled_Notice.NPA>2</styled_Notice.NPA>
+                            </styled_Notice.NPLi>
+                            {/*다음 버튼*/}
+                            <styled_Notice.NPLNext>
+                                <styled_Notice.NPLNA href={"#"}>
+                                    <styled_Notice.NPLNAImg src={NNext} alt={"NNext"}/>
+                                </styled_Notice.NPLNA>
+                            </styled_Notice.NPLNext>
+                        </styled_Notice.NPUl>
+                    </styled_Notice.NPagination>
+                </styled_Notice.NBPosition>
+            </styled_Notice.NB>
+
+            <Footer/>
+        </styled_AB.AllBox>
+    );
 };
 
 export default Notice;
