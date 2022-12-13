@@ -28,8 +28,7 @@ const Login = () => {
       setEmail(e.target.value);
     }
   };
-  {
-  }
+
   const handlePasswordChange = (e) => {
     checkPassword(e);
     if (e.target.value === "" || e.target.value === undefined) {
@@ -61,16 +60,7 @@ const Login = () => {
             { withCredentials: true }
           )
           .then((res) => {
-            const jwtToken = res.data.token;
             console.log("로그인 성공");
-
-            console.log(document.cookie);
-            // const decodedUserInfo = jwt_decode(jwtToken);
-            // setCookie("accessJwtToken", jwtToken);
-            localStorage.setItem(
-              "userInfo",
-              JSON.stringify(jwtToken)
-            );
             navigate("/", { replace: true });
             return res;
           });
@@ -80,7 +70,7 @@ const Login = () => {
           "로그인이 실패했습니다. 정보가 올바른지 다시 확인해주세요"
         );
       }
-    } //정리할것
+    }
   };
 
   const onLoginSubmit = (e) => {
