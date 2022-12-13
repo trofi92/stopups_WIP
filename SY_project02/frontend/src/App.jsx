@@ -31,7 +31,7 @@ import LPwPass from "./pages/Login/LFindPw/LPwPass";
 import LFindPw from "./pages/Login/LFindPw/LFindPw";
 import NoticeInnerText from "./pages/Notice/NoticeInnerText";
 import Search from "./pages/Search/Search";
-import Map from "./pages/Map";
+import Map1 from "./pages/Map";
 
 function App() {
   return (
@@ -44,56 +44,56 @@ function App() {
         {/*로그인*/}
         <Route path={"/login"} element={<Login />} />
         {/*로그인 요청*/}
-        <Route path={"/loginPlease"} element={<LPlease/>} />
+        <Route path={"/loginPlease"} element={<LPlease />} />
         {/*아이디 찾기 동의*/}
-        <Route path={"/findIdAgree"} element={<LFindIdAgree/>} />
+        <Route path={"/findIdAgree"} element={<LFindIdAgree />} />
         {/*아이디 찾기 인증*/}
-        <Route path={"/idPass"} element={<LIdPass/>} />
+        <Route path={"/idPass"} element={<LIdPass />} />
         {/*아이디 찾기 성공*/}
-        <Route path={"/findId"} element={<LFindId/>} />
+        <Route path={"/findId"} element={<LFindId />} />
         {/*비밀번호 찾기 동의*/}
-        <Route path={"/findPwAgree"} element={<LFindPwAgree/>} />
+        <Route path={"/findPwAgree"} element={<LFindPwAgree />} />
         {/*비밀번호 찾기 인증*/}
-        <Route path={"/pwPass"} element={<LPwPass/>}/>
+        <Route path={"/pwPass"} element={<LPwPass />} />
         {/*비밀번호 수정*/}
-        <Route path={"/findPw"} element={<LFindPw/>} />
+        <Route path={"/findPw"} element={<LFindPw />} />
         {/*회원가입 동의*/}
         <Route path={"/joinAgree"} element={<JoinAgree />} />
         {/*회원가입 인증*/}
-        <Route path={"/joinPass"} element={<JPass/>} />
+        <Route path={"/joinPass"} element={<JPass />} />
         {/*회원가입*/}
         <Route path={"/join"} element={<Join />} />
         {/*회원가입 성공*/}
-        <Route path={"/joinSuccess"} element={<JoinSuccess/>} />
+        <Route path={"/joinSuccess"} element={<JoinSuccess />} />
         {/*장바구니*/}
-        <Route path={"/cart"} element={<Cart/>} />
+        <Route path={"/cart"} element={<Cart />} />
         {/*찜목록*/}
-        <Route path={"/favorite"} element={<Favorite/>} />
+        <Route path={"/favorite"} element={<Favorite />} />
         {/*공지*/}
-        <Route path={"/notice"} element={<Notice/>} />
+        <Route path={"/notice"} element={<Notice />} />
         {/*공지 내용*/} {/*임시*/}
         {/*api에서 공지글 받아 내려서 각 id값에 따라 /:id로 연결되게끔..?*/}
-        <Route path={"/noticeText"} element={<NoticeInnerText/>}/>
+        <Route path={"/noticeText"} element={<NoticeInnerText />} />
         {/*이벤트*/}
-        <Route path={"/event"} element={<Event/>} />
+        <Route path={"/event"} element={<Event />} />
         {/*이벤트 - 여름 이벤트*/}
-        <Route path={"/summerEvent"} element={<ESummer/>} />
+        <Route path={"/summerEvent"} element={<ESummer />} />
         {/*개인정보 확인 및 수정 동의*/}
-        <Route path={"/myInfoAgree"} element={<MyInfoAgree/>} />
+        <Route path={"/myInfoAgree"} element={<MyInfoAgree />} />
         {/*개인정보 확인 및 수정 인증*/}
-        <Route path={"/myInfoPass"} element={<MIPass/>} />
+        <Route path={"/myInfoPass"} element={<MIPass />} />
         {/*개인정보 확인 및 수정*/}
-        <Route path={"/myInfo"} element={<MyInfo/>} />
+        <Route path={"/myInfo"} element={<MyInfo />} />
         {/*비밀번호 변경*/}
-        <Route path={"/myInfoPassword"} element={<MIPassword/>} />
+        <Route path={"/myInfoPassword"} element={<MIPassword />} />
         {/*MyStopUps 한눈에 보기*/}
-        <Route path={"/myStopUps"} element={<MyStopUps/>} />
+        <Route path={"/myStopUps"} element={<MyStopUps />} />
         {/*서비스 준비중*/}
-        <Route path={"/serviceReady"} element={<ServiceReady/>} />
+        <Route path={"/serviceReady"} element={<ServiceReady />} />
         {/*검색 페이지*/}
-        <Route path={"/search"} element={<Search/>} />
+        <Route path={"/search"} element={<Search />} />
         {/*지도 페이지*/}
-        <Route path={"/map"} element={<Map/>} />
+        <Route path={"/map"} element={<Map1 />} />
         <Route
           path="/payment"
           element={<Payment name={"payment"} />}

@@ -1,17 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-// import cartItems from "../../cartItems";
-//더미 데이터, 추후 db에서 fetching해 와야함
-//RDBMS사용, 유저와 일대다 관계로 설정, 로그아웃 시에도 저장되도록 설정
 
-const url = "https://course-api.com/react-useReducer-cart-project";
-
-const initialState = {
-  cartItems: [], // 상품 종류
-  amount: 1, // 각 상품의 갯수
-  total: 0, // 총 가격
-  isLoading: true,
-};
+const url = "https://course-api.com/react-useReducer-cart-project"; // 엔드포인트 받아서 변경할것
 
 export const getCartItems = createAsyncThunk(
   "cart/getCartItems",
@@ -22,12 +12,19 @@ export const getCartItems = createAsyncThunk(
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        "문제가 발생했습니다. 다시 시도해주세요."
+        "문제가 발생했습니다. 다시 시도해주세요.",
+        console.error(error)
       );
     }
   }
 );
-
+const initialState = {
+  cartItems: [], // 상품 종류
+  amount: 1, // 각 상품의 갯수
+  total: 0, // 총 가격
+  isLoading: true,
+  statusByName: {},
+};
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -69,27 +66,29 @@ const cartSlice = createSlice({
   // 비동기 처리를 위한 createAsyncThunk reducer 함수들
   // 반환되는 promise의 상태에 따라 로딩 상태를 변경시킴
   // 이하 코드는 RTK Query 도입시 사용
-  extraReducers: {
-    [getCartItems.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [getCartItems.fulfilled]: (state, action) => {
-      // console.log(action);
-      state.isLoading = false;
-      state.cartItems = action.payload;
-    },
-    [getCartItems.rejected]: (state) => {
-      state.isLoading = false;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getCartItems.pending, (state, action) => {
+        state.statusByName = "pending";
+        state.isLoading = true;
+      })
+      .addCase(getCartItems.fulfilled, (state, action) => {
+        state.statusByName = "fulfilled";
+        state.isLoading = false;
+        state.cartItems = action.payload;
+      })
+      .addCase(getCartItems.rejected, (state, action) => {
+        state.isLoading = false;
+        state.statusByName = "rejected";
+      });
   },
 });
 
-console.log(cartSlice);
+export const cartReducer = cartSlice.reducer;
 export const {
-  clearCart,
-  removeItem,
-  increase,
-  decrease,
+  addToCart,
   calculateTotals,
+  incrementQuantity,
+  decrementQuantity,
+  removeItem,
 } = cartSlice.actions;
-export default cartSlice.reducer;

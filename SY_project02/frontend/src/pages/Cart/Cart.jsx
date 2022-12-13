@@ -96,7 +96,6 @@ const Favorite = () => {
           </FHTitle>
         </FHeader>
 
-<<<<<<< HEAD
         {/*My 장바구니 내용*/}
         <FContentsAllBox>
           <FCBox>
@@ -112,7 +111,6 @@ const Favorite = () => {
                 <CDiv>
                   <CFoodBox1>
                     <FCSH5>
-                      {/*버튼 클릭 시 border-bottom: 3px solid #006633*/}
                       {state === 1 ? (
                         <CFoodG href={"#"} onClick={() => onClick(1)}>
                           음료/푸드
@@ -128,7 +126,6 @@ const Favorite = () => {
                   {/*상품 버튼*/}
                   <CGoodsBox>
                     <FCSH5>
-                      {/*버튼 클릭 시 border-bottom: 3px solid #006633*/}
                       {state === 2 ? (
                         <CGoodsG
                           href={"#"}
@@ -143,49 +140,6 @@ const Favorite = () => {
                       )}
                     </FCSH5>
                   </CGoodsBox>
-=======
-                {/*My 장바구니 내용*/}
-                <FContentsAllBox>
-                    <FCBox>
-                        {/**/}
-                        <FCSection1>
-                            <FCSectionP>
-                                {/*strong 3개 더 들어가야하는데 샘플이 없어서 못 만드는 중*/}
-                            </FCSectionP>
-                        </FCSection1>
-                        {/*장바구니 내역*/}
-                        <FCSection2>
-                            <div>
-                                <CDiv>
-                                    <CFoodBox1>
-                                        <FCSH5>
-                                            {state === 1 ? (
-                                                <CFoodG href={"#"} onClick={() => onClick(1)}>
-                                                    음료/푸드
-                                                </CFoodG>
-                                            ) : (
-                                                <CFood href={"#"} onClick={() => onClick(1)}>
-                                                    음료/푸드
-                                                </CFood>
-                                            )}
-                                        </FCSH5>
-                                    </CFoodBox1>
-
-                                    {/*상품 버튼*/}
-                                    <CGoodsBox>
-                                        <FCSH5>
-                                            {state === 2 ? (
-                                                <CGoodsG href={"#"} onClick={() => onClick(2)}>
-                                                    상품
-                                                </CGoodsG>
-                                            ) : (
-                                                <CGoods href={"#"} onClick={() => onClick(2)}>
-                                                    상품
-                                                </CGoods>
-                                            )}
-                                        </FCSH5>
-                                    </CGoodsBox>
->>>>>>> e72227caae87bec8bdbde3573738f94d053d7482
 
                   {obj[state]}
                 </CDiv>
