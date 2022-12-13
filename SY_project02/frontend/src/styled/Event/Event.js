@@ -82,11 +82,11 @@ export const ESH34 = styled.h3`
   margin: 0;
   padding: 0;
 `
-// 클릭된 이벤트 종류
-export const ESAClicked = styled.a`
+// 버튼
+export const ESA1= styled.a`
   width: 100%;
-  background: #006633;
-  color: #ffffff;
+  background: #f4f4f2;
+  color: #222;
   border-radius: 3px;
   display: block;
   font-size: 14px;
@@ -98,12 +98,28 @@ export const ESAClicked = styled.a`
   
   :hover {
     text-decoration: underline;
-    color: #fff;
   }
 `
 
-// 클릭되지 않은 이벤트 종류
-export const ESA = styled.a`
+export const ESA1G= styled.a`
+  width: 100%;
+  background: #006633;
+  color: #fff;
+  border-radius: 3px;
+  display: block;
+  font-size: 14px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0;
+  
+  :hover {
+    text-decoration: underline;
+  }
+`
+
+export const ESA2 = styled.a`
   width: 100%;
   font-size: 12px;
   background: #f4f4f2;
@@ -118,7 +134,97 @@ export const ESA = styled.a`
   
   :hover {
     text-decoration: underline;
+  }
+`
+
+export const ESA2G = styled.a`
+  width: 100%;
+  font-size: 12px;
+  background: #006633;
+  color: #fff;
+  border-radius: 3px;
+  display: block;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  margin: 0;
+  text-decoration: none;
+  
+  :hover {
+    text-decoration: underline;
     color: #222
+  }
+`
+
+export const ESA3 = styled.a`
+  width: 100%;
+  font-size: 12px;
+  background: #f4f4f2;
+  color: #222222;
+  border-radius: 3px;
+  display: block;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  margin: 0;
+  text-decoration: none;
+  
+  :hover {
+    text-decoration: underline;
+  }
+`
+
+export const ESA3G = styled.a`
+  width: 100%;
+  font-size: 12px;
+  background: #006633;
+  color: #fff;
+  border-radius: 3px;
+  display: block;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  margin: 0;
+  text-decoration: none;
+  
+  :hover {
+    text-decoration: underline;
+  }
+`
+
+export const ESA4 = styled.a`
+  width: 100%;
+  font-size: 12px;
+  background: #f4f4f2;
+  color: #222222;
+  border-radius: 3px;
+  display: block;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  margin: 0;
+  text-decoration: none;
+  
+  :hover {
+    text-decoration: underline;
+  }
+`
+
+export const ESA4G = styled.a`
+  width: 100%;
+  font-size: 12px;
+  background: #006633;
+  color: #fff;
+  border-radius: 3px;
+  display: block;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  margin: 0;
+  text-decoration: none;
+  
+  :hover {
+    text-decoration: underline;
   }
 `
 

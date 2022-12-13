@@ -78,6 +78,10 @@ export const PPhoneButton = styled.button`
   display: block;
   font-weight: bold;
   text-align: center;
+  
+  :hover {
+    text-decoration: underline;
+  }
 `
 
 // 로그인시 이용 가능합니다 페이지 버튼

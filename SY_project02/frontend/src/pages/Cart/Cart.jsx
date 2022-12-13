@@ -90,7 +90,6 @@ const Favorite = () => {
                                 <CDiv>
                                     <CFoodBox1>
                                         <FCSH5>
-                                            {/*버튼 클릭 시 border-bottom: 3px solid #006633*/}
                                             {state === 1 ? (
                                                 <CFoodG href={"#"} onClick={() => onClick(1)}>
                                                     음료/푸드
@@ -106,7 +105,6 @@ const Favorite = () => {
                                     {/*상품 버튼*/}
                                     <CGoodsBox>
                                         <FCSH5>
-                                            {/*버튼 클릭 시 border-bottom: 3px solid #006633*/}
                                             {state === 2 ? (
                                                 <CGoodsG href={"#"} onClick={() => onClick(2)}>
                                                     상품

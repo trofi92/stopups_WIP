@@ -106,7 +106,25 @@ export const SFBLi = styled.li`
   padding: 0;
 `
 
-export const SFBLPGreen = styled.p`
+// 버튼
+export const SFBLPA = styled.p`
+  border-radius: 3px;
+  color: #444;
+  display: block;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  
+  :hover {
+    color: white;
+    background: #006633;
+    text-decoration: underline;
+  }
+`
+
+export const SFBLPAG = styled.p`
   background: #006633;
   border-radius: 3px;
   color: #fff;
@@ -116,11 +134,13 @@ export const SFBLPGreen = styled.p`
   width: 100%;
   margin: 0;
   padding: 0;
+  cursor: pointer;
   
   :hover {
     text-decoration: underline;
   }
 `
+
 
 export const SFBLP = styled.p`
   border-radius: 3px;

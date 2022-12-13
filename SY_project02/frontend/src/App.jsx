@@ -30,7 +30,7 @@ import LFindPwAgree from "./pages/Login/LFindPw/LFindPwAgree";
 import LPwPass from "./pages/Login/LFindPw/LPwPass";
 import LFindPw from "./pages/Login/LFindPw/LFindPw";
 import NoticeInnerText from "./pages/Notice/NoticeInnerText";
-import Search from "./pages/Search";
+import Search from "./pages/Search/Search";
 import Map from "./pages/Map";
 
 function App() {
@@ -78,7 +78,7 @@ function App() {
         <Route path={"/event"} element={<Event/>} />
         {/*이벤트 - 여름 이벤트*/}
         <Route path={"/summerEvent"} element={<ESummer/>} />
-        {/*개인정보확인 및 수정 동의*/}
+        {/*개인정보 확인 및 수정 동의*/}
         <Route path={"/myInfoAgree"} element={<MyInfoAgree/>} />
         {/*개인정보 확인 및 수정 인증*/}
         <Route path={"/myInfoPass"} element={<MIPass/>} />
