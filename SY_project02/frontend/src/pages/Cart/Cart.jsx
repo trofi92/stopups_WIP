@@ -36,52 +36,6 @@ const Favorite = () => {
                     </styled_F.FHTitle>
                 </styled_F.FHeader>
 
-<<<<<<< HEAD
-        {/*My 장바구니 내용*/}
-        <FContentsAllBox>
-          <FCBox>
-            {/**/}
-            <FCSection1>
-              <FCSectionP>
-                {/*strong 3개 더 들어가야하는데 샘플이 없어서 못 만드는 중*/}
-              </FCSectionP>
-            </FCSection1>
-            {/*장바구니 내역*/}
-            <FCSection2>
-              <div>
-                <CDiv>
-                  <CFoodBox1>
-                    <FCSH5>
-                      {state === 1 ? (
-                        <CFoodG href={"#"} onClick={() => onClick(1)}>
-                          음료/푸드
-                        </CFoodG>
-                      ) : (
-                        <CFood href={"#"} onClick={() => onClick(1)}>
-                          음료/푸드
-                        </CFood>
-                      )}
-                    </FCSH5>
-                  </CFoodBox1>
-
-                  {/*상품 버튼*/}
-                  <CGoodsBox>
-                    <FCSH5>
-                      {state === 2 ? (
-                        <CGoodsG
-                          href={"#"}
-                          onClick={() => onClick(2)}
-                        >
-                          상품
-                        </CGoodsG>
-                      ) : (
-                        <CGoods href={"#"} onClick={() => onClick(2)}>
-                          상품
-                        </CGoods>
-                      )}
-                    </FCSH5>
-                  </CGoodsBox>
-=======
                 {/*My 장바구니 내용*/}
                 <styled_F.FContentsAllBox>
                     <styled_F.FCBox>
@@ -123,7 +77,6 @@ const Favorite = () => {
                                             )}
                                         </styled_F.FCSH5>
                                     </styled_C.CGoodsBox>
->>>>>>> b639be62fec1072b1779ab43e79d271e9e5ef8f6
 
                                     {obj[state]}
                                 </styled_C.CDiv>
