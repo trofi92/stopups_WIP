@@ -7,6 +7,7 @@ import { Footer } from "../../components/Footer/Footer";
 import * as styled_Pass from "../../styled/Pass";
 import * as styled_LOG from "../../styled/Login/Login";
 import * as styled_Join from "../../styled/Join/Join";
+import {sms} from "../../util/urls";
 
 const JPass = () => {
     const [show, setShow] = useState(false); // 휴대전화 입력 여부 상태 저장
