@@ -6,8 +6,69 @@ import * as styled_MI from "../../styled/MyInfo/MyInfo";
 import * as styled_BU from "../../styled/Button";
 import {Footer} from "../../components/Footer/Footer";
 import {NickAgree} from "../Join/NickAgree";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {checkPhone} from "../../components/join/JoinRegex";
+import axios from "axios";
 
 const MyInfo = () => {
+    // setTelephone에 유저 번호 디폴트로 주기
+    const [telephone, setTelephone] = useState("");
+    // setNickname에 유저 닉네임 디폴트로 넣어주기
+    const [nickname, setNickname] = useState("");
+    const [checkedNick, setCheckedNick] = useState(false);
+    // 인증 성공하면 여기에 true 값 넣어주기
+    const [certification, setCertification] = useState(false);
+
+    const navigate = useNavigate();
+
+    const onClickCheckedNick = () => {
+        setCheckedNick(!checkedNick);
+        console.log("home=>", !checkedNick);
+    };
+
+    const onChangeNickname = (e) => {
+        if (checkedNick === true) {
+            setNickname(e.target.value);
+        }
+    }
+
+    const onChangeTelephone = (e) => {
+        checkPhone(e);
+        setTelephone(e.target.value);
+    }
+
+    const onSumbitMyInfo = (e) => {
+        e.preventDefault()
+        if (telephone === "") {
+            alert("전화번호를 입력해주세요");
+        } else if (checkedNick !== true) {
+            alert("선택적 개인정보 수집동의 및 이용약관에 동의해주세요")
+        } else if (nickname === "") {
+            alert("닉네임을 입력해주세요")
+        } else if (certification !== true) {
+            alert("휴대폰 인증을 해주세요")
+        } else {
+            const post = {
+                telephone,
+                nickname
+            };
+            axios
+                // 라우트 해주시면 주소 적기...
+                .post("", {data: post})
+                .then((res) => {
+                    alert("회원정보를 수정했습니다.")
+                    //정보 수정됐는지 확인하기 위해 그 페이지 그대로...
+                    navigate("/myInfo", { replace: true });
+                })
+                .catch((error) => {
+                    console.error("회원정보 수정 실패=>", error);
+                    alert("회원정보 수정에 실패했습니다");
+                });
+        }
+
+    }
+
     return (
         <styled_AB.AllBox>
             <Header/>
@@ -40,7 +101,10 @@ const MyInfo = () => {
                                             <styled_MI.MIIcons/>
                                         </styled_Join.RFSectionStrong>
                                         <styled_MI.MIPhoneDiv>
-                                            <styled_MI.MIPhoneInput>유저 휴대폰 번호</styled_MI.MIPhoneInput>
+                                            <styled_MI.MIPhoneInput
+                                                value={telephone}
+                                                onChange={onChangeTelephone}
+                                            />
                                             <styled_MI.MIPhoneA>인증</styled_MI.MIPhoneA>
                                             <styled_MI.MIIconsPhone/>
                                         </styled_MI.MIPhoneDiv>
@@ -68,14 +132,20 @@ const MyInfo = () => {
                                                 {/*체크 토글 버튼 만들기*/}
                                                 <styled_MI.MINSAgreeInput
                                                     type={"checkbox"}
+                                                    checkedNick={checkedNick}
                                                 />
-                                                <styled_MI.MINSAgreeLabel/>
+                                                <styled_MI.MINSAgreeLabel
+                                                    checkedNick={checkedNick}
+                                                    onClick={onClickCheckedNick}
+                                                />
                                             </styled_MI.MINSAgree>
                                             {/*닉네임 이용약관 동의*/}
                                             <NickAgree/>
                                         </styled_MI.MINIckSection>
                                         {/*체크박스 선택 시 입력 가능*/}
                                         <styled_MI.NINInput
+                                            value={nickname}
+                                            onChange={onChangeNickname}
                                             placeholder={"닉네임 입력을 위해 약관에 동의해 주세요."}
                                         />
                                     </styled_Join.RFSectionDiv>

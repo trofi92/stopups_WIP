@@ -1,8 +1,6 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import Sally from "../../image/Sally.png"
 import JSallyNick from "../../image/Join/JSallyNick.jpg"
-import LIdCheck from "../../image/Login/LIdCheck.png"
-import LIdChecked from "../../image/Login/LIdChecked.png"
 
 // 회원가입 전체 박스
 export const RB = styled.div`
@@ -58,7 +56,7 @@ export const RFSectionDiv = styled.section`
   border-bottom: 1px solid #ddd;
   padding: 20px 20px;
   position: relative;
-  
+
   :last-child {
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
@@ -120,34 +118,194 @@ export const AgreeSpan = styled.span`
   top: 20px;
 `
 
-export const AgreeInput = styled.input`
-  position: absolute;
-  width: 26px;
-  height: 26px;
-  top: 0;
-  left: 0;
-  padding: 0;
-  border: 0 none;
-  //background: #fff;
-  cursor: pointer;
-  appearance: none;
-  outline: none;
-  background: red;
+// 홈페이지 이용약관 동의 버튼
+export const AIH = styled.input`
+  visibility: hidden;
+  ${({checkedHome}) =>
+          checkedHome
+                  ? css`
+                    background-color: #66bb6a;
+                    border-color: #66bb6a;
+
+                    &:after {
+                      opacity: 1;
+                    }
+                  `
+                  : null}
 `
 
-export const AgreeLabel = styled.label`
-  position: absolute;
-  display: inline-block;
-  width: 26px;
-  height: 26px;
-  line-height: 26px;
-  background: #fff url(${LIdCheck}) 0 0 no-repeat;
-  color: #3f4141;
+export const ALH = styled.label`
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
   cursor: pointer;
-  vertical-align: top;
-  background-size: 26px;
-  overflow: hidden;
-  z-index: 4;
-  appearance: none;
-  outline: none;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  ${({checkedHome}) =>
+          checkedHome
+                  ? css`
+                    background-color: #006633;
+                    border-color: #006633;
+
+                    &:after {
+                      border: 3px solid #fff;
+                      border-top: none;
+                      border-right: none;
+                      content: "";
+                      height: 6px;
+                      left: 7px;
+                      position: absolute;
+                      top: 8px;
+                      transform: rotate(-45deg);
+                      width: 12px;
+                    }
+                  `
+                  : css`
+                    background-color: #C1C1C1 !important;
+
+                    &:after {
+                      opacity: 1;
+                      border: 3px solid #fff;
+                      border-top: none;
+                      border-right: none;
+                      content: "";
+                      height: 6px;
+                      left: 7px;
+                      position: absolute;
+                      top: 8px;
+                      transform: rotate(-45deg);
+                      width: 12px;
+                    }
+                  `}
+`
+
+// 개인정보 수집 및 이용동의 버튼
+export const AIU = styled.input`
+  visibility: hidden;
+  ${({checkedUser}) =>
+          checkedUser
+                  ? css`
+                    background-color: #66bb6a;
+                    border-color: #66bb6a;
+
+                    &:after {
+                      opacity: 1;
+                    }
+                  `
+                  : null}
+`
+
+export const ALU = styled.label`
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  ${({checkedUser}) =>
+          checkedUser
+                  ? css`
+                    background-color: #006633;
+                    border-color: #006633;
+
+                    &:after {
+                      border: 3px solid #fff;
+                      border-top: none;
+                      border-right: none;
+                      content: "";
+                      height: 6px;
+                      left: 7px;
+                      position: absolute;
+                      top: 8px;
+                      transform: rotate(-45deg);
+                      width: 12px;
+                    }
+                  `
+                  : css`
+                    background-color: #C1C1C1 !important;
+
+                    &:after {
+                      opacity: 1;
+                      border: 3px solid #fff;
+                      border-top: none;
+                      border-right: none;
+                      content: "";
+                      height: 6px;
+                      left: 7px;
+                      position: absolute;
+                      top: 8px;
+                      transform: rotate(-45deg);
+                      width: 12px;
+                    }
+                  `}
+`
+
+// 닉네임 동의 버튼
+export const AIN = styled.input`
+  visibility: hidden;
+  ${({checkedNick}) =>
+          checkedNick
+                  ? css`
+                    background-color: #66bb6a;
+                    border-color: #66bb6a;
+
+                    &:after {
+                      opacity: 1;
+                    }
+                  `
+                  : null}
+`
+
+export const ALN = styled.label`
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  ${({checkedNick}) =>
+          checkedNick
+                  ? css`
+                    background-color: #006633;
+                    border-color: #006633;
+
+                    &:after {
+                      border: 3px solid #fff;
+                      border-top: none;
+                      border-right: none;
+                      content: "";
+                      height: 6px;
+                      left: 7px;
+                      position: absolute;
+                      top: 8px;
+                      transform: rotate(-45deg);
+                      width: 12px;
+                    }
+                  `
+                  : css`
+                    background-color: #C1C1C1 !important;
+
+                    &:after {
+                      opacity: 1;
+                      border: 3px solid #fff;
+                      border-top: none;
+                      border-right: none;
+                      content: "";
+                      height: 6px;
+                      left: 7px;
+                      position: absolute;
+                      top: 8px;
+                      transform: rotate(-45deg);
+                      width: 12px;
+                    }
+                  `}
 `

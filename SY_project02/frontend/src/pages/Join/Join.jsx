@@ -16,7 +16,8 @@ import * as styled_LOG from "../../styled/Login/Login";
 import { Footer } from "../../components/Footer/Footer";
 import * as styled_BU from "../../styled/Button";
 import { NickAgree } from "./NickAgree";
-import { encrypt } from "../../util/chiper"; // DB에 저장 시 암호화, 조회시 복호화
+import { encrypt } from "../../util/chiper";
+import {AIN, ALN} from "../../styled/Join/Join"; // DB에 저장 시 암호화, 조회시 복호화
 
 const Join = () => {
   const [email, setEmail] = useState("");
@@ -25,6 +26,7 @@ const Join = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [telephone, setTelephone] = useState("");
+  const [checkedNick, setCheckedNick] = useState(false);
 
   const navigate = useNavigate();
 
@@ -58,6 +60,11 @@ const Join = () => {
     setTelephone(e.target.value);
   };
 
+  const onClickCheckedNick = () => {
+    setCheckedNick(!checkedNick);
+    console.log("home=>",!checkedNick);
+  };
+
   const eEmail = encrypt(email);
   const eName = encrypt(name);
   const eNickname = encrypt(nickname);
@@ -80,6 +87,8 @@ const Join = () => {
       alert("비밀번호와 비밀번호 확인이 일치하지 않습니다");
     } else if (telephone === "") {
       alert("전화번호를 입력해주세요");
+    } else if (checkedNick !== true) {
+      alert("닉네임 이용약관에 동의하셔야 합니다. ")
     } else {
       const post = {
         eEmail,
@@ -216,8 +225,14 @@ const Join = () => {
                     />
                     <styled_Join.AgreeSpan>
                       {/*체크 토글 버튼 만들기*/}
-                      <styled_Join.AgreeInput type={"checkbox"} />
-                      <styled_Join.AgreeLabel />
+                      <styled_Join.AIN
+                          type={"checkbox"}
+                          checkedNick={checkedNick}
+                      />
+                      <styled_Join.ALN
+                        onClick={onClickCheckedNick}
+                        checkedNick={checkedNick}
+                      />
                     </styled_Join.AgreeSpan>
                     {/*닉네임 이용약관 동의*/}
                     <NickAgree />
