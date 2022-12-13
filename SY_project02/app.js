@@ -62,7 +62,6 @@ app.use(
     },
   })
 );
-// app.use(authJwt);
 
 app.use(passport.initialize());
 app.use(passport.session());

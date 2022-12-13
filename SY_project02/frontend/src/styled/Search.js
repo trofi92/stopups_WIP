@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SearchButtonImg from "../image/SearchButtonImg.png"
+// import SearchButtonImg from "../image/SearchButtonImg.png"
 
 // 통합검색 전체 박스
 export const SBox = styled.div`
@@ -9,7 +9,7 @@ export const SBox = styled.div`
   border: 0;
   vertical-align: baseline;
   background: transparent;
-`
+`;
 
 // 통합검색 내용 전체 박스
 export const SInnerBox = styled.div`
@@ -18,7 +18,7 @@ export const SInnerBox = styled.div`
   margin-bottom: 90px;
   padding: 0;
   vertical-align: baseline;
-`
+`;
 
 // 통합검색 입력
 export const SFieldset = styled.fieldset`
@@ -26,7 +26,7 @@ export const SFieldset = styled.fieldset`
   padding: 0;
   border: 0;
   vertical-align: baseline;
-`
+`;
 
 export const SFBox = styled.div`
   position: relative;
@@ -36,12 +36,12 @@ export const SFBox = styled.div`
   padding: 0;
   vertical-align: baseline;
   line-height: 1;
-`
+`;
 
 export const SFStrong = styled.strong`
   color: #222;
   font-size: 18px;
-`
+`;
 
 // 통합검색 인풋
 export const SFInputBox = styled.div`
@@ -52,7 +52,7 @@ export const SFInputBox = styled.div`
   top: 40px;
   width: 502px;
   padding: 0;
-`
+`;
 
 export const SFInput = styled.input`
   border: 3px solid #006633;
@@ -68,17 +68,16 @@ export const SFInput = styled.input`
   vertical-align: middle;
   margin: 0;
   padding: 0;
-`
-
+`;
+//  background: url(${SearchButtonImg});
 export const SFIP = styled.p`
-  background: url(${SearchButtonImg});
   float: right;
   height: 45px;
   overflow: hidden;
   width: 45px;
   margin: 0;
   padding: 0;
-`
+`;
 
 // 통합검색 버튼
 export const SFButtonBox = styled.div`
@@ -86,12 +85,12 @@ export const SFButtonBox = styled.div`
   margin-top: 116px;
   width: 100%;
   padding: 0;
-`
+`;
 
 export const SFBUl = styled.ul`
   margin: 0 0 0 -0.963%;
   padding: 0;
-`
+`;
 
 export const SFBLi = styled.li`
   background: #f4f4f1;
@@ -104,7 +103,7 @@ export const SFBLi = styled.li`
   width: 19.036%;
   list-style: none;
   padding: 0;
-`
+`;
 
 // 버튼
 export const SFBLPA = styled.p`
@@ -139,7 +138,7 @@ export const SFBLPAG = styled.p`
   :hover {
     text-decoration: underline;
   }
-`
+`;
 
 
 export const SFBLP = styled.p`
@@ -150,20 +149,20 @@ export const SFBLP = styled.p`
   width: 100%;
   margin: 0;
   padding: 0;
-  
+
   :hover {
     color: white;
     background: #006633;
     text-decoration: underline;
   }
-`
+`;
 
 // 검색 결과가 없는 경우
 export const SNoResult = styled.p`
   text-align: center;
   padding-top: 100px;
   margin: 0;
-`
+`;
 
 // 검색 결과 공통
 export const SSection = styled.section`
@@ -172,7 +171,7 @@ export const SSection = styled.section`
   width: 100%;
   padding: 0;
   vertical-align: baseline;
-`
+`;
 
 // 검색 결과 공통 헤더
 export const SSHeader = styled.header`
@@ -183,7 +182,7 @@ export const SSHeader = styled.header`
   margin: 0;
   padding-top: 0;
   vertical-align: baseline;
-`
+`;
 
 export const SSHH2 = styled.h2`
   color: #222;
@@ -194,7 +193,7 @@ export const SSHH2 = styled.h2`
   padding: 0;
   margin-bottom: 0;
   line-height: 1;
-`
+`;
 
 export const SSHP = styled.p`
   background: #666;
@@ -207,18 +206,18 @@ export const SSHP = styled.p`
   line-height: 28px;
   padding: 0 20px;
   margin: 0;
-  
+
   :hover {
     text-decoration: underline;
   }
-`
+`;
 
 export const SSUl = styled.ul`
   margin: 0;
   padding: 0;
   border: 0;
   vertical-align: baseline;
-`
+`;
 
 export const SSLi = styled.li`
   border-bottom: 1px solid #ddd;
@@ -228,7 +227,7 @@ export const SSLi = styled.li`
   margin: 0;
   display: list-item;
   line-height: 1;
-`
+`;
 
 // 검색 결과가 없을 때 공통
 export const SSLP = styled.p`
@@ -236,7 +235,7 @@ export const SSLP = styled.p`
   padding-top: 10px;
   display: block;
   margin: 0;
-`
+`;
 
 // 이벤트 검색 결과가 있을 때
 export const SEFigure = styled.figure`
@@ -246,7 +245,7 @@ export const SEFigure = styled.figure`
   display: block;
   margin: 0;
   padding: 0;
-`
+`;
 // 이벤트 검색 결과가 있을 때 이미지
 export const SEFImg = styled.img`
   width: 100%;
@@ -254,14 +253,14 @@ export const SEFImg = styled.img`
   max-width: 100%;
   margin: 0;
   padding: 0;
-`
+`;
 // 이벤트 검색 결과가 있을 때 내용
 export const SEDiv = styled.div`
   margin-left: 20px;
   width: 65%;
   float: left;
   padding: 0;
-`
+`;
 
 export const SEDHeader = styled.header`
   float: left;
@@ -270,7 +269,7 @@ export const SEDHeader = styled.header`
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-`
+`;
 
 export const SEDHH3 = styled.h3`
   color: #444;
@@ -281,7 +280,7 @@ export const SEDHH3 = styled.h3`
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-`
+`;
 
 // 검색 단어와 같은 단어 노란색 표시
 export const SYellow = styled.span`
@@ -289,7 +288,7 @@ export const SYellow = styled.span`
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-`
+`;
 
 export const SEDHSpan = styled.span`
   background: #006633;
@@ -305,7 +304,7 @@ export const SEDHSpan = styled.span`
   padding: 0;
   vertical-align: baseline;
   margin-top: 3px;
-`
+`;
 
 export const SEDPDate = styled.p`
   color: #666;
@@ -314,7 +313,7 @@ export const SEDPDate = styled.p`
   margin-top: 10px;
   width: 100%;
   padding: 0;
-`
+`;
 
 export const SEDPLink = styled.p`
   float: left;
@@ -326,20 +325,17 @@ export const SEDPLink = styled.p`
   font-size: 12px;
   word-break: break-all;
   cursor: pointer;
-  
+
   :hover {
     text-decoration: underline;
   }
-`
+`;
 
 // 뉴스 검색 결과가 있을 때
 
-
 // 매장 이벤트 검색 결과가 있을 때
 
-
 // 원두 검색 결과가 있을 때
-
 
 // 음료 검색 결과가 있을 때
 export const SDFigure = styled.figure`
@@ -350,7 +346,7 @@ export const SDFigure = styled.figure`
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-`
+`;
 
 export const SDFImg = styled.img`
   width: 100%;
@@ -358,7 +354,7 @@ export const SDFImg = styled.img`
   max-width: 100%;
   margin: 0;
   padding: 0;
-`
+`;
 
 export const SDDiv = styled.div`
   margin-left: 20px;
@@ -367,19 +363,16 @@ export const SDDiv = styled.div`
   padding: 0;
   vertical-align: baseline;
   display: block;
-`
+`;
 
 export const SDDPText = styled.p`
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-`
+`;
 
 // 푸드 검색 결과가 있을 때
 
-
 // 상품 검색 결과가 있을 때
 
-
 // 매장 검색 결과가 있을 때
-

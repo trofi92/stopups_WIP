@@ -1,13 +1,21 @@
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
+const secret = process.env.JWT_SECRET;
+const option = {
+  maxAge: 1000 * 60 * 60, //쿠키 수명 1일
+  httpOnly: true,
+  overwrite: true,
+};
 
 const login = async (req, res, next) => {
   const { email, password } = req.body.data;
+
   req.body.email = email;
   req.body.password = password;
+
   passport.authenticate(
     "local",
-    { session: false },
+    { session: true },
     (authError, user, info) => {
       try {
         console.log("로그인에 authError=>", authError);
@@ -24,6 +32,7 @@ const login = async (req, res, next) => {
           return res.status(305).send(`${info.message}`);
         }
 
+        // authJwt(req?.body?.data);
         // user데이터를 통해 로그인 진행
         req.login(user, (loginError) => {
           // 비밀번호 에러
@@ -35,16 +44,13 @@ const login = async (req, res, next) => {
 
         const token = jwt.sign(
           { id: user.email, name: user.name },
-          process.env.JWT_SECRET,
+          secret,
           {
-            expiresIn: "7d", // 만료시간 7일
+            expiresIn: "1h", // 만료시간
           }
         );
 
-        res.cookie("accessJwtToken", token, {
-          maxAge: 1000 * 60 * 60 * 24 * 7,
-          httpOnly: true,
-        });
+        res.cookie("accessJwtToken", token, option);
         return res.status(200).json({
           code: 200,
           message: "토큰이 발급되었습니다.",
@@ -59,7 +65,9 @@ const login = async (req, res, next) => {
 };
 
 const logout = async (req, res, next) => {
-  res.cookie("accessJwtToken");
+  res.cookie("accessJwtToken", {
+    maxAge: 0,
+  });
   res.status = 204;
 };
 
@@ -77,4 +85,4 @@ const check = async (req, res) => {
   console.log(res.body);
 };
 
-module.exports = { login, logout, check };
+module.exports = { login, logout, check, secret, option };
