@@ -3,7 +3,7 @@ import React from "react";
 import * as styled_AB from "../styled/AllBox";
 import Header from "../components/Header/Header";
 import * as styled_Map from "../styled/Map";
-import {Footer} from "../components/Footer/Footer";
+import { Footer } from "../components/Footer/Footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -11,6 +11,15 @@ import MBImg from "../image/MBImg.png";
 import { MapMarker, Map } from "react-kakao-maps-sdk";
 
 const Map1 = () => {
+  const [state, setState] = React.useState({
+    center: {
+      lat: 33.450701,
+      lng: 126.570667,
+    },
+    errMsg: null,
+    isLoading: true,
+  });
+
   const mapScript = document.createElement("script");
 
   mapScript.async = true;
@@ -29,15 +38,6 @@ const Map1 = () => {
     });
   };
   mapScript.addEventListener("load", onLoadKakaoMap);
-
-  const [state, setState] = React.useState({
-    center: {
-      lat: 33.450701,
-      lng: 126.570667,
-    },
-    errMsg: null,
-    isLoading: true,
-  });
 
   React.useEffect(() => {
     const onGeoOk = (position) => {
@@ -97,36 +97,6 @@ const Map1 = () => {
     // if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
   }, []);
-  // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-  //   navigator.geolocation.getCurrentPosition(
-  //     (position) => {
-  //       setState((prev) => ({
-  //         ...prev,
-  //         center: {
-  //           lat: position.coords.latitude, // 위도
-  //           lng: position.coords.longitude, // 경도
-  //         },
-  //         isLoading: false,
-  //       }));
-  //     },
-  //     (err) => {
-  //       setState((prev) => ({
-  //         ...prev,
-  //         errMsg: err.message,
-  //         isLoading: false,
-  //       }));
-  //     }
-
-  // }
-  // else {
-  //   // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-  //   setState((prev) => ({
-  //     ...prev,
-  //     errMsg: "geolocation을 사용할수 없어요..",
-  //     isLoading: false,
-  //   }));
-  // }
-  // }, []);
 
   const settings = {
     dots: true,
@@ -140,24 +110,25 @@ const Map1 = () => {
     autoplaySpeed: 2000,
   };
 
-    return (
-        <styled_AB.AllBox>
-            <Header/>
+  return (
+    <styled_AB.AllBox>
+      <Header />
 
       {/*지도 전체 박스*/}
-      <MBox>
+      <styled_Map.MBox>
         {/*지도*/}
-        <Map
-          id="map"
-          center={state.center}
-          style={{
-            // 지도의 크기
-            width: "100%",
-            height: "450px",
-          }}
-          level={3}
-        >
-          {/* <MSection
+        <styled_Map.MSection>
+          <Map
+            id="map"
+            center={state.center}
+            style={{
+              // 지도의 크기
+              width: "100%",
+              height: "450px",
+            }}
+            level={3}
+          >
+            {/* <MSection
             id="map"
             center={state.center}
             style={{
@@ -167,106 +138,61 @@ const Map1 = () => {
             }}
             level={3}
           > */}
-          {!state.isLoading && (
-            <MapMarker position={state.center}>
-              <div style={{ padding: "5px", color: "#000" }}>
-                {state.errMsg ? state.errMsg : "여기에 계신가요?!"}
-              </div>
-            </MapMarker>
-          )}
-          {/* </MSection> */}
-        </Map>
-        <div id="weather">
-          <span></span>
-          <span></span>
-        </div>
+            {!state.isLoading && (
+              <MapMarker position={state.center}>
+                <div style={{ padding: "5px", color: "#000" }}>
+                  {state.errMsg ? state.errMsg : "여기에 계신가요?!"}
+                </div>
+              </MapMarker>
+            )}
+            {/* </MSection> */}
+          </Map>
+          <div id="weather">
+            <span></span>
+            <span></span>
+          </div>
+        </styled_Map.MSection>
+
         {/*매장에서 진행되는 이벤트*/}
-        <MBSection>
-          <MBSP>매장에서 진행되는 이벤트</MBSP>
-          <MBSDiv>
-            <MSDDiv>
+        <styled_Map.MBSection>
+          <styled_Map.MBSP>매장에서 진행되는 이벤트</styled_Map.MBSP>
+          <styled_Map.MBSDiv>
+            <styled_Map.MSDDiv>
               <Slider {...settings}>
-                <MSDDLi>
-                  <MSDDLImg src={MBImg} alt={"MBImg"} />
-                  <MSDDLP>
+                <styled_Map.MSDDLi>
+                  <styled_Map.MSDDLImg src={MBImg} alt={"MBImg"} />
+                  <styled_Map.MSDDLP>
                     준비중
                     <br />
-                    <MSDDLPSpan>-</MSDDLPSpan>
-                  </MSDDLP>
-                </MSDDLi>
-                <MSDDLi>
-                  <MSDDLImg src={MBImg} alt={"MBImg"} />
-                  <MSDDLP>
+                    <styled_Map.MSDDLPSpan>-</styled_Map.MSDDLPSpan>
+                  </styled_Map.MSDDLP>
+                </styled_Map.MSDDLi>
+                <styled_Map.MSDDLi>
+                  <styled_Map.MSDDLImg src={MBImg} alt={"MBImg"} />
+                  <styled_Map.MSDDLP>
                     준비중
                     <br />
-                    <MSDDLPSpan>-</MSDDLPSpan>
-                  </MSDDLP>
-                </MSDDLi>
-                <MSDDLi>
-                  <MSDDLImg src={MBImg} alt={"MBImg"} />
-                  <MSDDLP>
+                    <styled_Map.MSDDLPSpan>-</styled_Map.MSDDLPSpan>
+                  </styled_Map.MSDDLP>
+                </styled_Map.MSDDLi>
+                <styled_Map.MSDDLi>
+                  <styled_Map.MSDDLImg src={MBImg} alt={"MBImg"} />
+                  <styled_Map.MSDDLP>
                     준비중
                     <br />
-                    <MSDDLPSpan>-</MSDDLPSpan>
-                  </MSDDLP>
-                </MSDDLi>
+                    <styled_Map.MSDDLPSpan>-</styled_Map.MSDDLPSpan>
+                  </styled_Map.MSDDLP>
+                </styled_Map.MSDDLi>
               </Slider>
-            </MSDDiv>
+            </styled_Map.MSDDiv>
             {/*이전, 다음 버튼*/}
-            <MSButtonBox></MSButtonBox>
-          </MBSDiv>
-        </MBSection>
-      </MBox>
-            {/*지도 전체 박스*/}
-            <styled_Map.MBox>
-                {/*지도*/}
-                <styled_Map.MSection>
-
-                </styled_Map.MSection>
-
-                {/*매장에서 진행되는 이벤트*/}
-                <styled_Map.MBSection>
-                    <styled_Map.MBSP>매장에서 진행되는 이벤트</styled_Map.MBSP>
-                    <styled_Map.MBSDiv>
-                        <styled_Map.MSDDiv>
-                            <Slider {...settings}>
-                                <styled_Map.MSDDLi>
-                                    <styled_Map.MSDDLImg src={MBImg} alt={"MBImg"}/>
-                                    <styled_Map.MSDDLP>
-                                        준비중
-                                        <br/>
-                                        <styled_Map.MSDDLPSpan>-</styled_Map.MSDDLPSpan>
-                                    </styled_Map.MSDDLP>
-                                </styled_Map.MSDDLi>
-                                <styled_Map.MSDDLi>
-                                    <styled_Map.MSDDLImg src={MBImg} alt={"MBImg"}/>
-                                    <styled_Map.MSDDLP>
-                                        준비중
-                                        <br/>
-                                        <styled_Map.MSDDLPSpan>-</styled_Map.MSDDLPSpan>
-                                    </styled_Map.MSDDLP>
-                                </styled_Map.MSDDLi>
-                                <styled_Map.MSDDLi>
-                                    <styled_Map.MSDDLImg src={MBImg} alt={"MBImg"}/>
-                                    <styled_Map.MSDDLP>
-                                        준비중
-                                        <br/>
-                                        <styled_Map.MSDDLPSpan>-</styled_Map.MSDDLPSpan>
-                                    </styled_Map.MSDDLP>
-                                </styled_Map.MSDDLi>
-                            </Slider>
-                        </styled_Map.MSDDiv>
-                        {/*이전, 다음 버튼*/}
-                        <styled_Map.MSButtonBox>
-
-                        </styled_Map.MSButtonBox>
-                    </styled_Map.MBSDiv>
-                </styled_Map.MBSection>
-            </styled_Map.MBox>
+            <styled_Map.MSButtonBox></styled_Map.MSButtonBox>
+          </styled_Map.MBSDiv>
+        </styled_Map.MBSection>
+      </styled_Map.MBox>
 
       <Footer />
-    </AllBox>
+    </styled_AB.AllBox>
   );
 };
-
 export default Map1;
