@@ -1,6 +1,6 @@
-import {NLi, NLiP} from "../../../../styled/HeaderModal";
+import * as styled_HM from "../../../../styled/HeaderModal";
 import {Link} from "react-router-dom";
-import {HMButton} from "../../../../styled/Button";
+import * as styled_BU from "../../../../styled/Button";
 import {useState} from "react";
 import {SInner1} from "./StoreInner/SInner1";
 import {SInner2} from "./StoreInner/SInner2";
@@ -18,45 +18,45 @@ export const Store = () => {
 
     return (
         <>
-            <NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>한눈에 보기</NLiP>
+                    <styled_HM.NLiP>한눈에 보기</styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
-                <NLiP onClick={openToggle1}>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle1}>
                     매장 찾기
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open1 === true ? <SInner1/> : null}
-            <NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>
+                    <styled_HM.NLiP>
                         드라이브 스루 매장
-                    </NLiP>
+                    </styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>
+                    <styled_HM.NLiP>
                         스타벅스 리저브 매장
-                    </NLiP>
+                    </styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>
+                    <styled_HM.NLiP>
                         커뮤니티 스토어 매장
-                    </NLiP>
+                    </styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
-                <NLiP onClick={openToggle2}>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle2}>
                     매장 이야기
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open2 === true ? <SInner2/> : null}
         </>
     );

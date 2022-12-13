@@ -1,34 +1,23 @@
-import {
-    ESArticle,
-    ESDd,
-    ESDl,
-    ESDLA, ESDLDd,
-    ESDLDl,
-    ESDLDt, ESDLH4,
-    ESDLi,
-    ESDLImg, ESDLP,
-    ESDt,
-    ESDUl,
-    ESList
-} from "../../styled/Event/Event";
-import {Link} from "react-router-dom";
-import ESTitle from "../../image/Event/ESTitle.jpg";
+import * as styled_Event from "../../styled/Event/Event";
 
 
 export const ESCard = () => {
     return (
-        <ESArticle>
-            <ESList>
-                <ESDl>
+        <styled_Event.ESArticle>
+            <styled_Event.ESList>
+                <styled_Event.ESDl>
                     {/*진행 이벤트*/}
-                    <ESDt>진행 이벤트</ESDt>
-                    <ESDd>
-                    </ESDd>
+                    <styled_Event.ESDt>진행 이벤트</styled_Event.ESDt>
+                    <styled_Event.ESDd>
+
+                    </styled_Event.ESDd>
                     {/*종료 이벤트*/}
-                    <ESDt>종료 이벤트</ESDt>
-                    <ESDd></ESDd>
-                </ESDl>
-            </ESList>
-        </ESArticle>
+                    <styled_Event.ESDt>종료 이벤트</styled_Event.ESDt>
+                    <styled_Event.ESDd>
+
+                    </styled_Event.ESDd>
+                </styled_Event.ESDl>
+            </styled_Event.ESList>
+        </styled_Event.ESArticle>
     );
 };

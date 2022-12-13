@@ -1,6 +1,6 @@
-import {NLi, NLiP} from "../../../../styled/HeaderModal";
+import * as styled_HM from "../../../../styled/HeaderModal";
 import {Link} from "react-router-dom";
-import {HMButton} from "../../../../styled/Button";
+import * as styled_BU from "../../../../styled/Button";
 import {MInner1} from "./MenuInner/MInner1";
 import {useState} from "react";
 import {MInner2} from "./MenuInner/MInner2";
@@ -18,24 +18,24 @@ export const Menu = () => {
 
     return (
         <>
-            <NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>한눈에 보기</NLiP>
+                    <styled_HM.NLiP>한눈에 보기</styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
-                <NLiP onClick={openToggle1}>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle1}>
                     음료
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open1 === true ? <MInner1/> : null}
-            <NLi>
-                <NLiP onClick={openToggle2}>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle2}>
                     푸드
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open2 === true ? <MInner2/> : null}
         </>
     );

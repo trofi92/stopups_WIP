@@ -1,6 +1,6 @@
-import {NLi, NLiP} from "../../../../styled/HeaderModal";
+import * as styled_HM from "../../../../styled/HeaderModal";
 import {Link} from "react-router-dom";
-import {HMButton} from "../../../../styled/Button";
+import * as styled_BU from "../../../../styled/Button";
 import {useState} from "react";
 import {SRInner1} from "./StopUpsRewardsInner/SRInner1";
 import {SRInner2} from "./StopUpsRewardsInner/SRInner2";
@@ -24,31 +24,31 @@ export const StopUpsRewards = () => {
 
     return (
         <>
-            <NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>한눈에 보기</NLiP>
+                    <styled_HM.NLiP>한눈에 보기</styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
-                <NLiP onClick={openToggle1}>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle1}>
                     스탑업스 리워드
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open1 === true ? <SRInner1/> : null}
-            <NLi>
-                <NLiP onClick={openToggle2}>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle2}>
                     스탑업스 카드
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open2 === true ? <SRInner2/> : null}
-            <NLi>
-                <NLiP onClick={openToggle3}>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle3}>
                     스탑업스 e-Gift Card
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open3 === true ? <SRInner3/> : null}
         </>
     );

@@ -1,32 +1,32 @@
-import {NLUl, NLULi, NLULiP} from "../../../../../styled/HeaderModal";
+import * as styled_HM from "../../../../../styled/HeaderModal";
 import {Link} from "react-router-dom";
 
 export const MSInner3 = () => {
     return (
         <>
-            <NLUl>
-                <NLULi>
+            <styled_HM.NLUl>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             선물하기
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-                <NLULi>
+                </styled_HM.NLULi>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             선물 내역
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-                <NLULi>
+                </styled_HM.NLULi>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             장바구니 내역
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-            </NLUl>
+                </styled_HM.NLULi>
+            </styled_HM.NLUl>
         </>
     )
 }

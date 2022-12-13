@@ -1,6 +1,6 @@
-import {NLi, NLiP} from "../../../../styled/HeaderModal";
+import * as styled_HM from "../../../../styled/HeaderModal";
 import {Link} from "react-router-dom";
-import {HMButton} from "../../../../styled/Button";
+import * as styled_BU from "../../../../styled/Button";
 import {useState} from "react";
 import {MSInner6} from "./MyStopUpsInner/MSInner6";
 import {MSInner1} from "./MyStopUpsInner/MSInner1";
@@ -42,103 +42,103 @@ export const MyStopUps = () => {
 
     return (
         <>
-            <NLi>
+            <styled_HM.NLi>
                 {/*유저가 로그인한 경우 /myStopUps*/}
                 {/*로그인하지 않은 경우 /loginPlease*/}
                 <Link to={"/myStopUps"} style={{textDecoration: "none"}}>
-                    <NLiP>한눈에 보기</NLiP>
+                    <styled_HM.NLiP>한눈에 보기</styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
-                <NLiP onClick={openToggle1}>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle1}>
                     My 리워드
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open1 === true ? <MSInner1/> : null}
-            <NLi>
-                <NLiP onClick={openToggle2}>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle2}>
                     My 스탑업스 카드
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open2 === true ? <MSInner2/> : null}
-            <NLi>
-                <NLiP onClick={openToggle3}>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle3}>
                     My 스탑업스 e-Gift Card
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open3 === true ? <MSInner3/> : null}
-            <NLi>
-                <NLiP onClick={openToggle4}>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle4}>
                     My 쿠폰
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open4 === true ? <MSInner4/> : null}
-            <NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>
+                    <styled_HM.NLiP>
                         My 캘린더
-                    </NLiP>
+                    </styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
                 <Link to={"/favorite"} style={{textDecoration: "none"}}>
-                    <NLiP>
+                    <styled_HM.NLiP>
                         My 메뉴
-                    </NLiP>
+                    </styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
-                <NLiP onClick={openToggle5}>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle5}>
                     My e-프리퀀시
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open5 === true ? <MSInner5/> : null}
-            <NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>
+                    <styled_HM.NLiP>
                         My 고객의 소리
-                    </NLiP>
+                    </styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>
+                    <styled_HM.NLiP>
                         My 전자영수증
-                    </NLiP>
+                    </styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>
+                    <styled_HM.NLiP>
                         개인컵 리워드 설정
-                    </NLiP>
+                    </styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>
+                    <styled_HM.NLiP>
                         My DT Pass
-                    </NLiP>
+                    </styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
                 <Link to={"/cart"} style={{textDecoration: "none"}}>
-                    <NLiP>
+                    <styled_HM.NLiP>
                         장바구니
-                    </NLiP>
+                    </styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
-                <NLiP onClick={openToggle6}>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle6}>
                     개인정보관리
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open6 === true ? <MSInner6/> : null}
         </>
     );

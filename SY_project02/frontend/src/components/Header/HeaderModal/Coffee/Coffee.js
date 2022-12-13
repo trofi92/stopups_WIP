@@ -1,6 +1,6 @@
-import {NLi, NLiP} from "../../../../styled/HeaderModal";
+import * as styled_HM from "../../../../styled/HeaderModal";
 import {Link} from "react-router-dom";
-import {HMButton} from "../../../../styled/Button";
+import * as styled_BU from "../../../../styled/Button";
 import {useState} from "react";
 import {CInner1} from "./CoffeeInner/CInner1";
 import {CInner2} from "./CoffeeInner/CInner2";
@@ -36,45 +36,45 @@ export const Coffee = () => {
 
     return (
         <>
-            <NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>한눈에 보기</NLiP>
+                    <styled_HM.NLiP>한눈에 보기</styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
-                <NLiP onClick={openToggle1}>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle1}>
                     커피
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open1 === true ? <CInner1/> : null}
-            <NLi>
-                <NLiP onClick={openToggle2}>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle2}>
                     커피 이야기
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open2 === true ? <CInner2/> : null}
-            <NLi>
-                <NLiP onClick={openToggle3}>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle3}>
                     스탑업스 리저브
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open3 === true ? <CInner3/> : null}
-            <NLi>
-                <NLiP onClick={openToggle4}>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle4}>
                     에스프레소 음료
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open4 === true ? <CInner4/> : null}
-            <NLi>
-                <NLiP onClick={openToggle5}>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle5}>
                     최상의 커피를 즐기는 법
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open5 === true ? <CInner5/> : null}
         </>
     );

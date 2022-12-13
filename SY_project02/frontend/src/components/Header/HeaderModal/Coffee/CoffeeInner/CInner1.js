@@ -1,39 +1,39 @@
-import {NLUl, NLULi, NLULiP} from "../../../../../styled/HeaderModal";
+import * as styled_HM from "../../../../../styled/HeaderModal";
 import {Link} from "react-router-dom";
 
 export const CInner1 = () => {
     return (
         <>
-            <NLUl>
-                <NLULi>
+            <styled_HM.NLUl>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             스탑업스 원두
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-                <NLULi>
+                </styled_HM.NLULi>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             스탑업스 비아
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-                <NLULi>
+                </styled_HM.NLULi>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             스탑업스앳홈 by 캡슐
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-                <NLULi>
+                </styled_HM.NLULi>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             나와 어울리는 커피
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-            </NLUl>
+                </styled_HM.NLULi>
+            </styled_HM.NLUl>
         </>
     )
 }

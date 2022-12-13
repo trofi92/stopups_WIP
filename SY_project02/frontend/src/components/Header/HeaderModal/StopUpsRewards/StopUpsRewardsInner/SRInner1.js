@@ -1,39 +1,39 @@
-import {NLUl, NLULi, NLULiP} from "../../../../../styled/HeaderModal";
+import * as styled_HM from "../../../../../styled/HeaderModal";
 import {Link} from "react-router-dom";
 
 export const SRInner1 = () => {
     return (
         <>
-            <NLUl>
-                <NLULi>
+            <styled_HM.NLUl>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             스탑업스 리워드 소개
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-                <NLULi>
+                </styled_HM.NLULi>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             등급 및 혜택
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-                <NLULi>
+                </styled_HM.NLULi>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             스탑업스 별
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-                <NLULi>
+                </styled_HM.NLULi>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             자주 하는 질문
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-            </NLUl>
+                </styled_HM.NLULi>
+            </styled_HM.NLUl>
         </>
     )
 }

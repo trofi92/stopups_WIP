@@ -1,20 +1,15 @@
-import {
-    ABox,
-    ABSBox,
-    ABSIBP,
-    ABSInnerBox
-} from "../../styled/Join/JoinAgreeBox";
+import * as styled_JoinAB from "../../styled/Join/JoinAgreeBox";
 import "./css/homePageAgree.css"
 
 export const HomePageAgree = () => {
     return (
         <>
             {/*홈페이지 이용약관 동의*/}
-            <ABox>
-                <ABSBox> {/*임시로 스크롤*/}
+            <styled_JoinAB.ABox>
+                <styled_JoinAB.ABSBox> {/*임시로 스크롤*/}
                     {/*안쪽 박스*/}
-                    <ABSInnerBox>
-                        <ABSIBP>
+                    <styled_JoinAB.ABSInnerBox>
+                        <styled_JoinAB.ABSIBP>
                             <div>
                                 <div className={"privacy_cont"}>
                                     {/*홈페이지 이용 약관*/}
@@ -1972,8 +1967,8 @@ export const HomePageAgree = () => {
                                 </div>
 
                             </div>
-                        </ABSIBP>
-                    </ABSInnerBox>
+                        </styled_JoinAB.ABSIBP>
+                    </styled_JoinAB.ABSInnerBox>
                     {/*스크롤 박스*/}
                     {/*이걸 어떻게 스크롤 박스랑 연결하느냐가 문제....*/}
                     {/*<ABSScrollBox>*/}
@@ -1986,8 +1981,8 @@ export const HomePageAgree = () => {
                     {/*        <ABSSBCRail/>*/}
                     {/*    </ABSSBContainer>*/}
                     {/*</ABSScrollBox>*/}
-                </ABSBox>
-            </ABox>
+                </styled_JoinAB.ABSBox>
+            </styled_JoinAB.ABox>
         </>
     )
 }

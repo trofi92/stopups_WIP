@@ -1,13 +1,13 @@
-import {ABox, ABSBox, ABSInnerBox, ABSIBP} from "../../styled/Join/JoinAgreeBox";
+import * as styled_JoinAB from "../../styled/Join/JoinAgreeBox";
 import "./css/homePageAgree.css"
 
 export const NickAgree = () => {
     return (
         <>
-            <ABox>
-                <ABSBox>
-                    <ABSInnerBox>
-                        <ABSIBP>
+            <styled_JoinAB.ABox>
+                <styled_JoinAB.ABSBox>
+                    <styled_JoinAB.ABSInnerBox>
+                        <styled_JoinAB.ABSIBP>
                             <div>
                                 <div className="privacy_cont">
                                     <p className="mb15">
@@ -70,10 +70,10 @@ export const NickAgree = () => {
                                     </ul>
                                 </div>
                             </div>
-                        </ABSIBP>
-                    </ABSInnerBox>
-                </ABSBox>
-            </ABox>
+                        </styled_JoinAB.ABSIBP>
+                    </styled_JoinAB.ABSInnerBox>
+                </styled_JoinAB.ABSBox>
+            </styled_JoinAB.ABox>
         </>
     )
 }

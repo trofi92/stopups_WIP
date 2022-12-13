@@ -1,20 +1,12 @@
-import {AllBox} from "../../styled/AllBox";
+import * as styled_AB from "../../styled/AllBox";
 import Header from "../../components/Header/Header";
-import {MIPBox, MIPDiv, RFSDInputMIP} from "../../styled/MyInfo/MIPassword";
-import {
-    RFSDInput,
-    RFSection,
-    RFSectionDiv,
-    RFSectionImg,
-    RFSectionP,
-    RFSectionStrong,
-    RFStrong
-} from "../../styled/Join/Join";
-import {LFB, LFFFieldset, LFInner} from "../../styled/Login/Login";
-import {MIEmailInput} from "../../styled/MyInfo/MyInfo";
+import * as styled_MIP from "../../styled/MyInfo/MIPassword";
+import * as styled_Join from "../../styled/Join/Join";
+import * as styled_LOG from "../../styled/Login/Login";
+import * as styled_MI from "../../styled/MyInfo/MyInfo";
 import {checkPassword, checkPasswordConfirm} from "../../components/join/JoinRegex";
 import {useState} from "react";
-import {LJButton} from "../../styled/Button";
+import * as styled_BU from "../../styled/Button";
 import {Footer} from "../../components/Footer/Footer";
 
 const MIPassword = () => {
@@ -45,41 +37,41 @@ const MIPassword = () => {
     }
 
     return (
-        <AllBox>
+        <styled_AB.AllBox>
             <Header/>
 
-            <MIPBox>
-                <LFB>
-                    <LFInner>
+            <styled_MIP.MIPBox>
+                <styled_LOG.LFB>
+                    <styled_LOG.LFInner>
                         <form>
-                            <LFFFieldset>
-                                <RFStrong>비밀번호 변경</RFStrong>
-                                <RFSection>
-                                    <RFSectionImg/>
-                                    <RFSectionP>새로운 비밀번호로 변경 하실 수 있습니다.</RFSectionP>
-                                    <MIPDiv>
-                                        <RFSectionStrong>
+                            <styled_LOG.LFFFieldset>
+                                <styled_Join.RFStrong>비밀번호 변경</styled_Join.RFStrong>
+                                <styled_Join.RFSection>
+                                    <styled_Join.RFSectionImg/>
+                                    <styled_Join.RFSectionP>새로운 비밀번호로 변경 하실 수 있습니다.</styled_Join.RFSectionP>
+                                    <styled_MIP.MIPDiv>
+                                        <styled_Join.RFSectionStrong>
                                             이메일
-                                        </RFSectionStrong>
-                                        <MIEmailInput>유저 이메일</MIEmailInput>
-                                    </MIPDiv>
-                                    <MIPDiv>
-                                        <RFSectionStrong>
+                                        </styled_Join.RFSectionStrong>
+                                        <styled_MI.MIEmailInput>유저 이메일</styled_MI.MIEmailInput>
+                                    </styled_MIP.MIPDiv>
+                                    <styled_MIP.MIPDiv>
+                                        <styled_Join.RFSectionStrong>
                                             현재 비밀번호
-                                        </RFSectionStrong>
+                                        </styled_Join.RFSectionStrong>
                                         {/*비밀번호를 입력하지 않은 경우 표시*/}
                                         {/*현재 비밀번호와 같지 않을 경우 표시*/}
-                                        <RFSDInput
+                                        <styled_Join.RFSDInput
                                             type={"text"}
                                             placeholder={"비밀번호를 입력 해주세요."}
                                             required
                                         />
-                                    </MIPDiv>
-                                    <MIPDiv>
-                                        <RFSectionStrong>
+                                    </styled_MIP.MIPDiv>
+                                    <styled_MIP.MIPDiv>
+                                        <styled_Join.RFSectionStrong>
                                             새 비밀번호
-                                        </RFSectionStrong>
-                                        <RFSDInput
+                                        </styled_Join.RFSectionStrong>
+                                        <styled_Join.RFSDInput
                                             type={"password"}
                                             id={"registerPassword"}
                                             name={"password"}
@@ -87,7 +79,7 @@ const MIPassword = () => {
                                             onChange={handlePasswordChange}
                                             required
                                         />
-                                        <RFSDInputMIP
+                                        <styled_MIP.RFSDInputMIP
                                             type={"password"}
                                             id={"registerPasswordConfirm"}
                                             name={"passwordConfirm"}
@@ -96,17 +88,17 @@ const MIPassword = () => {
                                             required
                                         />
                                         {/*일치할 경우 "비밀번호가 일치합니다" 여기에 뜨게 만들기*/}
-                                    </MIPDiv>
-                                </RFSection>
-                            </LFFFieldset>
-                            <LJButton onSubmit={submitPassword}>확인</LJButton>
+                                    </styled_MIP.MIPDiv>
+                                </styled_Join.RFSection>
+                            </styled_LOG.LFFFieldset>
+                            <styled_BU.LJButton onSubmit={submitPassword}>확인</styled_BU.LJButton>
                         </form>
-                    </LFInner>
-                </LFB>
-            </MIPBox>
+                    </styled_LOG.LFInner>
+                </styled_LOG.LFB>
+            </styled_MIP.MIPBox>
 
             <Footer/>
-        </AllBox>
+        </styled_AB.AllBox>
     );
 };
 

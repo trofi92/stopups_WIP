@@ -1,22 +1,22 @@
-import {RMagazine, RMBBInner, RMBBIP, RMButtonBox, RMInner, RMVImg, RMVisual} from "../../styled/Main";
+import * as styled_Main from "../../styled/Main";
 import {Link} from "react-router-dom";
 import RMImg from "../../image/Main/MRMagazine/RMImg.jpg"
 
 export const MRMagazine = () => {
     return (
-        <RMagazine>
-            <RMInner>
-                <RMVisual>
-                    <RMVImg src={RMImg} alt={"RMImg"}/>
-                </RMVisual>
-                <RMButtonBox>
-                    <RMBBInner>
+        <styled_Main.RMagazine>
+            <styled_Main.RMInner>
+                <styled_Main.RMVisual>
+                    <styled_Main.RMVImg src={RMImg} alt={"RMImg"}/>
+                </styled_Main.RMVisual>
+                <styled_Main.RMButtonBox>
+                    <styled_Main.RMBBInner>
                         <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
-                            <RMBBIP>자세히 보기</RMBBIP>
+                            <styled_Main.RMBBIP>자세히 보기</styled_Main.RMBBIP>
                         </Link>
-                    </RMBBInner>
-                </RMButtonBox>
-            </RMInner>
-        </RMagazine>
+                    </styled_Main.RMBBInner>
+                </styled_Main.RMButtonBox>
+            </styled_Main.RMInner>
+        </styled_Main.RMagazine>
     );
 };

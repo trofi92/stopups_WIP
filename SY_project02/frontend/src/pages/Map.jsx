@@ -1,17 +1,6 @@
-import {AllBox} from "../styled/AllBox";
+import * as styled_AB from "../styled/AllBox";
 import Header from "../components/Header/Header";
-import {
-    MBox,
-    MBSDiv,
-    MBSection,
-    MBSP, MSButtonBox,
-    MSDDiv,
-    MSDDLi,
-    MSDDLImg,
-    MSDDLP,
-    MSDDLPSpan,
-    MSection
-} from "../styled/Map";
+import * as styled_Map from "../styled/Map";
 import {Footer} from "../components/Footer/Footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -32,58 +21,58 @@ const Map = () => {
     };
 
     return (
-        <AllBox>
+        <styled_AB.AllBox>
             <Header/>
 
             {/*지도 전체 박스*/}
-            <MBox>
+            <styled_Map.MBox>
                 {/*지도*/}
-                <MSection>
+                <styled_Map.MSection>
 
-                </MSection>
+                </styled_Map.MSection>
 
                 {/*매장에서 진행되는 이벤트*/}
-                <MBSection>
-                    <MBSP>매장에서 진행되는 이벤트</MBSP>
-                    <MBSDiv>
-                        <MSDDiv>
+                <styled_Map.MBSection>
+                    <styled_Map.MBSP>매장에서 진행되는 이벤트</styled_Map.MBSP>
+                    <styled_Map.MBSDiv>
+                        <styled_Map.MSDDiv>
                             <Slider {...settings}>
-                                <MSDDLi>
-                                    <MSDDLImg src={MBImg} alt={"MBImg"}/>
-                                    <MSDDLP>
+                                <styled_Map.MSDDLi>
+                                    <styled_Map.MSDDLImg src={MBImg} alt={"MBImg"}/>
+                                    <styled_Map.MSDDLP>
                                         준비중
                                         <br/>
-                                        <MSDDLPSpan>-</MSDDLPSpan>
-                                    </MSDDLP>
-                                </MSDDLi>
-                                <MSDDLi>
-                                    <MSDDLImg src={MBImg} alt={"MBImg"}/>
-                                    <MSDDLP>
+                                        <styled_Map.MSDDLPSpan>-</styled_Map.MSDDLPSpan>
+                                    </styled_Map.MSDDLP>
+                                </styled_Map.MSDDLi>
+                                <styled_Map.MSDDLi>
+                                    <styled_Map.MSDDLImg src={MBImg} alt={"MBImg"}/>
+                                    <styled_Map.MSDDLP>
                                         준비중
                                         <br/>
-                                        <MSDDLPSpan>-</MSDDLPSpan>
-                                    </MSDDLP>
-                                </MSDDLi>
-                                <MSDDLi>
-                                    <MSDDLImg src={MBImg} alt={"MBImg"}/>
-                                    <MSDDLP>
+                                        <styled_Map.MSDDLPSpan>-</styled_Map.MSDDLPSpan>
+                                    </styled_Map.MSDDLP>
+                                </styled_Map.MSDDLi>
+                                <styled_Map.MSDDLi>
+                                    <styled_Map.MSDDLImg src={MBImg} alt={"MBImg"}/>
+                                    <styled_Map.MSDDLP>
                                         준비중
                                         <br/>
-                                        <MSDDLPSpan>-</MSDDLPSpan>
-                                    </MSDDLP>
-                                </MSDDLi>
+                                        <styled_Map.MSDDLPSpan>-</styled_Map.MSDDLPSpan>
+                                    </styled_Map.MSDDLP>
+                                </styled_Map.MSDDLi>
                             </Slider>
-                        </MSDDiv>
+                        </styled_Map.MSDDiv>
                         {/*이전, 다음 버튼*/}
-                        <MSButtonBox>
+                        <styled_Map.MSButtonBox>
 
-                        </MSButtonBox>
-                    </MBSDiv>
-                </MBSection>
-            </MBox>
+                        </styled_Map.MSButtonBox>
+                    </styled_Map.MBSDiv>
+                </styled_Map.MBSection>
+            </styled_Map.MBox>
 
             <Footer/>
-        </AllBox>
+        </styled_AB.AllBox>
     );
 };
 

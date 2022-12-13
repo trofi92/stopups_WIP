@@ -1,32 +1,32 @@
-import {NLUl, NLULi, NLULiP} from "../../../../../styled/HeaderModal";
+import * as styled_HM from "../../../../../styled/HeaderModal";
 import {Link} from "react-router-dom";
 
 export const RInner3 = () => {
     return (
         <>
-            <NLUl>
-                <NLULi>
+            <styled_HM.NLUl>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             윤리적 원두 구매
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-                <NLULi>
+                </styled_HM.NLULi>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             공정무역 인증
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-                <NLULi>
+                </styled_HM.NLULi>
+                <styled_HM.NLULi>
                     <Link to={"/"} style={{textDecoration: "none"}}>
-                        <NLULiP>
+                        <styled_HM.NLULiP>
                             커피 농가 지원 활동
-                        </NLULiP>
+                        </styled_HM.NLULiP>
                     </Link>
-                </NLULi>
-            </NLUl>
+                </styled_HM.NLULi>
+            </styled_HM.NLUl>
         </>
     )
 }

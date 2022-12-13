@@ -1,6 +1,6 @@
-import {NLi, NLiP} from "../../../../styled/HeaderModal";
+import * as styled_HM from "../../../../styled/HeaderModal";
 import {Link} from "react-router-dom";
-import {HMButton} from "../../../../styled/Button";
+import * as styled_BU from "../../../../styled/Button";
 import {useState} from "react";
 import {CSInner1} from "./CorporateSalesInner/CSInner1";
 
@@ -12,17 +12,17 @@ export const CorporateSales = () => {
 
     return (
         <>
-            <NLi>
-                <NLiP>단체 및 기업 구매 안내</NLiP>
-            </NLi>
-            <NLi>
+            <styled_HM.NLi>
+                <styled_HM.NLiP>단체 및 기업 구매 안내</styled_HM.NLiP>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP onClick={openToggle1}>
+                    <styled_HM.NLiP onClick={openToggle1}>
                         단체 주문 배달 안내
-                        <HMButton/>
-                    </NLiP>
+                        <styled_BU.HMButton/>
+                    </styled_HM.NLiP>
                 </Link>
-            </NLi>
+            </styled_HM.NLi>
             {open1 === true ? <CSInner1/> : null}
         </>
     );

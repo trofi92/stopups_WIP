@@ -1,6 +1,6 @@
-import {NLi, NLiP} from "../../../../styled/HeaderModal";
+import * as styled_HM from "../../../../styled/HeaderModal";
 import {Link} from "react-router-dom";
-import {HMButton} from "../../../../styled/Button";
+import * as styled_BU from "../../../../styled/Button";
 import {useState} from "react";
 import {WInner1} from "./WhatsNewInner/WInner1";
 import {WInner2} from "./WhatsNewInner/WInner2";
@@ -24,42 +24,42 @@ export const WhatsNew = () => {
 
     return (
         <>
-            <NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>한눈에 보기</NLiP>
+                    <styled_HM.NLiP>한눈에 보기</styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
-                <NLiP onClick={openToggle1}>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle1}>
                     이벤트
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open1 === true ? <WInner1/> : null}
-            <NLi>
-                <NLiP onClick={openToggle2}>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle2}>
                     뉴스
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open2 === true ? <WInner2/> : null}
-            <NLi>
-                <NLiP onClick={openToggle3}>
+            <styled_HM.NLi>
+                <styled_HM.NLiP onClick={openToggle3}>
                     매장별 이벤트
-                    <HMButton/>
-                </NLiP>
-            </NLi>
+                    <styled_BU.HMButton/>
+                </styled_HM.NLiP>
+            </styled_HM.NLi>
             {open3 === true ? <WInner3/> : null}
-            <NLi>
+            <styled_HM.NLi>
                 <Link to={"/notice"} style={{textDecoration: "none"}}>
-                    <NLiP>공지사항</NLiP>
+                    <styled_HM.NLiP>공지사항</styled_HM.NLiP>
                 </Link>
-            </NLi>
-            <NLi>
+            </styled_HM.NLi>
+            <styled_HM.NLi>
                 <Link to={"/"} style={{textDecoration: "none"}}>
-                    <NLiP>월페이퍼</NLiP>
+                    <styled_HM.NLiP>월페이퍼</styled_HM.NLiP>
                 </Link>
-            </NLi>
+            </styled_HM.NLi>
         </>
     );
 };

@@ -1,18 +1,7 @@
 import axios from "axios";
-import {
-    HM,
-    HMBg,
-    HMBIAside,
-    HMBIAsideP,
-    HMBInner,
-    HMBox,
-    HMSearch,
-    HMSIInput,
-    HMSInner,
-    HMSIP, Nav, NLiFirstTitle, NLiTitle, NLiTitleP, NUl
-} from "../../../styled/HeaderModal";
+import * as styled_HM from "../../../styled/HeaderModal";
 import {useRef, useState} from "react";
-import {HMTButton} from "../../../styled/Button";
+import * as styled_BU from "../../../styled/Button";
 import {MyStopUps} from "./MyStopUps/MyStopUps";
 import {Coffee} from "./Coffee/Coffee";
 import {Menu} from "./Menu/Menu";
@@ -85,94 +74,94 @@ const HeaderModal = ({modalClose}) => {
     }
 
     return (
-        <HM>
+        <styled_HM.HM>
             {/*모달 뒷배경*/}
-            <HMBg/>
+            <styled_HM.HMBg/>
             {/*모달 전체 박스*/}
-            <HMBox>
-                <HMBInner>
+            <styled_HM.HMBox>
+                <styled_HM.HMBInner>
                     {/*닫기 버튼*/}
-                    <HMBIAside>
-                        <HMBIAsideP onClick={modalClose}/>
-                    </HMBIAside>
+                    <styled_HM.HMBIAside>
+                        <styled_HM.HMBIAsideP onClick={modalClose}/>
+                    </styled_HM.HMBIAside>
                     {/*검색*/}
                     {/*공백일 경우 alert(검색어를 입력하세요.)*/}
                     {/*공백이 아닐 경우 값과 함께 /serach 페이지로 이동*/}
-                    <HMSearch>
-                        <HMSInner>
-                            <HMSIInput
+                    <styled_HM.HMSearch>
+                        <styled_HM.HMSInner>
+                            <styled_HM.HMSIInput
                                 type={"text"}
                                 onChange={handleSearch}
                                 ref={searchRef}
                                 search={search}
                                 />
-                            <HMSIP onClick={onSearchSubmit}>Search</HMSIP>
-                        </HMSInner>
-                    </HMSearch>
+                            <styled_HM.HMSIP onClick={onSearchSubmit}>Search</styled_HM.HMSIP>
+                        </styled_HM.HMSInner>
+                    </styled_HM.HMSearch>
                     {/*Nav*/}
-                    <Nav>
-                        <NUl>
-                            <NLiFirstTitle>
-                                <NLiTitleP onClick={myStopUpsToggle}>
+                    <styled_HM.Nav>
+                        <styled_HM.NUl>
+                            <styled_HM.NLiFirstTitle>
+                                <styled_HM.NLiTitleP onClick={myStopUpsToggle}>
                                     My StopUps
-                                    <HMTButton/>
-                                </NLiTitleP>
-                            </NLiFirstTitle>
+                                    <styled_BU.HMTButton/>
+                                </styled_HM.NLiTitleP>
+                            </styled_HM.NLiFirstTitle>
                             {openMyStopUps === true ? <MyStopUps/> : null}
-                            <NLiTitle onClick={coffeeToggle}>
-                                <NLiTitleP>
+                            <styled_HM.NLiTitle onClick={coffeeToggle}>
+                                <styled_HM.NLiTitleP>
                                      COFFEE
-                                    <HMTButton/>
-                                </NLiTitleP>
-                            </NLiTitle>
+                                    <styled_BU.HMTButton/>
+                                </styled_HM.NLiTitleP>
+                            </styled_HM.NLiTitle>
                             {openCoffee === true ? <Coffee/> : null}
-                            <NLiTitle onClick={menuToggle}>
-                                <NLiTitleP>
+                            <styled_HM.NLiTitle onClick={menuToggle}>
+                                <styled_HM.NLiTitleP>
                                     MENU
-                                    <HMTButton/>
-                                </NLiTitleP>
-                            </NLiTitle>
+                                    <styled_BU.HMTButton/>
+                                </styled_HM.NLiTitleP>
+                            </styled_HM.NLiTitle>
                             {openMenu === true ? <Menu/> : null}
-                            <NLiTitle onClick={storeToggle}>
-                                <NLiTitleP>
+                            <styled_HM.NLiTitle onClick={storeToggle}>
+                                <styled_HM.NLiTitleP>
                                     STORE
-                                    <HMTButton/>
-                                </NLiTitleP>
-                            </NLiTitle>
+                                    <styled_BU.HMTButton/>
+                                </styled_HM.NLiTitleP>
+                            </styled_HM.NLiTitle>
                             {openStore === true ? <Store/> : null}
-                            <NLiTitle onClick={responsibilityToggle}>
-                                <NLiTitleP>
+                            <styled_HM.NLiTitle onClick={responsibilityToggle}>
+                                <styled_HM.NLiTitleP>
                                     RESPONSIBILITY
-                                    <HMTButton/>
-                                </NLiTitleP>
-                            </NLiTitle>
+                                    <styled_BU.HMTButton/>
+                                </styled_HM.NLiTitleP>
+                            </styled_HM.NLiTitle>
                             {openResponsibility === true ? <Responsibility/> : null}
-                            <NLiTitle onClick={stopUpsRewardsToggle}>
-                                <NLiTitleP>
+                            <styled_HM.NLiTitle onClick={stopUpsRewardsToggle}>
+                                <styled_HM.NLiTitleP>
                                     StopUps Rewards
-                                    <HMTButton/>
-                                </NLiTitleP>
-                            </NLiTitle>
+                                    <styled_BU.HMTButton/>
+                                </styled_HM.NLiTitleP>
+                            </styled_HM.NLiTitle>
                             {openStopUpsRewards === true ? <StopUpsRewards/> : null}
-                            <NLiTitle onClick={corporateSalesToggle}>
-                                <NLiTitleP>
+                            <styled_HM.NLiTitle onClick={corporateSalesToggle}>
+                                <styled_HM.NLiTitleP>
                                     CORPORATE SALES
-                                    <HMTButton/>
-                                </NLiTitleP>
-                            </NLiTitle>
+                                    <styled_BU.HMTButton/>
+                                </styled_HM.NLiTitleP>
+                            </styled_HM.NLiTitle>
                             {openCorporateSales === true ? <CorporateSales/> : null}
-                            <NLiTitle onClick={whatsNewToggle}>
-                                <NLiTitleP>
+                            <styled_HM.NLiTitle onClick={whatsNewToggle}>
+                                <styled_HM.NLiTitleP>
                                     WHAT'S NEW
-                                    <HMTButton/>
-                                </NLiTitleP>
-                            </NLiTitle>
+                                    <styled_BU.HMTButton/>
+                                </styled_HM.NLiTitleP>
+                            </styled_HM.NLiTitle>
                             {openWhatsNew === true ? <WhatsNew/> : null}
-                        </NUl>
-                    </Nav>
-                </HMBInner>
-            </HMBox>
-        </HM>
+                        </styled_HM.NUl>
+                    </styled_HM.Nav>
+                </styled_HM.HMBInner>
+            </styled_HM.HMBox>
+        </styled_HM.HM>
     );
 };
 

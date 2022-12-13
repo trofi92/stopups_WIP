@@ -1,27 +1,12 @@
 import axios from "axios";
 import { useState } from "react"; // 상태 값 저장
 import { useNavigate } from "react-router-dom"; // 페이지 리렌더링 용도
-import { AllBox } from "../../../styled/AllBox";
+import * as styled_AB from "../../../styled/AllBox";
 import Header from "../../../components/Header/Header";
 import { Footer } from "../../../components/Footer/Footer";
-import {
-  PBox,
-  PInputBox,
-  PInputPhone,
-  PPhoneButton,
-  PSection,
-  PSectionDiv,
-} from "../../../styled/Pass";
-import {
-  LFB,
-  LFFFieldset,
-  LFInner,
-} from "../../../styled/Login/Login";
-import {
-  RFSectionP,
-  RFSectionStrong,
-  RFStrong,
-} from "../../../styled/Join/Join";
+import * as styled_Pass from "../../../styled/Pass";
+import * as styled_LOG from "../../../styled/Login/Login";
+import * as styled_Join from "../../../styled/Join/Join";
 
 const LIdPass = () => {
     const [show, setShow] = useState(false); // 휴대전화 입력 여부 상태 저장
@@ -61,51 +46,51 @@ const LIdPass = () => {
   };
 
   return (
-    <AllBox>
+    <styled_AB.AllBox>
       <Header />
 
-      <PBox>
-        <LFB>
-          <LFInner>
-            <LFFFieldset>
-              <RFStrong>문자(SMS) 인증</RFStrong>
-              <PSection>
-                <RFSectionP>
+      <styled_Pass.PBox>
+        <styled_LOG.LFB>
+          <styled_LOG.LFInner>
+            <styled_LOG.LFFFieldset>
+              <styled_Join.RFStrong>문자(SMS) 인증</styled_Join.RFStrong>
+              <styled_Pass.PSection>
+                <styled_Join.RFSectionP>
                   휴대폰 문자(SMS) 인증단계입니다.
-                </RFSectionP>
-                <PSectionDiv>
+                </styled_Join.RFSectionP>
+                <styled_Pass.PSectionDiv>
                   {/*번호 입력란*/}
-                  <RFSectionStrong>휴대폰번호</RFSectionStrong>
-                  <PInputBox>
+                  <styled_Join.RFSectionStrong>휴대폰번호</styled_Join.RFSectionStrong>
+                  <styled_Pass.PInputBox>
                     <form onSubmit={phoneSubmit}>
-                      <PInputPhone
+                      <styled_Pass.PInputPhone
                         placeholder="숫자만 입력"
                         name="phone_number"
                       />
-                      <PPhoneButton>확인</PPhoneButton>
+                      <styled_Pass.PPhoneButton>확인</styled_Pass.PPhoneButton>
                     </form>
-                  </PInputBox>
+                  </styled_Pass.PInputBox>
 
                   {/*인증번호 입력란*/}
-                  <RFSectionStrong>인증번호</RFSectionStrong>
-                  <PInputBox>
+                  <styled_Join.RFSectionStrong>인증번호</styled_Join.RFSectionStrong>
+                  <styled_Pass.PInputBox>
                     <form onSubmit={authSubmit}>
-                      <PInputPhone
+                      <styled_Pass.PInputPhone
                         placeholder="숫자 4자리 입력"
                         name="phone_number"
                       />
-                      <PPhoneButton>확인</PPhoneButton>
+                      <styled_Pass.PPhoneButton>확인</styled_Pass.PPhoneButton>
                     </form>
-                  </PInputBox>
-                </PSectionDiv>
-              </PSection>
-            </LFFFieldset>
-          </LFInner>
-        </LFB>
-      </PBox>
+                  </styled_Pass.PInputBox>
+                </styled_Pass.PSectionDiv>
+              </styled_Pass.PSection>
+            </styled_LOG.LFFFieldset>
+          </styled_LOG.LFInner>
+        </styled_LOG.LFB>
+      </styled_Pass.PBox>
 
       <Footer />
-    </AllBox>
+    </styled_AB.AllBox>
   );
 };
 

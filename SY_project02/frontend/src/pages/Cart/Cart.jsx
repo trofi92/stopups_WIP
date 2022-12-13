@@ -1,51 +1,12 @@
-import {AllBox} from "../../styled/AllBox";
+import * as styled_AB from "../../styled/AllBox";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
-import {
-    FBox,
-    FCBox,
-    FContentsAllBox,
-    FCSection1,
-    FCSection2,
-    FCSectionP,
-    FCSH5,
-    FHeader,
-    FHTInner,
-    FHTInnerH4,
-    FHTitle
-} from "../../styled/Favorite";
+import * as styled_F from "../../styled/Favorite";
 import CTitle from "../../image/Cart/CTitle.png"
-import {
-    CBTitle,
-    CBTSpan,
-    CBTSpanColor,
-    CDiv,
-    CFACInput,
-    CFAllCheck,
-    CFAllCheckBox,
-    CFAllCheckText, CFBAmount, CFBAmountColor,
-    CFBox,
-    CFBoxs, CFBTotal, CFButton, CFButtonBox,
-    CFCAllDelete,
-    CFCDelete, CFMCMinus, CFMCount, CFMCountBox, CFMCPlus, CFMCup,
-    CFMenuBox, CFMIceHot,
-    CFMImg, CFMMoney, CFMOption, CFMSize, CFMText, CFMTitle, CFMTotalMoney,
-    CFood,
-    CFoodBox1, CFoodG,
-    CGoods,
-    CGoodsBox, CGoodsG,
-    CMBox,
-    CMCheck,
-    CMCInput,
-
-} from "../../styled/Cart";
+import * as styled_C from "../../styled/Cart";
 import {CNoDF} from "./CNoDF";
 import {useState} from "react";
-import {FDrink} from "../Favorite/FDrink";
-import {FFood} from "../Favorite/FFood";
-import {FGoods} from "../Favorite/FGoods";
 import {CNoG} from "./CNoG";
-import {AiOutlineMinusCircle, AiOutlinePlusCircle} from "react-icons/ai";
 
 const Favorite = () => {
     const [state, setState] = useState(1);
@@ -60,73 +21,73 @@ const Favorite = () => {
     };
 
     return (
-        <AllBox>
+        <styled_AB.AllBox>
             <Header/>
 
-            <FBox>
+            <styled_F.FBox>
                 {/*My 장바구니 헤더*/}
-                <FHeader>
-                    <FHTitle>
-                        <FHTInner>
-                            <FHTInnerH4>
+                <styled_F.FHeader>
+                    <styled_F.FHTitle>
+                        <styled_F.FHTInner>
+                            <styled_F.FHTInnerH4>
                                 <img src={CTitle} alt={"MyMenu"}/>
-                            </FHTInnerH4>
-                        </FHTInner>
-                    </FHTitle>
-                </FHeader>
+                            </styled_F.FHTInnerH4>
+                        </styled_F.FHTInner>
+                    </styled_F.FHTitle>
+                </styled_F.FHeader>
 
                 {/*My 장바구니 내용*/}
-                <FContentsAllBox>
-                    <FCBox>
+                <styled_F.FContentsAllBox>
+                    <styled_F.FCBox>
                         {/**/}
-                        <FCSection1>
-                            <FCSectionP>
+                        <styled_F.FCSection1>
+                            <styled_F.FCSectionP>
                                 {/*strong 3개 더 들어가야하는데 샘플이 없어서 못 만드는 중*/}
-                            </FCSectionP>
-                        </FCSection1>
+                            </styled_F.FCSectionP>
+                        </styled_F.FCSection1>
                         {/*장바구니 내역*/}
-                        <FCSection2>
+                        <styled_F.FCSection2>
                             <div>
-                                <CDiv>
-                                    <CFoodBox1>
-                                        <FCSH5>
+                                <styled_C.CDiv>
+                                    <styled_C.CFoodBox1>
+                                        <styled_F.FCSH5>
                                             {state === 1 ? (
-                                                <CFoodG href={"#"} onClick={() => onClick(1)}>
+                                                <styled_C.CFoodG href={"#"} onClick={() => onClick(1)}>
                                                     음료/푸드
-                                                </CFoodG>
+                                                </styled_C.CFoodG>
                                             ) : (
-                                                <CFood href={"#"} onClick={() => onClick(1)}>
+                                                <styled_C.CFood href={"#"} onClick={() => onClick(1)}>
                                                     음료/푸드
-                                                </CFood>
+                                                </styled_C.CFood>
                                             )}
-                                        </FCSH5>
-                                    </CFoodBox1>
+                                        </styled_F.FCSH5>
+                                    </styled_C.CFoodBox1>
 
                                     {/*상품 버튼*/}
-                                    <CGoodsBox>
-                                        <FCSH5>
+                                    <styled_C.CGoodsBox>
+                                        <styled_F.FCSH5>
                                             {state === 2 ? (
-                                                <CGoodsG href={"#"} onClick={() => onClick(2)}>
+                                                <styled_C.CGoodsG href={"#"} onClick={() => onClick(2)}>
                                                     상품
-                                                </CGoodsG>
+                                                </styled_C.CGoodsG>
                                             ) : (
-                                                <CGoods href={"#"} onClick={() => onClick(2)}>
+                                                <styled_C.CGoods href={"#"} onClick={() => onClick(2)}>
                                                     상품
-                                                </CGoods>
+                                                </styled_C.CGoods>
                                             )}
-                                        </FCSH5>
-                                    </CGoodsBox>
+                                        </styled_F.FCSH5>
+                                    </styled_C.CGoodsBox>
 
                                     {obj[state]}
-                                </CDiv>
+                                </styled_C.CDiv>
                             </div>
-                        </FCSection2>
-                    </FCBox>
-                </FContentsAllBox>
-            </FBox>
+                        </styled_F.FCSection2>
+                    </styled_F.FCBox>
+                </styled_F.FContentsAllBox>
+            </styled_F.FBox>
 
             <Footer/>
-        </AllBox>
+        </styled_AB.AllBox>
     );
 };
 

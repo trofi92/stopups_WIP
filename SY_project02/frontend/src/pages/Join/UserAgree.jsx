@@ -1,19 +1,20 @@
-import {ABox, ABSBox, ABSInnerBox, ABSIBP} from "../../styled/Join/JoinAgreeBox";
+import * as styled_JoinAB from "../../styled/Join/JoinAgreeBox";
 import "./css/homePageAgree.css"
 
 export const UserAgree = () => {
     return (
         <>
-            <ABox>
-                <ABSBox>
-                    <ABSInnerBox>
-                        <ABSIBP>
+            <styled_JoinAB.ABox>
+                <styled_JoinAB.ABSBox>
+                    <styled_JoinAB.ABSInnerBox>
+                        <styled_JoinAB.ABSIBP>
                             <div>
                                 <div className="privacy_cont">
                                     <p className="mb15">
                                         본인은 스타벅스 코리아를 운영하는 주식회사 에스씨케이컴퍼니(이하 '회사'라 합니다)가 제공하는 회원 서비스(이하 ‘서비스’라 합니다)를 이용하기
                                         위해, 다음과 같이 ‘회사’가 본인의 개인정보를 수집/이용하는 것에 동의합니다.</p>
-                                    <p className="mb15 fontBold underLine">※ 귀하께서는 개인정보 수집·이용에 대한 동의를 거부하실 수 있으나, 동의를 거부하실
+                                    <p className="mb15 fontBold underLine">※ 귀하께서는 개인정보 수집·이용에 대한 동의를 거부하실 수 있으나, 동의를
+                                        거부하실
                                         경우 회원가입, 서비스 이용 등을 하실 수 없습니다.</p>
                                     <ul className="pri_con mb40">
                                         <li>
@@ -52,8 +53,7 @@ export const UserAgree = () => {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row"><span className="fontBold">보유 및 <br/>
-               이용기간</span></th>
+                                                    <th scope="row"><span className="fontBold">보유 및 <br/>이용기간</span></th>
                                                     <td className="pointFont"><span className="underLine">회원 탈퇴 시 즉시 파기(단, 반복 재가입 등의 방법을 이용한 서비스 부정이용 방지를 위해 이름, ID, DI, 성별, 생년은 탈퇴 후 30일 보관) 또는 관계법령에 의한 별도 보존기간</span> (2.
                                                         관계법령에 의한 개인정보 보존기간참고)
                                                     </td>
@@ -75,10 +75,10 @@ export const UserAgree = () => {
                                     </ul>
                                 </div>
                             </div>
-                        </ABSIBP>
-                    </ABSInnerBox>
-                </ABSBox>
-            </ABox>
+                        </styled_JoinAB.ABSIBP>
+                    </styled_JoinAB.ABSInnerBox>
+                </styled_JoinAB.ABSBox>
+            </styled_JoinAB.ABox>
         </>
     )
 }
