@@ -41,9 +41,6 @@ export const PInputBox = styled.div`
   background: #fff;
   padding: 20px 0;
   position: relative;
-<<<<<<< HEAD
-`;
-=======
 
   :after {
     content: "";
@@ -51,7 +48,6 @@ export const PInputBox = styled.div`
     clear: both;
   }
 `
->>>>>>> 03d54335c83db86923dd612bed60ff4dac790c2b
 
 export const PInputPhone = styled.input`
   border: 1px solid #ddd;
@@ -94,12 +90,8 @@ export const PPhoneButton = styled.button`
   display: block;
   font-weight: bold;
   text-align: center;
-<<<<<<< HEAD
-
-=======
   cursor: pointer;
   
->>>>>>> 03d54335c83db86923dd612bed60ff4dac790c2b
   :hover {
     text-decoration: underline;
   }
