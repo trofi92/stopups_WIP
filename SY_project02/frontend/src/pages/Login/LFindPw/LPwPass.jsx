@@ -8,7 +8,6 @@ import * as styled_Pass from "../../../styled/Pass";
 import * as styled_LOG from "../../../styled/Login/Login";
 import * as styled_Join from "../../../styled/Join/Join";
 import {sms} from "../../../util/urls";
-import {LPWBox, PInputEmail} from "../../../styled/Pass";
 
 const LIdPass = () => {
     const [show, setShow] = useState(false); // 휴대전화 입력 여부 상태 저장
