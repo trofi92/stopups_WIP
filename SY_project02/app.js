@@ -11,6 +11,7 @@ const index = require("./routes/index");
 const page = require("./routes/page");
 const payment = require("./routes/payment");
 const auth = require("./routes/auth");
+const myInfo = require("./routes/myInfo");
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger-output");
@@ -18,7 +19,6 @@ const swaggerFile = require("./swagger-output");
 const { sequelize } = require("./models");
 const passport = require("passport");
 const passportConfig = require("./passport");
-// const authJwt = require("./middlewares/authJwt");
 
 const app = express();
 app.use(helmet());
@@ -71,6 +71,7 @@ app.use("/payment", payment);
 app.use("/page", page);
 app.use("/", index);
 app.use("/auth", auth);
+app.use("/myInfo", myInfo);
 
 app.use((err, req, res, next) => {
   res.locals.message = err.message;

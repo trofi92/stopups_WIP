@@ -6,7 +6,6 @@ const {
 } = require("../middlewares/loggedIn");
 const { join } = require("../controllers/join");
 const { login, logout } = require("../controllers/login");
-const authJwt = require("../middlewares/authJwt");
 
 const router = express.Router();
 

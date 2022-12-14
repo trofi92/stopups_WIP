@@ -1,6 +1,25 @@
 const Sequelize = require("sequelize");
 
 module.exports = class User extends Sequelize.Model {
+  static findUser(email) {
+    return this.findOne({
+      where: {
+        email,
+      },
+    });
+  }
+
+  static async getBookmarks(id) {
+    // Find the user with the given id
+    const user = await this.findOne({ where: { id } });
+
+    // If the user was not found, return null
+    if (!user) return null;
+
+    // Otherwise, return the bookmarks associated with the user
+    return user.getBookmarks();
+  }
+
   static init(sequelize) {
     return super.init(
       {
@@ -35,6 +54,7 @@ module.exports = class User extends Sequelize.Model {
           allowNull: true,
         },
       },
+
       {
         sequelize,
         timestamps: true,

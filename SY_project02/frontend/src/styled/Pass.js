@@ -5,7 +5,7 @@ export const PBox = styled.div`
   width: 100%;
   height: 650px;
   margin-top: 60px;
-`
+`;
 
 export const PSection = styled.section`
   border: 1px solid #ddd;
@@ -15,7 +15,7 @@ export const PSection = styled.section`
   margin: 0 auto 30px;
   position: relative;
   background: #fff;
-`
+`;
 
 export const PSectionDiv = styled.div`
   background: #fff;
@@ -23,19 +23,19 @@ export const PSectionDiv = styled.div`
   padding: 20px 20px;
   height: 280px;
   position: relative;
-  
+
   :last-child {
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
   }
-`
+`;
 
 export const PInputBox = styled.div`
   border: 0 !important;
   background: #fff;
   padding: 20px 0;
   position: relative;
-`
+`;
 
 export const PInputPhone = styled.input`
   border: 1px solid #ddd;
@@ -49,7 +49,7 @@ export const PInputPhone = styled.input`
   vertical-align: middle;
   float: left;
   margin-right: 10px;
-`
+`;
 
 export const PInputNumber = styled.input`
   border: 1px solid #ddd;
@@ -63,7 +63,7 @@ export const PInputNumber = styled.input`
   vertical-align: middle;
   float: left;
   margin-right: 10px;
-`
+`;
 
 // 휴대폰 번호 인증 버튼
 export const PPhoneButton = styled.button`
@@ -78,11 +78,11 @@ export const PPhoneButton = styled.button`
   display: block;
   font-weight: bold;
   text-align: center;
-  
+
   :hover {
     text-decoration: underline;
   }
-`
+`;
 
 // 로그인시 이용 가능합니다 페이지 버튼
 export const PCancelButton = styled.button`
@@ -98,7 +98,7 @@ export const PCancelButton = styled.button`
   font-weight: bold;
   text-align: center;
   float: left;
-`
+`;
 
 export const PConfirmButton = styled.button`
   font-size: 15px;
@@ -113,4 +113,4 @@ export const PConfirmButton = styled.button`
   text-align: center;
   float: left;
   margin: 0 0 0 10px;
-`
+`;

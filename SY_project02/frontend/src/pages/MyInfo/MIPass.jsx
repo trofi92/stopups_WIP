@@ -13,34 +13,32 @@ const MIPass = () => {
   const [show, setShow] = useState(false); // 휴대전화 입력 여부 상태 저장
   const [rnd, setRnd] = useState(""); // 임의의 비밀번호 4자리 값 저장
   const [authForm, setAuthForm] = useState(false); // 인증 상태 값 저장
+  const [number, setNumber] = useState(); //인증된 유저 전화번호 저장
   const navigate = useNavigate(); // 페이지 리렌더링 용도
   const phoneSubmit = async (e) => {
     // SMS 인증
     e.preventDefault();
     const phone_number = e.target.phone_number.value; // 휴대전화 번호
     const rnd_number = Math.floor(Math.random() * 8999) + 1000; // 임의의 인증 번호 생성
-    setRnd(rnd_number.toString()); // 인증 번호 문자열로 저장
-    if (phone_number !== "") {
-      // 값이 존재하면 SMS 인증을 위해 POST로 전달
 
-      await axios.post(
-        sms,
-        {
-          phone_number,
-          rnd_number,
-        },
-        {
-          withCredentials: false,
-        }
-      );
-      //             await axios.post(`http://stopupsapi.tk:8080/sms/`, {
-      //                 phone_number,
-      //                 rnd_number,
-      //             });
-      // 입력 정보 값 초기화 안하는게 더 나아보임
-      // e.target.phone_number.value = ""; // 입력 정보 값 초기화
+    console.log(phone_number, rnd_number);
+    setRnd(rnd_number.toString()); // 인증 번호 문자열로 저장
+
+    if (!phone_number) {
+      alert("휴대전화 번호를 입력해주세요!");
     }
-    setShow(!show); // 휴대전화 인증 토글 변경
+    setNumber(phone_number);
+    // 값이 존재하면 SMS 인증을 위해 POST로 전달
+    await axios.post(
+      sms,
+      {
+        phone_number,
+        rnd_number,
+      },
+      {
+        withCredentials: false,
+      }
+    );
   };
 
   // 모바일 인증
@@ -52,11 +50,11 @@ const MIPass = () => {
       // 사용자에게 보낸 임의의 4자리와 사용자가 입력한 4자리가 맞으면 작동
       setAuthForm(true); // 인증 값 설정
       sessionStorage.setItem("AuthForm", "success"); // 세션 스토리지에 인증 여부 저장
-      navigate("/myInfo"); // 페이지 리렌더링 하기 위한 페이지 이동
+      navigate("/myInfo", { state: { number: number } }); // 페이지 리렌더링 하기 위한 페이지 이동
     }
     setShow(!show); // 인증 폼 상태값 변경
   };
-
+  console.log("number = ", number);
   return (
     <styled_AB.AllBox>
       <Header />
@@ -81,6 +79,7 @@ const MIPass = () => {
                     <styled_Pass.PInputBox>
                       <form onSubmit={phoneSubmit}>
                         <styled_Pass.PInputPhone
+                          type="number"
                           placeholder="숫자만 입력"
                           name="phone_number"
                         />

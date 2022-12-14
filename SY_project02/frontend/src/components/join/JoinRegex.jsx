@@ -83,7 +83,7 @@ export const checkNickname = (e) => {
 
 // 휴대폰 번호 확인
 export const checkPhone = (e) => {
-  const phoneRegx = /^\d{2,3}-\d{3,4}-\d{4}$/;
+  const phoneRegx = /^\d{2,3}\d{3,4}\d{4}$/;
   const currentPhone = e.target.value;
 
   if (
@@ -91,7 +91,7 @@ export const checkPhone = (e) => {
     (phoneRegx.test(currentPhone) < 13 ||
       phoneRegx.test(currentPhone) > 13)
   ) {
-    console.log("하이픈(-)을 포함한 13자리 숫자여야 합니다.");
+    console.log("휴대전화 번호는 13자리 숫자여야 합니다.");
     return false;
   } else {
     console.log("올바른 번호 입니다.");
