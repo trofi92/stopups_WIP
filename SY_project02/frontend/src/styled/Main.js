@@ -811,7 +811,7 @@ export const MSButton = styled.div`
 export const MSButtonP = styled.p`
   display: block;
   margin: 0 auto;
-  width: 125px;
+  width: 121px;
   height: 100%;
   color: #000;
   font-size: 15px;
