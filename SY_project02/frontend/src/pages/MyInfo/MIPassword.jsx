@@ -8,10 +8,21 @@ import {checkPassword, checkPasswordConfirm} from "../../components/join/JoinReg
 import {useState} from "react";
 import * as styled_BU from "../../styled/Button";
 import {Footer} from "../../components/Footer/Footer";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const MIPassword = () => {
+    const [currentPassword, setCurrentPassword] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
+    const navigate = useNavigate();
+
+    // 유저 현재 비밀번호 정보 가져오기
+
+    const handleCurrentPassword = (e) => {
+        checkPassword(e);
+        setCurrentPassword(e.target.value);
+    }
 
     const handlePasswordChange = (e) => {
         checkPassword(e);
@@ -23,16 +34,37 @@ const MIPassword = () => {
         setPasswordConfirm(e.target.value);
     };
 
+    // 현재 비밀번호와 currentPassword가 같지 않을 때 alert
+
     const submitPassword = (e) => {
         e.preventDefault();
-        if (password === "") {
-            alert("새 비밀번호를 입력해주세요.")
-        } else if (passwordConfirm === "") {
+        if (currentPassword === "") {
+            alert("비밀번호를 입력해주세요");
+            // 이 밑에 바로 else if로 현재 비번이랑 비교
+        } else if (password === "") {
+            alert("새 비밀번호를 입력해주세요")
+        }  else if (currentPassword === password) {
+            alert("현재 비밀번호와 같습니다. 다른 비밀번호를 입력해주세요")
+        }  else if (passwordConfirm === "") {
             alert("새 비밀번호 확인을 입력해주세요")
+        } else if (password !== passwordConfirm) {
+            alert("비밀번호가 같지 않습니다. 다시 입력해주세요")
         } else {
-            // 비밀번호 변경 보내기
-            // 성공 시 "비밀번호가 변경되었습니다"
-            // 실패 시 "비밀번호 변경에 실패했습니다. 다시 시도해주세요."
+            console.log("비밀번호 변경 예:시");
+            const post = {
+                password
+            };
+            axios
+                // 라우트 해주시면 주소 적기...
+                .post("", {data: post})
+                .then((res) => {
+                    alert("비밀번호를 변경했습니다")
+                    navigate("/", { replace: true });
+                })
+                .catch((error) => {
+                    console.error("비밀번호 변경 실패=>", error);
+                    alert("비밀번호 변경이 실패했습니다. 다시 시도해주세요");
+                });
         }
     }
 
@@ -63,6 +95,9 @@ const MIPassword = () => {
                                         {/*현재 비밀번호와 같지 않을 경우 표시*/}
                                         <styled_Join.RFSDInput
                                             type={"text"}
+                                            id={"registerPassword"}
+                                            name={"password"}
+                                            onChange={handleCurrentPassword}
                                             placeholder={"비밀번호를 입력 해주세요."}
                                             required
                                         />
@@ -91,7 +126,7 @@ const MIPassword = () => {
                                     </styled_MIP.MIPDiv>
                                 </styled_Join.RFSection>
                             </styled_LOG.LFFFieldset>
-                            <styled_BU.LJButton onSubmit={submitPassword}>확인</styled_BU.LJButton>
+                            <styled_BU.LJButton onClick={submitPassword}>확인</styled_BU.LJButton>
                         </form>
                     </styled_LOG.LFInner>
                 </styled_LOG.LFB>

@@ -3,19 +3,24 @@ import Header from "../../components/Header/Header";
 import * as styled_Notice from "../../styled/Notice/Notice";
 import * as styled_Event from "../../styled/Event/Event";
 import ETitle from "../../image/Event/ETitle.jpg";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import {EAll} from "./EAll";
 import {ESCard} from "./ESCard";
 import {ESReward} from "./ESReward";
 import {EOnline} from "./EOnline";
+import {useParams} from "react-router-dom";
+
+axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
+axios.defaults.withCredentials = false;
 
 const Event = () => {
     const [state, setState] = useState(1);
+    const [eventImg, setEventImg] = useState()
 
-  const onClick = (id) => {
-    setState(id);
-  };
+    const onClick = (id) => {
+        setState(id);
+    };
 
     const obj = {
         1: <EAll/>,
@@ -24,19 +29,18 @@ const Event = () => {
         4: <EOnline/>,
     };
 
-  const imageView = async () => {
-    // 이미지 조회 시 카테고리 지정 및 검색 값에 따른 DB 조회
-    const image = await axios.get(
-      "http://stopupsapi.tk:8080/api/?apikey=TeamYN1670397914440&MImage=ALL&Name=&ImageId="
-    );
-    console.log(image.data);
-  };
+    const eventApi = async () => {
+        // 이미지 조회 시 카테고리 지정 및 검색 값에 따른 DB 조회
+        const event = await axios.get(
+            "http://stopupsapi.shop:8080/api/?apikey=TeamYN1670470710431&MImage=ALL&Name=&ImageId="
+        );
+        console.log(event);
+    };
 
-  useEffect(() => {
-    imageView().then((r) => console.log("111111=>", r));
-  }, []);
+    useEffect(() => {
+        eventApi()
+    }, []);
 
-  // console.log("2222222222=>", event);
 
     return (
         <styled_AB.AllBox>

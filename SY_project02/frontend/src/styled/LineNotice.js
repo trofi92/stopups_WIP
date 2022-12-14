@@ -132,17 +132,21 @@ export const LNRightAImg = styled.img`
 `
 
 export const LNRightSpan = styled.span`
-  height: 43px;
+  height: 40px;
   right: 90px;
   top: 18px;
-  width: 43px;
+  width: 40px;
   overflow: hidden;
   position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
 `
 
 export const LNRightSpanImg = styled.img`
   vertical-align: top;
   max-width: 100%;
+  margin-left: 1.5px;
+  margin-top: 2px;
 `
 
 

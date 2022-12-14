@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import FHeaderImg from "../image/Favorite/FHeaderImg.jpg"
 import MyMenuBox from "../image/Favorite/MyMenuBox.png"
-import FCheck from "../image/Favorite/FCheck.jpg"
 
 // My 메뉴 전체 박스
 export const FBox = styled.div`
@@ -209,16 +208,13 @@ export const FCDTHTh1 = styled.th`
 `
 
 export const FCDTHThDiv1 = styled.div`
-  background: transparent url(${FCheck}) 0 0 no-repeat;
   display: inline-block;
   vertical-align: middle;
-  height: 14px;
 `
 
 export const FCDTHThDInput1 = styled.input`
   width: 12px;
   height: 16px;
-  opacity: 0;
   margin: 0;
   padding: 0;
   box-sizing: content-box;

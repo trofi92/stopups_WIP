@@ -14,6 +14,7 @@ const LIdPass = () => {
     const [rnd, setRnd] = useState(""); // 임의의 비밀번호 4자리 값 저장
     const [authForm, setAuthForm] = useState(false); // 인증 상태 값 저장
     const navigate = useNavigate(); // 페이지 리렌더링 용도
+
     const phoneSubmit = async (e) => {
         // SMS 인증
         e.preventDefault();

@@ -13,6 +13,8 @@ const Header = () => {
     setModalOpen(!modalOpen);
   };
 
+
+
     //삼항연산자 사용해서 로그인시 링크와 아닐 시의 링크를 다르게...전부...다르게...설정...해야...하.ㅁ....
     return (
         <styled_H.HB>

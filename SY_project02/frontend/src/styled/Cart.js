@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import FCheck from "../image/Favorite/FCheck.jpg";
 import test from "../image/Cart/111.jpg"
 import CNoCart from "../image/Cart/CNoCart.png"
 
@@ -99,7 +98,6 @@ export const CFAllCheckBox = styled.div`
 `
 
 export const CFAllCheck = styled.div`
-  background: transparent url(${FCheck}) 0 0 no-repeat;
   display: inline-block;
   vertical-align: middle;
   height: 14px;
@@ -110,7 +108,6 @@ export const CFAllCheck = styled.div`
 export const CFACInput = styled.input`
   width: 12px;
   height: 16px;
-  opacity: 0;
   margin: 0;
   padding: 0;
   box-sizing: content-box;
@@ -150,7 +147,6 @@ export const CFMenuBox = styled.div`
 `
 
 export const CMCheck = styled.div`
-  background: transparent url(${FCheck}) center no-repeat;
   //display: inline-block;
   display: flex;
   margin-right: 642px;
@@ -162,7 +158,6 @@ export const CMCheck = styled.div`
 export const CMCInput = styled.input`
   width: 12px;
   height: 16px;
-  opacity: 0;
   margin: 0;
   padding: 0;
   box-sizing: content-box;

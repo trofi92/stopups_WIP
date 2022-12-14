@@ -66,7 +66,6 @@ const MyInfo = () => {
                     alert("회원정보 수정에 실패했습니다");
                 });
         }
-
     }
 
     return (
@@ -98,15 +97,23 @@ const MyInfo = () => {
                                     <styled_Join.RFSectionDiv>
                                         <styled_Join.RFSectionStrong>
                                             휴대폰(필수)&nbsp;
-                                            <styled_MI.MIIcons/>
+                                            {/*<styled_MI.MIIcons/>*/}
                                         </styled_Join.RFSectionStrong>
                                         <styled_MI.MIPhoneDiv>
                                             <styled_MI.MIPhoneInput
                                                 value={telephone}
                                                 onChange={onChangeTelephone}
+                                                placeholder={"휴대폰 번호를 입력해주세요."}
+                                            />
+                                            <styled_MI.MIPhoneA>확인</styled_MI.MIPhoneA>
+                                        </styled_MI.MIPhoneDiv>
+                                        <styled_MI.MIPhoneDiv>
+                                            <styled_MI.MIPhoneInput
+                                                value={telephone}
+                                                onChange={onChangeTelephone}
+                                                placeholder={"인증번호 4자리를 입력해주세요."}
                                             />
                                             <styled_MI.MIPhoneA>인증</styled_MI.MIPhoneA>
-                                            <styled_MI.MIIconsPhone/>
                                         </styled_MI.MIPhoneDiv>
                                     </styled_Join.RFSectionDiv>
                                 </styled_Join.RFSection>
@@ -122,7 +129,7 @@ const MyInfo = () => {
                                     <styled_Join.RFSectionDiv>
                                         <styled_Join.RFSectionStrong>
                                             닉네임(필수) &nbsp;
-                                            <styled_MI.MIIcons/>
+                                            {/*<styled_MI.MIIcons/>*/}
                                         </styled_Join.RFSectionStrong>
                                         <styled_MI.MINIckSection>
                                             <styled_MI.MINSH5>

@@ -13,7 +13,8 @@ import MStore3 from "../image/Main/MStore/MStore3.png"
 import MStore4 from "../image/Main/MStore/MStore4.png"
 import MStoreText1 from "../image/Main/MStore/MStoreText1.png"
 import MStoreText2 from "../image/Main/MStore/MStoreText2.png"
-
+import MSRCoffee from "../image/Main/MStopUpsReword/MSRCoffee.png"
+import MSRCard from "../image/Main/MStopUpsReword/MSRCard.png"
 
 const fadeIn = keyframes`
   to {
@@ -94,6 +95,7 @@ export const MSIButtonDiv = styled.div`
 `
 
 // 스타벅스 리워드
+// 로그인 X
 export const MSR = styled.section`
   position: relative;
   height: 100%;
@@ -283,6 +285,133 @@ export const MSRCGBP = styled.p`
     text-decoration: underline;
     color: #fff;
   }
+`
+
+// 스타벅스 리워드
+// 로그인 O
+export const MSRL = styled.div`
+  height: 280px;
+  background: #111;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+`
+
+export const MSRLInner = styled.div`
+  width: 96%;
+  height: auto;
+  box-sizing: border-box;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  position: absolute;
+  top: 30px;
+  padding: 0;
+  vertical-align: baseline;
+`
+
+export const MSRLUser = styled.div`
+  border-right: 1px solid #1d1d1d;
+  height: auto;
+  width: 50%;
+  padding-left: 0;
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0;
+  
+  :hover {
+    text-decoration: underline;
+    color: #cac5c1;
+  }
+`
+
+export const MSRLUP = styled.p`
+  float: left;
+  margin: 3px 162.906px 0 162.891px;
+  background: url(${MSRCoffee}) no-repeat;
+  background-size: 100% auto;
+  height: 84px;
+  width: 50px;
+`
+
+export const MSRLUDiv = styled.div`
+  float: none;
+  margin: 10px auto 0 auto;
+  text-align: center;
+  position: relative;
+  padding-top: 86px;
+`
+
+export const MSRLUDP = styled.p`
+  margin: 0 auto;
+  display: block;
+  float: none;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  width: 220px;
+  color: #fff;
+  font-weight: normal;
+`
+
+export const MSRLUDPSpan1 = styled.span`
+  float: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+`
+
+export const MSRLUDPSpan2 = styled.span`
+  font-size: 16px;
+  float: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+`
+
+export const MSRLCard = styled.div`
+  height: auto;
+  text-align: center;
+  margin: 0 auto;
+  padding: 16px 0 0 0;
+  width: 48%;
+  box-sizing: border-box;
+  float: left;
+  
+  :hover {
+    text-decoration: underline;
+    color: #cac5c1;
+  }
+`
+
+export const MSRLCP = styled.p`
+  float: none;
+  margin: 10px auto 0 auto;
+  width: 90px;
+  background: url(${MSRCard}) no-repeat;
+  background-size: 100% auto;
+  height: 57.7px;
+`
+
+export const MSRLCPTxt = styled.p`
+  float: none;
+  margin: 10px auto 0 auto;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  width: 200px;
+  font-weight: normal;
+  color: #fff;
+`
+
+export const MSRLCPTStrong = styled.strong`
+  font-size: 18px;
+  line-height: 1.4;
 `
 
 
