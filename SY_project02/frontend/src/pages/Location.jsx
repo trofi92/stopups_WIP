@@ -86,6 +86,8 @@ export const Location = () => {
           const marker = new kakao.maps.Marker({
             position: markerPosition,
           });
+
+          // DOM요소, 좌표값을 전달해서 새로운 지도 생성
           const kakaoMap = new kakao.maps.Map(
             mapContainer,
             mapOption
@@ -100,7 +102,7 @@ export const Location = () => {
     const onGeoError = () => {
       alert("현재 위치를 알 수 없어요!.");
     };
-    //브라우저에 위치정보 요청, 확보된 좌표를 전달
+    //브라우저에 위치정보 요청
     navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
   }, []);
 
