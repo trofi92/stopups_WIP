@@ -6,7 +6,7 @@ import MIAgree from "../../image/MyInfo/MIAgree.png"
 export const MIBox = styled.div`
   background-size: cover;
   width: 100%;
-  height: 1700px;
+  height: 1800px;
   margin-top: 60px;
 `
 
@@ -58,6 +58,10 @@ export const MIPhoneDiv = styled.div`
     content: "";
     display: block;
   }
+  
+  :last-child {
+    margin-top: 10px;
+  }
 `
 
 export const MIPhoneInput = styled.input`
@@ -68,21 +72,28 @@ export const MIPhoneInput = styled.input`
   font-size: 14px;
   padding: 20px;
   margin: 0;
-  width: 343.19px;
+  width: 400.19px;
   height: 47px;
   line-height: 5px;
   float: left;
 `
 
-export const MIPhoneA = styled.a`
+
+export const MIPhoneA = styled.p`
   background: #006633;
   border-radius: 3px;
   color: #fff;
+  font-weight: bold;
   float: left;
   line-height: 46px;
-  margin-left: 2%;
+  margin: 0 0 0 2%;
   text-align: center;
   width: 22%;
+  cursor: pointer;
+  
+  :hover {
+    text-decoration: underline;
+  }
 `
 
 export const MIIconsPhone = styled.i`

@@ -7,6 +7,13 @@ export const PBox = styled.div`
   margin-top: 60px;
 `;
 
+export const LPWBox = styled.div`
+  background-size: cover;
+  width: 100%;
+  margin-top: 60px;
+  height: 750px;
+`
+
 export const PSection = styled.section`
   border: 1px solid #ddd;
   border-radius: 3px;
@@ -19,9 +26,8 @@ export const PSection = styled.section`
 
 export const PSectionDiv = styled.div`
   background: #fff;
-  border-bottom: 1px solid #ddd;
   padding: 20px 20px;
-  height: 280px;
+  height: 100%;
   position: relative;
 
   :last-child {
@@ -35,7 +41,17 @@ export const PInputBox = styled.div`
   background: #fff;
   padding: 20px 0;
   position: relative;
+<<<<<<< HEAD
 `;
+=======
+
+  :after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+`
+>>>>>>> 03d54335c83db86923dd612bed60ff4dac790c2b
 
 export const PInputPhone = styled.input`
   border: 1px solid #ddd;
@@ -51,14 +67,14 @@ export const PInputPhone = styled.input`
   margin-right: 10px;
 `;
 
-export const PInputNumber = styled.input`
+export const PInputEmail = styled.input`
   border: 1px solid #ddd;
   border-radius: 3px;
   box-sizing: border-box;
   display: inline-block;
   max-width: 530px;
   padding: 15px;
-  width: 65%;
+  width: 100%;
   margin-bottom: 10px;
   vertical-align: middle;
   float: left;
@@ -78,7 +94,12 @@ export const PPhoneButton = styled.button`
   display: block;
   font-weight: bold;
   text-align: center;
+<<<<<<< HEAD
 
+=======
+  cursor: pointer;
+  
+>>>>>>> 03d54335c83db86923dd612bed60ff4dac790c2b
   :hover {
     text-decoration: underline;
   }

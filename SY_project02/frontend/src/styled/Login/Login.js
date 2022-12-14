@@ -1,7 +1,5 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import LoginBg from "../../image/Login/LoginBg.jpg"
-import LIdCheck from "../../image/Login/LIdCheck.png"
-import LIdChecked from "../../image/Login/LIdChecked.png"
 
 // 로그인 전체 박스
 export const LB = styled.div`
@@ -103,32 +101,80 @@ export const LFIdCheck = styled.span`
   margin-bottom: 20px;
 `
 
-// 아이디 저장 체크박스
+
+// 로그인 아이디 저장 버튼
 export const LFICInput = styled.input`
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  padding: 0;
-  border: 0 none;
-  background: #fff;
-  cursor: pointer;
+  visibility: hidden;
+  ${({check}) =>
+          check
+                  ? css`
+                    background-color: #66bb6a;
+                    border-color: #66bb6a;
+
+                    &:after {
+                      opacity: 1;
+                    }
+                  `
+                  : null}
 `
 
-// 클릭시 background 이미지 토글
 export const LFICLabel = styled.label`
-  position: relative;
+  position: absolute;
   display: inline-block;
-  height: 26px;
+  border-radius: 50%;
   line-height: 26px;
-  padding-left: 35px;
   font-size: 16px;
-  color: #3f4141;
-  cursor: pointer;
   vertical-align: top;
-  background-size: 26px;
+  background-color: #fff;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  left: 20px;
+  top: 135px;
   z-index: 4;
-  background: #fff url(${LIdCheck}) 0 0 no-repeat;
-  background-size: 26px;
+  margin-right: 5px;
+  ${({check}) =>
+          check
+                  ? css`
+                    background-color: #006633;
+                    border-color: #006633;
+
+                    &:after {
+                      border: 3px solid #fff;
+                      border-top: none;
+                      border-right: none;
+                      content: "";
+                      height: 6px;
+                      left: 7px;
+                      position: absolute;
+                      top: 8px;
+                      transform: rotate(-45deg);
+                      width: 12px;
+                    }
+                  `
+                  : css`
+                    background-color: #C1C1C1 !important;
+
+                    &:after {
+                      opacity: 1;
+                      border: 3px solid #fff;
+                      border-top: none;
+                      border-right: none;
+                      content: "";
+                      height: 6px;
+                      left: 7px;
+                      position: absolute;
+                      top: 8px;
+                      transform: rotate(-45deg);
+                      width: 12px;
+                    }
+                  `}
+`
+
+export const LFICSpan = styled.span`
+  color: #3f4141;
+  font-size: 16px;
+  padding-left: 20px;
 `
 
 export const LFText = styled.p`
@@ -162,8 +208,8 @@ export const LFBLi = styled.li`
   position: relative;
   vertical-align: top;
   width: 33.3%;
-  
-  ::after{
+
+  ::after {
     border-right: 1px solid #ddd;
     color: #666;
     content: "";

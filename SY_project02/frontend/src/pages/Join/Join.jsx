@@ -152,7 +152,7 @@ const Join = () => {
                       id={"registerPassword"}
                       name={"password"}
                       placeholder={
-                        "영문자, 숫자, 특수문자를 포함하여 8자리 이상 16자리 이하로 입력하세요."
+                        "영문자, 숫자, 특수문자를 포함하여 8자리 이상 16자리 이하로 입력해주세요."
                       }
                       onChange={handlePasswordChange}
                       required
@@ -168,7 +168,7 @@ const Join = () => {
                       id={"registerPasswordConfirm"}
                       name={"passwordConfirm"}
                       placeholder={
-                        "비밀번호를 다시 한번 입력해 주세요."
+                        "비밀번호를 다시 한번 입력해주세요."
                       }
                       onChange={handlePasswordConfirmChange}
                       required
@@ -197,7 +197,7 @@ const Join = () => {
                       type={"text"}
                       id={"registerPhone"}
                       name={"telephone"}
-                      placeholder={"휴대폰"}
+                      placeholder={"휴대폰 번호를 입력해주세요."}
                       onChange={handleTelephoneChange}
                       required
                     />

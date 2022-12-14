@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import {
@@ -10,6 +10,7 @@ import * as styled_AB from "../../styled/AllBox";
 import * as styled_BU from "../../styled/Button";
 import * as styled_LOG from "../../styled/Login/Login";
 import axios from "axios";
+import {useCookies} from "react-cookie";
 
 axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
 axios.defaults.withCredentials = true;
@@ -18,6 +19,25 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [check, setCheck] = useState(false);
+
+
+  const onClickCheckedEmail = () => {
+    setCheck(!check);
+  };
+
+  // 아이디 저장 체크 시 아이디 및 체크 state 저장
+
+  useEffect(() => {
+    if (check === true) {
+      localStorage.setItem("email", JSON.stringify(email));
+
+      const saved = localStorage.getItem("email");
+      if (saved !== null) {
+        setEmail(saved);
+      }
+    }
+  }, [email])
 
   const handleEmailChange = (e) => {
     checkEmail(e);
@@ -57,10 +77,9 @@ const Login = () => {
             {
               data: post,
             },
-            { withCredentials: true }
           )
           .then((res) => {
-            console.log("로그인 성공");
+            console.log("로그인 성공=>", res);
             navigate("/", { replace: true });
             return res;
           });
@@ -116,10 +135,15 @@ const Login = () => {
                     />
                     <styled_LOG.LFIdCheck>
                       {/*아이디 저장 체크박스 클릭시 background 이미지 토글 + 토글 이벤트 재사용*/}
-                      <styled_LOG.LFICInput type={"checkbox"} />
-                      <styled_LOG.LFICLabel>
-                        아이디 저장
-                      </styled_LOG.LFICLabel>
+                      <styled_LOG.LFICInput
+                          type={"checkbox"}
+                          check={check}
+                      />
+                      <styled_LOG.LFICLabel
+                          onClick={onClickCheckedEmail}
+                          check={check}
+                      />
+                      <styled_LOG.LFICSpan>아이디 저장</styled_LOG.LFICSpan>
                     </styled_LOG.LFIdCheck>
                     <styled_BU.LJButton onClick={submitIdPassword}>
                       로그인

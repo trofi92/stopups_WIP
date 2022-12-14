@@ -58,7 +58,7 @@ const LIdPass = () => {
     <styled_AB.AllBox>
       <Header />
 
-      <styled_Pass.PBox>
+      <styled_Pass.LPWBox>
         <styled_LOG.LFB>
           <styled_LOG.LFInner>
             <styled_LOG.LFFFieldset>
@@ -70,6 +70,19 @@ const LIdPass = () => {
                   휴대폰 문자(SMS) 인증단계입니다.
                 </styled_Join.RFSectionP>
                 <styled_Pass.PSectionDiv>
+                  {/*이메일 입력란*/}
+                  <styled_Join.RFSectionStrong>
+                    이메일
+                  </styled_Join.RFSectionStrong>
+                  <styled_Pass.PInputBox>
+                    <form>
+                      <styled_Pass.PInputEmail
+                        placeholder="이메일"
+                        name="email"
+                      />
+                    </form>
+                  </styled_Pass.PInputBox>
+
                   {/*번호 입력란*/}
                   <styled_Join.RFSectionStrong>
                     휴대폰번호
@@ -106,7 +119,7 @@ const LIdPass = () => {
             </styled_LOG.LFFFieldset>
           </styled_LOG.LFInner>
         </styled_LOG.LFB>
-      </styled_Pass.PBox>
+      </styled_Pass.LPWBox>
 
       <Footer />
     </styled_AB.AllBox>

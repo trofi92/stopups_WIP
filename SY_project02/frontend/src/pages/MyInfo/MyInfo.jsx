@@ -148,6 +148,15 @@ const MyInfo = () => {
                       <styled_MI.MIPhoneInput
                         value={uTelephone || ""}
                         onChange={onChangeTelephone}
+                        placeholder={"휴대폰 번호를 입력해주세요."}
+                      />
+                      <styled_MI.MIPhoneA>확인</styled_MI.MIPhoneA>
+                    </styled_MI.MIPhoneDiv>
+                    <styled_MI.MIPhoneDiv>
+                      <styled_MI.MIPhoneInput
+                        value={telephone}
+                        onChange={onChangeTelephone}
+                        placeholder={"인증번호 4자리를 입력해주세요."}
                       />
                       <styled_MI.MIPhoneA>인증</styled_MI.MIPhoneA>
                       <styled_MI.MIIconsPhone />

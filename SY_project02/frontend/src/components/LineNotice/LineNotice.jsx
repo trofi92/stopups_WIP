@@ -3,6 +3,7 @@ import MLNLeft from "../../image/LineNotice/MLNLeft.png";
 import MLNLeftButton from "../../image/LineNotice/MLNLeftButton.png";
 import MLNRight from "../../image/LineNotice/MLNRight.png";
 import MLNRightToggle1 from "../../image/LineNotice/MLNRightToggle1.png";
+import MLNRightToggle2 from "../../image/LineNotice/MLNRightToggle2.png";
 import MPBImg1 from "../../image/Main/MPromotionBanner/MPBImg1.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -12,10 +13,12 @@ import Slider from "react-slick";
 import MPBImg2 from "../../image/Main/MPromotionBanner/MPBImg2.png";
 
 export const LineNotice = () => {
-  const [openPromotion, setOpenPromotion] = useState(false);
+  const [openPromotion, setOpenPromotion] = useState(MLNRightToggle1);
+
   const promotionToggle = () => {
     setOpenPromotion(!openPromotion);
   };
+
 
     const settings = {
         dots: true,
@@ -28,6 +31,9 @@ export const LineNotice = () => {
         autoplay: true,
         autoplaySpeed: 2000
     };
+
+
+
     return (
         <>
             {/*라인 공지*/}
@@ -67,9 +73,13 @@ export const LineNotice = () => {
                     <styled_LN.LNRightA>
                         <styled_LN.LNRightAImg src={MLNRight} alt={"mainPromotionBannerRight"}/>
                     </styled_LN.LNRightA>
-                    <styled_LN.LNRightSpan>
+                    <styled_LN.LNRightSpan onClick={promotionToggle}>
                         {/*후에 토글 버튼, 클릭 시 밑에 창 뜨고 닫히는 토글 버튼*/}
-                        <styled_LN.LNRightSpanImg src={MLNRightToggle1} onClick={promotionToggle}/>
+                        {openPromotion === true ? (
+                            <styled_LN.LNRightSpanImg src={MLNRightToggle2} />
+                        ) : (
+                            <styled_LN.LNRightSpanImg src={MLNRightToggle1} />
+                        )}
                     </styled_LN.LNRightSpan>
                 </styled_LN.LNRight>
             </styled_LN.LN>
