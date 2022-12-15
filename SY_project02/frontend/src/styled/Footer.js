@@ -137,6 +137,32 @@ export const FAInner = styled.div`
   padding-bottom: 20px;
 `
 
+export const FAIDive = styled.div`
+  max-width: 630px;
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+`
+
+export const FAIDLi = styled.li`
+  float: left;
+  list-style: none;
+  position: relative;
+  width: 210px;
+  margin-top: 5px;
+  padding: 0;
+  vertical-align: baseline;
+`
+
+export const FAIDLImg = styled.img`
+  margin: 0 auto;
+  max-width: 100%;
+  display: block;
+  vertical-align: top;
+  padding: 0;
+`
+
+
 // 그외 기타
 export const FAside = styled.aside`
   color: #999;

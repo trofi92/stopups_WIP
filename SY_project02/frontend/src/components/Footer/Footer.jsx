@@ -2,6 +2,17 @@ import * as styled_Footer from "../../styled/Footer"
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import {FAIDive, FAIDLi, FAIDLImg} from "../../styled/Footer";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import FAward1 from "../../image/Footer/FAward1.jpg"
+import FAward2 from "../../image/Footer/FAward2.jpg"
+import FAward3 from "../../image/Footer/FAward3.jpg"
+import FAward4 from "../../image/Footer/FAward4.jpg"
+import FAward5 from "../../image/Footer/FAward5.jpg"
+import FAward6 from "../../image/Footer/FAward6.jpg"
+import FAward7 from "../../image/Footer/FAward7.jpg"
+import Slider from "react-slick";
 
 export const Footer = () => {
     const navigator = useNavigate();
@@ -26,8 +37,17 @@ export const Footer = () => {
             })
     };
 
-
-
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        arrows: false,
+        draggable: false,
+        autoplay: true,
+        autoplaySpeed: 2000
+    };
 
 
     return (
@@ -214,7 +234,37 @@ export const Footer = () => {
                 {/*수상 내역*/}
                 <styled_Footer.FAward>
                     <styled_Footer.FAInner>
-                        수상내역
+                        <FAIDive>
+                            <Slider {...settings}>
+                                <FAIDLi>
+                                    <FAIDLImg src={FAward2} alt={"FAward2"}/>
+                                </FAIDLi>
+                                <FAIDLi>
+                                    <FAIDLImg src={FAward3} alt={"FAward3"}/>
+                                </FAIDLi>
+                                <FAIDLi>
+                                    <FAIDLImg src={FAward4} alt={"FAward4"}/>
+                                </FAIDLi>
+                                <FAIDLi>
+                                    <FAIDLImg src={FAward5} alt={"FAward5"}/>
+                                </FAIDLi>
+                                <FAIDLi>
+                                    <FAIDLImg src={FAward6} alt={"FAward6"}/>
+                                </FAIDLi>
+                                <FAIDLi>
+                                    <FAIDLImg src={FAward7} alt={"FAward7"}/>
+                                </FAIDLi>
+                                <FAIDLi>
+                                    <FAIDLImg/>
+                                </FAIDLi>
+                                <FAIDLi>
+                                    <FAIDLImg src={FAward1} alt={"FAward1"}/>
+                                </FAIDLi>
+                                <FAIDLi>
+                                    <FAIDLImg/>
+                                </FAIDLi>
+                            </Slider>
+                        </FAIDive>
                     </styled_Footer.FAInner>
                 </styled_Footer.FAward>
 
