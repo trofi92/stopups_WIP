@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import LoginBg from "../../image/Login/LoginBg.jpg"
 
 // 로그인 전체 박스

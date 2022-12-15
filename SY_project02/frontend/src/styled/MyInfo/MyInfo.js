@@ -1,6 +1,5 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import MIIcon from "../../image/MyInfo/MIIcon.png"
-import MIAgree from "../../image/MyInfo/MIAgree.png"
 
 // 전체 박스
 export const MIBox = styled.div`

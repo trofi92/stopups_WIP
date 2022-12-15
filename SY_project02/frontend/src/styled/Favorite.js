@@ -377,3 +377,11 @@ export const FCSA3G = styled.a`
     text-decoration: underline;
   }
 `
+
+// 전체 삭제, 선택 삭제, 장바구니 이동 버튼
+export const FCSection3 = styled.section`
+  display: block;
+  position: relative;
+  padding-top: 40px;
+  margin: 0;
+`

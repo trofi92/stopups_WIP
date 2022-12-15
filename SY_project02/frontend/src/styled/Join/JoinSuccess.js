@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import JSuccessSally from "../../image/Join/JSuccessSally.jpg"
 
 export const JSBox = styled.div`
   background-size: cover;
