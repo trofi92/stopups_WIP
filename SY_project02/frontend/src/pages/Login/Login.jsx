@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import {
@@ -23,7 +23,7 @@ const Login = () => {
   // 왜 true가 아니라 false로 뜨는지...?
   const onClickCheckedEmail = () => {
     // setCheck(!check);
-    setCheck((prev)=> !prev);
+    setCheck((prev) => !prev);
     console.log("check=>", check);
   };
 
@@ -38,7 +38,7 @@ const Login = () => {
         setEmail(saved);
       }
     }
-  }, [email])
+  }, [email]);
 
   const handleEmailChange = (e) => {
     checkEmail(e);
@@ -73,12 +73,9 @@ const Login = () => {
       };
       try {
         axios
-          .post(
-            "http://localhost:8000/auth/login",
-            {
-              data: post,
-            },
-          )
+          .post("http://localhost:8000/auth/login", {
+            data: post,
+          })
           .then((res) => {
             console.log("로그인 성공=>", res);
             navigate("/", { replace: true });
@@ -137,11 +134,13 @@ const Login = () => {
                     <styled_LOG.LFIdCheck>
                       {/*아이디 저장 체크박스 클릭시 background 이미지 토글 + 토글 이벤트 재사용*/}
                       <styled_LOG.LFICInput
-                          type={"checkbox"}
-                          onClick={onClickCheckedEmail}
-                          check={check}
+                        type={"checkbox"}
+                        onClick={onClickCheckedEmail}
+                        check={check}
                       />
-                      <styled_LOG.LFICSpan>아이디 저장</styled_LOG.LFICSpan>
+                      <styled_LOG.LFICSpan>
+                        아이디 저장
+                      </styled_LOG.LFICSpan>
                     </styled_LOG.LFIdCheck>
                     <styled_BU.LJButton onClick={submitIdPassword}>
                       로그인

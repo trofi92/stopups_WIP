@@ -9,10 +9,9 @@ export const cancelOrder = createAsyncThunk(
   async (orderId, thunkAPI) => {
     // Perform the operation to cancel the order
     // For example, you might make an HTTP request to a server to cancel the order
-    const response = await someAPI.cancelOrder(orderId);
-
+    // const response = await someAPI.cancelOrder(orderId);
     // Return the result of the operation
-    return response.data;
+    // return response.data;
   }
 );
 

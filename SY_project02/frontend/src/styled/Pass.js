@@ -12,7 +12,7 @@ export const LPWBox = styled.div`
   width: 100%;
   margin-top: 60px;
   height: 750px;
-`
+`;
 
 export const PSection = styled.section`
   border: 1px solid #ddd;
@@ -47,7 +47,7 @@ export const PInputBox = styled.div`
     display: block;
     clear: both;
   }
-`
+`;
 
 export const PInputPhone = styled.input`
   border: 1px solid #ddd;
@@ -91,7 +91,7 @@ export const PPhoneButton = styled.button`
   font-weight: bold;
   text-align: center;
   cursor: pointer;
-  
+
   :hover {
     text-decoration: underline;
   }
