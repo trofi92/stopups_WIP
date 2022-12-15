@@ -90,12 +90,8 @@ export const PPhoneButton = styled.button`
   display: block;
   font-weight: bold;
   text-align: center;
-<<<<<<< HEAD
-
-=======
   cursor: pointer;
-  
->>>>>>> 03d54335c83db86923dd612bed60ff4dac790c2b
+
   :hover {
     text-decoration: underline;
   }
