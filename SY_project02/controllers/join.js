@@ -5,11 +5,9 @@ const join = async (req, res, next) => {
     req.body.data;
   try {
     // 이미 있는 이메일인지 확인
-    const exUser = await User.findOne({
-      where: { email: req.body.data.eEmail },
-    });
+    const exUser = await User.findUser(req.body.data.eEmail);
     if (exUser) {
-      console.log("이미 있는 이메일 입니다.");
+      console.log("이미 사용중인 이메일 입니다.");
       return res.redirect("/join?error=exist");
     }
     await User.create({

@@ -136,7 +136,7 @@ const MyInfo = () => {
                       이름(필수)
                     </styled_Join.RFSectionStrong>
                     <styled_MI.MIEmailInput>
-                      {uName}
+                      {uName || ""}
                     </styled_MI.MIEmailInput>
                   </styled_Join.RFSectionDiv>
                   <styled_Join.RFSectionDiv>

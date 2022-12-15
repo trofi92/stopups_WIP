@@ -1,6 +1,14 @@
 const Sequelize = require("sequelize");
+const jwt = require("jsonwebtoken");
+const jwtSecret = process.env.JWT_SECRET;
 
 module.exports = class User extends Sequelize.Model {
+  static generateJWT(user) {
+    return jwt.sign({ id: user.email, name: user.name }, jwtSecret, {
+      expiresIn: "12h",
+    });
+  }
+
   static findUser(email) {
     return this.findOne({
       where: {
@@ -10,13 +18,8 @@ module.exports = class User extends Sequelize.Model {
   }
 
   static async getBookmarks(id) {
-    // Find the user with the given id
     const user = await this.findOne({ where: { id } });
-
-    // If the user was not found, return null
     if (!user) return null;
-
-    // Otherwise, return the bookmarks associated with the user
     return user.getBookmarks();
   }
 
