@@ -172,7 +172,7 @@ export const FCDFieldset1 = styled.fieldset`
   border: none;
 `
 
-// 전체선택, 선택삭제 선택 폼
+// 메뉴 테이블
 export const FCDTable1 = styled.table`
   width: 100%;
   border-top: 1px solid #333;
@@ -379,9 +379,78 @@ export const FCSA3G = styled.a`
 `
 
 // 전체 삭제, 선택 삭제, 장바구니 이동 버튼
-export const FCSection3 = styled.section`
-  display: block;
+export const FCDADiv = styled.div`
+  padding-bottom: 30px;
   position: relative;
-  padding-top: 40px;
   margin: 0;
+  vertical-align: baseline;
+`
+
+export const FCDADUl = styled.ul`
+  margin: 0 0 0 -5px;
+  float: left;
+  padding: 0;
+  vertical-align: baseline;
+  
+  :after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+`
+
+export const FCDADLi = styled.li`
+  float: left;
+  border: 1px solid #cccccc;
+  background: #fcfcfc;
+  border-radius: 3px;
+  width: 56px;
+  margin-left: 5px;
+  list-style: none;
+`
+
+export const FCDADLA = styled.p`
+  color: #444;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  height: 21px;
+  line-height: 21px;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  
+  :hover {
+    text-decoration: underline;
+  }
+`
+
+export const FCDADLiCart = styled.li`
+  float: right;
+  border: 1px solid #006633;
+  background: #006633;
+  border-radius: 3px;
+  width: 78px;
+  margin-left: 550px;
+  list-style: none;
+`
+
+export const FCDADLACart = styled.p`
+  color: #fff;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  height: 21px;
+  line-height: 21px;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  
+  :hover {
+    text-decoration: underline;
+  }
 `

@@ -53,6 +53,31 @@ export const FGoods = () => {
                             <styled_F.FCDTHTbodyTd1 colSpan={5}>데이터가 없습니다.</styled_F.FCDTHTbodyTd1>
                         </styled_F.FCDTHTbody1>
                     </styled_F.FCDTable1>
+
+                    {/*/!*데이터 있을 때만*!/*/}
+                    {/*/!*전체 선택, 선택 삭제, 장바구니 이동 버튼*!/*/}
+                    {/*<styled_F.FCDADiv>*/}
+                    {/*    <styled_F.FCDADUl>*/}
+                    {/*        /!*전체 선택*!/*/}
+                    {/*        <styled_F.FCDADLi>*/}
+                    {/*            <styled_F.FCDADLA>*/}
+                    {/*                전체 선택*/}
+                    {/*            </styled_F.FCDADLA>*/}
+                    {/*        </styled_F.FCDADLi>*/}
+                    {/*        /!*선택 삭제*!/*/}
+                    {/*        /!*선택된 제품이 없을 경우 alert("삭제 할 음료를 선택 하세요.")*!/*/}
+                    {/*        <styled_F.FCDADLi>*/}
+                    {/*            <styled_F.FCDADLA>*/}
+                    {/*                선택 삭제*/}
+                    {/*            </styled_F.FCDADLA>*/}
+                    {/*        </styled_F.FCDADLi>*/}
+                    {/*        <styled_F.FCDADLiCart>*/}
+                    {/*            <styled_F.FCDADLACart>*/}
+                    {/*                장바구니 이동*/}
+                    {/*            </styled_F.FCDADLACart>*/}
+                    {/*        </styled_F.FCDADLiCart>*/}
+                    {/*    </styled_F.FCDADUl>*/}
+                    {/*</styled_F.FCDADiv>*/}
                 </styled_F.FCDFieldset1>
             </styled_F.FCDArticle1>
         </styled_F.FCDd1>
