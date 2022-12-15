@@ -104,77 +104,35 @@ export const LFIdCheck = styled.span`
 
 // 로그인 아이디 저장 버튼
 export const LFICInput = styled.input`
-  visibility: hidden;
-  ${({check}) =>
-          check
-                  ? css`
-                    background-color: #66bb6a;
-                    border-color: #66bb6a;
-
-                    &:after {
-                      opacity: 1;
-                    }
-                  `
-                  : null}
-`
-
-export const LFICLabel = styled.label`
-  position: absolute;
-  display: inline-block;
-  border-radius: 50%;
-  line-height: 26px;
-  font-size: 16px;
-  vertical-align: top;
-  background-color: #fff;
-  cursor: pointer;
+  appearance: none;
   width: 28px;
   height: 28px;
-  left: 20px;
-  top: 135px;
-  z-index: 4;
-  margin-right: 5px;
-  ${({check}) =>
-          check
-                  ? css`
-                    background-color: #006633;
-                    border-color: #006633;
-
-                    &:after {
-                      border: 3px solid #fff;
-                      border-top: none;
-                      border-right: none;
-                      content: "";
-                      height: 6px;
-                      left: 7px;
-                      position: absolute;
-                      top: 8px;
-                      transform: rotate(-45deg);
-                      width: 12px;
-                    }
-                  `
-                  : css`
-                    background-color: #C1C1C1 !important;
-
-                    &:after {
-                      opacity: 1;
-                      border: 3px solid #fff;
-                      border-top: none;
-                      border-right: none;
-                      content: "";
-                      height: 6px;
-                      left: 7px;
-                      position: absolute;
-                      top: 8px;
-                      transform: rotate(-45deg);
-                      width: 12px;
-                    }
-                  `}
+  background: #C1C1C1;
+  border-radius: 50%;
+  
+  :after {
+    border: 3px solid #fff;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 6px;
+    left: 27px;
+    position: absolute;
+    top: 142px;
+    transform: rotate(-45deg);
+    width: 12px;
+  }
+  
+  &:checked {
+    background: #006633;
+  }
 `
+
 
 export const LFICSpan = styled.span`
   color: #3f4141;
   font-size: 16px;
-  padding-left: 20px;
+  padding-left: 5px;
 `
 
 export const LFText = styled.p`

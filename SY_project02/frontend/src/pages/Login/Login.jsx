@@ -20,8 +20,11 @@ const Login = () => {
   const navigate = useNavigate();
   const [check, setCheck] = useState(false);
 
+  // 왜 true가 아니라 false로 뜨는지...?
   const onClickCheckedEmail = () => {
-    setCheck(!check);
+    // setCheck(!check);
+    setCheck((prev) => !prev);
+    console.log("check=>", check);
   };
 
   // 아이디 저장 체크 시 아이디 및 체크 state 저장
@@ -132,9 +135,6 @@ const Login = () => {
                       {/*아이디 저장 체크박스 클릭시 background 이미지 토글 + 토글 이벤트 재사용*/}
                       <styled_LOG.LFICInput
                         type={"checkbox"}
-                        check={check}
-                      />
-                      <styled_LOG.LFICLabel
                         onClick={onClickCheckedEmail}
                         check={check}
                       />

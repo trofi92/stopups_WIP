@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import FHeaderImg from "../image/Favorite/FHeaderImg.jpg"
 import MyMenuBox from "../image/Favorite/MyMenuBox.png"
+import CChecked from "../image/Cart/CChecked.png"
+
 
 // My 메뉴 전체 박스
 export const FBox = styled.div`
@@ -213,11 +215,14 @@ export const FCDTHThDiv1 = styled.div`
 `
 
 export const FCDTHThDInput1 = styled.input`
+  appearance: none;
   width: 12px;
-  height: 16px;
-  margin: 0;
-  padding: 0;
-  box-sizing: content-box;
+  height: 12px;
+  border: 1px solid #cac5c1;
+  border-radius: 3px;
+  &:checked {
+    background: url(${CChecked});
+  }
 `
 
 export const FCDTHTbody1 = styled.tbody`

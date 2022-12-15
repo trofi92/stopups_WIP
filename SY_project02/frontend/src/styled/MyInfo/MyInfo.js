@@ -136,72 +136,28 @@ export const MINSAgree = styled.span`
 
 // 닉네임 이용약관 동의 버튼
 export const MINSAgreeInput = styled.input`
-  visibility: hidden;
-  ${({checkedNick}) =>
-          checkedNick
-                  ? css`
-                    background-color: #66bb6a;
-                    border-color: #66bb6a;
-
-                    &:after {
-                      opacity: 1;
-                    }
-                  `
-                  : null}
-`
-
-export const MINSAgreeLabel = styled.label`
-  position: absolute;
-  display: inline-block;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  line-height: 26px;
-  cursor: pointer;
-  vertical-align: top;
-  background-size: 26px;
-  overflow: hidden;
-  z-index: 4;
   appearance: none;
-  outline: none;
-  right: 0;
-  ${({checkedNick}) =>
-          checkedNick
-                  ? css`
-                    background-color: #006633;
-                    border-color: #006633;
+  width: 28px;
+  height: 28px;
+  background: #C1C1C1;
+  border-radius: 50%;
 
-                    &:after {
-                      border: 3px solid #fff;
-                      border-top: none;
-                      border-right: none;
-                      content: "";
-                      height: 6px;
-                      left: 6px;
-                      position: absolute;
-                      top: 7px;
-                      right: 0;
-                      transform: rotate(-45deg);
-                      width: 12px;
-                    }
-                  `
-                  : css`
-                    background-color: #C1C1C1 !important;
+  :after {
+    border: 3px solid #fff;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 6px;
+    left: 7px;
+    position: absolute;
+    top: 9px;
+    transform: rotate(-45deg);
+    width: 12px;
+  }
 
-                    &:after {
-                      opacity: 1;
-                      border: 3px solid #fff;
-                      border-top: none;
-                      border-right: none;
-                      content: "";
-                      height: 6px;
-                      left: 6px;
-                      position: absolute;
-                      top: 7px;
-                      transform: rotate(-45deg);
-                      width: 12px;
-                    }
-                  `}
+  &:checked {
+    background: #006633;
+  }
 `
 
 export const MINAgreeBox = styled.div`
