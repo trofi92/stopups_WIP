@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import test from "../image/Cart/111.jpg"
 import CNoCart from "../image/Cart/CNoCart.png"
+import CChecked from "../image/Cart/CChecked.png"
 
 export const CDiv = styled.div`
   position: relative;
@@ -106,11 +107,14 @@ export const CFAllCheck = styled.div`
 `
 
 export const CFACInput = styled.input`
+  appearance: none;
   width: 12px;
-  height: 16px;
-  margin: 0;
-  padding: 0;
-  box-sizing: content-box;
+  height: 12px;
+  border: 1px solid #cac5c1;
+  border-radius: 3px;
+  &:checked {
+    background: url(${CChecked});
+  }
 `
 
 export const CFAllCheckText = styled.div`
@@ -156,11 +160,14 @@ export const CMCheck = styled.div`
 `
 
 export const CMCInput = styled.input`
+  appearance: none;
   width: 12px;
-  height: 16px;
-  margin: 0;
-  padding: 0;
-  box-sizing: content-box;
+  height: 12px;
+  border: 1px solid #cac5c1;
+  border-radius: 3px;
+  &:checked {
+    background: url(${CChecked});
+  }
 `
 
 export const CMBox = styled.div`

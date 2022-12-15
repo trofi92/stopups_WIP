@@ -142,7 +142,6 @@ const MyInfo = () => {
                   <styled_Join.RFSectionDiv>
                     <styled_Join.RFSectionStrong>
                       휴대폰(필수)&nbsp;
-                      <styled_MI.MIIcons />
                     </styled_Join.RFSectionStrong>
                     <styled_MI.MIPhoneDiv>
                       <styled_MI.MIPhoneInput
@@ -159,7 +158,6 @@ const MyInfo = () => {
                         placeholder={"인증번호 4자리를 입력해주세요."}
                       />
                       <styled_MI.MIPhoneA>인증</styled_MI.MIPhoneA>
-                      <styled_MI.MIIconsPhone />
                     </styled_MI.MIPhoneDiv>
                   </styled_Join.RFSectionDiv>
                 </styled_Join.RFSection>
@@ -175,7 +173,6 @@ const MyInfo = () => {
                   <styled_Join.RFSectionDiv>
                     <styled_Join.RFSectionStrong>
                       닉네임(필수) &nbsp;
-                      <styled_MI.MIIcons />
                     </styled_Join.RFSectionStrong>
                     <styled_MI.MINIckSection>
                       <styled_MI.MINSH5>
@@ -185,11 +182,8 @@ const MyInfo = () => {
                         {/*체크 토글 버튼 만들기*/}
                         <styled_MI.MINSAgreeInput
                           type={"checkbox"}
-                          checkedNick={checkedNick}
-                        />
-                        <styled_MI.MINSAgreeLabel
-                          checkedNick={checkedNick}
                           onClick={onClickCheckedNick}
+                          checkedNick={checkedNick}
                         />
                       </styled_MI.MINSAgree>
                       {/*닉네임 이용약관 동의*/}

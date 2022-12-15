@@ -61,12 +61,13 @@ const JoinAgree = () => {
                                             {/*체크 토글 버튼 만들기*/}
                                             <styled_Join.AIH
                                                 type={"checkbox"}
-                                                checkedHome={checkedHome}
-                                            />
-                                            <styled_Join.ALH
                                                 onClick={onClickCheckedHome}
                                                 checkedHome={checkedHome}
                                             />
+                                            {/*<styled_Join.ALH*/}
+                                            {/*    onClick={onClickCheckedHome}*/}
+                                            {/*    checkedHome={checkedHome}*/}
+                                            {/*/>*/}
                                         </styled_Join.AgreeSpan>
                                         {/*동의 약관 내용 박스*/}
                                         <HomePageAgree/>
@@ -78,14 +79,15 @@ const JoinAgree = () => {
                                         </styled_Join.RFSectionStrong>
                                         <styled_Join.AgreeSpan>
                                             {/*체크 토글 버튼 만들기*/}
-                                            <styled_Join.AIU
+                                            <styled_Join.AIH
                                                 type={"checkbox"}
-                                                checkedUser={checkedUser}
-                                            />
-                                            <styled_Join.ALU
                                                 onClick={onClickCheckedUser}
                                                 checkedUser={checkedUser}
                                             />
+                                            {/*<styled_Join.ALU*/}
+                                            {/*    onClick={onClickCheckedUser}*/}
+                                            {/*    checkedUser={checkedUser}*/}
+                                            {/*/>*/}
                                         </styled_Join.AgreeSpan>
                                         {/*동의 약관 내용 박스*/}
                                         <UserAgree/>

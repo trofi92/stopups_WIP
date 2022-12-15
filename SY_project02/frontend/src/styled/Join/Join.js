@@ -120,67 +120,77 @@ export const AgreeSpan = styled.span`
 
 // 홈페이지 이용약관 동의 버튼
 export const AIH = styled.input`
-  visibility: hidden;
-  ${({checkedHome}) =>
-          checkedHome
-                  ? css`
-                    background-color: #66bb6a;
-                    border-color: #66bb6a;
-
-                    &:after {
-                      opacity: 1;
-                    }
-                  `
-                  : null}
-`
-
-export const ALH = styled.label`
-  background-color: #fff;
-  border: 1px solid #ccc;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background: #C1C1C1;
   border-radius: 50%;
-  cursor: pointer;
-  width: 28px;
-  height: 28px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  ${({checkedHome}) =>
-          checkedHome
-                  ? css`
-                    background-color: #006633;
-                    border-color: #006633;
+  
+  :after {
+    border: 3px solid #fff;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 6px;
+    left: 8px;
+    position: absolute;
+    top: 10px;
+    transform: rotate(-45deg);
+    width: 12px;
+  }
 
-                    &:after {
-                      border: 3px solid #fff;
-                      border-top: none;
-                      border-right: none;
-                      content: "";
-                      height: 6px;
-                      left: 7px;
-                      position: absolute;
-                      top: 8px;
-                      transform: rotate(-45deg);
-                      width: 12px;
-                    }
-                  `
-                  : css`
-                    background-color: #C1C1C1 !important;
-
-                    &:after {
-                      opacity: 1;
-                      border: 3px solid #fff;
-                      border-top: none;
-                      border-right: none;
-                      content: "";
-                      height: 6px;
-                      left: 7px;
-                      position: absolute;
-                      top: 8px;
-                      transform: rotate(-45deg);
-                      width: 12px;
-                    }
-                  `}
+  &:checked {
+    background: #006633;
+  }
 `
+
+// export const ALH = styled.label`
+//   background-color: #fff;
+//   border: 1px solid #ccc;
+//   border-radius: 50%;
+//   cursor: pointer;
+//   width: 28px;
+//   height: 28px;
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+//   ${({checkedHome}) =>
+//           checkedHome
+//                   ? css`
+//                     background-color: #006633;
+//                     border-color: #006633;
+//
+//                     &:after {
+//                       border: 3px solid #fff;
+//                       border-top: none;
+//                       border-right: none;
+//                       content: "";
+//                       height: 6px;
+//                       left: 7px;
+//                       position: absolute;
+//                       top: 8px;
+//                       transform: rotate(-45deg);
+//                       width: 12px;
+//                     }
+//                   `
+//                   : css`
+//                     background-color: #C1C1C1 !important;
+//
+//                     &:after {
+//                       opacity: 1;
+//                       border: 3px solid #fff;
+//                       border-top: none;
+//                       border-right: none;
+//                       content: "";
+//                       height: 6px;
+//                       left: 7px;
+//                       position: absolute;
+//                       top: 8px;
+//                       transform: rotate(-45deg);
+//                       width: 12px;
+//                     }
+//                   `}
+// `
 
 // 개인정보 수집 및 이용동의 버튼
 export const AIU = styled.input`
