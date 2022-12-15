@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import SearchButtonImg from "../image/SearchButtonImg.png"
+import SearchButtonImg from "../image/SearchButtonImg.png"
 
 // 통합검색 전체 박스
 export const SBox = styled.div`
@@ -69,14 +69,17 @@ export const SFInput = styled.input`
   margin: 0;
   padding: 0;
 `;
-//  background: url(${SearchButtonImg});
-export const SFIP = styled.p`
+
+export const SFIP = styled.button`
   float: right;
   height: 45px;
   overflow: hidden;
   width: 45px;
   margin: 0;
   padding: 0;
+  border: none;
+  background: url(${SearchButtonImg});
+  cursor: pointer;
 `;
 
 // 통합검색 버튼

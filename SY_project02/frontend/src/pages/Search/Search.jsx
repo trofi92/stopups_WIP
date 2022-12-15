@@ -4,7 +4,7 @@ import * as styled_F from "../../styled/Favorite";
 import SearchTitle from "../../image/SearchTitle.png"
 import * as styled_Search from "../../styled/Search";
 import {Footer} from "../../components/Footer/Footer";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {SEvent} from "./SEvent";
 import {SNews} from "./SNews";
 import {SMapEvent} from "./SMapEvent";
@@ -14,9 +14,15 @@ import {SGoods} from "./SGoods";
 import {SCard} from "./SCard";
 import {SMap} from "./SMap";
 import {SDrink} from "./SDrink";
+import axios from "axios";
 
-const Search = ({search}) => {
+axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
+axios.defaults.withCredentials = false;
+
+const Search = () => {
     const [state, setState] = useState(1);
+    const [search, setSearch] = useState("");
+    const [result, setResult] = useState("");
 
     const onClick = (id) => {
         setState(id);
@@ -25,32 +31,29 @@ const Search = ({search}) => {
     const obj = {
         1:
         <>
-            <SEvent/>
+            <SEvent search={search}/>
             <SNews/>
             <SMapEvent/>
             <SCoffee/>
-            <SDrink/>
-            <SFood/>
+            <SDrink search={search}/>
+            <SFood search={search}/>
             <SGoods/>
             <SCard/>
             <SMap/>
         </>,
-        2: <SEvent/>,
+        2: <SEvent search={search}/>,
         3: <SNews/>,
         4: <SMapEvent/>,
         5: <SCoffee/>,
-        6: <SDrink/>,
-        7: <SFood/>,
+        6: <SDrink search={search}/>,
+        7: <SFood search={search}/>,
         8: <SGoods/>,
         9: <SCard/>,
         10: <SMap/>
     };
 
-
-    console.log(search)
-
-    const onChange = (e) => {
-        console.log(e.target.value);
+    const onChangeSearch = (e) => {
+        setSearch(e.target.value);
     }
 
     return (
@@ -76,16 +79,19 @@ const Search = ({search}) => {
                     <styled_Search.SFieldset>
                         <styled_Search.SFBox>
                             <styled_Search.SFStrong>원하시는 검색어를 입력하신 후 검색 버튼을 클릭하세요.</styled_Search.SFStrong>
-                            {/*인풋*/}
-                            <styled_Search.SFInputBox>
-                                <styled_Search.SFInput
-                                    type={"text"}
-                                    value={search}
-                                    onChange={onChange}
-                                />
-                                {/*검색 버튼 나중에 onSubmit?? 이벤트 걸기*/}
-                                <styled_Search.SFIP/>
-                            </styled_Search.SFInputBox>
+                            {/*onSearch 이벤트 걸기*/}
+                            <form>
+                                {/*인풋*/}
+                                <styled_Search.SFInputBox>
+                                    <styled_Search.SFInput
+                                        type={"text"}
+                                        value={search}
+                                        onChange={onChangeSearch}
+                                    />
+                                    {/*검색 버튼 나중에 onSubmit?? 이벤트 걸기*/}
+                                    <styled_Search.SFIP type={"submit"}/>
+                                </styled_Search.SFInputBox>
+                            </form>
                             {/*버튼*/}
                             <styled_Search.SFButtonBox>
                                 <styled_Search.SFBUl>

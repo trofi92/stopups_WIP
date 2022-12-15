@@ -15,7 +15,7 @@ axios.defaults.withCredentials = false;
 
 const Event = () => {
     const [state, setState] = useState(1);
-    const [eventImg, setEventImg] = useState();
+    const [event, setEvent] = useState([]);
 
     const onClick = (id) => {
         setState(id);
@@ -33,8 +33,11 @@ const Event = () => {
         const event = await axios.get(
             "http://stopupsapi.shop:8080/api/?apikey=TeamYN1670470710431&Event=ALL&Name=&EventId="
         );
-        console.log("event=>", event);
+        console.log("Api event=>", event.data);
+        setEvent(event.data)
     };
+
+    console.log("event=>", event[0]);
 
     useEffect(() => {
         eventApi()
@@ -134,6 +137,7 @@ const Event = () => {
                     </styled_Event.ESection>
                 </styled_Event.EBPosition>
             </styled_Event.EBox>
+
         </styled_AB.AllBox>
     );
 };

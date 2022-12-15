@@ -58,7 +58,6 @@ const HeaderModal = ({ modalClose }) => {
   };
 
   const handleSearch = (e) => {
-    e.preventDefault();
     setSearch(e.target.value);
   };
 
@@ -70,6 +69,7 @@ const HeaderModal = ({ modalClose }) => {
     } else {
       searchRef.current.focus();
       navigate("/search");
+      return search;
     }
   };
 
@@ -85,7 +85,6 @@ const HeaderModal = ({ modalClose }) => {
                         <styled_HM.HMBIAsideP onClick={modalClose}/>
                     </styled_HM.HMBIAside>
                     {/*검색*/}
-                    {/*공백일 경우 alert(검색어를 입력하세요.)*/}
                     {/*공백이 아닐 경우 값과 함께 /serach 페이지로 이동*/}
                     <styled_HM.HMSearch>
                         <styled_HM.HMSInner>
