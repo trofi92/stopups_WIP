@@ -1,8 +1,15 @@
 const passport = require("passport");
+const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-const secret = process.env.JWT_SECRET;
-const option = {
-  maxAge: 1000 * 60 * 60, //쿠키 수명 1일
+const jwtSecret = process.env.JWT_SECRET;
+const accessJwtTokenOption = {
+  maxAge: 1000 * 60 * 60 * 24 * 7, //쿠키 수명 1주일
+  httpOnly: true,
+  overwrite: true,
+  expires: new Date(1), //브라우저 종료시 즉시 삭제
+};
+const refreshJwtTokenOption = {
+  maxAge: 1000 * 60 * 60 * 24 * 7, //쿠키 수명 1주일
   httpOnly: true,
   overwrite: true,
 };
@@ -16,23 +23,18 @@ const login = async (req, res, next) => {
   passport.authenticate(
     "local",
     { session: true },
-    (authError, user, info) => {
+    (err, user, info) => {
       try {
-        console.log("로그인에 authError=>", authError);
-        // console.log("로그인에 user=>", user);
-        // console.log("로그인에 info=>", info);
-
         // 인증 실패
-        if (authError) {
-          console.error(authError);
-          return next(authError);
+        if (err) {
+          console.error(err);
+          return next(err);
         }
         // 유저 없음
         if (!user) {
           return res.status(305).send(`${info.message}`);
         }
 
-        // authJwt(req?.body?.data);
         // user데이터를 통해 로그인 진행
         req.login(user, (loginError) => {
           // 비밀번호 에러
@@ -42,15 +44,21 @@ const login = async (req, res, next) => {
           }
         });
 
-        const token = jwt.sign(
-          { id: user.email, name: user.name },
-          secret,
+        const refreshToken = jwt.sign(
+          { id: user.id, name: user.name },
+          jwtSecret,
           {
-            expiresIn: "1h", // 만료시간
+            expiresIn: "12h", // 리프레시 토큰 만료 12시간
           }
         );
+        res.cookie(
+          "refreshJwtToken",
+          refreshToken,
+          refreshJwtTokenOption
+        );
 
-        res.cookie("accessJwtToken", token, option);
+        const token = User.generateJWT(user);
+        res.cookie("accessJwtToken", token, accessJwtTokenOption);
         return res.status(200).json({
           code: 200,
           message: "토큰이 발급되었습니다.",
@@ -68,21 +76,13 @@ const logout = async (req, res, next) => {
   res.cookie("accessJwtToken", {
     maxAge: 0,
   });
-  res.status = 204;
+  res.cookie("refreshJwtToken", {
+    maxAge: 0,
+  });
+  return res.status(200).json({
+    code: 200,
+    message: "Successfully logged out",
+  });
 };
 
-// 로그인 확인용 함수(테스트)
-const check = async (req, res) => {
-  // authJwt에서 감지한 jwt payload가져오기
-  const { email } = req.app.locals;
-  // console.log(req.app.locals);
-  if (!email) {
-    //로그인 중이 아님
-    return res.status(401);
-    //unauthorized
-  }
-  res.body = email;
-  console.log(res.body);
-};
-
-module.exports = { login, logout, check, secret, option };
+module.exports = { login, logout };

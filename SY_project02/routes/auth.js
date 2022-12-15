@@ -10,6 +10,7 @@ const { login, logout } = require("../controllers/login");
 const router = express.Router();
 
 router.post("/join", isNotLoggedIn, join);
+
 router.post("/login", isNotLoggedIn, login);
 
 router.get("/logout", isLoggedIn, logout);

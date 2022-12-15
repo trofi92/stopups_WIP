@@ -14,35 +14,40 @@ module.exports = () => {
       },
       async (email, password, done) => {
         try {
-          const exUser = await User.findAll({
+          // Find all users in the database.
+          const users = await User.findAll({
             attributes: ["email", "name", "password"],
           });
-          exUser.find((element) => {
-            if (email === decrypt(element.email)) {
-              if (exUser) {
-                const result = password === decrypt(element.password);
-                console.log("로컬에 비밀번호 비교 결과 =>", result);
-                if (result) {
-                  console.log("로컬에 유저 O->", result);
-                  done(null, element);
-                  return;
-                } else {
-                  console.log("로컬에 비밀번호 ->", result);
-                  done(null, false, {
-                    message: "비밀번호가 일치하지 않습니다.",
-                  });
-                }
-              } else {
-                console.log("로컬에 유저 X->", result);
-                done(null, false, {
-                  message: "가입되지 않은 회원입니다.",
-                });
-              }
-            }
-          });
+
+          // Find the user with the matching email.
+          const user = users.find(
+            (user) => email === decrypt(user.email)
+          );
+
+          // If no user was found, return an error message.
+          if (!user) {
+            return done(null, false, {
+              message: "가입되지 않은 회원입니다.",
+            });
+          }
+
+          // If the user was found, compare the provided password to the hashed
+          // password in the database.
+          const result = password === decrypt(user.password);
+
+          // If the passwords match, return the user object. Otherwise, return
+          // an error message.
+          if (result) {
+            return done(null, user);
+          } else {
+            return done(null, false, {
+              message: "비밀번호가 일치하지 않습니다.",
+            });
+          }
         } catch (error) {
-          console.error(error);
-          done(error);
+          // If an error occurred while finding the user or comparing the
+          // passwords, return the error.
+          return done(error);
         }
       }
     )
