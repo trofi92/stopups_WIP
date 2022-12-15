@@ -12,7 +12,7 @@ export const LPWBox = styled.div`
   width: 100%;
   margin-top: 60px;
   height: 750px;
-`
+`;
 
 export const PSection = styled.section`
   border: 1px solid #ddd;
@@ -41,17 +41,13 @@ export const PInputBox = styled.div`
   background: #fff;
   padding: 20px 0;
   position: relative;
-<<<<<<< HEAD
-`;
-=======
 
   :after {
     content: "";
     display: block;
     clear: both;
   }
-`
->>>>>>> 03d54335c83db86923dd612bed60ff4dac790c2b
+`;
 
 export const PInputPhone = styled.input`
   border: 1px solid #ddd;
