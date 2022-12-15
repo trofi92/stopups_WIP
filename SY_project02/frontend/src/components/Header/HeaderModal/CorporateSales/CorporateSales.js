@@ -16,7 +16,7 @@ export const CorporateSales = () => {
                 <styled_HM.NLiP>단체 및 기업 구매 안내</styled_HM.NLiP>
             </styled_HM.NLi>
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP onClick={openToggle1}>
                         단체 주문 배달 안내
                         <styled_BU.HMButton/>

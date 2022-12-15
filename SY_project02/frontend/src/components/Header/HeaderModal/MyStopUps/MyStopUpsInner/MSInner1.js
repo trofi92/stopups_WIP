@@ -6,14 +6,14 @@ export const MSInner1 = () => {
         <>
             <styled_HM.NLUl>
                 <styled_HM.NLULi>
-                    <Link to={"/"} style={{textDecoration: "none"}}>
+                    <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
                             리워드 및 혜택
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>
                 <styled_HM.NLULi>
-                    <Link to={"/"} style={{textDecoration: "none"}}>
+                    <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
                             별 히스토리
                         </styled_HM.NLULiP>

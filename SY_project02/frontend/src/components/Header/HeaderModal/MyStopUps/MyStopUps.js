@@ -78,7 +78,7 @@ export const MyStopUps = () => {
             </styled_HM.NLi>
             {open4 === true ? <MSInner4/> : null}
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>
                         My 캘린더
                     </styled_HM.NLiP>
@@ -99,28 +99,28 @@ export const MyStopUps = () => {
             </styled_HM.NLi>
             {open5 === true ? <MSInner5/> : null}
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>
                         My 고객의 소리
                     </styled_HM.NLiP>
                 </Link>
             </styled_HM.NLi>
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>
                         My 전자영수증
                     </styled_HM.NLiP>
                 </Link>
             </styled_HM.NLi>
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>
                         개인컵 리워드 설정
                     </styled_HM.NLiP>
                 </Link>
             </styled_HM.NLi>
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>
                         My DT Pass
                     </styled_HM.NLiP>

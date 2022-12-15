@@ -6,14 +6,14 @@ export const WInner3 = () => {
         <>
             <styled_HM.NLUl>
                 <styled_HM.NLULi>
-                    <Link to={"/"} style={{textDecoration: "none"}}>
+                    <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
                             일반 매장
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>
                 <styled_HM.NLULi>
-                    <Link to={"/"} style={{textDecoration: "none"}}>
+                    <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
                             신규 매장
                         </styled_HM.NLULiP>

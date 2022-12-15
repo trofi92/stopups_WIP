@@ -19,7 +19,7 @@ export const Store = () => {
     return (
         <>
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>한눈에 보기</styled_HM.NLiP>
                 </Link>
             </styled_HM.NLi>
@@ -31,21 +31,21 @@ export const Store = () => {
             </styled_HM.NLi>
             {open1 === true ? <SInner1/> : null}
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>
                         드라이브 스루 매장
                     </styled_HM.NLiP>
                 </Link>
             </styled_HM.NLi>
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>
                         스타벅스 리저브 매장
                     </styled_HM.NLiP>
                 </Link>
             </styled_HM.NLi>
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>
                         커뮤니티 스토어 매장
                     </styled_HM.NLiP>

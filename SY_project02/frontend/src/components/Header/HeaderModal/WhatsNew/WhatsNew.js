@@ -25,7 +25,7 @@ export const WhatsNew = () => {
     return (
         <>
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>한눈에 보기</styled_HM.NLiP>
                 </Link>
             </styled_HM.NLi>
@@ -56,7 +56,7 @@ export const WhatsNew = () => {
                 </Link>
             </styled_HM.NLi>
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>월페이퍼</styled_HM.NLiP>
                 </Link>
             </styled_HM.NLi>

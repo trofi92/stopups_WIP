@@ -6,14 +6,14 @@ export const SInner1 = () => {
         <>
             <styled_HM.NLUl>
                 <styled_HM.NLULi>
-                    <Link to={"/"} style={{textDecoration: "none"}}>
+                    <Link to={"/map"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
                             빠른 검색
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>
                 <styled_HM.NLULi>
-                    <Link to={"/"} style={{textDecoration: "none"}}>
+                    <Link to={"/map"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
                             지역 검색
                         </styled_HM.NLULiP>

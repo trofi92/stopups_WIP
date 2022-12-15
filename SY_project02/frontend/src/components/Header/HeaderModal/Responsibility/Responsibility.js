@@ -31,12 +31,12 @@ export const Responsibility = () => {
     return (
         <>
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>한눈에 보기</styled_HM.NLiP>
                 </Link>
             </styled_HM.NLi>
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>
                         사회공헌 캠페인 소개
                     </styled_HM.NLiP>

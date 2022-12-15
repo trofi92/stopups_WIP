@@ -20,14 +20,10 @@ export const Footer = () => {
     // 로그인시 home이랑 sigOut 버튼만
     // 로그아웃시 home sing in join us 버튼
 
-    // 현재 로그인 중인지 여부를 쿠키로 확인해야하나...쿠기 값이 가져와지지 않음
-
-
     const handleLogout = () => {
         axios
             .get("http://localhost:8000/auth/logout")
             .then((res) => {
-                // 로그인이 안되어있는 상황에서도 로그아웃 성공이 뜸 뭔가 문제가 있는 듯
                 console.log("로그아웃 성공=>", res)
                 alert("로그아웃 되었습니다.");
                 navigator("/", {replace: true});
