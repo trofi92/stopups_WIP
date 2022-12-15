@@ -220,6 +220,7 @@ export const FCDTHThDInput1 = styled.input`
   height: 12px;
   border: 1px solid #cac5c1;
   border-radius: 3px;
+  margin-top: 3px;
   &:checked {
     background: url(${CChecked});
   }
