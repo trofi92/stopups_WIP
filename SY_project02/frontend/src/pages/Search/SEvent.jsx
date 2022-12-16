@@ -7,7 +7,7 @@ import axios from "axios";
 export const SEvent = ({result}) => {
     const [allEvent, setAllEvent] = useState([]);
 
-    console.log("이벤트 검색 결과", result);
+    // console.log("이벤트 검색 결과", result);
 
     useEffect(() => {
         const all = async () => {
@@ -20,7 +20,7 @@ export const SEvent = ({result}) => {
         all();
     }, []);
 
-    console.log("allEvent", allEvent);
+    // console.log("allEvent", allEvent);
 
     const searchedAllEvent = allEvent.filter((data) => {
         if (result !== "") {
@@ -28,7 +28,7 @@ export const SEvent = ({result}) => {
         }
     })
 
-    console.log("searchedAllEvent", searchedAllEvent);
+    // console.log("searchedAllEvent", searchedAllEvent);
 
     return (
         <styled_Search.SSection>
@@ -52,7 +52,7 @@ export const SEvent = ({result}) => {
                             return (
                                 <styled_Search.SSLi key={event.EventId}>
                                     <styled_Search.SEFigure>
-                                        <styled_Search.SEFImg src={img+event.Image} alt={"ESTitle"}/>
+                                        <styled_Search.SEFImg src={img + event.Image} alt={"ESTitle"}/>
                                     </styled_Search.SEFigure>
                                     <styled_Search.SEDiv>
                                         <styled_Search.SEDHeader>

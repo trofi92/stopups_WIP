@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import * as styled_Notice from "../../styled/Notice/Notice";
 import * as styled_Event from "../../styled/Event/Event";
 import ETitle from "../../image/Event/ETitle.jpg";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import axios from "axios";
 import {EAll} from "./EAll";
 import {ESCard} from "./ESCard";
@@ -15,7 +15,6 @@ axios.defaults.withCredentials = false;
 
 const Event = () => {
     const [state, setState] = useState(1);
-    const [event, setEvent] = useState([]);
 
     const onClick = (id) => {
         setState(id);
@@ -27,20 +26,6 @@ const Event = () => {
         3: <ESReward/>,
         4: <EOnline/>,
     };
-
-    useEffect(() => {
-        const event = async () => {
-            await axios
-                .get("http://stopupsapi.shop:8080/api/?apikey=TeamYN1670470710431&Event=ALL&Title=&EventId=")
-                .then((res) => {
-                    setEvent(res.data);
-                })
-
-        };
-        event();
-    }, []);
-
-    console.log("event", event);
 
     return (
         <styled_AB.AllBox>
