@@ -3,13 +3,14 @@ import Header from "../../components/Header/Header";
 import * as styled_Notice from "../../styled/Notice/Notice";
 import * as styled_Event from "../../styled/Event/Event";
 import ETitle from "../../image/Event/ETitle.jpg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { EAll } from "./EAll";
 import { ESCard } from "./ESCard";
 import { ESReward } from "./ESReward";
 import { EOnline } from "./EOnline";
 
+axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
 axios.defaults.withCredentials = false;
 
 const Event = () => {
