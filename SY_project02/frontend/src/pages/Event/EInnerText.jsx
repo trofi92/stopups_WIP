@@ -12,7 +12,7 @@ import ESBlend from "../../image/Event/ESummer/ESBlend.jpg"
 import ESCard from "../../image/Event/ESummer/ESCard.jpg"
 import {Link} from "react-router-dom";
 
-const ESummer = () => {
+const EInnerText = () => {
     return(
         <styled_AB.AllBox>
             <Header/>
@@ -101,4 +101,4 @@ const ESummer = () => {
     );
 };
 
-export default ESummer;
+export default EInnerText;

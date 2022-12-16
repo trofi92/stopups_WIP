@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 export const NoticeInner = ({result}) => {
     const [notices, setNotices] = useState([]);
 
-    console.log("공지 검색 결과", result);
+    // console.log("공지 검색 결과", result);
 
     useEffect(() => {
         const notice = async () => {
@@ -25,7 +25,7 @@ export const NoticeInner = ({result}) => {
         }
     });
 
-    console.log("searchedAllNotice", searchedAllNotice);
+    // console.log("searchedAllNotice", searchedAllNotice);
 
     return (
         <>

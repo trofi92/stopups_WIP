@@ -20,7 +20,8 @@ export const EAll = () => {
         event();
     }, []);
 
-    console.log("events", events);
+    // console.log("events", events);
+
     return (
         <styled_Event.ESArticle>
             <styled_Event.ESList>
@@ -37,7 +38,7 @@ export const EAll = () => {
                                         <styled_Event.ESDLDl>
                                             <styled_Event.ESDLDt>
                                                 <styled_Event.ESDLA>
-                                                    <Link to={"/summerEvent"}>
+                                                    <Link to={`/event/all/${event.EventId}`}>
                                                         <styled_Event.ESDLImg src={img + event.Image} alt={"ESTitle"}/>
                                                     </Link>
                                                 </styled_Event.ESDLA>

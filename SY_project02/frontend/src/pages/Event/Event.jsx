@@ -21,10 +21,10 @@ const Event = () => {
     };
 
     const obj = {
-        1: <EAll/>,
-        2: <ESCard/>,
-        3: <ESReward/>,
-        4: <EOnline/>,
+        1: <EAll Link={"/event/all"}/>,
+        2: <ESCard Link={"/event/stopUpsCard"}/>,
+        3: <ESReward Link={"/event/stopUpsReward"}/>,
+        4: <EOnline Link={"/event/online"}/>,
     };
 
     return (
