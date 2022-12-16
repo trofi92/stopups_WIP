@@ -71,14 +71,9 @@ function App() {
         <Route path={"/favorite"} element={<Favorite />} />
         {/*공지*/}
         <Route path={"/notice"} element={<Notice />} />
-        {/*<Route path={"/notice/:category"} element={<Notice />} />*/}
         {/*공지 내용*/} {/*임시*/}
         {/*api에서 공지글 받아 내려서 각 id값에 따라 /:id로 연결되게끔..?*/}
-        <Route
-          path={"/noticeInnerText"}
-          element={<NoticeInnerText />}
-        />
-        {/*<Route path={"/notice/:category/:id"} element={<NoticeInnerText />} />*/}
+        <Route path={"/notice/:id"} element={<NoticeInnerText />}/>
         {/*이벤트*/}
         <Route path={"/event"} element={<Event />} />
         {/*<Route path={"/event/:category"} element={<Event />} />*/}

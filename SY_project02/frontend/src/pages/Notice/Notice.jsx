@@ -5,8 +5,26 @@ import NTitleImg from "../../image/Notice/Ntitle.jpg"
 import NNext from "../../image/Notice/NNext.jpg"
 import {Footer} from "../../components/Footer/Footer";
 import {NoticeInner} from "./NoticeInner";
+import {useState} from "react";
 
 const Notice = () => {
+    const [search, setSearch] = useState("");
+    const [result, setResult] = useState("");
+
+    const onChangeSearch = (e) => {
+        e.preventDefault();
+        setSearch(e.target.value);
+    }
+
+    const onClickSearch = (e) => {
+        e.preventDefault();
+        if (search === "") {
+            alert("검색어를 입력하세요")
+        } else  {
+            setResult(search);
+        }
+    };
+
     return (
         <styled_AB.AllBox>
             <Header/>
@@ -28,9 +46,17 @@ const Notice = () => {
                         <styled_Notice.NIP>
                             <styled_Notice.NIPInput
                                 type={"text"}
+                                value={search}
+                                onChange={onChangeSearch}
                                 placeholder={"검색어를 입력해 주세요."}
                             />
-                            <styled_Notice.NIPA href={"#"}>검색</styled_Notice.NIPA>
+                            <styled_Notice.NIPA
+                                href={"#"}
+                                type={"submit"}
+                                onClick={onClickSearch}
+                            >
+                                검색
+                            </styled_Notice.NIPA>
                         </styled_Notice.NIP>
                     </styled_Notice.NInput>
                     {/*공지사항 게시글들*/}
@@ -54,7 +80,7 @@ const Notice = () => {
                         {/*게시글들 박스*/}
                         <styled_Notice.NTbody>
                             {/*각각 게시글*/}
-                            <NoticeInner/>
+                            <NoticeInner result={result}/>
                         </styled_Notice.NTbody>
                     </styled_Notice.NTable>
                     {/*게시글 페이지*/}
