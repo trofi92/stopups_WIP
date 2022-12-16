@@ -1,31 +1,15 @@
 import * as styled_Notice from "../../styled/Notice/Notice";
 import {Link} from "react-router-dom";
-import axios from "axios";
-import {useEffect, useState} from "react";
 
-export const NoticeInner = ({result}) => {
-    const [notices, setNotices] = useState([]);
+export const NoticeInner = ({result, notice}) => {
+    // Notice에서 notice(공지사항 api 데이터 [])와 result(검색 값) 받아옴
 
-    // console.log("공지 검색 결과", result);
-
-    useEffect(() => {
-        const notice = async () => {
-            await axios
-                .get("http://stopupsapi.shop:8080/api/?apikey=TeamYN1670397914440&Notice=ALL&Title=&writeId=")
-                .then((res) => {
-                    setNotices(res.data);
-                })
-        };
-        notice();
-    }, [])
-
-    const searchedAllNotice = notices.filter((data) => {
+    // notice에서 result를 포함하는 값만!
+    const searchedAllNotice = notice.filter((data) => {
         if (result !== "") {
             return data.Title.toLowerCase().includes(result.toLowerCase());
         }
     });
-
-    // console.log("searchedAllNotice", searchedAllNotice);
 
     return (
         <>
@@ -34,10 +18,10 @@ export const NoticeInner = ({result}) => {
                 searchedAllNotice.map((notice, idx) => {
                     if (notice) {
                         return (
-                            <styled_Notice.NTBTr key={notice.Id}>
-                                <styled_Notice.NTBTd>{idx + 1}</styled_Notice.NTBTd>
+                            <styled_Notice.NTBTr key={idx}>
+                                <styled_Notice.NTBTd>{notice.Num}</styled_Notice.NTBTd>
                                 <styled_Notice.NTBTDLeft>
-                                    <Link to={`/notice/${notice.Id}`} style={{textDecoration: "none"}}>
+                                    <Link to={`/notice/${notice.Num}`} style={{textDecoration: "none"}}>
                                         <styled_Notice.NTBTDLA>{notice.Title}</styled_Notice.NTBTDLA>
                                     </Link>
                                 </styled_Notice.NTBTDLeft>
@@ -49,12 +33,12 @@ export const NoticeInner = ({result}) => {
                 })
             ) : (
                 //검색 결과를 포함하는 공지 제목이 없으면 전부 띄우기
-                notices.map((notice, idx) => {
+                notice.map((notice, idx) => {
                     return (
-                        <styled_Notice.NTBTr key={notice.Id}>
-                            <styled_Notice.NTBTd>{idx + 1}</styled_Notice.NTBTd>
+                        <styled_Notice.NTBTr key={idx}>
+                            <styled_Notice.NTBTd>{notice.Num}</styled_Notice.NTBTd>
                             <styled_Notice.NTBTDLeft>
-                                <Link to={`/notice/${notice.Id}`} style={{textDecoration: "none"}}>
+                                <Link to={`/notice/${notice.Num}`} style={{textDecoration: "none"}}>
                                     <styled_Notice.NTBTDLA>{notice.Title}</styled_Notice.NTBTDLA>
                                 </Link>
                             </styled_Notice.NTBTDLeft>

@@ -72,7 +72,7 @@ function App() {
         {/*공지*/}
         <Route path={"/notice"} element={<Notice />} />
         {/*공지 내용*/} {/*임시*/}
-        <Route path={"/notice/:id"} element={<NoticeInnerText />}/>
+        <Route path={"/notice/:id"} element={<NoticeInnerText/>}/>
         {/*이벤트*/}
         <Route path={"/event/:id"} element={<Event />} />
         {/*<Route path={"/event/:category"} element={<Event />} />*/}

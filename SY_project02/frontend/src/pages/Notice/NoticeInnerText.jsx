@@ -14,8 +14,6 @@ const NoticeInnerText = () => {
     const [notices, setNotices] = useState([]);
     const location = useLocation();
 
-    console.log(location);
-
     useEffect(() => {
         const notice = async () => {
             await axios
@@ -26,7 +24,6 @@ const NoticeInnerText = () => {
         };
         notice();
     }, [])
-
 
     return (
         <styled_AB.AllBox>
@@ -41,10 +38,11 @@ const NoticeInnerText = () => {
             </styled_Notice.NTitleBox>
 
             {/*공지사항 내용*/}
-            {notices.map((notice) => {
-                if (location.pathname === `/notice/${notice.Id}`){
+            {notices.map((notice, idx) => {
+                // 주소랑 notice.Num이 같은 경우만 출력
+                if (location.pathname === `/notice/${notice.Num}`){
                     return (
-                        <styled_NoticeIT.NITBox key={notice.Id}>
+                        <styled_NoticeIT.NITBox key={idx}>
                             <styled_NoticeIT.NITInnerBox>
                                 {/*본문*/}
                                 <styled_NoticeIT.NITSection>
@@ -100,7 +98,7 @@ const NoticeInnerText = () => {
                                         <styled_NoticeIT.NITTh>윗글</styled_NoticeIT.NITTh>
                                         <styled_NoticeIT.NITTd>
                                             <Link to={"#"} style={{textDecoration: "none"}}>
-                                                <styled_NoticeIT.NITTdP>윗글 제목</styled_NoticeIT.NITTdP>
+                                                <styled_NoticeIT.NITTdP>윗글</styled_NoticeIT.NITTdP>
                                             </Link>
                                         </styled_NoticeIT.NITTd>
                                     </tr>

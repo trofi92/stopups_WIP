@@ -2,10 +2,11 @@ import * as styled_AB from "../../styled/AllBox";
 import Header from "../../components/Header/Header";
 import * as styled_Notice from "../../styled/Notice/Notice";
 import NTitleImg from "../../image/Notice/Ntitle.jpg"
-import NNext from "../../image/Notice/NNext.jpg"
 import {Footer} from "../../components/Footer/Footer";
 import {NoticeInner} from "./NoticeInner";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import Pagination from "./Pagination";
 
 const Notice = () => {
     const [search, setSearch] = useState("");
@@ -24,6 +25,32 @@ const Notice = () => {
             setResult(search);
         }
     };
+
+    const [notice, setNotice] = useState([]);
+
+    useEffect(() => {
+        const notice = async () => {
+            await axios
+                .get("http://stopupsapi.shop:8080/api/?apikey=TeamYN1670397914440&Notice=ALL&Title=&writeId=")
+                .then((res) => {
+                    setNotice(res.data);
+                })
+        };
+        notice();
+    }, []);
+
+
+    const [page, setPage] = useState(1); //페이지
+    const limit = 10; // notice가 보일 최대한의 갯수
+    const offset = (page-1)*limit; // 시작점과 끝점을 구하는 offset
+
+    const postsData = (posts) => {
+        if (posts) {
+            return posts.slice(offset, offset + limit);
+        }
+    };
+
+
 
     return (
         <styled_AB.AllBox>
@@ -80,26 +107,18 @@ const Notice = () => {
                         {/*게시글들 박스*/}
                         <styled_Notice.NTbody>
                             {/*각각 게시글*/}
-                            <NoticeInner result={result}/>
+                            <NoticeInner result={result} notice={postsData(notice)}/>
                         </styled_Notice.NTbody>
                     </styled_Notice.NTable>
                     {/*게시글 페이지*/}
                     <styled_Notice.NPagination>
+                        <Pagination
+                            limit={limit}
+                            page={page}
+                            totalPosts={notice.length}
+                            setPage={setPage}
+                            />
                         {/*숫자*/}
-                        <styled_Notice.NPUl>
-                            <styled_Notice.NPLi>
-                                <styled_Notice.NPAClicked>1</styled_Notice.NPAClicked>
-                            </styled_Notice.NPLi>
-                            <styled_Notice.NPLi>
-                                <styled_Notice.NPA>2</styled_Notice.NPA>
-                            </styled_Notice.NPLi>
-                            {/*다음 버튼*/}
-                            <styled_Notice.NPLNext>
-                                <styled_Notice.NPLNA href={"#"}>
-                                    <styled_Notice.NPLNAImg src={NNext} alt={"NNext"}/>
-                                </styled_Notice.NPLNA>
-                            </styled_Notice.NPLNext>
-                        </styled_Notice.NPUl>
                     </styled_Notice.NPagination>
                 </styled_Notice.NBPosition>
             </styled_Notice.NB>

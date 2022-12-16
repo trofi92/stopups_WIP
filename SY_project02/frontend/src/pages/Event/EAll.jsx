@@ -39,13 +39,13 @@ export const EAll = () => {
                                             <styled_Event.ESDLDt>
                                                 <styled_Event.ESDLA>
                                                     <Link to={`/event/all/${event.EventId}`}>
-                                                        <styled_Event.ESDLImg src={img + event.Image} alt={"ESTitle"}/>
+                                                        <styled_Event.ESDLImg src={img + event.Image[0]} alt={"ESTitle"}/>
                                                     </Link>
                                                 </styled_Event.ESDLA>
                                             </styled_Event.ESDLDt>
                                             <styled_Event.ESDLDd>
                                                 <styled_Event.ESDLH4>{event.Title}</styled_Event.ESDLH4>
-                                                <styled_Event.ESDLP>{event.Date}</styled_Event.ESDLP>
+                                                <styled_Event.ESDLP>{event.EventTime}</styled_Event.ESDLP>
                                             </styled_Event.ESDLDd>
                                         </styled_Event.ESDLDl>
                                     </styled_Event.ESDLi>
