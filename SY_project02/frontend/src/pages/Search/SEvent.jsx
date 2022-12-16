@@ -1,6 +1,6 @@
 import * as styled_Search from "../../styled/Search";
 import {Link} from "react-router-dom";
-import ESTitle from "../../image/Event/ESTitle.jpg";
+import ESTitle from "../../image/Event/ESummer/ESTitle.jpg";
 import {useEffect, useState} from "react";
 import axios from "axios";
 

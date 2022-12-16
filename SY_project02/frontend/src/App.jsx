@@ -75,7 +75,6 @@ function App() {
         <Route path={"/notice/:id"} element={<NoticeInnerText/>}/>
         {/*이벤트*/}
         <Route path={"/event/:id"} element={<Event />} />
-        {/*<Route path={"/event/:category"} element={<Event />} />*/}
         {/*이벤트 - 전체*/}
         <Route path={"/event/all/:id"} element={<EInnerText />} />
         {/*이벤트 - 스탑업스 카드, 스탑업스 리워드, 온라인 (구현X)*/}

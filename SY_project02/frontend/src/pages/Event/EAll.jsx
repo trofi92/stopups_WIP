@@ -1,6 +1,6 @@
 import * as styled_Event from "../../styled/Event/Event";
 import {Link} from "react-router-dom";
-import ESTitle from "../../image/Event/ESTitle.jpg";
+import ESTitle from "../../image/Event/ESummer/ESTitle.jpg";
 import {useEffect, useState} from "react";
 import axios from "axios";
 

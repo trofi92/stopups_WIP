@@ -157,45 +157,6 @@ export const ESADImg = styled.img`
   max-width: 100%;
 `
 
-export const ESADP1 = styled.p`
-  display: block;
-  position: absolute;
-  background: rgba(162, 141, 25, 0);
-  margin: 0;
-  text-indent: -20000px;
-  overflow: hidden;
-  left: 10%;
-  top: 26.1%;
-  width: 34.8%;
-  height: 24%;
-`
-
-export const ESADP2 = styled.p`
-  display: block;
-  position: absolute;
-  background: rgba(162, 141, 25, 0);
-  margin: 0;
-  text-indent: -20000px;
-  overflow: hidden;
-  left: 55.6%;
-  top: 48.2%;
-  width: 33.8%;
-  height: 22.5%;
-`
-
-export const ESADP3 = styled.p`
-  display: block;
-  position: absolute;
-  background: rgba(162, 141, 25, 0);
-  margin: 0;
-  text-indent: -20000px;
-  overflow: hidden;
-  left: 10.8%;
-  top: 66.5%;
-  width: 33.8%;
-  height: 22.5%;
-`
-
 export const ESADP4 = styled.p`
   display: block;
   position: absolute;
