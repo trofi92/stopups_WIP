@@ -1,42 +1,53 @@
 import * as styled_Notice from "../../styled/Notice/Notice";
 import {Link} from "react-router-dom";
-import axios from "axios";
-import { useEffect, useState } from "react";
 
-export const NoticeInner = () => {
-  const [info, setInfo] = useState([]);
-  const getInfo = async () => {
-    const res = await axios.get(
-      "http://54.180.86.156:8080/api/?apikey=TeamYN1670397914440&Notice=ALL&Title=&writeId="
-    );
-    setInfo(res.data);
-  };
-  useEffect(() => {
-    getInfo().then((r) => console.log("111111=>", r));
-  }, []);
+export const NoticeInner = ({result, notice}) => {
+    // Notice에서 notice(공지사항 api 데이터 [])와 result(검색 값) 받아옴
 
-  console.log("2222222222=>", info);
-
-  // 조회수 세션스토리지 카운트
-
-  //
+    // notice에서 result를 포함하는 값만!
+    const searchedAllNotice = notice.filter((data) => {
+        if (result !== "") {
+            return data.Title.toLowerCase().includes(result.toLowerCase());
+        }
+    });
 
     return (
         <>
-            {info.map((infos, idx) => {
-                return (
-                    <styled_Notice.NTBTr key={idx}>
-                        <styled_Notice.NTBTd>{idx + 1}</styled_Notice.NTBTd>
-                        <styled_Notice.NTBTDLeft>
-                            <Link to={`/noticeText`} style={{textDecoration: "none"}}>
-                                <styled_Notice.NTBTDLA>{infos.Title}</styled_Notice.NTBTDLA>
-                            </Link>
-                        </styled_Notice.NTBTDLeft>
-                        <styled_Notice.NTBTd>{infos.Date}</styled_Notice.NTBTd>
-                        <styled_Notice.NTBTd>조회수</styled_Notice.NTBTd>
-                    </styled_Notice.NTBTr>
-                );
-            })}
+            {/*검색 결과를 포함하는 공지 제목이 있으면 그것만 띄우기*/}
+            {searchedAllNotice.length !== 0 && result !== "" ? (
+                searchedAllNotice.map((notice, idx) => {
+                    if (notice) {
+                        return (
+                            <styled_Notice.NTBTr key={idx}>
+                                <styled_Notice.NTBTd>{notice.Num}</styled_Notice.NTBTd>
+                                <styled_Notice.NTBTDLeft>
+                                    <Link to={`/notice/${notice.Num}`} style={{textDecoration: "none"}}>
+                                        <styled_Notice.NTBTDLA>{notice.Title}</styled_Notice.NTBTDLA>
+                                    </Link>
+                                </styled_Notice.NTBTDLeft>
+                                <styled_Notice.NTBTd>{notice.Date}</styled_Notice.NTBTd>
+                                <styled_Notice.NTBTd>조회수</styled_Notice.NTBTd>
+                            </styled_Notice.NTBTr>
+                        )
+                    }
+                })
+            ) : (
+                //검색 결과를 포함하는 공지 제목이 없으면 전부 띄우기
+                notice.map((notice, idx) => {
+                    return (
+                        <styled_Notice.NTBTr key={idx}>
+                            <styled_Notice.NTBTd>{notice.Num}</styled_Notice.NTBTd>
+                            <styled_Notice.NTBTDLeft>
+                                <Link to={`/notice/${notice.Num}`} style={{textDecoration: "none"}}>
+                                    <styled_Notice.NTBTDLA>{notice.Title}</styled_Notice.NTBTDLA>
+                                </Link>
+                            </styled_Notice.NTBTDLeft>
+                            <styled_Notice.NTBTd>{notice.Date}</styled_Notice.NTBTd>
+                            <styled_Notice.NTBTd>조회수</styled_Notice.NTBTd>
+                        </styled_Notice.NTBTr>
+                    )
+                })
+            )}
         </>
     );
 };

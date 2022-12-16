@@ -14,33 +14,17 @@ axios.defaults.withCredentials = false;
 
 const Event = () => {
   const [state, setState] = useState(1);
-  const [event, setEvent] = useState([]);
 
   const onClick = (id) => {
     setState(id);
   };
 
   const obj = {
-    1: <EAll />,
-    2: <ESCard />,
-    3: <ESReward />,
-    4: <EOnline />,
+    1: <EAll Link={"/event/all"} />,
+    2: <ESCard Link={"/event/stopUpsCard"} />,
+    3: <ESReward Link={"/event/stopUpsReward"} />,
+    4: <EOnline Link={"/event/online"} />,
   };
-
-  const eventApi = async () => {
-    // 이미지 조회 시 카테고리 지정 및 검색 값에 따른 DB 조회
-    const event = await axios.get(
-      "http://stopupsapi.shop:8080/api/?apikey=TeamYN1670470710431&Event=ALL&Name=&EventId="
-    );
-    console.log("Api event=>", event.data);
-    setEvent(event.data);
-  };
-
-  console.log("event=>", event[0]);
-
-  useEffect(() => {
-    eventApi();
-  }, []);
 
   return (
     <styled_AB.AllBox>

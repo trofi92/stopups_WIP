@@ -207,8 +207,8 @@ export const NPUl = styled.ul`
   padding: 0;
   border: 0;
   vertical-align: baseline;
-  
 `
+
 // 숫자
 export const NPLi = styled.li`
   display: inline-block;
@@ -224,6 +224,12 @@ export const NPA = styled.a`
   color: #555;
   line-height: 15px;
   cursor: pointer;
+  margin: 0 10px;
+  
+  &:active {
+    color: #006633;
+    text-decoration: underline;
+  }
 `
 
 export const NPAClicked = styled.a`
@@ -260,4 +266,13 @@ export const NPLNAImg = styled.img`
   margin: 0;
   padding: 0;
   border: 0;
+`
+
+export const NPLNButton = styled.button`
+  border: 1px solid #dddddd;
+  padding: 3px 6px;
+  background: none;
+  border-radius: 3px;
+  color: #555;
+  cursor: pointer;
 `
