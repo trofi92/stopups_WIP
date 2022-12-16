@@ -1,7 +1,34 @@
 import * as styled_Search from "../../styled/Search";
 import {Link} from "react-router-dom";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
-export const SFood = () => {
+export const SFood = ({result}) => {
+    const [allFood, setAllFood] = useState([]);
+
+    // console.log("푸드 검색 결과",result);
+
+    useEffect(() => {
+        const all = async () => {
+            await axios
+                .get("http://stopupsapi.shop:8080/api/?apikey=TeamYN1670397914440&Category=분류&Name=")
+                .then((res) => {
+                    setAllFood(res.data);
+                })
+        };
+        all();
+    }, []);
+
+    const searchedAllFood = allFood.filter((data) => {
+        if (data.Category === "브레드" || data.Category === "케이크" || data.Category === "따뜻한 푸드" || data.Category === "샐러드" || data.Category === "샌드위치") {
+            if (result !== "") {
+                return data.Name.toLowerCase().includes(result.toLowerCase());
+            }
+        }
+    })
+
+    // console.log("searchedAllFood", searchedAllFood);
+
     return (
         <styled_Search.SSection>
             {/*푸드 헤더*/}
@@ -13,32 +40,40 @@ export const SFood = () => {
             </styled_Search.SSHeader>
             {/*푸드 내용*/}
             <styled_Search.SSUl>
-                <styled_Search.SSLi>
-                    <styled_Search.SSLP>검색 결과가 없습니다.</styled_Search.SSLP>
-                </styled_Search.SSLi>
+                {searchedAllFood.length === 0 || result === "" ? (
+                    <styled_Search.SSLi>
+                        <styled_Search.SSLP>검색 결과가 없습니다.</styled_Search.SSLP>
+                    </styled_Search.SSLi>
+                ) : (
+                    searchedAllFood.map((food) => {
+                        if (food) {
+                            return (
+                                <styled_Search.SSLi key={food.ProductId}>
+                                    <styled_Search.SDFigure>
+                                        <styled_Search.SDFImg src={food.Image} alt={"푸드 이미지"}/>
+                                    </styled_Search.SDFigure>
+                                    <styled_Search.SDDiv>
+                                        <styled_Search.SEDHeader>
+                                            <styled_Search.SEDHH3>
+                                                {food.Name}
+                                                {/*<styled_Search.SYellow>검색단어강조</styled_Search.SYellow>*/}
+                                            </styled_Search.SEDHH3>
+                                        </styled_Search.SEDHeader>
+                                        <styled_Search.SDDPText>
+                                            {food.Desc}
+                                        </styled_Search.SDDPText>
+                                        <Link to={"#"}>
+                                            <styled_Search.SEDPLink>
+                                                메뉴 링크
+                                            </styled_Search.SEDPLink>
+                                        </Link>
+                                    </styled_Search.SDDiv>
+                                </styled_Search.SSLi>
+                            )
+                        }
+                    })
+                )}
             </styled_Search.SSUl>
-            {/*푸드 있을 때*/}
-            <styled_Search.SSLi>
-                <styled_Search.SDFigure>
-                    {/*이미지 넣기*/}
-                    <styled_Search.SDFImg/>
-                </styled_Search.SDFigure>
-                <styled_Search.SDDiv>
-                    <styled_Search.SEDHeader>
-                        <styled_Search.SEDHH3>
-                            유기농 아이스크림 <styled_Search.SYellow>바닐라</styled_Search.SYellow>
-                        </styled_Search.SEDHH3>
-                    </styled_Search.SEDHeader>
-                    <styled_Search.SDDPText>
-                        부드럽고 깔끔한 맛의 유기농 아이스크림을 즐기세요.
-                    </styled_Search.SDDPText>
-                    <Link to={"#"}>
-                        <styled_Search.SEDPLink>
-                            메뉴 링크
-                        </styled_Search.SEDPLink>
-                    </Link>
-                </styled_Search.SDDiv>
-            </styled_Search.SSLi>
         </styled_Search.SSection>
     );
 };

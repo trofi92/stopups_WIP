@@ -4,7 +4,7 @@ import * as styled_F from "../../styled/Favorite";
 import SearchTitle from "../../image/SearchTitle.png"
 import * as styled_Search from "../../styled/Search";
 import {Footer} from "../../components/Footer/Footer";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {SEvent} from "./SEvent";
 import {SNews} from "./SNews";
 import {SMapEvent} from "./SMapEvent";
@@ -31,29 +31,39 @@ const Search = () => {
     const obj = {
         1:
         <>
-            <SEvent search={search}/>
+            <SEvent result={result}/>
             <SNews/>
             <SMapEvent/>
             <SCoffee/>
-            <SDrink search={search}/>
-            <SFood search={search}/>
+            <SDrink result={result}/>
+            <SFood result={result}/>
             <SGoods/>
             <SCard/>
             <SMap/>
         </>,
-        2: <SEvent search={search}/>,
+        2: <SEvent result={result}/>,
         3: <SNews/>,
         4: <SMapEvent/>,
         5: <SCoffee/>,
-        6: <SDrink search={search}/>,
-        7: <SFood search={search}/>,
+        6: <SDrink result={result}/>,
+        7: <SFood result={result}/>,
         8: <SGoods/>,
         9: <SCard/>,
         10: <SMap/>
     };
 
     const onChangeSearch = (e) => {
+        e.preventDefault();
         setSearch(e.target.value);
+    }
+
+    const onClickSearch = (e) => {
+        e.preventDefault();
+        if (search === "") {
+            alert("검색어를 입력하세요")
+        } else  {
+            setResult(search);
+        }
     }
 
     return (
@@ -89,7 +99,10 @@ const Search = () => {
                                         onChange={onChangeSearch}
                                     />
                                     {/*검색 버튼 나중에 onSubmit?? 이벤트 걸기*/}
-                                    <styled_Search.SFIP type={"submit"}/>
+                                    <styled_Search.SFIP
+                                        type={"submit"}
+                                        onClick={onClickSearch}
+                                    />
                                 </styled_Search.SFInputBox>
                             </form>
                             {/*버튼*/}

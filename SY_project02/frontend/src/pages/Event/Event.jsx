@@ -28,21 +28,19 @@ const Event = () => {
         4: <EOnline/>,
     };
 
-    const eventApi = async () => {
-        // 이미지 조회 시 카테고리 지정 및 검색 값에 따른 DB 조회
-        const event = await axios.get(
-            "http://stopupsapi.shop:8080/api/?apikey=TeamYN1670470710431&Event=ALL&Name=&EventId="
-        );
-        console.log("Api event=>", event.data);
-        setEvent(event.data)
-    };
-
-    console.log("event=>", event[0]);
-
     useEffect(() => {
-        eventApi()
+        const event = async () => {
+            await axios
+                .get("http://stopupsapi.shop:8080/api/?apikey=TeamYN1670470710431&Event=ALL&Title=&EventId=")
+                .then((res) => {
+                    setEvent(res.data);
+                })
+
+        };
+        event();
     }, []);
 
+    console.log("event", event);
 
     return (
         <styled_AB.AllBox>
