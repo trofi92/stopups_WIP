@@ -10,8 +10,8 @@ import * as styled_AB from "../../styled/AllBox";
 import * as styled_BU from "../../styled/Button";
 import * as styled_LOG from "../../styled/Login/Login";
 import axios from "axios";
+import { SERVER_URL } from "../../util/urls";
 
-axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
 axios.defaults.withCredentials = true;
 
 const Login = () => {
@@ -20,19 +20,17 @@ const Login = () => {
   const navigate = useNavigate();
   const [check, setCheck] = useState(false);
 
-  // 왜 true가 아니라 false로 뜨는지...?
+  // 체크박스
   const onClickCheckedEmail = () => {
-    // setCheck(!check);
-    setCheck((prev) => !prev);
+    setCheck(!check);
     console.log("check=>", check);
   };
 
   // 아이디 저장 체크 시 아이디 및 체크 state 저장
-
+  // 토큰으로 인증할 것이므로 쿠키 내의 토큰을 활용하는 방향으로 변경요망
   useEffect(() => {
     if (check === true) {
-      localStorage.setItem("email", JSON.stringify(email));
-
+      localStorage.setItem("email", email);
       const saved = localStorage.getItem("email");
       if (saved !== null) {
         setEmail(saved);
@@ -73,13 +71,13 @@ const Login = () => {
       };
       try {
         axios
-          .post("http://localhost:8000/auth/login", {
+          .post(`${SERVER_URL}/auth/login`, {
             data: post,
           })
           .then((res) => {
             console.log("로그인 성공=>", res);
             navigate("/", { replace: true });
-            return res;
+            return;
           });
       } catch (err) {
         console.error(err);
@@ -88,10 +86,6 @@ const Login = () => {
         );
       }
     }
-  };
-
-  const onLoginSubmit = (e) => {
-    e.preventDefault();
   };
 
   return (
@@ -105,7 +99,7 @@ const Login = () => {
           {/*로그인 안쪽 정렬*/}
           <styled_LOG.LFInner>
             {/*전체 폼*/}
-            <form onSubmit={onLoginSubmit}>
+            <form onSubmit={(e) => e.preventDefault()}>
               <styled_LOG.LFFFieldset>
                 <styled_LOG.LFFFStrong>로그인</styled_LOG.LFFFStrong>
                 {/*로그인 폼*/}
