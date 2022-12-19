@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import MIIcon from "../../image/MyInfo/MIIcon.png"
+import MIIcon from "../../image/MyInfo/MIIcon.png";
 
 // 전체 박스
 export const MIBox = styled.div`
@@ -7,18 +7,18 @@ export const MIBox = styled.div`
   width: 100%;
   height: 1800px;
   margin-top: 60px;
-`
+`;
 
 export const MIDiv = styled.div`
   background: #fff;
   padding: 20px 20px;
   position: relative;
-  
+
   :last-child {
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
   }
-`
+`;
 
 export const MIEmailInput = styled.p`
   background: #f4f4f2;
@@ -31,7 +31,7 @@ export const MIEmailInput = styled.p`
   width: 528px;
   height: 47px;
   line-height: 5px;
-`
+`;
 
 export const MIIcons = styled.i`
   background: url(${MIIcon}) 0 center no-repeat;
@@ -44,24 +44,24 @@ export const MIIcons = styled.i`
   vertical-align: middle;
   width: 26px;
   padding: 0;
-`
+`;
 
 export const MIPhoneDiv = styled.div`
   margin: 0;
   padding: 0;
   border: 0;
   vertical-align: baseline;
-  
+
   :after {
     clear: both;
     content: "";
     display: block;
   }
-  
+
   :last-child {
     margin-top: 10px;
   }
-`
+`;
 
 export const MIPhoneInput = styled.input`
   background: #f4f4f2;
@@ -75,10 +75,9 @@ export const MIPhoneInput = styled.input`
   height: 47px;
   line-height: 5px;
   float: left;
-`
+`;
 
-
-export const MIPhoneA = styled.p`
+export const MIPhoneA = styled.button`
   background: #006633;
   border-radius: 3px;
   color: #fff;
@@ -89,11 +88,11 @@ export const MIPhoneA = styled.p`
   text-align: center;
   width: 22%;
   cursor: pointer;
-  
+
   :hover {
     text-decoration: underline;
   }
-`
+`;
 
 export const MIIconsPhone = styled.i`
   background: url(${MIIcon}) 0 center no-repeat;
@@ -107,7 +106,7 @@ export const MIIconsPhone = styled.i`
   vertical-align: middle;
   width: 26px;
   padding: 0;
-`
+`;
 
 export const MINIckSection = styled.section`
   margin: 20px 20px 30px 20px;
@@ -115,7 +114,7 @@ export const MINIckSection = styled.section`
   overflow: hidden;
   padding: 3px 0;
   display: block;
-`
+`;
 
 export const MINSH5 = styled.h5`
   color: #222;
@@ -123,7 +122,7 @@ export const MINSH5 = styled.h5`
   font-size: 18px;
   margin-bottom: 20px;
   margin-top: 0;
-`
+`;
 
 export const MINSAgree = styled.span`
   position: absolute;
@@ -131,14 +130,14 @@ export const MINSAgree = styled.span`
   width: 26px;
   right: 8px;
   top: 0;
-`
+`;
 
 // 닉네임 이용약관 동의 버튼
 export const MINSAgreeInput = styled.input`
   appearance: none;
   width: 28px;
   height: 28px;
-  background: #C1C1C1;
+  background: #c1c1c1;
   border-radius: 50%;
 
   :after {
@@ -157,7 +156,7 @@ export const MINSAgreeInput = styled.input`
   &:checked {
     background: #006633;
   }
-`
+`;
 
 export const MINAgreeBox = styled.div`
   background: #f7f7f7;
@@ -170,7 +169,7 @@ export const MINAgreeBox = styled.div`
   border-radius: 3px;
   margin-bottom: 20px;
   overflow: hidden;
-`
+`;
 
 export const MINABDiv = styled.div`
   position: relative;
@@ -182,7 +181,7 @@ export const MINABDiv = styled.div`
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-`
+`;
 
 export const MINAInner = styled.div`
   position: relative;
@@ -194,8 +193,7 @@ export const MINAInner = styled.div`
   height: auto;
   padding: 0;
   vertical-align: baseline;
-`
-
+`;
 
 export const NINInput = styled.input`
   border: 1px solid #ddd;
@@ -207,8 +205,7 @@ export const NINInput = styled.input`
   width: 100%;
   background: #f4f4f2;
   color: #222222;
-`
-
+`;
 
 // 회원탈퇴 버튼
 export const MIUnsubscribe = styled.button`
@@ -224,4 +221,4 @@ export const MIUnsubscribe = styled.button`
   color: #222;
   display: block;
   line-height: 38px;
-`
+`;

@@ -14,7 +14,7 @@ const LIdPass = () => {
   const [rnd, setRnd] = useState(""); // 임의의 비밀번호 4자리 값 저장
   const [authForm, setAuthForm] = useState(false); // 인증 상태 값 저장
   const navigate = useNavigate(); // 페이지 리렌더링 용도
-  const phoneSubmit = async (e) => {
+  const handlePhoneSubmit = async (e) => {
     // SMS 인증
     e.preventDefault();
     const phone_number = e.target.phone_number.value; // 휴대전화 번호
@@ -41,7 +41,7 @@ const LIdPass = () => {
   };
 
   // 모바일 인증
-  const authSubmit = (e) => {
+  const handleSmsSubmit = (e) => {
     e.preventDefault();
     const userAuth = e.target.phone_number.value; // 인증 번호 값 저장
     e.target.phone_number.value = ""; // 인증 번호 입력 값 초기화
@@ -75,7 +75,7 @@ const LIdPass = () => {
                     휴대폰번호
                   </styled_Join.RFSectionStrong>
                   <styled_Pass.PInputBox>
-                    <form onSubmit={phoneSubmit}>
+                    <form onSubmit={handlePhoneSubmit}>
                       <styled_Pass.PInputPhone
                         placeholder="숫자만 입력"
                         name="phone_number"
@@ -91,7 +91,7 @@ const LIdPass = () => {
                     인증번호
                   </styled_Join.RFSectionStrong>
                   <styled_Pass.PInputBox>
-                    <form onSubmit={authSubmit}>
+                    <form onSubmit={handleSmsSubmit}>
                       <styled_Pass.PInputPhone
                         placeholder="숫자 4자리 입력"
                         name="phone_number"

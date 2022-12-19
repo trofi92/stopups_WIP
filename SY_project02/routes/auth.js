@@ -13,6 +13,6 @@ router.post("/join", isNotLoggedIn, join);
 
 router.post("/login", isNotLoggedIn, login);
 
-router.get("/logout", isLoggedIn, logout);
+router.get("/logout", isNotLoggedIn, logout);
 
 module.exports = router;

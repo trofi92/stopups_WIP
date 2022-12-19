@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { SERVER_URL } from "../util/urls";
 
 export const Test = () => {
   const [name, setName] = useState("");
 
   const sendRequest = async () => {
-    await axios
-      .get("http://localhost:8000/")
-      .then((res) => console.log(res));
+    await axios.get(SERVER_URL).then((res) => console.log(res));
   };
   const handleChange = (e) => {
     setName(e.target.value);
@@ -21,7 +20,7 @@ export const Test = () => {
     const post = {
       id: name,
     };
-    axios("http://localhost:8000", {
+    axios(SERVER_URL, {
       method: "post",
       headers: {
         "content-type": "application/json",

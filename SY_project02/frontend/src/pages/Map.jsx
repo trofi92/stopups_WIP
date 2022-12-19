@@ -1,4 +1,3 @@
-/*global kakao */
 import React from "react";
 import * as styled_AB from "../styled/AllBox";
 import Header from "../components/Header/Header";

@@ -16,8 +16,9 @@ import * as styled_LOG from "../../styled/Login/Login";
 import { Footer } from "../../components/Footer/Footer";
 import * as styled_BU from "../../styled/Button";
 import { NickAgree } from "./NickAgree";
-import { encrypt } from "../../util/chiper";
-import {AIN, ALN} from "../../styled/Join/Join"; // DB에 저장 시 암호화, 조회시 복호화
+import { encrypt } from "../../util/crypto-front";
+import { AIN, ALN } from "../../styled/Join/Join"; // DB에 저장 시 암호화, 조회시 복호화
+import { SERVER_URL } from "../../util/urls";
 
 const Join = () => {
   const [email, setEmail] = useState("");
@@ -62,7 +63,7 @@ const Join = () => {
 
   const onClickCheckedNick = () => {
     setCheckedNick(!checkedNick);
-    console.log("home=>",!checkedNick);
+    console.log("home=>", !checkedNick);
   };
 
   const eEmail = encrypt(email);
@@ -88,7 +89,7 @@ const Join = () => {
     } else if (telephone === "") {
       alert("전화번호를 입력해주세요");
     } else if (checkedNick !== true) {
-      alert("닉네임 이용약관에 동의하셔야 합니다. ")
+      alert("닉네임 이용약관에 동의하셔야 합니다. ");
     } else {
       const post = {
         eEmail,
@@ -98,7 +99,7 @@ const Join = () => {
         eTelephone,
       };
       axios
-        .post("http://localhost:8000/auth/join", {
+        .post(`${SERVER_URL}/auth/join`, {
           data: post,
         })
         .then((res) => {
@@ -127,11 +128,15 @@ const Join = () => {
                 <styled_Join.RFStrong>회원가입</styled_Join.RFStrong>
                 <styled_Join.RFSection>
                   <styled_Join.RFSectionImg></styled_Join.RFSectionImg>
-                  <styled_Join.RFSectionP>회원정보를 입력해 주세요.</styled_Join.RFSectionP>
+                  <styled_Join.RFSectionP>
+                    회원정보를 입력해 주세요.
+                  </styled_Join.RFSectionP>
                   <styled_Join.RFSectionDiv>
                     <styled_Join.RFSectionStrong>
                       이메일
-                      <styled_Join.RFSectionSpan>(필수)</styled_Join.RFSectionSpan>
+                      <styled_Join.RFSectionSpan>
+                        (필수)
+                      </styled_Join.RFSectionSpan>
                     </styled_Join.RFSectionStrong>
                     <styled_Join.RFSDInput
                       type={"email"}
@@ -145,7 +150,9 @@ const Join = () => {
                   <styled_Join.RFSectionDiv>
                     <styled_Join.RFSectionStrong>
                       비밀번호
-                      <styled_Join.RFSectionSpan>(필수)</styled_Join.RFSectionSpan>
+                      <styled_Join.RFSectionSpan>
+                        (필수)
+                      </styled_Join.RFSectionSpan>
                     </styled_Join.RFSectionStrong>
                     <styled_Join.RFSDInput
                       type={"password"}
@@ -161,7 +168,9 @@ const Join = () => {
                   <styled_Join.RFSectionDiv>
                     <styled_Join.RFSectionStrong>
                       비밀번호 확인
-                      <styled_Join.RFSectionSpan>(필수)</styled_Join.RFSectionSpan>
+                      <styled_Join.RFSectionSpan>
+                        (필수)
+                      </styled_Join.RFSectionSpan>
                     </styled_Join.RFSectionStrong>
                     <styled_Join.RFSDInput
                       type={"password"}
@@ -177,7 +186,9 @@ const Join = () => {
                   <styled_Join.RFSectionDiv>
                     <styled_Join.RFSectionStrong>
                       이름
-                      <styled_Join.RFSectionSpan>(필수)</styled_Join.RFSectionSpan>
+                      <styled_Join.RFSectionSpan>
+                        (필수)
+                      </styled_Join.RFSectionSpan>
                     </styled_Join.RFSectionStrong>
                     <styled_Join.RFSDInput
                       type={"name"}
@@ -191,7 +202,9 @@ const Join = () => {
                   <styled_Join.RFSectionDiv>
                     <styled_Join.RFSectionStrong>
                       휴대폰
-                      <styled_Join.RFSectionSpan>(필수)</styled_Join.RFSectionSpan>
+                      <styled_Join.RFSectionSpan>
+                        (필수)
+                      </styled_Join.RFSectionSpan>
                     </styled_Join.RFSectionStrong>
                     <styled_Join.RFSDInput
                       type={"text"}
@@ -213,7 +226,9 @@ const Join = () => {
                   <styled_Join.RFSectionDiv>
                     <styled_Join.RFSectionStrong>
                       닉네임
-                      <styled_Join.RFSectionSpan>(필수)</styled_Join.RFSectionSpan>
+                      <styled_Join.RFSectionSpan>
+                        (필수)
+                      </styled_Join.RFSectionSpan>
                     </styled_Join.RFSectionStrong>
                     <styled_Join.RFSDInput
                       type={"nickname"}
@@ -226,8 +241,8 @@ const Join = () => {
                     <styled_Join.AgreeSpan>
                       {/*체크 토글 버튼 만들기*/}
                       <styled_Join.AIN
-                          type={"checkbox"}
-                          checkedNick={checkedNick}
+                        type={"checkbox"}
+                        checkedNick={checkedNick}
                       />
                       <styled_Join.ALN
                         onClick={onClickCheckedNick}
@@ -244,7 +259,9 @@ const Join = () => {
                   * 필수항목을 모두 입력해야 회원 가입이 가능합니다.
                 </b>
               </styled_Join.RFormP>
-              <styled_BU.LJButton onClick={submitIdPassword}>가입하기</styled_BU.LJButton>
+              <styled_BU.LJButton onClick={submitIdPassword}>
+                가입하기
+              </styled_BU.LJButton>
             </form>
           </styled_LOG.LFInner>
         </styled_LOG.LFB>

@@ -58,11 +58,16 @@ const login = async (req, res, next) => {
         );
 
         const token = User.generateJWT(user);
+
         res.cookie("accessJwtToken", token, accessJwtTokenOption);
         return res.status(200).json({
           code: 200,
           message: "토큰이 발급되었습니다.",
           token: token,
+          email: user.email,
+          name: user.name,
+          nickname: user.nickname,
+          telephone: user.telephone,
         });
       } catch (err) {
         console.error(err);
