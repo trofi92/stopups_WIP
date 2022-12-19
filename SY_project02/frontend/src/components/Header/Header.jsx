@@ -11,8 +11,6 @@ import { useLogout } from "../../hooks/use-authService";
 const Header = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const { logout } = useLogout();
-
   const modalClose = () => {
     setModalOpen(!modalOpen);
   };
@@ -46,9 +44,6 @@ const Header = () => {
                 alt={"userCategory"}
                 onClick={modalClose}
               />
-              <button onClick={(e) => logout(e)}>
-                못생긴 로그아웃
-              </button>
             </styled_H.HNLi>
           </styled_H.HNUl>
         </styled_H.HNPosition>

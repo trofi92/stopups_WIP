@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
+// axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
 
 root.render(
   <Provider store={store}>

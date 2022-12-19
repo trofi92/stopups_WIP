@@ -14,25 +14,14 @@ import FAward6 from "../../image/Footer/FAward6.jpg";
 import FAward7 from "../../image/Footer/FAward7.jpg";
 import Slider from "react-slick";
 import { SERVER_URL } from "../../util/urls";
+import {useLogout} from "../../hooks/use-authService";
 
 export const Footer = () => {
-  const navigator = useNavigate();
   // 삼항연산자 사용
   // 로그인시 home이랑 sigOut 버튼만
   // 로그아웃시 home sing in join us 버튼
 
-  const handleLogout = () => {
-    axios
-      .get(`${SERVER_URL}/auth/logout`)
-      .then((res) => {
-        console.log("로그아웃 성공=>", res);
-        alert("로그아웃 되었습니다.");
-        navigator("/", { replace: true });
-      })
-      .catch((error) => {
-        console.error("로그아웃 실패=>", error);
-      });
-  };
+  const { logout } = useLogout();
 
   const settings = {
     dots: false,
@@ -328,7 +317,7 @@ export const Footer = () => {
                 to={"/"}
                 style={{ textDecoration: "none", color: "#fff" }}
               >
-                <styled_Footer.FUBLiP onClick={handleLogout}>
+                <styled_Footer.FUBLiP onClick={(e) => logout(e)}>
                   Sign Out
                 </styled_Footer.FUBLiP>
               </Link>
