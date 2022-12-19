@@ -2,15 +2,15 @@ const User = require("../models/User");
 const { decrypt } = require("../middlewares/crypto");
 
 const info = async (req, res, next) => {
-  const phoneNumber = Object.keys(req.body)[0];
-  console.log(phoneNumber);
+  const uTelephone = Object.keys(req.body)[0];
+  console.log(uTelephone);
   const exUser = await User.findAll({
     attributes: ["email", "name", "nickname", "telephone"],
   });
 
   try {
     exUser.find((element) => {
-      if (phoneNumber !== decrypt(element.telephone)) {
+      if (uTelephone !== decrypt(element.telephone)) {
         return res.status(401).json({
           status: "유저없음",
         });

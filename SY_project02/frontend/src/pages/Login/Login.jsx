@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
@@ -9,16 +9,18 @@ import {
 import * as styled_AB from "../../styled/AllBox";
 import * as styled_BU from "../../styled/Button";
 import * as styled_LOG from "../../styled/Login/Login";
-import axios from "axios";
-import { SERVER_URL } from "../../util/urls";
-
-axios.defaults.withCredentials = true;
+import {
+  useLoginService,
+  useFormCheck,
+} from "../../hooks/use-authService";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   const [check, setCheck] = useState(false);
+
+  const { loginService } = useLoginService();
+  const { formCheck } = useFormCheck();
 
   // 체크박스
   const onClickCheckedEmail = () => {
@@ -39,53 +41,20 @@ const Login = () => {
   }, [email]);
 
   const handleEmailChange = (e) => {
-    checkEmail(e);
-    if (e.target.value === "" || e.target.value === undefined) {
-      console.log("아이디를 입력해주세요");
-      return false;
-    } else {
-      setEmail(e.target.value);
-    }
+    formCheck(e, checkEmail, "아이디를 입력해주세요", setEmail);
   };
 
   const handlePasswordChange = (e) => {
-    checkPassword(e);
-    if (e.target.value === "" || e.target.value === undefined) {
-      console.log("비밀번호를 입력해주세요");
-      return false;
-    } else {
-      setPassword(e.target.value);
-    }
+    formCheck(
+      e,
+      checkPassword,
+      "비밀번호를 입력해주세요",
+      setPassword
+    );
   };
 
   const submitIdPassword = (e) => {
-    e.preventDefault();
-    if (email === "") {
-      alert("이메일을 입력해주세요");
-    } else if (password === "") {
-      alert("비밀번호를 입력해주세요");
-    } else {
-      const post = {
-        email,
-        password,
-      };
-      try {
-        axios
-          .post(`${SERVER_URL}/auth/login`, {
-            data: post,
-          })
-          .then((res) => {
-            console.log("로그인 성공=>", res);
-            navigate("/", { replace: true });
-            return;
-          });
-      } catch (err) {
-        console.error(err);
-        alert(
-          "로그인이 실패했습니다. 정보가 올바른지 다시 확인해주세요"
-        );
-      }
-    }
+    loginService(e, email, password);
   };
 
   return (

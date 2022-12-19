@@ -16,14 +16,21 @@ module.exports = () => {
         try {
           // Find all users in the database.
           const users = await User.findAll({
-            attributes: ["email", "name", "password"],
+            attributes: [
+              "email",
+              "name",
+              "nickname",
+              "telephone",
+              "password",
+            ],
           });
 
           // Find the user with the matching email.
           const user = users.find(
             (user) => email === decrypt(user.email)
           );
-
+          ///////////////////////////////////////////////////////////////////////
+          console.log(user);
           // If no user was found, return an error message.
           if (!user) {
             return done(null, false, {

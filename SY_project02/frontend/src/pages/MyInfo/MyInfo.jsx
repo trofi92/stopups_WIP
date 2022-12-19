@@ -1,77 +1,32 @@
 import * as styled_AB from "../../styled/AllBox";
-import Header from "../../components/Header/Header";
 import * as styled_LOG from "../../styled/Login/Login";
 import * as styled_Join from "../../styled/Join/Join";
 import * as styled_MI from "../../styled/MyInfo/MyInfo";
 import * as styled_BU from "../../styled/Button";
+import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import { NickAgree } from "../Join/NickAgree";
-import { useState, useEffect, useMemo } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { checkPhone } from "../../components/join/JoinRegex";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { decrypt } from "../../util/crypto-front";
 import { SERVER_URL } from "../../util/urls";
-import { usePhoneSubmit, useSmsSubmit } from "../../hooks/use-submit";
-
-axios.defaults.withCredentials = true;
+import { useSelector } from "react-redux";
+import { MIPhoneAuth } from "./MIPhoneAuth";
 
 const MyInfo = () => {
+  const inputEmailRef = useRef();
+  const inputNameRef = useRef();
+  const inputNicknameRef = useRef();
+
   // 휴대전화 번호 저장
-  const [number, setNumber] = useState();
-  // setTelephone에 유저 번호 디폴트로 주기
-  const [telephone, setTelephone] = useState("");
-  // setNickname에 유저 닉네임 디폴트로 넣어주기
-  const [nickname, setNickname] = useState("");
   const [checkedNick, setCheckedNick] = useState(false);
   // 인증 성공하면 여기에 true 값 넣어주기
-  const [certification, setCertification] = useState(false);
   const [data, setData] = useState();
-  const navigate = useNavigate();
-  const location = useLocation();
-  console.log("location state : ", location.state);
-  // MIPass로부터 넘겨받은 전화번호를 통해 유저 식별 및 정보요청
-  // const inputRnd = location.state.rnd;
-  // const post = {
-  //   telephone,
-  //   nickname,
-  // };
+  const user = useSelector((state) => state.user);
+  console.log(user);
 
-  // useEffect(() => {
-  //   setInputNumber(location.state.number);
-  // }, [location.state.number]);
-
-  // console.log(
-  //   "location num :",
-  //   inputNumber,
-  //   "location rnd :",
-  //   inputRnd
-  // );
-  const { phoneSubmit, rnd } = usePhoneSubmit();
-  const { smsSubmit } = useSmsSubmit(rnd, number, "/myInfo");
-
-  console.log("number:", location?.state?.number);
-  // 페이지 최조 진입시 회원정보를 가져옴
-  const fetchUserData = async () => {
-    const response = await axios.post(
-      `${SERVER_URL}/myInfo`,
-      location?.state?.number
-    );
-    const resData = await response.data;
-    setData(resData);
-  };
-  const phoneSubmitProps = useMemo(() => data, []);
-
-  useEffect(() => {
-    fetchUserData();
-  }, [phoneSubmitProps]);
-
-  console.log(data);
-
-  const uEmail = data && decrypt(data.email);
-  const uName = data && decrypt(data.name);
-  const uNickname = data && decrypt(data.nickname);
-  const uTelephone = data && decrypt(data.telephone);
+  // setNickname에 유저 닉네임 디폴트로 넣어주기
+  const [nickname, setNickname] = useState("");
 
   const onClickCheckedNick = () => {
     setCheckedNick(!checkedNick);
@@ -84,26 +39,26 @@ const MyInfo = () => {
     }
   };
 
-  const onChangeTelephone = (e) => {
-    checkPhone(e);
-    setTelephone(e.target.value);
+  // 페이지 최조 진입시 회원정보를 가져옴(from RTK)
+  const fetchUserData = async () => {
+    axios.defaults.withCredentials = true;
+    const response = await axios.post(
+      `${SERVER_URL}/myInfo`,
+      decrypt(user.telephone)
+    );
+    const resData = await response.data;
+    setData(resData);
   };
 
-  const handlePhoneSubmit = (e) => {
-    // e.preventDefault();
-    setNumber(e.target.phone_number.value);
-    console.log("state number", number);
-    console.log(telephone);
-    phoneSubmit(e);
-  };
+  // useEffect(() => {
+  //   fetchUserData();
+  // }, [user.email]);
 
-  const handleSmsSubmit = (e) => {
-    console.log(e.target.auth_number.value);
-    e.preventDefault();
-    smsSubmit(e);
-  };
+  const uEmail = data && decrypt(data?.email);
+  const uName = data && decrypt(data?.name);
 
   // const onSumbitMyInfo = (e) => {
+
   //   e.preventDefault();
   //   if (telephone === "") {
   //     alert("전화번호를 입력해주세요");
@@ -136,7 +91,7 @@ const MyInfo = () => {
       <styled_MI.MIBox>
         <styled_LOG.LFB>
           <styled_LOG.LFInner>
-            <form>
+            <form onSubmit={(e) => e.preventDefault()}>
               <styled_LOG.LFFFieldset>
                 <styled_Join.RFStrong>
                   개인정보 확인 및 수정
@@ -161,33 +116,10 @@ const MyInfo = () => {
                       {uName || ""}
                     </styled_MI.MIEmailInput>
                   </styled_Join.RFSectionDiv>
-                  <styled_Join.RFSectionDiv>
-                    <styled_Join.RFSectionStrong>
-                      휴대폰(필수)&nbsp;
-                    </styled_Join.RFSectionStrong>
-                    <styled_MI.MIPhoneDiv>
-                      <form onSubmit={handlePhoneSubmit}>
-                        <styled_MI.MIPhoneInput
-                          name="phone_number"
-                          onChange={onChangeTelephone}
-                          placeholder={"휴대폰 번호를 입력해주세요."}
-                        />
-                        <styled_MI.MIPhoneA>확인</styled_MI.MIPhoneA>
-                      </form>
-                    </styled_MI.MIPhoneDiv>
-
-                    <styled_MI.MIPhoneDiv>
-                      <form onSubmit={handleSmsSubmit}>
-                        <styled_MI.MIPhoneInput
-                          name="auth_number"
-                          placeholder={
-                            "인증번호 4자리를 입력해주세요."
-                          }
-                        />
-                        <styled_MI.MIPhoneA>인증</styled_MI.MIPhoneA>
-                      </form>
-                    </styled_MI.MIPhoneDiv>
-                  </styled_Join.RFSectionDiv>
+                </styled_Join.RFSection>
+                {/* 문자인증분리 */}
+                <styled_Join.RFSection>
+                  <MIPhoneAuth />
                 </styled_Join.RFSection>
                 {/*닉네임*/}
                 <styled_Join.RFSection>
@@ -218,7 +150,6 @@ const MyInfo = () => {
                     </styled_MI.MINIckSection>
                     {/*체크박스 선택 시 입력 가능*/}
                     <styled_MI.NINInput
-                      value={nickname}
                       onChange={onChangeNickname}
                       placeholder={
                         "닉네임 입력을 위해 약관에 동의해 주세요."

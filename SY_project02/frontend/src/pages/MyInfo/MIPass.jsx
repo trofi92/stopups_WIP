@@ -15,11 +15,11 @@ const MIPass = () => {
   const handlePhoneSubmit = (e) => {
     setNumber(e.target.phone_number.value);
     console.log("state number", number);
-    phoneSubmit(e);
+    phoneSubmit(e, e.target.phone_number.value);
   };
 
-  const handleAuthSubmit = (e) => {
-    smsSubmit(e);
+  const handleSmsSubmit = (e) => {
+    smsSubmit(e, e.target.auth_number.value);
   };
 
   return (
@@ -59,7 +59,7 @@ const MIPass = () => {
                     인증번호
                   </styled_Join.RFSectionStrong>
                   <styled_Pass.PInputBox>
-                    <form onSubmit={handleAuthSubmit}>
+                    <form onSubmit={handleSmsSubmit}>
                       <styled_Pass.PInputPhone
                         placeholder="숫자 4자리 입력"
                         name="auth_number"
