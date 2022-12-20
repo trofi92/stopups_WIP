@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-export const SFood = ({result}) => {
+export const SFood = ({result, state}) => {
     const [allFood, setAllFood] = useState([]);
 
     // console.log("푸드 검색 결과",result);
@@ -21,7 +21,9 @@ export const SFood = ({result}) => {
 
     const searchedAllFood = allFood.filter((data) => {
         if (data.Category === "브레드" || data.Category === "케이크" || data.Category === "따뜻한 푸드" || data.Category === "샐러드" || data.Category === "샌드위치") {
-            if (result !== "") {
+            if (state !== "" && result === "") {
+                return data.Name.toLowerCase().includes(state.toLowerCase());
+            } else if (result !== "") {
                 return data.Name.toLowerCase().includes(result.toLowerCase());
             }
         }
@@ -40,7 +42,7 @@ export const SFood = ({result}) => {
             </styled_Search.SSHeader>
             {/*푸드 내용*/}
             <styled_Search.SSUl>
-                {searchedAllFood.length === 0 || result === "" ? (
+                {searchedAllFood.length === 0 || result === "" && state === "" ? (
                     <styled_Search.SSLi>
                         <styled_Search.SSLP>검색 결과가 없습니다.</styled_Search.SSLP>
                     </styled_Search.SSLi>

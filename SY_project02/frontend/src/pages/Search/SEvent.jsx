@@ -4,7 +4,7 @@ import ESTitle from "../../image/Event/ESummer/ESTitle.jpg";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-export const SEvent = ({result}) => {
+export const SEvent = ({result, state}) => {
     const [allEvent, setAllEvent] = useState([]);
 
     // console.log("이벤트 검색 결과", result);
@@ -23,7 +23,9 @@ export const SEvent = ({result}) => {
     // console.log("allEvent", allEvent);
 
     const searchedAllEvent = allEvent.filter((data) => {
-        if (result !== "") {
+        if (state !== "" && result === "") {
+            return data.Title.toLowerCase().includes(state.toLowerCase());
+        } else if (result !== "") {
             return data.Title.toLowerCase().includes(result.toLowerCase());
         }
     })
@@ -41,7 +43,7 @@ export const SEvent = ({result}) => {
             </styled_Search.SSHeader>
             {/*이벤트 내용*/}
             <styled_Search.SSUl>
-                {searchedAllEvent.length === 0 || result === "" ? (
+                {searchedAllEvent.length === 0 || result === "" && state === "" ? (
                     <styled_Search.SSLi>
                         <styled_Search.SSLP>검색 결과가 없습니다.</styled_Search.SSLP>
                     </styled_Search.SSLi>
