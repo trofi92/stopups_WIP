@@ -77,7 +77,7 @@ export const MIPhoneInput = styled.input`
   float: left;
 `;
 
-export const MIPhoneA = styled.button`
+export const MIPhoneA = styled.p`
   background: #006633;
   border-radius: 3px;
   color: #fff;

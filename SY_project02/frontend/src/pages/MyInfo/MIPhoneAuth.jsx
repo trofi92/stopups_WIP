@@ -3,41 +3,38 @@ import * as styled_Join from "../../styled/Join/Join";
 import * as styled_MI from "../../styled/MyInfo/MyInfo";
 import { usePhoneSubmit, useSmsSubmit } from "../../hooks/use-submit";
 import { checkPhone } from "../../components/join/JoinRegex";
+import { useNavigate } from "react-router-dom";
 
 export const MIPhoneAuth = () => {
-  const inputPhoneNumberRef = React.useRef();
-  const inputRndRef = React.useRef();
+  const navigate = useNavigate();
   const [telephone, setTelephone] = React.useState("");
-  const [number, setNumber] = React.useState();
+  const [rndNum, setRndNum] = React.useState("");
+
+  const inputPhoneNumberRef = React.useRef();
+  const phoneRef = inputPhoneNumberRef?.current?.value;
 
   const { phoneSubmit, rnd } = usePhoneSubmit();
-  const { smsSubmit } = useSmsSubmit(1234, number, null);
+  const { smsSubmit } = useSmsSubmit(rnd, telephone, null);
 
   const handlePhoneSubmit = (e) => {
-    setNumber(e.target.value);
-    phoneSubmit(e, e.target.closest('input[name="ph_number"]').value);
+    if (e.target.value === "") {
+      alert("휴대전화 번호를 입력해주세요!");
+    }
+    setTelephone(phoneRef);
+    phoneSubmit(e, telephone);
   };
 
-  console.log("state number =>", number);
-  console.log("rnd =>", rnd);
+  console.log("state number =>", phoneRef);
+  console.log("rnd ref =>", rndNum);
 
   const handleSmsSubmit = (e) => {
-    console.log("rnd-target=>", e.target.value);
-    if (!rnd || rnd !== e.target.value) {
+    document.getElementById("au_number").value = "";
+    if (!rnd || rnd !== rndNum) {
       alert("인증에 실패했습니다. 다시 시도해주세요");
-      // navigate("/MyInfo", { replace: true });
+      return navigate("/MyInfo", { replace: true });
     }
-    alert("인증되었습니다.");
-    smsSubmit(e, e.target.closest('input[name="au_number"]').value);
-  };
-
-  const onChangeTelephone = (e) => {
-    checkPhone(e);
-    setTelephone(e.target.value);
-    console.log(
-      "fuck=>",
-      e.target.closest('input[name="phone_number"]').value
-    );
+    smsSubmit(e, rndNum);
+    navigate("/MyInfo", { state: { telephone: phoneRef } });
   };
 
   return (
@@ -45,27 +42,29 @@ export const MIPhoneAuth = () => {
       <styled_Join.RFSectionStrong>
         휴대폰(필수)&nbsp;
       </styled_Join.RFSectionStrong>
-      <form onSubmit={handlePhoneSubmit}>
-        <styled_MI.MIPhoneDiv>
-          <styled_MI.MIPhoneInput
-            name="ph_number"
-            onChange={onChangeTelephone}
-            ref={inputPhoneNumberRef}
-            placeholder={"휴대전화 번호를 입력해주세요."}
-          />
-          <styled_MI.MIPhoneA>확인</styled_MI.MIPhoneA>
-        </styled_MI.MIPhoneDiv>
-      </form>
+      <styled_MI.MIPhoneDiv>
+        <styled_MI.MIPhoneInput
+          type="number"
+          name="ph_number"
+          ref={inputPhoneNumberRef}
+          onChange={(e) => checkPhone(e)}
+          placeholder={"휴대전화 번호를 입력해주세요."}
+        />
+        <styled_MI.MIPhoneA onClick={handlePhoneSubmit}>
+          확인
+        </styled_MI.MIPhoneA>
+      </styled_MI.MIPhoneDiv>
 
       <styled_MI.MIPhoneDiv>
-        <form onSubmit={handleSmsSubmit}>
-          <styled_MI.MIPhoneInput
-            name="au_number"
-            placeholder={"인증번호 4자리를 입력해주세요."}
-            ref={inputRndRef}
-          />
-          <styled_MI.MIPhoneA>인증</styled_MI.MIPhoneA>
-        </form>
+        <styled_MI.MIPhoneInput
+          type="number"
+          id="au_number"
+          onChange={(e) => setRndNum(e.target.value)}
+          placeholder={"인증번호 4자리를 입력해주세요."}
+        />
+        <styled_MI.MIPhoneA onClick={handleSmsSubmit}>
+          인증
+        </styled_MI.MIPhoneA>
       </styled_MI.MIPhoneDiv>
     </styled_Join.RFSectionDiv>
   );

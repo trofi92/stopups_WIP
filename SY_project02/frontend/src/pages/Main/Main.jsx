@@ -41,13 +41,13 @@ export const Main = () => {
       <Footer />
 
       {/*테스트*/}
-      <div>this is main</div>
+      {/* <div>this is main</div>
       <Link to="/test">
         <button>test</button>
       </Link>
       <Link to="/asdf">
         <button>not found</button>
-      </Link>
+      </Link> */}
     </styled_AB.AllBox>
   );
 };

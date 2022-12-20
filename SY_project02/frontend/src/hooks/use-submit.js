@@ -9,23 +9,17 @@ export const usePhoneSubmit = () => {
   const [show, setShow] = useState(false);
   const [rnd, setRnd] = useState("");
   const [authForm, setAuthForm] = useState(false);
-  // const [number, setNumber] = useState();
+  const [number, setNumber] = useState();
+
   const phoneSubmit = async (e, val) => {
     e.preventDefault();
     const phone_number = val;
-    // e.target.phone_number.value;
+    setNumber(phone_number);
     const rnd_number = Math.floor(Math.random() * 8999) + 1000;
-
-    // setNumber(phone_number);
+    setRnd(rnd_number.toString());
 
     console.log(phone_number, rnd_number);
     console.log("setRnd: ", rnd);
-
-    setRnd(rnd_number.toString());
-
-    // if (phone_number === "") {
-    //   alert("휴대전화 번호를 입력해주세요!");
-    // }
 
     await axios.post(sms, {
       phone_number,
@@ -35,6 +29,8 @@ export const usePhoneSubmit = () => {
   };
 
   return {
+    setNumber,
+    number,
     show,
     setShow,
     rnd,
@@ -65,18 +61,16 @@ export const useSmsSubmit = (rnd, number, path) => {
       } else {
         setAuthForm(true);
         sessionStorage.setItem("AuthForm", "success");
+        alert("인증되었습니다.");
+        setShow(!show);
       }
-
-      val = "";
-      setShow(!show);
 
       console.log("sms submit number : ", number);
 
       if (path === null || path === undefined) {
-        alert("경로가 존재하지 않습니다.");
         return;
       }
-      navigate(path, { replace: true });
+      return navigate(path, { replace: true });
     } catch (error) {
       console.error(error);
       alert("문제가 발생했습니다. 다시 시도해주세요.");

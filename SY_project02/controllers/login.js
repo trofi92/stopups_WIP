@@ -6,7 +6,7 @@ const accessJwtTokenOption = {
   maxAge: 1000 * 60 * 60 * 24 * 7, //쿠키 수명 1주일
   httpOnly: true,
   overwrite: true,
-  expires: new Date(1), //브라우저 종료시 즉시 삭제
+  expires: new Date(Date.now() - 1), //브라우저 종료시 즉시 삭제
 };
 const refreshJwtTokenOption = {
   maxAge: 1000 * 60 * 60 * 24 * 7, //쿠키 수명 1주일
@@ -16,7 +16,7 @@ const refreshJwtTokenOption = {
 
 const login = async (req, res, next) => {
   const { email, password } = req.body.data;
-
+  // console.log(req);
   req.body.email = email;
   req.body.password = password;
 

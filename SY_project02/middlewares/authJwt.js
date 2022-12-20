@@ -5,6 +5,7 @@ const accessTokenCookieOption = {
   maxAge: 1000 * 60 * 60 * 24 * 7, // 재발급 토큰 쿠키 유지시간 1주일
   httpOnly: true,
   overwrite: true,
+  expires: new Date(Date.now() - 1),
 };
 const refreshTokenCookieOption = {
   maxAge: 1000 * 60 * 60 * 24 * 15, // 리프레시 토큰 쿠키 유지시간 15일
@@ -34,7 +35,7 @@ const authJwt = async (req, res, next) => {
 
     //재발급
     const now = Math.floor(Date.now() / 1000);
-    // 3일의 유효기간을 지닌 새로운 쿠키 발급
+    // 1주일의 유효기간을 지닌 새로운 쿠키 발급
     if (decoded.exp - now < 60 * 60 && refreshToken) {
       const decodedRefresh = jwt.verify(refreshToken, jwtSecret);
       const newAccessToken = jwt.sign(decodedRefresh, jwtSecret, {

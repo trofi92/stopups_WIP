@@ -17,7 +17,7 @@ import { Footer } from "../../components/Footer/Footer";
 import * as styled_BU from "../../styled/Button";
 import { NickAgree } from "./NickAgree";
 import { encrypt } from "../../util/crypto-front";
-import { AIN, ALN } from "../../styled/Join/Join"; // DB에 저장 시 암호화, 조회시 복호화
+// import { AIN, ALN } from "../../styled/Join/Join"; // DB에 저장 시 암호화, 조회시 복호화
 import { SERVER_URL } from "../../util/urls";
 
 const Join = () => {

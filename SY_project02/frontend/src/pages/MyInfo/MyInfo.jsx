@@ -5,28 +5,30 @@ import * as styled_MI from "../../styled/MyInfo/MyInfo";
 import * as styled_BU from "../../styled/Button";
 import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
+import { MIPhoneAuth } from "./MIPhoneAuth";
 import { NickAgree } from "../Join/NickAgree";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { decrypt } from "../../util/crypto-front";
 import { SERVER_URL } from "../../util/urls";
 import { useSelector } from "react-redux";
-import { MIPhoneAuth } from "./MIPhoneAuth";
+import { useLocation } from "react-router-dom";
+import { usePhoneSubmit } from "../../hooks/use-submit";
 
 const MyInfo = () => {
-  const inputEmailRef = useRef();
-  const inputNameRef = useRef();
-  const inputNicknameRef = useRef();
-
-  // 휴대전화 번호 저장
-  const [checkedNick, setCheckedNick] = useState(false);
   // 인증 성공하면 여기에 true 값 넣어주기
+  const [checkedNick, setCheckedNick] = useState(false);
+
+  //유저 데이터
   const [data, setData] = useState();
+
+  // 로그인 되어있는 유저의 정보를 통해 폼 안에 데이터 세팅
   const user = useSelector((state) => state.user);
-  console.log(user);
 
   // setNickname에 유저 닉네임 디폴트로 넣어주기
   const [nickname, setNickname] = useState("");
+
+  const location = useLocation();
 
   const onClickCheckedNick = () => {
     setCheckedNick(!checkedNick);
@@ -50,9 +52,9 @@ const MyInfo = () => {
     setData(resData);
   };
 
-  // useEffect(() => {
-  //   fetchUserData();
-  // }, [user.email]);
+  useEffect(() => {
+    fetchUserData();
+  }, [user.email]);
 
   const uEmail = data && decrypt(data?.email);
   const uName = data && decrypt(data?.name);
@@ -163,7 +165,13 @@ const MyInfo = () => {
                     이용하실 수 있습니다.
                   </b>
                 </styled_Join.RFormP>
-                <styled_BU.LJButton>정보수정</styled_BU.LJButton>
+                <styled_BU.LJButton
+                  onClick={() =>
+                    console.log(location?.state?.telephone)
+                  }
+                >
+                  정보수정
+                </styled_BU.LJButton>
                 <styled_MI.MIUnsubscribe>
                   스탑업스 리워드 서비스 이용내역 일괄삭제
                 </styled_MI.MIUnsubscribe>

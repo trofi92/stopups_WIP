@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { SERVER_URL } from "../../util/urls";
 
 export const Success = () => {
   const navigate = useNavigate();
@@ -18,8 +19,8 @@ export const Success = () => {
   React.useEffect(() => {
     axios
       .post(
-        process.env.REACT_APP_BASE_URL +
-          `/payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}`
+        `${SERVER_URL}
+          /payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}}`
       )
       .then((res) => {
         console.log(res.status === 200);
@@ -27,10 +28,11 @@ export const Success = () => {
         if (res.status === 200) {
           alert("결제가 완료되었습니다!");
         }
+      })
+      .catch((error) => {
+        console.error(error);
+        navigate("/failed");
       });
-    // .catch((err) => {
-    //   navigate("/failed");
-    // });
   }, []);
 
   return (

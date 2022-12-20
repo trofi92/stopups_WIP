@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { PURGE } from "redux-persist";
 
 const initialState = {
   email: "",
@@ -25,6 +26,9 @@ const userInfoSlice = createSlice({
     },
     setULogout(state, action) {
       return initialState;
+    },
+    extraReducers: (builder) => {
+      builder.addCase(PURGE, () => initialState);
     },
   },
 });

@@ -9,6 +9,7 @@ import {
   setUTelephone,
   setULogout,
 } from "../features/userInfo/userInfo";
+import { persistor } from "../store/index";
 
 export const useFormCheck = () => {
   const formCheck = (e, regex, msg, state) => {
@@ -53,7 +54,6 @@ export const useLoginService = () => {
             dispatch(setUName(res?.data?.name));
             dispatch(setUNickname(res?.data?.nickname));
             dispatch(setUTelephone(res?.data?.telephone));
-
             navigate("/", { replace: true });
             return;
           });
@@ -73,12 +73,16 @@ export const useLogout = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-
+  const purge = async () => {
+    await persistor.purge();
+  };
   const logout = async (e) => {
     e.preventDefault();
     try {
       axios.get(`${SERVER_URL}/auth/logout`);
       dispatch(setULogout());
+      await purge();
+      sessionStorage.clear();
       navigate("/", { replace: true });
       console.log("RTK user state =>", user);
     } catch (error) {
