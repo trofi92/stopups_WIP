@@ -7,10 +7,12 @@ import {Link} from "react-router-dom";
 import MSUNoStore from "../image/MyStopUps/MSUNoStore.jpg"
 import {Footer} from "../components/Footer/Footer";
 import {useSelector} from "react-redux";
+import {decrypt} from "../util/crypto-front";
 
 const MyStopUps = () => {
-
     const user = useSelector(state => state.user);
+
+    const email = decrypt(user.email);
 
     return (
         <styled_AB.AllBox>
@@ -38,7 +40,7 @@ const MyStopUps = () => {
                             {/*왼쪽*/}
                             <styled_MSU.MSU1ArticleL>
                                 <styled_MSU.MSU1LP>
-                                    <styled_MSU.MSU1LPStrong>{user.email}</styled_MSU.MSU1LPStrong>
+                                    <styled_MSU.MSU1LPStrong>{email}</styled_MSU.MSU1LPStrong>
                                     님 안녕하세요.
                                     <br/>
                                     <styled_MSU.MSU1LPSpan>

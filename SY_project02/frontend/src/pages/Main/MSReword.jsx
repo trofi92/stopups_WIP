@@ -1,13 +1,16 @@
 import * as styled_Main from "../../styled/Main";
 import MSRLogoImg from "../../image/Main/MStopUpsReword/MSRLogo.png";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {decrypt} from "../../util/crypto-front";
 
 export const MSReword = () => {
-    // 로그인 여부에 따라 화면 달라짐
+    const user = useSelector(state => state.user);
+
+    const email = decrypt(user.email);
 
     return (
-        <>
-            {/*로그인 X*/}
+        user.email === "" ? (
             <styled_Main.MSR>
                 <styled_Main.MSRInner>
                     {/*로고*/}
@@ -66,45 +69,43 @@ export const MSReword = () => {
                     </styled_Main.MSRCont>
                 </styled_Main.MSRInner>
             </styled_Main.MSR>
-
-            {/*로그인 O*/}
-            {/*<styled_Main.MSRL>*/}
-            {/*    <styled_Main.MSRLInner>*/}
-            {/*        /!*유저*!/*/}
-            {/*        <Link to={"/serviceReady"} style={{textDecoration: "none"}}>*/}
-            {/*            <styled_Main.MSRLUser>*/}
-            {/*                <styled_Main.MSRLUP/>*/}
-            {/*                <styled_Main.MSRLUDiv>*/}
-            {/*                    <styled_Main.MSRLUDP>*/}
-            {/*                        <styled_Main.MSRLUDPSpan1>*/}
-            {/*                            <strong>유저이메일</strong>*/}
-            {/*                            님, 안녕하세요!*/}
-            {/*                        </styled_Main.MSRLUDPSpan1>*/}
-            {/*                        <styled_Main.MSRLUDPSpan2>*/}
-            {/*                            혜택에 편리함까지 더한*/}
-            {/*                            스타벅스 리워드를 즐겨보세요.*/}
-            {/*                        </styled_Main.MSRLUDPSpan2>*/}
-            {/*                    </styled_Main.MSRLUDP>*/}
-            {/*                </styled_Main.MSRLUDiv>*/}
-            {/*            </styled_Main.MSRLUser>*/}
-            {/*        </Link>*/}
-            {/*        /!*카드*!/*/}
-            {/*        <Link to={"/serviceReady"} style={{textDecoration: "none"}}>*/}
-            {/*            <styled_Main.MSRLCard>*/}
-            {/*                <styled_Main.MSRLCP/>*/}
-            {/*                <styled_Main.MSRLCPTxt>*/}
-            {/*                    <styled_Main.MSRLCPTStrong>스타벅스 카드 등록</styled_Main.MSRLCPTStrong>*/}
-            {/*                    <br/>*/}
-            {/*                    등록된 카드가 없습니다.*/}
-            {/*                    <br/>*/}
-            {/*                    새로우 카드를 등록하세요.*/}
-            {/*                </styled_Main.MSRLCPTxt>*/}
-            {/*            </styled_Main.MSRLCard>*/}
-            {/*        </Link>*/}
-            {/*    </styled_Main.MSRLInner>*/}
-            {/*</styled_Main.MSRL>*/}
-        </>
-
-    );
+        ) : (
+                <styled_Main.MSRL>
+                    <styled_Main.MSRLInner>
+                        {/*유저*/}
+                        <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
+                            <styled_Main.MSRLUser>
+                                <styled_Main.MSRLUP/>
+                                <styled_Main.MSRLUDiv>
+                                    <styled_Main.MSRLUDP>
+                                        <styled_Main.MSRLUDPSpan1>
+                                            <strong>{email}</strong>
+                                            님, 안녕하세요!
+                                        </styled_Main.MSRLUDPSpan1>
+                                        <styled_Main.MSRLUDPSpan2>
+                                            혜택에 편리함까지 더한
+                                            스타벅스 리워드를 즐겨보세요.
+                                        </styled_Main.MSRLUDPSpan2>
+                                    </styled_Main.MSRLUDP>
+                                </styled_Main.MSRLUDiv>
+                            </styled_Main.MSRLUser>
+                        </Link>
+                        {/*카드*/}
+                        <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
+                            <styled_Main.MSRLCard>
+                                <styled_Main.MSRLCP/>
+                                <styled_Main.MSRLCPTxt>
+                                    <styled_Main.MSRLCPTStrong>스타벅스 카드 등록</styled_Main.MSRLCPTStrong>
+                                    <br/>
+                                    등록된 카드가 없습니다.
+                                    <br/>
+                                    새로우 카드를 등록하세요.
+                                </styled_Main.MSRLCPTxt>
+                            </styled_Main.MSRLCard>
+                        </Link>
+                    </styled_Main.MSRLInner>
+                </styled_Main.MSRL>
+            )
+    )
 };
 
