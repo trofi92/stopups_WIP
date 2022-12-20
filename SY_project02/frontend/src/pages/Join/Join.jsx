@@ -75,19 +75,19 @@ const Join = () => {
   const submitIdPassword = (e) => {
     e.preventDefault();
     if (email === "") {
-      alert("이메일을 입력해주세요");
+      alert("이메일을 입력해 주세요.");
     } else if (name === "") {
-      alert("이름을 입력해주세요");
+      alert("이름을 입력해 주세요.");
     } else if (nickname === "") {
-      alert("닉네임을 입력해주세요");
+      alert("닉네임을 입력해 주세요.");
     } else if (password === "") {
-      alert("비밀번호를 입력해주세요");
+      alert("비밀번호를 입력해 주세요.");
     } else if (passwordConfirm === "") {
-      alert("비밀번호 확인을 입력해주세요");
+      alert("비밀번호 확인을 입력해 주세요.");
     } else if (password !== passwordConfirm) {
       alert("비밀번호와 비밀번호 확인이 일치하지 않습니다");
     } else if (telephone === "") {
-      alert("전화번호를 입력해주세요");
+      alert("전화번호를 입력해 주세요.");
     } else if (checkedNick !== true) {
       alert("닉네임 이용약관에 동의하셔야 합니다. ");
     } else {
@@ -159,7 +159,7 @@ const Join = () => {
                       id={"registerPassword"}
                       name={"password"}
                       placeholder={
-                        "영문자, 숫자, 특수문자를 포함하여 8자리 이상 16자리 이하로 입력해주세요."
+                        "영문자, 숫자, 특수문자를 포함하여 8자리 이상 16자리 이하로 입력해 주세요."
                       }
                       onChange={handlePasswordChange}
                       required
@@ -177,7 +177,7 @@ const Join = () => {
                       id={"registerPasswordConfirm"}
                       name={"passwordConfirm"}
                       placeholder={
-                        "비밀번호를 다시 한번 입력해주세요."
+                        "비밀번호를 다시 한번 입력해 주세요."
                       }
                       onChange={handlePasswordConfirmChange}
                       required
@@ -210,7 +210,7 @@ const Join = () => {
                       type={"text"}
                       id={"registerPhone"}
                       name={"telephone"}
-                      placeholder={"휴대폰 번호를 입력해주세요."}
+                      placeholder={"휴대폰 번호를 입력해 주세요.."}
                       onChange={handleTelephoneChange}
                       required
                     />

@@ -34,28 +34,25 @@ const MIPassword = () => {
         setPasswordConfirm(e.target.value);
     };
 
-    // 현재 비밀번호와 currentPassword가 같지 않을 때 alert
-
     const submitPassword = (e) => {
         e.preventDefault();
         if (currentPassword === "") {
-            alert("비밀번호를 입력해주세요");
+            alert("비밀번호를 입력해 주세요.");
             // 이 밑에 바로 else if로 현재 비번이랑 비교
         } else if (password === "") {
-            alert("새 비밀번호를 입력해주세요")
+            alert("새 비밀번호를 입력해 주세요.")
         }  else if (currentPassword === password) {
-            alert("현재 비밀번호와 같습니다. 다른 비밀번호를 입력해주세요")
+            alert("현재 비밀번호와 같습니다. 다른 비밀번호를 입력해 주세요.")
         }  else if (passwordConfirm === "") {
-            alert("새 비밀번호 확인을 입력해주세요")
+            alert("새 비밀번호 확인을 입력해 주세요.")
         } else if (password !== passwordConfirm) {
-            alert("비밀번호가 같지 않습니다. 다시 입력해주세요")
+            alert("비밀번호가 같지 않습니다. 다시 입력해 주세요.")
         } else {
             console.log("비밀번호 변경 예:시");
             const post = {
                 password
             };
             axios
-                // 라우트 해주시면 주소 적기...
                 .post("", {data: post})
                 .then((res) => {
                     alert("비밀번호를 변경했습니다")
@@ -110,7 +107,7 @@ const MIPassword = () => {
                                             type={"password"}
                                             id={"registerPassword"}
                                             name={"password"}
-                                            placeholder={"영문자, 숫자, 특수문자를 포함하여 8자리 이상 16자리 이하로 입력하세요"}
+                                            placeholder={"영문자, 숫자, 특수문자를 포함하여 8자리 이상 16자리 이하로 입력해 주세요."}
                                             onChange={handlePasswordChange}
                                             required
                                         />

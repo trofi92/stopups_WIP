@@ -77,7 +77,7 @@ const LIdPass = () => {
                   <styled_Pass.PInputBox>
                     <form onSubmit={handlePhoneSubmit}>
                       <styled_Pass.PInputPhone
-                        placeholder="숫자만 입력"
+                        placeholder="숫자만 입력해 주세요."
                         name="phone_number"
                       />
                       <styled_Pass.PPhoneButton>
@@ -93,7 +93,7 @@ const LIdPass = () => {
                   <styled_Pass.PInputBox>
                     <form onSubmit={handleSmsSubmit}>
                       <styled_Pass.PInputPhone
-                        placeholder="숫자 4자리 입력"
+                        placeholder="숫자 4자리를 입력해 주세요."
                         name="phone_number"
                       />
                       <styled_Pass.PPhoneButton>

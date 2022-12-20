@@ -45,6 +45,15 @@ const MyInfo = () => {
                                         </styled_JoinAB.PhonePassBox>
                                     </styled_MIA.MIAInnerBox>
                                 </styled_Join.RFSection>
+                                <styled_MIA.RFSection2>
+                                    휴대폰 인증을 사용할 수 없는 상태이신가요?
+                                    <br/>
+                                    <Link to={"/myInfoPassPassword"} style={{textDecoration: "none"}}>
+                                        <styled_MIA.RFS2Span>
+                                            비밀번호로 인증하기
+                                        </styled_MIA.RFS2Span>
+                                    </Link>
+                                </styled_MIA.RFSection2>
                             </styled_LOG.LFFFieldset>
                         </form>
                     </styled_LOG.LFInner>

@@ -51,7 +51,7 @@ export const MIPhoneAuth = () => {
             name="ph_number"
             onChange={onChangeTelephone}
             ref={inputPhoneNumberRef}
-            placeholder={"휴대전화 번호를 입력해주세요."}
+            placeholder={"휴대전화 번호를 입력해 주세요."}
           />
           <styled_MI.MIPhoneA>확인</styled_MI.MIPhoneA>
         </styled_MI.MIPhoneDiv>
@@ -61,7 +61,7 @@ export const MIPhoneAuth = () => {
         <form onSubmit={handleSmsSubmit}>
           <styled_MI.MIPhoneInput
             name="au_number"
-            placeholder={"인증번호 4자리를 입력해주세요."}
+            placeholder={"인증번호 4자리를 입력해 주세요."}
             ref={inputRndRef}
           />
           <styled_MI.MIPhoneA>인증</styled_MI.MIPhoneA>

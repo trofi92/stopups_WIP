@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Header from "../../components/Header/Header";
-import { Footer } from "../../components/Footer/Footer";
-import * as styled_AB from "../../styled/AllBox";
-import * as styled_Pass from "../../styled/Pass";
-import * as styled_LOG from "../../styled/Login/Login";
-import * as styled_Join from "../../styled/Join/Join";
-import { usePhoneSubmit, useSmsSubmit } from "../../hooks/use-submit";
+import Header from "../../../components/Header/Header";
+import { Footer } from "../../../components/Footer/Footer";
+import * as styled_AB from "../../../styled/AllBox";
+import * as styled_Pass from "../../../styled/Pass";
+import * as styled_LOG from "../../../styled/Login/Login";
+import * as styled_Join from "../../../styled/Join/Join";
+import { usePhoneSubmit, useSmsSubmit } from "../../../hooks/use-submit";
 
 const MIPass = () => {
   const [number, setNumber] = useState();

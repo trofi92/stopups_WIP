@@ -97,7 +97,7 @@ export const PPhoneButton = styled.button`
   }
 `;
 
-// 로그인시 이용 가능합니다 페이지 버튼
+// 로그인 시 이용 가능합니다 페이지 버튼
 export const PCancelButton = styled.button`
   font-size: 15px;
   height: 47.78px;
@@ -126,4 +126,13 @@ export const PConfirmButton = styled.button`
   text-align: center;
   float: left;
   margin: 0 0 0 10px;
+`;
+
+
+// 비밀번호로 인증
+export const PPBox = styled.div`
+  background-size: cover;
+  width: 100%;
+  height: 480px;
+  margin-top: 60px;
 `;
