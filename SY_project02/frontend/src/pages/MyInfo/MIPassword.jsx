@@ -24,7 +24,6 @@ const MIPassword = () => {
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const { logout } = useLogout();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const encryptedEmail = user.email;
   const uEmail = decrypt(user.email);

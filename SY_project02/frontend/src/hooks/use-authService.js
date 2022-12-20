@@ -54,13 +54,16 @@ export const useLoginService = () => {
             dispatch(setUName(res?.data?.name));
             dispatch(setUNickname(res?.data?.nickname));
             dispatch(setUTelephone(res?.data?.telephone));
+
+            alert(post.email + "님 환영합니다.");
+
             navigate("/", { replace: true });
             return;
           });
       } catch (err) {
         console.error(err);
         alert(
-          "로그인이 실패했습니다. 정보가 올바른지 다시 확인해주세요"
+          "아이디 또는 비밀번호 1회 오류입니다. 정확한 아이디 또는 비밀번호를 입력해주시길 바립니다."
         );
       }
     }

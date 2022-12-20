@@ -70,14 +70,14 @@ const Event = () => {
                   href={"#"}
                   onClick={() => onClick(2)}
                 >
-                  스탑업스 카드
+                  스탑없으 카드
                 </styled_Event.ESA2G>
               ) : (
                 <styled_Event.ESA2
                   href={"#"}
                   onClick={() => onClick(2)}
                 >
-                  스탑업스 카드
+                  스탑없으 카드
                 </styled_Event.ESA2>
               )}
             </styled_Event.ESH32>
@@ -87,14 +87,14 @@ const Event = () => {
                   href={"#"}
                   onClick={() => onClick(3)}
                 >
-                  스탑업스 리워드
+                  스탑없으 리워드
                 </styled_Event.ESA3G>
               ) : (
                 <styled_Event.ESA3
                   href={"#"}
                   onClick={() => onClick(3)}
                 >
-                  스탑업스 리워드
+                  스탑없으 리워드
                 </styled_Event.ESA3>
               )}
             </styled_Event.ESH33>

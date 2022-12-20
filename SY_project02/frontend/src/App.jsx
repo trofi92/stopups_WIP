@@ -15,7 +15,7 @@ import EInnerText from "./pages/Event/EInnerText";
 import JPass from "./pages/Join/JPass";
 import MyInfoAgree from "./pages/MyInfo/MyInfoAgree";
 import MyInfo from "./pages/MyInfo/MyInfo";
-import MIPass from "./pages/MyInfo/MIPass";
+import MIPass from "./pages/MyInfo/Pass/MIPass";
 import MIPassword from "./pages/MyInfo/MIPassword";
 import MyStopUps from "./pages/MyStopUps";
 import ScrollToTop from "./util/ScrollToTop";
@@ -32,6 +32,8 @@ import LFindPw from "./pages/Login/LFindPw/LFindPw";
 import NoticeInnerText from "./pages/Notice/NoticeInnerText";
 import Search from "./pages/Search/Search";
 import Map from "./pages/Map";
+import MIPassPassword from "./pages/MyInfo/Pass/MIPassPassword";
+import Introduce from "./pages/Introduce/Introduce";
 
 function App() {
   return (
@@ -85,6 +87,8 @@ function App() {
         <Route path={"/myInfoAgree"} element={<MyInfoAgree />} />
         {/*개인정보 확인 및 수정 인증*/}
         <Route path={"/myInfoPass"} element={<MIPass />} />
+        {/*휴대폰 인증 사용할 수 없는 경우의 개인정보 확인 및 수정 인증 */}
+        <Route path={"/myInfoPassPassword"} element={<MIPassPassword/>} />
         {/*개인정보 확인 및 수정*/}
         <Route path={"/myInfo"} element={<MyInfo />} />
         {/*비밀번호 변경*/}
@@ -97,6 +101,8 @@ function App() {
         <Route path={"/search"} element={<Search />} />
         {/*지도 페이지*/}
         <Route path={"/map"} element={<Map />} />
+        {/*스탑없으 소개*/}
+        <Route path={"/introduce"} element={<Introduce/>} />
         <Route
           path="/payment"
           element={<Payment name={"payment"} />}

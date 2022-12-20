@@ -3,10 +3,8 @@ import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-export const SDrink = ({result}) => {
+export const SDrink = ({result, state}) => {
     const [allDrink, setAllDrink] = useState([]);
-
-    // console.log("음료 검색 결과",result);
 
     useEffect(() => {
         const all = async () => {
@@ -21,14 +19,14 @@ export const SDrink = ({result}) => {
 
     const searchedAllDrink = allDrink.filter((data) => {
         if (data.Category !== "브레드" && data.Category !== "케이크" && data.Category !== "따뜻한 푸드" && data.Category !== "샐러드" && data.Category !== "샌드위치") {
-            if (result !== "") {
+            if (state !== "" && result === "") {
+                return data.Name.toLowerCase().includes(state.toLowerCase());
+            } else if (result !== "") {
                 return data.Name.toLowerCase().includes(result.toLowerCase());
             }
         }
-    })
+    });
 
-
-    // console.log("searchedAllDrink", searchedAllDrink);
 
     return (
         <styled_Search.SSection>
@@ -41,7 +39,7 @@ export const SDrink = ({result}) => {
             </styled_Search.SSHeader>
             {/*음료 내용*/}
             <styled_Search.SSUl>
-                {searchedAllDrink.length === 0 || result === "" ? (
+                {searchedAllDrink.length === 0 || result === "" && state === "" ? (
                     <styled_Search.SSLi>
                         <styled_Search.SSLP>검색 결과가 없습니다.</styled_Search.SSLP>
                     </styled_Search.SSLi>

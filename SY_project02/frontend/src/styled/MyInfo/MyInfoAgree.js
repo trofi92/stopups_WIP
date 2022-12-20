@@ -61,3 +61,17 @@ export const MIAPButton = styled.p`
   color: #fff;
   text-align: center;
 `
+
+// 비밀번호 인증
+export const RFSection2 = styled.section`
+  float: right;
+  text-align: right;
+  font-size: 12px;
+  color: #666;
+`
+
+export const RFS2Span = styled.span`
+  cursor: pointer;
+  color: #666;
+  text-decoration: underline;
+`

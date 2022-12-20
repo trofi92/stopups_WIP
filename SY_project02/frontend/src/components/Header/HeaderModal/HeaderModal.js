@@ -1,4 +1,3 @@
-import axios from "axios";
 import * as styled_HM from "../../../styled/HeaderModal";
 import {useRef, useState} from "react";
 import * as styled_BU from "../../../styled/Button";
@@ -57,7 +56,7 @@ const HeaderModal = ({ modalClose }) => {
     setOpenWhatsNew(!openWhatsNew);
   };
 
-  const handleSearch = (e) => {
+  const handleSearchChange = (e) => {
     setSearch(e.target.value);
   };
 
@@ -68,8 +67,7 @@ const HeaderModal = ({ modalClose }) => {
       searchRef.current.focus();
     } else {
       searchRef.current.focus();
-      navigate("/search");
-      return search;
+      navigate("/search", {state: search});
     }
   };
 
@@ -90,7 +88,7 @@ const HeaderModal = ({ modalClose }) => {
                         <styled_HM.HMSInner>
                             <styled_HM.HMSIInput
                                 type={"text"}
-                                onChange={handleSearch}
+                                onChange={handleSearchChange}
                                 ref={searchRef}
                                 search={search}
                                 />

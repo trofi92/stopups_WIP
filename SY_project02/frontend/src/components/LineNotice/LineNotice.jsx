@@ -5,20 +5,19 @@ import MLNRight from "../../image/LineNotice/MLNRight.png";
 import MLNRightToggle1 from "../../image/LineNotice/MLNRightToggle1.png";
 import MLNRightToggle2 from "../../image/LineNotice/MLNRightToggle2.png";
 import MPBImg1 from "../../image/Main/MPromotionBanner/MPBImg1.png";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import {useState} from "react";
+import {Link} from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import MPBImg2 from "../../image/Main/MPromotionBanner/MPBImg2.png";
 
 export const LineNotice = () => {
-  const [openPromotion, setOpenPromotion] = useState(MLNRightToggle1);
+    const [openPromotion, setOpenPromotion] = useState(MLNRightToggle1);
 
-  const promotionToggle = () => {
-    setOpenPromotion(!openPromotion);
-  };
-
+    const promotionToggle = () => {
+        setOpenPromotion(!openPromotion);
+    };
 
     const settings = {
         dots: true,
@@ -32,8 +31,6 @@ export const LineNotice = () => {
         autoplaySpeed: 2000
     };
 
-
-
     return (
         <>
             {/*라인 공지*/}
@@ -45,13 +42,13 @@ export const LineNotice = () => {
                         <styled_LN.LNLeftInnerDl>
                             <styled_LN.LNLeftInnerLDt>
                                 <styled_LN.LNLeftInnerLDtImg src={MLNLeft}
-                                                   alt={"mainPromotionBannerLeft"}/>
+                                                             alt={"mainPromotionBannerLeft"}/>
                             </styled_LN.LNLeftInnerLDt>
                             {/*나중에 공지사항 생기면 dd 추가 + 움직임 이벤트 + 해당 공지사항 이동 링크*/}
                             <styled_LN.LNLeftInnerLDd>
                                 <styled_LN.LNLeftInnerLDUl>
                                     <styled_LN.LNLeftInnerLDLi>
-                                        <Link to={"/noticeText"} style={{textDecoration: "none"}}>
+                                        <Link to={"/notice"} style={{textDecoration: "none"}}>
                                             <styled_LN.LNLeftInnerLDLP>공지사항</styled_LN.LNLeftInnerLDLP>
                                         </Link>
                                     </styled_LN.LNLeftInnerLDLi>
@@ -74,11 +71,11 @@ export const LineNotice = () => {
                         <styled_LN.LNRightAImg src={MLNRight} alt={"mainPromotionBannerRight"}/>
                     </styled_LN.LNRightA>
                     <styled_LN.LNRightSpan onClick={promotionToggle}>
-                        {/*후에 토글 버튼, 클릭 시 밑에 창 뜨고 닫히는 토글 버튼*/}
+                        {/*클릭 시 밑에 창 뜨고 닫히는 토글 버튼*/}
                         {openPromotion === true ? (
-                            <styled_LN.LNRightSpanImg src={MLNRightToggle2} />
+                            <styled_LN.LNRightSpanImg src={MLNRightToggle2}/>
                         ) : (
-                            <styled_LN.LNRightSpanImg src={MLNRightToggle1} />
+                            <styled_LN.LNRightSpanImg src={MLNRightToggle1}/>
                         )}
                     </styled_LN.LNRightSpan>
                 </styled_LN.LNRight>

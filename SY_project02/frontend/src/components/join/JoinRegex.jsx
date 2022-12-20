@@ -8,7 +8,6 @@ export const checkEmail = (e) => {
 
   if (!emailRegex.test(currentEmail)) {
     console.log("유효하지 않은 이메일 형식 입니다.");
-    e.target.focus();
     return false;
   } else {
     console.log("올바른 아이디 입니다.");
@@ -59,7 +58,7 @@ export const checkName = (e) => {
     console.log("2자리 이상의 영문자와 한글만 입력할 수 있습니다.");
     return false;
   } else {
-    console.log("올바른 닉네임 입니다.");
+    console.log("올바른 이름 입니다.");
     return nameRegx.test(e);
   }
 };
@@ -67,16 +66,16 @@ export const checkName = (e) => {
 // 닉네임 확인
 export const checkNickname = (e) => {
   const nicknameRegx = /^[ㄱ-ㅎ가-힣a-zA-Z].{1,15}$/g;
-  const currentNickame = e.value;
+  const currentNickname = e.value;
 
   if (
-    !nicknameRegx.test(currentNickame) &&
-    nicknameRegx.test(currentNickame) < 2
+    !nicknameRegx.test(currentNickname) &&
+    nicknameRegx.test(currentNickname) < 2
   ) {
     console.log("2자리 이상의 영문자와 한글만 입력할 수 있습니다.");
     return false;
   } else {
-    console.log("올바른 이름 입니다.");
+    console.log("올바른 닉네임 입니다.");
     return nicknameRegx.test(e);
   }
 };

@@ -32,8 +32,8 @@ const EInnerText = () => {
                 if (location.pathname === `/event/all/${event.EventId}`) {
                     const img = `http://stopupsapi.shop:8080`
                     return (
-                        <>
-                            <styled_Notice.NTitleBox key={idx}>
+                        <div key={idx}>
+                            <styled_Notice.NTitleBox>
                                 <styled_Notice.NTInner>
                                     <styled_Notice.NTIH2>
                                         <styled_Notice.NTIImg src={ETitle} alt={"ETitle"}/>
@@ -92,7 +92,7 @@ const EInnerText = () => {
                                         </styled_ESummer.ESArticle>
                                         {/*목록 버튼*/}
                                         <styled_ESummer.ESButtonBox>
-                                            <Link to={"/event"} style={{textDecoration: "none"}}>
+                                            <Link to={"/event/all"} style={{textDecoration: "none"}}>
                                                 <styled_ESummer.ESBP>
                                                     목록
                                                 </styled_ESummer.ESBP>
@@ -101,7 +101,7 @@ const EInnerText = () => {
                                     </styled_ESummer.ESSection>
                                 </styled_ESummer.ESBPosition>
                             </styled_ESummer.ESBox>
-                        </>
+                        </div>
                     )
                 }
             })}
