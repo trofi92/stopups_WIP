@@ -71,7 +71,7 @@ export const LineNotice = () => {
                         <styled_LN.LNRightAImg src={MLNRight} alt={"mainPromotionBannerRight"}/>
                     </styled_LN.LNRightA>
                     <styled_LN.LNRightSpan onClick={promotionToggle}>
-                        {/*후에 토글 버튼, 클릭 시 밑에 창 뜨고 닫히는 토글 버튼*/}
+                        {/*클릭 시 밑에 창 뜨고 닫히는 토글 버튼*/}
                         {openPromotion === true ? (
                             <styled_LN.LNRightSpanImg src={MLNRightToggle2}/>
                         ) : (
