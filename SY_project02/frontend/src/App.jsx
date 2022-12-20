@@ -33,6 +33,7 @@ import NoticeInnerText from "./pages/Notice/NoticeInnerText";
 import Search from "./pages/Search/Search";
 import Map from "./pages/Map";
 import MIPassPassword from "./pages/MyInfo/Pass/MIPassPassword";
+import Introduce from "./pages/Introduce/Introduce";
 
 function App() {
   return (
@@ -100,6 +101,8 @@ function App() {
         <Route path={"/search"} element={<Search />} />
         {/*지도 페이지*/}
         <Route path={"/map"} element={<Map />} />
+        {/*스탑없으 소개*/}
+        <Route path={"/introduce"} element={<Introduce/>} />
         <Route
           path="/payment"
           element={<Payment name={"payment"} />}

@@ -16,7 +16,7 @@ export const MSeason = () => {
                 <styled_Main.MSIImg3 src={MSImg3}/>
                 <styled_Main.MSIButtonDiv>
                     {/*프로모션 페이지로 이동*/}
-                    <Link to={"/summerEvent"} style={{textDecoration: "none"}}>
+                    <Link to={"/event/all/1"} style={{textDecoration: "none"}}>
                         <styled_BU.SeeDetails>자세히 보기</styled_BU.SeeDetails>
                     </Link>
                 </styled_Main.MSIButtonDiv>

@@ -69,7 +69,7 @@ export const Footer = () => {
                   style={{ textDecoration: "none" }}
                 >
                   <styled_Footer.FWA2>
-                    스탑업스 이용 팁
+                    스탑없으 이용 팁
                   </styled_Footer.FWA2>
                 </Link>
               </styled_Footer.FWLi>
@@ -112,17 +112,17 @@ export const Footer = () => {
                   style={{ textDecoration: "none" }}
                 >
                   <styled_Footer.FWA2>
-                    스탑업스 사명
+                    스탑없으 사명
                   </styled_Footer.FWA2>
                 </Link>
               </styled_Footer.FWLi>
               <styled_Footer.FWLi>
                 <Link
-                  to={"/serviceReady"}
+                  to={"/introduce"}
                   style={{ textDecoration: "none" }}
                 >
                   <styled_Footer.FWA2>
-                    스탑업스 소개
+                    스탑없으 소개
                   </styled_Footer.FWA2>
                 </Link>
               </styled_Footer.FWLi>
@@ -140,7 +140,7 @@ export const Footer = () => {
                   style={{ textDecoration: "none" }}
                 >
                   <styled_Footer.FWA2>
-                    세계의 스탑업스
+                    세계의 스탑없으
                   </styled_Footer.FWA2>
                 </Link>
               </styled_Footer.FWLi>

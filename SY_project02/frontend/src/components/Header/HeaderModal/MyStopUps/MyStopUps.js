@@ -64,14 +64,14 @@ export const MyStopUps = () => {
                 {open1 === true ? <MSInner1/> : null}
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle2}>
-                        My 스탑업스 카드
+                        My 스탑없으 카드
                         <styled_BU.HMButton/>
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open2 === true ? <MSInner2/> : null}
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle3}>
-                        My 스탑업스 e-Gift Card
+                        My 스탑없으 e-Gift Card
                         <styled_BU.HMButton/>
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
@@ -163,14 +163,14 @@ export const MyStopUps = () => {
                 {open1 === true ? <MSInner1/> : null}
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle2}>
-                        My 스탑업스 카드
+                        My 스탑없스 카드
                         <styled_BU.HMButton/>
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open2 === true ? <MSInner2/> : null}
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle3}>
-                        My 스탑업스 e-Gift Card
+                        My 스탑없스 e-Gift Card
                         <styled_BU.HMButton/>
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
