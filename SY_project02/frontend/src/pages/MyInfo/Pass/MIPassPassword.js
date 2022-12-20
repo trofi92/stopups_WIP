@@ -18,14 +18,15 @@ const MIPassPassword = () => {
         console.log("비밀번호", password);
     };
 
-
     const submitPassword = (e) => {
         e.preventDefault();
         if (password !== "") {
             alert("비밀번호를 입력해 주세요.")
         } else {
             // 입력한 비밀번호와 유저의 비밀번호가 맞는지 확인 후 navigate("/myInfo")
+            // 입력한 비밀번호와 유저의 비밀번호가 틀리면 alert("비밀번호가 같지 않습니다.")
         }
+
     }
 
 
