@@ -54,7 +54,7 @@ export const SEvent = ({result, state}) => {
                             return (
                                 <styled_Search.SSLi key={event.EventId}>
                                     <styled_Search.SEFigure>
-                                        <styled_Search.SEFImg src={img + event.Image} alt={"ESTitle"}/>
+                                        <styled_Search.SEFImg src={img + event.Image[0]} alt={"ESTitle"}/>
                                     </styled_Search.SEFigure>
                                     <styled_Search.SEDiv>
                                         <styled_Search.SEDHeader>
@@ -62,9 +62,9 @@ export const SEvent = ({result, state}) => {
                                             <styled_Search.SEDHSpan>진행중</styled_Search.SEDHSpan>
                                         </styled_Search.SEDHeader>
                                         <styled_Search.SEDPDate>{event.Date}</styled_Search.SEDPDate>
-                                        <Link to={"/summerEvent"} style={{textDecoration: "none"}}>
+                                        <Link to={"/event/all/" + event.EventId} style={{textDecoration: "none"}}>
                                             <styled_Search.SEDPLink>
-                                                http://localhost:3000/summerEvent
+                                                http://localhost:3000/event/all/{event.EventId}
                                             </styled_Search.SEDPLink>
                                         </Link>
                                     </styled_Search.SEDiv>
