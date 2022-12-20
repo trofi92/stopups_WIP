@@ -6,8 +6,12 @@ import * as styled_MSU from "../styled/MyStopUps";
 import {Link} from "react-router-dom";
 import MSUNoStore from "../image/MyStopUps/MSUNoStore.jpg"
 import {Footer} from "../components/Footer/Footer";
+import {useSelector} from "react-redux";
 
 const MyStopUps = () => {
+
+    const user = useSelector(state => state.user);
+
     return (
         <styled_AB.AllBox>
             <Header/>
@@ -34,7 +38,7 @@ const MyStopUps = () => {
                             {/*왼쪽*/}
                             <styled_MSU.MSU1ArticleL>
                                 <styled_MSU.MSU1LP>
-                                    <styled_MSU.MSU1LPStrong>유저 이름</styled_MSU.MSU1LPStrong>
+                                    <styled_MSU.MSU1LPStrong>{user.email}</styled_MSU.MSU1LPStrong>
                                     님 안녕하세요.
                                     <br/>
                                     <styled_MSU.MSU1LPSpan>

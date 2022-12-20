@@ -1,7 +1,5 @@
 import * as styled_Footer from "../../styled/Footer";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { FAIDive, FAIDLi, FAIDLImg } from "../../styled/Footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -13,13 +11,12 @@ import FAward5 from "../../image/Footer/FAward5.jpg";
 import FAward6 from "../../image/Footer/FAward6.jpg";
 import FAward7 from "../../image/Footer/FAward7.jpg";
 import Slider from "react-slick";
-import { SERVER_URL } from "../../util/urls";
 import {useLogout} from "../../hooks/use-authService";
+import {useSelector} from "react-redux";
 
 export const Footer = () => {
-  // 삼항연산자 사용
-  // 로그인시 home이랑 sigOut 버튼만
-  // 로그아웃시 home sing in join us 버튼
+
+  const user = useSelector(state => state.user);
 
   const { logout } = useLogout();
 
@@ -294,34 +291,41 @@ export const Footer = () => {
                 <styled_Footer.FUBLiP>HOME</styled_Footer.FUBLiP>
               </Link>
             </styled_Footer.FUBLi>
-            {/*로그인 X*/}
-            <styled_Footer.FUBLi>
-              <Link
-                to={"/login"}
-                style={{ textDecoration: "none", color: "#fff" }}
-              >
-                <styled_Footer.FUBLiP>Sign In</styled_Footer.FUBLiP>
-              </Link>
-            </styled_Footer.FUBLi>
-            <styled_Footer.FUBLi>
-              <Link
-                to={"/joinAgree"}
-                style={{ textDecoration: "none", color: "#fff" }}
-              >
-                <styled_Footer.FUBLiP>Join Us</styled_Footer.FUBLiP>
-              </Link>
-            </styled_Footer.FUBLi>
-            {/*로그인 O*/}
-            <styled_Footer.FUBLi>
-              <Link
-                to={"/"}
-                style={{ textDecoration: "none", color: "#fff" }}
-              >
-                <styled_Footer.FUBLiP onClick={(e) => logout(e)}>
-                  Sign Out
-                </styled_Footer.FUBLiP>
-              </Link>
-            </styled_Footer.FUBLi>
+            {user.email === "" ? (
+                <>
+                  {/*로그인 X*/}
+                  <styled_Footer.FUBLi>
+                    <Link
+                        to={"/login"}
+                        style={{ textDecoration: "none", color: "#fff" }}
+                    >
+                      <styled_Footer.FUBLiP>Sign In</styled_Footer.FUBLiP>
+                    </Link>
+                  </styled_Footer.FUBLi>
+                  <styled_Footer.FUBLi>
+                    <Link
+                        to={"/joinAgree"}
+                        style={{ textDecoration: "none", color: "#fff" }}
+                    >
+                      <styled_Footer.FUBLiP>Join Us</styled_Footer.FUBLiP>
+                    </Link>
+                  </styled_Footer.FUBLi>
+                </>
+            ) : (
+                <>
+                  {/*로그인 O*/}
+                  <styled_Footer.FUBLi>
+                    <Link
+                        to={"/"}
+                        style={{ textDecoration: "none", color: "#fff" }}
+                    >
+                      <styled_Footer.FUBLiP onClick={(e) => logout(e)}>
+                        Sign Out
+                      </styled_Footer.FUBLiP>
+                    </Link>
+                  </styled_Footer.FUBLi>
+                </>
+            )}
           </styled_Footer.FUBUl>
         </styled_Footer.FUButton>
 

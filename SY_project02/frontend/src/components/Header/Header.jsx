@@ -6,7 +6,7 @@ import userCategory from "../../image/Header/headerCategory.png";
 import { Link } from "react-router-dom";
 import HeaderModal from "./HeaderModal/HeaderModal";
 import * as styled_H from "../../styled/Header";
-import { useLogout } from "../../hooks/use-authService";
+import {useSelector} from "react-redux";
 
 const Header = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -15,7 +15,8 @@ const Header = () => {
     setModalOpen(!modalOpen);
   };
 
-  //삼항연산자 사용해서 로그인시 링크와 아닐 시의 링크를 다르게...전부...다르게...설정...해야...하.ㅁ....
+  const user = useSelector(state => state.user);
+
   return (
     <styled_H.HB>
       <styled_H.HPosition>
@@ -29,9 +30,16 @@ const Header = () => {
           <styled_H.HNUl>
             <styled_H.HNLi></styled_H.HNLi>
             <styled_H.HNLi>
-              <Link to={"/login"}>
-                <styled_H.HIconUser src={userLogo} alt={"userLogo"} />
-              </Link>
+              {user.email === "" ? (
+                  <Link to={"/login"}>
+                    <styled_H.HIconUser src={userLogo} alt={"userLogo"} />
+                  </Link>
+              ) : (
+                  <Link to={"/myStopUps"}>
+                    <styled_H.HIconUser src={userLogo} alt={"userLogo"} />
+                  </Link>
+              )}
+
             </styled_H.HNLi>
             <styled_H.HNLi>
               <Link to={"/map"}>
