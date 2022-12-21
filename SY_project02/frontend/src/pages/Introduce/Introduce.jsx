@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
 import * as styled_F from "../../styled/Favorite";
 import * as styled_Intro from "../../styled/Introduce"
+import IntroHeaderTitle from "../../image/Introduce/IntroHeaderTitle.png"
 
 const Introduce = () => {
     return (
@@ -15,8 +16,7 @@ const Introduce = () => {
                     <styled_Intro.IBTitle>
                         <styled_F.FHTInner>
                             <styled_F.FHTInnerH4>
-                                {/*스탑없으 코리아*/}
-                                <img/>
+                                <img src={IntroHeaderTitle} alt={"IntroHeaderTitle"}/>
                             </styled_F.FHTInnerH4>
                         </styled_F.FHTInner>
                     </styled_Intro.IBTitle>
@@ -24,7 +24,11 @@ const Introduce = () => {
 
                 {/*내용*/}
                 <styled_F.FContentsAllBox>
-                    <styled_F.FCBox></styled_F.FCBox>
+                    <styled_F.FCBox>
+                        <div>
+
+                        </div>
+                    </styled_F.FCBox>
                 </styled_F.FContentsAllBox>
 
             </styled_Intro.IBox>
