@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import HMTButton1 from "../image/Header/HMTButton2.png"
 import HMTButton2 from "../image/Header/HMTButton1.png"
 import HMButton1 from "../image/Header/HMButton1.png"
-import HMButton2 from "../image/Header/HMButton2.png"
 
 // 로그인, 회원가입 버튼
 export const LJButton = styled.button`
