@@ -1,7 +1,51 @@
 import * as styled_C from "../../styled/Cart"
 import {AiOutlineMinusCircle, AiOutlinePlusCircle} from "react-icons/ai";
+import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    clearCart,
+    removeItem,
+    incrementQuantity,
+    decrementQuantity,
+    calculateTotals,
+    addToCart
+} from "../../features/cart/cartSlice"
+import {useState} from "react";
 
 export const CNoDF = () => {
+    // 상품 종류
+    const cartItems = useSelector((state) => state.cartItems);
+    console.log("상품 종류", cartItems);
+    // 각 상품 갯수
+    const itemsAmount = useSelector((state) => state.amount);
+    console.log("각 상품 갯수", itemsAmount);
+    // 총 가격
+    const totalPrice = useSelector((state) => state.total);
+    console.log("총 가격", totalPrice);
+
+    const dispatch = useDispatch();
+
+    const handleClear = () => {
+        dispatch(clearCart());
+    }
+
+    const handleRemove = () => {
+        dispatch(removeItem());
+    };
+
+    const handleIncrease = () => {
+        dispatch(incrementQuantity());
+    };
+
+    const handleDecrease = () => {
+        dispatch(decrementQuantity());
+    };
+
+    const handleTotalCalculate = () => {
+        dispatch(calculateTotals());
+    };
+
+
     return (
         <>
             {/*음료/푸드에 상품이 없을 때*/}
@@ -14,7 +58,9 @@ export const CNoDF = () => {
                         한번에 주문해 보세요.
                     </styled_C.GBText>
                     {/*나중에 메뉴쪽으로 링크 걸기*/}
-                    <styled_C.GBButton>음료/푸드 담으러 가기</styled_C.GBButton>
+                    <Link to={"#"} style={{textDecoration: "none"}}>
+                        <styled_C.GBButton>음료/푸드 담으러 가기</styled_C.GBButton>
+                    </Link>
                 </styled_C.GBox>
                 <styled_C.GBImg/>
             </styled_C.GBoxs>
@@ -34,9 +80,19 @@ export const CNoDF = () => {
                             title={"전체 선택"}
                         />
                     </styled_C.CFAllCheck>
-                    <styled_C.CFAllCheckText>전체선택</styled_C.CFAllCheckText>
-                    <styled_C.CFCDelete>선택삭제</styled_C.CFCDelete>
-                    <styled_C.CFCAllDelete>전체삭제</styled_C.CFCAllDelete>
+                    <styled_C.CFAllCheckText>
+                        전체선택
+                    </styled_C.CFAllCheckText>
+                    <styled_C.CFCDelete
+                        onClick={handleRemove}
+                    >
+                        선택삭제
+                    </styled_C.CFCDelete>
+                    <styled_C.CFCAllDelete
+                        onClick={handleClear}
+                    >
+                        전체삭제
+                    </styled_C.CFCAllDelete>
                 </styled_C.CFAllCheckBox>
 
                 {/*메뉴 map 사용*/}
@@ -60,9 +116,17 @@ export const CNoDF = () => {
                             </styled_C.CFMOption>
                             <styled_C.CFMCountBox>
                                 {/*수량이 1일 때 color #c3c3c3 밑 버튼 비활성화*/}
-                                <styled_C.CFMCMinus><AiOutlineMinusCircle style={{fontSize: "30px"}}/></styled_C.CFMCMinus>
-                                <styled_C.CFMCount>1</styled_C.CFMCount>
-                                <styled_C.CFMCPlus><AiOutlinePlusCircle style={{fontSize: "30px"}}/></styled_C.CFMCPlus>
+                                <styled_C.CFMCMinus
+                                    onClick={handleDecrease}
+                                >
+                                    <AiOutlineMinusCircle style={{fontSize: "30px"}}/>
+                                </styled_C.CFMCMinus>
+                                <styled_C.CFMCount>{itemsAmount}</styled_C.CFMCount>
+                                <styled_C.CFMCPlus
+                                    onClick={handleIncrease}
+                                >
+                                    <AiOutlinePlusCircle style={{fontSize: "30px"}}/>
+                                </styled_C.CFMCPlus>
                                 <styled_C.CFMTotalMoney>6,700원</styled_C.CFMTotalMoney>
                             </styled_C.CFMCountBox>
                         </styled_C.CFMText>
@@ -72,8 +136,9 @@ export const CNoDF = () => {
 
                 {/*총 갯수 박스*/}
                 <styled_C.CFButtonBox>
-                    <styled_C.CFBAmount>총 <styled_C.CFBAmountColor>0</styled_C.CFBAmountColor>개 / 20개</styled_C.CFBAmount>
-                    <styled_C.CFBTotal>0원</styled_C.CFBTotal>
+                    <styled_C.CFBAmount>총 <styled_C.CFBAmountColor>0</styled_C.CFBAmountColor>개 / 20개
+                    </styled_C.CFBAmount>
+                    <styled_C.CFBTotal>{totalPrice}원</styled_C.CFBTotal>
                 </styled_C.CFButtonBox>
                 {/*체크된 상품이 없을 때 color #c3c3c3*에 버튼 비활성화*/}
                 {/*클릭 시 결제 쪽으로 정보 및 링크*/}

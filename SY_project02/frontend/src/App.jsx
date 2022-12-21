@@ -34,6 +34,8 @@ import Search from "./pages/Search/Search";
 import Map from "./pages/Map";
 import MIPassPassword from "./pages/MyInfo/Pass/MIPassPassword";
 import Introduce from "./pages/Introduce/Introduce";
+import Menu from "./pages/Menu/Menu";
+import MenuEach from "./pages/Menu/MenuItem/MenuEach";
 
 function App() {
   return (
@@ -101,6 +103,10 @@ function App() {
         <Route path={"/search"} element={<Search />} />
         {/*지도 페이지*/}
         <Route path={"/map"} element={<Map />} />
+        {/*메뉴 페이지*/}
+        <Route path={"/menu/:Category"} element={<Menu />} />
+        {/*각 메뉴 상세 페이지*/}
+        <Route path={"/menu/:Category/:item"} element={<MenuEach />} />
         {/*스탑없으 소개*/}
         <Route path={"/introduce"} element={<Introduce/>} />
         <Route

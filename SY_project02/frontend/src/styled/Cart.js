@@ -121,6 +121,7 @@ export const CFAllCheckText = styled.div`
   float: left;
   width: 520px;
   color: #9E9E9E;
+  cursor: pointer;
 `
 
 export const CFCDelete = styled.div`
@@ -290,6 +291,20 @@ export const CFButton= styled.button`
   margin: 20px auto 0;
   text-align: center;
   color: white;
+  font-weight: bold;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+`
+
+export const CFButtonNo= styled.button`
+  height: 70px;
+  background-color: #c3c3c3;
+  border-radius: 40px;
+  width: 80%;
+  margin: 20px auto 0;
+  text-align: center;
+  color: #666;
   font-weight: bold;
   border: none;
   font-size: 20px;
