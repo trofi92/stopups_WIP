@@ -309,6 +309,22 @@ export const SEDHSpan = styled.span`
   margin-top: 3px;
 `;
 
+export const SEDHSpanEnd = styled.span`
+  background: #666666;
+  border-radius: 3px;
+  color: #fff;
+  float: left;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  margin-left: 9px;
+  text-align: center;
+  width: 43px;
+  padding: 0;
+  vertical-align: baseline;
+  margin-top: 3px;
+`;
+
 export const SEDPDate = styled.p`
   color: #666;
   font-size: 14px;

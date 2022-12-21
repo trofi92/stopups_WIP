@@ -49,6 +49,7 @@ export const SEvent = ({result, state}) => {
                     </styled_Search.SSLi>
                 ) : (
                     searchedAllEvent.map((event) => {
+                        console.log(event)
                         if (event) {
                             const img = `http://stopupsapi.shop:8080`;
                             return (
@@ -58,8 +59,14 @@ export const SEvent = ({result, state}) => {
                                     </styled_Search.SEFigure>
                                     <styled_Search.SEDiv>
                                         <styled_Search.SEDHeader>
-                                            <styled_Search.SEDHH3>{event.Title}</styled_Search.SEDHH3>
-                                            <styled_Search.SEDHSpan>진행중</styled_Search.SEDHSpan>
+                                            <styled_Search.SEDHH3>
+                                                {event.Title}
+                                            </styled_Search.SEDHH3>
+                                            {event.Proceed === "진행중" ? (
+                                                <styled_Search.SEDHSpan>진행중</styled_Search.SEDHSpan>
+                                            ) : (
+                                                <styled_Search.SEDHSpanEnd>종료</styled_Search.SEDHSpanEnd>
+                                            )}
                                         </styled_Search.SEDHeader>
                                         <styled_Search.SEDPDate>{event.Date}</styled_Search.SEDPDate>
                                         <Link to={"/event/all/" + event.EventId} style={{textDecoration: "none"}}>
