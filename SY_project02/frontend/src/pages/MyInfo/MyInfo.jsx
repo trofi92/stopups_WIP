@@ -7,84 +7,85 @@ import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import { MIPhoneAuth } from "./MIPhoneAuth";
 import { NickAgree } from "../Join/NickAgree";
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useState, useEffect } from "react";
 import { decrypt } from "../../util/crypto-front";
 import { SERVER_URL } from "../../util/urls";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
-import { usePhoneSubmit } from "../../hooks/use-submit";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useLogout } from "../../hooks/use-authService";
 
 const MyInfo = () => {
-  // 인증 성공하면 여기에 true 값 넣어주기
-  const [checkedNick, setCheckedNick] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { logout } = useLogout();
 
-  //유저 데이터
-  const [data, setData] = useState();
-
-  // 로그인 되어있는 유저의 정보를 통해 폼 안에 데이터 세팅
-  const user = useSelector((state) => state.user);
+  const requestChangeUserInfo = async (e) => {
+    try {
+      axios.defaults.withCredentials = true;
+      const request = await axios.post(
+        `${SERVER_URL}/myinfo/updatePhoneAndNickname`,
+        {
+          data: post,
+        }
+      );
+      const reqData = await request.data;
+      console.log(request);
+      alert(reqData.message);
+      logout(e);
+      return navigate("/login", { replace: true });
+    } catch (error) {
+      console.error("회원정보 수정 실패 =>", error);
+      alert("회원정보 수정에 실패했습니다");
+    }
+  };
 
   // setNickname에 유저 닉네임 디폴트로 넣어주기
   const [nickname, setNickname] = useState("");
 
-  const location = useLocation();
+  // 인증 성공하면 여기에 true 값 넣어주기
+  const [checkedNick, setCheckedNick] = useState(false);
+
+  // 로그인 되어있는 유저의 정보를 통해 폼 안에 데이터 세팅
+  const user = useSelector((state) => state.user);
+
+  // MIPhoneAuth 컴포넌트의 인증 상태값을 가져옴
+  const certification = location?.state?.certification;
+  const telephone = location?.state?.telephone;
 
   const onClickCheckedNick = () => {
     setCheckedNick(!checkedNick);
-    console.log("home=>", !checkedNick);
+    console.log("home =>", !checkedNick);
   };
 
   const onChangeNickname = (e) => {
     if (checkedNick === true) {
       setNickname(e.target.value);
+      console.log("휴대전화 인증 => ", certification);
+      console.log("않이외않되 =>", location?.state);
     }
   };
 
-  // 페이지 최조 진입시 회원정보를 가져옴(from RTK)
-  const fetchUserData = async () => {
-    axios.defaults.withCredentials = true;
-    const response = await axios.post(
-      `${SERVER_URL}/myInfo`,
-      decrypt(user.telephone)
-    );
-    const resData = await response.data;
-    setData(resData);
+  const post = {
+    email: user.email,
+    telephone: telephone,
+    nickname: nickname,
   };
 
-  useEffect(() => {
-    fetchUserData();
-  }, [user.email]);
-
-  const uEmail = data && decrypt(data?.email);
-  const uName = data && decrypt(data?.name);
-
-  // const onSumbitMyInfo = (e) => {
-
-  //   e.preventDefault();
-  //   if (telephone === "") {
-  //     alert("전화번호를 입력해주세요");
-  //   } else if (checkedNick !== true) {
-  //     alert("선택적 개인정보 수집동의 및 이용약관에 동의해주세요");
-  //   } else if (nickname === "") {
-  //     alert("닉네임을 입력해주세요");
-  //   } else if (certification !== true) {
-  //     alert("휴대폰 인증을 해주세요");
-  //   } else {
-  //     axios
-  //       // 라우트 해주시면 주소 적기...
-  //       .post("", { data: post })
-  //       .then((res) => {
-  //         alert("회원정보를 수정했습니다.");
-  //         //정보 수정됐는지 확인하기 위해 그 페이지 그대로...
-  //         navigate("/myInfo", { replace: true });
-  //       })
-  //       .catch((error) => {
-  //         console.error("회원정보 수정 실패=>", error);
-  //         alert("회원정보 수정에 실패했습니다");
-  //       });
-  //   }
-  // };
+  const onSumbitMyInfo = (e) => {
+    e.preventDefault();
+    if (telephone === "") {
+      alert("전화번호를 입력해주세요");
+    } else if (checkedNick !== true) {
+      alert("선택적 개인정보 수집동의 및 이용약관에 동의해주세요");
+    } else if (nickname === "") {
+      alert("닉네임을 입력해주세요");
+    } else if (certification !== true) {
+      alert("휴대폰 인증을 해주세요");
+    } else {
+      requestChangeUserInfo(e);
+    }
+  };
 
   return (
     <styled_AB.AllBox>
@@ -93,7 +94,7 @@ const MyInfo = () => {
       <styled_MI.MIBox>
         <styled_LOG.LFB>
           <styled_LOG.LFInner>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={onSumbitMyInfo}>
               <styled_LOG.LFFFieldset>
                 <styled_Join.RFStrong>
                   개인정보 확인 및 수정
@@ -104,7 +105,7 @@ const MyInfo = () => {
                       이메일
                     </styled_Join.RFSectionStrong>
                     <styled_MI.MIEmailInput>
-                      {uEmail || ""}
+                      {decrypt(user?.email) || ""}
                     </styled_MI.MIEmailInput>
                   </styled_MI.MIDiv>
                 </styled_Join.RFSection>
@@ -115,7 +116,7 @@ const MyInfo = () => {
                       이름(필수)
                     </styled_Join.RFSectionStrong>
                     <styled_MI.MIEmailInput>
-                      {uName || ""}
+                      {decrypt(user?.name) || ""}
                     </styled_MI.MIEmailInput>
                   </styled_Join.RFSectionDiv>
                 </styled_Join.RFSection>
@@ -165,13 +166,7 @@ const MyInfo = () => {
                     이용하실 수 있습니다.
                   </b>
                 </styled_Join.RFormP>
-                <styled_BU.LJButton
-                  onClick={() =>
-                    console.log(location?.state?.telephone)
-                  }
-                >
-                  정보수정
-                </styled_BU.LJButton>
+                <styled_BU.LJButton>정보수정</styled_BU.LJButton>
                 <styled_MI.MIUnsubscribe>
                   스탑업스 리워드 서비스 이용내역 일괄삭제
                 </styled_MI.MIUnsubscribe>

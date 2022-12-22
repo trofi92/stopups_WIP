@@ -1,34 +1,6 @@
 const User = require("../models/User");
 const { decrypt, encrypt } = require("../middlewares/crypto");
 
-const info = async (req, res, next) => {
-  const uTelephone = Object.keys(req.body)[0];
-  const exUser = await User.findAll({
-    attributes: ["email", "name", "nickname", "telephone"],
-  });
-
-  try {
-    exUser.find((element) => {
-      if (uTelephone !== decrypt(element.telephone)) {
-        return res.status(401).json({
-          status: "유저없음",
-        });
-      }
-      next();
-
-      return res.status(200).json({
-        email: element.email,
-        name: element.name,
-        password: element.password,
-        nickname: element.nickname,
-        telephone: element.telephone,
-      });
-    });
-  } catch (error) {
-    console.error(error);
-  }
-};
-
 const updatePw = async (req, res, next) => {
   const encryptedEmail = req?.body?.data?.encryptedEmail;
   const clientPassword = req?.body?.data?.currentPassword;
@@ -53,6 +25,60 @@ const updatePw = async (req, res, next) => {
   });
 };
 
-const updatePhoneAndNickname = async (res, req, next) => {};
+const updatePhoneAndNickname = async (res, req, next) => {
+  console.log(res?.body);
+  const encryptedEmail = res?.body?.data?.email;
+  const newTelephone = res?.body?.data?.telephone;
+  const newNickname = res?.body?.data?.nickname;
 
-module.exports = { info, updatePw, updatePhoneAndNickname };
+  const user = await User.findUser(encryptedEmail);
+
+  try {
+    user.update(
+      {
+        telephone: encrypt(newTelephone),
+        nickname: encrypt(newNickname),
+      },
+      { where: { email: encryptedEmail } }
+    );
+    return req.status(200).json({
+      message: "회원정보가 변경되었습니다. 다시 로그인 해주세요",
+    });
+  } catch (error) {
+    console.log(error);
+    return req.status(204).json({
+      message:
+        "알 수 없는 오류가 발생했습니다. 메인화면으로 돌아갑니다.",
+    });
+  }
+};
+
+module.exports = { updatePw, updatePhoneAndNickname };
+
+// const info = async (req, res, next) => {
+//   const uTelephone = Object.keys(req.body)[0];
+//   const exUser = await User.findAll({
+//     attributes: ["email", "name", "nickname", "telephone"],
+//   });
+
+//   try {
+//     exUser.find((element) => {
+//       if (uTelephone !== decrypt(element.telephone)) {
+//         return res.status(401).json({
+//           status: "유저없음",
+//         });
+//       }
+//       next();
+
+//       return res.status(200).json({
+//         email: element.email,
+//         name: element.name,
+//         password: element.password,
+//         nickname: element.nickname,
+//         telephone: element.telephone,
+//       });
+//     });
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };

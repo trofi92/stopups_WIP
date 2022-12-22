@@ -34,7 +34,9 @@ export const MIPhoneAuth = () => {
       return navigate("/MyInfo", { replace: true });
     }
     smsSubmit(e, rndNum);
-    navigate("/MyInfo", { state: { telephone: phoneRef } });
+    return navigate("/MyInfo", {
+      state: { telephone: phoneRef, certification: true },
+    });
   };
 
   return (

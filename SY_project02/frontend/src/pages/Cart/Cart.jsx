@@ -1,9 +1,9 @@
 import * as styled_AB from "../../styled/AllBox";
+import * as styled_F from "../../styled/Favorite";
+import * as styled_C from "../../styled/Cart";
 import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
-import * as styled_F from "../../styled/Favorite";
 import CTitle from "../../image/Cart/CTitle.png";
-import * as styled_C from "../../styled/Cart";
 import { CNoDF } from "./CNoDF";
 import { useState } from "react";
 import { CNoG } from "./CNoG";

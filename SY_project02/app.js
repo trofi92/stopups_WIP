@@ -3,7 +3,6 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const path = require("path");
 const cors = require("cors");
-const session = require("express-session");
 const helmet = require("helmet");
 require("dotenv").config();
 
@@ -17,8 +16,6 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger-output");
 
 const { sequelize } = require("./models");
-const passport = require("passport");
-const passportConfig = require("./passport");
 
 const app = express();
 app.use(helmet());
@@ -29,7 +26,6 @@ app.use(
   })
 );
 
-passportConfig();
 app.set("port", process.env.PORT || 8001);
 
 sequelize
@@ -46,24 +42,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use(
-  session({
-    resave: false,
-    //모든 request마다 기존에 있던 session에 아무런 변경사항이 없을 시에도
-    //해당 session을 다시 저장하는 옵션
-    //(request마다 저장), false로 고정해둘것
-    saveUninitializeed: false,
-    //request 접수시 새롭게 생성된 session에 아무런 작업이 이루어지지 않음
-    //empty session이 저장되는 것을 방지하기 위해 false로 고정
-    secret: process.env.COOKIE_SECRET,
-    cookie: {
-      httpOnly: true,
-    },
-  })
-);
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use("/payment", payment);

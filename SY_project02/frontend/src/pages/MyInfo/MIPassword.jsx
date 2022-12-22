@@ -13,7 +13,7 @@ import {
   checkPasswordConfirm,
 } from "../../components/join/JoinRegex";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { decrypt } from "../../util/crypto-front";
 import { SERVER_URL } from "../../util/urls";
 import { useLogout } from "../../hooks/use-authService";
@@ -71,6 +71,7 @@ const MIPassword = () => {
       console.log("비밀번호 변경 예시");
 
       // 라우트 해주시면 주소 적기...
+      // 그것을 해드렸습니다!
       await axios
         .post(`${SERVER_URL}/myInfo/updatePw`, { data: post })
         .then((res) => {
