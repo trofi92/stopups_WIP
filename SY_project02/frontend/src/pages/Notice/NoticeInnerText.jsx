@@ -17,7 +17,7 @@ const NoticeInnerText = () => {
     useEffect(() => {
         const notice = async () => {
             await axios
-                .get("http://stopupsapi.shop:8080/api/?apikey=TeamYN1670397914440&Notice=ALL&Title=&writeId=")
+                .get("http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Notice=ALL&Title=&writeId=")
                 .then((res) => {
                     setNotices(res.data);
                 })

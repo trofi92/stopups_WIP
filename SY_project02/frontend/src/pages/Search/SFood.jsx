@@ -11,7 +11,7 @@ export const SFood = ({result, state}) => {
     useEffect(() => {
         const all = async () => {
             await axios
-                .get("http://stopupsapi.shop:8080/api/?apikey=TeamYN1670397914440&Category=분류&Name=")
+                .get("http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Category=분류&Name=")
                 .then((res) => {
                     setAllFood(res.data);
                 })
