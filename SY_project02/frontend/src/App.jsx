@@ -40,7 +40,6 @@ import MenuEach from "./pages/Menu/MenuItem/MenuEach";
 function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/test" element={<Test />} />
@@ -90,7 +89,7 @@ function App() {
         {/*개인정보 확인 및 수정 인증*/}
         <Route path={"/myInfoPass"} element={<MIPass />} />
         {/*휴대폰 인증 사용할 수 없는 경우의 개인정보 확인 및 수정 인증 */}
-        <Route path={"/myInfoPassPassword"} element={<MIPassPassword/>} />
+        <Route path={"/myInfoPassPassword"} element={<MIPassPassword />} />
         {/*개인정보 확인 및 수정*/}
         <Route path={"/myInfo"} element={<MyInfo />} />
         {/*비밀번호 변경*/}
@@ -108,18 +107,14 @@ function App() {
         {/*각 메뉴 상세 페이지*/}
         <Route path={"/menu/:Category/:item"} element={<MenuEach />} />
         {/*스탑없으 소개*/}
-        <Route path={"/introduce"} element={<Introduce/>} />
-        <Route
-          path="/payment"
-          element={<Payment name={"payment"} />}
-        />
+        <Route path={"/introduce"} element={<Introduce />} />
+        <Route path="/payment" element={<Payment name={"payment"} />} />
         <Route path="/failed" element={<Failed name={"fail"} />} />
-        <Route
-          path="/success"
-          element={<Success name={"success"} />}
-        />
+        <Route path="/success" element={<Success name={"success"} />} />
         <Route path="/*" element={<NotFound />} />
+        <Route path="/menu/*" element={<NotFound />} />
       </Routes>
+      <ScrollToTop />
     </BrowserRouter>
   );
 }

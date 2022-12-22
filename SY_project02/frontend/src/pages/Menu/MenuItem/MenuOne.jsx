@@ -1,222 +1,226 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Footer } from "../../../components/Footer/Footer";
 import Header from "../../../components/Header/Header";
 import { AllBox } from "../../../styled/AllBox";
-import { Main, ButtonBoxCotainer } from "../../../styled/Menu/Menu";
+import { ItemTitle, Main, ButtonBoxCotainer } from "../../../styled/Menu/Menu";
+
 import {
-    DetailBox,
-    DetailImageBox,
-    NDetail,
-    SizeBox,
-    SizeDetailBox,
+  DetailBox,
+  DetailImageBox,
+  DetailTextBox,
+  Fieldset,
+  Image,
+  NDetail,
+  Notice,
+  Ntitle,
+  SmallImage,
+  TextBoxSpan,
 } from "../../../styled/Menu/MenuItem";
+
 import { ButtonSmallBox } from "../../../styled/Button";
 
 const DetailOne = (props) => {
-    const [sizeData, setSizeData] = useState("");
-    const [price, setPrice] = useState({});
-    const params = useParams();
-    const InValid =
-        props.price.Desert !== "0" && props.price.hasOwnProperty("Desert");
-    const onChangeHandler = (e) => {
-        setSizeData(e.target.value);
-    };
-    const onSubmitHandler = (e) => {
-        if (sizeData === "") {
-            alert("사이즈를 선택해주세요!");
-            e.preventDefault();
-        } else {
-            e.preventDefault();
-            console.log(props);
-            console.log(props.name, sizeData, props.price[sizeData]);
-        }
-    };
+  const params = useParams();
+  const [sizeData, setSizeData] = useState("");
 
-    return (
-        <AllBox>
-            <Header />
-            <Main>
-                <form onSubmit={onSubmitHandler}>
-                    <DetailBox>
-                        <SizeBox>
-                            <span>{props.category}</span>
-                            <SizeDetailBox>
-                                {props.price.Tall !== "0" && <p>Tall:￦{props.price.Tall} </p>}
+  const InValid =
+    props.price.Desert !== "0" && props.price.hasOwnProperty("Desert");
+  const onChangeHandler = (e) => {
+    setSizeData(e.target.value);
+    console.log(props);
+  };
+  const CategoryInValid =
+    props.category === "케이크" ||
+    props.category === "브레드" ||
+    props.category === "샌드위치" ||
+    props.category === "따뜻한 푸드" ||
+    props.category === "샐러드";
+  const onSubmitHandler = (e) => {
+    if (sizeData === "") {
+      alert("사이즈를 선택해주세요!");
+      e.preventDefault();
+    } else {
+      e.preventDefault();
+      console.log(props);
+      console.log(props.name, sizeData, props.price[sizeData]);
+    }
+  };
+  const replaceNumber = (value) => value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return (
+    <AllBox>
+      <Header />
+      <Main>
+        <ItemTitle>
+          <h2>{props.name}</h2>
+        </ItemTitle>
+        <DetailBox>
+          <DetailImageBox>
+            <Image url={props.url} />
+            <SmallImage url={props.url} />
+          </DetailImageBox>
+          <DetailTextBox>
+            <span>{props.name} </span>
+            {props.price.Desert !== "0" && (
+              <TextBoxSpan>
+                {props.price.Desert && replaceNumber(props.price.Desert)}원
+              </TextBoxSpan>
+            )}
 
-                                {InValid && <p>Desert: ￦{props.price.Desert}</p>}
+            {/* <span> Nitro Vanilla Cream</span> */}
 
-                                {props.price.Grande !== "0" && (
-                                    <p>Grande: ￦{props.price.Grande}</p>
-                                )}
+            <Fieldset>
+              <legend>사이즈</legend>
 
-                                {props.price.Venti !== "0" && (
-                                    <p>Venti: ￦{props.price.Venti}</p>
-                                )}
-                            </SizeDetailBox>
-                        </SizeBox>
-                        <h2>{props.name}</h2>
+              {props.price.Tall !== "0" && (
+                <div>
+                  <input
+                    type="radio"
+                    id="Tall"
+                    name="size"
+                    value="Tall"
+                    onChange={onChangeHandler}
+                  />
+                  <label htmlFor="Tall">
+                    Tall : {props.price.Tall && replaceNumber(props.price.Tall)}
+                    원{" "}
+                  </label>
+                </div>
+              )}
 
-                        <fieldset>
-                            <legend>사이즈</legend>
+              {InValid && (
+                <>
+                  <div>
+                    <input
+                      type="radio"
+                      id="Desert"
+                      name="size"
+                      value="Desert"
+                      onChange={onChangeHandler}
+                    />
+                    <label htmlFor="Desert">따뜻하게 데움</label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="Desert1"
+                      name="size"
+                      value="Desert"
+                      onChange={onChangeHandler}
+                    />
+                    <label htmlFor="Desert1">데우지 않음</label>
+                  </div>
+                </>
+              )}
 
-                            {props.price.Tall !== "0" && (
-                                <div>
-                                    <input
-                                        type="radio"
-                                        id="Tall"
-                                        name="size"
-                                        value="Tall"
-                                        onChange={onChangeHandler}
-                                    />
-                                    <label htmlFor="Tall">Tall </label>
-                                </div>
-                            )}
+              {props.price.Grande !== "0" && (
+                <div>
+                  <input
+                    type="radio"
+                    id="Grande"
+                    name="size"
+                    value="Grande"
+                    onChange={onChangeHandler}
+                  />
+                  <label htmlFor="Grande">
+                    Grande :{" "}
+                    {props.price.Grande && replaceNumber(props.price.Grande)}원
+                  </label>
+                </div>
+              )}
+              {props.price.Venti !== "0" && (
+                <div>
+                  <input
+                    type="radio"
+                    id="Venti"
+                    name="size"
+                    value="Venti"
+                    onChange={onChangeHandler}
+                  />
+                  <label for="Venti">
+                    Venti :{" "}
+                    {props.price.Venti && replaceNumber(props.price.Venti)}원
+                  </label>
+                </div>
+              )}
+            </Fieldset>
+            <ButtonBoxCotainer>
+              {CategoryInValid ? (
+                <ButtonSmallBox onClick={onChangeHandler}>
+                  <p>나만의 푸드로 등록</p>
+                </ButtonSmallBox>
+              ) : (
+                <ButtonSmallBox onClick={onChangeHandler}>
+                  <p>나만의 음료로 등록</p>
+                </ButtonSmallBox>
+              )}
+              <ButtonSmallBox>
+                <p>장바구니 등록</p>
+              </ButtonSmallBox>
+            </ButtonBoxCotainer>
 
-                            {InValid && (
-                                <div>
-                                    <input
-                                        type="radio"
-                                        id="Desert"
-                                        name="size"
-                                        value="Desert"
-                                        checked={props.price.Desert !== "0"}
-                                        onChange={onChangeHandler}
-                                    />
-                                    <label htmlFor="Desert">Desert</label>
-                                </div>
-                            )}
-
-                            {props.price.Grande !== "0" && (
-                                <div>
-                                    <input
-                                        type="radio"
-                                        id="Grande"
-                                        name="size"
-                                        value="Grande"
-                                        onChange={onChangeHandler}
-                                    />
-                                    <label htmlFor="Grande">Grande</label>
-                                </div>
-                            )}
-                            {props.price.Venti !== "0" && (
-                                <div>
-                                    <input
-                                        type="radio"
-                                        id="Venti"
-                                        name="size"
-                                        value="Venti"
-                                        onChange={onChangeHandler}
-                                    />
-                                    <label for="Venti">Venti</label>
-                                </div>
-                            )}
-                        </fieldset>
-
-                        <p>{props.desc}</p>
-                        <ButtonBoxCotainer>
-                            <ButtonSmallBox>
-                                <p>나만의 음료로 등록</p>
-                            </ButtonSmallBox>
-
-                            <ButtonSmallBox>
-                                <p>장바구니 등록</p>
-                            </ButtonSmallBox>
-                        </ButtonBoxCotainer>
-                    </DetailBox>
-
-                    <DetailImageBox url={props.url} />
-                </form>
-                <NDetail>
-                    <p>
-                        제품 영양 정보
-                        <br />
-                    </p>
-                    <hr />
-
-                    <ul>
-                        <li>
-                            <span> {props.defaultSize}</span>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt>
-                                    1회 제공량(kcal)<dd>{props.kcal}</dd>
-                                </dt>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt>
-                                    탄수화물(g)<dd>{props.carbohydrate}</dd>
-                                </dt>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt>
-                                    지방(g)<dd>{props.fat}</dd>
-                                </dt>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt>
-                                    트랜스지방(g)<dd>{props.transFat}</dd>
-                                </dt>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt>
-                                    포화지방(g)<dd>{props.saturatedFat}</dd>
-                                </dt>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt>
-                                    콜레스테롤(mg)<dd>{props.cholesterol}</dd>
-                                </dt>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt>
-                                    단백질(g)<dd>{props.protein}</dd>
-                                </dt>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt>
-                                    나트륨(mg)<dd>{props.na}</dd>
-                                </dt>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl>
-                                <dt>
-                                    당류(g)<dd>{props.sugar}</dd>
-                                </dt>
-                            </dl>
-                        </li>{" "}
-                        <li>
-                            <dl>
-                                <dt>
-                                    카페인(mg)<dd>{props.caffeine}</dd>
-                                </dt>
-                            </dl>
-                        </li>{" "}
-                    </ul>
-                    <hr />
-                </NDetail>
-            </Main>
-            <p style={{ color: "#444" }}>{props.desc}</p>
-
-            <Footer />
-        </AllBox>
-    );
+            <p>{props.desc}</p>
+            <Ntitle>
+              <p>
+                제품 영양 정보
+                <br />
+                <span> {props.defaultSize}</span>
+              </p>
+              <br></br>
+            </Ntitle>
+            <NDetail>
+              <ul>
+                <li>
+                  <dl>
+                    <dt>
+                      1회 제공량(kcal)<dd>{props.kcal}</dd>
+                    </dt>
+                  </dl>
+                </li>
+                <li>
+                  <dl>
+                    <dt>
+                      포화지방(g)<dd>{props.fat}</dd>
+                    </dt>
+                  </dl>
+                </li>
+                <li>
+                  <dl>
+                    <dt>
+                      단백질(g)<dd>{props.protein}</dd>
+                    </dt>
+                  </dl>
+                </li>
+              </ul>
+              <hr />
+              <ul>
+                <li>
+                  <dl>
+                    <dt>
+                      나트륨 (mg)<dd>{props.na}</dd>
+                    </dt>
+                  </dl>
+                </li>
+                <li>
+                  <dl>
+                    <dt>
+                      당류 (g)<dd>{props.sugar}</dd>
+                    </dt>
+                  </dl>
+                </li>{" "}
+                <li>
+                  <dl>
+                    <dt>
+                      카페인 (mg)<dd>{props.caffeine}</dd>
+                    </dt>
+                  </dl>
+                </li>
+              </ul>
+            </NDetail>
+          </DetailTextBox>
+        </DetailBox>
+      </Main>
+    </AllBox>
+  );
 };
 
 export default DetailOne;
