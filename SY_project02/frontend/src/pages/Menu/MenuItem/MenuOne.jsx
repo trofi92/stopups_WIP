@@ -12,32 +12,72 @@ import {
     SizeDetailBox,
 } from "../../../styled/Menu/MenuItem";
 import { ButtonSmallBox } from "../../../styled/Button";
+import {useDispatch, useSelector} from "react-redux";
+import {addToCart, getCartItems} from "../../../features/cart/cartSlice";
+import {addToFavorites} from "../../../features/favorite/favoriteSlice";
 
 const DetailOne = (props) => {
     const [sizeData, setSizeData] = useState("");
     const [price, setPrice] = useState({});
+    let now = new Date();
+    let year = now.getFullYear();
+    let todayMont = now.getMonth() + 1;
+    let todayDate = now.getDate();
+    let hour = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+
+    const whatDateTime = `${year}-${todayMont}-${todayDate} ${hour}:${minutes}:${seconds}`;
+
+    const dispatch = useDispatch();
     const params = useParams();
+
     const InValid =
         props.price.Desert !== "0" && props.price.hasOwnProperty("Desert");
+
     const onChangeHandler = (e) => {
         setSizeData(e.target.value);
     };
-    const onSubmitHandler = (e) => {
+
+    const onClickFavorite = (e) => {
         if (sizeData === "") {
-            alert("사이즈를 선택해주세요!");
             e.preventDefault();
+            alert("사이즈를 선택해주세요.");
         } else {
             e.preventDefault();
-            console.log(props);
-            console.log(props.name, sizeData, props.price[sizeData]);
+            dispatch(addToFavorites({
+                id: props.productId,
+                name: props.name,
+                size: sizeData,
+                price: props.price[sizeData],
+                whatDateTime: whatDateTime,
+                category: props.category
+            }))
+            alert("나만의 음료로 등록했습니다.")
         }
-    };
+    }
 
+    const onClickCart = (e) => {
+        if (sizeData === "") {
+            e.preventDefault();
+            alert("사이즈를 선택해주세요.");
+        } else {
+            e.preventDefault();
+            dispatch(addToCart({
+                id: props.productId,
+                name: props.name,
+                size: sizeData,
+                price: props.price[sizeData],
+                category: props.category
+            }))
+            alert("장바구니에 등록했습니다.")
+        }
+    }
     return (
         <AllBox>
             <Header />
             <Main>
-                <form onSubmit={onSubmitHandler}>
+                <form>
                     <DetailBox>
                         <SizeBox>
                             <span>{props.category}</span>
@@ -115,11 +155,11 @@ const DetailOne = (props) => {
 
                         <p>{props.desc}</p>
                         <ButtonBoxCotainer>
-                            <ButtonSmallBox>
+                            <ButtonSmallBox onClick={onClickFavorite}>
                                 <p>나만의 음료로 등록</p>
                             </ButtonSmallBox>
 
-                            <ButtonSmallBox>
+                            <ButtonSmallBox onClick={onClickCart}>
                                 <p>장바구니 등록</p>
                             </ButtonSmallBox>
                         </ButtonBoxCotainer>

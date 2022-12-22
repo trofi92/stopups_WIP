@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = "https://course-api.com/react-useReducer-cart-project"; // 엔드포인트 받아서 변경할것
+const url = "http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Category=분류&Name=";
+// const url = "https://course-api.com/react-useReducer-cart-project"; // 엔드포인트 받아서 변경할것
 
 export const getCartItems = createAsyncThunk(
   "cart/getCartItems",
@@ -18,6 +19,7 @@ export const getCartItems = createAsyncThunk(
     }
   }
 );
+
 const initialState = {
   cartItems: [], // 상품 종류
   amount: 1, // 각 상품의 갯수
@@ -25,10 +27,22 @@ const initialState = {
   isLoading: true,
   statusByName: {},
 };
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    addToCart: (state, action) => {
+      const itemInCarts = state.cartItems.find(
+          (item) => item.id === action.payload.id
+      );
+      if (itemInCarts) {
+        itemInCarts.quantity++;
+      } else {
+        state.cartItems.push({ ...action.payload, quantity: 1 });
+      }
+      console.log("들어왔는가",state.cartItems);
+    },
     clearCart: (state) => {
       state.cartItems = []; //is equal to next line ;
       //   return { cartItems: [] }; =  많은 수의 input을 한꺼번에 제어해야할때 유용하게 쓰일 수 있음
@@ -88,8 +102,8 @@ export const cartReducer = cartSlice.reducer;
 export const {
   addToCart,
   clearCart,
-  calculateTotals,
-  incrementQuantity,
-  decrementQuantity,
   removeItem,
+  increase,
+  decrease,
+  calculateTotals
 } = cartSlice.actions;
