@@ -5,17 +5,15 @@ import {useDispatch, useSelector} from "react-redux";
 import {
     clearCart,
     removeItem,
-    incrementQuantity,
-    decrementQuantity,
     calculateTotals,
-    addToCart
+    increase, decrease
 } from "../../features/cart/cartSlice"
 import {useState} from "react";
 
 export const CNoDF = () => {
     // 상품 종류
-    const cartItems = useSelector((state) => state.cartItems);
-    console.log("상품 종류", cartItems);
+    const cart = useSelector((state) => state.cart);
+    console.log("상품 종류", cart);
     // 각 상품 갯수
     const itemsAmount = useSelector((state) => state.amount);
     console.log("각 상품 갯수", itemsAmount);
@@ -34,11 +32,11 @@ export const CNoDF = () => {
     };
 
     const handleIncrease = () => {
-        dispatch(incrementQuantity());
+        dispatch(increase);
     };
 
     const handleDecrease = () => {
-        dispatch(decrementQuantity());
+        dispatch(decrease);
     };
 
     const handleTotalCalculate = () => {

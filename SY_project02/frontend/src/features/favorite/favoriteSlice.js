@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { PURGE } from "redux-persist";
 
 const initialState = {
   favorites: [],
@@ -28,8 +29,14 @@ const favoritesSlice = createSlice({
       state.favorites = [];
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(PURGE, () => initialState);
+  },
 });
 
 export const favoritesReducer = favoritesSlice.reducer;
-export const { addToFavorites, removeItem, removeAllItem } =
-  favoritesSlice.actions;
+export const {
+  addToFavorites,
+  removeItem,
+  removeAllItem
+} = favoritesSlice.actions;

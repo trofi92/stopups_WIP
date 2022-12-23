@@ -73,7 +73,7 @@ const Menu = () => {
     const p2 = ["전체 상품 보기"]; // 전체 상품 보기는 api 에 없어서 하드코딩으로 미리 적어놓는다.,
     const fetchData = async () => {
       const response = await axios.get(
-        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1670397914440&Category=분류&Name=`
+        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Category=분류&Name=`
       );
 
       // <- 전체 상품을 보려고 먼저 데이터에 들어오는 카테고리를 빼서 DataCategory 에 넣어준 후 이 배열을 사용해서  map 함수를 사용한다.
@@ -141,7 +141,7 @@ const Menu = () => {
     };
 
     fetchData();
-  }, [checkedItems]);
+  }, [params, checkedItems]);
 
   const classificationInValidHandler = () => {
     setClassificationInValid(!classificationInValid);

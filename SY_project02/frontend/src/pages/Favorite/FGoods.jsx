@@ -9,9 +9,9 @@ export const FGoods = () => {
                     <styled_F.FCDTable1>
                         <styled_F.FCDTColgroup>
                             <col style={{width: "52px"}}/>
-                            <col style={{width: "60px"}}/>
-                            <col style={{width: "185px"}}/>
-                            <col style={{width: "419px"}}/>
+                            <col style={{width: "100px"}}/>
+                            <col style={{width: "200px"}}/>
+                            <col style={{width: "364px"}}/>
                             <col style={{width: "114px"}}/>
                         </styled_F.FCDTColgroup>
                         <styled_F.FCDTHead1>
