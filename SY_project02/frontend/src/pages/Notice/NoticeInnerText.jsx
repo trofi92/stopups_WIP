@@ -6,13 +6,11 @@ import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import NTitleImg from "../../image/Notice/Ntitle.jpg";
 import ESFaceBook from "../../image/Event/ESummer/ESFaceBook.png";
-import * as styled_ESummer from "../../styled/Event/ESummer";
+
 import { Link, useLocation } from "react-router-dom";
-import { Footer } from "../../components/Footer/Footer";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 const NoticeInnerText = () => {
   const [notices, setNotices] = useState([]);
