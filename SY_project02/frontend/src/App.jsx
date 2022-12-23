@@ -36,12 +36,14 @@ import MIPassPassword from "./pages/MyInfo/Pass/MIPassPassword";
 import Introduce from "./pages/Introduce/Introduce";
 import Menu from "./pages/Menu/Menu";
 import MenuEach from "./pages/Menu/MenuItem/MenuEach";
+import { Redirect } from "./Redirect";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/redirect" element={<Redirect />} />
         <Route path="/test" element={<Test />} />
         <Route path="/*" element={<NotFound />} />
         {/*로그인*/}

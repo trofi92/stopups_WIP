@@ -8,7 +8,7 @@ import {
   setUNickname,
   setUTelephone,
   setULogout,
-} from "../features/userInfo/userInfo";
+} from "../features/userInfo/userInfoSlice";
 import { persistor } from "../store/index";
 
 export const useFormCheck = () => {
@@ -87,9 +87,9 @@ export const useLogout = () => {
       await purge();
       sessionStorage.clear();
       navigate("/", { replace: true });
-      console.log("RTK user state =>", user);
     } catch (error) {
       console.error(error);
+      console.log("RTK user state =>", user);
     }
   };
   return { logout };
