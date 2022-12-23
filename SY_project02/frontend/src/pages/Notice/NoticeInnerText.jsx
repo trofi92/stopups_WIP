@@ -6,6 +6,10 @@ import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import NTitleImg from "../../image/Notice/Ntitle.jpg";
 import ESFaceBook from "../../image/Event/ESummer/ESFaceBook.png";
+import * as styled_ESummer from "../../styled/Event/ESummer";
+import { Link, useLocation } from "react-router-dom";
+import { Footer } from "../../components/Footer/Footer";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -100,29 +104,17 @@ const NoticeInnerText = () => {
                   </colgroup>
                   <tbody>
                     <tr>
-                      <styled_NoticeIT.NITTh>
-                        윗글
-                      </styled_NoticeIT.NITTh>
+                      <styled_NoticeIT.NITTh>윗글</styled_NoticeIT.NITTh>
                       <styled_NoticeIT.NITTd>
-                        <Link
-                          to={"#"}
-                          style={{ textDecoration: "none" }}
-                        >
-                          <styled_NoticeIT.NITTdP>
-                            윗글
-                          </styled_NoticeIT.NITTdP>
+                        <Link to={"#"} style={{ textDecoration: "none" }}>
+                          <styled_NoticeIT.NITTdP>윗글</styled_NoticeIT.NITTdP>
                         </Link>
                       </styled_NoticeIT.NITTd>
                     </tr>
                     <tr>
-                      <styled_NoticeIT.NITTh>
-                        아랫글
-                      </styled_NoticeIT.NITTh>
+                      <styled_NoticeIT.NITTh>아랫글</styled_NoticeIT.NITTh>
                       <styled_NoticeIT.NITTd>
-                        <Link
-                          to={"#"}
-                          style={{ textDecoration: "none" }}
-                        >
+                        <Link to={"#"} style={{ textDecoration: "none" }}>
                           <styled_NoticeIT.NITTdP>
                             아랫글 제목
                           </styled_NoticeIT.NITTdP>

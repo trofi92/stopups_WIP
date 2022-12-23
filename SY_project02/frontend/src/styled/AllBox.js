@@ -8,4 +8,5 @@ export const AllBox = styled.div`
   width: 800px;
   height: 100%;
   overflow-x: hidden;
-`
+  overflow: visible;
+`;

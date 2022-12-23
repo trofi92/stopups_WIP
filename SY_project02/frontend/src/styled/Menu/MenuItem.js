@@ -1,52 +1,38 @@
 import styled from "styled-components";
 export const DetailBox = styled.div`
-  width: 800px;
-  height: 100%;
-`;
-export const SizeBox = styled.div`
-  width: 800px;
+  width: 768px;
+  height: 431px;
   display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-  span {
-    font-weight: 600;
-    font-size: 25px;
-  }
-`;
-export const SizeDetailBox = styled.div`
-  padding: 5px;
-
-  width: 150px;
-  margin-left: 650px;
-  position: absolute;
-  p {
-    font-weight: 500;
-    font-size: 17px;
-    margin: 0;
-  }
-
-  border-radius: 2px;
 `;
 
 export const DetailImageBox = styled.div`
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: ${(props) => `url(${props.url})`};
-  width: 800px;
-  height: 700px;
+  width: 314.109px;
+  height: 415px;
+  display: flex;
+  flex-direction: column;
 `;
 export const DetailTextBox = styled.div`
   width: 425px;
   height: 431px;
   margin-left: 25px;
-
-  span {
+  / span {
     font-size: 14px;
     font-family: "Arial";
     font-weight: normal;
     color: #666;
   }
+`;
+export const TextBoxSpan = styled.span`
+  color: black !important;
+  float: right;
+
+  font-weight: normal;
+`;
+export const Image = styled.div`
+  background-size: cover;
+  background-image: ${(props) => `url(${props.url})`};
+  width: 314px;
+  height: 328px;
 `;
 
 export const SmallImageContainer = styled.div``;
@@ -72,6 +58,20 @@ export const detailTextBox = styled.div`
   font-size: 100%;
   vertical-align: baseline;
 `;
+export const Fieldset = styled.fieldset`
+  display: flex;
+  font-size: 12px;
+  width: ${(props) => props.width};
+  input {
+    margin-top: 2px;
+    margin-left: 3px;
+    margin-right: 3px;
+    accent-color: #006633;
+  }
+`;
+export const smallFieldset = styled.div`
+  display: flex;
+`;
 export const Ntitle = styled.div`
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
@@ -86,12 +86,15 @@ export const Ntitle = styled.div`
 `;
 
 export const NDetail = styled.div`
-  width: 800px;
-
+  width: 425px;
+  height: 150px;
+  display: flex;
   margin-bottom: 10px;
 
+  overflow: hidden;
   ul {
-    width: 100%;
+    width: 50%;
+    height: 112px;
     color: #444;
     line-height: 1.6;
     list-style: none;
@@ -106,9 +109,9 @@ export const NDetail = styled.div`
     margin-left: auto;
   }
   hr {
-    /* margin-left: 10px;
+    margin-left: 10px;
     margin-right: 10px;
-    border: dashed 0.5px #ddd; */
+    border: dashed 0.5px #ddd;
   }
 `;
 
@@ -125,3 +128,9 @@ export const Notice = styled.div`
   margin: 0;
   line-height: 1.6;
 `;
+export const Input = styled.input.attrs((props) => ({
+  type: "radio",
+  id: props.id,
+  name: !props.name ? "size" : props.name,
+  value: props.id,
+}))``;
