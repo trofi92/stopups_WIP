@@ -105,6 +105,7 @@ export const CheckBox = styled.div`
     z-index: 4;
   }
   input {
+    accent-color: #fff;
     margin-right: 7px;
     width: 15px;
     height: 14px;

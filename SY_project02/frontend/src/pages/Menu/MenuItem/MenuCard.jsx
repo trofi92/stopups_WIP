@@ -30,10 +30,10 @@ const DetailCard = (props) => {
             </styled_Menu.ColorBox>
           )}
           <styled_Menu.CardList>
-            {data.map((value, index) => {
+            {data.map((value) => {
               return (
                 <styled_Menu.CardContainer>
-                  <Link to={`/menu/${value.Category}/${index}`}>
+                  <Link to={`/menu/${value.Category}/${value.ProductId}`}>
                     <styled_Menu.Card
                       url={value.Image}
                       productId={value.ProductId}
@@ -44,7 +44,7 @@ const DetailCard = (props) => {
                 </styled_Menu.CardContainer>
               );
             })}
-          </styled_Menu.CardList>{" "}
+          </styled_Menu.CardList>
         </styled_Menu.MenuContainer>
       ) : (
         <styled_Menu.MenuContainer>
@@ -59,10 +59,10 @@ const DetailCard = (props) => {
             </styled_Menu.ColorBox>
           )}
           <styled_Menu.CardList>
-            {data.map((value, index) => {
+            {data.map((value) => {
               return (
                 <styled_Menu.CardContainer>
-                  <Link to={`/menu/${value.Category}/${index}`}>
+                  <Link to={`/menu/${value.Category}/${value.ProductId}`}>
                     <styled_Menu.Card
                       url={value.Image}
                       productId={value.ProductId}
@@ -73,7 +73,7 @@ const DetailCard = (props) => {
                 </styled_Menu.CardContainer>
               );
             })}
-          </styled_Menu.CardList>{" "}
+          </styled_Menu.CardList>
         </styled_Menu.MenuContainer>
       )}
     </>

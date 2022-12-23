@@ -2,32 +2,22 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import { AllBox } from "../../../styled/AllBox";
-import { ItemTitle, Main, ButtonBoxCotainer } from "../../../styled/Menu/Menu";
-
-import {
-  DetailBox,
-  DetailImageBox,
-  DetailTextBox,
-  Fieldset,
-  Image,
-  NDetail,
-  Notice,
-  Ntitle,
-  SmallImage,
-  TextBoxSpan,
-} from "../../../styled/Menu/MenuItem";
-
+import * as styled_Menu from "../../../styled/Menu/Menu";
+import * as styled_MenuItem from "../../../styled/Menu/MenuItem";
 import { ButtonSmallBox } from "../../../styled/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { createSlice } from "@reduxjs/toolkit";
+import { addToItem } from "../../../features/cart/cartSlice";
 
 const DetailOne = (props) => {
   const params = useParams();
   const [sizeData, setSizeData] = useState("");
-
+  const cart = useSelector((state) => state.cart.cartItems);
+  const total = useSelector((state) => state.cart.total);
   const InValid =
     props.price.Desert !== "0" && props.price.hasOwnProperty("Desert");
   const onChangeHandler = (e) => {
     setSizeData(e.target.value);
-    console.log(props);
   };
   const CategoryInValid =
     props.category === "케이크" ||
@@ -41,133 +31,144 @@ const DetailOne = (props) => {
       e.preventDefault();
     } else {
       e.preventDefault();
-      console.log(props);
-      console.log(props.name, sizeData, props.price[sizeData]);
+
+      dispatch(
+        addToItem({
+          id: props.productId,
+          name: props.name,
+          price: props.price[sizeData],
+          size: sizeData,
+        })
+      );
     }
+    console.log(props.productId, props.price, props);
   };
+  const testHandler = () => {
+    console.log(cart);
+  };
+  const dispatch = useDispatch();
   const replaceNumber = (value) => value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   return (
     <AllBox>
       <Header />
-      <Main>
-        <ItemTitle>
+      <styled_Menu.Main>
+        <styled_Menu.ItemTitle>
           <h2>{props.name}</h2>
-        </ItemTitle>
-        <DetailBox>
-          <DetailImageBox>
-            <Image url={props.url} />
-            <SmallImage url={props.url} />
-          </DetailImageBox>
-          <DetailTextBox>
-            <span>{props.name} </span>
-            {props.price.Desert !== "0" && (
-              <TextBoxSpan>
+        </styled_Menu.ItemTitle>
+        <styled_MenuItem.DetailBox>
+          <styled_MenuItem.DetailImageBox>
+            <styled_MenuItem.Image url={props.url} />
+            <styled_MenuItem.SmallImage url={props.url} />
+          </styled_MenuItem.DetailImageBox>
+          <styled_MenuItem.DetailTextBox>
+            <span>
+              {props.name}
+              {total}
+            </span>
+            {props.price.Desert !== "0" && props.price.Desert && (
+              <styled_MenuItem.TextBoxSpan>
                 {props.price.Desert && replaceNumber(props.price.Desert)}원
-              </TextBoxSpan>
+              </styled_MenuItem.TextBoxSpan>
             )}
 
             {/* <span> Nitro Vanilla Cream</span> */}
 
-            <Fieldset>
+            <styled_MenuItem.Fieldset>
               <legend>사이즈</legend>
 
               {props.price.Tall !== "0" && (
-                <div>
-                  <input
-                    type="radio"
-                    id="Tall"
-                    name="size"
-                    value="Tall"
-                    onChange={onChangeHandler}
-                  />
+                <>
+                  <styled_MenuItem.Input id="Tall" onChange={onChangeHandler} />
+
                   <label htmlFor="Tall">
                     Tall : {props.price.Tall && replaceNumber(props.price.Tall)}
-                    원{" "}
+                    원
                   </label>
-                </div>
+                </>
               )}
 
               {InValid && (
                 <>
-                  <div>
-                    <input
-                      type="radio"
-                      id="Desert"
-                      name="size"
-                      value="Desert"
-                      onChange={onChangeHandler}
-                    />
-                    <label htmlFor="Desert">따뜻하게 데움</label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      id="Desert1"
-                      name="size"
-                      value="Desert"
-                      onChange={onChangeHandler}
-                    />
-                    <label htmlFor="Desert1">데우지 않음</label>
-                  </div>
+                  <styled_MenuItem.Input id="Desert" />
+
+                  <label htmlFor="Desert">따뜻하게 데움</label>
+
+                  <styled_MenuItem.Input
+                    id="Desert1"
+                    onChange={onChangeHandler}
+                  />
+                  <label htmlFor="Desert1">데우지 않음</label>
                 </>
               )}
 
               {props.price.Grande !== "0" && (
-                <div>
-                  <input
-                    type="radio"
+                <>
+                  <styled_MenuItem.Input
                     id="Grande"
-                    name="size"
-                    value="Grande"
                     onChange={onChangeHandler}
                   />
                   <label htmlFor="Grande">
-                    Grande :{" "}
+                    Grande :
                     {props.price.Grande && replaceNumber(props.price.Grande)}원
                   </label>
-                </div>
+                </>
               )}
               {props.price.Venti !== "0" && (
-                <div>
-                  <input
-                    type="radio"
+                <>
+                  <styled_MenuItem.Input
                     id="Venti"
-                    name="size"
-                    value="Venti"
                     onChange={onChangeHandler}
                   />
                   <label for="Venti">
-                    Venti :{" "}
+                    Venti :
                     {props.price.Venti && replaceNumber(props.price.Venti)}원
                   </label>
-                </div>
+                </>
               )}
-            </Fieldset>
-            <ButtonBoxCotainer>
+            </styled_MenuItem.Fieldset>
+            <styled_MenuItem.smallFieldset>
+              {!(props.price.Desert !== "0" && props.price.Desert) && (
+                <styled_MenuItem.Fieldset width="100%">
+                  <legend>ICE & HOT </legend>
+                  <styled_MenuItem.Input name="ICE" id="ICE" />
+                  <label for="ICE">ICE</label>
+                  <styled_MenuItem.Input name="ICE" id="HOT" />
+                  <label for="HOT">HOT</label>
+                </styled_MenuItem.Fieldset>
+              )}
+              <styled_MenuItem.Fieldset width="100%">
+                <legend>Takeout </legend>
+                <styled_MenuItem.Input name="takeout" id="takeout" />
+                <label for="takeout">take-out</label>
+                <styled_MenuItem.Input name="takeout" id="eat-in" />
+                <label for="eat-in">eat-in</label>
+              </styled_MenuItem.Fieldset>
+            </styled_MenuItem.smallFieldset>
+            <styled_Menu.ButtonBoxCotainer>
               {CategoryInValid ? (
                 <ButtonSmallBox onClick={onChangeHandler}>
                   <p>나만의 푸드로 등록</p>
                 </ButtonSmallBox>
               ) : (
-                <ButtonSmallBox onClick={onChangeHandler}>
+                <ButtonSmallBox onClick={onSubmitHandler}>
                   <p>나만의 음료로 등록</p>
                 </ButtonSmallBox>
               )}
-              <ButtonSmallBox>
+              <ButtonSmallBox onClick={testHandler}>
                 <p>장바구니 등록</p>
               </ButtonSmallBox>
-            </ButtonBoxCotainer>
+            </styled_Menu.ButtonBoxCotainer>
 
             <p>{props.desc}</p>
-            <Ntitle>
+            <styled_MenuItem.Ntitle>
               <p>
                 제품 영양 정보
                 <br />
                 <span> {props.defaultSize}</span>
               </p>
               <br></br>
-            </Ntitle>
-            <NDetail>
+            </styled_MenuItem.Ntitle>
+            <styled_MenuItem.NDetail>
               <ul>
                 <li>
                   <dl>
@@ -215,10 +216,10 @@ const DetailOne = (props) => {
                   </dl>
                 </li>
               </ul>
-            </NDetail>
-          </DetailTextBox>
-        </DetailBox>
-      </Main>
+            </styled_MenuItem.NDetail>
+          </styled_MenuItem.DetailTextBox>
+        </styled_MenuItem.DetailBox>
+      </styled_Menu.Main>
     </AllBox>
   );
 };

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import DetailOne from "./MenuOne";
 
 const DetailEach = () => {
@@ -14,8 +14,10 @@ const DetailEach = () => {
       const response = await axios.get(
         `http://stopupsapi.shop:8080/api/?apikey=TeamYN1671674386366&Category=${params.Category}&Name=`
       );
-
-      setData(response.data[params.item]);
+      const data = response.data.filter(
+        (value) => value.ProductId === params.item
+      );
+      setData(data[0]);
     };
 
     const NutrientData = async () => {
@@ -23,14 +25,22 @@ const DetailEach = () => {
         `http://stopupsapi.shop:8080/api/?apikey=TeamYN1671674386366&Category=${params.Category}&Name=`
       );
 
-      setNutrient(response.data[params.item].Nutrient);
+      const data = response.data.filter(
+        (value) => value.ProductId === params.item
+      );
+      setData(data[0]);
+      setNutrient(data[0].Nutrient);
     };
     const PriceData = async () => {
       const response = await axios.get(
         `http://stopupsapi.shop:8080/api/?apikey=TeamYN1671674386366&Category=${params.Category}&Name=`
       );
+      const data = response.data.filter(
+        (value) => value.ProductId === params.item
+      );
+      setData(data[0]);
 
-      setPrice(response.data[params.item].Price);
+      setPrice(data[0].Price);
     };
     fetchData();
     NutrientData();
@@ -54,7 +64,7 @@ const DetailEach = () => {
       cholesterol={Nutrient.Cholesterol}
       saturatedFat={Nutrient.SaturatedFat}
       price={Price}
-      productId={data.productId}
+      productId={data.ProductId}
     />
   );
 };

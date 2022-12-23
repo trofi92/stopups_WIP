@@ -24,6 +24,8 @@ const initialState = {
   total: 0, // 총 가격
   isLoading: true,
   statusByName: {},
+  toggle: false,
+  totalAmount: 0,
 };
 const cartSlice = createSlice({
   name: "cart",
@@ -35,20 +37,32 @@ const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       const itemId = action.payload;
-      state.cartItems = state.cartItems.filter(
-        (item) => item.id !== itemId
-      );
+      state.cartItems = state.cartItems.filter((item) => item.id !== itemId);
+    },
+    addToItem: (state, action) => {
+      const Item = action.payload;
+      state.cartItems.push(Item);
+      console.log(state.cartItems);
+      // const existingItem = state.cartItems.find((value) => {
+      //   return value.id === Item.id;
+      // });
+      // if (!existingItem) {
+      //   state.cartItems.push(Item);
+      // } else {
+      //   state.amount = state.amount + 1;
+      // }
+
+      state.totalAmount++;
+    },
+    toggle: (state, action) => {
+      state.toggle = !state.toggle;
     },
     increase: (state, { payload }) => {
-      const cartItem = state.cartItems.find(
-        (item) => item.id === payload.id
-      );
+      const cartItem = state.cartItems.find((item) => item.id === payload.id);
       cartItem.amount = cartItem.amount + 1;
     },
     decrease: (state, { payload }) => {
-      const cartItem = state.cartItems.find(
-        (item) => item.id === payload.id
-      );
+      const cartItem = state.cartItems.find((item) => item.id === payload.id);
       cartItem.amount = cartItem.amount - 1;
     },
     calculateTotals: (state) => {
@@ -86,10 +100,11 @@ const cartSlice = createSlice({
 
 export const cartReducer = cartSlice.reducer;
 export const {
-  addToCart,
+  addToItem,
   clearCart,
   calculateTotals,
   incrementQuantity,
   decrementQuantity,
   removeItem,
+  toggle,
 } = cartSlice.actions;

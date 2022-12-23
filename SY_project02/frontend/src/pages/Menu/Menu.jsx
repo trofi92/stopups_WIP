@@ -8,6 +8,8 @@ import { AllBox } from "../../styled/AllBox";
 import axios from "axios";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import DetailCard from "./MenuItem/MenuCard";
+import { useDispatch, useSelector } from "react-redux";
+import { addToItem, toggle } from "../../features/cart/cartSlice";
 // import testSlice, { testActions } from "../../store/testSlice";
 const Menu = () => {
   const [ClassificationInValid, setClassificationInValid] = useState(true);
@@ -22,7 +24,7 @@ const Menu = () => {
   const [limitInValid, setLimitInValid] = useState(false);
 
   const params = useParams();
-  const Location = useLocation();
+
   const paramsInValid =
     params.Category === "케이크" ||
     params.Category === "브레드" ||
