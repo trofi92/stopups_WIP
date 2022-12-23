@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = "http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Category=분류&Name=";
+const url =
+  "http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Category=분류&Name=";
 // const url = "https://course-api.com/react-useReducer-cart-project"; // 엔드포인트 받아서 변경할것
 
 export const getCartItems = createAsyncThunk(
@@ -34,14 +35,14 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const itemInCarts = state.cartItems.find(
-          (item) => item.id === action.payload.id
+        (item) => item.id === action.payload.id
       );
       if (itemInCarts) {
         itemInCarts.quantity++;
       } else {
         state.cartItems.push({ ...action.payload, quantity: 1 });
       }
-      console.log("들어왔는가",state.cartItems);
+      console.log("들어왔는가", state.cartItems);
     },
     clearCart: (state) => {
       state.cartItems = []; //is equal to next line ;
@@ -51,6 +52,22 @@ const cartSlice = createSlice({
       const itemId = action.payload;
       state.cartItems = state.cartItems.filter(
         (item) => item.id !== itemId
+      );
+    },
+    removeFromCart(state, action) {
+      const { itemIds } = action.payload;
+      // Filter out the items with the specified IDs
+      state.cartItems = state.cartItems.filter(
+        (item) => !itemIds.includes(item.id)
+      );
+      // Recalculate the totals
+      state.amount = state.cartItems.reduce(
+        (acc, item) => acc + item.amount,
+        0
+      );
+      state.total = state.cartItems.reduce(
+        (acc, item) => acc + item.amount * item.price,
+        0
       );
     },
     increase: (state, { payload }) => {
@@ -105,5 +122,5 @@ export const {
   removeItem,
   increase,
   decrease,
-  calculateTotals
+  calculateTotals,
 } = cartSlice.actions;

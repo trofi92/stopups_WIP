@@ -24,6 +24,9 @@ const userInfoSlice = createSlice({
     setUTelephone(state, action) {
       state.telephone = action.payload;
     },
+    setULocation(state, action) {
+      state.location = action.payload;
+    },
     setULogout(state, action) {
       return initialState;
     },
@@ -38,6 +41,7 @@ export const {
   setUName,
   setUNickname,
   setUTelephone,
+  setULocation,
   setULogout,
 } = userInfoSlice.actions;
 
