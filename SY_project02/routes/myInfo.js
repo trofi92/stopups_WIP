@@ -4,18 +4,10 @@ const {
   updatePw,
   updatePhoneAndNickname,
 } = require("../controllers/info");
-const {
-  isLoggedIn,
-  isNotLoggedIn,
-} = require("../middlewares/loggedIn");
-const authJwt = require("../middlewares/authJwt");
+// const authJwt = require("../middlewares/authJwt");
 
-router.get("/myInfoAgree", authJwt);
-router.post("/updatePw", authJwt, updatePw);
-router.post(
-  "/updatePhoneAndNickname",
-  authJwt,
-  updatePhoneAndNickname
-);
+router.get("/MyInfoAgree");
+router.post("/updatePw", updatePw);
+router.post("/updatePhoneAndNickname", updatePhoneAndNickname);
 
 module.exports = router;

@@ -43,9 +43,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/redirect" element={<Redirect />} />
-        <Route path="/test" element={<Test />} />
-        <Route path="/*" element={<NotFound />} />
         {/*로그인*/}
         <Route path={"/login"} element={<Login />} />
         {/*로그인 요청*/}
@@ -115,7 +112,9 @@ function App() {
         <Route path="/success" element={<Success name={"success"} />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/menu/*" element={<NotFound />} />
-        <Route path="/menu/:Category/*" element={<NotFound />} />
+        <Route path="/redirect" element={<Redirect />} />
+        <Route path="/test" element={<Test />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
       <ScrollToTop />
     </BrowserRouter>

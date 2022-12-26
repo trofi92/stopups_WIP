@@ -1,7 +1,7 @@
 import * as styled_F from "../../styled/Favorite";
 import {useDispatch, useSelector} from "react-redux";
 import {removeFromCart} from "../../features/favorite/favoriteSlice"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {addToCart} from "../../features/cart/cartSlice";
 
 export const FDrink = () => {
@@ -54,17 +54,45 @@ export const FDrink = () => {
         }
     };
 
-    // 진행중 애매하네 뭘 보내야하지?
+    // 나중에 ice, hot, take in, out 추가 되면 여기다도 넣기
     const onClick = () => {
         if (checkItems.length === 0) {
             alert("장바구니로 이동 할 음료를 선택하세요.")
         } else {
-            dispatch(addToCart({
-                id: checkItems,
-                amount: 1
-            }))
+            favorite.favorites.map((drink) => {
+                if (checkItems.includes(drink.id)) {
+                    dispatch(addToCart({
+                        id: drink.id,
+                        name: drink.name,
+                        size: drink.size,
+                        price: drink.price,
+                        category: drink.category,
+                        quantity: drink.quantity
+                    }))
+                }
+            })
         }
     };
+
+    // const [drink, setDrink] = useState([])
+    //
+    // useEffect(() => {
+    //     favorite.favorites.map((drink) => {
+    //         if (drink.category !== "브레드" && drink.category !== "케이크" && drink.category !== "샌드위치" && drink.category !== "샐러드" && drink.category !== "따뜻한 푸드") {
+    //             console.log("111111111=>", drink);
+    //             setDrink(drink);
+    //         }
+    //     })
+    //
+    // },[]);
+    //
+    // console.log("drink =>", drink);
+
+    // FDfink랑 FFood
+    // favorite.favorites에 데이터가 들어있을 때
+    // drink가 아니라면 데이터 없음이 뜨고 버튼은 보이면 안됨
+    // map 사용하면 데이터 없음이 여러번 반복됨
+    // return() 전체 수정 해야할 듯
 
     return (
         <styled_F.FCDd1>
@@ -173,7 +201,9 @@ export const FDrink = () => {
                                         </styled_F.FCDADLA>
                                     </styled_F.FCDADLi>
                                     <styled_F.FCDADLiCart>
-                                        <styled_F.FCDADLACart>
+                                        <styled_F.FCDADLACart
+                                            onClick={onClick}
+                                        >
                                             장바구니 이동
                                         </styled_F.FCDADLACart>
                                     </styled_F.FCDADLiCart>

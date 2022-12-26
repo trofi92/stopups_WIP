@@ -6,6 +6,7 @@ const initialState = {
   name: "",
   nickname: "",
   telephone: "",
+  location: "",
 };
 
 const userInfoSlice = createSlice({

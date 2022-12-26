@@ -8,7 +8,7 @@ import { Footer } from "../../components/Footer/Footer";
 import { MIPhoneAuth } from "./MIPhoneAuth";
 import { NickAgree } from "../Join/NickAgree";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { decrypt } from "../../util/crypto-front";
 import { SERVER_URL } from "../../util/urls";
 import { useSelector } from "react-redux";

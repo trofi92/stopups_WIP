@@ -15,7 +15,7 @@ const Menu = () => {
   const [smallBox, setSmallBox] = useState(false);
   const [hidden, setHidden] = useState("");
   const [categoryTheme, setCategoryThema] = useState(true);
-  const [data1, setData1] = useState([]); //  <- 필요없는 거 랜더링 이슈 때문에 일단 만들어 놓음
+  const [data, setData] = useState([]); //  <- 필요없는 거 랜더링 이슈 때문에 일단 만들어 놓음
   const [checkedItems, setCheckedItems] = useState(new Set()); //set을 만들어 has ,add 를 이용하여 체크박스안에 value , category 를 이용해서 어떤 체크박스가 선택됫는지 확인 ,식별을 할 수 있게 사용
   const [dataCategory, setDataCategory] = useState([]);
   const [newInValid, setNewInValid] = useState(false);
@@ -32,13 +32,13 @@ const Menu = () => {
 
   const checkedItemHandler = (box, id, isChecked, target) => {
     if (isChecked) {
-      setData1([]); // 이게 없어지면 랜더링이 안되서 실시간으로 변경이 안됨 이유를 모르겠음 밑에 setCheckedItems 도 잇는데 왜 하나를 더 사용해야 렌더링이 되는지
+      setData([]); // 이게 없어지면 랜더링이 안되서 실시간으로 변경이 안됨 이유를 모르겠음 밑에 setCheckedItems 도 잇는데 왜 하나를 더 사용해야 렌더링이 되는지
       checkedItems.add(id);
       setCheckedItems(checkedItems);
     } else if (!isChecked && checkedItems.has(id)) {
       checkedItems.delete(id);
       setCheckedItems(checkedItems);
-      setData1([]);
+      setData([]);
     }
 
     return checkedItems;
@@ -124,7 +124,7 @@ const Menu = () => {
       setCheckedItems(checkedItems); // params 를 통해서 들어오는 params 를 통해서 set 안에 params 를 넣고 그걸 props 로 보내주면 만약 콜드브루 면 처음에 콜드브루가 checkedItems 에 담기게 되서 제일 처음에 콜드브루가 화면에 보이게 된다.
     };
     fetchData();
-  }, [params.Category, checkedItems]);
+  }, []);
 
   const classificationInValidHandler = () => {
     setClassificationInValid(!ClassificationInValid);

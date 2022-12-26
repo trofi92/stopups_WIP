@@ -1,7 +1,8 @@
 import * as styled_F from "../../styled/Favorite";
 import {useDispatch, useSelector} from "react-redux";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {removeFromCart} from "../../features/favorite/favoriteSlice";
+import {addToCart} from "../../features/cart/cartSlice";
 
 export const FFood = () => {
     // 체크된 아이템 담을 배열
@@ -46,14 +47,45 @@ export const FFood = () => {
 
     const handleRemove = () => {
         if (checkItems.length === 0) {
-            alert("삭제 할 음료를 선택 하세요.")
+            alert("삭제 할 푸드를 선택 하세요.")
         } else {
             dispatch(removeFromCart(checkItems));
             setCheckItems([]);
         }
     };
 
-    console.log("@2222", favorite.favorites);
+    // 나중에 워밍 옵션 take in, out 추가 되면 여기다도 넣기
+    const onClick = () => {
+        if (checkItems.length === 0) {
+            alert("장바구니로 이동 할 푸드를 선택하세요.")
+        } else {
+            favorite.favorites.map((food) => {
+                if (checkItems.includes(food.id)) {
+                    dispatch(addToCart({
+                        id: food.id,
+                        name: food.name,
+                        size: food.size,
+                        price: food.price,
+                        category: food.category,
+                        quantity: food.quantity
+                    }))
+                }
+            })
+        }
+    };
+
+    //
+    // useEffect(() => {
+    //     favorite.favorites.map((food) => {
+    //         if (food.category === "브레드" || food.category === "케이크" || food.category === "샌드위치" || food.category === "샐러드" || food.category === "따뜻한 푸드") {
+    //             console.log("22222222=>", food);
+    //             setFood(food);
+    //         }
+    //     })
+    // }, []);
+    //
+    // console.log("food =>", food);
+
 
     return (
         <styled_F.FCDd1>
@@ -145,7 +177,7 @@ export const FFood = () => {
                                                 <styled_F.FCDTHTbodyTdOK>{favorite.name}</styled_F.FCDTHTbodyTdOK>
                                                 <styled_F.FCDTHTbodyTdOK>워밍 옵션</styled_F.FCDTHTbodyTdOK>
                                                 <styled_F.FCDTHTbodyTdOK></styled_F.FCDTHTbodyTdOK>
-                                                <styled_F.FCDTHTbodyTdOK>{favorite.date}</styled_F.FCDTHTbodyTdOK>
+                                                <styled_F.FCDTHTbodyTdOK>{favorite.whatDateTime}</styled_F.FCDTHTbodyTdOK>
                                             </styled_F.FCDTHTbody1>
                                         )
                                     }
@@ -169,7 +201,9 @@ export const FFood = () => {
                                         </styled_F.FCDADLA>
                                     </styled_F.FCDADLi>
                                     <styled_F.FCDADLiCart>
-                                        <styled_F.FCDADLACart>
+                                        <styled_F.FCDADLACart
+                                            onClick={onClick}
+                                        >
                                             장바구니 이동
                                         </styled_F.FCDADLACart>
                                     </styled_F.FCDADLiCart>

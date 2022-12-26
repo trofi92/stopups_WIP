@@ -73,8 +73,10 @@ export const SFood = ({ result, state }) => {
                       </styled_Search.SEDHH3>
                     </styled_Search.SEDHeader>
                     <styled_Search.SDDPText>{food.Desc}</styled_Search.SDDPText>
-                    <Link to={"#"}>
-                      <styled_Search.SEDPLink>메뉴 링크</styled_Search.SEDPLink>
+                    <Link to={`/menu/${food.Category}/${food.ProductId}`}>
+                      <styled_Search.SEDPLink>
+                        http://localhost:3000/menu/{food.Category}/{food.ProductId}
+                      </styled_Search.SEDPLink>
                     </Link>
                   </styled_Search.SDDiv>
                 </styled_Search.SSLi>

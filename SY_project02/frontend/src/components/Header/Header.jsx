@@ -8,9 +8,9 @@ import HeaderModal from "./HeaderModal/HeaderModal";
 import * as styled_H from "../../styled/Header";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-
 const Header = () => {
   const [modalOpen, setModalOpen] = useState(true);
+
   const { pathname } = useLocation();
 
   useLayoutEffect(() => {

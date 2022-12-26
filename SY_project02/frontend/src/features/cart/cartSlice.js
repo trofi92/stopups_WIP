@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import {useEffect} from "react";
 
 const url =
   "http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Category=분류&Name=";
-// const url = "https://course-api.com/react-useReducer-cart-project"; // 엔드포인트 받아서 변경할것
 
 export const getCartItems = createAsyncThunk(
   "cart/getCartItems",
@@ -35,6 +35,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    //장바구니에 상품 추가
     addToCart: (state, action) => {
       const itemInCarts = state.cartItems.find(
         (item) => item.id === action.payload.id
@@ -44,7 +45,6 @@ const cartSlice = createSlice({
       } else {
         state.cartItems.push({ ...action.payload, quantity: 1 });
       }
-      console.log("들어왔는가", state.cartItems);
     },
     clearCart: (state) => {
       state.cartItems = []; //is equal to next line ;
@@ -54,61 +54,57 @@ const cartSlice = createSlice({
       const itemId = action.payload;
       state.cartItems = state.cartItems.filter((item) => item.id !== itemId);
     },
-    addToItem: (state, action) => {
-      const Item = action.payload;
-      state.cartItems.push(Item);
-      console.log(state.cartItems);
-      // const existingItem = state.cartItems.find((value) => {
-      //   return value.id === Item.id;
-      // });
-      // if (!existingItem) {
-      //   state.cartItems.push(Item);
-      // } else {
-      //   state.amount = state.amount + 1;
-      // }
-
-      state.totalAmount++;
-    },
-    toggle: (state, action) => {
-      state.toggle = !state.toggle;
-    },
     removeFromCart(state, action) {
       const itemIds = action.payload;
-      // Filter out the items with the specified IDs
+      // 특정 id값에 해당하는 상품만을 제거 = 선택된 아이템만 제거
       state.cartItems = state.cartItems.filter(
-          (item) => !itemIds.includes(item.id)
+        (item) => !itemIds.includes(item.id)
       );
     },
-    // removeFromCart(state, action) {
-    //   const { itemIds } = action.payload;
-    //   // Filter out the items with the specified IDs
-    //   state.cartItems = state.cartItems.filter(
-    //     (item) => !itemIds.includes(item.id)
-    //   );
-    //   // Recalculate the totals
-    //   state.amount = state.cartItems.reduce(
-    //     (acc, item) => acc + item.amount,
-    //     0
-    //   );
-    //   state.total = state.cartItems.reduce(
-    //     (acc, item) => acc + item.amount * item.price,
-    //     0
-    //   );
+    // addToItem: (state, action) => {
+    //   const Item = action.payload;
+    //   state.cartItems.push(Item);
+    //   console.log(state.cartItems);
+    //   state.totalAmount++;
     // },
-    increase: (state, { payload }) => {
-      const cartItem = state.cartItems.find((item) => item.id === payload.id);
-      cartItem.amount = cartItem.amount + 1;
+    // toggle: (state, action) => {
+    //   state.toggle = !state.toggle;
+    // },
+    increase: (state, action ) => {
+      const cartItem = state.cartItems.find(
+          (item) => item.id === action.payload
+      );
+      cartItem.quantity = cartItem.quantity + 1;
     },
-    decrease: (state, { payload }) => {
-      const cartItem = state.cartItems.find((item) => item.id === payload.id);
-      cartItem.amount = cartItem.amount - 1;
+    decrease: (state, action) => {
+      const item = state.cartItems.find(
+        (item) => item.id === action.payload
+      );
+      if (item.quantity === 1) {
+        item.quantity = 1;
+      } else {
+        item.quantity--;
+      }
+    decrease: (state, action) => {
+      const cartItem = state.cartItems.find(
+          (item) => item.id === action.payload
+      );
+      cartItem.quantity = cartItem.quantity - 1;
     },
-    calculateTotals: (state) => {
+
+    calculateTotals: (state, action) => {
       let amount = 0;
       let total = 0;
-      state.cartItems.forEach((item) => {
-        amount += item.amount;
-        total += item.amount * item.price;
+
+      const itemIds = action.payload;
+
+      const Item = state.cartItems.filter(
+          (item) => itemIds.includes(item.id)
+      );
+
+      Item.forEach((item) => {
+          amount += item.quantity;
+          total += item.quantity * item.price;
       });
       state.amount = amount;
       state.total = total;

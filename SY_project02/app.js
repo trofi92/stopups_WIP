@@ -16,12 +16,15 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger-output");
 
 const { sequelize } = require("./models");
+const authJwt = require("./middlewares/authJwt");
 
 const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: true,
+    // true = * =>credentials가 true(=include)일 경우
+    // origin은 *을 제외한 상세설정을 필요로 함
+    // origin: true,
     credentials: true,
   })
 );
@@ -42,12 +45,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-
+app.use("/auth", auth);
+app.use("/", index);
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use(authJwt);
 app.use("/payment", payment);
 app.use("/page", page);
-app.use("/", index);
-app.use("/auth", auth);
 app.use("/myInfo", myInfo);
 
 app.use((err, req, res, next) => {

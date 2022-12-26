@@ -89,6 +89,30 @@ const DetailOne = (props) => {
     }
   };
 
+  const onClickFavoriteFood = (e) => {
+    if (sizeData === "") {
+      e.preventDefault();
+      alert("워밍 옵션을 선택해주세요.");
+    } else {
+      e.preventDefault();
+      dispatch(
+        addToFavorites({
+          id: props.productId,
+          name: props.name,
+          price: props.price.Desert,
+          whatDateTime: whatDateTime,
+          category: props.category,
+          amount: 1,
+        })
+      );
+      alert("나만의 푸드에 등록했습니다.");
+      // 새로고침 되면서 favorite에 들어간 내용들이 전부 초기화됨....
+      // if(window.confirm("나만의 음료에 등록했습니다. My 메뉴로 이동하시겠습니까?")) {
+      //     window.location.href = "/favorite"
+      // }
+    }
+  };
+
   const onClickCart = (e) => {
     if (sizeData === "" || Cooked === "" || TakeOut === "") {
       e.preventDefault();
@@ -128,6 +152,25 @@ const DetailOne = (props) => {
         props.category
       );
     }
+
+    const onClickCartFood = (e) => {
+      if (sizeData === "") {
+        e.preventDefault();
+        alert("워밍 옵션을 선택해주세요.");
+      } else {
+        e.preventDefault();
+        dispatch(
+          addToCart({
+            id: props.productId,
+            name: props.name,
+            price: props.price.Desert,
+            whatDateTime: whatDateTime,
+            category: props.category,
+          })
+        );
+        alert("장바구니에 등록했습니다.");
+      }
+    };
   };
 
   return (
