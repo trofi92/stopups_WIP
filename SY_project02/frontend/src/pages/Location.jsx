@@ -1,4 +1,3 @@
-/*global kakao */
 import { useState, useEffect } from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { useDebounce } from "../hooks/use-debounce";
@@ -11,6 +10,7 @@ mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_
 document.head.appendChild(mapScript);
 
 export const Location = () => {
+  const { kakao } = window;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [info, setInfo] = useState();

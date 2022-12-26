@@ -63,7 +63,7 @@ export const useLoginService = () => {
       } catch (err) {
         console.error(err);
         alert(
-          "아이디 또는 비밀번호 1회 오류입니다. 정확한 아이디 또는 비밀번호를 입력해주시길 바립니다."
+          "아이디 또는 비밀번호 오류입니다. 정확한 아이디 또는 비밀번호를 입력해주시길 바립니다."
         );
       }
     }
@@ -82,7 +82,7 @@ export const useLogout = () => {
   const logout = async (e) => {
     e.preventDefault();
     try {
-      axios.get(`${SERVER_URL}/auth/logout`);
+      await axios.get(`${SERVER_URL}/auth/logout`);
       dispatch(setULogout());
       await purge();
       sessionStorage.clear();

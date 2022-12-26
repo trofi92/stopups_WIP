@@ -7,12 +7,8 @@ import * as styled_MIA from "../../styled/MyInfo/MyInfoAgree";
 import MIAPhone from "../../image/MyInfo/MIAPhone.jpg";
 import { Link } from "react-router-dom";
 import { Footer } from "../../components/Footer/Footer";
-import { useTokenChecker } from "../../hooks/use-token-checker";
 
-const MyInfo = () => {
-  const { authRequest } = useTokenChecker("/myInfo/myInfoAgree");
-  authRequest();
-
+const MyInfoAgree = () => {
   return (
     <styled_AB.AllBox>
       <Header />
@@ -90,4 +86,4 @@ const MyInfo = () => {
   );
 };
 
-export default MyInfo;
+export default MyInfoAgree;

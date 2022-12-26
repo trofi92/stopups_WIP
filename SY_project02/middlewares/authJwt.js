@@ -17,11 +17,11 @@ const authJwt = async (req, res, next) => {
   const accessToken = req?.cookies?.accessJwtToken;
   const refreshToken = req?.cookies?.refreshJwtToken;
 
-  // console.log(req?.cookies?.accessJwtToken);
+  console.log(req?.cookies?.accessJwtToken);
 
   if (!accessToken) {
     return res.status(401).json({
-      message: "토큰이 만료되었거나 발급되지 않았습니다",
+      message: "토큰이 만료되었습니다. 다시 로그인해주세요",
     });
   }
 

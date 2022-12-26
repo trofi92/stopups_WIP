@@ -11,12 +11,11 @@ import FAward5 from "../../image/Footer/FAward5.jpg";
 import FAward6 from "../../image/Footer/FAward6.jpg";
 import FAward7 from "../../image/Footer/FAward7.jpg";
 import Slider from "react-slick";
-import {useLogout} from "../../hooks/use-authService";
-import {useSelector} from "react-redux";
+import { useLogout } from "../../hooks/use-authService";
+import { useSelector } from "react-redux";
 
 export const Footer = () => {
-
-  const user = useSelector(state => state.user);
+  const user = useSelector((state) => state.user);
 
   const { logout } = useLogout();
 
@@ -292,39 +291,43 @@ export const Footer = () => {
               </Link>
             </styled_Footer.FUBLi>
             {user.email === "" ? (
-                <>
-                  {/*로그인 X*/}
-                  <styled_Footer.FUBLi>
-                    <Link
-                        to={"/login"}
-                        style={{ textDecoration: "none", color: "#fff" }}
-                    >
-                      <styled_Footer.FUBLiP>Sign In</styled_Footer.FUBLiP>
-                    </Link>
-                  </styled_Footer.FUBLi>
-                  <styled_Footer.FUBLi>
-                    <Link
-                        to={"/joinAgree"}
-                        style={{ textDecoration: "none", color: "#fff" }}
-                    >
-                      <styled_Footer.FUBLiP>Join Us</styled_Footer.FUBLiP>
-                    </Link>
-                  </styled_Footer.FUBLi>
-                </>
+              <>
+                {/*로그인 X*/}
+                <styled_Footer.FUBLi>
+                  <Link
+                    to={"/login"}
+                    style={{ textDecoration: "none", color: "#fff" }}
+                  >
+                    <styled_Footer.FUBLiP>
+                      Sign In
+                    </styled_Footer.FUBLiP>
+                  </Link>
+                </styled_Footer.FUBLi>
+                <styled_Footer.FUBLi>
+                  <Link
+                    to={"/joinAgree"}
+                    style={{ textDecoration: "none", color: "#fff" }}
+                  >
+                    <styled_Footer.FUBLiP>
+                      Join Us
+                    </styled_Footer.FUBLiP>
+                  </Link>
+                </styled_Footer.FUBLi>
+              </>
             ) : (
-                <>
-                  {/*로그인 O*/}
-                  <styled_Footer.FUBLi>
-                    <Link
-                        to={"/"}
-                        style={{ textDecoration: "none", color: "#fff" }}
-                    >
-                      <styled_Footer.FUBLiP onClick={(e) => logout(e)}>
-                        Sign Out
-                      </styled_Footer.FUBLiP>
-                    </Link>
-                  </styled_Footer.FUBLi>
-                </>
+              <>
+                {/*로그인 O*/}
+                <styled_Footer.FUBLi>
+                  <Link
+                    to={"/"}
+                    style={{ textDecoration: "none", color: "#fff" }}
+                  >
+                    <styled_Footer.FUBLiP onClick={(e) => logout(e)}>
+                      Sign Out
+                    </styled_Footer.FUBLiP>
+                  </Link>
+                </styled_Footer.FUBLi>
+              </>
             )}
           </styled_Footer.FUBUl>
         </styled_Footer.FUButton>

@@ -18,7 +18,6 @@ const DetailCard = (props) => {
     console.log(data);
   }, [props.Category]);
 
-
   return (
     <>
       {props.Category === "브레드" ||
@@ -37,14 +36,18 @@ const DetailCard = (props) => {
             {data.map((value) => {
               return (
                 <styled_Menu.CardContainer>
-                  <Link to={`/menu/${value.Category}/${value.ProductId}`}>
+                  <Link
+                    to={`/menu/${value.Category}/${value.ProductId}`}
+                  >
                     <styled_Menu.Card
                       url={value.Image}
                       productId={value.ProductId}
                       category={value.category}
                     />
                   </Link>
-                  <styled_Menu.CardText>{value.Name}</styled_Menu.CardText>
+                  <styled_Menu.CardText>
+                    {value.Name}
+                  </styled_Menu.CardText>
                 </styled_Menu.CardContainer>
               );
             })}
@@ -59,21 +62,27 @@ const DetailCard = (props) => {
                 src="//image.istarbucks.co.kr/common/img/menu/logo_decaf.png"
                 alt=""
               />
-              <span>디카페인 에스프레소 샷 추가 가능(일부 음료 제외)</span>
+              <span>
+                디카페인 에스프레소 샷 추가 가능(일부 음료 제외)
+              </span>
             </styled_Menu.ColorBox>
           )}
           <styled_Menu.CardList>
             {data.map((value) => {
               return (
                 <styled_Menu.CardContainer>
-                  <Link to={`/menu/${value.Category}/${value.ProductId}`}>
+                  <Link
+                    to={`/menu/${value.Category}/${value.ProductId}`}
+                  >
                     <styled_Menu.Card
                       url={value.Image}
                       productId={value.ProductId}
                       category={value.category}
                     />
                   </Link>
-                  <styled_Menu.CardText>{value.Name}</styled_Menu.CardText>
+                  <styled_Menu.CardText>
+                    {value.Name}
+                  </styled_Menu.CardText>
                 </styled_Menu.CardContainer>
               );
             })}

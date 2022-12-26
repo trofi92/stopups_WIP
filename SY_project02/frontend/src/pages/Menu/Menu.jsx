@@ -9,14 +9,14 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import DetailCard from "./MenuItem/MenuCard";
 
-
 const Menu = () => {
-  const [ClassificationInValid, setClassificationInValid] = useState(true);
+  const [ClassificationInValid, setClassificationInValid] =
+    useState(true);
   const [DetailBox, setDetailBox] = useState(true);
   const [smallBox, setSmallBox] = useState(false);
   const [hidden, setHidden] = useState("");
   const [categoryTheme, setCategoryThema] = useState(true);
-  const [data1, setData1] = useState([]); //  <- 필요없는 거 랜더링 이슈 때문에 일단 만들어 놓음
+  const [data, setData] = useState([]); //  <- 필요없는 거 랜더링 이슈 때문에 일단 만들어 놓음
   const [checkedItems, setCheckedItems] = useState(new Set()); //set을 만들어 has ,add 를 이용하여 체크박스안에 value , category 를 이용해서 어떤 체크박스가 선택됫는지 확인 ,식별을 할 수 있게 사용
   const [dataCategory, setDataCategory] = useState([]);
   const [newInValid, setNewInValid] = useState(false);
@@ -33,13 +33,13 @@ const Menu = () => {
 
   const checkedItemHandler = (box, id, isChecked, target) => {
     if (isChecked) {
-      setData1([]); // 이게 없어지면 랜더링이 안되서 실시간으로 변경이 안됨 이유를 모르겠음 밑에 setCheckedItems 도 잇는데 왜 하나를 더 사용해야 렌더링이 되는지
+      setData([]); // 이게 없어지면 랜더링이 안되서 실시간으로 변경이 안됨 이유를 모르겠음 밑에 setCheckedItems 도 잇는데 왜 하나를 더 사용해야 렌더링이 되는지
       checkedItems.add(id);
       setCheckedItems(checkedItems);
     } else if (!isChecked && checkedItems.has(id)) {
       checkedItems.delete(id);
       setCheckedItems(checkedItems);
-      setData1([]);
+      setData([]);
     }
 
     return checkedItems;
@@ -125,7 +125,7 @@ const Menu = () => {
       setCheckedItems(checkedItems); // params 를 통해서 들어오는 params 를 통해서 set 안에 params 를 넣고 그걸 props 로 보내주면 만약 콜드브루 면 처음에 콜드브루가 checkedItems 에 담기게 되서 제일 처음에 콜드브루가 화면에 보이게 된다.
     };
     fetchData();
-  }, [params.Category, checkedItems]);
+  }, []);
 
   const classificationInValidHandler = () => {
     setClassificationInValid(!ClassificationInValid);
@@ -169,7 +169,11 @@ const Menu = () => {
 
       <styled_Menu.Main>
         <styled_Menu.ItemTitle>
-          {dataCategory[1] === "브레드" ? <h1>푸드</h1> : <h1>음료</h1>}
+          {dataCategory[1] === "브레드" ? (
+            <h1>푸드</h1>
+          ) : (
+            <h1>음료</h1>
+          )}
         </styled_Menu.ItemTitle>
         {ClassificationInValid ? (
           <styled_Menu.FirstContainer height="55">
@@ -342,18 +346,27 @@ const Menu = () => {
           )}
 
           {DetailBox ? (
-            <styled_Menu.ClassificationContainer size="hidden" hidden={hidden}>
-              <styled_Menu.ClassificationBox onClick={detailBoxHandler}>
+            <styled_Menu.ClassificationContainer
+              size="hidden"
+              hidden={hidden}
+            >
+              <styled_Menu.ClassificationBox
+                onClick={detailBoxHandler}
+              >
                 상세 분류
               </styled_Menu.ClassificationBox>
             </styled_Menu.ClassificationContainer>
           ) : (
             <styled_Menu.ClassificationContainer>
-              <styled_Menu.ClassificationBox onClick={detailBoxHandler}>
+              <styled_Menu.ClassificationBox
+                onClick={detailBoxHandler}
+              >
                 상세 분류
               </styled_Menu.ClassificationBox>
 
-              <styled_Menu.ClassificationList onClick={checkboxHandler}>
+              <styled_Menu.ClassificationList
+                onClick={checkboxHandler}
+              >
                 <input
                   type="checkbox"
                   id="new"
@@ -371,7 +384,9 @@ const Menu = () => {
                   <span>신규 출시된 메뉴</span>{" "}
                 </label>
               </styled_Menu.ClassificationList>
-              <styled_Menu.ClassificationList onClick={checkboxHandler}>
+              <styled_Menu.ClassificationList
+                onClick={checkboxHandler}
+              >
                 <input
                   type="checkbox"
                   id="season"
@@ -402,7 +417,8 @@ const Menu = () => {
           <>
             {dataCategory.map((value, index) => {
               return (
-                (value !== "전체 음료 보기" || value !== "전체 푸드 보기") && (
+                (value !== "전체 음료 보기" ||
+                  value !== "전체 푸드 보기") && (
                   <Nutrition key={index} Category={value} />
                 ) // 전체상품보기가 api에 없기때문에 조건문을 줘서 출력이 되지 않게 함
               );
@@ -413,7 +429,8 @@ const Menu = () => {
           <>
             {dataCategory.map((value) => {
               return (
-                (value !== "전체 푸드 보기" || value !== "전체 음료 보기") && (
+                (value !== "전체 푸드 보기" ||
+                  value !== "전체 음료 보기") && (
                   <DetailCard Category={value} />
                 ) // 전체상품보기가 api에 없기때문에 조건문을 줘서 출력이 되지 않게 함
               );
@@ -426,7 +443,9 @@ const Menu = () => {
                 ? checkedItems.has(value) && (
                     <Nutrition key={index} Category={value} />
                   )
-                : checkedItems.has(value) && <DetailCard Category={value} />;
+                : checkedItems.has(value) && (
+                    <DetailCard Category={value} />
+                  );
             })}
           </>
         )}
