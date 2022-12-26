@@ -295,6 +295,10 @@ export const CFButton= styled.button`
   border: none;
   font-size: 20px;
   cursor: pointer;
+  
+  :hover {
+    text-decoration: underline;
+  }
 `
 
 export const CFButtonNo= styled.button`
