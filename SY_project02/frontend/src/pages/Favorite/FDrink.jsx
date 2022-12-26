@@ -54,7 +54,7 @@ export const FDrink = () => {
         }
     };
 
-    // 진행중 애매하네 뭘 보내야하지?
+    // 진행중 애매하네 어떻게 보내야하지?
     const onClick = () => {
         if (checkItems.length === 0) {
             alert("장바구니로 이동 할 음료를 선택하세요.")

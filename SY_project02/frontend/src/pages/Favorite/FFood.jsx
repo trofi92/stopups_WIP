@@ -55,6 +55,12 @@ export const FFood = () => {
 
     console.log("@2222", favorite.favorites);
 
+    const [category, setCategory] = useState([]);
+    favorite.favorites.map((item) => {
+        setCategory(item.category)
+    });
+
+
     return (
         <styled_F.FCDd1>
             <styled_F.FCDP1/>
@@ -145,7 +151,7 @@ export const FFood = () => {
                                                 <styled_F.FCDTHTbodyTdOK>{favorite.name}</styled_F.FCDTHTbodyTdOK>
                                                 <styled_F.FCDTHTbodyTdOK>워밍 옵션</styled_F.FCDTHTbodyTdOK>
                                                 <styled_F.FCDTHTbodyTdOK></styled_F.FCDTHTbodyTdOK>
-                                                <styled_F.FCDTHTbodyTdOK>{favorite.date}</styled_F.FCDTHTbodyTdOK>
+                                                <styled_F.FCDTHTbodyTdOK>{favorite.whatDateTime}</styled_F.FCDTHTbodyTdOK>
                                             </styled_F.FCDTHTbody1>
                                         )
                                     }

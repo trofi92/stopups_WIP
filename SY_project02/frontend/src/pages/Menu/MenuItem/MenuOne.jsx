@@ -39,26 +39,6 @@ const DetailOne = (props) => {
         props.category === "따뜻한 푸드" ||
         props.category === "샐러드";
 
-    // const onSubmitHandler = (e) => {
-    //     if (sizeData === "") {
-    //         alert("사이즈를 선택해주세요!");
-    //         e.preventDefault();
-    //     } else {
-    //         e.preventDefault();
-    //
-    //         dispatch(
-    //             addToItem({
-    //                 id: props.productId,
-    //                 name: props.name,
-    //                 price: props.price[sizeData],
-    //                 size: sizeData,
-    //             })
-    //         );
-    //     }
-    //
-    //     console.log(props.productId, props.price, props);
-    // };
-
     const onClickFavorite = (e) => {
         if (sizeData === "") {
             e.preventDefault();
@@ -74,13 +54,35 @@ const DetailOne = (props) => {
                 category: props.category,
                 amount: 1,
             }))
-            alert("나만의 음료에 등록했습니다.")
+            alert("나만의 푸드에 등록했습니다.")
             // 새로고침 되면서 favorite에 들어간 내용들이 전부 초기화됨....
             // if(window.confirm("나만의 음료에 등록했습니다. My 메뉴로 이동하시겠습니까?")) {
             //     window.location.href = "/favorite"
             // }
         }
     }
+
+    const onClickFavoriteFood = (e) => {
+        if (sizeData === "") {
+            e.preventDefault();
+            alert("워밍 옵션을 선택해주세요.");
+        } else {
+            e.preventDefault();
+            dispatch(addToFavorites({
+                id: props.productId,
+                name: props.name,
+                price: props.price,
+                whatDateTime: whatDateTime,
+                category: props.category,
+                amount: 1,
+            }))
+            alert("나만의 푸드에 등록했습니다.")
+            // 새로고침 되면서 favorite에 들어간 내용들이 전부 초기화됨....
+            // if(window.confirm("나만의 음료에 등록했습니다. My 메뉴로 이동하시겠습니까?")) {
+            //     window.location.href = "/favorite"
+            // }
+        }
+    };
 
     const onClickCart = (e) => {
         if (sizeData === "") {
@@ -97,7 +99,24 @@ const DetailOne = (props) => {
             }))
             alert("장바구니에 등록했습니다.")
         }
-    }
+    };
+
+    const onClickCartFood = (e) => {
+        if (sizeData === "") {
+            e.preventDefault();
+            alert("워밍 옵션을 선택해주세요.");
+        } else {
+            e.preventDefault();
+            dispatch(addToCart({
+                id: props.productId,
+                name: props.name,
+                price: props.price,
+                whatDateTime: whatDateTime,
+                category: props.category,
+            }))
+            alert("장바구니에 등록했습니다.")
+        }
+    };
 
     return (
         <AllBox>
@@ -124,10 +143,11 @@ const DetailOne = (props) => {
                         {/* <span> Nitro Vanilla Cream</span> */}
 
                         <styled_MenuItem.Fieldset>
-                            <legend>사이즈</legend>
+
 
                             {props.price.Tall !== "0" && (
                                 <>
+                                    <legend>사이즈</legend>
                                     <styled_MenuItem.Input id="Tall" onChange={onChangeHandler}/>
 
                                     <label htmlFor="Tall">
@@ -139,7 +159,11 @@ const DetailOne = (props) => {
 
                             {InValid && (
                                 <>
-                                    <styled_MenuItem.Input id="Desert"/>
+                                    <legend>워밍 옵션</legend>
+                                    <styled_MenuItem.Input
+                                        id="Desert"
+                                        onChange={onChangeHandler}
+                                    />
 
                                     <label htmlFor="Desert">따뜻하게 데움</label>
 
@@ -196,19 +220,25 @@ const DetailOne = (props) => {
                         </styled_MenuItem.smallFieldset>
                         <styled_Menu.ButtonBoxCotainer>
                             {CategoryInValid ? (
-                                <ButtonSmallBox onClick={onChangeHandler}>
-                                    <p>나만의 푸드로 등록</p>
-                                </ButtonSmallBox>
+                                <>
+                                    <ButtonSmallBox onClick={onClickFavoriteFood}>
+                                        <p>나만의 푸드로 등록</p>
+                                    </ButtonSmallBox>
+                                    <ButtonSmallBox onClick={onClickCartFood}>
+                                        <p>장바구니 등록</p>
+                                    </ButtonSmallBox>
+                                </>
                             ) : (
-                                <ButtonSmallBox onClick={onClickFavorite}>
-                                    <p>나만의 음료로 등록</p>
-                                </ButtonSmallBox>
+                                <>
+                                    <ButtonSmallBox onClick={onClickFavorite}>
+                                        <p>나만의 음료로 등록</p>
+                                    </ButtonSmallBox>
+                                    <ButtonSmallBox onClick={onClickCart}>
+                                        <p>장바구니 등록</p>
+                                    </ButtonSmallBox>
+                                </>
                             )}
-                            <ButtonSmallBox onClick={onClickCart}>
-                                <p>장바구니 등록</p>
-                            </ButtonSmallBox>
                         </styled_Menu.ButtonBoxCotainer>
-
                         <p>{props.desc}</p>
                         <styled_MenuItem.Ntitle>
                             <p>
