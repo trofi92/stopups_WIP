@@ -113,6 +113,9 @@ export const NDetail = styled.div`
     margin-right: 10px;
     border: dashed 0.5px #ddd;
   }
+  dl {
+    display: flex;
+  }
 `;
 
 export const Notice = styled.div`

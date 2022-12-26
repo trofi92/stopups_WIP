@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as styled_Menu from "../../../styled/Menu/Menu";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-const DetailCard = (props) => {
+const MenuCard = (props) => {
   const params = useParams();
   const [data, setData] = useState([]);
 
@@ -15,9 +15,8 @@ const DetailCard = (props) => {
     };
     fetchData();
 
-    console.log(data);
+    console.log(props, "11111", data);
   }, [props.Category]);
-
 
   return (
     <>
@@ -34,9 +33,9 @@ const DetailCard = (props) => {
             </styled_Menu.ColorBox>
           )}
           <styled_Menu.CardList>
-            {data.map((value) => {
+            {data.map((value, index) => {
               return (
-                <styled_Menu.CardContainer>
+                <styled_Menu.CardContainer key={index}>
                   <Link to={`/menu/${value.Category}/${value.ProductId}`}>
                     <styled_Menu.Card
                       url={value.Image}
@@ -63,9 +62,9 @@ const DetailCard = (props) => {
             </styled_Menu.ColorBox>
           )}
           <styled_Menu.CardList>
-            {data.map((value) => {
+            {data.map((value, index) => {
               return (
-                <styled_Menu.CardContainer>
+                <styled_Menu.CardContainer key={index}>
                   <Link to={`/menu/${value.Category}/${value.ProductId}`}>
                     <styled_Menu.Card
                       url={value.Image}
@@ -84,4 +83,4 @@ const DetailCard = (props) => {
   );
 };
 
-export default DetailCard;
+export default MenuCard;

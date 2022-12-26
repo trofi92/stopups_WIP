@@ -115,6 +115,7 @@ function App() {
         <Route path="/success" element={<Success name={"success"} />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/menu/*" element={<NotFound />} />
+        <Route path="/menu/:Category/*" element={<NotFound />} />
       </Routes>
       <ScrollToTop />
     </BrowserRouter>

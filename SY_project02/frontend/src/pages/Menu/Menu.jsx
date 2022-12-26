@@ -7,8 +7,7 @@ import { CheckboxLabels } from "../../styled/Menu/Menu";
 import { AllBox } from "../../styled/AllBox";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import DetailCard from "./MenuItem/MenuCard";
-
+import MenuCard from "./MenuItem/MenuCard";
 
 const Menu = () => {
   const [ClassificationInValid, setClassificationInValid] = useState(true);
@@ -46,7 +45,7 @@ const Menu = () => {
   };
 
   useEffect(() => {
-    checkedItems.clear();
+    // checkedItems.clear();
     setClassificationInValid(true);
 
     let p2 = []; // 전체 상품 보기는 api 에 없어서 하드코딩으로 미리 적어놓는다.,
@@ -215,7 +214,7 @@ const Menu = () => {
 
                   <styled_Menu.CheckBox>
                     {paramsInValid
-                      ? dataCategory.map((value) => {
+                      ? dataCategory.map((value, index) => {
                           return (
                             <CheckboxLabels
                               checkedItemHandler={checkedItemHandler}
@@ -227,7 +226,7 @@ const Menu = () => {
                             </CheckboxLabels>
                           );
                         })
-                      : dataCategory.map((value) => {
+                      : dataCategory.map((value, index) => {
                           return (
                             <CheckboxLabels
                               checkedItemHandler={checkedItemHandler}
@@ -264,7 +263,7 @@ const Menu = () => {
                   때문에 checkbox 가 풀려서 일단은 none 으로 두고 기능을 구현을 했는데 별로 좋은코드는 아닌거 같다. 왜 그런지 정확한 이유는 모르겠다. 한번 다음에 제대로 공부를 해서
                   더 좋은 코드로 작성을 해야한다.   */}
                     {paramsInValid
-                      ? dataCategory.map((value) => {
+                      ? dataCategory.map((value, index) => {
                           return (
                             <CheckboxLabels
                               checkedItemHandler={checkedItemHandler}
@@ -276,7 +275,7 @@ const Menu = () => {
                             </CheckboxLabels>
                           );
                         })
-                      : dataCategory.map((value) => {
+                      : dataCategory.map((value, index) => {
                           return (
                             <CheckboxLabels
                               checkedItemHandler={checkedItemHandler}
@@ -305,7 +304,7 @@ const Menu = () => {
                 url="http://image.istarbucks.co.kr/common/img/menu/icon_pic_on.png"
                 onClick={smallBoxFalseHanlder}
                 width="69"
-                backgroundColor="#EEB233"
+                backgroundColor="#D8D8D8"
               >
                 사진으로 보기
               </styled_Menu.SmallBox>
@@ -313,7 +312,7 @@ const Menu = () => {
                 url="http://image.istarbucks.co.kr/common/img/menu/icon_ante.png"
                 width="80"
                 onClick={smallBoxTrueHanlder}
-                backgroundColor="#000"
+                backgroundColor="#006633"
                 underline="underline"
               >
                 영양정보로 보기
@@ -325,7 +324,7 @@ const Menu = () => {
                 url="http://image.istarbucks.co.kr/common/img/menu/icon_pic_on.png"
                 onClick={smallBoxFalseHanlder}
                 width="69"
-                backgroundColor="#000"
+                backgroundColor="#006633"
                 underline="underline"
               >
                 사진으로 보기
@@ -334,7 +333,7 @@ const Menu = () => {
                 url="http://image.istarbucks.co.kr/common/img/menu/icon_ante.png"
                 width="80"
                 onClick={smallBoxTrueHanlder}
-                backgroundColor="#EEB233"
+                backgroundColor="#D8D8D8"
               >
                 영양정보로 보기
               </styled_Menu.SmallBox>
@@ -403,7 +402,7 @@ const Menu = () => {
             {dataCategory.map((value, index) => {
               return (
                 (value !== "전체 음료 보기" || value !== "전체 푸드 보기") && (
-                  <Nutrition key={index} Category={value} />
+                  <Nutrition Category={value} key={index} />
                 ) // 전체상품보기가 api에 없기때문에 조건문을 줘서 출력이 되지 않게 함
               );
             })}
@@ -411,10 +410,11 @@ const Menu = () => {
         ) : checkedItems.has("전체 푸드 보기") ||
           checkedItems.has("전체 음료 보기") ? (
           <>
-            {dataCategory.map((value) => {
+            {dataCategory.map((value, index) => {
+              console.log(index);
               return (
                 (value !== "전체 푸드 보기" || value !== "전체 음료 보기") && (
-                  <DetailCard Category={value} />
+                  <MenuCard Category={value} />
                 ) // 전체상품보기가 api에 없기때문에 조건문을 줘서 출력이 되지 않게 함
               );
             })}
@@ -424,9 +424,11 @@ const Menu = () => {
             {dataCategory.map((value, index) => {
               return smallBox
                 ? checkedItems.has(value) && (
-                    <Nutrition key={index} Category={value} />
+                    <Nutrition Category={value} key={index} />
                   )
-                : checkedItems.has(value) && <DetailCard Category={value} />;
+                : checkedItems.has(value) && (
+                    <MenuCard Category={value} key={index} />
+                  );
             })}
           </>
         )}
