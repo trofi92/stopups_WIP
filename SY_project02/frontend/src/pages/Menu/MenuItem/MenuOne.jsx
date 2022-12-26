@@ -71,7 +71,7 @@ const DetailOne = (props) => {
             dispatch(addToFavorites({
                 id: props.productId,
                 name: props.name,
-                price: props.price,
+                price: props.price.Desert,
                 whatDateTime: whatDateTime,
                 category: props.category,
                 amount: 1,
@@ -110,7 +110,7 @@ const DetailOne = (props) => {
             dispatch(addToCart({
                 id: props.productId,
                 name: props.name,
-                price: props.price,
+                price: props.price.Desert,
                 whatDateTime: whatDateTime,
                 category: props.category,
             }))
