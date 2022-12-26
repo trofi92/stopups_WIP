@@ -11,7 +11,7 @@ export const EAll = () => {
     useEffect(() => {
         const event = async () => {
             await axios
-                .get("http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Event=ALL&Title=&EventId=")
+                .get("http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Event=ALL&Title=&EventId=")
                 .then((res) => {
                     setEvents(res.data);
                 })

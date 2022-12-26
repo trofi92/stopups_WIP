@@ -73,21 +73,28 @@ const cartSlice = createSlice({
       state.toggle = !state.toggle;
     },
     removeFromCart(state, action) {
-      const { itemIds } = action.payload;
+      const itemIds = action.payload;
       // Filter out the items with the specified IDs
       state.cartItems = state.cartItems.filter(
-        (item) => !itemIds.includes(item.id)
-      );
-      // Recalculate the totals
-      state.amount = state.cartItems.reduce(
-        (acc, item) => acc + item.amount,
-        0
-      );
-      state.total = state.cartItems.reduce(
-        (acc, item) => acc + item.amount * item.price,
-        0
+          (item) => !itemIds.includes(item.id)
       );
     },
+    // removeFromCart(state, action) {
+    //   const { itemIds } = action.payload;
+    //   // Filter out the items with the specified IDs
+    //   state.cartItems = state.cartItems.filter(
+    //     (item) => !itemIds.includes(item.id)
+    //   );
+    //   // Recalculate the totals
+    //   state.amount = state.cartItems.reduce(
+    //     (acc, item) => acc + item.amount,
+    //     0
+    //   );
+    //   state.total = state.cartItems.reduce(
+    //     (acc, item) => acc + item.amount * item.price,
+    //     0
+    //   );
+    // },
     increase: (state, { payload }) => {
       const cartItem = state.cartItems.find((item) => item.id === payload.id);
       cartItem.amount = cartItem.amount + 1;
@@ -131,9 +138,11 @@ const cartSlice = createSlice({
 
 export const cartReducer = cartSlice.reducer;
 export const {
+  addToCart,
   addToItem,
   clearCart,
   removeItem,
+  removeFromCart,
   increase,
   decrease,
   calculateTotals,

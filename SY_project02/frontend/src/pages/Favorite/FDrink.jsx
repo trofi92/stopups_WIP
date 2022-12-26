@@ -1,12 +1,14 @@
 import * as styled_F from "../../styled/Favorite";
 import {useDispatch, useSelector} from "react-redux";
-import {removeItem} from "../../features/favorite/favoriteSlice"
+import {removeFromCart} from "../../features/favorite/favoriteSlice"
 import {useState} from "react";
+import {addToCart} from "../../features/cart/cartSlice";
 
 export const FDrink = () => {
     // 체크된 아이템 담을 배열
     const [checkItems, setCheckItems] = useState([]);
-    const [id, setId] = useState([]);
+    // 전체 선택 버튼 클릭 인지 용
+    const [click, setClick] = useState(false);
     const favorite = useSelector((state) => state.favorite);
     const dispatch = useDispatch();
 
@@ -32,28 +34,37 @@ export const FDrink = () => {
         }
     };
 
-    // filter 부분 수정해야 함
-    const onClickSingle = (checked, idx) => {
-        if (checked) {
-            setId((prev) => [...prev, idx]);
-        } else {
-            setId(idx.filter((el) => el !== idx));
+    const onClickAll = () => {
+        setClick(!click);
+        if (!click) {
+            const idArray = [];
+            favorite.favorites.forEach((el) => idArray.push(el.id));
+            setCheckItems(idArray);
+        } else if (click) {
+            setCheckItems([]);
         }
-    }
+    };
 
-    // 시도 중
     const handleRemove = () => {
         if (checkItems.length === 0) {
             alert("삭제 할 음료를 선택 하세요.")
-        } else if (checkItems.id === favorite.favorites.id) {
-            dispatch(removeItem())
+        } else {
+            dispatch(removeFromCart(checkItems));
+            setCheckItems([]);
         }
-    }
+    };
 
-    console.log("checkItems", checkItems);
-    console.log("id", id);
-    console.log("favorite", favorite.favorites);
-
+    // 진행중 애매하네 뭘 보내야하지?
+    const onClick = () => {
+        if (checkItems.length === 0) {
+            alert("장바구니로 이동 할 음료를 선택하세요.")
+        } else {
+            dispatch(addToCart({
+                id: checkItems,
+                amount: 1
+            }))
+        }
+    };
 
     return (
         <styled_F.FCDd1>
@@ -65,9 +76,9 @@ export const FDrink = () => {
                         <styled_F.FCDTable1>
                             <styled_F.FCDTColgroup>
                                 <col style={{width: "52px"}}/>
-                                <col style={{width: "60px"}}/>
-                                <col style={{width: "195px"}}/>
-                                <col style={{width: "409px"}}/>
+                                <col style={{width: "100px"}}/>
+                                <col style={{width: "200px"}}/>
+                                <col style={{width: "364px"}}/>
                                 <col style={{width: "114px"}}/>
                             </styled_F.FCDTColgroup>
                             <styled_F.FCDTHead1>
@@ -78,6 +89,7 @@ export const FDrink = () => {
                                             <styled_F.FCDTHThDInput1
                                                 type={"checkbox"}
                                                 title={"전체 선택"}
+                                                disabled
                                             />
                                         </styled_F.FCDTHThDiv1>
                                     </styled_F.FCDTHTh1>
@@ -120,7 +132,7 @@ export const FDrink = () => {
                                         <styled_F.FCDTHTh1>등록일</styled_F.FCDTHTh1>
                                     </styled_F.FCDTHTr1>
                                 </styled_F.FCDTHead1>
-                                {favorite.favorites.map((favorite, idx) => {
+                                {favorite.favorites.map((favorite) => {
                                     if (favorite.category !== "브레드" && favorite.category !== "케이크" && favorite.category !== "샌드위치" && favorite.category !== "샐러드" && favorite.category !== "따뜻한 푸드") {
                                         return (
                                             <styled_F.FCDTHTbody1 key={favorite.id}>
@@ -129,7 +141,6 @@ export const FDrink = () => {
                                                         <styled_F.FCDTHThDInput1
                                                             type={"checkbox"}
                                                             title={"개별 선택"}
-                                                            onClick={(e) => onClickSingle(e.target.checked, idx)}
                                                             onChange={(e) => handleSingleCheck(e.target.checked, favorite.id)}
                                                             // 체크된 아이템 배열에 해당 데이터가 있을 경우 활성화
                                                             checked={checkItems.includes(favorite.id)}
@@ -148,12 +159,16 @@ export const FDrink = () => {
                             <styled_F.FCDADiv>
                                 <styled_F.FCDADUl>
                                     <styled_F.FCDADLi>
-                                        <styled_F.FCDADLA>
+                                        <styled_F.FCDADLA
+                                            onClick={onClickAll}
+                                        >
                                             전체 선택
                                         </styled_F.FCDADLA>
                                     </styled_F.FCDADLi>
                                     <styled_F.FCDADLi>
-                                        <styled_F.FCDADLA>
+                                        <styled_F.FCDADLA
+                                            onClick={handleRemove}
+                                        >
                                             선택 삭제
                                         </styled_F.FCDADLA>
                                     </styled_F.FCDADLi>

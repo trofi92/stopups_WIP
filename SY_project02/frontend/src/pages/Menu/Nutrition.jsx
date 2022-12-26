@@ -9,7 +9,7 @@ const Nutrition = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1671674386366&Category=${props.Category}&Name=`
+        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=${props.Category}&Name=`
       );
 
       setData(response.data);

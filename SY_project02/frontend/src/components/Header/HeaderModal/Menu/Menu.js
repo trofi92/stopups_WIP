@@ -19,7 +19,7 @@ export const Menu = () => {
     return (
         <>
             <styled_HM.NLi>
-                <Link to={"/"} style={{textDecoration: "none"}}>
+                <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                     <styled_HM.NLiP>한눈에 보기</styled_HM.NLiP>
                 </Link>
             </styled_HM.NLi>

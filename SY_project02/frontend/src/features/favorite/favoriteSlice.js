@@ -25,6 +25,13 @@ const favoritesSlice = createSlice({
       );
       state.favorites = removeItem;
     },
+    removeFromCart(state, action) {
+      const itemIds = action.payload;
+      // Filter out the items with the specified IDs
+      state.favorites = state.favorites.filter(
+          (item) => !itemIds.includes(item.id)
+      );
+    },
     removeAllItem: (state) => {
       state.favorites = [];
     },
@@ -38,5 +45,6 @@ export const favoritesReducer = favoritesSlice.reducer;
 export const {
   addToFavorites,
   removeItem,
+  removeFromCart,
   removeAllItem
 } = favoritesSlice.actions;

@@ -7,12 +7,13 @@ const DetailEach = () => {
   const [data, setData] = useState([]);
   const [Nutrient, setNutrient] = useState([]);
   const [Price, setPrice] = useState([]);
+  const [productId, setProductId] = useState([]);
   const params = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1671674386366&Category=${params.Category}&Name=`
+        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=${params.Category}&Name=`
       );
       const data = response.data.filter(
         (value) => value.ProductId === params.item
@@ -22,7 +23,7 @@ const DetailEach = () => {
 
     const NutrientData = async () => {
       const response = await axios.get(
-        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1671674386366&Category=${params.Category}&Name=`
+        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=${params.Category}&Name=`
       );
 
       const data = response.data.filter(
@@ -33,7 +34,7 @@ const DetailEach = () => {
     };
     const PriceData = async () => {
       const response = await axios.get(
-        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1671674386366&Category=${params.Category}&Name=`
+        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=${params.Category}&Name=`
       );
       const data = response.data.filter(
         (value) => value.ProductId === params.item
@@ -42,10 +43,24 @@ const DetailEach = () => {
 
       setPrice(data[0].Price);
     };
+    const productIdData = async () => {
+      const response = await axios.get(
+          `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=${params.Category}&Name=`
+      );
+      const data = response.data.filter(
+          (value) => value.ProductId === params.item
+      );
+      setData(data[0]);
+
+      setProductId(data[0].ProductId)
+    };
     fetchData();
     NutrientData();
     PriceData();
   }, []);
+
+  console.log(productId)
+
   return (
     <DetailOne
       category={data.Category}

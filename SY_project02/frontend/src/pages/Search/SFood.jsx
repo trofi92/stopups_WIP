@@ -12,7 +12,7 @@ export const SFood = ({ result, state }) => {
     const all = async () => {
       await axios
         .get(
-          "http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Category=분류&Name="
+          "http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=분류&Name="
         )
         .then((res) => {
           setAllFood(res.data);

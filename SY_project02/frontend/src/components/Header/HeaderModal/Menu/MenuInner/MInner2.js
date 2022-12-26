@@ -55,7 +55,7 @@ export const MInner2 = () => {
                     </Link>
                 </styled_HM.NLULi>
                 <styled_HM.NLULi>
-                    <Link to={"/"} style={{textDecoration: "none"}}>
+                    <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
                             아이스크림
                         </styled_HM.NLULiP>

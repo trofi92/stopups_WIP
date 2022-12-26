@@ -32,7 +32,7 @@ const Notice = () => {
     const notice = async () => {
       await axios
         .get(
-          "http://stopupsapi.shop:8080/api/?apikey=TeamYN1671674386366&Notice=ALL&Title=&writeId="
+          "http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Notice=ALL&Title=&writeId="
         )
         .then((res) => {
           setNotice(res.data);

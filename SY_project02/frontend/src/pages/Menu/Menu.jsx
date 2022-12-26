@@ -6,11 +6,10 @@ import Nutrition from "./Nutrition";
 import { CheckboxLabels } from "../../styled/Menu/Menu";
 import { AllBox } from "../../styled/AllBox";
 import axios from "axios";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import DetailCard from "./MenuItem/MenuCard";
-import { useDispatch, useSelector } from "react-redux";
-import { addToItem, toggle } from "../../features/cart/cartSlice";
-// import testSlice, { testActions } from "../../store/testSlice";
+
+
 const Menu = () => {
   const [ClassificationInValid, setClassificationInValid] = useState(true);
   const [DetailBox, setDetailBox] = useState(true);
@@ -44,7 +43,8 @@ const Menu = () => {
     }
 
     return checkedItems;
-  }; //
+  };
+
   useEffect(() => {
     checkedItems.clear();
     setClassificationInValid(true);
@@ -52,7 +52,7 @@ const Menu = () => {
     let p2 = []; // 전체 상품 보기는 api 에 없어서 하드코딩으로 미리 적어놓는다.,
     const fetchData = async () => {
       const response = await axios.get(
-        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Category=분류&Name=`
+        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=분류&Name=`
         // { withCredentials: true }
       );
 
@@ -133,20 +133,24 @@ const Menu = () => {
 
     // 화살표를 누르면 상세보기가 켜지는 함수
   };
+
   const detailBoxHandler = () => {
     setDetailBox(!DetailBox);
   }; // 상세분류 박스가 누르면 true , false 로 밑에 박스가 출력되거나 사라지게 하는 함수
+
   const smallBoxTrueHanlder = () => {
     setSmallBox(true);
     setHidden("hidden");
     console.log(setCheckedItems);
   }; // 사진으로 보기 , 영양정보로 true , false 로 출력되는 화면이 달라짐
+
   const smallBoxFalseHanlder = () => {
     setSmallBox(false);
     setHidden("");
     console.log();
     // 사진으로 보기 , 영양정보로 true , false 로 출력되는 화면이 달라짐
   };
+
   const checkboxHandler = () => {
     setDetailBox(false);
   }; // 상세분류의 box 를 화면에 고정시키기 위해 만든 함수
@@ -154,6 +158,7 @@ const Menu = () => {
   const categoryThemaTrueHandler = () => {
     setCategoryThema(true);
   }; // thema 를 true 로 만들면 checkbox 가 보이게 된다 false 가 되면 테마 박스가 보이게 된다.
+
   const categoryThemaFalseHandler = () => {
     setCategoryThema(false);
   }; // thema 를 true 로 만들면 checkbox 가 보이게 된다 false 가 되면 테마 박스가 보이게 된다.
