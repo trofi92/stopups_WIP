@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import {useEffect} from "react";
 
 const url =
   "http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Category=분류&Name=";
@@ -60,42 +61,16 @@ const cartSlice = createSlice({
           (item) => !itemIds.includes(item.id)
       );
     },
-    addToItem: (state, action) => {
-      const Item = action.payload;
-      state.cartItems.push(Item);
-      console.log(state.cartItems);
-      // const existingItem = state.cartItems.find((value) => {
-      //   return value.id === Item.id;
-      // });
-      // if (!existingItem) {
-      //   state.cartItems.push(Item);
-      // } else {
-      //   state.amount = state.amount + 1;
-      // }
-
-      state.totalAmount++;
-    },
-    toggle: (state, action) => {
-      state.toggle = !state.toggle;
-    },
-    // removeFromCart(state, action) {
-    //   const { itemIds } = action.payload;
-    //   // Filter out the items with the specified IDs
-    //   state.cartItems = state.cartItems.filter(
-    //     (item) => !itemIds.includes(item.id)
-    //   );
-    //   // Recalculate the totals
-    //   state.amount = state.cartItems.reduce(
-    //     (acc, item) => acc + item.amount,
-    //     0
-    //   );
-    //   state.total = state.cartItems.reduce(
-    //     (acc, item) => acc + item.amount * item.price,
-    //     0
-    //   );
+    // addToItem: (state, action) => {
+    //   const Item = action.payload;
+    //   state.cartItems.push(Item);
+    //   console.log(state.cartItems);
+    //   state.totalAmount++;
+    // },
+    // toggle: (state, action) => {
+    //   state.toggle = !state.toggle;
     // },
     increase: (state, action ) => {
-      console.log(action.payload)
       const cartItem = state.cartItems.find(
           (item) => item.id === action.payload
       );
@@ -108,13 +83,18 @@ const cartSlice = createSlice({
       cartItem.quantity = cartItem.quantity - 1;
     },
     calculateTotals: (state, action) => {
-      const itemIds = action.payload;
-      console.log("itemIds",itemIds)
       let amount = 0;
       let total = 0;
-      state.cartItems.forEach((item) => {
-        amount += item.quantity;
-        total += item.quantity * item.price;
+
+      const itemIds = action.payload;
+
+      const Item = state.cartItems.filter(
+          (item) => itemIds.includes(item.id)
+      );
+
+      Item.forEach((item) => {
+          amount += item.quantity;
+          total += item.quantity * item.price;
       });
       state.amount = amount;
       state.total = total;
