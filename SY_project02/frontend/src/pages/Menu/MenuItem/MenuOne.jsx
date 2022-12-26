@@ -11,7 +11,6 @@ import {addToFavorites} from "../../../features/favorite/favoriteSlice";
 
 const DetailOne = (props) => {
     const [sizeData, setSizeData] = useState("");
-    const total = useSelector((state) => state.cart.total);
     const replaceNumber = (value) => value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     let now = new Date();
     let year = now.getFullYear();
@@ -115,7 +114,6 @@ const DetailOne = (props) => {
                     <styled_MenuItem.DetailTextBox>
             <span>
               {props.name}
-                {total}
             </span>
                         {props.price.Desert !== "0" && props.price.Desert && (
                             <styled_MenuItem.TextBoxSpan>
