@@ -152,7 +152,12 @@ export const ButtonBox = styled.div`
   font-size: 14px;
   text-align: center;
   color: ${(props) => props.color};
-  text-decoration: ${(props) => props.underline};
+  cursor: pointer;
+
+  :hover {
+    text-decoration: underline;
+  }
+  
   &:active {
     background: #f2f2f2;
     box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
@@ -176,16 +181,22 @@ export const ButtonSmallBox = styled.button`
   align-items: center;
   background-color: #006633;
   width: 200px;
-  height: 50px;
+  height: 40px;
   line-height: 35px;
   border-radius: 3px;
   font-size: 16px;
   border: #006633;
   color: white;
-  &:active {
-    background: #666;
-    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
-    position: relative;
-    top: 2px;
+  cursor: pointer;
+  
+  :hover{
+    text-decoration: underline;
   }
+  
+  //&:active {
+  //  background: #666;
+  //  box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
+  //  position: relative;
+  //  top: 2px;
+  //}
 `;

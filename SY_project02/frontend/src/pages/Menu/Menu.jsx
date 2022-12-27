@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import * as styled_Menu from "../../styled/Menu/Menu";
 import { ButtonBox } from "../../styled/Button";
 import Nutrition from "./Nutrition";
-import { CheckboxLabels } from "../../styled/Menu/Menu";
+import {CheckboxLabels} from "../../styled/Menu/Menu";
 import { AllBox } from "../../styled/AllBox";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -168,7 +168,13 @@ const Menu = () => {
 
       <styled_Menu.Main>
         <styled_Menu.ItemTitle>
-          {dataCategory[1] === "브레드" ? <h1>푸드</h1> : <h1>음료</h1>}
+            {dataCategory[1] === "브레드" ?
+                <styled_Menu.ItemTitleBox>
+                  <h1>푸드</h1>
+                </styled_Menu.ItemTitleBox> :
+                <styled_Menu.ItemTitleBox>
+                  <h1>음료</h1>
+                </styled_Menu.ItemTitleBox>}
         </styled_Menu.ItemTitle>
         {ClassificationInValid ? (
           <styled_Menu.FirstContainer height="55">
@@ -182,7 +188,7 @@ const Menu = () => {
             </styled_Menu.MainInner>
           </styled_Menu.FirstContainer>
         ) : (
-          <styled_Menu.FirstContainer height="255">
+          <styled_Menu.FirstContainer height="236">
             <styled_Menu.MainInner>
               <p>분류 보기 </p>
 
@@ -301,19 +307,20 @@ const Menu = () => {
           {smallBox ? (
             <>
               <styled_Menu.SmallBox
-                url="http://image.istarbucks.co.kr/common/img/menu/icon_pic_on.png"
+                url="https://image.istarbucks.co.kr/common/img/menu/icon_pic.png"
                 onClick={smallBoxFalseHanlder}
+                backgroundColor="#fff"
+                color="#666"
                 width="69"
-                backgroundColor="#D8D8D8"
               >
                 사진으로 보기
               </styled_Menu.SmallBox>
               <styled_Menu.SmallBox
-                url="http://image.istarbucks.co.kr/common/img/menu/icon_ante.png"
-                width="80"
+                url="https://image.istarbucks.co.kr/common/img/menu/icon_ante_on.png"
                 onClick={smallBoxTrueHanlder}
-                backgroundColor="#006633"
-                underline="underline"
+                backgroundColor="#666"
+                color="#fff"
+                width="80"
               >
                 영양정보로 보기
               </styled_Menu.SmallBox>
@@ -323,17 +330,19 @@ const Menu = () => {
               <styled_Menu.SmallBox
                 url="http://image.istarbucks.co.kr/common/img/menu/icon_pic_on.png"
                 onClick={smallBoxFalseHanlder}
-                width="69"
-                backgroundColor="#006633"
+                backgroundColor="#666"
+                color="#fff"
                 underline="underline"
+                width="69"
               >
                 사진으로 보기
               </styled_Menu.SmallBox>
               <styled_Menu.SmallBox
                 url="http://image.istarbucks.co.kr/common/img/menu/icon_ante.png"
-                width="80"
                 onClick={smallBoxTrueHanlder}
-                backgroundColor="#D8D8D8"
+                backgroundColor="#fff"
+                color="#666"
+                width="80"
               >
                 영양정보로 보기
               </styled_Menu.SmallBox>
@@ -343,13 +352,13 @@ const Menu = () => {
           {DetailBox ? (
             <styled_Menu.ClassificationContainer size="hidden" hidden={hidden}>
               <styled_Menu.ClassificationBox onClick={detailBoxHandler}>
-                상세 분류
+                상세분류
               </styled_Menu.ClassificationBox>
             </styled_Menu.ClassificationContainer>
           ) : (
             <styled_Menu.ClassificationContainer>
               <styled_Menu.ClassificationBox onClick={detailBoxHandler}>
-                상세 분류
+                상세분류
               </styled_Menu.ClassificationBox>
 
               <styled_Menu.ClassificationList onClick={checkboxHandler}>
@@ -385,7 +394,7 @@ const Menu = () => {
                   alt="이미지없음"
                 />
                 <label htmlFor="season">
-                  <span>시즌기간 출시되는 시즌성 메뉴</span>
+                  <span>한정기간 출시되는 시즌성 메뉴</span>
                 </label>
               </styled_Menu.ClassificationList>
             </styled_Menu.ClassificationContainer>
