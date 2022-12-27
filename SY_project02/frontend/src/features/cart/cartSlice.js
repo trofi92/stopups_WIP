@@ -77,21 +77,11 @@ const cartSlice = createSlice({
       cartItem.quantity = cartItem.quantity + 1;
     },
     decrease: (state, action) => {
-      const item = state.cartItems.find(
-        (item) => item.id === action.payload
-      );
-      if (item.quantity === 1) {
-        item.quantity = 1;
-      } else {
-        item.quantity--;
-      }
-    decrease: (state, action) => {
       const cartItem = state.cartItems.find(
           (item) => item.id === action.payload
       );
       cartItem.quantity = cartItem.quantity - 1;
     },
-
     calculateTotals: (state, action) => {
       let amount = 0;
       let total = 0;
@@ -108,6 +98,13 @@ const cartSlice = createSlice({
       });
       state.amount = amount;
       state.total = total;
+    },
+    saveCart(state, action) {
+      const itemIds = action.payload;
+      // 특정 id값에 해당하는 상품만을 제거 = 선택된 아이템만 제거
+      state.cartItems = state.cartItems.filter(
+          (item) => itemIds.includes(item.id)
+      );
     },
   },
 
@@ -142,5 +139,6 @@ export const {
   increase,
   decrease,
   calculateTotals,
+  saveCart,
   toggle,
 } = cartSlice.actions;

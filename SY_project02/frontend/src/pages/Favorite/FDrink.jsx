@@ -71,6 +71,7 @@ export const FDrink = () => {
                     }))
                 }
             })
+            alert("장바구니로 이동했습니다.")
         }
     };
 
