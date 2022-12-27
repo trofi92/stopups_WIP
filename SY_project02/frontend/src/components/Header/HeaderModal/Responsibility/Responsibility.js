@@ -45,28 +45,44 @@ export const Responsibility = () => {
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle1}>
                     지역 사회 참여 활동
-                    <styled_BU.HMButton/>
+                    {open1 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open1 === true ? <RInner1/> : null}
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle2}>
                     환경보호 활동
-                    <styled_BU.HMButton/>
+                    {open2 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open2 === true ? <RInner2/> : null}
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle3}>
                     윤리 구매
-                    <styled_BU.HMButton/>
+                    {open3 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open3 === true ? <RInner3/> : null}
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle4}>
                     글로벌 사회 공헌
-                    <styled_BU.HMButton/>
+                    {open4 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open4 === true ? <RInner4/> : null}

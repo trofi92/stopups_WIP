@@ -8,7 +8,7 @@ export const SRInner3 = () => {
                 <styled_HM.NLULi>
                     <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
-                            스탑업스 e-Gift Card 소개
+                            스탑없으 e-Gift Card 소개
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>

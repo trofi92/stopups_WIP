@@ -26,7 +26,11 @@ export const Store = () => {
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle1}>
                     매장 찾기
-                    <styled_BU.HMButton/>
+                    {open1 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open1 === true ? <SInner1/> : null}
@@ -54,7 +58,11 @@ export const Store = () => {
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle2}>
                     매장 이야기
-                    <styled_BU.HMButton/>
+                    {open2 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open2 === true ? <SInner2/> : null}
