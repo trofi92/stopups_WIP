@@ -61,7 +61,6 @@ export const FCBox = styled.div`
   padding: 0;
 `
 
-// 최근 마신 음료 안내(이미지가 안뜸 왜지?)
 export const FCSection1 = styled.section`
   background: url(${MyMenuBox});
   border-radius: 3px;

@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import HMTButton2 from "../image/Header/HMTButton1.png";
+import HMTButton1 from "../image/Header/HMTButton1.png";
+import HMTButton2 from "../image/Header/HMTButton2.png";
 import HMButton1 from "../image/Header/HMButton1.png";
+import HMButton2 from "../image/Header/HMButton2.png";
 
 // 로그인, 회원가입 버튼
 export const LJButton = styled.button`
@@ -47,6 +49,17 @@ export const LPIButtonR = styled.p`
 
 // 모달 타이틀 버튼
 export const HMTButton = styled.span`
+  background: url(${HMTButton1}) no-repeat;
+  height: 12px;
+  margin-top: -6px;
+  right: 40px;
+  position: absolute;
+  top: 50%;
+  width: 21px;
+  display: block;
+`;
+
+export const HMTButtonClicked = styled.span`
   background: url(${HMTButton2}) no-repeat;
   height: 12px;
   margin-top: -6px;
@@ -68,6 +81,19 @@ export const HMButton = styled.span`
   width: 21px;
   display: block;
 `;
+
+export const HMButtonClicked = styled.span`
+  background: url(${HMButton2}) no-repeat;
+  height: 12px;
+  margin-top: -6px;
+  right: 40px;
+  position: absolute;
+  top: 50%;
+  width: 21px;
+  display: block;
+`;
+
+
 // 푸터 버튼
 export const FBigButton = styled.p`
   display: block;
@@ -126,7 +152,12 @@ export const ButtonBox = styled.div`
   font-size: 14px;
   text-align: center;
   color: ${(props) => props.color};
-  text-decoration: ${(props) => props.underline};
+  cursor: pointer;
+
+  :hover {
+    text-decoration: underline;
+  }
+  
   &:active {
     background: #f2f2f2;
     box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
@@ -150,16 +181,22 @@ export const ButtonSmallBox = styled.button`
   align-items: center;
   background-color: #006633;
   width: 200px;
-  height: 50px;
+  height: 40px;
   line-height: 35px;
   border-radius: 3px;
   font-size: 16px;
   border: #006633;
   color: white;
-  &:active {
-    background: #666;
-    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
-    position: relative;
-    top: 2px;
+  cursor: pointer;
+  
+  :hover{
+    text-decoration: underline;
   }
+  
+  //&:active {
+  //  background: #666;
+  //  box-shadow: 1px 1px 0 rgb(0, 0, 0, 0);
+  //  position: relative;
+  //  top: 2px;
+  //}
 `;

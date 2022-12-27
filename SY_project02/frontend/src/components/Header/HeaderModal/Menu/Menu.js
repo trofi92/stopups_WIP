@@ -26,14 +26,22 @@ export const Menu = () => {
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle1}>
                     음료
-                    <styled_BU.HMButton/>
+                    {open1 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open1 === true ? <MInner1/> : null}
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle2}>
                     푸드
-                    <styled_BU.HMButton/>
+                    {open2 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open2 === true ? <MInner2/> : null}

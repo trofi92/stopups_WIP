@@ -25,7 +25,7 @@ export const useFormCheck = () => {
 };
 
 export const useLoginService = () => {
-  axios.defaults.withCredentials = true;
+  axios.defaults.withCredentials = false;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
