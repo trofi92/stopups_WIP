@@ -72,7 +72,7 @@ export const Payment = () => {
                     amount: cart.total, // 가격
                     orderId: `${randomId}`, // 주문 id
                     orderName: `StopUps`, // 결제 이름
-                    customerName: nickname, // 구매자, 구매처 이름
+                    customerName: `${nickname}`, // 구매자, 구매처 이름
                     successUrl: "http://localhost:3000/success", // 성공시 리다이렉트 주소
                     failUrl: "http://localhost:3000/failed", // 실패시 리다이렉트 주소
                     windowTarget: "iframe",
