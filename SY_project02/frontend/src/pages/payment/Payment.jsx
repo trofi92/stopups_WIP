@@ -1,25 +1,13 @@
 import React, {useEffect, useState} from "react";
 import * as styled_AB from "../../styled/AllBox";
-import {Link, useLocation} from "react-router-dom";
 import {loadTossPayments} from "@tosspayments/payment-sdk";
 import {v4} from "uuid";
 import {useSelector} from "react-redux";
 import Header from "../../components/Header/Header";
-import {
-    PBox, PS3Button, PSDiv1, PSDiv4, PSDSpan4,
-    PSection, PSection1, PSection2, PSection3, PSection4, PSImg1, PSImg4, PSMBImg,
-    PSMBox, PSMBText, PSMBTSpan,
-    PSMenuBox, PSPrice, PSPriceTitle, PSSpan1, PSSpan4,
-    PSTitle, PSTitle1, PSTitle4,
-    PSTitleDiv,
-    PSTitleH1,
-    PSTitleH3, PSToggle, PSTotalPrice, PSTotalPriceSpan, PSTotalPriceTitle
-} from "../../styled/Payment/Payment";
+import * as styled_Payment from "../../styled/Payment/Payment";
 import * as styled_F from "../../styled/Favorite";
-import CTitle from "../../image/Cart/CTitle.png";
 import PaymentTitle from "../../image/Payment/PaymentTitle.png"
 import * as styled_C from "../../styled/Cart";
-import {CFMenuBox} from "../../styled/Cart";
 import axios from "axios";
 import {Footer} from "../../components/Footer/Footer";
 import PaymentCard from "../../image/Payment/PaymentCard.png"
@@ -106,7 +94,7 @@ export const Payment = () => {
         <styled_AB.AllBox>
             <Header/>
 
-            <PBox>
+            <styled_Payment.PBox>
                 {/*결제 헤더*/}
                 <styled_F.FHeader>
                     <styled_F.FHTitle>
@@ -122,66 +110,66 @@ export const Payment = () => {
                 <styled_F.FContentsAllBox>
                     <styled_F.FCBox>
                         {/*결제 수단*/}
-                        <PSection1>
+                        <styled_Payment.PSection1>
                             <div>
-                                <PSTitle1>결제 수단</PSTitle1>
-                                <PSDiv1>
-                                    <PSImg1 src={PaymentCard} alt={"PaymentCard"}/>
-                                    <PSSpan1>신용/체크 카드</PSSpan1>
-                                </PSDiv1>
+                                <styled_Payment.PSTitle1>결제 수단</styled_Payment.PSTitle1>
+                                <styled_Payment.PSDiv1>
+                                    <styled_Payment.PSImg1 src={PaymentCard} alt={"PaymentCard"}/>
+                                    <styled_Payment.PSSpan1>신용/체크 카드</styled_Payment.PSSpan1>
+                                </styled_Payment.PSDiv1>
                             </div>
-                        </PSection1>
+                        </styled_Payment.PSection1>
                         {/*쿠폰 및 할인*/}
-                        <PSection4>
+                        <styled_Payment.PSection4>
                             <div>
-                                <PSTitle4 onClick={couponToggle}>
+                                <styled_Payment.PSTitle4 onClick={couponToggle}>
                                     쿠폰 및 할인
-                                    <PSSpan4>
+                                    <styled_Payment.PSSpan4>
                                         {openCoupon === true ? (
-                                            <PSToggle src={HMButton2}/>
+                                            <styled_Payment.PSToggle src={HMButton2}/>
                                         ) : (
-                                            <PSToggle src={HMButton1}/>
+                                            <styled_Payment.PSToggle src={HMButton1}/>
                                         )}
-                                    </PSSpan4>
-                                </PSTitle4>
+                                    </styled_Payment.PSSpan4>
+                                </styled_Payment.PSTitle4>
 
                                 {openCoupon === true ? (
                                     <>
-                                        <PSDiv4 onClick={onClickReady}>
-                                            <PSImg4 src={PaymentCoupon} alt={"PaymentCoupon"}/>
-                                            <PSDSpan4>쿠폰</PSDSpan4>
-                                        </PSDiv4>
-                                        <PSDiv4 onClick={onClickReady}>
-                                            <PSImg4 src={PaymentGift} alt={"PaymentGift"}/>
-                                            <PSDSpan4>선물</PSDSpan4>
-                                        </PSDiv4>
-                                        <PSDiv4 onClick={onClickReady}>
-                                            <PSImg4 src={PaymentPhone} alt={"PaymentPhone"}/>
-                                            <PSDSpan4>통신사 제휴 할인</PSDSpan4>
-                                        </PSDiv4>
+                                        <styled_Payment.PSDiv4 onClick={onClickReady}>
+                                            <styled_Payment.PSImg4 src={PaymentCoupon} alt={"PaymentCoupon"}/>
+                                            <styled_Payment.PSDSpan4>쿠폰</styled_Payment.PSDSpan4>
+                                        </styled_Payment.PSDiv4>
+                                        <styled_Payment.PSDiv4 onClick={onClickReady}>
+                                            <styled_Payment.PSImg4 src={PaymentGift} alt={"PaymentGift"}/>
+                                            <styled_Payment.PSDSpan4>선물</styled_Payment.PSDSpan4>
+                                        </styled_Payment.PSDiv4>
+                                        <styled_Payment.PSDiv4 onClick={onClickReady}>
+                                            <styled_Payment.PSImg4 src={PaymentPhone} alt={"PaymentPhone"}/>
+                                            <styled_Payment.PSDSpan4>통신사 제휴 할인</styled_Payment.PSDSpan4>
+                                        </styled_Payment.PSDiv4>
                                     </>
                                 ) : ""}
                             </div>
-                        </PSection4>
+                        </styled_Payment.PSection4>
                         {/*주문 내역*/}
-                        <PSection>
+                        <styled_Payment.PSection>
                             <div>
-                                <PSTitle>주문 내역</PSTitle>
+                                <styled_Payment.PSTitle>주문 내역</styled_Payment.PSTitle>
                                 {cart.cartItems.map((cart) => {
                                     return (
-                                        <PSMenuBox key={cart.id}>
-                                            <PSMBox>
+                                        <styled_Payment.PSMenuBox key={cart.id}>
+                                            <styled_Payment.PSMBox>
                                                 {img.map((img) => {
                                                     if (img.ProductId === cart.id) {
-                                                        return <PSMBImg src={img.Image}/>
+                                                        return <styled_Payment.PSMBImg src={img.Image}/>
                                                     }
                                                 })}
-                                                <PSMBText>
+                                                <styled_Payment.PSMBText>
                                                     <styled_C.CFMTitle>
                                                         {cart.name}
-                                                        <PSMBTSpan>
+                                                        <styled_Payment.PSMBTSpan>
                                                             {cart.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
-                                                        </PSMBTSpan>
+                                                        </styled_Payment.PSMBTSpan>
                                                     </styled_C.CFMTitle>
                                                     {/*음료*/}
                                                     {cart.category === "브레드" || cart.category === "케이크" || cart.category === "샌드위치" || cart.category === "샐러드" || cart.category === "따뜻한 푸드" ? (
@@ -200,43 +188,35 @@ export const Payment = () => {
                                                             <styled_C.CFMMoney>{(cart.price * cart.quantity).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</styled_C.CFMMoney>
                                                         </styled_C.CFMOption>
                                                     )}
-                                                </PSMBText>
-                                            </PSMBox>
-                                        </PSMenuBox>
+                                                </styled_Payment.PSMBText>
+                                            </styled_Payment.PSMBox>
+                                        </styled_Payment.PSMenuBox>
                                     )
                                 })}
                             </div>
-                        </PSection>
+                        </styled_Payment.PSection>
                         {/*금액*/}
-                        <PSection2>
+                        <styled_Payment.PSection2>
                             <div>
-                                <PSPriceTitle>주문
-                                    금액<PSPrice>{cart.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</PSPrice></PSPriceTitle>
-                                <PSPriceTitle>할인 금액<PSPrice>0원</PSPrice></PSPriceTitle>
+                                <styled_Payment.PSPriceTitle>주문
+                                    금액<styled_Payment.PSPrice>{cart.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</styled_Payment.PSPrice></styled_Payment.PSPriceTitle>
+                                <styled_Payment.PSPriceTitle>할인 금액<styled_Payment.PSPrice>0원</styled_Payment.PSPrice></styled_Payment.PSPriceTitle>
                             </div>
-                            <PSTotalPrice>
-                                <PSTotalPriceTitle>최종 결제
-                                    금액<PSTotalPriceSpan>{cart.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</PSTotalPriceSpan></PSTotalPriceTitle>
-                            </PSTotalPrice>
-                        </PSection2>
+                            <styled_Payment.PSTotalPrice>
+                                <styled_Payment.PSTotalPriceTitle>최종 결제
+                                    금액<styled_Payment.PSTotalPriceSpan>{cart.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</styled_Payment.PSTotalPriceSpan></styled_Payment.PSTotalPriceTitle>
+                            </styled_Payment.PSTotalPrice>
+                        </styled_Payment.PSection2>
                         {/*결제하기 버튼*/}
-                        <PSection3>
-                            <PS3Button
+                        <styled_Payment.PSection3>
+                            <styled_Payment.PS3Button
                                 onClick={() => tossPay()}>{cart.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
-                                결제하기</PS3Button>
-                        </PSection3>
-
-
-                        <br/>
-                        <input onChange={(e) => setName(e.target.value)} name="id"/>
-                        <div>구매자 : {name}</div>
-                        <Link to="/">
-                            <button>to main</button>
-                        </Link>
+                                결제하기</styled_Payment.PS3Button>
+                        </styled_Payment.PSection3>
 
                     </styled_F.FCBox>
                 </styled_F.FContentsAllBox>
-            </PBox>
+            </styled_Payment.PBox>
 
             <Footer/>
         </styled_AB.AllBox>
