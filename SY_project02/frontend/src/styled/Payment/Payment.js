@@ -161,6 +161,10 @@ export const PSMBText = styled.div`
   width: 588.67px;
 `
 
+export const PSMBTSpan = styled.span`
+  float: right;
+`
+
 // 주문 금액
 export const PSection2 = styled.section`
   border-radius: 3px;

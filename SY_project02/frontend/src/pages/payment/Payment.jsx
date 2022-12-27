@@ -8,7 +8,7 @@ import Header from "../../components/Header/Header";
 import {
     PBox, PS3Button, PSDiv1, PSDiv4, PSDSpan4,
     PSection, PSection1, PSection2, PSection3, PSection4, PSImg1, PSImg4, PSMBImg,
-    PSMBox, PSMBText,
+    PSMBox, PSMBText, PSMBTSpan,
     PSMenuBox, PSPrice, PSPriceTitle, PSSpan1, PSSpan4,
     PSTitle, PSTitle1, PSTitle4,
     PSTitleDiv,
@@ -177,14 +177,19 @@ export const Payment = () => {
                                                     }
                                                 })}
                                                 <PSMBText>
-                                                    <styled_C.CFMTitle>{cart.name}</styled_C.CFMTitle>
+                                                    <styled_C.CFMTitle>
+                                                        {cart.name}
+                                                        <PSMBTSpan>
+                                                            {cart.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+                                                        </PSMBTSpan>
+                                                    </styled_C.CFMTitle>
                                                     {/*음료*/}
                                                     {cart.category === "브레드" || cart.category === "케이크" || cart.category === "샌드위치" || cart.category === "샐러드" || cart.category === "따뜻한 푸드" ? (
                                                         <styled_C.CFMOption>
                                                             <styled_C.CFMIceHot>워밍 옵션</styled_C.CFMIceHot>
                                                             <styled_C.CFMIceHot>테이크 인/아웃</styled_C.CFMIceHot>
                                                             <styled_C.CFMCup>{cart.quantity}개</styled_C.CFMCup>
-                                                            <styled_C.CFMMoney>{cart.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</styled_C.CFMMoney>
+                                                            <styled_C.CFMMoney>{(cart.price * cart.quantity).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</styled_C.CFMMoney>
                                                         </styled_C.CFMOption>
                                                     ) : (
                                                         <styled_C.CFMOption>
@@ -192,7 +197,7 @@ export const Payment = () => {
                                                             <styled_C.CFMSize>{cart.size}</styled_C.CFMSize>
                                                             <styled_C.CFMSize>일회용 컵</styled_C.CFMSize>
                                                             <styled_C.CFMCup>{cart.quantity}개</styled_C.CFMCup>
-                                                            <styled_C.CFMMoney>{cart.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</styled_C.CFMMoney>
+                                                            <styled_C.CFMMoney>{(cart.price * cart.quantity).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</styled_C.CFMMoney>
                                                         </styled_C.CFMOption>
                                                     )}
                                                 </PSMBText>
