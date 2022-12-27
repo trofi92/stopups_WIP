@@ -10,7 +10,7 @@ const Payment = require("./Payment");
 const OrderItem = require("./OrderItem");
 const Order = require("./Order");
 const CartItem = require("./CartItem");
-
+const Bookmark = require("./Bookmark");
 const Cart = require("./Cart");
 
 const db = {};
@@ -23,6 +23,7 @@ const sequelize = new Sequelize(
 );
 
 db.sequelize = sequelize;
+
 db.User = User;
 db.Product = Product;
 db.Payment = Payment;
@@ -30,6 +31,7 @@ db.OrderItem = OrderItem;
 db.Order = Order;
 db.CartItem = CartItem;
 db.Cart = Cart;
+db.Bookmark = Bookmark;
 
 User.init(sequelize);
 Product.init(sequelize);
@@ -38,6 +40,7 @@ OrderItem.init(sequelize);
 Order.init(sequelize);
 CartItem.init(sequelize);
 Cart.init(sequelize);
+Bookmark.init(sequelize);
 
 User.associate(db);
 Product.associate(db);
@@ -46,5 +49,6 @@ OrderItem.associate(db);
 Order.associate(db);
 CartItem.associate(db);
 Cart.associate(db);
+Bookmark.associate(db);
 
 module.exports = db;

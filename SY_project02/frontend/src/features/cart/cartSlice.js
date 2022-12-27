@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import {useEffect} from "react";
 
 const url =
   "http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Category=분류&Name=";
@@ -52,7 +51,9 @@ const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       const itemId = action.payload;
-      state.cartItems = state.cartItems.filter((item) => item.id !== itemId);
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== itemId
+      );
     },
     removeFromCart(state, action) {
       const itemIds = action.payload;
@@ -70,9 +71,9 @@ const cartSlice = createSlice({
     // toggle: (state, action) => {
     //   state.toggle = !state.toggle;
     // },
-    increase: (state, action ) => {
+    increase: (state, action) => {
       const cartItem = state.cartItems.find(
-          (item) => item.id === action.payload
+        (item) => item.id === action.payload
       );
       cartItem.quantity = cartItem.quantity + 1;
     },
@@ -85,12 +86,13 @@ const cartSlice = createSlice({
       } else {
         item.quantity--;
       }
-    decrease: (state, action) => {
-      const cartItem = state.cartItems.find(
-          (item) => item.id === action.payload
-      );
-      cartItem.quantity = cartItem.quantity - 1;
     },
+    // decrease: (state, action) => {
+    //   const cartItem = state.cartItems.find(
+    //     (item) => item.id === action.payload
+    //   );
+    //   cartItem.quantity = cartItem.quantity - 1;
+    // },
 
     calculateTotals: (state, action) => {
       let amount = 0;
@@ -98,13 +100,13 @@ const cartSlice = createSlice({
 
       const itemIds = action.payload;
 
-      const Item = state.cartItems.filter(
-          (item) => itemIds.includes(item.id)
+      const Item = state.cartItems.filter((item) =>
+        itemIds.includes(item.id)
       );
 
       Item.forEach((item) => {
-          amount += item.quantity;
-          total += item.quantity * item.price;
+        amount += item.quantity;
+        total += item.quantity * item.price;
       });
       state.amount = amount;
       state.total = total;

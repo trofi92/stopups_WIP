@@ -6,7 +6,9 @@ export const Test = () => {
   const [name, setName] = useState("");
 
   const sendRequest = async () => {
-    await axios.get(SERVER_URL).then((res) => console.log(res));
+    await axios
+      .get(`${SERVER_URL}/page/test`)
+      .then((res) => console.log(res));
   };
   const handleChange = (e) => {
     setName(e.target.value);

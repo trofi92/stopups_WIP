@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import * as styled_Menu from "../../styled/Menu/Menu";
 import { ButtonBox } from "../../styled/Button";
@@ -10,7 +10,8 @@ import { useParams } from "react-router-dom";
 import MenuCard from "./MenuItem/MenuCard";
 
 const Menu = () => {
-  const [ClassificationInValid, setClassificationInValid] = useState(true);
+  const [ClassificationInValid, setClassificationInValid] =
+    useState(true);
   const [DetailBox, setDetailBox] = useState(true);
   const [smallBox, setSmallBox] = useState(false);
   const [hidden, setHidden] = useState("");
@@ -51,8 +52,8 @@ const Menu = () => {
     let p2 = []; // 전체 상품 보기는 api 에 없어서 하드코딩으로 미리 적어놓는다.,
     const fetchData = async () => {
       const response = await axios.get(
-        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=분류&Name=`
-        // { withCredentials: true }
+        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=분류&Name=`,
+        { withCredentials: false }
       );
 
       // <- 전체 상품을 보려고 먼저 데이터에 들어오는 카테고리를 빼서 DataCategory 에 넣어준 후 이 배열을 사용해서  map 함수를 사용한다.
@@ -168,7 +169,11 @@ const Menu = () => {
 
       <styled_Menu.Main>
         <styled_Menu.ItemTitle>
-          {dataCategory[1] === "브레드" ? <h1>푸드</h1> : <h1>음료</h1>}
+          {dataCategory[1] === "브레드" ? (
+            <h1>푸드</h1>
+          ) : (
+            <h1>음료</h1>
+          )}
         </styled_Menu.ItemTitle>
         {ClassificationInValid ? (
           <styled_Menu.FirstContainer height="55">
@@ -341,18 +346,27 @@ const Menu = () => {
           )}
 
           {DetailBox ? (
-            <styled_Menu.ClassificationContainer size="hidden" hidden={hidden}>
-              <styled_Menu.ClassificationBox onClick={detailBoxHandler}>
+            <styled_Menu.ClassificationContainer
+              size="hidden"
+              hidden={hidden}
+            >
+              <styled_Menu.ClassificationBox
+                onClick={detailBoxHandler}
+              >
                 상세 분류
               </styled_Menu.ClassificationBox>
             </styled_Menu.ClassificationContainer>
           ) : (
             <styled_Menu.ClassificationContainer>
-              <styled_Menu.ClassificationBox onClick={detailBoxHandler}>
+              <styled_Menu.ClassificationBox
+                onClick={detailBoxHandler}
+              >
                 상세 분류
               </styled_Menu.ClassificationBox>
 
-              <styled_Menu.ClassificationList onClick={checkboxHandler}>
+              <styled_Menu.ClassificationList
+                onClick={checkboxHandler}
+              >
                 <input
                   type="checkbox"
                   id="new"
@@ -370,7 +384,9 @@ const Menu = () => {
                   <span>신규 출시된 메뉴</span>{" "}
                 </label>
               </styled_Menu.ClassificationList>
-              <styled_Menu.ClassificationList onClick={checkboxHandler}>
+              <styled_Menu.ClassificationList
+                onClick={checkboxHandler}
+              >
                 <input
                   type="checkbox"
                   id="season"
@@ -401,7 +417,8 @@ const Menu = () => {
           <>
             {dataCategory.map((value, index) => {
               return (
-                (value !== "전체 음료 보기" || value !== "전체 푸드 보기") && (
+                (value !== "전체 음료 보기" ||
+                  value !== "전체 푸드 보기") && (
                   <Nutrition Category={value} key={index} />
                 ) // 전체상품보기가 api에 없기때문에 조건문을 줘서 출력이 되지 않게 함
               );
@@ -413,7 +430,8 @@ const Menu = () => {
             {dataCategory.map((value, index) => {
               console.log(index);
               return (
-                (value !== "전체 푸드 보기" || value !== "전체 음료 보기") && (
+                (value !== "전체 푸드 보기" ||
+                  value !== "전체 음료 보기") && (
                   <MenuCard Category={value} />
                 ) // 전체상품보기가 api에 없기때문에 조건문을 줘서 출력이 되지 않게 함
               );

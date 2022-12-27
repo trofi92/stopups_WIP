@@ -17,12 +17,6 @@ module.exports = class User extends Sequelize.Model {
     });
   }
 
-  static async getBookmarks(id) {
-    const user = await this.findOne({ where: { id } });
-    if (!user) return null;
-    return user.getBookmarks();
-  }
-
   static init(sequelize) {
     return super.init(
       {
@@ -73,8 +67,9 @@ module.exports = class User extends Sequelize.Model {
   static associate(db) {
     db.User.hasOne(db.Cart, { foreignKey: "userId" });
     db.User.hasMany(db.Order, { foreignKey: "userId" });
-    db.User.belongsToMany(db.Product, {
-      through: "bookmark",
-    });
+    db.User.hasMany(db.Bookmark, { foreignKey: "userId" });
+    // db.User.belongsToMany(db.Product, {
+    //   through: "bookmarks",
+    // });
   }
 };
