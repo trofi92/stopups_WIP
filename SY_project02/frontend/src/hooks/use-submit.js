@@ -25,7 +25,7 @@ export const usePhoneSubmit = () => {
       phone_number,
       rnd_number,
     });
-    alert("인증문자가 발송되었습니다. 휴대전화를 확인해주세요.");
+    alert("인증문자가 발송되었습니다. 휴대전화를 확인해 주세요.");
   };
 
   return {
@@ -56,7 +56,7 @@ export const useSmsSubmit = (rnd, number, path) => {
 
       if (smsAuth !== rnd) {
         navigate("/myInfoAgree", { replace: true, state: null });
-        alert("인증정보가 올바르지 않습니다. 다시 시도해주세요.");
+        alert("인증정보가 올바르지 않습니다. 다시 시도해 주세요.");
         return null;
       } else {
         setAuthForm(true);
@@ -73,7 +73,7 @@ export const useSmsSubmit = (rnd, number, path) => {
       return navigate(path, { replace: true });
     } catch (error) {
       console.error(error);
-      alert("문제가 발생했습니다. 다시 시도해주세요.");
+      alert("문제가 발생했습니다. 다시 시도해 주세요.");
       navigate(-1, { replace: true, state: null });
     }
   };

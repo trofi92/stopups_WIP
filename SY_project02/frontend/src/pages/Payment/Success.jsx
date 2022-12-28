@@ -27,7 +27,7 @@ export const Success = () => {
         console.log(res.status === 200);
 
         if (res.status === 200) {
-          alert("결제가 완료되었습니다!");
+          alert("결제가 완료되었습니다.");
         }
       })
       .catch((error) => {

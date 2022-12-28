@@ -52,16 +52,16 @@ const MIPassword = () => {
     e.preventDefault();
     axios.defaults.withCredentials = true;
     if (currentPassword === "") {
-      alert("비밀번호를 입력해주세요");
+      alert("비밀번호를 입력해 주세요.");
       // 이 밑에 바로 else if로 현재 비번이랑 비교
     } else if (newPassword === "") {
-      alert("새 비밀번호를 입력해주세요");
+      alert("새 비밀번호를 입력해 주세요.");
     } else if (currentPassword === newPassword) {
       alert("현재 비밀번호와 같습니다. 다른 비밀번호를 입력해주세요");
     } else if (passwordConfirm === "") {
-      alert("새 비밀번호 확인을 입력해주세요");
+      alert("새 비밀번호 확인을 입력해 주세요.");
     } else if (newPassword !== passwordConfirm) {
-      alert("비밀번호가 같지 않습니다. 다시 입력해주세요");
+      alert("비밀번호가 같지 않습니다. 다시 입력해 주세요.");
     } else {
       console.log("비밀번호 변경 예시");
 
@@ -85,7 +85,7 @@ const MIPassword = () => {
         })
         .catch((error) => {
           console.error("비밀번호 변경 실패=>", error);
-          alert("비밀번호 변경이 실패했습니다. 다시 시도해주세요");
+          alert("비밀번호 변경이 실패했습니다. 다시 시도해 주세요.");
         });
     }
   };

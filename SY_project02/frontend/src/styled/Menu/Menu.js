@@ -3,6 +3,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import * as React from "react";
 import CChecked from "../../image/Cart/CChecked.png";
+import headerCart from "../../image/Header/headerCart.png"
 
 export const Main = styled.div`
   display: flex;
@@ -328,30 +329,4 @@ export function BasicButtons() {
     </Stack>
   );
 }
-export const TestDiv = styled.div`
-  padding: 5px;
-  box-sizing: border-box;
-  width: 33px;
-  height: 33px;
-  margin-top: 10px;
-  background: url("https://cdn.icon-icons.com/icons2/2385/PNG/64/drink_icon_144369.png")
-    no-repeat center;
-  background-size: cover;
-  position: absolute;
-  span {
-    margin-left: 15px;
-    margin-top: -10px;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    border-radius: 50%;
-  }
-`;
-export const TestDiv1 = styled.div`
-  width: 50px;
-  height: 50px;
-`;
+

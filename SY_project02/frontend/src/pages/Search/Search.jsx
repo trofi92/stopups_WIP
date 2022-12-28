@@ -63,7 +63,7 @@ const Search = () => {
     const onClickSearch = (e) => {
         e.preventDefault();
         if (search === "") {
-            alert("검색어를 입력하세요");
+            alert("검색어를 입력하세요.");
         } else {
             setResult(search);
         }

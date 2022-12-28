@@ -4,6 +4,7 @@ import { useDebounce } from "../../hooks/use-debounce";
 import { useDispatch, useSelector } from "react-redux";
 import { setULocation } from "../../features/userInfo/userInfoSlice";
 import * as styled_Map from "../../styled/Map";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const mapScript = document.createElement("script");
 mapScript.async = true;
@@ -17,6 +18,12 @@ export const Location = () => {
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
+  // 들어온 주소에 따라 handleInfo 다르게 적용
+  // /map에서 handleInfo => 그대로 /map
+  // /cart에서 주문하기 클릭 => /selectMap handleInfo => /payment
+  const location = useLocation();
+  const navigate = useNavigate();
+
   // 현위치 저장
   const [position, setPosition] = useState({
     lat: "",
@@ -28,13 +35,25 @@ export const Location = () => {
   const deb = useDebounce(keywords, 500);
 
   const handleInfo = () => {
-    dispatch(setULocation(info));
-    alert(
-      `선택하신 ${info.content}(매장)이 픽업 매장으로 설정되었습니다`
-    );
-    console.log(info);
-    console.log(user);
+    if (location.pathname === "/map") {
+      dispatch(setULocation(info));
+      alert(
+          `선택하신 ${info.content}(매장)이 픽업 매장으로 설정되었습니다.`
+      );
+      console.log(info);
+      console.log(user);
+    } else {
+      dispatch(setULocation(info));
+      alert(
+          `선택하신 ${info.content}(매장)이 픽업 매장으로 설정되었습니다. 결제 페이지로 이동합니다.`
+      );
+      navigate("/payment")
+    }
   };
+
+
+
+
 
   const handleKeywords = (e) => {
     setKeywords(e.target.value);
@@ -96,7 +115,7 @@ export const Location = () => {
 
   return (
     <>
-      {/*지도 위에 띄울 그 뭐냐 그거*/}
+      {/*매장찾기*/}
       <styled_Map.MModal>
           <styled_Map.MMFieldset>
             <styled_Map.MMDiv>

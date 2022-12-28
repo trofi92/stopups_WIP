@@ -52,7 +52,7 @@ export const FDrink = () => {
 
   const handleRemove = () => {
     if (checkItems.length === 0) {
-      alert("삭제 할 음료를 선택 하세요.");
+      alert("삭제 할 음료를 선택하세요.");
     } else {
       dispatch(removeFromCart(checkItems));
       setCheckItems([]);

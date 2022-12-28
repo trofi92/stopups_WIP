@@ -104,6 +104,8 @@ function App() {
         <Route path={"/search"} element={<Search />} />
         {/*지도 페이지*/}
         <Route path={"/map"} element={<Map />} />
+        {/*장바구니에서 넘어온 지도 페이지*/}
+        <Route path={"/selectMap"} element={<Map />} />
         {/*메뉴 페이지*/}
         <Route path={"/menu/:Category"} element={<Menu />} />
         {/*각 메뉴 상세 페이지*/}
