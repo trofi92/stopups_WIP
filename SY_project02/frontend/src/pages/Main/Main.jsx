@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import * as styled_AB from "../../styled/AllBox";
 import { LineNotice } from "../../components/LineNotice/LineNotice";
@@ -39,15 +38,6 @@ export const Main = () => {
 
       {/*푸터*/}
       <Footer />
-
-      {/*테스트*/}
-      {/* <div>this is main</div>
-      <Link to="/test">
-        <button>test</button>
-      </Link>
-      <Link to="/asdf">
-        <button>not found</button>
-      </Link> */}
     </styled_AB.AllBox>
   );
 };

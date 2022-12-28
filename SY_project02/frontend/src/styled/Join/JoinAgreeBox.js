@@ -71,7 +71,6 @@ export const PPPButtonBox = styled.p`
   }
 `
 
-
 // 회원가입 동의 약관 전체 박스
 export const ABox = styled.div`
   background: #f7f7f7;
@@ -89,7 +88,6 @@ export const ABox = styled.div`
 
 export const ABSBox = styled.div`
   position: relative;
-  //overflow: hidden;
   overflow-x: hidden;
   overflow-y: scroll;
   height: 100%;
@@ -111,7 +109,6 @@ export const ABSInnerBox = styled.div`
   vertical-align: baseline;
 `
 
-
 export const ABSIBP = styled.div`
   font-size: 14px;
   color: #444444;
@@ -119,71 +116,6 @@ export const ABSIBP = styled.div`
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-`
-
-// 스크롤 박스
-export const ABSScrollBox = styled.div`
-  display: block;
-  opacity: 0.75;
-  position: absolute;
-  width: 16px;
-  height: auto;
-  left: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
-`
-
-export const ABSSBContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  vertical-align: bottom;
-`
-// 스크롤 드래그 바
-export const ABSSBCDragger = styled.div`
-  position: absolute;
-  min-height: 33px;
-  top: 0;
-  display: block;
-  max-height: 118px;
-  height: 33px !important;
-  cursor: pointer;
-  width: 100%;
-  z-index: 1;
-  margin: 0;
-  padding: 0;
-`
-
-export const ABSSBCDBar = styled.div`
-  line-height: 33px;
-  width: 10px;
-  background: #666 !important;
-  position: relative;
-  height: 100%;
-  margin: 0 auto;
-  transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
-  border-radius: 16px;
-  text-align: center;
-`
-
-// 스크롤 드래그 길이
-export const ABSSBCRail = styled.div`
-  background-color: rgba(0,0,0,0.4);
-  width: 2px;
-  height: 100%;
-  margin: 0 auto;
-  border-radius: 16px;
-  padding: 0;
 `
 
 // 회원가입 유의사항

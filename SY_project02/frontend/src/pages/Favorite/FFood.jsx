@@ -1,6 +1,6 @@
 import * as styled_F from "../../styled/Favorite";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {removeFromCart} from "../../features/favorite/favoriteSlice";
 import {addToCart} from "../../features/cart/cartSlice";
 
@@ -61,14 +61,28 @@ export const FFood = () => {
         } else {
             favorite.favorites.map((food) => {
                 if (checkItems.includes(food.id)) {
-                    dispatch(addToCart({
-                        id: food.id,
-                        name: food.name,
-                        size: food.size,
-                        price: food.price,
-                        category: food.category,
-                        quantity: food.quantity
-                    }))
+                    if (food.cooked) {
+                        dispatch(addToCart({
+                            id: food.id,
+                            name: food.name,
+                            size: food.size,
+                            cooked: food.cooked,
+                            takeout: food.takeout,
+                            price: food.price,
+                            category: food.category,
+                            quantity: food.quantity
+                        }));
+                    } else {
+                        dispatch(addToCart({
+                            id: food.id,
+                            name: food.name,
+                            size: food.size,
+                            takeout: food.takeout,
+                            price: food.price,
+                            category: food.category,
+                            quantity: food.quantity
+                        }));
+                    }
                 }
             })
             alert("장바구니로 이동했습니다.")
@@ -176,7 +190,9 @@ export const FFood = () => {
                                                 </styled_F.FCDTHTbodyTdOK>
                                                 <styled_F.FCDTHTbodyTdOK>{favorite.id}</styled_F.FCDTHTbodyTdOK>
                                                 <styled_F.FCDTHTbodyTdOK>{favorite.name}</styled_F.FCDTHTbodyTdOK>
-                                                <styled_F.FCDTHTbodyTdOK>워밍 옵션</styled_F.FCDTHTbodyTdOK>
+                                                <styled_F.FCDTHTbodyTdOK>
+                                                    {favorite.cooked ? favorite.cooked === "Desert" ? "따뜻하게 데움" : "데우지 않음" : "워밍 옵션 없음"}
+                                                </styled_F.FCDTHTbodyTdOK>
                                                 <styled_F.FCDTHTbodyTdOK></styled_F.FCDTHTbodyTdOK>
                                                 <styled_F.FCDTHTbodyTdOK>{favorite.whatDateTime}</styled_F.FCDTHTbodyTdOK>
                                             </styled_F.FCDTHTbody1>

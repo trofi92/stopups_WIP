@@ -32,9 +32,6 @@ const MIPassword = () => {
     currentPassword,
     newPassword,
   };
-  //   console.log(user);
-
-  // 유저 현재 비밀번호 정보 가져오기
 
   const handleCurrentPassword = (e) => {
     checkPassword(e);
@@ -50,8 +47,6 @@ const MIPassword = () => {
     checkPasswordConfirm(e);
     setPasswordConfirm(e.target.value);
   };
-
-  // 현재 비밀번호와 currentPassword가 같지 않을 때 alert
 
   const submitPassword = async (e) => {
     e.preventDefault();

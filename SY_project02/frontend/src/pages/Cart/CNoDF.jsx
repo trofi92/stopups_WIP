@@ -6,7 +6,7 @@ import {
     clearCart,
     removeFromCart,
     calculateTotals,
-    increase, decrease, addToCart, saveCart
+    increase, decrease, saveCart
 } from "../../features/cart/cartSlice"
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -69,11 +69,14 @@ export const CNoDF = () => {
         }
     };
 
-    const handleTotalCalculate = (itemIds) => {
-        dispatch(calculateTotals(itemIds));
-    };
+    useEffect(() => {
+        const handleTotalCalculate = (itemIds) => {
+            dispatch(calculateTotals(itemIds));
+        };
 
-    handleTotalCalculate(checkItems);
+        handleTotalCalculate(checkItems);
+    }, [checkItems]);
+
 
     const onClick = () => {
         if (cart.amount > 20) {
@@ -174,24 +177,32 @@ export const CNoDF = () => {
                                 </styled_C.CMCheck>
                                 {/*상품 이미지, 이름 등*/}
                                 <styled_C.CMBox>
-                                    {img.map((img) => {
+                                    {img.map((img, idx) => {
                                         if (img.ProductId === cart.id) {
-                                            return <styled_C.CFMImg src={img.Image}/>
+                                            return <styled_C.CFMImg src={img.Image} key={idx}/>
                                         }
                                     })}
                                     <styled_C.CFMText>
                                         <styled_C.CFMTitle>{cart.name}</styled_C.CFMTitle>
                                         {cart.category === "브레드" || cart.category === "케이크" || cart.category === "샌드위치" || cart.category === "샐러드" || cart.category === "따뜻한 푸드" ? (
                                             <styled_C.CFMOption>
-                                                <styled_C.CFMIceHot>워밍 옵션</styled_C.CFMIceHot>
-                                                <styled_C.CFMCup>테이크 인/아웃</styled_C.CFMCup>
+                                                <styled_C.CFMIceHot>
+                                                    {cart.cooked  ? cart.cooked === "Desert" ? "따뜻하게 데움" : "데우지 않음" : "워밍 옵션 없음" }
+                                                </styled_C.CFMIceHot>
+                                                <styled_C.CFMCup>
+                                                    {cart.takeout === "takeout" ? "테이크 아웃" : "매장"}
+                                                </styled_C.CFMCup>
                                                 <styled_C.CFMMoney>{cart.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</styled_C.CFMMoney>
                                             </styled_C.CFMOption>
                                         ) : (
                                             <styled_C.CFMOption>
-                                                <styled_C.CFMIceHot>ICED</styled_C.CFMIceHot>
+                                                <styled_C.CFMIceHot>
+                                                    {cart.ice}
+                                                </styled_C.CFMIceHot>
                                                 <styled_C.CFMSize>{cart.size}</styled_C.CFMSize>
-                                                <styled_C.CFMCup>일회용 컵</styled_C.CFMCup>
+                                                <styled_C.CFMCup>
+                                                    {cart.takeout === "takeout" ? "테이크 아웃" : "매장"}
+                                                </styled_C.CFMCup>
                                                 <styled_C.CFMMoney>{cart.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</styled_C.CFMMoney>
                                             </styled_C.CFMOption>
                                         )}

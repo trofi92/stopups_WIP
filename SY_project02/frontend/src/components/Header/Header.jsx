@@ -1,5 +1,6 @@
 import { useState, useLayoutEffect } from "react";
 import logo from "../../image/Header/logo.png";
+import Cart from "../../image/Cart/Cart.png";
 import userLogo from "../../image/Header/headerUser.png";
 import spotLogo from "../../image/Header/headerSpot.png";
 import userCategory from "../../image/Header/headerCategory.png";
@@ -8,6 +9,7 @@ import HeaderModal from "./HeaderModal/HeaderModal";
 import * as styled_H from "../../styled/Header";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { TestDiv, TestDiv1 } from "../../styled/Menu/Menu";
 const Header = () => {
   const [modalOpen, setModalOpen] = useState(true);
 
@@ -22,6 +24,8 @@ const Header = () => {
   };
 
   const user = useSelector((state) => state.user);
+  const amount = useSelector((state) => state.cart.amount);
+  const cartItems = useSelector((state) => state.cart.cartItems);
 
   return (
     <styled_H.HB>
@@ -46,10 +50,16 @@ const Header = () => {
                 </Link>
               )}
             </styled_H.HNLi>
+
             <styled_H.HNLi>
               <Link to={"/map"}>
                 <styled_H.HIconSpot src={spotLogo} alt={"spotLogo"} />
               </Link>
+            </styled_H.HNLi>
+            <styled_H.HNLi>
+              <TestDiv1>
+                <TestDiv>{amount !== 0 && <span>{amount}</span>}</TestDiv>
+              </TestDiv1>
             </styled_H.HNLi>
             <styled_H.HNLi>
               <styled_H.HIconCategory

@@ -152,7 +152,6 @@ export const CFMenuBox = styled.div`
 `
 
 export const CMCheck = styled.div`
-  //display: inline-block;
   display: flex;
   margin-right: 642px;
   vertical-align: middle;

@@ -236,17 +236,6 @@ export const FCDTHTbody1 = styled.tbody`
   display: table-row;
 `
 
-export const FCDTHTbodyTr1 = styled.tr`
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: baseline;
-  text-align: center;
-  border-collapse: collapse;
-  border-spacing: 0;
-  display: table-row;
-`
-
 // 데이터가 없을 때
 export const FCDTHTbodyTd1 = styled.td`
   border-bottom: 1px solid #dbdbdb;

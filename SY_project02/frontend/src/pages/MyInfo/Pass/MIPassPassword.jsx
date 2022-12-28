@@ -18,6 +18,7 @@ const MIPassPassword = () => {
         console.log("비밀번호", password);
     };
 
+    // 유저 비밀번호 끌고오기!
     const submitPassword = (e) => {
         e.preventDefault();
         if (password !== "") {
