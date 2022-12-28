@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import * as styled_Menu from "../../styled/Menu/Menu";
 import { ButtonBox } from "../../styled/Button";
 import Nutrition from "./Nutrition";
-import { CheckboxLabels } from "../../styled/Menu/Menu";
+import CheckboxLabels from "./MenuItem/CheckboxLabels";
 import { AllBox } from "../../styled/AllBox";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -48,7 +48,7 @@ const Menu = () => {
     // checkedItems.clear();
     setClassificationInValid(true);
 
-    let p2 = []; // 전체 상품 보기는 api 에 없어서 하드코딩으로 미리 적어놓는다.,
+    let p2 = [];
     const fetchData = async () => {
       const response = await axios.get(
         `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=분류&Name=`
@@ -95,10 +95,9 @@ const Menu = () => {
           if (!p2.includes(v.Category)) p2.push(v.Category);
         });
         setDataCategory(p2);
-        console.log(p2, dataCategory);
+
         checkedItems.add(params.Category);
         setCheckedItems(checkedItems);
-        console.log("---------------> hello", p2, dataCategory);
       } else if (!paramsInValid) {
         p2 = ["전체 음료 보기"];
         const filterData = response.data.filter((params) => {
@@ -124,7 +123,7 @@ const Menu = () => {
       setCheckedItems(checkedItems); // params 를 통해서 들어오는 params 를 통해서 set 안에 params 를 넣고 그걸 props 로 보내주면 만약 콜드브루 면 처음에 콜드브루가 checkedItems 에 담기게 되서 제일 처음에 콜드브루가 화면에 보이게 된다.
     };
     fetchData();
-  }, []);
+  }, [params.Category, checkedItems]);
 
   const classificationInValidHandler = () => {
     setClassificationInValid(!ClassificationInValid);

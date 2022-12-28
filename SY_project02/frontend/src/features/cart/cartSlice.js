@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import {useEffect} from "react";
+import { useEffect } from "react";
 
 const url =
   "http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Category=분류&Name=";
@@ -23,7 +23,7 @@ export const getCartItems = createAsyncThunk(
 
 const initialState = {
   cartItems: [], // 상품 종류
-  amount: 1, // 각 상품의 갯수
+  amount: 0, // 각 상품의 갯수
   total: 0, // 총 가격
   isLoading: true,
   statusByName: {},
@@ -37,14 +37,17 @@ const cartSlice = createSlice({
   reducers: {
     //장바구니에 상품 추가
     addToCart: (state, action) => {
+      console.log(state.cartItems);
       const itemInCarts = state.cartItems.find(
         (item) => item.id === action.payload.id
       );
+
       if (itemInCarts) {
         itemInCarts.quantity++;
       } else {
         state.cartItems.push({ ...action.payload, quantity: 1 });
       }
+      state.amount++;
     },
     clearCart: (state) => {
       state.cartItems = []; //is equal to next line ;
@@ -70,27 +73,26 @@ const cartSlice = createSlice({
     // toggle: (state, action) => {
     //   state.toggle = !state.toggle;
     // },
-    increase: (state, action ) => {
+    increase: (state, action) => {
       const cartItem = state.cartItems.find(
-          (item) => item.id === action.payload
+        (item) => item.id === action.payload
       );
       cartItem.quantity = cartItem.quantity + 1;
     },
     decrease: (state, action) => {
-      const item = state.cartItems.find(
-        (item) => item.id === action.payload
-      );
+      const item = state.cartItems.find((item) => item.id === action.payload);
       if (item.quantity === 1) {
         item.quantity = 1;
       } else {
         item.quantity--;
       }
-    decrease: (state, action) => {
-      const cartItem = state.cartItems.find(
-          (item) => item.id === action.payload
-      );
-      cartItem.quantity = cartItem.quantity - 1;
     },
+    // decrease: (state, action) => {
+    //   const cartItem = state.cartItems.find(
+    //       (item) => item.id === action.payload
+    //   );
+    //   cartItem.quantity = cartItem.quantity - 1;
+    // },
 
     calculateTotals: (state, action) => {
       let amount = 0;
@@ -98,13 +100,11 @@ const cartSlice = createSlice({
 
       const itemIds = action.payload;
 
-      const Item = state.cartItems.filter(
-          (item) => itemIds.includes(item.id)
-      );
+      const Item = state.cartItems.filter((item) => itemIds.includes(item.id));
 
       Item.forEach((item) => {
-          amount += item.quantity;
-          total += item.quantity * item.price;
+        amount += item.quantity;
+        total += item.quantity * item.price;
       });
       state.amount = amount;
       state.total = total;

@@ -16,8 +16,9 @@ const DetailOne = (props) => {
   const [DrinkType, setDrinkType] = useState("");
   const params = useParams();
   const EatTypeInValid = props.EatType.SHOP || props.EatType.TAKEOUT;
-  const CookedInValid = props.CookType.COOKED || props.CookType.NOTCOOKED;
+  const CookedInValid = props.CookType.COOKED || props.CookType.NOTCOOKED; // 어떤 식으로 해야할까?
   const DrinkTypeInValid = props.DrinkType.HOT || props.DrinkType.ICED;
+  const SizeInValid = props.price.Desert !== "0" && props.price.Desert;
 
   const replaceNumber = (value) => value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
@@ -114,22 +115,37 @@ const DetailOne = (props) => {
   };
 
   const onClickCart = (e) => {
-    if (sizeData === "" || Cooked === "" || TakeOut === "") {
-      e.preventDefault();
-      alert("사이즈를 선택해주세요.");
-    } else {
-      e.preventDefault();
-      dispatch(
-        addToCart({
-          id: props.productId,
-          name: props.name,
-          size: sizeData,
-          price: props.price[sizeData],
-          category: props.category,
-        })
-      );
-
-      alert("장바구니에 등록했습니다.");
+    if (EatTypeInValid && CookedInValid) {
+      if (Cooked === "" || TakeOut === "") {
+        alert("옵션을 선택해주세요!(푸드)"); // 푸드 종류 dispatch
+        console.log(Cooked, TakeOut);
+      } else {
+        alert("장바구니 등록 완료");
+      }
+    } else if (!SizeInValid && EatTypeInValid && DrinkTypeInValid) {
+      if (sizeData === "" || DrinkType === "" || TakeOut === "") {
+        // 음료 dispatch
+        alert("옵션을 선택해주세요(음료)");
+      } else {
+        e.preventDefault();
+        dispatch(
+          addToCart({
+            id: props.productId,
+            name: props.name,
+            size: sizeData,
+            price: props.price[sizeData],
+            category: props.category,
+          })
+        );
+      }
+    } else if (EatTypeInValid || CookedInValid) {
+      // 푸드 중에 warm 이 없는 카테고리들 dispatch
+      if (TakeOut === "") {
+        alert("옵션을 선택해주세요~! 테이크 아웃 단독 ");
+        console.log(SizeInValid, props);
+      } else {
+        alert("장바구니 등록 완료");
+      }
     }
   };
 
@@ -307,7 +323,7 @@ const DetailOne = (props) => {
                         id="takeout"
                         onChange={onChangeTakeOutHandler}
                       />
-                      <label htmlFor="takeout">take-out</label>
+                      <label htmlFor="takeout">테이크 아웃</label>
                     </>
                   )}
                   {props.EatType.SHOP && (
@@ -317,7 +333,7 @@ const DetailOne = (props) => {
                         id="eat-in"
                         onChange={onChangeTakeOutHandler}
                       />
-                      <label htmlFor="eat-in">eat-in</label>
+                      <label htmlFor="eat-in">매장</label>
                     </>
                   )}
                 </styled_MenuItem.Fieldset>
