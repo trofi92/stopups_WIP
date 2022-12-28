@@ -59,6 +59,7 @@ const Header = () => {
             </styled_H.HNLi>
 
             {/*숫자 1px 정도 위로 올라가면 좋겠는데 흠*/}
+            {/*장바구니 들어가면 숫자가 사라짐 원래 이렇게 만드신거면 놔두고 아니면 수정*/}
             <styled_H.HNLi>
               <Link to={"/cart"}>
                 {amount !== 0 && <HIconCartSpan>{amount}</HIconCartSpan>}
