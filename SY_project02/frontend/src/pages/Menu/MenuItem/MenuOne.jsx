@@ -58,54 +58,6 @@ const DetailOne = (props) => {
         props.category === "따뜻한 푸드" ||
         props.category === "샐러드";
 
-    // const onClickFavorite = (e) => {
-    //   if (sizeData === "") {
-    //     e.preventDefault();
-    //     alert("사이즈를 선택해주세요.");
-    //   } else {
-    //     e.preventDefault();
-    //     dispatch(
-    //       addToFavorites({
-    //         id: props.productId,
-    //         name: props.name,
-    //         size: sizeData,
-    //         price: props.price[sizeData],
-    //         whatDateTime: whatDateTime,
-    //         category: props.category,
-    //         amount: 1,
-    //       })
-    //     );
-    //     alert("나만의 음료에 등록했습니다.");
-    //     // 새로고침 되면서 favorite에 들어간 내용들이 전부 초기화됨....
-    //     // if(window.confirm("나만의 음료에 등록했습니다. My 메뉴로 이동하시겠습니까?")) {
-    //     //     window.location.href = "/favorite"
-    //     // }
-    //   }
-    // };
-    //
-    // const onClickFavoriteFood = (e) => {
-    //   if (sizeData === "") {
-    //     e.preventDefault();
-    //     alert("워밍 옵션을 선택해주세요.");
-    //   } else {
-    //     e.preventDefault();
-    //     dispatch(
-    //       addToFavorites({
-    //         id: props.productId,
-    //         name: props.name,
-    //         price: props.price.Desert,
-    //         whatDateTime: whatDateTime,
-    //         category: props.category,
-    //         amount: 1,
-    //       })
-    //     );
-    //     alert("나만의 푸드에 등록했습니다.");
-    //     // 새로고침 되면서 favorite에 들어간 내용들이 전부 초기화됨....
-    //     // if(window.confirm("나만의 음료에 등록했습니다. My 메뉴로 이동하시겠습니까?")) {
-    //     //     window.location.href = "/favorite"
-    //     // }
-    //   }
-    // };
 
     const onClickFavorite = (e) => {
         if (EatTypeInValid && CookedInValid) {
