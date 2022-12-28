@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import { AllBox } from "../../../styled/AllBox";
 import * as styled_Menu from "../../../styled/Menu/Menu";
@@ -12,7 +11,7 @@ import { Footer } from "../../../components/Footer/Footer";
 import axios from "axios";
 import { SERVER_URL } from "../../../util/urls";
 
-const DetailOne = (props) => {
+const MenuOne = (props) => {
   const [sizeData, setSizeData] = useState("");
   const [cooked, setCooked] = useState("");
   const [takeOut, setTakeOut] = useState("");
@@ -28,7 +27,8 @@ const DetailOne = (props) => {
   const drinkTypeInValid =
     props.DrinkType.HOT || props.DrinkType.ICED;
   const sizeInValid =
-    props.Price.Desert !== "0" && props.Price.Desert;
+    props.price.Desert !== "0" && props.price.Desert;
+
   const replaceNumber = (value) =>
     value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
@@ -44,7 +44,7 @@ const DetailOne = (props) => {
 
   const dispatch = useDispatch();
 
-  const InValid =
+  const inValid =
     props.Price.Desert !== "0" &&
     props.Price.hasOwnProperty("Desert");
 
@@ -437,4 +437,4 @@ const DetailOne = (props) => {
   );
 };
 
-export default DetailOne;
+export default MenuOne;

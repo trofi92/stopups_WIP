@@ -9,7 +9,6 @@ import {Link} from "react-router-dom";
 import * as styled_LFId from "../../../styled/Login/LFindId";
 import {Footer} from "../../../components/Footer/Footer";
 
-
 const LFindIdAgree = () => {
     return (
         <styled_AB.AllBox>

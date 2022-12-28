@@ -125,6 +125,7 @@ export const AIH = styled.input`
   height: 30px;
   background: #C1C1C1;
   border-radius: 50%;
+  cursor: pointer;
   
   :after {
     border: 3px solid #fff;

@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import * as React from "react";
-import { useState } from "react";
 import CChecked from "../../image/Cart/CChecked.png";
 
 export const Main = styled.div`
