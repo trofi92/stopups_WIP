@@ -18,6 +18,8 @@ export const CNoDF = () => {
     const [click, setClick] = useState(false);
     // 상품 종류
     const cart = useSelector((state) => state.cart);
+    // location 확인 용
+    const user = useSelector((state) => state.user);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -82,10 +84,15 @@ export const CNoDF = () => {
         if (cart.amount > 20) {
             alert("총 주문 가능 수량은 20개 입니다.")
         } else if (cart.amount <= 20) {
-            alert("결제 페이지로 이동합니다.");
-            navigate("/payment");
-            // 선택된 제품만 redux에 남기고 나머지 삭제
-            dispatch(saveCart(checkItems));
+            if (user.location === "") {
+                alert("주문하실 매장을 선택 해주세요.")
+                navigate("/selectMap")
+            } else {
+                alert("결제 페이지로 이동합니다.");
+                navigate("/payment");
+                // 선택된 제품만 redux에 남기고 나머지 삭제
+                dispatch(saveCart(checkItems));
+            }
         }
     };
 
