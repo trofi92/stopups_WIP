@@ -5,7 +5,7 @@ const jwtSecret = process.env.JWT_SECRET;
 module.exports = class User extends Sequelize.Model {
   static generateJWT(user) {
     return jwt.sign({ id: user.email, name: user.name }, jwtSecret, {
-      expiresIn: "30m",
+      expiresIn: "6h",
     });
   }
 

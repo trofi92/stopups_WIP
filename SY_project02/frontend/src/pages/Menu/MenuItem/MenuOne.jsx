@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import { AllBox } from "../../../styled/AllBox";
 import * as styled_Menu from "../../../styled/Menu/Menu";
@@ -11,15 +12,14 @@ import { Footer } from "../../../components/Footer/Footer";
 import axios from "axios";
 import { SERVER_URL } from "../../../util/urls";
 
-const MenuOne = (props) => {
+const DetailOne = (props) => {
+  const [test, setTest] = useState("");
   const [sizeData, setSizeData] = useState("");
   const [cooked, setCooked] = useState("");
   const [takeOut, setTakeOut] = useState("");
   const [drinkType, setDrinkType] = useState("");
-  const [test, setTest] = useState("");
-
-  const favorite = useSelector((state) => state.favorite);
   const user = useSelector((state) => state.user);
+  const favorite = useSelector((state) => state.favorite);
 
   const eatTypeInValid = props.EatType.SHOP || props.EatType.TAKEOUT;
   const cookedInValid =
@@ -28,10 +28,8 @@ const MenuOne = (props) => {
     props.DrinkType.HOT || props.DrinkType.ICED;
   const sizeInValid =
     props.price.Desert !== "0" && props.price.Desert;
-
   const replaceNumber = (value) =>
     value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
   let now = new Date();
   let year = now.getFullYear();
   let todayMont = now.getMonth() + 1;
@@ -44,9 +42,9 @@ const MenuOne = (props) => {
 
   const dispatch = useDispatch();
 
-  const inValid =
-    props.Price.Desert !== "0" &&
-    props.Price.hasOwnProperty("Desert");
+  const InValid =
+    props.price.Desert !== "0" &&
+    props.price.hasOwnProperty("Desert");
 
   const onChangeHandler = (e) => {
     setSizeData(e.target.value);
@@ -60,13 +58,6 @@ const MenuOne = (props) => {
   const onChangeDrinkTypeHandler = (e) => {
     setDrinkType(e.target.value);
   };
-
-  const categoryInValid =
-    props.category === "케이크" ||
-    props.category === "브레드" ||
-    props.category === "샌드위치" ||
-    props.category === "따뜻한 푸드" ||
-    props.category === "샐러드";
 
   const data = {
     user: user.email,
@@ -87,6 +78,13 @@ const MenuOne = (props) => {
     console.log(test);
   };
 
+  const CategoryInValid =
+    props.category === "케이크" ||
+    props.category === "브레드" ||
+    props.category === "샌드위치" ||
+    props.category === "따뜻한 푸드" ||
+    props.category === "샐러드";
+
   const onClickFavorite = (e) => {
     if (eatTypeInValid && cookedInValid) {
       if (cooked === "" || takeOut === "") {
@@ -105,7 +103,7 @@ const MenuOne = (props) => {
             category: props.category,
           })
         );
-        addFavoriteData();
+        console.log(favorite);
         alert("나만의 푸드에 등록했습니다.");
       }
     } else if (!sizeInValid && eatTypeInValid && drinkTypeInValid) {
@@ -127,6 +125,7 @@ const MenuOne = (props) => {
           })
         );
         console.log(favorite);
+        addFavoriteData();
         alert("나만의 음료에 등록했습니다.");
       }
     } else if (eatTypeInValid || cookedInValid) {
@@ -263,7 +262,7 @@ const MenuOne = (props) => {
 
                 {cookedInValid && (
                   <>
-                    {props.cookType.COOKED && (
+                    {props.CookType.COOKED && (
                       <>
                         <styled_MenuItem.Input
                           id="Desert"
@@ -273,7 +272,7 @@ const MenuOne = (props) => {
                       </>
                     )}
 
-                    {props.cookType.NOTCOOKED && (
+                    {props.CookType.NOTCOOKED && (
                       <>
                         <styled_MenuItem.Input
                           id="Desert1"
@@ -321,7 +320,7 @@ const MenuOne = (props) => {
               {drinkTypeInValid && (
                 <styled_MenuItem.Fieldset width="100%">
                   <legend>ICE & HOT</legend>
-                  {props.drinkType.ICED && (
+                  {props.DrinkType.ICED && (
                     <>
                       <styled_MenuItem.Input
                         name="ICE"
@@ -331,7 +330,7 @@ const MenuOne = (props) => {
                       <label htmlFor="ICE">ICE</label>
                     </>
                   )}
-                  {props.drinkType.HOT && (
+                  {props.DrinkType.HOT && (
                     <>
                       <styled_MenuItem.Input name="ICE" id="HOT" />
                       <label htmlFor="HOT">HOT</label>
@@ -364,7 +363,7 @@ const MenuOne = (props) => {
               </styled_MenuItem.Fieldset>
             </styled_MenuItem.smallFieldset>
             <styled_Menu.ButtonBoxCotainer>
-              {categoryInValid ? (
+              {CategoryInValid ? (
                 <ButtonSmallBox onClick={onClickFavorite}>
                   <p>나만의 푸드로 등록</p>
                 </ButtonSmallBox>
@@ -437,4 +436,4 @@ const MenuOne = (props) => {
   );
 };
 
-export default MenuOne;
+export default DetailOne;

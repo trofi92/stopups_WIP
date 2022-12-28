@@ -29,20 +29,17 @@ const login = async (req, res, next) => {
     });
 
     const user = users.find((user) => email === decrypt(user.email));
-    const decryptedPassword = decrypt(user.password);
 
     // console.log(user);
 
     if (!user) {
-      return res
-        .status(305)
-        .send("이메일이나 비밀번호가 유효하지 않습니다");
+      return res.status(305).send("Invalid email or password");
     }
 
+    const decryptedPassword = decrypt(user.password);
+
     if (password !== decryptedPassword) {
-      return res
-        .status(305)
-        .send("이메일이나 비밀번호가 유효하지 않습니다");
+      return res.status(305).send("Invalid email or password");
     }
 
     const refreshToken = jwt.sign(

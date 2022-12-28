@@ -54,7 +54,7 @@ const updatePhoneAndNickname = async (res, req, next) => {
 };
 
 const bookmarks = async (req, res, next) => {
-  console.log(req?.body);
+  console.log(req);
 };
 
 module.exports = { updatePw, updatePhoneAndNickname, bookmarks };

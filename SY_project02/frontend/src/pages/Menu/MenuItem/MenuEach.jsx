@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import { AllBox } from "../../../styled/AllBox";
-import MenuOne from "./MenuOne";
+import { NotFound } from "../../NotFound";
+import DetailOne from "./MenuOne";
 
-const MenuEach = () => {
+const DetailEach = () => {
   const [data, setData] = useState([]);
   const [Nutrient, setNutrient] = useState([]);
   const [Price, setPrice] = useState([]);
@@ -41,7 +42,7 @@ const MenuEach = () => {
   return (
     <>
       {data ? (
-        <MenuOne
+        <DetailOne
           key={data.ProductId}
           category={data.Category}
           name={data.Name}
@@ -97,4 +98,4 @@ const MenuEach = () => {
   );
 };
 
-export default MenuEach;
+export default DetailEach;
