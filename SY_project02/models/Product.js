@@ -53,9 +53,5 @@ module.exports = class Product extends Sequelize.Model {
     db.Product.hasMany(db.OrderItem, { foreignKey: "productId" });
     db.Product.hasMany(db.CartItem, { foreignKey: "productId" });
     db.Product.hasMany(db.Bookmark, { foreignKey: "productId" });
-
-    // db.Product.belongsToMany(db.User, {
-    //   through: "bookmarks",
-    // });
   }
 };

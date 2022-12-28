@@ -3,9 +3,10 @@ const router = express.Router();
 const {
   updatePw,
   updatePhoneAndNickname,
+  bookmarks,
 } = require("../controllers/info");
-// const authJwt = require("../middlewares/authJwt");
 
+router.put("/bookmarks", bookmarks);
 router.get("/MyInfoAgree");
 router.post("/updatePw", updatePw);
 router.post("/updatePhoneAndNickname", updatePhoneAndNickname);

@@ -5,26 +5,33 @@ import { AllBox } from "../../../styled/AllBox";
 import * as styled_Menu from "../../../styled/Menu/Menu";
 import * as styled_MenuItem from "../../../styled/Menu/MenuItem";
 import { ButtonSmallBox } from "../../../styled/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../features/cart/cartSlice";
 import { addToFavorites } from "../../../features/favorite/favoriteSlice";
 import { Footer } from "../../../components/Footer/Footer";
+import axios from "axios";
+import { SERVER_URL } from "../../../util/urls";
 
 const DetailOne = (props) => {
   const [sizeData, setSizeData] = useState("");
-  const [Cooked, setCooked] = useState("");
-  const [TakeOut, setTakeOut] = useState("");
-  const [DrinkType, setDrinkType] = useState("");
+  const [cooked, setCooked] = useState("");
+  const [takeOut, setTakeOut] = useState("");
+  const [drinkType, setDrinkType] = useState("");
+  const [test, setTest] = useState("");
 
-  const EatTypeInValid = props.EatType.SHOP || props.EatType.TAKEOUT;
-  const CookedInValid =
+  const favorite = useSelector((state) => state.favorite);
+  const user = useSelector((state) => state.user);
+
+  const eatTypeInValid = props.EatType.SHOP || props.EatType.TAKEOUT;
+  const cookedInValid =
     props.CookType.COOKED || props.CookType.NOTCOOKED; // 어떤 식으로 해야할까?
-  const DrinkTypeInValid =
+  const drinkTypeInValid =
     props.DrinkType.HOT || props.DrinkType.ICED;
-  const SizeInValid =
-    props.price.Desert !== "0" && props.price.Desert;
+  const sizeInValid =
+    props.Price.Desert !== "0" && props.Price.Desert;
   const replaceNumber = (value) =>
     value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
   let now = new Date();
   let year = now.getFullYear();
   let todayMont = now.getMonth() + 1;
@@ -38,8 +45,8 @@ const DetailOne = (props) => {
   const dispatch = useDispatch();
 
   const InValid =
-    props.price.Desert !== "0" &&
-    props.price.hasOwnProperty("Desert");
+    props.Price.Desert !== "0" &&
+    props.Price.hasOwnProperty("Desert");
 
   const onChangeHandler = (e) => {
     setSizeData(e.target.value);
@@ -54,18 +61,37 @@ const DetailOne = (props) => {
     setDrinkType(e.target.value);
   };
 
-  const CategoryInValid =
+  const categoryInValid =
     props.category === "케이크" ||
     props.category === "브레드" ||
     props.category === "샌드위치" ||
     props.category === "따뜻한 푸드" ||
     props.category === "샐러드";
 
+  const data = {
+    user: user.email,
+    id: props.productId,
+    price: props.price[sizeData],
+    eattype: takeOut,
+    whatDateTime: whatDateTime,
+  };
+
+  const addFavoriteData = async () => {
+    const response = await axios.put(
+      `${SERVER_URL}/myInfo/bookmarks`,
+      {
+        data: data,
+      }
+    );
+    setTest(response?.data);
+    console.log(test);
+  };
+
   const onClickFavorite = (e) => {
-    if (EatTypeInValid && CookedInValid) {
-      if (Cooked === "" || TakeOut === "") {
+    if (eatTypeInValid && cookedInValid) {
+      if (cooked === "" || takeOut === "") {
         alert("옵션을 선택해 주세요."); // 푸드 종류 dispatch
-        console.log(Cooked, TakeOut);
+        console.log(cooked, takeOut);
       } else {
         e.preventDefault();
         dispatch(
@@ -73,16 +99,17 @@ const DetailOne = (props) => {
             id: props.productId,
             name: props.name,
             price: props.price.Desert,
-            cooked: Cooked,
-            takeout: TakeOut,
+            cooked: cooked,
+            takeout: takeOut,
             whatDateTime: whatDateTime,
             category: props.category,
           })
         );
+        addFavoriteData();
         alert("나만의 푸드에 등록했습니다.");
       }
-    } else if (!SizeInValid && EatTypeInValid && DrinkTypeInValid) {
-      if (sizeData === "" || DrinkType === "" || TakeOut === "") {
+    } else if (!sizeInValid && eatTypeInValid && drinkTypeInValid) {
+      if (sizeData === "" || drinkType === "" || takeOut === "") {
         // 음료 dispatch
         alert("옵션을 선택해 주세요.");
       } else {
@@ -92,20 +119,21 @@ const DetailOne = (props) => {
             id: props.productId,
             name: props.name,
             size: sizeData,
-            ice: DrinkType,
-            takeout: TakeOut,
+            ice: drinkType,
+            takeout: takeOut,
             whatDateTime: whatDateTime,
             price: props.price[sizeData],
             category: props.category,
           })
         );
+        console.log(favorite);
         alert("나만의 음료에 등록했습니다.");
       }
-    } else if (EatTypeInValid || CookedInValid) {
+    } else if (eatTypeInValid || cookedInValid) {
       // 푸드 중에 warm 이 없는 카테고리들 dispatch
-      if (TakeOut === "") {
+      if (takeOut === "") {
         alert("옵션을 선택해 주세요.");
-        console.log(SizeInValid, props);
+        console.log(sizeInValid, props);
       } else {
         e.preventDefault();
         dispatch(
@@ -113,7 +141,7 @@ const DetailOne = (props) => {
             id: props.productId,
             name: props.name,
             price: props.price.Desert,
-            takeout: TakeOut,
+            takeout: takeOut,
             whatDateTime: whatDateTime,
             category: props.category,
           })
@@ -124,10 +152,10 @@ const DetailOne = (props) => {
   };
 
   const onClickCart = (e) => {
-    if (EatTypeInValid && CookedInValid) {
-      if (Cooked === "" || TakeOut === "") {
+    if (eatTypeInValid && cookedInValid) {
+      if (cooked === "" || takeOut === "") {
         alert("옵션을 선택해 주세요."); // 푸드 종류 dispatch
-        console.log(Cooked, TakeOut);
+        console.log(cooked, takeOut);
       } else {
         e.preventDefault();
         dispatch(
@@ -135,16 +163,16 @@ const DetailOne = (props) => {
             id: props.productId,
             name: props.name,
             price: props.price.Desert,
-            cooked: Cooked,
-            takeout: TakeOut,
+            cooked: cooked,
+            takeout: takeOut,
             whatDateTime: whatDateTime,
             category: props.category,
           })
         );
         alert("장바구니에 등록했습니다.");
       }
-    } else if (!SizeInValid && EatTypeInValid && DrinkTypeInValid) {
-      if (sizeData === "" || DrinkType === "" || TakeOut === "") {
+    } else if (!sizeInValid && eatTypeInValid && drinkTypeInValid) {
+      if (sizeData === "" || drinkType === "" || takeOut === "") {
         // 음료 dispatch
         alert("옵션을 선택해 주세요.");
       } else {
@@ -154,8 +182,8 @@ const DetailOne = (props) => {
             id: props.productId,
             name: props.name,
             size: sizeData,
-            ice: DrinkType,
-            takeout: TakeOut,
+            ice: drinkType,
+            takeout: takeOut,
             price: props.price[sizeData],
             whatDateTime: whatDateTime,
             category: props.category,
@@ -163,11 +191,11 @@ const DetailOne = (props) => {
         );
         alert("장바구니에 등록했습니다.");
       }
-    } else if (EatTypeInValid || CookedInValid) {
+    } else if (eatTypeInValid || cookedInValid) {
       // 푸드 중에 warm 이 없는 카테고리들 dispatch
-      if (TakeOut === "") {
+      if (takeOut === "") {
         alert("옵션을 선택해 주세요.");
-        console.log(SizeInValid, props);
+        console.log(sizeInValid, props);
       } else {
         e.preventDefault();
         dispatch(
@@ -175,7 +203,7 @@ const DetailOne = (props) => {
             id: props.productId,
             name: props.name,
             price: props.price.Desert,
-            takeout: TakeOut,
+            takeout: takeOut,
             whatDateTime: whatDateTime,
             category: props.category,
           })
@@ -209,10 +237,10 @@ const DetailOne = (props) => {
               </styled_MenuItem.TextBoxSpan>
             )}
             {/* <span> Nitro Vanilla Cream</span> */}
-            {(CookedInValid || DrinkTypeInValid) && (
+            {(cookedInValid || drinkTypeInValid) && (
               <styled_MenuItem.Fieldset>
-                {CookedInValid ? (
-                  <legend>Cooked</legend>
+                {cookedInValid ? (
+                  <legend>cooked</legend>
                 ) : (
                   <legend>사이즈</legend>
                 )}
@@ -233,9 +261,9 @@ const DetailOne = (props) => {
                   </>
                 )}
 
-                {CookedInValid && (
+                {cookedInValid && (
                   <>
-                    {props.CookType.COOKED && (
+                    {props.cookType.COOKED && (
                       <>
                         <styled_MenuItem.Input
                           id="Desert"
@@ -245,7 +273,7 @@ const DetailOne = (props) => {
                       </>
                     )}
 
-                    {props.CookType.NOTCOOKED && (
+                    {props.cookType.NOTCOOKED && (
                       <>
                         <styled_MenuItem.Input
                           id="Desert1"
@@ -290,10 +318,10 @@ const DetailOne = (props) => {
             )}
 
             <styled_MenuItem.smallFieldset>
-              {DrinkTypeInValid && (
+              {drinkTypeInValid && (
                 <styled_MenuItem.Fieldset width="100%">
                   <legend>ICE & HOT</legend>
-                  {props.DrinkType.ICED && (
+                  {props.drinkType.ICED && (
                     <>
                       <styled_MenuItem.Input
                         name="ICE"
@@ -303,7 +331,7 @@ const DetailOne = (props) => {
                       <label htmlFor="ICE">ICE</label>
                     </>
                   )}
-                  {props.DrinkType.HOT && (
+                  {props.drinkType.HOT && (
                     <>
                       <styled_MenuItem.Input name="ICE" id="HOT" />
                       <label htmlFor="HOT">HOT</label>
@@ -336,7 +364,7 @@ const DetailOne = (props) => {
               </styled_MenuItem.Fieldset>
             </styled_MenuItem.smallFieldset>
             <styled_Menu.ButtonBoxCotainer>
-              {CategoryInValid ? (
+              {categoryInValid ? (
                 <ButtonSmallBox onClick={onClickFavorite}>
                   <p>나만의 푸드로 등록</p>
                 </ButtonSmallBox>
