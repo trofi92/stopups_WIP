@@ -74,6 +74,33 @@ export const HIconSpot = styled.img`
   cursor: pointer;
 `;
 
+export const HIconCart = styled.img`
+  width: 32px;
+  height: 30px;
+  margin-left: 9px;
+  margin-top: 13px;
+  cursor: pointer;
+`;
+
+export const HIconCartSpan = styled.span`
+    z-index: 15;
+    margin-left: 15px;
+    margin-top: -10px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background-color: #006633;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+  top: 15px;
+  left: 14px;
+`
+
 export const HIconCategory = styled.img`
   width: 28px;
   height: 26px;

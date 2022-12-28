@@ -1,6 +1,6 @@
 import { useState, useLayoutEffect } from "react";
 import logo from "../../image/Header/logo.png";
-import Cart from "../../image/Cart/Cart.png";
+import cartLogo from "../../image/Header/headerCart.png"
 import userLogo from "../../image/Header/headerUser.png";
 import spotLogo from "../../image/Header/headerSpot.png";
 import userCategory from "../../image/Header/headerCategory.png";
@@ -10,6 +10,7 @@ import * as styled_H from "../../styled/Header";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { TestDiv, TestDiv1 } from "../../styled/Menu/Menu";
+import {HIconCart, HIconCartSpan} from "../../styled/Header";
 const Header = () => {
   const [modalOpen, setModalOpen] = useState(true);
 
@@ -56,11 +57,16 @@ const Header = () => {
                 <styled_H.HIconSpot src={spotLogo} alt={"spotLogo"} />
               </Link>
             </styled_H.HNLi>
+
+            {/*숫자 1px 정도 위로 올라가면 좋겠는데 흠*/}
             <styled_H.HNLi>
-              <TestDiv1>
-                <TestDiv>{amount !== 0 && <span>{amount}</span>}</TestDiv>
-              </TestDiv1>
+              <Link to={"/cart"}>
+                {amount !== 0 && <HIconCartSpan>{amount}</HIconCartSpan>}
+                <styled_H.HIconCart src={cartLogo} alt={"cartLogo"} />
+              </Link>
             </styled_H.HNLi>
+
+
             <styled_H.HNLi>
               <styled_H.HIconCategory
                 src={userCategory}
