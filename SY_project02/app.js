@@ -11,6 +11,7 @@ const page = require("./routes/page");
 const payment = require("./routes/payment");
 const auth = require("./routes/auth");
 const myInfo = require("./routes/myInfo");
+const bookmarks = require("./routes/bookmarks");
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger-output");
@@ -50,6 +51,7 @@ app.use("/auth", auth);
 app.use("/", index);
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(authJwt);
+app.use("/bookmarks", bookmarks);
 app.use("/payment", payment);
 app.use("/myInfo", myInfo);
 

@@ -98,12 +98,19 @@ const Join = () => {
         eTelephone,
       };
       axios
-        .post(`${SERVER_URL}/auth/join`, {
-          data: post,
-        })
+        .post(
+          `${SERVER_URL}/auth/join`,
+          {
+            data: post,
+          },
+          { withCredentials: true }
+        )
         .then((res) => {
           console.log("회원가입 성공=>", res);
-          navigate("/joinSuccess", { replace: true, state: nickname });
+          navigate("/joinSuccess", {
+            replace: true,
+            state: nickname,
+          });
         })
         .catch((error) => {
           console.error("회원가입 실패", error);

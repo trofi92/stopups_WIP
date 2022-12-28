@@ -60,19 +60,23 @@ const DetailOne = (props) => {
   };
 
   const data = {
-    user: user.email,
-    id: props.productId,
+    email: user.email,
+    pId: props.productId,
     price: props.price[sizeData],
-    eattype: takeOut,
+    drinkType: drinkType,
+    eatType: takeOut,
     whatDateTime: whatDateTime,
+    category: props.category,
+    size: sizeData,
   };
 
   const addFavoriteData = async () => {
     const response = await axios.put(
-      `${SERVER_URL}/myInfo/bookmarks`,
+      `${SERVER_URL}/bookmarks/addBookmarks`,
       {
         data: data,
-      }
+      },
+      { withCredentials: true }
     );
     setTest(response?.data);
     console.log(test);
@@ -145,6 +149,8 @@ const DetailOne = (props) => {
             category: props.category,
           })
         );
+        console.log(favorite);
+        addFavoriteData();
         alert("나만의 푸드에 등록했습니다.");
       }
     }

@@ -7,7 +7,7 @@ import { Footer } from "../../../components/Footer/Footer";
 import * as styled_Pass from "../../../styled/Pass";
 import * as styled_LOG from "../../../styled/Login/Login";
 import * as styled_Join from "../../../styled/Join/Join";
-import { sms } from "../../../util/urls";
+import { SMS } from "../../../util/urls";
 
 const LIdPass = () => {
   const [show, setShow] = useState(false); // 휴대전화 입력 여부 상태 저장
@@ -23,7 +23,7 @@ const LIdPass = () => {
     if (phone_number !== "") {
       // 값이 존재하면 SMS 인증을 위해 POST로 전달
       await axios.post(
-        sms,
+        SMS,
         {
           phone_number,
           rnd_number,

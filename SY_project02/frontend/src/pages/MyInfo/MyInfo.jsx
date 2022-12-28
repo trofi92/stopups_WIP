@@ -27,7 +27,8 @@ const MyInfo = () => {
         `${SERVER_URL}/myinfo/updatePhoneAndNickname`,
         {
           data: post,
-        }
+        },
+        { withCredentials: true }
       );
       const reqData = await request.data;
       console.log(request);

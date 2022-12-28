@@ -25,8 +25,6 @@ export const useFormCheck = () => {
 };
 
 export const useLoginService = () => {
-  axios.defaults.withCredentials = false;
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -44,9 +42,13 @@ export const useLoginService = () => {
       };
       try {
         axios
-          .post(`${SERVER_URL}/auth/login`, {
-            data: post,
-          })
+          .post(
+            `${SERVER_URL}/auth/login`,
+            {
+              data: post,
+            },
+            { withCredentials: true }
+          )
           .then((res) => {
             console.log("로그인 성공=>", res);
             //RTK 집어넣기
@@ -82,7 +84,11 @@ export const useLogout = () => {
   const logout = async (e) => {
     e.preventDefault();
     try {
-      await axios.get(`${SERVER_URL}/auth/logout`);
+      await axios.post(
+        `${SERVER_URL}/auth/logout`,
+        {},
+        { withCredentials: true }
+      );
       dispatch(setULogout());
       await purge();
       sessionStorage.clear();

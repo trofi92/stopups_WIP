@@ -17,13 +17,7 @@ const authJwt = async (req, res, next) => {
   const accessToken = req?.cookies?.accessJwtToken;
   const refreshToken = req?.cookies?.refreshJwtToken;
 
-  console.log(req?.cookies?.accessJwtToken);
-
-  if (!accessToken) {
-    return res.status(401).json({
-      message: "토큰이 만료되었습니다. 다시 로그인해주세요",
-    });
-  }
+  // console.log(req?.cookies?.accessJwtToken);
 
   try {
     const decoded = jwt.verify(accessToken, jwtSecret);
@@ -33,6 +27,11 @@ const authJwt = async (req, res, next) => {
       name: decoded.name, //username
     };
 
+    if (!accessToken) {
+      return res.status(401).json({
+        message: "토큰이 만료되었습니다. 다시 로그인해주세요",
+      });
+    }
     //재발급
     const now = Math.floor(Date.now() / 1000);
     // 1주일의 유효기간을 지닌 새로운 쿠키 발급

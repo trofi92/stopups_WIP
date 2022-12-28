@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { sms } from "../util/urls";
+import { SMS } from "../util/urls";
 import { useNavigate } from "react-router-dom";
 
 // 휴대전화 번호 인증시
@@ -21,7 +21,7 @@ export const usePhoneSubmit = () => {
     console.log(phone_number, rnd_number);
     console.log("setRnd: ", rnd);
 
-    await axios.post(sms, {
+    await axios.post(SMS, {
       phone_number,
       rnd_number,
     });
@@ -65,7 +65,7 @@ export const useSmsSubmit = (rnd, number, path) => {
         setShow(!show);
       }
 
-      console.log("sms submit number : ", number);
+      console.log("SMS submit number : ", number);
 
       if (path === null || path === undefined) {
         return;

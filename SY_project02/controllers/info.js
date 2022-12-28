@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const { User, Bookmark, Product } = require("../models");
 const { decrypt, encrypt } = require("../middlewares/crypto");
 
 const updatePw = async (req, res, next) => {
@@ -53,36 +53,4 @@ const updatePhoneAndNickname = async (res, req, next) => {
   }
 };
 
-const bookmarks = async (req, res, next) => {
-  console.log(req);
-};
-
-module.exports = { updatePw, updatePhoneAndNickname, bookmarks };
-
-// const info = async (req, res, next) => {
-//   const uTelephone = Object.keys(req.body)[0];
-//   const exUser = await User.findAll({
-//     attributes: ["email", "name", "nickname", "telephone"],
-//   });
-
-//   try {
-//     exUser.find((element) => {
-//       if (uTelephone !== decrypt(element.telephone)) {
-//         return res.status(401).json({
-//           status: "유저없음",
-//         });
-//       }
-//       next();
-
-//       return res.status(200).json({
-//         email: element.email,
-//         name: element.name,
-//         password: element.password,
-//         nickname: element.nickname,
-//         telephone: element.telephone,
-//       });
-//     });
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
+module.exports = { updatePw, updatePhoneAndNickname };

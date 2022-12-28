@@ -27,7 +27,6 @@ const login = async (req, res, next) => {
         "password",
       ],
     });
-
     const user = users.find((user) => email === decrypt(user.email));
 
     // console.log(user);
@@ -41,13 +40,13 @@ const login = async (req, res, next) => {
     if (password !== decryptedPassword) {
       return res.status(305).send("Invalid email or password");
     }
+    const token = User.generateJWT(user);
+
+    res.cookie("accessJwtToken", token, accessJwtTokenOption);
 
     const refreshToken = jwt.sign(
       { id: user.id, name: user.name },
-      jwtSecret,
-      {
-        expiresIn: "12h", // 리프레시 토큰 만료 12시간
-      }
+      jwtSecret
     );
     res.cookie(
       "refreshJwtToken",
@@ -55,9 +54,6 @@ const login = async (req, res, next) => {
       refreshJwtTokenOption
     );
 
-    const token = User.generateJWT(user);
-
-    res.cookie("accessJwtToken", token, accessJwtTokenOption);
     return res.status(200).json({
       code: 200,
       message: "토큰이 발급되었습니다.",
@@ -73,10 +69,10 @@ const login = async (req, res, next) => {
 };
 
 const logout = async (req, res, next) => {
-  res.cookie("accessJwtToken", {
+  await res.cookie("accessJwtToken", "", {
     maxAge: 0,
   });
-  res.cookie("refreshJwtToken", {
+  await res.cookie("refreshJwtToken", "", {
     maxAge: 0,
   });
   return res.status(200).json({

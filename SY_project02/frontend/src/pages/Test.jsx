@@ -13,7 +13,11 @@ export const Test = () => {
 
   const sendRequest = async () => {
     await axios
-      .put(`${SERVER_URL}/page/test`, { data: post })
+      .put(
+        `${SERVER_URL}/page/test`,
+        { data: post },
+        { withCredentials: true }
+      )
       .then((res) => console.log(res?.data));
   };
   const handleChange = (e) => {

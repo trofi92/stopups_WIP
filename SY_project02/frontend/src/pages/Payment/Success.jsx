@@ -20,7 +20,8 @@ export const Success = () => {
     axios
       .post(
         `${SERVER_URL}
-          /payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}}`
+          /payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}}`,
+        { withCredentials: true }
       )
       .then((res) => {
         console.log(res.status === 200);

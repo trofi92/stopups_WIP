@@ -68,7 +68,11 @@ const MIPassword = () => {
       // 라우트 해주시면 주소 적기...
       // 그것을 해드렸습니다!
       await axios
-        .post(`${SERVER_URL}/myInfo/updatePw`, { data: post })
+        .post(
+          `${SERVER_URL}/myInfo/updatePw`,
+          { data: post },
+          { withCredentials: true }
+        )
         .then((res) => {
           if (res.status === 401) {
             alert(res.data.message);

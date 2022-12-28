@@ -24,22 +24,38 @@ module.exports = class Bookmark extends Sequelize.Model {
           type: Sequelize.STRING(400),
           allowNull: true,
         },
-        drinktype: {
+        size: {
+          type: Sequelize.STRING(50),
+          allowNull: true,
+        },
+        category: {
+          type: Sequelize.STRING(50),
+          allowNull: true,
+        },
+        drinkType: {
           type: Sequelize.STRING(200),
           allowNull: true,
         },
-        eattype: {
+        eatType: {
           type: Sequelize.STRING(200),
           allowNull: true,
         },
-        cooktype: {
+        cookType: {
           type: Sequelize.STRING(200),
+          allowNull: true,
+        },
+        createdAt: {
+          type: Sequelize.STRING(100),
+          allowNull: true,
+        },
+        updatedAt: {
+          type: Sequelize.STRING(100),
           allowNull: true,
         },
       },
       {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         underscored: true,
         modelName: "Bookmark",
         tableName: "bookmarks",
