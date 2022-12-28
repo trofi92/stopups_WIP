@@ -57,66 +57,91 @@ const DetailOne = (props) => {
     props.category === "샐러드";
 
   const onClickFavorite = (e) => {
-    if (sizeData === "") {
-      e.preventDefault();
-      alert("사이즈를 선택해주세요.");
-    } else {
-      e.preventDefault();
-      dispatch(
-        addToFavorites({
-          id: props.productId,
-          name: props.name,
-          size: sizeData,
-          price: props.price[sizeData],
-          whatDateTime: whatDateTime,
-          category: props.category,
-          amount: 1,
-        })
-      );
-      alert("나만의 음료에 등록했습니다.");
-      // 새로고침 되면서 favorite에 들어간 내용들이 전부 초기화됨....
-      // if(window.confirm("나만의 음료에 등록했습니다. My 메뉴로 이동하시겠습니까?")) {
-      //     window.location.href = "/favorite"
-      // }
-    }
-  };
-
-  const onClickFavoriteFood = (e) => {
-    if (sizeData === "") {
-      e.preventDefault();
-      alert("워밍 옵션을 선택해주세요.");
-    } else {
-      e.preventDefault();
-      dispatch(
-        addToFavorites({
-          id: props.productId,
-          name: props.name,
-          price: props.price.Desert,
-          whatDateTime: whatDateTime,
-          category: props.category,
-          amount: 1,
-        })
-      );
-      alert("나만의 푸드에 등록했습니다.");
-      // 새로고침 되면서 favorite에 들어간 내용들이 전부 초기화됨....
-      // if(window.confirm("나만의 음료에 등록했습니다. My 메뉴로 이동하시겠습니까?")) {
-      //     window.location.href = "/favorite"
-      // }
+    if (EatTypeInValid && CookedInValid) {
+      if (Cooked === "" || TakeOut === "") {
+        alert("옵션을 선택해 주세요."); // 푸드 종류 dispatch
+        console.log(Cooked, TakeOut);
+      } else {
+        e.preventDefault();
+        dispatch(
+          addToFavorites({
+            id: props.productId,
+            name: props.name,
+            price: props.price.Desert,
+            cooked: Cooked,
+            takeout: TakeOut,
+            whatDateTime: whatDateTime,
+            category: props.category,
+          })
+        );
+        alert("나만의 푸드에 등록했습니다.");
+      }
+    } else if (!SizeInValid && EatTypeInValid && DrinkTypeInValid) {
+      if (sizeData === "" || DrinkType === "" || TakeOut === "") {
+        // 음료 dispatch
+        alert("옵션을 선택해 주세요.");
+      } else {
+        e.preventDefault();
+        dispatch(
+          addToFavorites({
+            id: props.productId,
+            name: props.name,
+            size: sizeData,
+            ice: DrinkType,
+            takeout: TakeOut,
+            whatDateTime: whatDateTime,
+            price: props.price[sizeData],
+            category: props.category,
+          })
+        );
+        alert("나만의 음료에 등록했습니다.");
+      }
+    } else if (EatTypeInValid || CookedInValid) {
+      // 푸드 중에 warm 이 없는 카테고리들 dispatch
+      if (TakeOut === "") {
+        alert("옵션을 선택해 주세요.");
+        console.log(SizeInValid, props);
+      } else {
+        e.preventDefault();
+        dispatch(
+          addToFavorites({
+            id: props.productId,
+            name: props.name,
+            price: props.price.Desert,
+            takeout: TakeOut,
+            whatDateTime: whatDateTime,
+            category: props.category,
+          })
+        );
+        alert("나만의 푸드에 등록했습니다.");
+      }
     }
   };
 
   const onClickCart = (e) => {
     if (EatTypeInValid && CookedInValid) {
       if (Cooked === "" || TakeOut === "") {
-        alert("옵션을 선택해주세요!(푸드)"); // 푸드 종류 dispatch
+        alert("옵션을 선택해 주세요."); // 푸드 종류 dispatch
         console.log(Cooked, TakeOut);
       } else {
-        alert("장바구니 등록 완료");
+        e.preventDefault();
+        dispatch(
+          addToCart({
+            id: props.productId,
+            name: props.name,
+            price: props.price.Desert,
+            cooked: Cooked,
+            takeout: TakeOut,
+            whatDateTime: whatDateTime,
+            category: props.category,
+          })
+        );
+        alert("장바구니에 등록했습니다.");
       }
     } else if (!SizeInValid && EatTypeInValid && DrinkTypeInValid) {
       if (sizeData === "" || DrinkType === "" || TakeOut === "") {
         // 음료 dispatch
-        alert("옵션을 선택해주세요(음료)");
+        alert("옵션을 선택해 주세요.");
       } else {
         e.preventDefault();
         dispatch(
@@ -124,38 +149,34 @@ const DetailOne = (props) => {
             id: props.productId,
             name: props.name,
             size: sizeData,
+            ice: DrinkType,
+            takeout: TakeOut,
             price: props.price[sizeData],
+            whatDateTime: whatDateTime,
             category: props.category,
           })
         );
+        alert("장바구니에 등록했습니다.");
       }
     } else if (EatTypeInValid || CookedInValid) {
       // 푸드 중에 warm 이 없는 카테고리들 dispatch
       if (TakeOut === "") {
-        alert("옵션을 선택해주세요~! 테이크 아웃 단독 ");
+        alert("옵션을 선택해 주세요.");
         console.log(SizeInValid, props);
       } else {
-        alert("장바구니 등록 완료");
+        e.preventDefault();
+        dispatch(
+          addToCart({
+            id: props.productId,
+            name: props.name,
+            price: props.price.Desert,
+            takeout: TakeOut,
+            whatDateTime: whatDateTime,
+            category: props.category,
+          })
+        );
+        alert("장바구니에 등록했습니다.");
       }
-    }
-  };
-
-  const onClickFoodCart = (e) => {
-    if (sizeData === "") {
-      e.preventDefault();
-      alert("워밍 옵션을 선택해주세요.");
-    } else {
-      e.preventDefault();
-      dispatch(
-        addToCart({
-          id: props.productId,
-          name: props.name,
-          price: props.price.Desert,
-          whatDateTime: whatDateTime,
-          category: props.category,
-        })
-      );
-      alert("장바구니에 등록했습니다.");
     }
   };
 
@@ -272,11 +293,7 @@ const DetailOne = (props) => {
                   )}
                   {props.DrinkType.HOT && (
                     <>
-                      <styled_MenuItem.Input
-                        name="ICE"
-                        id="HOT"
-                        onChange={onChangeDrinkTypeHandler}
-                      />
+                      <styled_MenuItem.Input name="ICE" id="HOT" />
                       <label htmlFor="HOT">HOT</label>
                     </>
                   )}
@@ -308,7 +325,7 @@ const DetailOne = (props) => {
             </styled_MenuItem.smallFieldset>
             <styled_Menu.ButtonBoxCotainer>
               {CategoryInValid ? (
-                <ButtonSmallBox onClick={onClickFoodCart}>
+                <ButtonSmallBox onClick={onClickFavorite}>
                   <p>나만의 푸드로 등록</p>
                 </ButtonSmallBox>
               ) : (
@@ -375,6 +392,7 @@ const DetailOne = (props) => {
           </styled_MenuItem.DetailTextBox>
         </styled_MenuItem.DetailBox>
       </styled_Menu.Main>
+      <Footer />
     </AllBox>
   );
 };

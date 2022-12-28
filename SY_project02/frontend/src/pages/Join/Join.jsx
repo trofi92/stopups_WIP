@@ -103,7 +103,7 @@ const Join = () => {
         })
         .then((res) => {
           console.log("회원가입 성공=>", res);
-          navigate("/joinSuccess", { replace: true });
+          navigate("/joinSuccess", { replace: true, state: nickname });
         })
         .catch((error) => {
           console.error("회원가입 실패", error);
