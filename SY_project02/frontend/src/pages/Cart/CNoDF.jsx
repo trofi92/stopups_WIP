@@ -64,7 +64,7 @@ export const CNoDF = () => {
 
     const handleRemove = () => {
         if (checkItems.length === 0) {
-            alert("삭제 할 음료를 선택 하세요.")
+            alert("삭제 할 음료를 선택하세요.")
         } else {
             dispatch(removeFromCart(checkItems));
             setCheckItems([]);
@@ -85,7 +85,7 @@ export const CNoDF = () => {
             alert("총 주문 가능 수량은 20개 입니다.")
         } else if (cart.amount <= 20) {
             if (user.location === "") {
-                alert("주문하실 매장을 선택 해주세요.")
+                alert("주문하실 매장을 선택해 주세요.")
                 navigate("/selectMap")
             } else {
                 alert("결제 페이지로 이동합니다.");

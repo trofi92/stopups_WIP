@@ -34,9 +34,9 @@ export const useLoginService = () => {
   const loginService = (e, email, password) => {
     e.preventDefault();
     if (email === "") {
-      alert("이메일을 입력해주세요");
+      alert("이메일을 입력해 주세요.");
     } else if (password === "") {
-      alert("비밀번호를 입력해주세요");
+      alert("비밀번호를 입력해 주세요.");
     } else {
       const post = {
         email,

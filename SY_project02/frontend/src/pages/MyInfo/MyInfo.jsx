@@ -36,7 +36,7 @@ const MyInfo = () => {
       return navigate("/login", { replace: true });
     } catch (error) {
       console.error("회원정보 수정 실패 =>", error);
-      alert("회원정보 수정에 실패했습니다");
+      alert("회원정보 수정에 실패했습니다.");
     }
   };
 
@@ -75,13 +75,13 @@ const MyInfo = () => {
   const onSumbitMyInfo = (e) => {
     e.preventDefault();
     if (telephone === "") {
-      alert("전화번호를 입력해주세요");
+      alert("전화번호를 입력해 주세요.");
     } else if (checkedNick !== true) {
-      alert("선택적 개인정보 수집동의 및 이용약관에 동의해주세요");
+      alert("선택적 개인정보 수집동의 및 이용약관에 동의해 주세요.");
     } else if (nickname === "") {
-      alert("닉네임을 입력해주세요");
+      alert("닉네임을 입력해 주세요.");
     } else if (certification !== true) {
-      alert("휴대폰 인증을 해주세요");
+      alert("휴대폰 인증을 해주세요.");
     } else {
       requestChangeUserInfo(e);
     }

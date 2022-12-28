@@ -18,7 +18,7 @@ export const MIPhoneAuth = () => {
 
   const handlePhoneSubmit = (e) => {
     if (e.target.value === "") {
-      alert("휴대전화 번호를 입력해주세요!");
+      alert("휴대전화 번호를 입력해 주세요.");
     }
     setTelephone(phoneRef);
     phoneSubmit(e, telephone);
@@ -30,7 +30,7 @@ export const MIPhoneAuth = () => {
   const handleSmsSubmit = (e) => {
     document.getElementById("au_number").value = "";
     if (!rnd || rnd !== rndNum) {
-      alert("인증에 실패했습니다. 다시 시도해주세요");
+      alert("인증에 실패했습니다. 다시 시도해 주세요.");
       return navigate("/MyInfo", { replace: true });
     }
     smsSubmit(e, rndNum);
