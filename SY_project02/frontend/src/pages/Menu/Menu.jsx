@@ -8,6 +8,7 @@ import { AllBox } from "../../styled/AllBox";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import MenuCard from "./MenuItem/MenuCard";
+import MenuTheme from "../../image/Menu/MenuTheme.png"
 
 const Menu = () => {
   const [ClassificationInValid, setClassificationInValid] = useState(true);
@@ -189,7 +190,7 @@ const Menu = () => {
             </styled_Menu.MainInner>
           </styled_Menu.FirstContainer>
         ) : (
-          <styled_Menu.FirstContainer height="236">
+          <styled_Menu.FirstContainer height="260">
             <styled_Menu.MainInner>
               <p>분류 보기 </p>
 
@@ -297,7 +298,7 @@ const Menu = () => {
                   </styled_Menu.CheckBox>
                   <img
                     alt="이미지가 없습니다"
-                    src="https://image.istarbucks.co.kr/upload/banner/themebnr/jAVzia_20221201102659366.jpg"
+                    src={MenuTheme}
                   />
                 </>
               )}
