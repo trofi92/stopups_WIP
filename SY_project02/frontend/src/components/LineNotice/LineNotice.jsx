@@ -102,30 +102,6 @@ export const LineNotice = () => {
                                 {/*</PBCUl>*/}
                             </styled_LN.PBCont>
                         </styled_LN.PBContBox>
-                        {/*프로모션 양옆에 살짝 보이는 부분하나밖에 없음*/}
-                        {/*슬라이드 컨트롤러*/}
-                        {/*<styled_LN.PBSlicerController>*/}
-                        {/*    /!*일시정지*!/*/}
-                        {/*    <styled_LN.PBSCBox>*/}
-                        {/*        <styled_LN.PBSCDiv>*/}
-                        {/*            <styled_LN.PBSCDDiv>*/}
-                        {/*                <styled_LN.PBSCDDP/>*/}
-                        {/*            </styled_LN.PBSCDDiv>*/}
-                        {/*        </styled_LN.PBSCDiv>*/}
-                        {/*    </styled_LN.PBSCBox>*/}
-                        {/*    /!*페이지 버튼*!/*/}
-                        {/*    <styled_LN.PBSCPageBox>*/}
-                        {/*        <styled_LN.PBSCDDiv>*/}
-                        {/*            <styled_LN.PBSCPItem>*/}
-                        {/*                <styled_LN.PBSCPIP/>*/}
-                        {/*            </styled_LN.PBSCPItem>*/}
-                        {/*        </styled_LN.PBSCDDiv>*/}
-                        {/*    </styled_LN.PBSCPageBox>*/}
-                        {/*</styled_LN.PBSlicerController>*/}
-                        {/*/!*왼쪽 버튼*!/*/}
-                        {/*<styled_LN.PBSCPrevBtn/>*/}
-                        {/*/!*오른쪽 버튼*!/*/}
-                        {/*<styled_LN.PBSCNextBtn/>*/}
                     </styled_LN.PBInnerBox>
                 </styled_LN.PB> : null}
         </>

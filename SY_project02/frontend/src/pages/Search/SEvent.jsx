@@ -7,8 +7,6 @@ import axios from "axios";
 export const SEvent = ({result, state}) => {
     const [allEvent, setAllEvent] = useState([]);
 
-    // console.log("이벤트 검색 결과", result);
-
     useEffect(() => {
         const all = async () => {
             await axios
@@ -20,8 +18,6 @@ export const SEvent = ({result, state}) => {
         all();
     }, []);
 
-    // console.log("allEvent", allEvent);
-
     const searchedAllEvent = allEvent.filter((data) => {
         if (state !== "" && result === "") {
             return data.Title.toLowerCase().includes(state.toLowerCase());
@@ -29,8 +25,6 @@ export const SEvent = ({result, state}) => {
             return data.Title.toLowerCase().includes(result.toLowerCase());
         }
     })
-
-    // console.log("searchedAllEvent", searchedAllEvent);
 
     return (
         <styled_Search.SSection>

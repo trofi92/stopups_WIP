@@ -31,22 +31,34 @@ export const StopUpsRewards = () => {
             </styled_HM.NLi>
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle1}>
-                    스탑업스 리워드
-                    <styled_BU.HMButton/>
+                    스탑없으 리워드
+                    {open1 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open1 === true ? <SRInner1/> : null}
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle2}>
-                    스탑업스 카드
-                    <styled_BU.HMButton/>
+                    스탑없으 카드
+                    {open2 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open2 === true ? <SRInner2/> : null}
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle3}>
-                    스탑업스 e-Gift Card
-                    <styled_BU.HMButton/>
+                    스탑없으 e-Gift Card
+                    {open3 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open3 === true ? <SRInner3/> : null}

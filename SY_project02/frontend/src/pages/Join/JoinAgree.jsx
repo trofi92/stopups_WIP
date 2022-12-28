@@ -5,7 +5,7 @@ import {Footer} from "../../components/Footer/Footer";
 import * as styled_AB from "../../styled/AllBox";
 import {HomePageAgree} from "./HomePageAgree";
 import {UserAgree} from "./UserAgree";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import * as styled_JoinAB from "../../styled/Join/JoinAgreeBox";
 import PhonePassImg from "../../image/Join/PhonePassImg.png"
 import {useState} from "react";
@@ -64,10 +64,6 @@ const JoinAgree = () => {
                                                 onClick={onClickCheckedHome}
                                                 checkedHome={checkedHome}
                                             />
-                                            {/*<styled_Join.ALH*/}
-                                            {/*    onClick={onClickCheckedHome}*/}
-                                            {/*    checkedHome={checkedHome}*/}
-                                            {/*/>*/}
                                         </styled_Join.AgreeSpan>
                                         {/*동의 약관 내용 박스*/}
                                         <HomePageAgree/>
@@ -84,10 +80,6 @@ const JoinAgree = () => {
                                                 onClick={onClickCheckedUser}
                                                 checkedUser={checkedUser}
                                             />
-                                            {/*<styled_Join.ALU*/}
-                                            {/*    onClick={onClickCheckedUser}*/}
-                                            {/*    checkedUser={checkedUser}*/}
-                                            {/*/>*/}
                                         </styled_Join.AgreeSpan>
                                         {/*동의 약관 내용 박스*/}
                                         <UserAgree/>

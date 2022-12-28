@@ -1,6 +1,5 @@
 import * as styled_Event from "../../styled/Event/Event";
 
-
 export const ESCard = () => {
     return (
         <styled_Event.ESArticle>

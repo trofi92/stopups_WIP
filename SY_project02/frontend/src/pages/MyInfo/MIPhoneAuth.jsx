@@ -4,12 +4,8 @@ import * as styled_MI from "../../styled/MyInfo/MyInfo";
 import { usePhoneSubmit, useSmsSubmit } from "../../hooks/use-submit";
 import { checkPhone } from "../../components/join/JoinRegex";
 import { useNavigate } from "react-router-dom";
-import { useTokenChecker } from "../../hooks/use-token-checker";
 
 export const MIPhoneAuth = () => {
-  const { authRequest } = useTokenChecker("/myInfo/MIPhoneAuth");
-  authRequest();
-
   const navigate = useNavigate();
   const [telephone, setTelephone] = React.useState("");
   const [rndNum, setRndNum] = React.useState("");

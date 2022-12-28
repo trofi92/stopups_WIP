@@ -11,10 +11,9 @@ import {MSInner5} from "./MyStopUpsInner/MSInner5";
 import {useSelector} from "react-redux";
 
 export const MyStopUps = () => {
-    const [open1, setOpen1] = useState(false);
-
     const user = useSelector(state => state.user);
 
+    const [open1, setOpen1] = useState(false);
     const openToggle1 = () => {
         setOpen1(!open1);
     };
@@ -58,28 +57,44 @@ export const MyStopUps = () => {
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle1}>
                         My 리워드
-                        <styled_BU.HMButton/>
+                        {open1 ? (
+                            <styled_BU.HMButtonClicked/>
+                        ) : (
+                            <styled_BU.HMButton/>
+                        )}
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open1 === true ? <MSInner1/> : null}
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle2}>
                         My 스탑없으 카드
-                        <styled_BU.HMButton/>
+                        {open2 ? (
+                            <styled_BU.HMButtonClicked/>
+                        ) : (
+                            <styled_BU.HMButton/>
+                        )}
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open2 === true ? <MSInner2/> : null}
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle3}>
                         My 스탑없으 e-Gift Card
-                        <styled_BU.HMButton/>
+                        {open3 ? (
+                            <styled_BU.HMButtonClicked/>
+                        ) : (
+                            <styled_BU.HMButton/>
+                        )}
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open3 === true ? <MSInner3/> : null}
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle4}>
                         My 쿠폰
-                        <styled_BU.HMButton/>
+                        {open4 ? (
+                            <styled_BU.HMButtonClicked/>
+                        ) : (
+                            <styled_BU.HMButton/>
+                        )}
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open4 === true ? <MSInner4/> : null}
@@ -100,7 +115,11 @@ export const MyStopUps = () => {
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle5}>
                         My e-프리퀀시
-                        <styled_BU.HMButton/>
+                        {open5 ? (
+                            <styled_BU.HMButtonClicked/>
+                        ) : (
+                            <styled_BU.HMButton/>
+                        )}
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open5 === true ? <MSInner5/> : null}
@@ -142,7 +161,11 @@ export const MyStopUps = () => {
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle6}>
                         개인정보관리
-                        <styled_BU.HMButton/>
+                        {open6 ? (
+                            <styled_BU.HMButtonClicked/>
+                        ) : (
+                            <styled_BU.HMButton/>
+                        )}
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open6 === true ? <MSInner6/> : null}
@@ -157,28 +180,44 @@ export const MyStopUps = () => {
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle1}>
                         My 리워드
-                        <styled_BU.HMButton/>
+                        {open1 ? (
+                            <styled_BU.HMButtonClicked/>
+                        ) : (
+                            <styled_BU.HMButton/>
+                        )}
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open1 === true ? <MSInner1/> : null}
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle2}>
-                        My 스탑없스 카드
-                        <styled_BU.HMButton/>
+                        My 스탑없으 카드
+                        {open2 ? (
+                            <styled_BU.HMButtonClicked/>
+                        ) : (
+                            <styled_BU.HMButton/>
+                        )}
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open2 === true ? <MSInner2/> : null}
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle3}>
-                        My 스탑없스 e-Gift Card
-                        <styled_BU.HMButton/>
+                        My 스탑없으 e-Gift Card
+                        {open3 ? (
+                            <styled_BU.HMButtonClicked/>
+                        ) : (
+                            <styled_BU.HMButton/>
+                        )}
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open3 === true ? <MSInner3/> : null}
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle4}>
                         My 쿠폰
-                        <styled_BU.HMButton/>
+                        {open4 ? (
+                            <styled_BU.HMButtonClicked/>
+                        ) : (
+                            <styled_BU.HMButton/>
+                        )}
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open4 === true ? <MSInner4/> : null}
@@ -199,7 +238,11 @@ export const MyStopUps = () => {
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle5}>
                         My e-프리퀀시
-                        <styled_BU.HMButton/>
+                        {open5 ? (
+                            <styled_BU.HMButtonClicked/>
+                        ) : (
+                            <styled_BU.HMButton/>
+                        )}
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open5 === true ? <MSInner5/> : null}
@@ -241,7 +284,11 @@ export const MyStopUps = () => {
                 <styled_HM.NLi>
                     <styled_HM.NLiP onClick={openToggle6}>
                         개인정보관리
-                        <styled_BU.HMButton/>
+                        {open6 ? (
+                            <styled_BU.HMButtonClicked/>
+                        ) : (
+                            <styled_BU.HMButton/>
+                        )}
                     </styled_HM.NLiP>
                 </styled_HM.NLi>
                 {open6 === true ? <MSInner6/> : null}

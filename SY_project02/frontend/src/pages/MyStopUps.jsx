@@ -256,20 +256,6 @@ const MyStopUps = () => {
               </styled_MSU.MSU3ArticleR>
             </styled_MSU.MSUSection3>
           </styled_MSU.MSUDiv>
-
-          {/*스타벅스 리워드 최근 일주일 판매 집계 기준*/}
-          {/*회원가입할 때 나이가 없어서 구현 불가능*/}
-          {/*<styled_MSU.MSUSection>*/}
-          {/*    <form method={"post"}>*/}
-          {/*        <styled_MSU.MSUSFieldset>*/}
-          {/*            /!*헤더*!/*/}
-          {/*            <styled_MSU.MSUSHeader>*/}
-          {/*                <styled_MSU.MSUSHP>스타벅스 코리아를 사랑하는</styled_MSU.MSUSHP>*/}
-          {/*            </styled_MSU.MSUSHeader>*/}
-          {/*            /!*판매순*!/*/}
-          {/*        </styled_MSU.MSUSFieldset>*/}
-          {/*    </form>*/}
-          {/*</styled_MSU.MSUSection>*/}
         </styled_F.FCBox>
       </styled_F.FContentsAllBox>
 

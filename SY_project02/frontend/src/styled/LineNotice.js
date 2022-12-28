@@ -1,8 +1,4 @@
 import styled from "styled-components";
-import MPBStop from "../image/Main/MPromotionBanner/MPBStop.png"
-import MPBPage1 from "../image/Main/MPromotionBanner/MPBPage1.png"
-import MPBPrev from "../image/Main/MPromotionBanner/MPBPrev.png"
-import MPBNext from "../image/Main/MPromotionBanner/MPBNext.png"
 
 // 라인 공지
 export const LN = styled.section`
@@ -192,14 +188,6 @@ export const PBCont = styled.div`
   vertical-align: baseline;
 `
 
-export const PBCUl = styled.ul`
-  width: 515%;
-  position: relative;
-  margin-left: 55px;
-  padding: 0;
-  vertical-align: baseline;
-`
-
 export const PBCLi = styled.li`
   list-style: none;
   position: relative;
@@ -216,113 +204,4 @@ export const PBCLImg = styled.img`
   vertical-align: top;
   margin: 0;
   padding: 0;
-`
-
-// 슬라이드 컨트롤러
-export const PBSlicerController = styled.div`
-  bottom: 30px;
-  height: 12px;
-  line-height: 1px;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-`
-// 일시정지
-export const PBSCBox = styled.div`
-  display: inline-block;
-  height: 12px;
-  position: relative;
-  width: 9px;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-`
-
-export const PBSCDiv = styled.div`
-  position: absolute;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: baseline;
-`
-
-export const PBSCDDiv = styled.div`
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: baseline;
-`
-
-export const PBSCDDP = styled.p`
-  background: url(${MPBStop}) 0 0;
-  height: 12px;
-  width: 9px;
-  display: block;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  cursor: pointer;
-`
-
-// 페이지 버튼
-export const PBSCPageBox = styled.div`
-  display: inline-block;
-  height: 12px;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-`
-
-export const PBSCPItem = styled.div`
-  float: left;
-  margin-left: 8px;
-  padding: 0;
-  vertical-align: baseline;
-  text-align: center;
-`
-
-export const PBSCPIP = styled.p`
-  background: url(${MPBPage1}) 0 0 no-repeat;
-  height: 12px;
-  width: 13px;
-  display: block;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  cursor: pointer;
-`
-
-// 왼쪽 버튼
-export const PBSCPrevBtn = styled.p`
-  position: absolute;
-  left: 3%;
-  top: 225px;
-  display: block;
-  background: url(${MPBPrev}) no-repeat center center transparent;
-  width: 51px;
-  height: 51px;
-  border: 2px solid #222;
-  border-radius: 27.5px;
-  cursor: pointer;
-`
-
-// 오른쪽 버튼
-export const PBSCNextBtn = styled.p`
-  position: absolute;
-  right: 3%;
-  top: 225px;
-  display: block;
-  background: url(${MPBNext}) no-repeat center center transparent;
-  width: 51px;
-  height: 51px;
-  border: 2px solid #222;
-  border-radius: 27.5px;
-  cursor: pointer;
 `

@@ -61,7 +61,6 @@ export const FCBox = styled.div`
   padding: 0;
 `
 
-// 최근 마신 음료 안내(이미지가 안뜸 왜지?)
 export const FCSection1 = styled.section`
   background: url(${MyMenuBox});
   border-radius: 3px;
@@ -227,17 +226,6 @@ export const FCDTHThDInput1 = styled.input`
 `
 
 export const FCDTHTbody1 = styled.tbody`
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: baseline;
-  text-align: center;
-  border-collapse: collapse;
-  border-spacing: 0;
-  display: table-row;
-`
-
-export const FCDTHTbodyTr1 = styled.tr`
   margin: 0;
   padding: 0;
   border: 0;

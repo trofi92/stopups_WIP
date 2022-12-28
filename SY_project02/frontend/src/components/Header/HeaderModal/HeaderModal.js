@@ -10,6 +10,7 @@ import { StopUpsRewards } from "./StopUpsRewards/StopUpsRewards";
 import { CorporateSales } from "./CorporateSales/CorporateSales";
 import { WhatsNew } from "./WhatsNew/WhatsNew";
 import { useNavigate } from "react-router-dom";
+import {HMTButton1, HMTButtonClicked} from "../../../styled/Button";
 
 const HeaderModal = ({ modalClose }) => {
   const [search, setSearch] = useState("");
@@ -103,35 +104,55 @@ const HeaderModal = ({ modalClose }) => {
               <styled_HM.NLiFirstTitle>
                 <styled_HM.NLiTitleP onClick={myStopUpsToggle}>
                   My StopUps
-                  <styled_BU.HMTButton />
+                  {openMyStopUps ? (
+                      <styled_BU.HMTButtonClicked />
+                  ) : (
+                      <styled_BU.HMTButton />
+                  )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiFirstTitle>
               {openMyStopUps === true ? <MyStopUps /> : null}
               <styled_HM.NLiTitle onClick={coffeeToggle}>
                 <styled_HM.NLiTitleP>
                   COFFEE
-                  <styled_BU.HMTButton />
+                  {openCoffee ? (
+                      <styled_BU.HMTButtonClicked />
+                  ) : (
+                      <styled_BU.HMTButton />
+                  )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>
               {openCoffee === true ? <Coffee /> : null}
               <styled_HM.NLiTitle onClick={menuToggle}>
                 <styled_HM.NLiTitleP>
                   MENU
-                  <styled_BU.HMTButton />
+                  {openMenu ? (
+                      <styled_BU.HMTButtonClicked />
+                  ) : (
+                      <styled_BU.HMTButton />
+                  )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>
               {openMenu === true ? <Menu /> : null}
               <styled_HM.NLiTitle onClick={storeToggle}>
                 <styled_HM.NLiTitleP>
                   STORE
-                  <styled_BU.HMTButton />
+                  {openStore ? (
+                      <styled_BU.HMTButtonClicked />
+                  ) : (
+                      <styled_BU.HMTButton />
+                  )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>
               {openStore === true ? <Store /> : null}
               <styled_HM.NLiTitle onClick={responsibilityToggle}>
                 <styled_HM.NLiTitleP>
                   RESPONSIBILITY
-                  <styled_BU.HMTButton />
+                  {openResponsibility ? (
+                      <styled_BU.HMTButtonClicked />
+                  ) : (
+                      <styled_BU.HMTButton />
+                  )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>
               {openResponsibility === true ? (
@@ -140,7 +161,11 @@ const HeaderModal = ({ modalClose }) => {
               <styled_HM.NLiTitle onClick={stopUpsRewardsToggle}>
                 <styled_HM.NLiTitleP>
                   StopUps Rewards
-                  <styled_BU.HMTButton />
+                  {openStopUpsRewards ? (
+                      <styled_BU.HMTButtonClicked />
+                  ) : (
+                      <styled_BU.HMTButton />
+                  )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>
               {openStopUpsRewards === true ? (
@@ -149,7 +174,11 @@ const HeaderModal = ({ modalClose }) => {
               <styled_HM.NLiTitle onClick={corporateSalesToggle}>
                 <styled_HM.NLiTitleP>
                   CORPORATE SALES
-                  <styled_BU.HMTButton />
+                  {openCorporateSales ? (
+                      <styled_BU.HMTButtonClicked />
+                  ) : (
+                      <styled_BU.HMTButton />
+                  )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>
               {openCorporateSales === true ? (
@@ -158,7 +187,11 @@ const HeaderModal = ({ modalClose }) => {
               <styled_HM.NLiTitle onClick={whatsNewToggle}>
                 <styled_HM.NLiTitleP>
                   WHAT'S NEW
-                  <styled_BU.HMTButton />
+                  {openWhatsNew ? (
+                      <styled_BU.HMTButtonClicked />
+                  ) : (
+                      <styled_BU.HMTButton />
+                  )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>
               {openWhatsNew === true ? <WhatsNew /> : null}

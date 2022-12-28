@@ -38,7 +38,6 @@ export const MSReword = () => {
                                     가입을 통해 리워드 혜택을 즐기세요.
                                 </styled_Main.MSRCIP>
                             </styled_Main.MSRCIText>
-                            {/*height 38px이 안됨*/}
                             <styled_Main.MSRCIButton>
                                 <Link to={"/joinAgree"}>
                                     <styled_Main.MSRCIJoin>회원가입</styled_Main.MSRCIJoin>

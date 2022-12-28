@@ -4,7 +4,6 @@ import FLogo from "../image/Footer/FLogo.png"
 // 푸터
 export const F = styled.div`
   margin: 0 auto;
-  //height: 825.938px;
   padding: 32px 0 35px 0;
   background: #2c2a29;
   position: relative;

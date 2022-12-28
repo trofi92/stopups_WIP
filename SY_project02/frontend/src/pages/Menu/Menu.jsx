@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import * as styled_Menu from "../../styled/Menu/Menu";
 import { ButtonBox } from "../../styled/Button";
@@ -10,7 +10,8 @@ import { useParams } from "react-router-dom";
 import MenuCard from "./MenuItem/MenuCard";
 
 const Menu = () => {
-  const [ClassificationInValid, setClassificationInValid] = useState(true);
+  const [ClassificationInValid, setClassificationInValid] =
+    useState(true);
   const [DetailBox, setDetailBox] = useState(true);
   const [smallBox, setSmallBox] = useState(false);
   const [hidden, setHidden] = useState("");
@@ -51,8 +52,8 @@ const Menu = () => {
     let p2 = [];
     const fetchData = async () => {
       const response = await axios.get(
-        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=분류&Name=`
-        // { withCredentials: true }
+        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=분류&Name=`,
+        { withCredentials: false }
       );
 
       // <- 전체 상품을 보려고 먼저 데이터에 들어오는 카테고리를 빼서 DataCategory 에 넣어준 후 이 배열을 사용해서  map 함수를 사용한다.
@@ -167,7 +168,15 @@ const Menu = () => {
 
       <styled_Menu.Main>
         <styled_Menu.ItemTitle>
-          {dataCategory[1] === "브레드" ? <h1>푸드</h1> : <h1>음료</h1>}
+          {dataCategory[1] === "브레드" ? (
+            <styled_Menu.ItemTitleBox>
+              <h1>푸드</h1>
+            </styled_Menu.ItemTitleBox>
+          ) : (
+            <styled_Menu.ItemTitleBox>
+              <h1>음료</h1>
+            </styled_Menu.ItemTitleBox>
+          )}
         </styled_Menu.ItemTitle>
         {ClassificationInValid ? (
           <styled_Menu.FirstContainer height="55">
@@ -181,7 +190,7 @@ const Menu = () => {
             </styled_Menu.MainInner>
           </styled_Menu.FirstContainer>
         ) : (
-          <styled_Menu.FirstContainer height="255">
+          <styled_Menu.FirstContainer height="236">
             <styled_Menu.MainInner>
               <p>분류 보기 </p>
 
@@ -300,19 +309,20 @@ const Menu = () => {
           {smallBox ? (
             <>
               <styled_Menu.SmallBox
-                url="http://image.istarbucks.co.kr/common/img/menu/icon_pic_on.png"
+                url="https://image.istarbucks.co.kr/common/img/menu/icon_pic.png"
                 onClick={smallBoxFalseHanlder}
+                backgroundColor="#fff"
+                color="#666"
                 width="69"
-                backgroundColor="#D8D8D8"
               >
                 사진으로 보기
               </styled_Menu.SmallBox>
               <styled_Menu.SmallBox
-                url="http://image.istarbucks.co.kr/common/img/menu/icon_ante.png"
-                width="80"
+                url="https://image.istarbucks.co.kr/common/img/menu/icon_ante_on.png"
                 onClick={smallBoxTrueHanlder}
-                backgroundColor="#006633"
-                underline="underline"
+                backgroundColor="#666"
+                color="#fff"
+                width="80"
               >
                 영양정보로 보기
               </styled_Menu.SmallBox>
@@ -322,17 +332,19 @@ const Menu = () => {
               <styled_Menu.SmallBox
                 url="http://image.istarbucks.co.kr/common/img/menu/icon_pic_on.png"
                 onClick={smallBoxFalseHanlder}
-                width="69"
-                backgroundColor="#006633"
+                backgroundColor="#666"
+                color="#fff"
                 underline="underline"
+                width="69"
               >
                 사진으로 보기
               </styled_Menu.SmallBox>
               <styled_Menu.SmallBox
                 url="http://image.istarbucks.co.kr/common/img/menu/icon_ante.png"
-                width="80"
                 onClick={smallBoxTrueHanlder}
-                backgroundColor="#D8D8D8"
+                backgroundColor="#fff"
+                color="#666"
+                width="80"
               >
                 영양정보로 보기
               </styled_Menu.SmallBox>
@@ -340,18 +352,27 @@ const Menu = () => {
           )}
 
           {DetailBox ? (
-            <styled_Menu.ClassificationContainer size="hidden" hidden={hidden}>
-              <styled_Menu.ClassificationBox onClick={detailBoxHandler}>
-                상세 분류
+            <styled_Menu.ClassificationContainer
+              size="hidden"
+              hidden={hidden}
+            >
+              <styled_Menu.ClassificationBox
+                onClick={detailBoxHandler}
+              >
+                상세분류
               </styled_Menu.ClassificationBox>
             </styled_Menu.ClassificationContainer>
           ) : (
             <styled_Menu.ClassificationContainer>
-              <styled_Menu.ClassificationBox onClick={detailBoxHandler}>
-                상세 분류
+              <styled_Menu.ClassificationBox
+                onClick={detailBoxHandler}
+              >
+                상세분류
               </styled_Menu.ClassificationBox>
 
-              <styled_Menu.ClassificationList onClick={checkboxHandler}>
+              <styled_Menu.ClassificationList
+                onClick={checkboxHandler}
+              >
                 <input
                   type="checkbox"
                   id="new"
@@ -369,7 +390,9 @@ const Menu = () => {
                   <span>신규 출시된 메뉴</span>{" "}
                 </label>
               </styled_Menu.ClassificationList>
-              <styled_Menu.ClassificationList onClick={checkboxHandler}>
+              <styled_Menu.ClassificationList
+                onClick={checkboxHandler}
+              >
                 <input
                   type="checkbox"
                   id="season"
@@ -384,7 +407,7 @@ const Menu = () => {
                   alt="이미지없음"
                 />
                 <label htmlFor="season">
-                  <span>시즌기간 출시되는 시즌성 메뉴</span>
+                  <span>한정기간 출시되는 시즌성 메뉴</span>
                 </label>
               </styled_Menu.ClassificationList>
             </styled_Menu.ClassificationContainer>
@@ -400,7 +423,8 @@ const Menu = () => {
           <>
             {dataCategory.map((value, index) => {
               return (
-                (value !== "전체 음료 보기" || value !== "전체 푸드 보기") && (
+                (value !== "전체 음료 보기" ||
+                  value !== "전체 푸드 보기") && (
                   <Nutrition Category={value} key={index} />
                 ) // 전체상품보기가 api에 없기때문에 조건문을 줘서 출력이 되지 않게 함
               );
@@ -412,7 +436,8 @@ const Menu = () => {
             {dataCategory.map((value, index) => {
               console.log(index);
               return (
-                (value !== "전체 푸드 보기" || value !== "전체 음료 보기") && (
+                (value !== "전체 푸드 보기" ||
+                  value !== "전체 음료 보기") && (
                   <MenuCard Category={value} />
                 ) // 전체상품보기가 api에 없기때문에 조건문을 줘서 출력이 되지 않게 함
               );

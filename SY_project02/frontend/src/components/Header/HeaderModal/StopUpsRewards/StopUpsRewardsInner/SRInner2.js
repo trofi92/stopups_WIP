@@ -8,14 +8,14 @@ export const SRInner2 = () => {
                 <styled_HM.NLULi>
                     <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
-                            스탑업스 카드 소개
+                            스탑없으 카드 소개
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>
                 <styled_HM.NLULi>
                     <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
-                            스탑업스 카드 갤러리
+                            스탑없으 카드 갤러리
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>

@@ -3597,18 +3597,6 @@ export const HomePageAgree = () => {
                             </div>
                         </styled_JoinAB.ABSIBP>
                     </styled_JoinAB.ABSInnerBox>
-                    {/*스크롤 박스*/}
-                    {/*이걸 어떻게 스크롤 박스랑 연결하느냐가 문제....*/}
-                    {/*<ABSScrollBox>*/}
-                    {/*    <ABSSBContainer>*/}
-                    {/*        /!*스크롤 드래그 바*!/*/}
-                    {/*        <ABSSBCDragger>*/}
-                    {/*            <ABSSBCDBar/>*/}
-                    {/*        </ABSSBCDragger>*/}
-                    {/*        /!*스크롤 드래그 길이*!/*/}
-                    {/*        <ABSSBCRail/>*/}
-                    {/*    </ABSSBContainer>*/}
-                    {/*</ABSScrollBox>*/}
                 </styled_JoinAB.ABSBox>
             </styled_JoinAB.ABox>
         </>

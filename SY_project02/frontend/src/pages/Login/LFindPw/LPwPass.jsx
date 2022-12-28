@@ -30,12 +30,6 @@ const LIdPass = () => {
         },
         { withCredentials: false }
       );
-      // await axios.post(`http://stopupsapi.tk:8080/sms/`, {
-      //     phone_number,
-      //     rnd_number,
-      // });
-      // 입력 정보 값 초기화 안하는게 더 나아보임
-      // e.target.phone_number.value = ""; // 입력 정보 값 초기화
     }
     setShow(!show); // 휴대전화 인증 토글 변경
   };

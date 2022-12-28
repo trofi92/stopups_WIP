@@ -44,35 +44,55 @@ export const Coffee = () => {
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle1}>
                     커피
-                    <styled_BU.HMButton/>
+                    {open1 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open1 === true ? <CInner1/> : null}
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle2}>
                     커피 이야기
-                    <styled_BU.HMButton/>
+                    {open2 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open2 === true ? <CInner2/> : null}
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle3}>
-                    스탑업스 리저브
-                    <styled_BU.HMButton/>
+                    스탑없으 리저브
+                    {open3 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open3 === true ? <CInner3/> : null}
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle4}>
                     에스프레소 음료
-                    <styled_BU.HMButton/>
+                    {open4 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open4 === true ? <CInner4/> : null}
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle5}>
                     최상의 커피를 즐기는 법
-                    <styled_BU.HMButton/>
+                    {open5 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open5 === true ? <CInner5/> : null}

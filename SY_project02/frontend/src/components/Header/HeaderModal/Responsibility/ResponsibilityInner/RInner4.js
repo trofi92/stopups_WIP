@@ -15,7 +15,7 @@ export const RInner4 = () => {
                 <styled_HM.NLULi>
                     <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
-                            스탑업스 재단
+                            스탑없으 재단
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>

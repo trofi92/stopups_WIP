@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import MIIcon from "../../image/MyInfo/MIIcon.png";
 
 // 전체 박스
 export const MIBox = styled.div`
@@ -31,19 +30,6 @@ export const MIEmailInput = styled.p`
   width: 528px;
   height: 47px;
   line-height: 5px;
-`;
-
-export const MIIcons = styled.i`
-  background: url(${MIIcon}) 0 center no-repeat;
-  background-size: 100% auto;
-  content: "";
-  cursor: pointer;
-  display: inline-block;
-  height: 26px;
-  margin-top: -2px;
-  vertical-align: middle;
-  width: 26px;
-  padding: 0;
 `;
 
 export const MIPhoneDiv = styled.div`
@@ -94,20 +80,6 @@ export const MIPhoneA = styled.p`
   }
 `;
 
-export const MIIconsPhone = styled.i`
-  background: url(${MIIcon}) 0 center no-repeat;
-  background-size: 100% auto;
-  content: "";
-  cursor: pointer;
-  display: inline-block;
-  height: 26px;
-  margin-top: 10px;
-  margin-left: 2%;
-  vertical-align: middle;
-  width: 26px;
-  padding: 0;
-`;
-
 export const MINIckSection = styled.section`
   margin: 20px 20px 30px 20px;
   position: relative;
@@ -156,43 +128,6 @@ export const MINSAgreeInput = styled.input`
   &:checked {
     background: #006633;
   }
-`;
-
-export const MINAgreeBox = styled.div`
-  background: #f7f7f7;
-  box-sizing: border-box;
-  color: #666 !important;
-  height: 170px;
-  width: 100%;
-  padding: 20px 2%;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  margin-bottom: 20px;
-  overflow: hidden;
-`;
-
-export const MINABDiv = styled.div`
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  max-width: 100%;
-  outline: none;
-  direction: ltr;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-`;
-
-export const MINAInner = styled.div`
-  position: relative;
-  top: 0;
-  left: 0;
-  margin-right: 30px;
-  overflow: hidden;
-  width: auto;
-  height: auto;
-  padding: 0;
-  vertical-align: baseline;
 `;
 
 export const NINInput = styled.input`

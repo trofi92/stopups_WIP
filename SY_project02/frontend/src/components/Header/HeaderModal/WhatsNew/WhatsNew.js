@@ -32,21 +32,33 @@ export const WhatsNew = () => {
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle1}>
                     이벤트
-                    <styled_BU.HMButton/>
+                    {open1 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open1 === true ? <WInner1/> : null}
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle2}>
                     뉴스
-                    <styled_BU.HMButton/>
+                    {open2 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open2 === true ? <WInner2/> : null}
             <styled_HM.NLi>
                 <styled_HM.NLiP onClick={openToggle3}>
                     매장별 이벤트
-                    <styled_BU.HMButton/>
+                    {open3 ? (
+                        <styled_BU.HMButtonClicked/>
+                    ) : (
+                        <styled_BU.HMButton/>
+                    )}
                 </styled_HM.NLiP>
             </styled_HM.NLi>
             {open3 === true ? <WInner3/> : null}

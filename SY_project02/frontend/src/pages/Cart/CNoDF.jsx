@@ -6,7 +6,7 @@ import {
     clearCart,
     removeFromCart,
     calculateTotals,
-    increase, decrease
+    increase, decrease, saveCart
 } from "../../features/cart/cartSlice"
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -69,39 +69,25 @@ export const CNoDF = () => {
         }
     };
 
-    const handleTotalCalculate = (itemIds) => {
-        dispatch(calculateTotals(itemIds));
-    };
+    useEffect(() => {
+        const handleTotalCalculate = (itemIds) => {
+            dispatch(calculateTotals(itemIds));
+        };
 
-    handleTotalCalculate(checkItems);
+        handleTotalCalculate(checkItems);
+    }, [checkItems]);
+
 
     const onClick = () => {
         if (cart.amount > 20) {
             alert("총 주문 가능 수량은 20개 입니다.")
         } else if (cart.amount <= 20) {
-            const amount = cart.amount;
-            const total = cart.total;
-            cart.cartItems.map((cart) => {
-                if (checkItems.includes(cart.id)) {
-                    const paymentData = {
-                        id: cart.id,
-                        name: cart.name,
-                        amount: cart.quantity,
-                        price: cart.price,
-                        totalAmount: amount,
-                        totalPrice: total
-                    };
-                    // totalAmount랑 totalPrice가 중복됨, 따로 보내줘야하나
-                    console.log("paymentData", paymentData, amount, total);
-                }
-            })
-
-            // console.log("paymentData", paymentData);
-            // // navigate("/payment")
-            // alert("결제로 이동")
+            alert("결제 페이지로 이동합니다.");
+            navigate("/payment");
+            // 선택된 제품만 redux에 남기고 나머지 삭제
+            dispatch(saveCart(checkItems));
         }
-
-    }
+    };
 
     // api에서 받아온 메뉴
     const [img, setImg] = useState([])
@@ -120,7 +106,6 @@ export const CNoDF = () => {
         event();
     }, []);
 
-    console.log()
     // name, ICED, size, 일회용 컵, amount, price, totalAmount, totalPrice
     return (
         <>
@@ -155,7 +140,6 @@ export const CNoDF = () => {
                                 title={"전체 선택"}
                                 onChange={(e) => {
                                     handleAllCheck(e.target.checked)
-                                    console.log(e.target.checked)
                                 }}
                                 // 데이터의 수와 체크된 아이템의 수가 다를 때 체크 해제
                                 checked={checkItems.length === cart.cartItems.length}
@@ -193,9 +177,9 @@ export const CNoDF = () => {
                                 </styled_C.CMCheck>
                                 {/*상품 이미지, 이름 등*/}
                                 <styled_C.CMBox>
-                                    {img.map((img) => {
+                                    {img.map((img, idx) => {
                                         if (img.ProductId === cart.id) {
-                                            return <styled_C.CFMImg src={img.Image}/>
+                                            return <styled_C.CFMImg src={img.Image} key={idx}/>
                                         }
                                     })}
                                     <styled_C.CFMText>
