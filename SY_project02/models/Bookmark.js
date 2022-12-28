@@ -20,6 +20,22 @@ module.exports = class Bookmark extends Sequelize.Model {
             key: "id",
           },
         },
+        price: {
+          type: Sequelize.STRING(400),
+          allowNull: true,
+        },
+        drinktype: {
+          type: Sequelize.STRING(200),
+          allowNull: true,
+        },
+        eattype: {
+          type: Sequelize.STRING(200),
+          allowNull: true,
+        },
+        cooktype: {
+          type: Sequelize.STRING(200),
+          allowNull: true,
+        },
       },
       {
         sequelize,

@@ -3,7 +3,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import * as React from "react";
 import { useState } from "react";
-import CChecked from "../../image/Cart/CChecked.png"
+import CChecked from "../../image/Cart/CChecked.png";
 
 export const Main = styled.div`
   display: flex;
@@ -17,12 +17,11 @@ export const Main = styled.div`
   border: 0;
   font-size: 100%;
   margin-top: 60px;
-
 `;
 
 export const ItemTitleBox = styled.div`
   margin: 0 15.703px;
-`
+`;
 
 export const ItemTitle = styled.div`
   width: 800px;
@@ -30,7 +29,7 @@ export const ItemTitle = styled.div`
     font-weight: 600;
     font-size: 30px;
   }
-  
+
   h2 {
     font-size: 28px;
   }
@@ -80,8 +79,8 @@ export const CategoryBox = styled.div`
   flex-direction: column;
   padding: 20px 0;
   position: relative;
-  font-family: "nbg", "맑은 고딕", HelveticaNeue, DroidSans, Sans-serif,
-    Helvetica;
+  font-family: "nbg", "맑은 고딕", HelveticaNeue, DroidSans,
+    Sans-serif, Helvetica;
 `;
 
 export const ButtonBoxCotainer = styled.div`
@@ -102,7 +101,7 @@ export const CheckBox = styled.div`
   overflow: hidden;
   width: auto;
   height: auto;
-  
+
   display: ${(props) => props.none};
 
   label {
@@ -159,7 +158,7 @@ export const SmallBox = styled.div`
   margin-top: 10px;
   cursor: pointer;
   border: 1px solid #ddd;
-  
+
   :hover {
     text-decoration: underline;
   }
@@ -251,7 +250,7 @@ export const ColorBox = styled.div`
   display: flex;
   align-items: center;
   color: #222;
-  
+
   img {
     width: 45px;
     height: 35.516px;
@@ -340,12 +339,17 @@ export function CheckboxLabels({
 }) {
   const [bChecked, setChecked] = useState(false);
 
-  const categoryParams = params.Category;
+  // const categoryParams = params.Category;
 
   const checkHandler = ({ target }) => {
     // p1.delete(Category);
 
-    checkedItemHandler(target.parentNode, target.value, target.checked, target);
+    checkedItemHandler(
+      target.parentNode,
+      target.value,
+      target.checked,
+      target
+    );
 
     setChecked(!bChecked);
 

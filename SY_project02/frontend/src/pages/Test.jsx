@@ -1,14 +1,20 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { SERVER_URL } from "../util/urls";
+import { useSelector } from "react-redux";
 
 export const Test = () => {
   const [name, setName] = useState("");
+  const user = useSelector((state) => state.user);
+
+  const post = {
+    email: user.email,
+  };
 
   const sendRequest = async () => {
     await axios
-      .get(`${SERVER_URL}/page/test`)
-      .then((res) => console.log(res));
+      .put(`${SERVER_URL}/page/test`, { data: post })
+      .then((res) => console.log(res?.data));
   };
   const handleChange = (e) => {
     setName(e.target.value);
@@ -19,9 +25,6 @@ export const Test = () => {
   }, []);
 
   const submitId = () => {
-    const post = {
-      id: name,
-    };
     axios(SERVER_URL, {
       method: "post",
       headers: {
