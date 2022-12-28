@@ -53,7 +53,11 @@ const updatePhoneAndNickname = async (res, req, next) => {
   }
 };
 
-module.exports = { updatePw, updatePhoneAndNickname };
+const bookmarks = async (req, res, next) => {
+  console.log(req?.body);
+};
+
+module.exports = { updatePw, updatePhoneAndNickname, bookmarks };
 
 // const info = async (req, res, next) => {
 //   const uTelephone = Object.keys(req.body)[0];

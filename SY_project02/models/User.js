@@ -5,7 +5,7 @@ const jwtSecret = process.env.JWT_SECRET;
 module.exports = class User extends Sequelize.Model {
   static generateJWT(user) {
     return jwt.sign({ id: user.email, name: user.name }, jwtSecret, {
-      expiresIn: "12h",
+      expiresIn: "30m",
     });
   }
 
@@ -68,8 +68,5 @@ module.exports = class User extends Sequelize.Model {
     db.User.hasOne(db.Cart, { foreignKey: "userId" });
     db.User.hasMany(db.Order, { foreignKey: "userId" });
     db.User.hasMany(db.Bookmark, { foreignKey: "userId" });
-    // db.User.belongsToMany(db.Product, {
-    //   through: "bookmarks",
-    // });
   }
 };
