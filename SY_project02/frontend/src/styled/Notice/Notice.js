@@ -232,42 +232,6 @@ export const NPA = styled.a`
   }
 `
 
-export const NPAClicked = styled.a`
-  font-weight: bold;
-  font-size: 12px;
-  color: #0d5f34;
-  border-bottom: 1px solid #0d5f34;
-  line-height: 15px;
-  cursor: pointer;
-`
-
-// 다음 버튼
-export const NPLNext = styled.li`
-  margin: 0 1px;
-  display: inline-block;
-  vertical-align: middle;
-  list-style: none;
-  padding: 0;
-  border: 0;
-`
-
-export const NPLNA = styled.a`
-  font-size: 12px;
-  color: #555;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  cursor: pointer;
-`
-
-export const NPLNAImg = styled.img`
-  vertical-align: top;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  border: 0;
-`
-
 export const NPLNButton = styled.button`
   border: 1px solid #dddddd;
   padding: 3px 6px;

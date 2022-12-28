@@ -662,7 +662,6 @@ export const RMButtonBox = styled.div`
   z-index: 10;
   max-width: 800px;
   margin-top: 0;
-  //margin: 33px auto 0;
   box-sizing: border-box;
 `
 
@@ -817,8 +816,6 @@ export const MSButtonP = styled.p`
   font-size: 15px;
   line-height: 34px;
   text-align: center;
-  //border: 2px solid #000;
-  //border-radius: 5px;
   box-sizing: border-box;
 
   :hover {

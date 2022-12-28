@@ -74,14 +74,6 @@ const NoticeInnerText = () => {
                           {notice.Desc}
                         </styled_NoticeIT.NITASpan>
                       </styled_NoticeIT.NITAP>
-                      {/*<styled_NoticeIT.NITAP>*/}
-                      {/*    <styled_NoticeIT.NITASpan>*/}
-                      {/*        공지사항 내용*/}
-                      {/*        <styled_NoticeIT.NITASpan> 이런 식으로 </styled_NoticeIT.NITASpan>*/}
-                      {/*        <styled_NoticeIT.NITASpan>해놨던데 </styled_NoticeIT.NITASpan>*/}
-                      {/*        <styled_NoticeIT.NITASpan>왜지</styled_NoticeIT.NITASpan>*/}
-                      {/*    </styled_NoticeIT.NITASpan>*/}
-                      {/*</styled_NoticeIT.NITAP>*/}
                     </styled_NoticeIT.NITAInner>
                   </styled_NoticeIT.NITArticle>
                   {/*목록 버튼*/}

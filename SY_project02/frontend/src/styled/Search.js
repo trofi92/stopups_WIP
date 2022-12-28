@@ -143,23 +143,6 @@ export const SFBLPAG = styled.p`
   }
 `;
 
-
-export const SFBLP = styled.p`
-  border-radius: 3px;
-  color: #444;
-  display: block;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-
-  :hover {
-    color: white;
-    background: #006633;
-    text-decoration: underline;
-  }
-`;
-
 // 검색 결과가 없는 경우
 export const SNoResult = styled.p`
   text-align: center;

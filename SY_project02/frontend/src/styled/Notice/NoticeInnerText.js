@@ -148,12 +148,6 @@ export const NITTable = styled.table`
   vertical-align: baseline;
 `
 
-export const NITTbody = styled.tbody`
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-`
-
 export const NITTh = styled.th`
   border-top: 1px solid #333;
   padding: 15px 0 15px 20px;

@@ -339,18 +339,10 @@ export const ESDLImg = styled.img`
   border: 0;
   
   transform: scale(1);
-  //-webkit-transform: scale(1);
-  //-moz-transform: scale(1);
-  //-ms-transform: scale(1);
-  //-o-transform: scale(1);
   transition: all 0.7s ease-in-out;
 
   :hover {
     transform: scale(1.2);
-    //-webkit-transform: scale(1.2);
-    //-moz-transform: scale(1.2);
-    //-ms-transform: scale(1.2);
-    //-o-transform: scale(1.2);
   }
 `
 

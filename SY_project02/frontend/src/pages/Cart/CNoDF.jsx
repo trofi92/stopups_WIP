@@ -6,7 +6,7 @@ import {
     clearCart,
     removeFromCart,
     calculateTotals,
-    increase, decrease, addToCart, saveCart
+    increase, decrease, saveCart
 } from "../../features/cart/cartSlice"
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -69,11 +69,14 @@ export const CNoDF = () => {
         }
     };
 
-    const handleTotalCalculate = (itemIds) => {
-        dispatch(calculateTotals(itemIds));
-    };
+    useEffect(() => {
+        const handleTotalCalculate = (itemIds) => {
+            dispatch(calculateTotals(itemIds));
+        };
 
-    handleTotalCalculate(checkItems);
+        handleTotalCalculate(checkItems);
+    }, [checkItems]);
+
 
     const onClick = () => {
         if (cart.amount > 20) {
@@ -174,9 +177,9 @@ export const CNoDF = () => {
                                 </styled_C.CMCheck>
                                 {/*상품 이미지, 이름 등*/}
                                 <styled_C.CMBox>
-                                    {img.map((img) => {
+                                    {img.map((img, idx) => {
                                         if (img.ProductId === cart.id) {
-                                            return <styled_C.CFMImg src={img.Image}/>
+                                            return <styled_C.CFMImg src={img.Image} key={idx}/>
                                         }
                                     })}
                                     <styled_C.CFMText>

@@ -65,7 +65,6 @@ export const SDrink = ({result, state}) => {
                                         <styled_Search.SEDHeader>
                                             <styled_Search.SEDHH3>
                                                 {drink.Name}
-                                                {/*<styled_Search.SYellow>검색단어강조</styled_Search.SYellow>*/}
                                             </styled_Search.SEDHH3>
                                         </styled_Search.SEDHeader>
                                         <styled_Search.SDDPText>

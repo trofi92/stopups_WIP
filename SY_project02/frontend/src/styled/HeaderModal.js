@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import HMExit from "../image/Header/HMExit.png"
 
-
 export const HM = styled.div`
   width: 800px;
   height: 100%;

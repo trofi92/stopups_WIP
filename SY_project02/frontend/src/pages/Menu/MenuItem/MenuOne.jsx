@@ -5,11 +5,10 @@ import {AllBox} from "../../../styled/AllBox";
 import * as styled_Menu from "../../../styled/Menu/Menu";
 import * as styled_MenuItem from "../../../styled/Menu/MenuItem";
 import {ButtonSmallBox} from "../../../styled/Button";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {addToCart} from "../../../features/cart/cartSlice";
 import {addToFavorites} from "../../../features/favorite/favoriteSlice";
 import {Footer} from "../../../components/Footer/Footer";
-import {MenuDescP} from "../../../styled/Menu/MenuItem";
 
 const DetailOne = (props) => {
     const [sizeData, setSizeData] = useState("");
@@ -56,7 +55,7 @@ const DetailOne = (props) => {
                 category: props.category,
                 amount: 1,
             }))
-            alert("나만의 푸드에 등록했습니다.")
+            alert("나만의 음료에 등록했습니다.")
             // 새로고침 되면서 favorite에 들어간 내용들이 전부 초기화됨....
             // if(window.confirm("나만의 음료에 등록했습니다. My 메뉴로 이동하시겠습니까?")) {
             //     window.location.href = "/favorite"

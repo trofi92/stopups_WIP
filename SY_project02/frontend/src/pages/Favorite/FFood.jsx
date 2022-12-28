@@ -1,6 +1,6 @@
 import * as styled_F from "../../styled/Favorite";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {removeFromCart} from "../../features/favorite/favoriteSlice";
 import {addToCart} from "../../features/cart/cartSlice";
 

@@ -27,7 +27,6 @@ export const Payment = () => {
     const user = useSelector((state) => state.user);
     const nickname = decrypt(user.nickname);
 
-    const [name, setName] = React.useState("");
     const clientKey = process.env.REACT_APP_CLIENT_KEY;
     // payType=> 변수=> ENUM,혹은 배열로 결제 타입을 저장
     const payType = {
@@ -159,9 +158,9 @@ export const Payment = () => {
                                     return (
                                         <styled_Payment.PSMenuBox key={cart.id}>
                                             <styled_Payment.PSMBox>
-                                                {img.map((img) => {
+                                                {img.map((img, idx) => {
                                                     if (img.ProductId === cart.id) {
-                                                        return <styled_Payment.PSMBImg src={img.Image}/>
+                                                        return <styled_Payment.PSMBImg src={img.Image} key={idx}/>
                                                     }
                                                 })}
                                                 <styled_Payment.PSMBText>

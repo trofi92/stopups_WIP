@@ -93,31 +93,6 @@ export const HMButtonClicked = styled.span`
   display: block;
 `;
 
-
-// 푸터 버튼
-export const FBigButton = styled.p`
-  display: block;
-  color: #ffffff;
-  font-size: 24px;
-  border: 2px solid #ffffff;
-  border-radius: 3px;
-  text-align: center;
-  padding: 10% 3%;
-`;
-
-export const FSmallButton = styled.p`
-  background: none;
-  border: 2px solid #fff;
-  border-radius: 3px;
-  color: #fff;
-  display: inline-block;
-  font-size: 12px;
-  margin: 10px 2px 0 3px;
-  width: 90px;
-  height: 30px;
-  line-height: 30px;
-`;
-
 // 자세히 보기 버튼
 export const SeeDetails = styled.p`
   width: 108px;

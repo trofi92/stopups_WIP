@@ -97,38 +97,6 @@ export const PPhoneButton = styled.button`
   }
 `;
 
-// 로그인 시 이용 가능합니다 페이지 버튼
-export const PCancelButton = styled.button`
-  font-size: 15px;
-  height: 47.78px;
-  line-height: 47.78px;
-  margin: 0;
-  width: 15%;
-  background: #666;
-  border-radius: 3px;
-  color: #fff;
-  display: block;
-  font-weight: bold;
-  text-align: center;
-  float: left;
-`;
-
-export const PConfirmButton = styled.button`
-  font-size: 15px;
-  height: 47.78px;
-  line-height: 47.78px;
-  width: 15%;
-  background: #222;
-  border-radius: 3px;
-  color: #fff;
-  display: block;
-  font-weight: bold;
-  text-align: center;
-  float: left;
-  margin: 0 0 0 10px;
-`;
-
-
 // 비밀번호로 인증
 export const PPBox = styled.div`
   background-size: cover;

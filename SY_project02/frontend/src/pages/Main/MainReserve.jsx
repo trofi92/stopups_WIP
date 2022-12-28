@@ -5,7 +5,6 @@ export const MainReserve = () => {
     return (
         <styled_Main.MReserve>
             <styled_Main.MRInner>
-                {/*애니메이션*/}
                 <styled_Main.MRText1></styled_Main.MRText1>
                 <styled_Main.MRText2></styled_Main.MRText2>
                 <styled_Main.MRIImg></styled_Main.MRIImg>

@@ -37,6 +37,7 @@ export const LFPDInput = styled.input`
   width: 100%;
   max-width: 520px;
 `
+
 // 비밀번호 양식 틀릴 경우
 export const LFPDP = styled.p`
   color: rgb(237, 28, 36);
@@ -131,17 +132,5 @@ export const LEPBtn2 = styled.li`
   width: 48%;
   float: left;
   list-style: none;
-  padding: 0;
-`
-
-export const LEPBtn2P = styled.p`
-  color: #fff;
-  display: block;
-  font-size: 24px;
-  height: 75px;
-  line-height: 75px;
-  text-align: center;
-  width: 100%;
-  margin: 0;
   padding: 0;
 `
