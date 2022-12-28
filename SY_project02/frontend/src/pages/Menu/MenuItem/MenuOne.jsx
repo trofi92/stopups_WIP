@@ -15,14 +15,12 @@ const DetailOne = (props) => {
   const [Cooked, setCooked] = useState("");
   const [TakeOut, setTakeOut] = useState("");
   const [DrinkType, setDrinkType] = useState("");
-  const params = useParams();
+
   const EatTypeInValid = props.EatType.SHOP || props.EatType.TAKEOUT;
   const CookedInValid = props.CookType.COOKED || props.CookType.NOTCOOKED; // 어떤 식으로 해야할까?
   const DrinkTypeInValid = props.DrinkType.HOT || props.DrinkType.ICED;
   const SizeInValid = props.price.Desert !== "0" && props.price.Desert;
-
   const replaceNumber = (value) => value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
   let now = new Date();
   let year = now.getFullYear();
   let todayMont = now.getMonth() + 1;
@@ -34,13 +32,21 @@ const DetailOne = (props) => {
   const whatDateTime = `${year}-${todayMont}-${todayDate} ${hour}:${minutes}:${seconds}`;
 
   const dispatch = useDispatch();
-  const params = useParams();
 
   const InValid =
     props.price.Desert !== "0" && props.price.hasOwnProperty("Desert");
 
   const onChangeHandler = (e) => {
     setSizeData(e.target.value);
+  };
+  const onChangeCookedHandler = (e) => {
+    setCooked(e.target.value);
+  };
+  const onChangeTakeOutHandler = (e) => {
+    setTakeOut(e.target.value);
+  };
+  const onChangeDrinkTypeHandler = (e) => {
+    setDrinkType(e.target.value);
   };
 
   const CategoryInValid =
@@ -134,7 +140,7 @@ const DetailOne = (props) => {
     }
   };
 
-  const onClickCartFood = (e) => {
+  const onClickFoodCart = (e) => {
     if (sizeData === "") {
       e.preventDefault();
       alert("워밍 옵션을 선택해주세요.");
@@ -175,64 +181,81 @@ const DetailOne = (props) => {
               </styled_MenuItem.TextBoxSpan>
             )}
             {/* <span> Nitro Vanilla Cream</span> */}
-            <styled_MenuItem.Fieldset>
-              {props.price.Tall !== "0" && (
-                <>
+            {(CookedInValid || DrinkTypeInValid) && (
+              <styled_MenuItem.Fieldset>
+                {CookedInValid ? (
+                  <legend>Cooked</legend>
+                ) : (
                   <legend>사이즈</legend>
-                  <styled_MenuItem.Input id="Tall" onChange={onChangeHandler} />
+                )}
 
-                  <label htmlFor="Tall">
-                    Tall : {props.price.Tall && replaceNumber(props.price.Tall)}
-                    원
-                  </label>
-                </>
-              )}
+                {props.price.Tall !== "0" && (
+                  <>
+                    <styled_MenuItem.Input
+                      id="Tall"
+                      onChange={onChangeHandler}
+                    />
 
-              {InValid && (
-                <>
-                  <legend>워밍 옵션</legend>
-                  <styled_MenuItem.Input
-                    id="Desert"
-                    onChange={onChangeHandler}
-                  />
+                    <label htmlFor="Tall">
+                      Tall :
+                      {props.price.Tall && replaceNumber(props.price.Tall)}원
+                    </label>
+                  </>
+                )}
 
-                  <label htmlFor="Desert">따뜻하게 데움</label>
+                {CookedInValid && (
+                  <>
+                    {props.CookType.COOKED && (
+                      <>
+                        <styled_MenuItem.Input
+                          id="Desert"
+                          onChange={onChangeCookedHandler}
+                        />
+                        <label htmlFor="Desert">따뜻하게 데움</label>
+                      </>
+                    )}
 
-                  <styled_MenuItem.Input
-                    id="Desert1"
-                    onChange={onChangeHandler}
-                  />
-                  <label htmlFor="Desert1">데우지 않음</label>
-                </>
-              )}
+                    {props.CookType.NOTCOOKED && (
+                      <>
+                        <styled_MenuItem.Input
+                          id="Desert1"
+                          onChange={onChangeCookedHandler}
+                        />
+                        <label htmlFor="Desert1">데우지 않음</label>
+                      </>
+                    )}
+                  </>
+                )}
 
-              {props.price.Grande !== "0" && (
-                <>
-                  <styled_MenuItem.Input
-                    id="Grande"
-                    value="Grande"
-                    onChange={onChangeHandler}
-                  />
-                  <label htmlFor="Grande">
-                    Grande :
-                    {props.price.Grande && replaceNumber(props.price.Grande)}원
-                  </label>
-                </>
-              )}
-              {props.price.Venti !== "0" && (
-                <>
-                  <styled_MenuItem.Input
-                    id="Venti"
-                    onChange={onChangeHandler}
-                  />
-                  <label htmlFor="Venti">
-                    Venti :
-                    {props.price.Venti && replaceNumber(props.price.Venti)}원
-                  </label>
-                </>
-              )}
-            </styled_MenuItem.Fieldset>
+                {props.price.Grande !== "0" && (
+                  <>
+                    <styled_MenuItem.Input
+                      id="Grande"
+                      value="Grande"
+                      onChange={onChangeHandler}
+                    />
+                    <label htmlFor="Grande">
+                      Grande :
+                      {props.price.Grande && replaceNumber(props.price.Grande)}
+                      원
+                    </label>
+                  </>
+                )}
+                {props.price.Venti !== "0" && (
+                  <>
+                    <styled_MenuItem.Input
+                      id="Venti"
+                      onChange={onChangeHandler}
+                    />
+                    <label htmlFor="Venti">
+                      Venti :
+                      {props.price.Venti && replaceNumber(props.price.Venti)}원
+                    </label>
+                  </>
+                )}
+              </styled_MenuItem.Fieldset>
             )}
+
             <styled_MenuItem.smallFieldset>
               {DrinkTypeInValid && (
                 <styled_MenuItem.Fieldset width="100%">
@@ -352,7 +375,6 @@ const DetailOne = (props) => {
           </styled_MenuItem.DetailTextBox>
         </styled_MenuItem.DetailBox>
       </styled_Menu.Main>
-      )}
     </AllBox>
   );
 };
