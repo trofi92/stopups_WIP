@@ -10,7 +10,7 @@ import {addToCart} from "../../../features/cart/cartSlice";
 import {addToFavorites} from "../../../features/favorite/favoriteSlice";
 import {Footer} from "../../../components/Footer/Footer";
 
-const DetailOne = (props) => {
+const MenuOne = (props) => {
     const [sizeData, setSizeData] = useState("");
     const [Cooked, setCooked] = useState("");
     const [TakeOut, setTakeOut] = useState("");
@@ -405,4 +405,4 @@ const DetailOne = (props) => {
     );
 };
 
-export default DetailOne;
+export default MenuOne;

@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
-import { useDebounce } from "../hooks/use-debounce";
+import { useDebounce } from "../../hooks/use-debounce";
 import { useDispatch, useSelector } from "react-redux";
-import { setULocation } from "../features/userInfo/userInfoSlice";
+import { setULocation } from "../../features/userInfo/userInfoSlice";
+import * as styled_Map from "../../styled/Map";
 
 const mapScript = document.createElement("script");
 mapScript.async = true;
@@ -95,6 +96,56 @@ export const Location = () => {
 
   return (
     <>
+      {/*지도 위에 띄울 그 뭐냐 그거*/}
+      <styled_Map.MModal>
+          <styled_Map.MMFieldset>
+            <styled_Map.MMDiv>
+              <styled_Map.MMSection>
+                <styled_Map.MMHeader>
+                  <styled_Map.MMHH2>
+                    매장찾기
+                  </styled_Map.MMHH2>
+                  <styled_Map.MMArticle>
+                    <styled_Map.MMAArticle>
+                      <styled_Map.MMAAHeader>
+                        <styled_Map.MMAAHH3>
+                          퀵 검색
+                        </styled_Map.MMAAHH3>
+                        <styled_Map.MMAAArticle>
+                          {/*검색 input 창*/}
+                          <styled_Map.MMAAADiv1>
+                            <styled_Map.MMAAADiv1Inner>
+                              <styled_Map.MMAAADiv1IInput
+                                  placeholder={"매장명 또는 주소"}
+                                  type="text" onChange={handleKeywords}
+                              />
+                              <styled_Map.MMAAADib1IA/>
+                            </styled_Map.MMAAADiv1Inner>
+                          </styled_Map.MMAAADiv1>
+                          {/*픽업 위치 지정*/}
+                          <styled_Map.MMAAADiv3>
+                            <h2  onClick={handleInfo}>
+                              픽업 위치 지정
+                            </h2>
+                          </styled_Map.MMAAADiv3>
+                          {/*픽업 위치 지정*/}
+                          <styled_Map.MMAAADiv4>
+                            <div>
+                              매장명 또는 주소를 입력하신 후<br/>
+                              지도 위의 체커를 선택하고 버튼을 클릭해주세요.
+                            </div>
+                          </styled_Map.MMAAADiv4>
+                        </styled_Map.MMAAArticle>
+                      </styled_Map.MMAAHeader>
+                    </styled_Map.MMAArticle>
+                  </styled_Map.MMArticle>
+                </styled_Map.MMHeader>
+              </styled_Map.MMSection>
+            </styled_Map.MMDiv>
+          </styled_Map.MMFieldset>
+      </styled_Map.MModal>
+
+
       <Map
         center={{
           lat: position.lat,
@@ -102,7 +153,7 @@ export const Location = () => {
         }}
         style={{
           width: "100%",
-          height: "480px",
+          height: "550px",
         }}
         level={3}
         onCreate={setMap}
@@ -119,13 +170,13 @@ export const Location = () => {
           </MapMarker>
         ))}
       </Map>
-      <details>
-        <summary>매장 선택하기</summary>
-        검색어 입력 후 나타난 지도 위의 체커를 선택한 후 버튼을
-        클릭해주세요.
-      </details>
-      <input type="text" onChange={handleKeywords} />
-      <button onClick={handleInfo}>픽업 위치 지정</button>
+      {/*<details>*/}
+      {/*  <summary>매장 선택하기</summary>*/}
+      {/*  검색어 입력 후 나타난 지도 위의 체커를 선택한 후 버튼을*/}
+      {/*  클릭해주세요.*/}
+      {/*</details>*/}
+      {/*<input type="text" onChange={handleKeywords} />*/}
+      {/*<button onClick={handleInfo}>픽업 위치 지정</button>*/}
     </>
   );
 };

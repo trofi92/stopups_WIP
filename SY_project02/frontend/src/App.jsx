@@ -31,7 +31,7 @@ import LPwPass from "./pages/Login/LFindPw/LPwPass";
 import LFindPw from "./pages/Login/LFindPw/LFindPw";
 import NoticeInnerText from "./pages/Notice/NoticeInnerText";
 import Search from "./pages/Search/Search";
-import Map from "./pages/Map";
+import Map from "./pages/Map/Map";
 import MIPassPassword from "./pages/MyInfo/Pass/MIPassPassword";
 import Introduce from "./pages/Introduce/Introduce";
 import Menu from "./pages/Menu/Menu";

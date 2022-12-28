@@ -1,12 +1,12 @@
 import React from "react";
-import * as styled_AB from "../styled/AllBox";
-import Header from "../components/Header/Header";
-import * as styled_Map from "../styled/Map";
-import { Footer } from "../components/Footer/Footer";
+import * as styled_AB from "../../styled/AllBox";
+import Header from "../../components/Header/Header";
+import * as styled_Map from "../../styled/Map";
+import { Footer } from "../../components/Footer/Footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import MBImg from "../image/MBImg.png";
+import MBImg from "../../image/MBImg.png";
 import { Location } from "./Location";
 
 const Map = () => {
@@ -19,7 +19,7 @@ const Map = () => {
     arrows: true,
     draggable: false,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 5000,
   };
 
   return (
@@ -28,8 +28,8 @@ const Map = () => {
 
       {/*지도 전체 박스*/}
       <styled_Map.MBox>
-        {/*지도*/}
         <styled_Map.MSection>
+          {/*지도*/}
           <Location />
         </styled_Map.MSection>
 

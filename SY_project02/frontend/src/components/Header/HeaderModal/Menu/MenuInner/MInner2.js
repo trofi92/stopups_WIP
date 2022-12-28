@@ -29,7 +29,14 @@ export const MInner2 = () => {
                 <styled_HM.NLULi>
                     <Link to={"/menu/샌드위치"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
-                            샌드위치 & 샐러드
+                            샌드위치
+                        </styled_HM.NLULiP>
+                    </Link>
+                </styled_HM.NLULi>
+                <styled_HM.NLULi>
+                    <Link to={"/menu/샐러드"} style={{textDecoration: "none"}}>
+                        <styled_HM.NLULiP>
+                            샐러드
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>

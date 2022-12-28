@@ -8,7 +8,7 @@ import { CNoDF } from "./CNoDF";
 import { useState } from "react";
 import { CNoG } from "./CNoG";
 
-const Favorite = () => {
+const Cart = () => {
   const [state, setState] = useState(1);
 
   const onClick = (id) => {
@@ -103,4 +103,4 @@ const Favorite = () => {
   );
 };
 
-export default Favorite;
+export default Cart;
