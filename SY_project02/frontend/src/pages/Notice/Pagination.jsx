@@ -2,10 +2,14 @@ import {useState} from "react";
 import {NPA, NPLi, NPLNButton, NPUl} from "../../styled/Notice/Notice";
 
 const Pagination = ({page, totalPosts, limit, setPage}) => {
+    // Notice에서 page, totalPosts, limit, setPage 받아 옴
+
     const numPages = Math.ceil(totalPosts / limit)
+
     const [currPage, setCurrPage] = useState(page);
-    let firstNum = currPage - (currPage % 5) + 1
-    let lastNum = currPage - (currPage % 5) + 5
+    // 첫 번째 페이지 1번, 두 번째 페이지 6번, 세 번째 페이지 11번...
+    let firstNum = currPage - (currPage % 5) + 1 // 첫 번째 페이지 = 현재 페이지 - (현재 페이지 %5) + 1
+    let lastNum = currPage - (currPage % 5) + 5 // 마지막 페이지 = 현재 페이지 - (현재 페이지 %5) + 5
 
     return (
         <NPUl>

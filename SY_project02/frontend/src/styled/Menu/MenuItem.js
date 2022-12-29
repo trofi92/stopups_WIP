@@ -92,7 +92,7 @@ export const Ntitle = styled.div`
 
   p {
     font-size: 14px;
-    margin-top: 0;
+    margin-top: 9px;
     margin-bottom: 5px;
   }
   
@@ -101,7 +101,6 @@ export const Ntitle = styled.div`
     line-height: 18px;
     font-size: 13px;
     margin-right: 6px;
-    margin-top: -5px;
     color: #444;
     font-weight: normal;
   }

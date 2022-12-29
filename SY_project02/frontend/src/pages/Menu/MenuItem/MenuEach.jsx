@@ -37,8 +37,6 @@ const DetailEach = () => {
     fetchData();
   }, []);
 
-  console.log(productId);
-
   return (
     <>
       {data ? (

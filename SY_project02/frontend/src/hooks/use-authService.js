@@ -87,7 +87,7 @@ export const useLogout = () => {
       await axios.post(
         `${SERVER_URL}/auth/logout`,
         {},
-        { withCredentials: true }
+        // { withCredentials: true }
       );
       dispatch(setULogout());
       await purge();

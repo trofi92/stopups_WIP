@@ -42,12 +42,12 @@ const Notice = () => {
   }, []);
 
   const [page, setPage] = useState(1); //페이지
-  const limit = 10; // notice가 보일 최대한의 갯수
+  const limit = 10; // notice가 보일 최대 갯수
   const offset = (page - 1) * limit; // 시작점과 끝점을 구하는 offset
 
   const postsData = (posts) => {
     if (posts) {
-      return posts.slice(offset, offset + limit);
+      return posts.slice(offset, offset + limit); // 1번 페이지 0~9까지, 2번 페이지 10~19까지...
     }
   };
 
@@ -112,10 +112,10 @@ const Notice = () => {
           {/*게시글 페이지*/}
           <styled_Notice.NPagination>
             <Pagination
-              limit={limit}
-              page={page}
-              totalPosts={notice.length}
-              setPage={setPage}
+              limit={limit} // 한번에 뿌려질 notice의 최대 갯수 = 10개
+              page={page} // 현재 페이지
+              totalPosts={notice.length} // 데이터의 총 notice 갯수
+              setPage={setPage} // 변경될 페이지를 만들 useState 함수
             />
             {/*숫자*/}
           </styled_Notice.NPagination>

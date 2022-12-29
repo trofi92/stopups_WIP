@@ -3,8 +3,8 @@ import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import * as styled_F from "../../styled/Favorite";
 import MyMenu from "../../image/Favorite/MyMenu.png";
-import { FDrink } from "./FDrink2";
-import { FFood } from "./FFood";
+import { FDrink } from "./FDrink3";
+import { FFood } from "./FFood2";
 import { FGoods } from "./FGoods";
 import { useState } from "react";
 

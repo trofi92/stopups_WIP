@@ -16,6 +16,11 @@ export const LJButton = styled.button`
   font-size: 24px;
   display: block;
   line-height: 65px;
+  cursor: pointer;
+  
+  :hover {
+    text-decoration: underline;
+  }
 `;
 
 // 로그인시 이용 가능합니다 페이지 버튼

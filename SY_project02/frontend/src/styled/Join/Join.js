@@ -6,7 +6,7 @@ import JSallyNick from "../../image/Join/JSallyNick.jpg"
 export const RB = styled.div`
   background-size: cover;
   width: 100%;
-  height: 1950px;
+  height: 2100px;
   margin-top: 60px;
 `
 
@@ -74,6 +74,29 @@ export const RFSectionSpan = styled.span`
   color: #006241;
 `
 
+export const RFSectionSpanRight = styled.span`
+  background: #006633;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #fff;
+  padding: 3px 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  
+  :hover {
+    text-decoration: underline;
+  }
+`
+
+export const RFSectionSpanRightChecked = styled.span`
+  background: #cac5c1;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #fff;
+  padding: 3px 5px;
+  margin-left: 10px;
+`
+
 export const RFSDInput = styled.input`
   border: 1px solid #ddd;
   border-radius: 3px;
@@ -82,6 +105,20 @@ export const RFSDInput = styled.input`
   max-width: 530px;
   padding: 15px;
   width: 100%;
+`
+
+export const RFSDDiv = styled.div`
+  font-size: 12px;
+  padding-top: 5px;
+  padding-left: 5px;
+
+  &.success {
+    color: #666;
+  }
+
+  &.error {
+    color: #9d0000;
+  }
 `
 
 export const RFSDFigure = styled.figure`

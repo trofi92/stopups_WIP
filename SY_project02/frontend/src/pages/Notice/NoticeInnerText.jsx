@@ -29,6 +29,8 @@ const NoticeInnerText = () => {
     notice();
   }, []);
 
+  console.log(notices);
+
   return (
     <styled_AB.AllBox>
       <Header />
@@ -96,19 +98,41 @@ const NoticeInnerText = () => {
                     <tr>
                       <styled_NoticeIT.NITTh>윗글</styled_NoticeIT.NITTh>
                       <styled_NoticeIT.NITTd>
-                        <Link to={"#"} style={{ textDecoration: "none" }}>
-                          <styled_NoticeIT.NITTdP>윗글</styled_NoticeIT.NITTdP>
-                        </Link>
+                        {notice.Num + 1 > notices.length ? (
+                            <Link to={`#`} style={{ textDecoration: "none" }}>
+                              <styled_NoticeIT.NITTdP>마지막 글입니다.</styled_NoticeIT.NITTdP>
+                            </Link>
+                        ) : (
+                            <Link to={`/notice/${notice.Num + 1}`} style={{ textDecoration: "none" }}>
+                              <styled_NoticeIT.NITTdP>윗글</styled_NoticeIT.NITTdP>
+                            </Link>
+                        )}
+                      {/*  <Link to={`/notice/${notice.Num + 1}`} style={{ textDecoration: "none" }}>*/}
+                      {/*    <styled_NoticeIT.NITTdP>윗글</styled_NoticeIT.NITTdP>*/}
+                      {/*  </Link>*/}
                       </styled_NoticeIT.NITTd>
                     </tr>
                     <tr>
                       <styled_NoticeIT.NITTh>아랫글</styled_NoticeIT.NITTh>
                       <styled_NoticeIT.NITTd>
-                        <Link to={"#"} style={{ textDecoration: "none" }}>
-                          <styled_NoticeIT.NITTdP>
-                            아랫글 제목
-                          </styled_NoticeIT.NITTdP>
-                        </Link>
+                        {notice.Num -1 === 0 ? (
+                            <Link to={`#`} style={{ textDecoration: "none" }}>
+                              <styled_NoticeIT.NITTdP>
+                                마지막 글입니다.
+                              </styled_NoticeIT.NITTdP>
+                            </Link>
+                        ) : (
+                            <Link to={`/notice/${notice.Num - 1}`} style={{ textDecoration: "none" }}>
+                              <styled_NoticeIT.NITTdP>
+                                아랫글
+                              </styled_NoticeIT.NITTdP>
+                            </Link>
+                        )}
+                        {/*<Link to={`/notice/${notice.Num - 1}`} style={{ textDecoration: "none" }}>*/}
+                        {/*  <styled_NoticeIT.NITTdP>*/}
+                        {/*    {notice.Num - 1 === 0 ? "아랫글이 없습니다." : notice.Num === notice.Num - 1 ? notice.Title : ""}*/}
+                        {/*  </styled_NoticeIT.NITTdP>*/}
+                        {/*</Link>*/}
                       </styled_NoticeIT.NITTd>
                     </tr>
                   </tbody>

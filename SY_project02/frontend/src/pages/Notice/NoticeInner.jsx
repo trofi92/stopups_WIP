@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 
 export const NoticeInner = ({result, notice}) => {
     // Notice에서 notice(공지사항 api 데이터 [])와 result(검색 값) 받아옴
+    // notice는 postsData 함수에 넣어서 한번에 10개씩 들어옴
 
     // notice에서 result를 포함하는 값만!
     const searchedAllNotice = notice.filter((data) => {
