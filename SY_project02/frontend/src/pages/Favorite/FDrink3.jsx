@@ -241,7 +241,7 @@ export const FDrink = () => {
                             " | " +
                             sData?.drinkType +
                             " | " +
-                            sData?.eatType}
+                              (sData?.eatType === "takeout" ? "테이크 아웃" : "매장")}
                         </styled_F.FCDTHTbodyTdOK>
                         <styled_F.FCDTHTbodyTdOK>
                           {sData?.updatedAt.replace(/T|\.000Z/g, " ")}
