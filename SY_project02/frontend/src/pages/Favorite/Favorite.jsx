@@ -4,8 +4,8 @@ import { Footer } from "../../components/Footer/Footer";
 import * as styled_F from "../../styled/Favorite";
 import MyMenu from "../../image/Favorite/MyMenu.png";
 import { FDrink } from "./FDrink2";
-import { FFood } from "./FFood";
-import { FGoods } from "./FGoods";
+import { FFood } from "./FFood2";
+import { FGoods } from "./FGoods2";
 import { useState } from "react";
 
 const Favorite = () => {

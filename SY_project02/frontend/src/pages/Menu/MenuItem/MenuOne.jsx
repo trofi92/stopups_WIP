@@ -57,18 +57,28 @@ const DetailOne = (props) => {
   };
   const onChangeDrinkTypeHandler = (e) => {
     setDrinkType(e.target.value);
+    console.log("drinkType=>>", e.target.value);
   };
 
   const data = {
     email: user.email,
     pId: props.productId,
-    price: props.price[sizeData],
+    price: props.price[sizeData]
+      ? props.price[sizeData]
+      : props.price.Desert,
+    cookType: cooked,
     drinkType: drinkType,
     eatType: takeOut,
     whatDateTime: whatDateTime,
     category: props.category,
     size: sizeData,
   };
+  // console.log("drinkType ===>", props.DrinkType);
+  console.log("Data ===>", data);
+  console.log("sizeData ===>", sizeData);
+  console.log("category==>", props.category);
+  console.log("props cooked ==>", props.CookType);
+  console.log("cooked ==>", cooked);
 
   const addFavoriteData = async () => {
     const response = await axios.put(
@@ -101,13 +111,14 @@ const DetailOne = (props) => {
             id: props.productId,
             name: props.name,
             price: props.price.Desert,
-            cooked: cooked,
+            cooked: props.cookType,
             takeout: takeOut,
             whatDateTime: whatDateTime,
             category: props.category,
           })
         );
-        console.log(favorite);
+        addFavoriteData();
+        console.log("favorite==>", favorite);
         alert("나만의 푸드에 등록했습니다.");
       }
     } else if (!sizeInValid && eatTypeInValid && drinkTypeInValid) {
@@ -241,7 +252,6 @@ const DetailOne = (props) => {
                 원
               </styled_MenuItem.TextBoxSpan>
             )}
-            {/* <span> Nitro Vanilla Cream</span> */}
             {(cookedInValid || drinkTypeInValid) && (
               <styled_MenuItem.Fieldset>
                 {cookedInValid ? (
@@ -338,7 +348,11 @@ const DetailOne = (props) => {
                   )}
                   {props.DrinkType.HOT && (
                     <>
-                      <styled_MenuItem.Input name="ICE" id="HOT" />
+                      <styled_MenuItem.Input
+                        name="ICE"
+                        id="HOT"
+                        onChange={onChangeDrinkTypeHandler}
+                      />
                       <label htmlFor="HOT">HOT</label>
                     </>
                   )}
