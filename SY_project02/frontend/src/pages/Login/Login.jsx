@@ -6,8 +6,8 @@ import {useEffect, useState} from "react";
 import Header from "../../components/Header/Header";
 import {Footer} from "../../components/Footer/Footer";
 import {
-    checkEmail,
-    checkPassword,
+    checkEmailLogin,
+    checkPasswordLogin,
 } from "../../components/join/JoinRegex";
 import {
     useLoginService,
@@ -45,13 +45,13 @@ const Login = () => {
     }, [email]);
 
     const handleEmailChange = (e) => {
-        formCheck(e, checkEmail, "아이디를 입력해 주세요.", setEmail);
+        formCheck(e, checkEmailLogin, "아이디를 입력해 주세요.", setEmail);
     };
 
     const handlePasswordChange = (e) => {
         formCheck(
             e,
-            checkPassword,
+            checkPasswordLogin,
             "비밀번호를 입력해 주세요.",
             setPassword
         );

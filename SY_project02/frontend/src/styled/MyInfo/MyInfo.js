@@ -81,7 +81,7 @@ export const MIPhoneA = styled.p`
 `;
 
 export const MINIckSection = styled.section`
-  margin: 20px 20px 30px 20px;
+  margin: 20px 20px 10px 20px;
   position: relative;
   overflow: hidden;
   padding: 3px 0;

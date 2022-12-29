@@ -50,7 +50,7 @@ app.use("/page", page);
 app.use("/auth", auth);
 app.use("/", index);
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
-app.use(authJwt);
+// app.use(authJwt);
 app.use("/bookmarks", bookmarks);
 app.use("/payment", payment);
 app.use("/myInfo", myInfo);

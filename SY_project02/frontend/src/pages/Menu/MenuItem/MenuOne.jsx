@@ -85,11 +85,11 @@ const DetailOne = (props) => {
       `${SERVER_URL}/bookmarks/addBookmarks`,
       {
         data: data,
-      },
-      { withCredentials: true }
+      }
+      // { withCredentials: true }
     );
     setTest(response?.data);
-    console.log(test);
+    console.log("test=>", test);
   };
 
   const CategoryInValid =
@@ -103,7 +103,6 @@ const DetailOne = (props) => {
     if (eatTypeInValid && cookedInValid) {
       if (cooked === "" || takeOut === "") {
         alert("옵션을 선택해 주세요."); // 푸드 종류 dispatch
-        console.log(cooked, takeOut);
       } else {
         e.preventDefault();
         dispatch(
@@ -139,7 +138,6 @@ const DetailOne = (props) => {
             category: props.category,
           })
         );
-        console.log(favorite);
         addFavoriteData();
         alert("나만의 음료에 등록했습니다.");
       }
@@ -147,7 +145,6 @@ const DetailOne = (props) => {
       // 푸드 중에 warm 이 없는 카테고리들 dispatch
       if (takeOut === "") {
         alert("옵션을 선택해 주세요.");
-        console.log(sizeInValid, props);
       } else {
         e.preventDefault();
         dispatch(
@@ -160,7 +157,6 @@ const DetailOne = (props) => {
             category: props.category,
           })
         );
-        console.log(favorite);
         addFavoriteData();
         alert("나만의 푸드에 등록했습니다.");
       }
@@ -171,7 +167,6 @@ const DetailOne = (props) => {
     if (eatTypeInValid && cookedInValid) {
       if (cooked === "" || takeOut === "") {
         alert("옵션을 선택해 주세요."); // 푸드 종류 dispatch
-        console.log(cooked, takeOut);
       } else {
         e.preventDefault();
         dispatch(
@@ -211,7 +206,6 @@ const DetailOne = (props) => {
       // 푸드 중에 warm 이 없는 카테고리들 dispatch
       if (takeOut === "") {
         alert("옵션을 선택해 주세요.");
-        console.log(sizeInValid, props);
       } else {
         e.preventDefault();
         dispatch(

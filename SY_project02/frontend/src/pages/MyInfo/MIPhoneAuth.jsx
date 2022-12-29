@@ -49,7 +49,7 @@ export const MIPhoneAuth = () => {
           type="number"
           name="ph_number"
           ref={inputPhoneNumberRef}
-          onChange={(e) => checkPhone(e)}
+          onChange={(e) => checkPhone(e.target.value)}
           placeholder={"휴대전화 번호를 입력해주세요."}
         />
         <styled_MI.MIPhoneA onClick={handlePhoneSubmit}>
