@@ -208,7 +208,7 @@ export const CNoDF = () => {
                                                 </styled_C.CFMIceHot>
                                                 <styled_C.CFMSize>{cart.size}</styled_C.CFMSize>
                                                 <styled_C.CFMCup>
-                                                    {cart.takeout === "takeout" ? "테이크 아웃" : "매장"}
+                                                    {cart.takeout === "takeout" ? "일회용 컵" : "매장용 컵"}
                                                 </styled_C.CFMCup>
                                                 <styled_C.CFMMoney>{cart.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</styled_C.CFMMoney>
                                             </styled_C.CFMOption>
