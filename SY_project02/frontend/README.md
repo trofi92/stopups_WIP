@@ -13,9 +13,9 @@
 
 ### `FDrink` `FFood`
 
-drink와 food가 같은 리덕스 state를 사용<br/>
--같은 state를 사용해서 food에만 데이터를 넣었을 때 drink도 데이터가 들어간걸로 출력됨
--전체선택 후 삭제 시 화면에 뿌려지지 않은 다른쪽 데이터도 같이 선택되서 삭제됨 handleAllCheck 함수 수정
+~drink와 food가 같은 리덕스 state를 사용<br/>~
+~-같은 state를 사용해서 food에만 데이터를 넣었을 때 drink도 데이터가 들어간걸로 출력됨~
+~-전체선택 후 삭제 시 화면에 뿌려지지 않은 다른쪽 데이터도 같이 선택되서 삭제됨 handleAllCheck 함수 수정~
 
 ### `지도` or `매장 선택 페이지`
 
@@ -30,8 +30,8 @@ drink와 food가 같은 리덕스 state를 사용<br/>
 
 ### `Login` `Join` `MyInfo` `MIPassword`
 
-JoinRegex의 영향을 받는 컴포넌트들<br/>
--각 입력란에 틀리게 입력 시 console.log에 나오는 문구들을 붉은 경고 글씨로 표시하든... alert 창으로 띄우든 해야 함
+~JoinRegex의 영향을 받는 컴포넌트들<br/>~
+~-각 입력란에 틀리게 입력 시 console.log에 나오는 문구들을 붉은 경고 글씨로 표시하든... alert 창으로 띄우든 해야 함~
 
 ### `LFindId` `LFindPw`
 
