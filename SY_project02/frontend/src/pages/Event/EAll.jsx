@@ -6,6 +6,7 @@ import axios from "axios";
 
 
 export const EAll = () => {
+    // api 서버에서 받아온 event를 배열로 저장
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
@@ -19,8 +20,6 @@ export const EAll = () => {
         };
         event();
     }, []);
-
-    // console.log("events", events);
 
     return (
         <styled_Event.ESArticle>

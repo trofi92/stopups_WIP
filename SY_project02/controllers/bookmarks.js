@@ -1,6 +1,7 @@
 const { User, Bookmark, Product } = require("../models");
 // const { decrypt, encrypt } = require("../middlewares/crypto");
 
+//에러 일괄처리
 const errorHandler = (data) => {
   if (!data) {
     return res
@@ -9,17 +10,19 @@ const errorHandler = (data) => {
   }
 };
 
+//찜목록에 상품 추가
 const addBookmarks = async (req, res, next) => {
   const data = req?.body?.data;
-  console.log(data);
-
   const reqUser = data.email;
   const user = await User.findUser(reqUser);
   const userId = user?.dataValues?.id;
+  console.log(data);
 
+  errorHandler(data);
   const findProductId = await Product.findOne({
     where: { pId: data.pId },
   });
+
   const pId = findProductId?.id;
   const category = data.category;
   const size = data.size;
@@ -31,9 +34,13 @@ const addBookmarks = async (req, res, next) => {
   const updateWhatDateTime = data.whatDateTime;
 
   try {
-    errorHandler(data);
     await Bookmark.findOrCreate({
-      where: { userId: userId, productId: pId, price: price },
+      where: {
+        userId: userId,
+        productId: pId,
+        price: price,
+        cookType: cookType,
+      },
       defaults: {
         userId: userId,
         productId: pId,
@@ -50,18 +57,18 @@ const addBookmarks = async (req, res, next) => {
   } catch (error) {
     console.error(error);
   }
-  res.status(200).json({
+  return res.status(200).json({
     message: "나만의 메뉴에 추가되었습니다",
   });
 };
 
+//찜목록 확인 및 전송
 const sendBookmarks = async (req, res, next) => {
   const data = req?.body?.data;
-  console.log(data);
-
   const reqUser = data.email;
   const user = await User.findUser(reqUser);
   const userId = user?.dataValues?.id;
+  console.log(data);
 
   try {
     errorHandler(data);
@@ -75,30 +82,38 @@ const sendBookmarks = async (req, res, next) => {
       ],
     });
     console.log(bookmarkedProducts);
-    res.json({ bookmarkedProducts });
-    return;
+    return res.json({ bookmarkedProducts });
   } catch (error) {
     console.error(error);
-    return res
-      .status(400)
-      .json({ message: "처리할 수 없는 요청입니다." });
+    return;
   }
 };
 
+//찜목록 아이템 삭제
 const deleteBookmarks = async (req, res, next) => {
   const data = req?.body?.data;
   const email = data?.email;
-  const pIds = data?.pIds;
-  const user = User.findUser(email);
-  console.log(email, pIds);
+  const items = data?.items;
+  const user = await User.findUser(email);
+  console.log(data);
+  console.log("uid ==>", user.id, "pid ==>", items);
 
-  // for (let i = 0; i <= pIds.length; i++) {
-  //   await Bookmark.destroy({
-  //     where: { userId: user.id,productId:pIds[i] },
-  //   });
-  // }
-
-  res.status(204).json({ message: "미완성임 ㅅㄱ" });
+  try {
+    errorHandler(data);
+    for (let i = 0; i <= items.length - 1; i++) {
+      const findProductId = await Product.findOne({
+        where: { pId: items[i] },
+      });
+      await Bookmark.destroy({
+        where: { userId: user.id, productId: findProductId.id },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  return res
+    .status(200)
+    .json({ message: "목록에서 아이템이 삭제되었습니다" });
 };
 
 module.exports = { addBookmarks, sendBookmarks, deleteBookmarks };

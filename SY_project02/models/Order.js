@@ -4,6 +4,22 @@ module.exports = class Order extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
+        userId: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          references: {
+            model: "users",
+            key: "id",
+          },
+        },
+        orderId: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          references: {
+            model: "orders",
+            key: "id",
+          },
+        },
         total: {
           type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,

@@ -1,4 +1,4 @@
-const { User, Bookmark, Product } = require("../models");
+const { User } = require("../models");
 const { decrypt, encrypt } = require("../middlewares/crypto");
 
 const updatePw = async (req, res, next) => {
@@ -11,11 +11,13 @@ const updatePw = async (req, res, next) => {
 
   console.log(clientPassword);
   console.log(userPw);
+
   if (userPw !== clientPassword) {
     return res.status(401).json({
       message: "현재 비밀번호를 다시 확인해주세요",
     });
   }
+
   user.update(
     { password: encrypt(newPassword) },
     { where: { email: encryptedEmail } }
@@ -53,4 +55,29 @@ const updatePhoneAndNickname = async (res, req, next) => {
   }
 };
 
-module.exports = { updatePw, updatePhoneAndNickname };
+const passwordAuth = async (req, res, next) => {
+  const data = req?.body;
+  const user = await User.findUser(data?.email);
+  console.log(data);
+  console.log(decrypt(user.password));
+  try {
+    if (decrypt(user.password) !== data?.password) {
+      return res.status(401).json({
+        status: 401,
+        userInfo: false,
+        message: "입력한 비밀번호를 다시 확인해주세요",
+      });
+    } else {
+      return res
+        .status(200)
+        .json({
+          message: "비밀번호가 인증되었습니다",
+          userInfo: true,
+        });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+module.exports = { updatePw, updatePhoneAndNickname, passwordAuth };

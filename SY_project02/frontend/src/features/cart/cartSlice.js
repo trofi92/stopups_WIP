@@ -70,15 +70,6 @@ const cartSlice = createSlice({
       );
       state.amount--;
     },
-    // addToItem: (state, action) => {
-    //   const Item = action.payload;
-    //   state.cartItems.push(Item);
-    //   console.log(state.cartItems);
-    //   state.totalAmount++;
-    // },
-    // toggle: (state, action) => {
-    //   state.toggle = !state.toggle;
-    // },
     increase: (state, action) => {
       const cartItem = state.cartItems.find(
         (item) =>
@@ -117,6 +108,7 @@ const cartSlice = createSlice({
         )
       );
 
+      // Item에 있는 아이템들의 총합과 총량을 state.amount, state.total에 저장
       Item.forEach((item) => {
         CartDetailamount += item.quantity;
         total += item.quantity * item.price;

@@ -59,9 +59,8 @@ export const HMBIAsideP = styled.p`
   overflow: hidden;
   text-indent: -20000px;
   width: 100%;
-  -webkit-transition: -webkit-transform 1s;
-  transition: transform 1s;
   margin: 0;
+  cursor: pointer;
 `
 
 // 검색

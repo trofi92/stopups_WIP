@@ -9,8 +9,8 @@ import { Footer } from "../../components/Footer/Footer";
 import { useState } from "react";
 import axios from "axios";
 import {
-  checkPassword,
   checkPasswordConfirm,
+  checkPasswordLogin,
 } from "../../components/join/JoinRegex";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -34,12 +34,12 @@ const MIPassword = () => {
   };
 
   const handleCurrentPassword = (e) => {
-    checkPassword(e);
+    checkPasswordLogin(e);
     setCurrentPassword(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
-    checkPassword(e);
+    checkPasswordLogin(e);
     setNewPassword(e.target.value);
   };
 
