@@ -15,6 +15,7 @@ const Cart = () => {
     setState(id);
   };
 
+  // onClick에 1이 들어갈 경우 CNoDF, 2가 들어갈 경우 CNoG 화면에 출력
   const obj = {
     1: <CNoDF />,
     2: <CNoG />,
@@ -39,10 +40,10 @@ const Cart = () => {
         {/*My 장바구니 내용*/}
         <styled_F.FContentsAllBox>
           <styled_F.FCBox>
-            {/**/}
+            {/*회색 네모 박스*/}
             <styled_F.FCSection1>
               <styled_F.FCSectionP>
-                {/*strong 3개 더 들어가야하는데 샘플이 없어서 못 만드는 중*/}
+                {/*장식용으로 그냥 두기로 함*/}
               </styled_F.FCSectionP>
             </styled_F.FCSection1>
             {/*장바구니 내역*/}
@@ -51,6 +52,7 @@ const Cart = () => {
                 <styled_C.CDiv>
                   <styled_C.CFoodBox1>
                     <styled_F.FCSH5>
+                      {/*클릭 시 state 값에 따라 각 컴포넌트 화면에 출력*/}
                       {state === 1 ? (
                         <styled_C.CFoodG
                           href={"#"}

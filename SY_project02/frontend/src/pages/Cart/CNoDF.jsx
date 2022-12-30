@@ -57,6 +57,7 @@ export const CNoDF = () => {
         }
     };
 
+    // 전체 삭제
     const handleClear = () => {
         dispatch(clearCart());
         setCheckItems([]);
@@ -71,6 +72,7 @@ export const CNoDF = () => {
         }
     };
 
+    // checkItems의 값이 바뀔 때 마다 handleTotalCalculate(총합, 총량 계산) 실행
     useEffect(() => {
         const handleTotalCalculate = (itemIds) => {
             dispatch(calculateTotals(itemIds));
@@ -79,7 +81,7 @@ export const CNoDF = () => {
         handleTotalCalculate(checkItems);
     }, [checkItems]);
 
-
+    // 주문하기 버튼
     const onClick = () => {
         if (cart.amount > 20) {
             alert("총 주문 가능 수량은 20개 입니다.")
@@ -96,7 +98,7 @@ export const CNoDF = () => {
         }
     };
 
-    // api에서 받아온 메뉴
+    // api에서 받아온 메뉴 => 각 메뉴에 맞는 이미지 띄우기 위해 받아옴
     const [img, setImg] = useState([])
 
     useEffect(() => {
@@ -113,7 +115,6 @@ export const CNoDF = () => {
         event();
     }, []);
 
-    // name, ICED, size, 일회용 컵, amount, price, totalAmount, totalPrice
     return (
         <>
             {cart.cartItems.length === 0 ? (
