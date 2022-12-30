@@ -17,7 +17,7 @@ export const FDrink = () => {
 
   const dispatch = useDispatch();
 
-  console.log("Drink favorite.favorites", favorite.favorites)
+  // console.log("Drink favorite.favorites", favorite.favorites)
 
   // 목록 요청 함수
   const post = {
@@ -45,24 +45,16 @@ export const FDrink = () => {
       // 체크 시 모든 아이템을 배열에 추가
       // 전체 선택 시 처음부터 drink만 선택되게
       let idArray = [];
-      serverData?.map((drink) => {
-        if (drink?.category !== "브레드" && drink?.category !== "케이크" && drink?.category !== "샌드위치" && drink?.category !== "샐러드" && drink?.category !== "따뜻한 푸드") {
-          idArray.push(drink.Product.p_id);
-        }
-      })
+      serverData?.forEach((el) => idArray.push(el.id));
+      // serverData?.forEach((el) => idArray.push(el.Product.p_id));
       setCheckItems(idArray);
     } else {
       // 체크 해제 시 빈 배열
       setCheckItems([]);
     }
   };
-  // console.log(serverData?.[0].id);
+
   console.log("checkItems=>",checkItems);
-  console.log("serverData=>", serverData);
-  // console.log("serverData.length=>", serverData?.length);
-  // console.log("checkItems.length === serverData?.length=>", checkItems.length === serverData?.length)
-  //
-  // console.log("favorite.favorites", favorite.favorites)
 
   const handleSingleCheck = (checked, id) => {
     if (checked) {
@@ -78,18 +70,14 @@ export const FDrink = () => {
     setClick(!click);
     if (!click) {
       let idArray = [];
-      serverData?.map((drink) => {
-        if (drink?.category !== "브레드" && drink?.category !== "케이크" && drink?.category !== "샌드위치" && drink?.category !== "샐러드" && drink?.category !== "따뜻한 푸드") {
-          idArray.push(drink.Product.p_id);
-        }
-      })
+      serverData?.forEach((el) => idArray.push(el.id));
+      // serverData?.forEach((el) => idArray.push(el.Product.p_id));
       setCheckItems(idArray);
     } else if (click) {
       setCheckItems([]);
     }
   };
 
-  //404 에러길래 확인해봤더디 bookmarks에 deleteBookmarks가 없다!
   const handleRemove = () => {
     if (checkItems.length === 0) {
       alert("삭제 할 음료를 선택 하세요.");
@@ -148,7 +136,7 @@ export const FDrink = () => {
                     {/*체크박스 체크시 이미지 변경*/}
                     <styled_F.FCDTHThDiv1>
                       {/*A component is changing a controlled input to be uncontrolled. 에러 */}
-                      {/*input의 value가 undefined일 때 ""를 넣으라고 하는데 갑자기 이게 왜 뜨지?? */}
+                      {/*value 값을 넣어도 해결이 안되길래 일단 지웠다 */}
                       <styled_F.FCDTHThDInput1
                         type={"checkbox"}
                         title={"전체 선택"}
@@ -218,15 +206,9 @@ export const FDrink = () => {
                               type={"checkbox"}
                               title={"개별 선택"}
                               onChange={(e) =>
-                                handleSingleCheck(
-                                  e.target.checked,
-                                  sData?.Product?.p_id
-                                )
-                              }
+                                handleSingleCheck(e.target.checked, sData?.id)}
                               // 체크된 아이템 배열에 해당 데이터가 있을 경우 활성화
-                              checked={checkItems.includes(
-                                sData?.Product?.p_id
-                              )}
+                              checked={checkItems.includes(sData?.id)}
                             />
                           </styled_F.FCDTHThDiv1>
                         </styled_F.FCDTHTbodyTdOK>
