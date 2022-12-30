@@ -7,7 +7,7 @@ import {
   checkPasswordConfirm,
   checkPhone,
 } from "../../components/join/JoinRegex";
-import {useState} from "react";
+import { useState } from "react";
 import axios from "axios";
 import Header from "../../components/Header/Header";
 import * as styled_AB from "../../styled/AllBox";
@@ -51,7 +51,7 @@ const Join = () => {
     if (!checkEmail(e.target.value)) {
       setEmailMsg("유효하지 않은 이메일 형식 입니다.");
     } else {
-      setEmailMsg("올바른 이메일 형식입니다.")
+      setEmailMsg("올바른 이메일 형식입니다.");
     }
   };
 
@@ -59,9 +59,11 @@ const Join = () => {
     setPassword(e.target.value);
 
     if (!checkPassword(e.target.value)) {
-      setPasswordMsg("영문자, 숫자, 특수문자를 포함하여 8자리 이상 16자리 이하로 입력해야 합니다.");
+      setPasswordMsg(
+        "영문자, 숫자, 특수문자를 포함하여 8자리 이상 16자리 이하로 입력해야 합니다."
+      );
     } else {
-      setPasswordMsg("안전한 비밀번호 입니다.")
+      setPasswordMsg("안전한 비밀번호 입니다.");
     }
   };
 
@@ -83,7 +85,7 @@ const Join = () => {
     if (!checkName(e.target.value)) {
       setNameMsg("2자리 이상의 영문자와 한글만 입력할 수 있습니다.");
     } else {
-      setNameMsg("올바른 이름 입니다.")
+      setNameMsg("올바른 이름 입니다.");
     }
   };
 
@@ -91,7 +93,7 @@ const Join = () => {
     setTelephone(e.target.value);
 
     if (!checkPhone(e.target.value)) {
-      setTelephoneMsg("하이픈(-)을 제외한 13자리 숫자로 입력해야 합니다.")
+      setTelephoneMsg("하이픈(-)을 제외한 13자리 숫자로 입력해야 합니다.");
     } else {
       setTelephoneMsg("올바른 번호 입니다.");
     }
@@ -149,8 +151,8 @@ const Join = () => {
           `${SERVER_URL}/auth/join`,
           {
             data: post,
-          },
-          { withCredentials: true }
+          }
+          // { withCredentials: true }
         )
         .then((res) => {
           console.log("회원가입 성공=>", res);
@@ -206,7 +208,9 @@ const Join = () => {
                       onChange={handleEmailChange}
                       required
                     />
-                    <styled_Join.RFSDDiv className={emailValid ? "success" : "error"}>
+                    <styled_Join.RFSDDiv
+                      className={emailValid ? "success" : "error"}
+                    >
                       {emailMsg}
                     </styled_Join.RFSDDiv>
                   </styled_Join.RFSectionDiv>
@@ -227,7 +231,9 @@ const Join = () => {
                       onChange={handlePasswordChange}
                       required
                     />
-                    <styled_Join.RFSDDiv className={passwordValid ? "success" : "error"}>
+                    <styled_Join.RFSDDiv
+                      className={passwordValid ? "success" : "error"}
+                    >
                       {passwordMsg}
                     </styled_Join.RFSDDiv>
                   </styled_Join.RFSectionDiv>
@@ -242,13 +248,13 @@ const Join = () => {
                       type={"password"}
                       id={"registerPasswordConfirm"}
                       name={"passwordConfirm"}
-                      placeholder={
-                        "비밀번호를 다시 한번 입력해 주세요."
-                      }
+                      placeholder={"비밀번호를 다시 한번 입력해 주세요."}
                       onChange={handlePasswordConfirmChange}
                       required
                     />
-                    <styled_Join.RFSDDiv className={passwordConfirmValid ? "success" : "error"}>
+                    <styled_Join.RFSDDiv
+                      className={passwordConfirmValid ? "success" : "error"}
+                    >
                       {passwordConfirmMsg}
                     </styled_Join.RFSDDiv>
                   </styled_Join.RFSectionDiv>
@@ -267,7 +273,9 @@ const Join = () => {
                       onChange={handleNameChange}
                       required
                     />
-                    <styled_Join.RFSDDiv className={nameValid ? "success" : "error"}>
+                    <styled_Join.RFSDDiv
+                      className={nameValid ? "success" : "error"}
+                    >
                       {nameMsg}
                     </styled_Join.RFSDDiv>
                   </styled_Join.RFSectionDiv>
@@ -292,7 +300,9 @@ const Join = () => {
                       onChange={handleTelephoneChange}
                       required
                     />
-                    <styled_Join.RFSDDiv className={telephoneValid ? "success" : "error"}>
+                    <styled_Join.RFSDDiv
+                      className={telephoneValid ? "success" : "error"}
+                    >
                       {telephoneMsg}
                     </styled_Join.RFSDDiv>
                   </styled_Join.RFSectionDiv>
@@ -325,7 +335,9 @@ const Join = () => {
                       onChange={handleNicknameChange}
                       required
                     />
-                    <styled_Join.RFSDDiv className={nicknameValid ? "success" : "error"}>
+                    <styled_Join.RFSDDiv
+                      className={nicknameValid ? "success" : "error"}
+                    >
                       {nicknameMsg}
                     </styled_Join.RFSDDiv>
                     <styled_Join.AgreeSpan>
@@ -345,9 +357,7 @@ const Join = () => {
                 </styled_Join.RFSection>
               </styled_LOG.LFFFieldset>
               <styled_Join.RFormP>
-                <b>
-                  * 필수항목을 모두 입력해야 회원 가입이 가능합니다.
-                </b>
+                <b>* 필수항목을 모두 입력해야 회원 가입이 가능합니다.</b>
               </styled_Join.RFormP>
               <styled_BU.LJButton onClick={submitIdPassword}>
                 가입하기

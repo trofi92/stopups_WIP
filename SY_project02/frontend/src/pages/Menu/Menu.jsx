@@ -8,7 +8,7 @@ import { AllBox } from "../../styled/AllBox";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import MenuCard from "./MenuItem/MenuCard";
-import MenuTheme from "../../image/Menu/MenuTheme.png"
+import MenuTheme from "../../image/Menu/MenuTheme.png";
 
 const Menu = () => {
   const [ClassificationInValid, setClassificationInValid] = useState(true);
@@ -46,7 +46,7 @@ const Menu = () => {
   };
 
   useEffect(() => {
-    // checkedItems.clear();
+    checkedItems.clear();
     setClassificationInValid(true);
 
     let p2 = [];
@@ -296,10 +296,7 @@ const Menu = () => {
                           );
                         })}
                   </styled_Menu.CheckBox>
-                  <img
-                    alt="이미지가 없습니다"
-                    src={MenuTheme}
-                  />
+                  <img alt="이미지가 없습니다" src={MenuTheme} />
                 </>
               )}
             </styled_Menu.CategoryBox>

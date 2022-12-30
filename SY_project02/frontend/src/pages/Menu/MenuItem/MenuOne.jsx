@@ -11,6 +11,7 @@ import { addToFavorites } from "../../../features/favorite/favoriteSlice";
 import { Footer } from "../../../components/Footer/Footer";
 import axios from "axios";
 import { SERVER_URL } from "../../../util/urls";
+import { useEffect } from "react";
 
 const DetailOne = (props) => {
   const [test, setTest] = useState("");
@@ -22,14 +23,10 @@ const DetailOne = (props) => {
   const favorite = useSelector((state) => state.favorite);
 
   const eatTypeInValid = props.EatType.SHOP || props.EatType.TAKEOUT;
-  const cookedInValid =
-    props.CookType.COOKED || props.CookType.NOTCOOKED; // 어떤 식으로 해야할까?
-  const drinkTypeInValid =
-    props.DrinkType.HOT || props.DrinkType.ICED;
-  const sizeInValid =
-    props.price.Desert !== "0" && props.price.Desert;
-  const replaceNumber = (value) =>
-    value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const cookedInValid = props.CookType.COOKED || props.CookType.NOTCOOKED;
+  const drinkTypeInValid = props.DrinkType.HOT || props.DrinkType.ICED;
+  const sizeInValid = props.price.Desert !== "0" && props.price.Desert;
+  const replaceNumber = (value) => value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   let now = new Date();
   let year = now.getFullYear();
   let todayMont = now.getMonth() + 1;
@@ -37,15 +34,15 @@ const DetailOne = (props) => {
   let hour = now.getHours();
   let minutes = now.getMinutes();
   let seconds = now.getSeconds();
-
   const whatDateTime = `${year}-${todayMont}-${todayDate} ${hour}:${minutes}:${seconds}`;
 
   const dispatch = useDispatch();
 
   const InValid =
-    props.price.Desert !== "0" &&
-    props.price.hasOwnProperty("Desert");
+    props.price.Desert !== "0" && props.price.hasOwnProperty("Desert");
 
+  const amount = useSelector((state) => state.cart.amount);
+  useEffect(() => console.log(amount));
   const onChangeHandler = (e) => {
     setSizeData(e.target.value);
   };
@@ -63,9 +60,7 @@ const DetailOne = (props) => {
   const data = {
     email: user.email,
     pId: props.productId,
-    price: props.price[sizeData]
-      ? props.price[sizeData]
-      : props.price.Desert,
+    price: props.price[sizeData] ? props.price[sizeData] : props.price.Desert,
     cookType: cooked,
     drinkType: drinkType,
     eatType: takeOut,
@@ -241,9 +236,7 @@ const DetailOne = (props) => {
             <span>{props.name}</span>
             {props.price.Desert !== "0" && props.price.Desert && (
               <styled_MenuItem.TextBoxSpan>
-                {props.price.Desert &&
-                  replaceNumber(props.price.Desert)}
-                원
+                {props.price.Desert && replaceNumber(props.price.Desert)}원
               </styled_MenuItem.TextBoxSpan>
             )}
             {(cookedInValid || drinkTypeInValid) && (
@@ -263,9 +256,7 @@ const DetailOne = (props) => {
 
                     <label htmlFor="Tall">
                       Tall :
-                      {props.price.Tall &&
-                        replaceNumber(props.price.Tall)}
-                      원
+                      {props.price.Tall && replaceNumber(props.price.Tall)}원
                     </label>
                   </>
                 )}
@@ -303,8 +294,7 @@ const DetailOne = (props) => {
                     />
                     <label htmlFor="Grande">
                       Grande :
-                      {props.price.Grande &&
-                        replaceNumber(props.price.Grande)}
+                      {props.price.Grande && replaceNumber(props.price.Grande)}
                       원
                     </label>
                   </>
@@ -317,9 +307,7 @@ const DetailOne = (props) => {
                     />
                     <label htmlFor="Venti">
                       Venti :
-                      {props.price.Venti &&
-                        replaceNumber(props.price.Venti)}
-                      원
+                      {props.price.Venti && replaceNumber(props.price.Venti)}원
                     </label>
                   </>
                 )}

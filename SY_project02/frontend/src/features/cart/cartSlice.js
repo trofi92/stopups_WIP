@@ -28,6 +28,7 @@ const initialState = {
   statusByName: {},
   toggle: false,
   totalAmount: 0,
+  CartDetailamount: 0,
 };
 
 const cartSlice = createSlice({
@@ -38,7 +39,11 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       console.log(state.cartItems);
       const itemInCarts = state.cartItems.find(
-        (item) => item.id === action.payload.id
+        (item) =>
+          item.id === action.payload.id &&
+          item.size === action.payload.size &&
+          item.cooked === action.payload.cooked &&
+          item.ice === action.payload.ICE
       );
 
       if (itemInCarts) {
@@ -50,6 +55,7 @@ const cartSlice = createSlice({
     },
     clearCart: (state) => {
       state.cartItems = []; //is equal to next line ;
+      state.amount = 0;
       //   return { cartItems: [] }; =  많은 수의 input을 한꺼번에 제어해야할때 유용하게 쓰일 수 있음
     },
     removeItem: (state, action) => {
@@ -62,6 +68,7 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter(
         (item) => !itemIds.includes(item.id)
       );
+      state.amount--;
     },
     // addToItem: (state, action) => {
     //   const Item = action.payload;
@@ -74,30 +81,50 @@ const cartSlice = createSlice({
     // },
     increase: (state, action) => {
       const cartItem = state.cartItems.find(
-        (item) => item.id === action.payload
+        (item) =>
+          item.id === action.payload.id &&
+          item.size === action.payload.size &&
+          item.cooked === action.payload.cooked &&
+          item.ice === action.payload.ice
       );
+      console.log(action.payload.id, "-----", state.cartItems);
       cartItem.quantity = cartItem.quantity + 1;
     },
     decrease: (state, action) => {
       const cartItem = state.cartItems.find(
-        (item) => item.id === action.payload
+        (item) =>
+          item.id === action.payload.id &&
+          item.size === action.payload.size &&
+          item.cooked === action.payload.cooked &&
+          item.ice === action.payload.ice
       );
       cartItem.quantity = cartItem.quantity - 1;
     },
     calculateTotals: (state, action) => {
-      let amount = 0;
+      let CartDetailamount = 0;
       let total = 0;
 
+      console.log(action.payload, "--------------< calcu");
       const itemIds = action.payload;
 
-      const Item = state.cartItems.filter((item) => itemIds.includes(item.id));
+      const Item = state.cartItems.filter((item) =>
+        itemIds.find(
+          (value) =>
+            item.id === value.id &&
+            item.size === value.size &&
+            item.cooked === value.cooked &&
+            item.ice === value.ice
+        )
+      );
 
       Item.forEach((item) => {
-        amount += item.quantity;
+        CartDetailamount += item.quantity;
         total += item.quantity * item.price;
       });
-      state.amount = amount;
+      state.CartDetailamount = CartDetailamount;
       state.total = total;
+
+      //      state.amount  = amount <<  이 부분 때문에 자꾸 장바구니 amount 초기화 되서 위에 initialState  에 변수를 하나 더 추가
     },
     saveCart(state, action) {
       const itemIds = action.payload;

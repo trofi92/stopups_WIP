@@ -1,6 +1,6 @@
 import { useState, useLayoutEffect } from "react";
 import logo from "../../image/Header/logo.png";
-import cartLogo from "../../image/Header/headerCart.png"
+import cartLogo from "../../image/Header/headerCart.png";
 import userLogo from "../../image/Header/headerUser.png";
 import spotLogo from "../../image/Header/headerSpot.png";
 import userCategory from "../../image/Header/headerCategory.png";
@@ -10,7 +10,9 @@ import * as styled_H from "../../styled/Header";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { TestDiv, TestDiv1 } from "../../styled/Menu/Menu";
-import {HIconCart, HIconCartSpan} from "../../styled/Header";
+import { HIconCart, HIconCartSpan } from "../../styled/Header";
+import { useEffect } from "react";
+import { useMemo } from "react";
 const Header = () => {
   const [modalOpen, setModalOpen] = useState(true);
 
@@ -66,7 +68,6 @@ const Header = () => {
                 <styled_H.HIconCart src={cartLogo} alt={"cartLogo"} />
               </Link>
             </styled_H.HNLi>
-
 
             <styled_H.HNLi>
               <styled_H.HIconCategory

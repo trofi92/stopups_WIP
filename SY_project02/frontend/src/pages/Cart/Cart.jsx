@@ -5,8 +5,9 @@ import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import CTitle from "../../image/Cart/CTitle.png";
 import { CNoDF } from "./CNoDF";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CNoG } from "./CNoG";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
   const [state, setState] = useState(1);
@@ -39,7 +40,6 @@ const Cart = () => {
         {/*My 장바구니 내용*/}
         <styled_F.FContentsAllBox>
           <styled_F.FCBox>
-            {/**/}
             <styled_F.FCSection1>
               <styled_F.FCSectionP>
                 {/*strong 3개 더 들어가야하는데 샘플이 없어서 못 만드는 중*/}
@@ -52,17 +52,11 @@ const Cart = () => {
                   <styled_C.CFoodBox1>
                     <styled_F.FCSH5>
                       {state === 1 ? (
-                        <styled_C.CFoodG
-                          href={"#"}
-                          onClick={() => onClick(1)}
-                        >
+                        <styled_C.CFoodG href={"#"} onClick={() => onClick(1)}>
                           음료/푸드
                         </styled_C.CFoodG>
                       ) : (
-                        <styled_C.CFood
-                          href={"#"}
-                          onClick={() => onClick(1)}
-                        >
+                        <styled_C.CFood href={"#"} onClick={() => onClick(1)}>
                           음료/푸드
                         </styled_C.CFood>
                       )}
@@ -73,17 +67,11 @@ const Cart = () => {
                   <styled_C.CGoodsBox>
                     <styled_F.FCSH5>
                       {state === 2 ? (
-                        <styled_C.CGoodsG
-                          href={"#"}
-                          onClick={() => onClick(2)}
-                        >
+                        <styled_C.CGoodsG href={"#"} onClick={() => onClick(2)}>
                           상품
                         </styled_C.CGoodsG>
                       ) : (
-                        <styled_C.CGoods
-                          href={"#"}
-                          onClick={() => onClick(2)}
-                        >
+                        <styled_C.CGoods href={"#"} onClick={() => onClick(2)}>
                           상품
                         </styled_C.CGoods>
                       )}
