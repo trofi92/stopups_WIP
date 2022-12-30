@@ -63,15 +63,6 @@ const cartSlice = createSlice({
         (item) => !itemIds.includes(item.id)
       );
     },
-    // addToItem: (state, action) => {
-    //   const Item = action.payload;
-    //   state.cartItems.push(Item);
-    //   console.log(state.cartItems);
-    //   state.totalAmount++;
-    // },
-    // toggle: (state, action) => {
-    //   state.toggle = !state.toggle;
-    // },
     increase: (state, action) => {
       const cartItem = state.cartItems.find(
         (item) => item.id === action.payload
@@ -89,9 +80,10 @@ const cartSlice = createSlice({
       let total = 0;
 
       const itemIds = action.payload;
-
+      // cartItems 중 action으로 받아온 checkItems의 값을 포함하고 있는 아이템만 잘라서 Item에 저장
       const Item = state.cartItems.filter((item) => itemIds.includes(item.id));
 
+      // Item에 있는 아이템들의 총합과 총량을 state.amount, state.total에 저장
       Item.forEach((item) => {
         amount += item.quantity;
         total += item.quantity * item.price;

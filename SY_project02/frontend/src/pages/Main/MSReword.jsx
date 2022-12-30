@@ -10,6 +10,7 @@ export const MSReword = () => {
     const email = decrypt(user.email);
 
     return (
+        // 로그인 여부에 따라 화면에 다르게 출력
         user.email === "" ? (
             <styled_Main.MSR>
                 <styled_Main.MSRInner>

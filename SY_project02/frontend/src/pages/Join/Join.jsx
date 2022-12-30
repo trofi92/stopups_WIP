@@ -4,7 +4,6 @@ import {
   checkName,
   checkNickname,
   checkPassword,
-  checkPasswordConfirm,
   checkPhone,
 } from "../../components/join/JoinRegex";
 import {useState} from "react";
@@ -21,6 +20,7 @@ import { encrypt } from "../../util/crypto-front";
 import { SERVER_URL } from "../../util/urls";
 
 const Join = () => {
+  // 회원가입 각 input란 입력 값들
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -29,6 +29,7 @@ const Join = () => {
   const [nickname, setNickname] = useState("");
   const [checkedNick, setCheckedNick] = useState(false);
 
+  // 정규식 검사에 따른 멘트 저장용
   const [emailMsg, setEmailMsg] = useState("");
   const [passwordMsg, setPasswordMsg] = useState("");
   const [passwordConfirmMsg, setPasswordConfirmMsg] = useState("");
@@ -36,6 +37,7 @@ const Join = () => {
   const [telephoneMsg, setTelephoneMsg] = useState("");
   const [nicknameMsg, setNicknameMsg] = useState("");
 
+  // 정규식 검사에 따른 값 저장 => 나오는 값에 따라 css 변경
   const emailValid = checkEmail(email);
   const passwordValid = checkPassword(password);
   const passwordConfirmValid = password === passwordConfirm;
@@ -65,7 +67,6 @@ const Join = () => {
     }
   };
 
-  // 색상은 바뀌는데 왜 문구가 안바뀌는가 흠...
   const handlePasswordConfirmChange = (e) => {
     const currenPasswordConfirm = e.target.value;
     setPasswordConfirm(currenPasswordConfirm);
@@ -156,7 +157,7 @@ const Join = () => {
           console.log("회원가입 성공=>", res);
           navigate("/joinSuccess", {
             replace: true,
-            state: nickname,
+            state: email, // 회원가입 성공 시 /joinSuccess로 유저 email 전달
           });
         })
         .catch((error) => {

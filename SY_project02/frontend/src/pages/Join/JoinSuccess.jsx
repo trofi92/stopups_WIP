@@ -8,6 +8,7 @@ import JSuccessSally from "../../image/Join/JSuccessSally.jpg"
 import * as styled_BU from "../../styled/Button";
 
 const JoinSuccess = () => {
+    // join에서 넘어온 유저 email
     const {state} = useLocation();
 
     return(

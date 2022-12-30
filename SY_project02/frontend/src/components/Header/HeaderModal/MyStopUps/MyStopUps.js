@@ -43,10 +43,8 @@ export const MyStopUps = () => {
         setOpen6(!open6);
     };
 
-    // 유저가 로그인한 경우 /myStopUps
-    // 로그인하지 않은 경우 /loginPlease
-
     return (
+        // 로그인 여부에 따라 로그인하지 않은 경우 /loginPlase와 /login 페이지로, 로그인한 경우 각 페이지로 이동
         user.email === "" ? (
             <>
                 <styled_HM.NLi>

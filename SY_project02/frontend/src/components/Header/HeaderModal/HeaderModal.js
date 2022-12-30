@@ -10,9 +10,10 @@ import { StopUpsRewards } from "./StopUpsRewards/StopUpsRewards";
 import { CorporateSales } from "./CorporateSales/CorporateSales";
 import { WhatsNew } from "./WhatsNew/WhatsNew";
 import { useNavigate } from "react-router-dom";
-import {HMTButton1, HMTButtonClicked} from "../../../styled/Button";
 
+// Header의 modalClose 받아옴
 const HeaderModal = ({ modalClose }) => {
+  // search input 값
   const [search, setSearch] = useState("");
   const searchRef = useRef(null);
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ const HeaderModal = ({ modalClose }) => {
     setSearch(e.target.value);
   };
 
-  // 여기 값 /search로 보내주기
+  // 검색어 입력 후 Search 버튼 클릭 시 검색어 /search로 보내줌
   const onSearchSubmit = () => {
     if (search === "") {
       alert("검색어를 입력하세요.");
