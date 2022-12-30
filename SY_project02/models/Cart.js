@@ -4,6 +4,14 @@ module.exports = class Cart extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
+        userId: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          references: {
+            model: "users",
+            key: "id",
+          },
+        },
         total: {
           type: Sequelize.DECIMAL(11, 0).UNSIGNED,
           allowNull: false,
@@ -11,7 +19,7 @@ module.exports = class Cart extends Sequelize.Model {
       },
       {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         underscored: true,
         modelName: "Cart",
         tableName: "carts",

@@ -35,7 +35,12 @@ const addBookmarks = async (req, res, next) => {
 
   try {
     await Bookmark.findOrCreate({
-      where: { userId: userId, productId: pId, price: price },
+      where: {
+        userId: userId,
+        productId: pId,
+        price: price,
+        cookType: cookType,
+      },
       defaults: {
         userId: userId,
         productId: pId,
@@ -88,15 +93,16 @@ const sendBookmarks = async (req, res, next) => {
 const deleteBookmarks = async (req, res, next) => {
   const data = req?.body?.data;
   const email = data?.email;
-  const pIds = data?.pIds;
+  const items = data?.items;
   const user = await User.findUser(email);
-  console.log("uid ==>", user.id, "pid ==>", pIds);
+  console.log(data);
+  console.log("uid ==>", user.id, "pid ==>", items);
 
   try {
     errorHandler(data);
-    for (let i = 0; i <= pIds.length - 1; i++) {
+    for (let i = 0; i <= items.length - 1; i++) {
       const findProductId = await Product.findOne({
-        where: { pId: pIds[i] },
+        where: { pId: items[i] },
       });
       await Bookmark.destroy({
         where: { userId: user.id, productId: findProductId.id },
