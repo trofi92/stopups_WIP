@@ -89,16 +89,21 @@ const deleteBookmarks = async (req, res, next) => {
   const data = req?.body?.data;
   const email = data?.email;
   const pIds = data?.pIds;
-  const user = User.findUser(email);
-  console.log(email, pIds);
+  const user = await User.findUser(email);
+  console.log("uid ==>", user.id, "pid ==>", pIds);
 
-  // for (let i = 0; i <= pIds.length; i++) {
-  //   await Bookmark.destroy({
-  //     where: { userId: user.id,productId:pIds[i] },
-  //   });
-  // }
+  for (let i = 0; i <= pIds.length - 1; i++) {
+    const findProductId = await Product.findOne({
+      where: { pId: pIds[i] },
+    });
+    await Bookmark.destroy({
+      where: { userId: user.id, productId: findProductId.id },
+    });
+  }
 
-  res.status(204).json({ message: "미완성임 ㅅㄱ" });
+  res
+    .status(200)
+    .json({ message: "목록에서 아이템이 삭제되었습니다" });
 };
 
 module.exports = { addBookmarks, sendBookmarks, deleteBookmarks };

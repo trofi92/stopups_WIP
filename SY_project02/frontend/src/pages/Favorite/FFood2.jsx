@@ -55,6 +55,16 @@ export const FFood = () => {
 
   console.log(checkItems);
 
+  const deleteFavoriteReq = async () => {
+    await axios
+      .put(
+        `${SERVER_URL}/bookmarks/deleteBookmarks`,
+        { data: post },
+        { withCredentials: true }
+      )
+      .then((res) => console.log(res));
+  };
+
   const handleSingleCheck = (checked, id) => {
     if (checked) {
       // 체크 시 체크된 아이템을 배열에 추가
@@ -81,11 +91,7 @@ export const FFood = () => {
       alert("삭제 할 푸드를 선택하세요.");
     } else {
       dispatch(removeFromCart(checkItems));
-      axios.put(
-        `${SERVER_URL}/bookmarks/deleteBookmarks`,
-        { data: post },
-        { withCredentials: true }
-      );
+      deleteFavoriteReq();
       setCheckItems([]);
     }
   };
@@ -241,7 +247,7 @@ export const FFood = () => {
                                 )
                               }
                               // 체크된 아이템 배열에 해당 데이터가 있을 경우 활성화
-                              checked={checkItems.includes(sData?.Product?.id)}
+                              checked={checkItems.includes(sData?.id)}
                             />
                           </styled_F.FCDTHThDiv1>
                         </styled_F.FCDTHTbodyTdOK>
