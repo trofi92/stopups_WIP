@@ -45,7 +45,7 @@ export const FFood = () => {
     if (checked) {
       // 체크 시 모든 아이템을 배열에 추가
       let idArray = [];
-      serverData?.forEach((el) => idArray.push(el.id));
+      serverData?.forEach((el) => idArray.push(el.Product.p_id));
       setCheckItems(idArray);
     } else {
       // 체크 해제 시 빈 배열
@@ -79,7 +79,7 @@ export const FFood = () => {
     setClick(!click);
     if (!click) {
       const idArray = [];
-      serverData?.forEach((el) => idArray.push(el.id));
+      serverData?.forEach((el) => idArray.push(el.Product.p_id));
       setCheckItems(idArray);
     } else if (click) {
       setCheckItems([]);
@@ -210,10 +210,8 @@ export const FFood = () => {
                             handleAllCheck(e.target.checked)
                           }
                           // 데이터의 수와 체크된 아이템의 수가 다를 때 체크 해제
-                          checked={
-                            checkItems.length ===
-                            favorite.favorites.length
-                          }
+                          checked={checkItems.length === serverData?.length}
+
                         />
                       </styled_F.FCDTHThDiv1>
                     </styled_F.FCDTHTh1>
@@ -241,13 +239,9 @@ export const FFood = () => {
                               type={"checkbox"}
                               title={"개별 선택"}
                               onChange={(e) =>
-                                handleSingleCheck(
-                                  e.target.checked,
-                                  sData?.Product?.id
-                                )
-                              }
-                              // 체크된 아이템 배열에 해당 데이터가 있을 경우 활성화
-                              checked={checkItems.includes(sData?.id)}
+                                  handleSingleCheck(e.target.checked, sData?.Product?.p_id)}
+                                // 체크된 아이템 배열에 해당 데이터가 있을 경우 활성화
+                              checked={checkItems.includes(sData?.Product?.p_id)}
                             />
                           </styled_F.FCDTHThDiv1>
                         </styled_F.FCDTHTbodyTdOK>
@@ -300,129 +294,3 @@ export const FFood = () => {
     </styled_F.FCDd1>
   );
 };
-//
-//                     {favorite.favorites.length === 0 ? (
-//                         <styled_F.FCDTable1>
-//                             <styled_F.FCDTColgroup>
-//                                 <col style={{width: "52px"}}/>
-//                                 <col style={{width: "100px"}}/>
-//                                 <col style={{width: "210px"}}/>
-//                                 <col style={{width: "185px"}}/>
-//                                 <col style={{width: "164px"}}/>
-//                                 <col style={{width: "114px"}}/>
-//                             </styled_F.FCDTColgroup>
-//                             <styled_F.FCDTHead1>
-//                                 <styled_F.FCDTHTr1>
-//                                     <styled_F.FCDTHTh1>
-//                                         {/*체크박스 체크시 이미지 변경*/}
-//                                         <styled_F.FCDTHThDiv1>
-//                                             <styled_F.FCDTHThDInput1
-//                                                 type={"checkbox"}
-//                                                 title={"전체 선택"}
-//                                                 disabled
-//                                             />
-//                                         </styled_F.FCDTHThDiv1>
-//                                     </styled_F.FCDTHTh1>
-//                                     <styled_F.FCDTHTh1>No</styled_F.FCDTHTh1>
-//                                     <styled_F.FCDTHTh1>푸드명</styled_F.FCDTHTh1>
-//                                     <styled_F.FCDTHTh1>워밍 옵션</styled_F.FCDTHTh1>
-//                                     <styled_F.FCDTHTh1>메뉴 추가</styled_F.FCDTHTh1>
-//                                     <styled_F.FCDTHTh1>등록일</styled_F.FCDTHTh1>
-//                                 </styled_F.FCDTHTr1>
-//                             </styled_F.FCDTHead1>
-//                             <styled_F.FCDTHTbody1>
-//                                 <styled_F.FCDTHTbodyTd1 colSpan={6}>데이터가 없습니다.</styled_F.FCDTHTbodyTd1>
-//                             </styled_F.FCDTHTbody1>
-//                         </styled_F.FCDTable1>
-//                     ) : (
-//                         <>
-//                             <styled_F.FCDTable1>
-//                                 <styled_F.FCDTColgroup>
-//                                     <col style={{width: "52px"}}/>
-//                                     <col style={{width: "100px"}}/>
-//                                     <col style={{width: "210px"}}/>
-//                                     <col style={{width: "185px"}}/>
-//                                     <col style={{width: "164px"}}/>
-//                                     <col style={{width: "114px"}}/>
-//                                 </styled_F.FCDTColgroup>
-//                                 <styled_F.FCDTHead1>
-//                                     <styled_F.FCDTHTr1>
-//                                         <styled_F.FCDTHTh1>
-//                                             {/*체크박스 체크시 이미지 변경*/}
-//                                             <styled_F.FCDTHThDiv1>
-//                                                 <styled_F.FCDTHThDInput1
-//                                                     type={"checkbox"}
-//                                                     title={"전체 선택"}
-//                                                     onChange={(e) => handleAllCheck(e.target.checked)}
-//                                                     // 데이터의 수와 체크된 아이템의 수가 다를 때 체크 해제
-//                                                     checked={checkItems.length === serverData?.length}
-//                                                 />
-//                                             </styled_F.FCDTHThDiv1>
-//                                         </styled_F.FCDTHTh1>
-//                                         <styled_F.FCDTHTh1>No</styled_F.FCDTHTh1>
-//                                         <styled_F.FCDTHTh1>푸드명</styled_F.FCDTHTh1>
-//                                         <styled_F.FCDTHTh1>워밍 옵션</styled_F.FCDTHTh1>
-//                                         <styled_F.FCDTHTh1>메뉴 추가</styled_F.FCDTHTh1>
-//                                         <styled_F.FCDTHTh1>등록일</styled_F.FCDTHTh1>
-//                                     </styled_F.FCDTHTr1>
-//                                 </styled_F.FCDTHead1>
-//                                 {serverData?.map((food) => {
-//                                     if (food?.category === "브레드" || food?.category === "케이크" || food?.category === "샌드위치" || food?.category === "샐러드" || food?.category === "따뜻한 푸드") {
-//                                         return (
-//                                             <styled_F.FCDTHTbody1 key={food?.Product?.p_id}>
-//                                                 <styled_F.FCDTHTbodyTdOK>
-//                                                     <styled_F.FCDTHThDiv1>
-//                                                         <styled_F.FCDTHThDInput1
-//                                                             type={"checkbox"}
-//                                                             title={"개별 선택"}
-//                                                             onChange={(e) => handleSingleCheck(e.target.checked, food?.Product?.p_id)}
-//                                                             // 체크된 아이템 배열에 해당 데이터가 있을 경우 활성화
-//                                                             checked={checkItems.includes(food?.Product?.p_id)}
-//                                                         />
-//                                                     </styled_F.FCDTHThDiv1>
-//                                                 </styled_F.FCDTHTbodyTdOK>
-//                                                 <styled_F.FCDTHTbodyTdOK>{food?.Product?.id}</styled_F.FCDTHTbodyTdOK>
-//                                                 <styled_F.FCDTHTbodyTdOK>{food?.Product?.name}</styled_F.FCDTHTbodyTdOK>
-//                                                 <styled_F.FCDTHTbodyTdOK>
-//                                                     {food?.cooked ? favorite.cooked === "Desert" ? "따뜻하게 데움" : "데우지 않음" : "워밍 옵션 없음"}
-//                                                 </styled_F.FCDTHTbodyTdOK>
-//                                                 <styled_F.FCDTHTbodyTdOK></styled_F.FCDTHTbodyTdOK>
-//                                                 <styled_F.FCDTHTbodyTdOK>{food?.updatedAt.replace(/T|\.000Z/g, " ")}</styled_F.FCDTHTbodyTdOK>
-//                                             </styled_F.FCDTHTbody1>
-//                                         )
-//                                     }
-//                                 })}
-//                             </styled_F.FCDTable1>
-//                             <styled_F.FCDADiv>
-//                                 <styled_F.FCDADUl>
-//                                     {/*전체 선택*/}
-//                                     <styled_F.FCDADLi>
-//                                         <styled_F.FCDADLA
-//                                             onClick={onClickAll}
-//                                         >
-//                                             전체 선택
-//                                         </styled_F.FCDADLA>
-//                                     </styled_F.FCDADLi>
-//                                     <styled_F.FCDADLi>
-//                                         <styled_F.FCDADLA
-//                                             onClick={handleRemove}
-//                                         >
-//                                             선택 삭제
-//                                         </styled_F.FCDADLA>
-//                                     </styled_F.FCDADLi>
-//                                     <styled_F.FCDADLiCart>
-//                                         <styled_F.FCDADLACart
-//                                             onClick={onClick}
-//                                         >
-//                                             장바구니 이동
-//                                         </styled_F.FCDADLACart>
-//                                     </styled_F.FCDADLiCart>
-//                                 </styled_F.FCDADUl>
-//                             </styled_F.FCDADiv>
-//                         </>
-//                     )}
-//                 </styled_F.FCDFieldset1>
-//             </styled_F.FCDArticle1>
-//         </styled_F.FCDd1>
-//     );
-// };

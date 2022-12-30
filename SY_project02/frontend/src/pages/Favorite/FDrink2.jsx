@@ -65,7 +65,7 @@ export const FDrink = () => {
     if (checked) {
       // 체크 시 모든 아이템을 배열에 추가
       let idArray = [];
-      serverData?.forEach((el) => idArray.push(el.id));
+      serverData?.forEach((el) => idArray.push(el.Product.p_id));
       setCheckItems(idArray);
     } else {
       // 체크 해제 시 빈 배열
@@ -79,7 +79,7 @@ export const FDrink = () => {
     setClick(!click);
     if (!click) {
       let idArray = [];
-      serverData?.forEach((el) => idArray.push(el.id));
+      serverData?.forEach((el) => idArray.push(el.Product.p_id));
       setCheckItems(idArray);
     } else if (click) {
       setCheckItems([]);
@@ -180,10 +180,7 @@ export const FDrink = () => {
                             handleAllCheck(e.target.checked)
                           }
                           // 데이터의 수와 체크된 아이템의 수가 다를 때 체크 해제
-                          checked={
-                            checkItems.length ===
-                            favorite.favorites.length
-                          }
+                          checked={checkItems.length === serverData?.length}
                         />
                       </styled_F.FCDTHThDiv1>
                     </styled_F.FCDTHTh1>
@@ -210,15 +207,9 @@ export const FDrink = () => {
                               type={"checkbox"}
                               title={"개별 선택"}
                               onChange={(e) =>
-                                handleSingleCheck(
-                                  e.target.checked,
-                                  sData?.Product?.p_id
-                                )
-                              }
+                                handleSingleCheck(e.target.checked, sData?.Product?.p_id)}
                               // 체크된 아이템 배열에 해당 데이터가 있을 경우 활성화
-                              checked={checkItems.includes(
-                                sData?.Product?.p_id
-                              )}
+                              checked={checkItems.includes(sData?.Product?.p_id)}
                             />
                           </styled_F.FCDTHThDiv1>
                         </styled_F.FCDTHTbodyTdOK>
