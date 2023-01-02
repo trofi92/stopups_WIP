@@ -9,14 +9,7 @@ import HeaderModal from "./HeaderModal/HeaderModal";
 import * as styled_H from "../../styled/Header";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-<<<<<<< HEAD
-import { TestDiv, TestDiv1 } from "../../styled/Menu/Menu";
-import { HIconCart, HIconCartSpan } from "../../styled/Header";
-import { useEffect } from "react";
-import { useMemo } from "react";
-=======
 
->>>>>>> 87dedd266921be5be9c4294a716699fce208f1ba
 const Header = () => {
   // 모달 여닫기 true, false 값 저장용
   const [modalOpen, setModalOpen] = useState(true);
@@ -70,7 +63,9 @@ const Header = () => {
             {/*장바구니 들어가면 숫자가 사라짐 원래 이렇게 만드신거면 놔두고 아니면 수정*/}
             <styled_H.HNLi>
               <Link to={"/cart"}>
-                {amount !== 0 && <styled_H.HIconCartSpan>{amount}</styled_H.HIconCartSpan>}
+                {amount !== 0 && (
+                  <styled_H.HIconCartSpan>{amount}</styled_H.HIconCartSpan>
+                )}
                 <styled_H.HIconCart src={cartLogo} alt={"cartLogo"} />
               </Link>
             </styled_H.HNLi>

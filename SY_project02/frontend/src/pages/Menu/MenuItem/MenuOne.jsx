@@ -38,9 +38,6 @@ const DetailOne = (props) => {
 
   const dispatch = useDispatch();
 
-  const InValid =
-    props.price.Desert !== "0" && props.price.hasOwnProperty("Desert");
-
   const amount = useSelector((state) => state.cart.amount);
   useEffect(() => console.log(amount));
   const onChangeHandler = (e) => {
