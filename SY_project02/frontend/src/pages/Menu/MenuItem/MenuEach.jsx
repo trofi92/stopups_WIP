@@ -3,14 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import { AllBox } from "../../../styled/AllBox";
-import { NotFound } from "../../NotFound";
 import DetailOne from "./MenuOne";
+import { API } from "../../../util/urls";
 
 const DetailEach = () => {
   const [data, setData] = useState([]);
   const [Nutrient, setNutrient] = useState([]);
   const [Price, setPrice] = useState([]);
-  const [productId, setProductId] = useState([]);
   const [DrinkType, setDrinkType] = useState([]);
   const [EatType, setEatType] = useState([]);
   const [CookType, setCookType] = useState([]);
@@ -20,7 +19,7 @@ const DetailEach = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=${params.Category}&Name=`
+        `${API}&Category=${params.Category}&Name=`
       );
       const data = response.data.filter(
         (value) => value.ProductId === params.item

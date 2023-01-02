@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react"; // 상태 값 저장
+import { useState, useRef } from "react"; // 상태 값 저장
 import { useNavigate } from "react-router-dom"; // 페이지 리렌더링 용도
 import * as styled_AB from "../../../styled/AllBox";
 import Header from "../../../components/Header/Header";
@@ -7,51 +7,89 @@ import { Footer } from "../../../components/Footer/Footer";
 import * as styled_Pass from "../../../styled/Pass";
 import * as styled_LOG from "../../../styled/Login/Login";
 import * as styled_Join from "../../../styled/Join/Join";
-import { SMS } from "../../../util/urls";
+import { SERVER_URL } from "../../../util/urls";
+import {
+  usePhoneSubmit,
+  useSmsSubmit,
+} from "../../../hooks/use-submit";
+import { checkEmail } from "../../../components/join/JoinRegex";
 
 const LIdPass = () => {
-  const [show, setShow] = useState(false); // 휴대전화 입력 여부 상태 저장
-  const [rnd, setRnd] = useState(""); // 임의의 비밀번호 4자리 값 저장
+  const [telephone, setTelephone] = useState("");
   const [authForm, setAuthForm] = useState(false); // 인증 상태 값 저장
-  const navigate = useNavigate(); // 페이지 리렌더링 용도
-  const handlePhoneSubmit = async (e) => {
-    // SMS 인증
-    e.preventDefault();
-    const phone_number = e.target.phone_number.value; // 휴대전화 번호
-    const rnd_number = Math.floor(Math.random() * 8999) + 1000; // 임의의 인증 번호 생성
-    setRnd(rnd_number.toString()); // 인증 번호 문자열로 저장
-    if (phone_number !== "") {
-      // 값이 존재하면 SMS 인증을 위해 POST로 전달
-      await axios.post(
-        SMS,
-        {
-          phone_number,
-          rnd_number,
-        },
-        { withCredentials: false }
-      );
+  const [responseEmail, setResponseEmail] = useState("");
+  const [rndNum, setRndNum] = useState(""); // 임의의 비밀번호 4자리 값 저장
+
+  const emailRef = useRef();
+  const reqEmailRef = emailRef?.current?.value;
+  console.log("request email==>", reqEmailRef);
+
+  const { phoneSubmit, rnd } = usePhoneSubmit();
+  const { smsSubmit } = useSmsSubmit(rnd, telephone, null);
+
+  const navigate = useNavigate();
+
+  //서버 요청
+  const requestCheckPhoneNumber = async () => {
+    if (reqEmailRef === "" || !checkEmail(reqEmailRef)) {
+      return alert("이메일을 확인해주세요.");
     }
-    setShow(!show); // 휴대전화 인증 토글 변경
+    const request = await axios
+      .post(
+        `${SERVER_URL}/myInfo/updatePwWithEmail`,
+        { email: reqEmailRef, phoneNumber: telephone }
+        // { withCredentials: true }
+      )
+      .catch((error) => {
+        console.error(error);
+        alert(
+          "알 수 없는 에러가 발생했습니다. 메인 화면으로 이동합니다"
+        );
+        return navigate(-1, { replace: true, state: null });
+      });
+
+    const resData = await request.data;
+    if (
+      request.data.email === undefined ||
+      request.data.email === null
+    ) {
+      alert("존재하지 않는 사용자 입니다");
+      return navigate("/", { replace: true, state: null });
+    }
+    setResponseEmail(resData);
+    console.log("responseEmail==>", responseEmail);
+    return navigate("/findPw", {
+      state: {
+        email: resData.email,
+        password: resData.password,
+        auth: authForm,
+      },
+    });
   };
 
-  // 모바일 인증
+  const handlePhoneSubmit = async (e) => {
+    // SMS 인증요청
+    e.preventDefault();
+    if (telephone === "") {
+      return alert("휴대전화 번호를 입력해 주세요.");
+    }
+    phoneSubmit(e, telephone);
+  };
+  console.log("state number =>", telephone);
+  console.log("rnd ref =>", rndNum);
+
+  //인증번호 확인
   const handleSmsSubmit = (e) => {
     e.preventDefault();
-    const userAuth = e.target.phone_number.value; // 인증 번호 값 저장
-    e.target.phone_number.value = ""; // 인증 번호 입력 값 초기화
-    if (userAuth === rnd) {
-      // 사용자에게 보낸 임의의 4자리와 사용자가 입력한 4자리가 맞으면 작동
-      setAuthForm(true); // 인증 값 설정
-      sessionStorage.setItem("AuthForm", "success"); // 세션 스토리지에 인증 여부 저장
-      navigate("/findPw"); // 페이지 리렌더링 하기 위한 페이지 이동
-    }
-    setShow(!show); // 인증 폼 상태값 변경
+    smsSubmit(e, rndNum);
+    setAuthForm(true);
+    sessionStorage.setItem("AuthForm", "success");
+    requestCheckPhoneNumber();
   };
 
   return (
     <styled_AB.AllBox>
       <Header />
-
       <styled_Pass.LPWBox>
         <styled_LOG.LFB>
           <styled_LOG.LFInner>
@@ -69,12 +107,11 @@ const LIdPass = () => {
                     이메일
                   </styled_Join.RFSectionStrong>
                   <styled_Pass.PInputBox>
-                    <form>
-                      <styled_Pass.PInputEmail
-                        placeholder="이메일"
-                        name="email"
-                      />
-                    </form>
+                    <styled_Pass.PInputEmail
+                      placeholder="이메일을 입력하세요"
+                      ref={emailRef}
+                      name="email"
+                    />
                   </styled_Pass.PInputBox>
 
                   {/*번호 입력란*/}
@@ -82,15 +119,16 @@ const LIdPass = () => {
                     휴대폰번호
                   </styled_Join.RFSectionStrong>
                   <styled_Pass.PInputBox>
-                    <form onSubmit={handlePhoneSubmit}>
-                      <styled_Pass.PInputPhone
-                        placeholder="숫자만 입력"
-                        name="phone_number"
-                      />
-                      <styled_Pass.PPhoneButton>
-                        확인
-                      </styled_Pass.PPhoneButton>
-                    </form>
+                    <styled_Pass.PInputPhone
+                      onChange={(e) => setTelephone(e.target.value)}
+                      placeholder="숫자만 입력해 주세요."
+                      name="phone_number"
+                    />
+                    <styled_Pass.PPhoneButton
+                      onClick={handlePhoneSubmit}
+                    >
+                      확인
+                    </styled_Pass.PPhoneButton>
                   </styled_Pass.PInputBox>
 
                   {/*인증번호 입력란*/}
@@ -98,15 +136,16 @@ const LIdPass = () => {
                     인증번호
                   </styled_Join.RFSectionStrong>
                   <styled_Pass.PInputBox>
-                    <form onSubmit={handleSmsSubmit}>
-                      <styled_Pass.PInputPhone
-                        placeholder="숫자 4자리 입력"
-                        name="phone_number"
-                      />
-                      <styled_Pass.PPhoneButton>
-                        확인
-                      </styled_Pass.PPhoneButton>
-                    </form>
+                    <styled_Pass.PInputPhone
+                      onChange={(e) => setRndNum(e.target.value)}
+                      placeholder="인증번호 4자리를 입력해 주세요."
+                      name="auth_number"
+                    />
+                    <styled_Pass.PPhoneButton
+                      onClick={handleSmsSubmit}
+                    >
+                      확인
+                    </styled_Pass.PPhoneButton>
                   </styled_Pass.PInputBox>
                 </styled_Pass.PSectionDiv>
               </styled_Pass.PSection>

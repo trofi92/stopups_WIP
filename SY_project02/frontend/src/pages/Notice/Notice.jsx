@@ -7,6 +7,7 @@ import { NoticeInner } from "./NoticeInner";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Pagination from "./Pagination";
+import { API } from "../../util/urls";
 
 const Notice = () => {
   const [search, setSearch] = useState("");
@@ -31,9 +32,7 @@ const Notice = () => {
   useEffect(() => {
     const notice = async () => {
       await axios
-        .get(
-          "http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Notice=ALL&Title=&writeId="
-        )
+        .get(`${API}&Notice=ALL&Title=&writeId=`)
         .then((res) => {
           setNotice(res.data);
         });
@@ -97,16 +96,27 @@ const Notice = () => {
             {/*게시글들 헤드*/}
             <styled_Notice.NThead>
               <styled_Notice.NTr>
-                <styled_Notice.NTh scope={"col"}>NO</styled_Notice.NTh>
-                <styled_Notice.NTh scope={"col"}>제목</styled_Notice.NTh>
-                <styled_Notice.NTh scope={"col"}>날짜</styled_Notice.NTh>
-                <styled_Notice.NTh scope={"col"}>조회수</styled_Notice.NTh>
+                <styled_Notice.NTh scope={"col"}>
+                  NO
+                </styled_Notice.NTh>
+                <styled_Notice.NTh scope={"col"}>
+                  제목
+                </styled_Notice.NTh>
+                <styled_Notice.NTh scope={"col"}>
+                  날짜
+                </styled_Notice.NTh>
+                <styled_Notice.NTh scope={"col"}>
+                  조회수
+                </styled_Notice.NTh>
               </styled_Notice.NTr>
             </styled_Notice.NThead>
             {/*게시글들 박스*/}
             <styled_Notice.NTbody>
               {/*각각 게시글*/}
-              <NoticeInner result={result} notice={postsData(notice)} />
+              <NoticeInner
+                result={result}
+                notice={postsData(notice)}
+              />
             </styled_Notice.NTbody>
           </styled_Notice.NTable>
           {/*게시글 페이지*/}

@@ -6,7 +6,7 @@ export const LFPBox = styled.div`
   width: 100%;
   height: 1300px;
   margin-top: 60px;
-`
+`;
 
 // 새 비밀번호
 export const LFPDiv = styled.div`
@@ -15,7 +15,7 @@ export const LFPDiv = styled.div`
   margin: 0;
   border: 0;
   vertical-align: baseline;
-`
+`;
 
 export const LFPDStrong = styled.strong`
   display: block;
@@ -24,7 +24,7 @@ export const LFPDStrong = styled.strong`
   font-weight: bold;
   padding: 0;
   vertical-align: baseline;
-`
+`;
 
 export const LFPDInput = styled.input`
   border: 1px solid #ddd;
@@ -36,7 +36,7 @@ export const LFPDInput = styled.input`
   text-indent: 20px;
   width: 100%;
   max-width: 520px;
-`
+`;
 
 // 비밀번호 양식 틀릴 경우
 export const LFPDP = styled.p`
@@ -47,7 +47,7 @@ export const LFPDP = styled.p`
   padding: 0;
   vertical-align: baseline;
   display: none;
-`
+`;
 
 // 안전한 비밀번호 만들기
 export const LFPSafe = styled.div`
@@ -55,21 +55,21 @@ export const LFPSafe = styled.div`
   padding: 30px 20px;
   margin: 0;
   vertical-align: baseline;
-`
+`;
 
 export const LEPSStrong = styled.strong`
   display: block;
   margin-bottom: 20px;
   padding: 0;
   vertical-align: baseline;
-`
+`;
 
 export const LEPSUl = styled.ul`
   display: block;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-`
+`;
 
 export const LEPSLi = styled.li`
   color: #666;
@@ -79,7 +79,7 @@ export const LEPSLi = styled.li`
   position: relative;
   padding-left: 15px;
   list-style: none;
-  
+
   :before {
     background: #999;
     border-radius: 100%;
@@ -90,7 +90,7 @@ export const LEPSLi = styled.li`
     top: 8px;
     width: 6px;
   }
-`
+`;
 
 // 취소, 확인 버튼
 export const LEPBtnBox = styled.div`
@@ -99,7 +99,7 @@ export const LEPBtnBox = styled.div`
   width: 100%;
   padding: 0;
   vertical-align: baseline;
-`
+`;
 
 // 취소
 export const LEPBtn1 = styled.li`
@@ -110,7 +110,8 @@ export const LEPBtn1 = styled.li`
   list-style: none;
   margin: 0;
   padding: 0;
-`
+  cursor: pointer;
+`;
 
 export const LEPBtn1P = styled.p`
   color: #fff;
@@ -122,7 +123,7 @@ export const LEPBtn1P = styled.p`
   width: 100%;
   margin: 0;
   padding: 0;
-`
+`;
 
 // 확인
 export const LEPBtn2 = styled.li`
@@ -133,4 +134,5 @@ export const LEPBtn2 = styled.li`
   float: left;
   list-style: none;
   padding: 0;
-`
+  cursor: pointer;
+`;

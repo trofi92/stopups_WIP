@@ -2,6 +2,7 @@ import { Table } from "../../styled/Menu/Nutrition";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ColorBox } from "../../styled/Menu/Menu";
+import { API } from "../../util/urls";
 
 const Nutrition = (props) => {
   const [data, setData] = useState([]);
@@ -9,7 +10,7 @@ const Nutrition = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=${props.Category}&Name=`
+        `${API}&Category=${props.Category}&Name=`
       );
 
       setData(response.data);

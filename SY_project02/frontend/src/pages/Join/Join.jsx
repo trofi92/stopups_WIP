@@ -6,7 +6,7 @@ import {
   checkPassword,
   checkPhone,
 } from "../../components/join/JoinRegex";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import Header from "../../components/Header/Header";
 import * as styled_AB from "../../styled/AllBox";
@@ -16,10 +16,33 @@ import { Footer } from "../../components/Footer/Footer";
 import * as styled_BU from "../../styled/Button";
 import { NickAgree } from "./NickAgree";
 import { encrypt } from "../../util/crypto-front";
-// import { AIN, ALN } from "../../styled/Join/Join"; // DB에 저장 시 암호화, 조회시 복호화
 import { SERVER_URL } from "../../util/urls";
 
 const Join = () => {
+  const emailRef = useRef();
+  const phoneNumberRef = useRef();
+  const nicknameRef = useRef();
+
+  const requestEmail = emailRef?.current?.value;
+  const requestPhoneNumber = phoneNumberRef?.current?.value;
+  const requestNickname = nicknameRef?.current?.value;
+
+  console.log("refEmail ==>", requestEmail);
+  console.log("refNumber ==>", requestPhoneNumber);
+  console.log("refNickname ==>", requestNickname);
+
+  const handleCheckRequest = async (data, reqData) => {
+    const reqName = data;
+    console.log(reqName);
+    await axios
+      .post(
+        `${SERVER_URL}/auth/check`,
+        { [reqName]: reqData }
+        // { withCredentials: true }
+      )
+      .then((res) => alert(res.data.message));
+  };
+
   // 회원가입 각 input란 입력 값들
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,6 +51,12 @@ const Join = () => {
   const [telephone, setTelephone] = useState("");
   const [nickname, setNickname] = useState("");
   const [checkedNick, setCheckedNick] = useState(false);
+
+  const eEmail = encrypt(email);
+  const eName = encrypt(name);
+  const eNickname = encrypt(nickname);
+  const ePassword = encrypt(password);
+  const eTelephone = encrypt(telephone);
 
   // 정규식 검사에 따른 멘트 저장용
   const [emailMsg, setEmailMsg] = useState("");
@@ -70,10 +99,10 @@ const Join = () => {
   };
 
   const handlePasswordConfirmChange = (e) => {
-    const currenPasswordConfirm = e.target.value;
-    setPasswordConfirm(currenPasswordConfirm);
+    const currentPasswordConfirm = e.target.value;
+    setPasswordConfirm(currentPasswordConfirm);
 
-    if (currenPasswordConfirm !== password) {
+    if (currentPasswordConfirm !== password) {
       setPasswordConfirmMsg("비밀번호가 일치하지 않습니다.");
     } else {
       setPasswordConfirmMsg("비밀번호가 일치합니다.");
@@ -94,7 +123,9 @@ const Join = () => {
     setTelephone(e.target.value);
 
     if (!checkPhone(e.target.value)) {
-      setTelephoneMsg("하이픈(-)을 제외한 13자리 숫자로 입력해야 합니다.");
+      setTelephoneMsg(
+        "하이픈(-)을 제외한 13자리 숫자로 입력해야 합니다."
+      );
     } else {
       setTelephoneMsg("올바른 번호 입니다.");
     }
@@ -104,7 +135,9 @@ const Join = () => {
     setNickname(e.target.value);
 
     if (!checkNickname(e.target.value)) {
-      setNicknameMsg("2자리 이상의 영문자와 한글만 입력할 수 있습니다.");
+      setNicknameMsg(
+        "2자리 이상의 영문자와 한글만 입력할 수 있습니다."
+      );
     } else {
       setNicknameMsg("올바른 닉네임 입니다.");
     }
@@ -113,12 +146,6 @@ const Join = () => {
   const onClickCheckedNick = () => {
     setCheckedNick(!checkedNick);
   };
-
-  const eEmail = encrypt(email);
-  const eName = encrypt(name);
-  const eNickname = encrypt(nickname);
-  const ePassword = encrypt(password);
-  const eTelephone = encrypt(telephone);
 
   // 아이디, 휴대전화, 닉네임 중복체크 alert("") 추가 하기
   const submitIdPassword = (e) => {
@@ -168,9 +195,6 @@ const Join = () => {
     }
   };
 
-  const onJoinSubmit = (e) => {
-    e.preventDefault();
-  };
   return (
     <styled_AB.AllBox>
       <Header />
@@ -179,7 +203,10 @@ const Join = () => {
         <styled_LOG.LFB>
           <styled_LOG.LFInner>
             {/*회원가입 폼*/}
-            <form method={"post"} onSubmit={onJoinSubmit}>
+            <form
+              method={"post"}
+              onSubmit={(e) => e.preventDefault()}
+            >
               <styled_LOG.LFFFieldset>
                 <styled_Join.RFStrong>회원가입</styled_Join.RFStrong>
                 <styled_Join.RFSection>
@@ -194,7 +221,11 @@ const Join = () => {
                         (필수)
                       </styled_Join.RFSectionSpan>
                       {/*중복 확인 되면 RFSectionSpanRightCheckd 중복 확인 완료로 바꾸기*/}
-                      <styled_Join.RFSectionSpanRight>
+                      <styled_Join.RFSectionSpanRight
+                        onClick={() =>
+                          handleCheckRequest("email", requestEmail)
+                        }
+                      >
                         중복 확인
                       </styled_Join.RFSectionSpanRight>
                       {/*<styled_Join.RFSectionSpanRightChecked>*/}
@@ -202,6 +233,7 @@ const Join = () => {
                       {/*</styled_Join.RFSectionSpanRightChecked>*/}
                     </styled_Join.RFSectionStrong>
                     <styled_Join.RFSDInput
+                      ref={emailRef}
                       type={"email"}
                       id={"registerEmail"}
                       name={"email"}
@@ -249,12 +281,16 @@ const Join = () => {
                       type={"password"}
                       id={"registerPasswordConfirm"}
                       name={"passwordConfirm"}
-                      placeholder={"비밀번호를 다시 한번 입력해 주세요."}
+                      placeholder={
+                        "비밀번호를 다시 한번 입력해 주세요."
+                      }
                       onChange={handlePasswordConfirmChange}
                       required
                     />
                     <styled_Join.RFSDDiv
-                      className={passwordConfirmValid ? "success" : "error"}
+                      className={
+                        passwordConfirmValid ? "success" : "error"
+                      }
                     >
                       {passwordConfirmMsg}
                     </styled_Join.RFSDDiv>
@@ -286,7 +322,14 @@ const Join = () => {
                       <styled_Join.RFSectionSpan>
                         (필수)
                       </styled_Join.RFSectionSpan>
-                      <styled_Join.RFSectionSpanRight>
+                      <styled_Join.RFSectionSpanRight
+                        onClick={() =>
+                          handleCheckRequest(
+                            "phoneNumber",
+                            requestPhoneNumber
+                          )
+                        }
+                      >
                         중복 확인
                       </styled_Join.RFSectionSpanRight>
                       {/*<styled_Join.RFSectionSpanRightChecked>*/}
@@ -294,6 +337,7 @@ const Join = () => {
                       {/*</styled_Join.RFSectionSpanRightChecked>*/}
                     </styled_Join.RFSectionStrong>
                     <styled_Join.RFSDInput
+                      ref={phoneNumberRef}
                       type={"text"}
                       id={"registerPhone"}
                       name={"telephone"}
@@ -321,7 +365,14 @@ const Join = () => {
                       <styled_Join.RFSectionSpan>
                         (필수)
                       </styled_Join.RFSectionSpan>
-                      <styled_Join.RFSectionSpanRight>
+                      <styled_Join.RFSectionSpanRight
+                        onClick={() =>
+                          handleCheckRequest(
+                            "nickname",
+                            requestNickname
+                          )
+                        }
+                      >
                         중복 확인
                       </styled_Join.RFSectionSpanRight>
                       {/*<styled_Join.RFSectionSpanRightChecked>*/}
@@ -329,6 +380,7 @@ const Join = () => {
                       {/*</styled_Join.RFSectionSpanRightChecked>*/}
                     </styled_Join.RFSectionStrong>
                     <styled_Join.RFSDInput
+                      ref={nicknameRef}
                       type={"nickname"}
                       id={"registerNickname"}
                       name={"nickname"}
@@ -358,7 +410,9 @@ const Join = () => {
                 </styled_Join.RFSection>
               </styled_LOG.LFFFieldset>
               <styled_Join.RFormP>
-                <b>* 필수항목을 모두 입력해야 회원 가입이 가능합니다.</b>
+                <b>
+                  * 필수항목을 모두 입력해야 회원 가입이 가능합니다.
+                </b>
               </styled_Join.RFormP>
               <styled_BU.LJButton onClick={submitIdPassword}>
                 가입하기

@@ -17,6 +17,7 @@ import PaymentCoupon from "../../image/Payment/PaymentCoupon.png";
 import PaymentGift from "../../image/Payment/PaymentGift.png";
 import PaymentPhone from "../../image/Payment/PaymentPhone.png";
 import { decrypt } from "../../util/crypto-front";
+import { API } from "../../util/urls";
 
 export const Payment = () => {
   // 주문하기 클릭 시 선택된 제품만 리덕스에 저장
@@ -79,9 +80,7 @@ export const Payment = () => {
     const event = async () => {
       for (let i = 0; i < cart.cartItems.length; i++) {
         await axios
-          .get(
-            `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=분류&Name=&ProductId=`
-          )
+          .get(`${API}&Category=분류&Name=&ProductId=`)
           .then((res) => {
             setImg(res.data);
           });

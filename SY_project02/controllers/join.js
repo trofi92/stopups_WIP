@@ -1,21 +1,21 @@
 const User = require("../models/User");
 
 const join = async (req, res, next) => {
-  const { eEmail, eName, eNickname, ePassword, eTelephone } =
-    req.body.data;
+  const reqData = req?.body?.data;
+
   try {
     // 이미 있는 이메일인지 확인
-    const exUser = await User.findUser(req.body.data.eEmail);
+    const exUser = await User.findUser(reqData?.eEmail);
     if (exUser) {
       console.log("이미 사용중인 이메일 입니다.");
       return res.redirect("/join?error=exist");
     }
     await User.create({
-      email: req.body.data.eEmail,
-      name: req.body.data.eName,
-      nickname: req.body.data.eNickname,
-      password: req.body.data.ePassword,
-      telephone: req.body.data.eTelephone,
+      email: reqData?.eEmail,
+      name: reqData?.eName,
+      nickname: reqData?.eNickname,
+      password: reqData?.ePassword,
+      telephone: reqData?.eTelephone,
     });
     console.log("회원가입 성공");
     return res.status(200).send("회원가입 성공");

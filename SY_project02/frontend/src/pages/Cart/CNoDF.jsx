@@ -1,5 +1,8 @@
 import * as styled_C from "../../styled/Cart";
-import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
+import {
+  AiOutlineMinusCircle,
+  AiOutlinePlusCircle,
+} from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -12,6 +15,7 @@ import {
 } from "../../features/cart/cartSlice";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API } from "../../util/urls";
 
 export const CNoDF = () => {
   // 체크된 아이템 담을 배열
@@ -130,7 +134,7 @@ export const CNoDF = () => {
       for (let i = 0; i < cart.cartItems.length; i++) {
         await axios
           .get(
-            `http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Category=분류&Name=&ProductId=`
+            `${API}&Category=분류&Name=&Category=분류&Name=&ProductId=`
           )
           .then((res) => {
             setImg(res.data);
@@ -158,7 +162,9 @@ export const CNoDF = () => {
               to={"/menu/전체 음료 보기"}
               style={{ textDecoration: "none" }}
             >
-              <styled_C.GBButton>음료/푸드 담으러 가기</styled_C.GBButton>
+              <styled_C.GBButton>
+                음료/푸드 담으러 가기
+              </styled_C.GBButton>
             </Link>
           </styled_C.GBox>
           <styled_C.GBImg />
@@ -230,7 +236,9 @@ export const CNoDF = () => {
                 <styled_C.CMBox>
                   {img.map((img, idx) => {
                     if (img.ProductId === cart.id) {
-                      return <styled_C.CFMImg src={img.Image} key={idx} />;
+                      return (
+                        <styled_C.CFMImg src={img.Image} key={idx} />
+                      );
                     }
                   })}
                   <styled_C.CFMText>
@@ -249,7 +257,9 @@ export const CNoDF = () => {
                             : "워밍 옵션 없음"}
                         </styled_C.CFMIceHot>
                         <styled_C.CFMCup>
-                          {cart.takeout === "takeout" ? "테이크 아웃" : "매장"}
+                          {cart.takeout === "takeout"
+                            ? "테이크 아웃"
+                            : "매장"}
                         </styled_C.CFMCup>
                         <styled_C.CFMMoney>
                           {cart.price
@@ -260,8 +270,12 @@ export const CNoDF = () => {
                       </styled_C.CFMOption>
                     ) : (
                       <styled_C.CFMOption>
-                        <styled_C.CFMIceHot>{cart.ice}</styled_C.CFMIceHot>
-                        <styled_C.CFMSize>{cart.size}</styled_C.CFMSize>
+                        <styled_C.CFMIceHot>
+                          {cart.ice}
+                        </styled_C.CFMIceHot>
+                        <styled_C.CFMSize>
+                          {cart.size}
+                        </styled_C.CFMSize>
                         <styled_C.CFMCup>
                           {cart.takeout === "takeout"
                             ? "일회용 컵"
@@ -279,7 +293,9 @@ export const CNoDF = () => {
                       <styled_C.CFMCMinus
                         onClick={() => {
                           if (cart.quantity <= 1) {
-                            alert("최소 주문 가능 수량은 1개 입니다.");
+                            alert(
+                              "최소 주문 가능 수량은 1개 입니다."
+                            );
                           } else {
                             dispatch(
                               decrease({
@@ -292,9 +308,13 @@ export const CNoDF = () => {
                           }
                         }}
                       >
-                        <AiOutlineMinusCircle style={{ fontSize: "30px" }} />
+                        <AiOutlineMinusCircle
+                          style={{ fontSize: "30px" }}
+                        />
                       </styled_C.CFMCMinus>
-                      <styled_C.CFMCount>{cart.quantity}</styled_C.CFMCount>
+                      <styled_C.CFMCount>
+                        {cart.quantity}
+                      </styled_C.CFMCount>
                       <styled_C.CFMCPlus
                         onClick={() => {
                           if (cart.quantity >= 20) {
@@ -313,7 +333,9 @@ export const CNoDF = () => {
                           // id: cart.id, size: cart.size, cooked: cart.cooked, drinkType: cart.ice,
                         }}
                       >
-                        <AiOutlinePlusCircle style={{ fontSize: "30px" }} />
+                        <AiOutlinePlusCircle
+                          style={{ fontSize: "30px" }}
+                        />
                       </styled_C.CFMCPlus>
                       <styled_C.CFMTotalMoney>
                         {(cart.price * cart.quantity)
@@ -340,14 +362,18 @@ export const CNoDF = () => {
             <styled_C.CFBTotal>
               {checkItems.length === 0
                 ? 0
-                : cart.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                : cart.total
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               원
             </styled_C.CFBTotal>
           </styled_C.CFButtonBox>
           {checkItems.length === 0 ? (
             <styled_C.CFButtonNo>주문하기</styled_C.CFButtonNo>
           ) : (
-            <styled_C.CFButton onClick={onClick}>주문하기</styled_C.CFButton>
+            <styled_C.CFButton onClick={onClick}>
+              주문하기
+            </styled_C.CFButton>
           )}
         </styled_C.CFBoxs>
       )}

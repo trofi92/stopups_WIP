@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API } from "../../util/urls";
 
-const url =
-  "http://stopupsapi.shop:8080/api/?apikey=TeamYN1671673527249&Category=분류&Name=";
+const url = `${API}&Category=분류&Name=`;
 
 export const getCartItems = createAsyncThunk(
   "cart/getCartItems",
@@ -60,7 +60,9 @@ const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       const itemId = action.payload;
-      state.cartItems = state.cartItems.filter((item) => item.id !== itemId);
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== itemId
+      );
     },
     removeFromCart(state, action) {
       const itemIds = action.payload;

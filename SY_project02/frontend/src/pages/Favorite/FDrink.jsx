@@ -8,7 +8,7 @@ import { SERVER_URL } from "../../util/urls";
 
 export const FDrink = () => {
   //요청한 데이터
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
 
   // 체크된 아이템 담을 배열
   const [checkItems, setCheckItems] = useState([]);
@@ -33,12 +33,12 @@ export const FDrink = () => {
         { data: post },
         { withCredentials: true }
       );
-      setData(response.data);
+      setData(response.data || null);
     };
     fetchData();
   }, []);
   const serverData = data?.bookmarkedProducts;
-  console.log(data?.bookmarkedProducts);
+  // console.log(data?.bookmarkedProducts);
 
   const deleteFavoriteReq = async () => {
     await axios

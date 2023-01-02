@@ -11,6 +11,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API } from "../../util/urls";
 
 const NoticeInnerText = () => {
   const [notices, setNotices] = useState([]);
@@ -19,9 +20,7 @@ const NoticeInnerText = () => {
   useEffect(() => {
     const notice = async () => {
       await axios
-        .get(
-          "http://stopupsapi.shop:8080/api/?apikey=TeamYN1672012490329&Notice=ALL&Title=&writeId="
-        )
+        .get(`${API}&Notice=ALL&Title=&writeId=`)
         .then((res) => {
           setNotices(res.data);
         });
@@ -96,34 +95,54 @@ const NoticeInnerText = () => {
                   </colgroup>
                   <tbody>
                     <tr>
-                      <styled_NoticeIT.NITTh>윗글</styled_NoticeIT.NITTh>
+                      <styled_NoticeIT.NITTh>
+                        윗글
+                      </styled_NoticeIT.NITTh>
                       <styled_NoticeIT.NITTd>
                         {notice.Num + 1 > notices.length ? (
-                            <Link to={`#`} style={{ textDecoration: "none" }}>
-                              <styled_NoticeIT.NITTdP>마지막 글입니다.</styled_NoticeIT.NITTdP>
-                            </Link>
+                          <Link
+                            to={`#`}
+                            style={{ textDecoration: "none" }}
+                          >
+                            <styled_NoticeIT.NITTdP>
+                              마지막 글입니다.
+                            </styled_NoticeIT.NITTdP>
+                          </Link>
                         ) : (
-                            <Link to={`/notice/${notice.Num + 1}`} style={{ textDecoration: "none" }}>
-                              <styled_NoticeIT.NITTdP>윗글</styled_NoticeIT.NITTdP>
-                            </Link>
+                          <Link
+                            to={`/notice/${notice.Num + 1}`}
+                            style={{ textDecoration: "none" }}
+                          >
+                            <styled_NoticeIT.NITTdP>
+                              윗글
+                            </styled_NoticeIT.NITTdP>
+                          </Link>
                         )}
                       </styled_NoticeIT.NITTd>
                     </tr>
                     <tr>
-                      <styled_NoticeIT.NITTh>아랫글</styled_NoticeIT.NITTh>
+                      <styled_NoticeIT.NITTh>
+                        아랫글
+                      </styled_NoticeIT.NITTh>
                       <styled_NoticeIT.NITTd>
-                        {notice.Num -1 === 0 ? (
-                            <Link to={`#`} style={{ textDecoration: "none" }}>
-                              <styled_NoticeIT.NITTdP>
-                                마지막 글입니다.
-                              </styled_NoticeIT.NITTdP>
-                            </Link>
+                        {notice.Num - 1 === 0 ? (
+                          <Link
+                            to={`#`}
+                            style={{ textDecoration: "none" }}
+                          >
+                            <styled_NoticeIT.NITTdP>
+                              마지막 글입니다.
+                            </styled_NoticeIT.NITTdP>
+                          </Link>
                         ) : (
-                            <Link to={`/notice/${notice.Num - 1}`} style={{ textDecoration: "none" }}>
-                              <styled_NoticeIT.NITTdP>
-                                아랫글
-                              </styled_NoticeIT.NITTdP>
-                            </Link>
+                          <Link
+                            to={`/notice/${notice.Num - 1}`}
+                            style={{ textDecoration: "none" }}
+                          >
+                            <styled_NoticeIT.NITTdP>
+                              아랫글
+                            </styled_NoticeIT.NITTdP>
+                          </Link>
                         )}
                       </styled_NoticeIT.NITTd>
                     </tr>

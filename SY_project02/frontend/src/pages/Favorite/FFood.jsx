@@ -8,7 +8,7 @@ import axios from "axios";
 
 export const FFood = () => {
   //요청한 데이터
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
 
   // 체크된 아이템 담을 배열
   const [checkItems, setCheckItems] = useState([]);
@@ -34,7 +34,7 @@ export const FFood = () => {
         { withCredentials: true }
       );
       // console.log(response?.data);
-      setData(response.data);
+      setData(response.data || null);
     };
     fetchData();
   }, []);

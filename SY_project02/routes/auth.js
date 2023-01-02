@@ -1,6 +1,10 @@
 const express = require("express");
 const { join } = require("../controllers/join");
-const { login, logout } = require("../controllers/login");
+const {
+  login,
+  logout,
+  checkDuplication,
+} = require("../controllers/auth");
 
 const router = express.Router();
 
@@ -9,5 +13,7 @@ router.post("/join", join);
 router.post("/login", login);
 
 router.post("/logout", logout);
+
+router.post("/check", checkDuplication);
 
 module.exports = router;
