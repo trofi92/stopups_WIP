@@ -66,9 +66,18 @@ const cartSlice = createSlice({
     },
     removeFromCart(state, action) {
       const itemIds = action.payload;
+      console.log(action.payload, "removeFromCart");
       // 특정 id값에 해당하는 상품만을 제거 = 선택된 아이템만 제거
-      state.cartItems = state.cartItems.filter(
-        (item) => !itemIds.includes(item.id)
+      state.cartItems = state.cartItems.filter((item) =>
+        itemIds.find(
+          (value) =>
+            !(
+              item.id === value.id &&
+              item.size === value.size &&
+              item.cooked === value.cooked &&
+              item.ice === value.ice
+            )
+        )
       );
       state.amount--;
     },
@@ -80,7 +89,7 @@ const cartSlice = createSlice({
           item.cooked === action.payload.cooked &&
           item.ice === action.payload.ice
       );
-      console.log(action.payload.id, "-----", state.cartItems);
+
       cartItem.quantity = cartItem.quantity + 1;
     },
     decrease: (state, action) => {
@@ -97,7 +106,6 @@ const cartSlice = createSlice({
       let CartDetailamount = 0;
       let total = 0;
 
-      console.log(action.payload, "--------------< calcu");
       const itemIds = action.payload;
 
       const Item = state.cartItems.filter((item) =>

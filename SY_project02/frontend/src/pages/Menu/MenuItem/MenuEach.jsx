@@ -10,6 +10,7 @@ const DetailEach = () => {
   const [data, setData] = useState([]);
   const [Nutrient, setNutrient] = useState([]);
   const [Price, setPrice] = useState([]);
+
   const [DrinkType, setDrinkType] = useState([]);
   const [EatType, setEatType] = useState([]);
   const [CookType, setCookType] = useState([]);

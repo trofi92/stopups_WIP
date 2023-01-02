@@ -53,7 +53,6 @@ export const CNoDF = () => {
     if (checked) {
       // 체크 시 체크된 아이템을 배열에 추가
       setCheckItems((prev) => [...prev, { id, size, cooked, ice }]);
-      console.log(checkItems, checked);
     } else {
       // 체크 해제 시 체크된 아이템을 제외한 나머지 배열
       setCheckItems(
@@ -65,7 +64,6 @@ export const CNoDF = () => {
             el.ice !== ice
         )
       );
-      console.log(checkItems);
     }
   };
 
@@ -96,6 +94,7 @@ export const CNoDF = () => {
     if (checkItems.length === 0) {
       alert("삭제 할 음료를 선택하세요.");
     } else {
+      console.log(checkItems, "선택삭제를 하겠습니다.");
       dispatch(removeFromCart(checkItems));
       setCheckItems([]);
     }
@@ -103,7 +102,6 @@ export const CNoDF = () => {
 
   useEffect(() => {
     const handleTotalCalculate = (itemIds) => {
-      console.log(itemIds);
       dispatch(calculateTotals(itemIds));
     };
 
