@@ -25,7 +25,7 @@ app.use(
   cors({
     // true = * =>credentials가 true(=include)일 경우
     // origin은 *을 제외한 상세설정을 필요로 함
-    // origin: true,
+    origin: true,
     credentials: true,
   })
 );
@@ -50,7 +50,7 @@ app.use("/page", page);
 app.use("/auth", auth);
 app.use("/", index);
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
-// app.use(authJwt);
+app.use(authJwt);
 app.use("/bookmarks", bookmarks);
 app.use("/payment", payment);
 app.use("/myInfo", myInfo);

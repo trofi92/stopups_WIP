@@ -17,7 +17,7 @@ const authJwt = async (req, res, next) => {
   const accessToken = req?.cookies?.accessJwtToken;
   const refreshToken = req?.cookies?.refreshJwtToken;
 
-  // console.log(req?.cookies?.accessJwtToken);
+  // console.log("JWT=====>", req?.cookies?.accessJwtToken);
 
   try {
     const decoded = jwt.verify(accessToken, jwtSecret);
@@ -51,7 +51,7 @@ const authJwt = async (req, res, next) => {
         refreshTokenCookieOption
       );
     }
-    // return next();
+    return next();
   } catch (err) {
     return res.status(401).send({
       message: "토큰 인증에 문제가 있습니다. : " + err.message,

@@ -82,10 +82,10 @@ const sendBookmarks = async (req, res, next) => {
       ],
     });
     console.log(bookmarkedProducts);
-    return res.json({ bookmarkedProducts });
+    return res.status(200).json({ bookmarkedProducts });
   } catch (error) {
     console.error(error);
-    return;
+    return res.status(404).json({ message: "failed" });
   }
 };
 

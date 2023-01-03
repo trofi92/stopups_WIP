@@ -44,7 +44,7 @@ const updatePwWithEmail = async (req, res, next) => {
     findOneUser === undefined ||
     findOneUser === null
   )
-    return res.status(200).json({
+    return res.status(401).json({
       message: "인증에 실패했습니다",
     });
   else
@@ -61,7 +61,7 @@ const forgetAndModifyPw = async (req, res, next) => {
   const user = await User.findUser(reqData?.email);
   console.log(user);
   if (!user)
-    return res.status(200).json({
+    return res.status(404).json({
       message: "존재하지 않는 유저입니다",
     });
 
@@ -98,7 +98,7 @@ const updatePhoneAndNickname = async (res, req, next) => {
     });
   } catch (error) {
     console.log(error);
-    return req.status(204).json({
+    return req.status(400).json({
       message:
         "알 수 없는 오류가 발생했습니다. 메인화면으로 돌아갑니다.",
     });
@@ -143,7 +143,7 @@ const findEmailByPhoneNumber = async (req, res, next) => {
   );
   //예외 처리
   if (!phoneNumber || undefined || null)
-    return res.status(200).json({
+    return res.status(401).json({
       message:
         "인증에 실패했습니다. 입력하신 번호를 다시 확인해주세요",
     });

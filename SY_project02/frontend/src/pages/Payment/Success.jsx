@@ -17,23 +17,25 @@ export const Success = () => {
   );
 
   React.useEffect(() => {
-    axios
-      .post(
-        `${SERVER_URL}
-          /payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}}`,
-        { withCredentials: true }
-      )
-      .then((res) => {
-        console.log(res.status === 200);
-
-        if (res.status === 200) {
-          alert("결제가 완료되었습니다.");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        navigate("/failed");
-      });
+    const paymentsRequest = async () => {
+      await axios
+        .get(
+          `${SERVER_URL}/payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}`,
+          { withCredentials: true }
+        )
+        .then((res) => {
+          console.log(res);
+          return;
+          // if (res.status === 200) {
+          //   return alert("결제가 완료되었습니다.");
+          // }
+        })
+        .catch((error) => {
+          console.error(error);
+          navigate("/failed");
+        });
+    };
+    paymentsRequest();
   }, []);
 
   return (
