@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useLayoutEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import {AllBox} from "../../../styled/AllBox";
@@ -71,6 +71,7 @@ const DetailOne = (props) => {
     console.log("category==>", props.category);
     console.log("props cooked ==>", props.CookType);
     console.log("cooked ==>", cooked);
+    console.log("productId ==>", props.productId);
 
     const addFavoriteData = async () => {
         const response = await axios.put(
@@ -91,30 +92,12 @@ const DetailOne = (props) => {
         props.category === "따뜻한 푸드" ||
         props.category === "샐러드";
 
-    console.log("props=>", props.productId)
-    console.log("favorite=>", favorite.favorites.map((item) => {
-        return item.id
-    }))
-
     const onClickFavorite = (e) => {
         if (eatTypeInValid && cookedInValid) {
             if (cooked === "" || takeOut === "") {
                 alert("옵션을 선택해 주세요."); // 푸드 종류 dispatch
             } else {
-                e.preventDefault();
-                dispatch(
-                    addToFavorites({
-                        id: props.productId,
-                        name: props.name,
-                        price: props.price.Desert,
-                        cooked: props.cookType,
-                        takeout: takeOut,
-                        whatDateTime: whatDateTime,
-                        category: props.category,
-                    })
-                );
                 addFavoriteData();
-                console.log("favorite==>", favorite);
                 alert("나만의 푸드에 등록했습니다.");
             }
         } else if (!sizeInValid && eatTypeInValid && drinkTypeInValid) {
@@ -122,19 +105,6 @@ const DetailOne = (props) => {
                 // 음료 dispatch
                 alert("옵션을 선택해 주세요.");
             } else {
-                e.preventDefault();
-                dispatch(
-                  addToFavorites({
-                    id: props.productId,
-                    name: props.name,
-                    size: sizeData,
-                    ice: drinkType,
-                    takeout: takeOut,
-                    whatDateTime: whatDateTime,
-                    price: props.price[sizeData],
-                    category: props.category,
-                  })
-                );
                 addFavoriteData();
                 alert("나만의 음료에 등록했습니다.");
             }
@@ -143,17 +113,6 @@ const DetailOne = (props) => {
             if (takeOut === "") {
                 alert("옵션을 선택해 주세요.");
             } else {
-                e.preventDefault();
-                dispatch(
-                    addToFavorites({
-                        id: props.productId,
-                        name: props.name,
-                        price: props.price.Desert,
-                        takeout: takeOut,
-                        whatDateTime: whatDateTime,
-                        category: props.category,
-                    })
-                );
                 addFavoriteData();
                 alert("나만의 푸드에 등록했습니다.");
             }

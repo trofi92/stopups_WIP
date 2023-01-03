@@ -127,12 +127,13 @@ export const CNoDF = () => {
   // api에서 받아온 메뉴
   const [img, setImg] = useState([]);
 
+  console.log("img", img)
   useEffect(() => {
     const event = async () => {
       for (let i = 0; i < cart.cartItems.length; i++) {
         await axios
           .get(
-            `${API}&Category=분류&Name=&Category=분류&Name=&ProductId=`
+            `${API}&Category=분류&Name=&ProductId=`
           )
           .then((res) => {
             setImg(res.data);
