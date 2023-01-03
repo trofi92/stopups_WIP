@@ -46,8 +46,8 @@ export const useLoginService = () => {
             `${SERVER_URL}/auth/login`,
             {
               data: post,
-            }
-            // { withCredentials: true }
+            },
+            { withCredentials: true }
           )
           .then((res) => {
             console.log("로그인 성공=>", res);
@@ -86,8 +86,8 @@ export const useLogout = () => {
     try {
       await axios.post(
         `${SERVER_URL}/auth/logout`,
-        {}
-        // { withCredentials: true }
+        {},
+        { withCredentials: true }
       );
       dispatch(setULogout());
       await purge();

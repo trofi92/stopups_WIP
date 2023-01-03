@@ -10,6 +10,9 @@ export const FDrink = () => {
   //요청한 데이터
   const [data, setData] = useState(null);
 
+  //렌더링 즉시 유발
+  const [render, setRender] = useState(true);
+
   // 체크된 아이템 담을 배열
   const [checkItems, setCheckItems] = useState([]);
 
@@ -30,15 +33,14 @@ export const FDrink = () => {
     const fetchData = async () => {
       const response = await axios.post(
         `${SERVER_URL}/bookmarks/sendBookmarks`,
-        { data: post }
-        // { withCredentials: true }
+        { data: post },
+        { withCredentials: true }
       );
       setData(response.data || null);
     };
     fetchData();
-  }, []);
+  }, [render]);
   const serverData = data?.bookmarkedProducts;
-  // console.log(data?.bookmarkedProducts);
 
   const deleteFavoriteReq = async () => {
     await axios
@@ -48,6 +50,8 @@ export const FDrink = () => {
         { withCredentials: true }
       )
       .then((res) => console.log("deleted ==>", res));
+    setRender((prev) => !prev);
+    return alert("선택하신 상품이 삭제되었습니다.");
   };
 
   const handleRemove = () => {
@@ -71,7 +75,6 @@ export const FDrink = () => {
       setCheckItems([]);
     }
   };
-  // console.log(serverData?.[0].id);
   console.log("checkItems ==>", checkItems);
 
   const onClickAll = () => {
@@ -175,9 +178,13 @@ export const FDrink = () => {
                         <styled_F.FCDTHThDInput1
                           type={"checkbox"}
                           title={"전체 선택"}
-                          onChange={(e) => handleAllCheck(e.target.checked)}
+                          onChange={(e) =>
+                            handleAllCheck(e.target.checked)
+                          }
                           // 데이터의 수와 체크된 아이템의 수가 다를 때 체크 해제
-                          checked={checkItems.length === serverData?.length}
+                          checked={
+                            checkItems.length === serverData?.length
+                          }
                         />
                       </styled_F.FCDTHThDiv1>
                     </styled_F.FCDTHTh1>

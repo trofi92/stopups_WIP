@@ -18,7 +18,7 @@ export const Success = () => {
 
   React.useEffect(() => {
     axios
-      .post(
+      .get(
         `${SERVER_URL}
           /payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}}`,
         { withCredentials: true }

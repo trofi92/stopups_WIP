@@ -5,6 +5,7 @@ const {
   sendBookmarks,
   deleteBookmarks,
 } = require("../controllers/bookmarks");
+const authJwt = require("../middlewares/authJwt");
 
 router.put("/addBookmarks", addBookmarks);
 router.post("/sendBookmarks", sendBookmarks);

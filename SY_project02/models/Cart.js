@@ -12,6 +12,14 @@ module.exports = class Cart extends Sequelize.Model {
             key: "id",
           },
         },
+        productId: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          references: {
+            model: "products",
+            key: "id",
+          },
+        },
         total: {
           type: Sequelize.DECIMAL(11, 0).UNSIGNED,
           allowNull: false,
@@ -30,6 +38,5 @@ module.exports = class Cart extends Sequelize.Model {
   }
   static associate(db) {
     db.Cart.belongsTo(db.User, { foreignKey: "userId" });
-    db.Cart.hasMany(db.CartItem, { foreignKey: "cartId" });
   }
 };

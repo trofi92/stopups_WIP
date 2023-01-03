@@ -5,14 +5,15 @@ const {
   logout,
   checkDuplication,
 } = require("../controllers/auth");
+const authJwt = require("../middlewares/authJwt");
 
 const router = express.Router();
 
 router.post("/join", join);
 
-router.post("/login", login);
+router.post("/login", login, authJwt);
 
-router.post("/logout", logout);
+router.post("/logout", logout, authJwt);
 
 router.post("/check", checkDuplication);
 
