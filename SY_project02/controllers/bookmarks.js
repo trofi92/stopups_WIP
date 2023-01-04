@@ -2,7 +2,7 @@ const { User, Bookmark, Product } = require("../models");
 // const { decrypt, encrypt } = require("../middlewares/crypto");
 
 //에러 일괄처리
-const errorHandler = (req,res,next, data) => {
+const errorHandler = (data) => {
   if (!data) {
     return res
       .status(400)
@@ -16,12 +16,19 @@ const addBookmarks = async (req, res, next) => {
   const reqUser = data.email;
   const user = await User.findUser(reqUser);
   const userId = user?.dataValues?.id;
-  console.log(data);
+  console.log("===========pId=======>", data.pId);
 
-  errorHandler(data);
+  // errorHandler(res, data);
+
   const findProductId = await Product.findOne({
     where: { pId: data.pId },
   });
+  // const findProductAll = await Product.findAll({});
+  // console.log(
+  //   "========findProductId========>",
+  //   findProductId,
+  //   findProductAll
+  // );
 
   const pId = findProductId?.id;
   const category = data.category;
@@ -70,23 +77,26 @@ const sendBookmarks = async (req, res, next) => {
   const userId = user?.dataValues?.id;
   console.log(data);
 
-  try {
-    // errorHandler(data);
-    const bookmarkedProducts = await Bookmark.findAll({
-      where: { userId: userId },
-      include: [
-        {
-          model: Product,
-          attributes: ["id", "name", "p_id"],
-        },
-      ],
-    });
-    console.log(bookmarkedProducts);
-    return res.status(200).json({ bookmarkedProducts });
-  } catch (error) {
-    console.error(error);
-    return res.status(404).json({ message: "failed" });
-  }
+  // try {
+  errorHandler(res, data);
+  const bookmarkedProducts = await Bookmark.findAll({
+    include: [
+      {
+        model: Product,
+        attributes: ["id", "name", "p_id"],
+      },
+    ],
+    where: { userId: userId },
+  });
+
+  console.log(1);
+  console.log(bookmarkedProducts);
+
+  return res.status(200).json({ bookmarkedProducts });
+  // } catch (error) {
+  //   console.error(error);
+  //   return res.status(404).json({ message: "failed" });
+  // }
 };
 
 //찜목록 아이템 삭제
@@ -95,13 +105,11 @@ const deleteBookmarks = async (req, res, next) => {
   const email = data?.email;
   const items = data?.items;
   const user = await User.findUser(email);
-  console.log("data===>", data);
-  console.log("email===>", email);
-  console.log("items===>", items);
+  console.log(data);
   console.log("uid ==>", user.id, "pid ==>", items);
 
   try {
-    errorHandler(data);
+    errorHandler(res, data);
     for (let i = 0; i <= items.length - 1; i++) {
       const findProductId = await Product.findOne({
         where: { pId: items[i] },

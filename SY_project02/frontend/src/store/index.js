@@ -24,12 +24,12 @@ const cartPersistConfig = {
 };
 
 export const userPersistedReducer = persistReducer(
-    userPersistConfig,
-    userInfoReducer
+  userPersistConfig,
+  userInfoReducer
 );
 const cartPersistedReducer = persistReducer(
-    cartPersistConfig,
-    cartReducer
+  cartPersistConfig,
+  cartReducer
 );
 
 export const store = configureStore({
@@ -39,18 +39,18 @@ export const store = configureStore({
     user: userPersistedReducer,
   },
   middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: {
-          ignoredActions: [
-            FLUSH,
-            REHYDRATE,
-            PAUSE,
-            PERSIST,
-            PURGE,
-            REGISTER,
-          ],
-        },
-      }),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [
+          FLUSH,
+          REHYDRATE,
+          PAUSE,
+          PERSIST,
+          PURGE,
+          REGISTER,
+        ],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);

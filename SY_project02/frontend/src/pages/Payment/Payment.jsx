@@ -56,7 +56,7 @@ export const Payment = () => {
     loadTossPayments(clientKey).then((tossPayments) => {
       // 카드 결제 메서드 실행
       tossPayments
-        .requestPayment("카드", {
+        .requestPayment(payType.easy, {
           amount: cart.total, // 가격
           orderId: `${randomId}`, // 주문 id
           orderName: `StopUps`, // 결제 이름

@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useLayoutEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import {AllBox} from "../../../styled/AllBox";
 import * as styled_Menu from "../../../styled/Menu/Menu";
@@ -6,6 +7,7 @@ import * as styled_MenuItem from "../../../styled/Menu/MenuItem";
 import {ButtonSmallBox} from "../../../styled/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {addToCart} from "../../../features/cart/cartSlice";
+import {addToFavorites} from "../../../features/favorite/favoriteSlice";
 import {Footer} from "../../../components/Footer/Footer";
 import axios from "axios";
 import {SERVER_URL} from "../../../util/urls";
@@ -71,17 +73,17 @@ const DetailOne = (props) => {
     console.log("cooked ==>", cooked);
     console.log("productId ==>", props.productId);
 
-    const addFavoriteData = async () => {
-        const response = await axios.put(
-            `${SERVER_URL}/bookmarks/addBookmarks`,
-            {
-                data: data,
-            },
-            { withCredentials: true }
-        );
-        setTest(response?.data);
-        console.log("test=>", test);
-    };
+  const addFavoriteData = async () => {
+    const response = await axios.put(
+      `${SERVER_URL}/bookmarks/addBookmarks`,
+      {
+        data: data,
+      },
+      { withCredentials: true }
+    );
+    setTest(response?.data);
+    console.log("test=>", test);
+  };
 
     const CategoryInValid =
         props.category === "케이크" ||

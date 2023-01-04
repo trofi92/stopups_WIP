@@ -9,6 +9,7 @@ import {
   setUTelephone,
   setULogout,
 } from "../features/userInfo/userInfoSlice";
+import { clearCart } from "../features/cart/cartSlice";
 import { persistor } from "../store/index";
 import {clearCart} from "../features/cart/cartSlice";
 
