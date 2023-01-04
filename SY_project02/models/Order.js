@@ -12,26 +12,23 @@ module.exports = class Order extends Sequelize.Model {
             key: "id",
           },
         },
-        orderId: {
-          type: Sequelize.INTEGER,
-          allowNull: false,
-          references: {
-            model: "orders",
-            key: "id",
-          },
-        },
-        total: {
-          type: Sequelize.INTEGER.UNSIGNED,
-          allowNull: false,
-        },
         address: {
           type: Sequelize.STRING(255),
           allowNull: true,
         },
+        total: {
+          //총 결제 금액
+          type: Sequelize.INTEGER.UNSIGNED,
+          allowNull: false,
+        },
+        createdAt: {
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW,
+        },
       },
       {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         underscored: true,
         modelName: "Order",
         tableName: "orders",
@@ -43,8 +40,8 @@ module.exports = class Order extends Sequelize.Model {
   static associate(db) {
     db.Order.belongsTo(db.User, { foreignKey: "userId" });
     db.Order.hasMany(db.OrderItem, { foreignKey: "orderId" });
-    db.Order.belongsToMany(db.Payment, {
-      through: "checkouts",
-    });
+    // db.Order.belongsToMany(db.Payment, {
+    //   through: "checkouts",
+    // });
   }
 };

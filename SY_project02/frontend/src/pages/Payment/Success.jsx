@@ -2,9 +2,12 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SERVER_URL } from "../../util/urls";
+import { clearCart } from "../../features/cart/cartSlice";
+import { useDispatch } from "react-redux";
 
 export const Success = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   let orderId = new URL(window.location.href).searchParams.get(
     "orderId"
@@ -16,26 +19,25 @@ export const Success = () => {
     "amount"
   );
 
+  const paymentsRequest = async () => {
+    await axios
+      .get(
+        `${SERVER_URL}/payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}`,
+        { withCredentials: true }
+      )
+      .then((res) => {
+        console.log(res);
+        return alert("결제가 완료되었습니다.");
+      })
+      .catch((error) => {
+        console.error(error);
+        navigate("/failed");
+      });
+  };
+
   React.useEffect(() => {
-    const paymentsRequest = async () => {
-      await axios
-        .get(
-          `${SERVER_URL}/payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}`,
-          { withCredentials: true }
-        )
-        .then((res) => {
-          console.log(res);
-          return;
-          // if (res.status === 200) {
-          //   return alert("결제가 완료되었습니다.");
-          // }
-        })
-        .catch((error) => {
-          console.error(error);
-          navigate("/failed");
-        });
-    };
     paymentsRequest();
+    dispatch(clearCart());
   }, []);
 
   return (

@@ -1,6 +1,5 @@
 import * as styled_F from "../../styled/Favorite";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart } from "../../features/favorite/favoriteSlice";
 import { useState, useLayoutEffect } from "react";
 import { addToCart } from "../../features/cart/cartSlice";
 import axios from "axios";
@@ -19,7 +18,6 @@ export const FDrink = () => {
   // 전체 선택 버튼 클릭 인지 용
   const [click, setClick] = useState(false);
 
-  const favorite = useSelector((state) => state.favorite);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -41,7 +39,7 @@ export const FDrink = () => {
     fetchData();
   }, [render]);
   const serverData = data?.bookmarkedProducts;
-  // console.log(data?.bookmarkedProducts);
+  console.log(serverData);
 
   const deleteFavoriteReq = async () => {
     await axios
@@ -60,18 +58,26 @@ export const FDrink = () => {
       alert("삭제 할 음료를 선택 하세요.");
     } else {
       serverData?.map((drink) => {
-        if (drink?.category !== "브레드" && drink?.category !== "케이크" && drink?.category !== "샌드위치" && drink?.category !== "샐러드" && drink?.category !== "따뜻한 푸드") {
+        if (
+          drink?.category !== "브레드" &&
+          drink?.category !== "케이크" &&
+          drink?.category !== "샌드위치" &&
+          drink?.category !== "샐러드" &&
+          drink?.category !== "따뜻한 푸드"
+        ) {
           if (checkItems.includes(drink.Product.p_id)) {
-            const id = checkItems.filter((item) => item === drink.Product.p_id)
+            const id = checkItems.filter(
+              (item) => item === drink.Product.p_id
+            );
             const data = {
               email: user?.email,
               items: id,
-            }
+            };
             deleteFavoriteReq(data);
             setCheckItems([]);
           }
         }
-      })
+      });
     }
   };
 
@@ -115,19 +121,25 @@ export const FDrink = () => {
       alert("장바구니로 이동 할 음료를 선택하세요.");
     } else {
       serverData?.map((drink) => {
-        if (drink?.category !== "브레드" && drink?.category !== "케이크" && drink?.category !== "샌드위치" && drink?.category !== "샐러드" && drink?.category !== "따뜻한 푸드") {
+        if (
+          drink?.category !== "브레드" &&
+          drink?.category !== "케이크" &&
+          drink?.category !== "샌드위치" &&
+          drink?.category !== "샐러드" &&
+          drink?.category !== "따뜻한 푸드"
+        ) {
           if (checkItems.includes(drink.Product.p_id)) {
             dispatch(
-                addToCart({
-                  id: drink.Product.p_id,
-                  name: drink.name,
-                  size: drink.size,
-                  ice: drink.drinkType,
-                  takeout: drink.eatType,
-                  price: drink.price,
-                  category: drink.category,
-                  quantity: drink.quantity,
-                })
+              addToCart({
+                id: drink.Product.p_id,
+                name: drink.Product.name,
+                size: drink.size,
+                ice: drink.drinkType,
+                takeout: drink.eatType,
+                price: drink.price,
+                category: drink.category,
+                quantity: drink.quantity,
+              })
             );
           }
         }
@@ -191,9 +203,13 @@ export const FDrink = () => {
                         <styled_F.FCDTHThDInput1
                           type={"checkbox"}
                           title={"전체 선택"}
-                          onChange={(e) => handleAllCheck(e.target.checked)}
+                          onChange={(e) =>
+                            handleAllCheck(e.target.checked)
+                          }
                           // 데이터의 수와 체크된 아이템의 수가 다를 때 체크 해제
-                          checked={checkItems.length === serverData?.length}
+                          checked={
+                            checkItems.length === serverData?.length
+                          }
                         />
                       </styled_F.FCDTHThDiv1>
                     </styled_F.FCDTHTh1>

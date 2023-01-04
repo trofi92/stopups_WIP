@@ -29,11 +29,10 @@ const success = async (req, res, next) => {
       }
     )
     .then((response) => {
-      console.log(response.body);
+      console.log(response?.body);
       // TODO: 구매 완료 비즈니스 로직 구현
       return (
-        res.status(200).json({
-          data: res?.body,
+        res.status(200).json(response?.body, {
           message: "성공적으로 구매했습니다",
           amount: response.body.totalAmount,
         }),
@@ -43,12 +42,9 @@ const success = async (req, res, next) => {
 
     .catch((error) => {
       console.error(error);
-      res.redirect(
-        `/fail?code=${error.response?.body?.code}&message=${error.response?.body?.message}`
-      );
-      // return res.status(403).json({
-      //   data: res?.body,
-      // });
+      return res.status(403).json(response?.body, {
+        message: "결제가 취소되었습니다. 다시 시도해주세요",
+      });
     });
 };
 

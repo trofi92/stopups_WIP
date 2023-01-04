@@ -9,6 +9,7 @@ import {
   setUTelephone,
   setULogout,
 } from "../features/userInfo/userInfoSlice";
+import { clearCart } from "../features/cart/cartSlice";
 import { persistor } from "../store/index";
 
 export const useFormCheck = () => {
@@ -79,7 +80,7 @@ export const useLogout = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const purge = async () => {
-    await persistor.purge();
+    await persistor.purge("cart", "user");
   };
   const logout = async (e) => {
     e.preventDefault();
@@ -90,9 +91,10 @@ export const useLogout = () => {
         { withCredentials: true }
       );
       dispatch(setULogout());
-      await purge();
+      dispatch(clearCart());
       sessionStorage.clear();
-      navigate("/", { replace: true });
+      await purge();
+      navigate("/", { replace: true, state: null });
     } catch (error) {
       console.error(error);
       console.log("RTK user state =>", user);
