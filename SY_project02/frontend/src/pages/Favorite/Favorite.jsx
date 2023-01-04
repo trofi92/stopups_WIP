@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import * as styled_F from "../../styled/Favorite";
 import MyMenu from "../../image/Favorite/MyMenu.png";
-import { FDrink } from "./FDrink";
+import { FDrink } from "./FDrink3";
 import { FFood } from "./FFood";
 import { FGoods } from "./FGoods";
 import { useEffect, useState } from "react";

@@ -2,7 +2,7 @@ const { User, Bookmark, Product } = require("../models");
 // const { decrypt, encrypt } = require("../middlewares/crypto");
 
 //에러 일괄처리
-const errorHandler = (data) => {
+const errorHandler = (req,res,next, data) => {
   if (!data) {
     return res
       .status(400)
@@ -71,7 +71,7 @@ const sendBookmarks = async (req, res, next) => {
   console.log(data);
 
   try {
-    errorHandler(data);
+    // errorHandler(data);
     const bookmarkedProducts = await Bookmark.findAll({
       where: { userId: userId },
       include: [
@@ -95,7 +95,9 @@ const deleteBookmarks = async (req, res, next) => {
   const email = data?.email;
   const items = data?.items;
   const user = await User.findUser(email);
-  console.log(data);
+  console.log("data===>", data);
+  console.log("email===>", email);
+  console.log("items===>", items);
   console.log("uid ==>", user.id, "pid ==>", items);
 
   try {

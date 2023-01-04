@@ -43,17 +43,18 @@ export const FDrink = () => {
   const serverData = data?.bookmarkedProducts;
   // console.log(data?.bookmarkedProducts);
 
-  const deleteFavoriteReq = async () => {
+  const deleteFavoriteReq = async (data) => {
     await axios
       .put(
         `${SERVER_URL}/bookmarks/deleteBookmarks`,
-        { data: post },
+        { data: data },
         { withCredentials: true }
       )
       .then((res) => console.log("deleted ==>", res));
     setRender((prev) => !prev);
     return alert("선택하신 상품이 삭제되었습니다.");
   };
+
 
   const handleRemove = () => {
     if (checkItems.length === 0) {
@@ -67,8 +68,9 @@ export const FDrink = () => {
               email: user?.email,
               items: id,
             }
-            deleteFavoriteReq(data);
-            setCheckItems([]);
+            console.log("data===>",data)
+            // deleteFavoriteReq(data);
+            // setCheckItems([]);
           }
         }
       })
@@ -99,6 +101,7 @@ export const FDrink = () => {
     }
   };
 
+
   const handleSingleCheck = (checked, id) => {
     if (checked) {
       // 체크 시 체크된 아이템을 배열에 추가
@@ -109,7 +112,7 @@ export const FDrink = () => {
     }
   };
 
-  // 나중에 ice, hot, take in, out 추가 되면 여기다도 넣기
+
   const onClick = () => {
     if (checkItems.length === 0) {
       alert("장바구니로 이동 할 음료를 선택하세요.");
@@ -203,7 +206,7 @@ export const FDrink = () => {
                     <styled_F.FCDTHTh1>등록일</styled_F.FCDTHTh1>
                   </styled_F.FCDTHTr1>
                 </styled_F.FCDTHead1>
-                {serverData?.map((sData) => {
+                {serverData?.map((sData, idx) => {
                   // console.log(sData);
                   if (
                     sData?.category !== "브레드" &&
@@ -213,7 +216,7 @@ export const FDrink = () => {
                     sData?.category !== "따뜻한 푸드"
                   ) {
                     return (
-                      <styled_F.FCDTHTbody1 key={sData?.id}>
+                      <styled_F.FCDTHTbody1 key={idx}>
                         <styled_F.FCDTHTbodyTdOK>
                           <styled_F.FCDTHThDiv1>
                             <styled_F.FCDTHThDInput1

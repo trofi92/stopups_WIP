@@ -1,5 +1,4 @@
-import React, {useLayoutEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import React, {useState} from "react";
 import Header from "../../../components/Header/Header";
 import {AllBox} from "../../../styled/AllBox";
 import * as styled_Menu from "../../../styled/Menu/Menu";
@@ -7,7 +6,6 @@ import * as styled_MenuItem from "../../../styled/Menu/MenuItem";
 import {ButtonSmallBox} from "../../../styled/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {addToCart} from "../../../features/cart/cartSlice";
-import {addToFavorites} from "../../../features/favorite/favoriteSlice";
 import {Footer} from "../../../components/Footer/Footer";
 import axios from "axios";
 import {SERVER_URL} from "../../../util/urls";
@@ -78,8 +76,8 @@ const DetailOne = (props) => {
             `${SERVER_URL}/bookmarks/addBookmarks`,
             {
                 data: data,
-            }
-            // { withCredentials: true }
+            },
+            { withCredentials: true }
         );
         setTest(response?.data);
         console.log("test=>", test);

@@ -1,7 +1,6 @@
 import * as styled_F from "../../styled/Favorite";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useLayoutEffect } from "react";
-import { removeFromCart } from "../../features/favorite/favoriteSlice";
 import { addToCart } from "../../features/cart/cartSlice";
 import { SERVER_URL } from "../../util/urls";
 import axios from "axios";
@@ -42,7 +41,7 @@ export const FFood = () => {
   }, [render]);
 
   const serverData = data?.bookmarkedProducts;
-  console.log(data?.bookmarkedProducts);
+  // console.log(data?.bookmarkedProducts);
 
   const handleAllCheck = (checked) => {
     if (checked) {
