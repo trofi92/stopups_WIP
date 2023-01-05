@@ -12,11 +12,13 @@ import { useState } from "react";
 import { decrypt } from "../../util/crypto-front";
 import { SERVER_URL } from "../../util/urls";
 import { useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLogout } from "../../hooks/use-authService";
 import { checkNickname } from "../../components/join/JoinRegex";
+import { NotFound } from "../NotFound";
 
 const MyInfo = () => {
+  Link;
   const navigate = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
@@ -65,9 +67,7 @@ const MyInfo = () => {
     setNickname(e.target.value);
 
     if (!checkNickname(e.target.value)) {
-      setNicknameMsg(
-        "2자리 이상의 영문자와 한글만 입력할 수 있습니다."
-      );
+      setNicknameMsg("2자리 이상의 영문자와 한글만 입력할 수 있습니다.");
     } else {
       setNicknameMsg("올바른 닉네임 입니다.");
     }
@@ -162,9 +162,7 @@ const MyInfo = () => {
                     {/*체크박스 선택 시 입력 가능*/}
                     <styled_MI.NINInput
                       onChange={onChangeNickname}
-                      placeholder={
-                        "닉네임 입력을 위해 약관에 동의해 주세요."
-                      }
+                      placeholder={"닉네임 입력을 위해 약관에 동의해 주세요."}
                       disabled={!checkedNick}
                     />
                     <styled_Join.RFSDDiv
@@ -176,8 +174,8 @@ const MyInfo = () => {
                 </styled_Join.RFSection>
                 <styled_Join.RFormP>
                   <b>
-                    * 필수항목을 모두 입력해야 스탑없으 서비스를
-                    이용하실 수 있습니다.
+                    * 필수항목을 모두 입력해야 스탑없으 서비스를 이용하실 수
+                    있습니다.
                   </b>
                 </styled_Join.RFormP>
                 <styled_BU.LJButton>정보수정</styled_BU.LJButton>

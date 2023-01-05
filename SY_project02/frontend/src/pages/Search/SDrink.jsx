@@ -43,12 +43,9 @@ export const SDrink = ({ result, state }) => {
       </styled_Search.SSHeader>
       {/*음료 내용*/}
       <styled_Search.SSUl>
-        {searchedAllDrink.length === 0 ||
-        (result === "" && state === "") ? (
+        {searchedAllDrink.length === 0 || (result === "" && state === "") ? (
           <styled_Search.SSLi>
-            <styled_Search.SSLP>
-              검색 결과가 없습니다.
-            </styled_Search.SSLP>
+            <styled_Search.SSLP>검색 결과가 없습니다.</styled_Search.SSLP>
           </styled_Search.SSLi>
         ) : (
           searchedAllDrink.map((drink) => {
@@ -63,16 +60,12 @@ export const SDrink = ({ result, state }) => {
                   </styled_Search.SDFigure>
                   <styled_Search.SDDiv>
                     <styled_Search.SEDHeader>
-                      <styled_Search.SEDHH3>
-                        {drink.Name}
-                      </styled_Search.SEDHH3>
+                      <styled_Search.SEDHH3>{drink.Name}</styled_Search.SEDHH3>
                     </styled_Search.SEDHeader>
                     <styled_Search.SDDPText>
                       {drink.Desc}
                     </styled_Search.SDDPText>
-                    <Link
-                      to={`/menu/${drink.Category}/${drink.ProductId}`}
-                    >
+                    <Link to={`/menu/${drink.Category}/${drink.ProductId}`}>
                       <styled_Search.SEDPLink>
                         http://localhost:3000/menu/{drink.Category}/
                         {drink.ProductId}
