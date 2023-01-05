@@ -47,13 +47,12 @@ export const FDrink = () => {
             .put(
                 `${SERVER_URL}/bookmarks/deleteBookmarks`,
                 {data: data},
-                // {withCredentials: true}
+                {withCredentials: true}
             )
             .then((res) => console.log("deleted ==>", res));
         setRender((prev) => !prev);
         return alert("선택하신 상품이 삭제되었습니다.");
     };
-
 
     const handleRemove = () => {
         if (checkItems.length === 0) {
@@ -68,9 +67,9 @@ export const FDrink = () => {
                             email: user?.email,
                             items: id,
                         }
-                        console.log("data ===>", data)
-                        deleteFavoriteReq(data);
-                        setCheckItems([]);
+                        console.log("data ===>", data.items)
+                        // deleteFavoriteReq(data);
+                        // setCheckItems([]);
                     }
                 }
             })

@@ -69,10 +69,12 @@ export const FDrink = () => {
             const id = checkItems.filter(
               (item) => item === drink.Product.p_id
             );
+            console.log("id ===>", id)
             const data = {
               email: user?.email,
               items: id,
             };
+            console.log("data ===>", data.items)
             deleteFavoriteReq(data);
             setCheckItems([]);
           }

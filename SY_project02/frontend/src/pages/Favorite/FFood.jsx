@@ -18,7 +18,6 @@ export const FFood = () => {
   // 전체 선택 버튼 클릭 인지 용
   const [click, setClick] = useState(false);
 
-  const favorite = useSelector((state) => state.favorite);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -47,7 +46,7 @@ export const FFood = () => {
     if (checked) {
       // 체크 시 모든 아이템을 배열에 추가
       let idArray = [];
-      serverData?.forEach((el) => idArray.push(el.Product.p_id));
+      serverData?.forEach((el) => idArray.push(el.id));
       setCheckItems(idArray);
     } else {
       // 체크 해제 시 빈 배열
@@ -81,7 +80,7 @@ export const FFood = () => {
     setClick(!click);
     if (!click) {
       const idArray = [];
-      serverData?.forEach((el) => idArray.push(el.Product.p_id));
+      serverData?.forEach((el) => idArray.push(el.id));
       setCheckItems(idArray);
     } else if (click) {
       setCheckItems([]);
@@ -94,8 +93,8 @@ export const FFood = () => {
     } else {
       serverData?.map((food) => {
         if (food?.category === "브레드" || food?.category === "케이크" || food?.category === "샌드위치" || food?.category === "샐러드" || food?.category === "따뜻한 푸드") {
-          if (checkItems.includes(food.Product.p_id)) {
-            const id = checkItems.filter((item) => item === food.Product.p_id)
+          if (checkItems.includes(food.id)) {
+            const id = checkItems.filter((item) => item === food.id)
             const data = {
               email: user?.email,
               items: id,
@@ -115,7 +114,7 @@ export const FFood = () => {
     } else {
       serverData?.map((food) => {
         if (food?.category === "브레드" || food?.category === "케이크" || food?.category === "샌드위치" || food?.category === "샐러드" || food?.category === "따뜻한 푸드") {
-          if(checkItems.includes(food.Product.p_id)) {
+          if(checkItems.includes(food.id)) {
             if (food.cookType) {
               dispatch(
                   addToCart({
@@ -240,12 +239,12 @@ export const FFood = () => {
                               onChange={(e) =>
                                 handleSingleCheck(
                                   e.target.checked,
-                                  sData?.Product?.p_id
+                                  sData?.id
                                 )
                               }
                               // 체크된 아이템 배열에 해당 데이터가 있을 경우 활성화
                               checked={checkItems.includes(
-                                sData?.Product?.p_id
+                                sData?.id
                               )}
                             />
                           </styled_F.FCDTHThDiv1>
