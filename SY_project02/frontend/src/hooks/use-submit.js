@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { SMS } from "../util/urls";
+import { SMS } from "../utils/urls";
 import { useNavigate } from "react-router-dom";
 
 // 휴대전화 번호 인증시

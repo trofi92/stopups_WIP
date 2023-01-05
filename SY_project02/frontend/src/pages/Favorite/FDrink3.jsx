@@ -26,33 +26,33 @@ export const FDrink = () => {
         items: checkItems,
     };
 
-    // 목록 요청
-    useLayoutEffect(() => {
-        const fetchData = async () => {
-            const response = await axios.post(
-                `${SERVER_URL}/bookmarks/sendBookmarks`,
-                {data: post},
-                {withCredentials: true}
-            );
-            setData(response?.data || null);
-        };
-        fetchData();
-
-    }, [render]);
-    const serverData = data?.bookmarkedProducts;
-    console.log(serverData);
-    console.log(SERVER_URL)
-    const deleteFavoriteReq = async (data) => {
-        await axios
-            .put(
-                `${SERVER_URL}/bookmarks/deleteBookmarks`,
-                {data: data},
-                {withCredentials: true}
-            )
-            .then((res) => console.log("deleted ==>", res));
-        setRender((prev) => !prev);
-        return alert("선택하신 상품이 삭제되었습니다.");
+  // 목록 요청
+  useLayoutEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.post(
+        `${SERVER_URL}/bookmarks/sendBookmarks`,
+        { data: post },
+        { withCredentials: true }
+      );
+      setData(response?.data || null);
     };
+    fetchData();
+  }, [render]);
+  const serverData = data?.bookmarkedProducts;
+  console.log(serverData);
+  console.log(SERVER_URL);
+  const deleteFavoriteReq = async (data) => {
+    await axios
+      .put(
+        `${SERVER_URL}/bookmarks/deleteBookmarks`,
+        { data: data }
+        // {withCredentials: true}
+      )
+      .then((res) => console.log("deleted ==>", res));
+    setRender((prev) => !prev);
+    return alert("선택하신 상품이 삭제되었습니다.");
+  };
+
 
     const handleRemove = () => {
         if (checkItems.length === 0) {
@@ -67,9 +67,9 @@ export const FDrink = () => {
                             email: user?.email,
                             items: id,
                         }
-                        console.log("data ===>", data.items)
-                        // deleteFavoriteReq(data);
-                        // setCheckItems([]);
+                        console.log("data ===>", data)
+                        deleteFavoriteReq(data);
+                        setCheckItems([]);
                     }
                 }
             })

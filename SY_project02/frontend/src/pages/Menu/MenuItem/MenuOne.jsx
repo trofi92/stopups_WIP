@@ -9,7 +9,7 @@ import { addToCart } from "../../../features/cart/cartSlice";
 import { addToFavorites } from "../../../features/favorite/favoriteSlice";
 import { Footer } from "../../../components/Footer/Footer";
 import axios from "axios";
-import { SERVER_URL } from "../../../util/urls";
+import { SERVER_URL } from "../../../utils/urls";
 import { useEffect } from "react";
 
 const DetailOne = (props) => {

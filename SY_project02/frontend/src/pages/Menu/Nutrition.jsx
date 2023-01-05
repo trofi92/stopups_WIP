@@ -2,7 +2,7 @@ import { Table } from "../../styled/Menu/Nutrition";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ColorBox } from "../../styled/Menu/Menu";
-import { API } from "../../util/urls";
+import { API } from "../../utils/urls";
 
 const Nutrition = (props) => {
   const [data, setData] = useState([]);

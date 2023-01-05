@@ -8,7 +8,7 @@ import ESFaceBook from "../../image/Event/ESummer/ESFaceBook.png";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { API, IMG } from "../../util/urls";
+import { API, IMG } from "../../utils/urls";
 
 const EInnerText = () => {
   const [events, setEvents] = useState([]);

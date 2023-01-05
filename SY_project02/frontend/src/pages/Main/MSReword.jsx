@@ -2,7 +2,7 @@ import * as styled_Main from "../../styled/Main";
 import MSRLogoImg from "../../image/Main/MStopUpsReword/MSRLogo.png";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { decrypt } from "../../util/crypto-front";
+import { decrypt } from "../../utils/crypto-front";
 
 export const MSReword = () => {
   const user = useSelector((state) => state.user);

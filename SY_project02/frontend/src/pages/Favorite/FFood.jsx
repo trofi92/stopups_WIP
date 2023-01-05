@@ -98,13 +98,14 @@ export const FFood = () => {
             const data = {
               email: user?.email,
               items: id,
-            }
+            };
             deleteFavoriteReq(data);
             setCheckItems([]);
           }
         }
-      })
+      });
     }
+    return alert("선택하신 상품이 삭제되었습니다.");
   };
 
   // 나중에 워밍 옵션 take in, out 추가 되면 여기다도 넣기
@@ -239,12 +240,12 @@ export const FFood = () => {
                               onChange={(e) =>
                                 handleSingleCheck(
                                   e.target.checked,
-                                  sData?.id
+                                  sData?.Product?.p_id
                                 )
                               }
                               // 체크된 아이템 배열에 해당 데이터가 있을 경우 활성화
                               checked={checkItems.includes(
-                                sData?.id
+                                sData?.Product?.p_id
                               )}
                             />
                           </styled_F.FCDTHThDiv1>

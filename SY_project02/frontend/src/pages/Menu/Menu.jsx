@@ -9,7 +9,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import MenuCard from "./MenuItem/MenuCard";
 import MenuTheme from "../../image/Menu/MenuTheme.png";
-import { API } from "../../util/urls";
+import { API } from "../../utils/urls";
 
 const Menu = () => {
   const [ClassificationInValid, setClassificationInValid] = useState(true);

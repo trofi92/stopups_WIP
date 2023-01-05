@@ -14,8 +14,8 @@ import {
 } from "../../components/join/JoinRegex";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { decrypt } from "../../util/crypto-front";
-import { SERVER_URL } from "../../util/urls";
+import { decrypt } from "../../utils/crypto-front";
+import { SERVER_URL } from "../../utils/urls";
 import { useLogout } from "../../hooks/use-authService";
 
 const MIPassword = () => {

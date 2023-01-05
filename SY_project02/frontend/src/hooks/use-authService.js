@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SERVER_URL } from "../util/urls";
+import { SERVER_URL } from "../utils/urls";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -51,7 +51,13 @@ export const useLoginService = () => {
             // { withCredentials: true }
           )
           .then((res) => {
-            console.log("로그인 성공=>", res);
+            console.log("로그인 시도=>", res);
+            if (res === undefined) {
+              return alert(
+                "아이디 또는 비밀번호 오류입니다. 정확한 아이디 또는 비밀번호를 입력해주시길 바립니다."
+              );
+            }
+
             //RTK 집어넣기
             dispatch(setUEmail(res?.data?.email));
             dispatch(setUName(res?.data?.name));
@@ -60,12 +66,11 @@ export const useLoginService = () => {
 
             alert(post.email + "님 환영합니다.");
 
-            navigate("/", { replace: true });
-            return;
+            return navigate("/", { replace: true });
           });
       } catch (err) {
         console.error(err);
-        alert(
+        return alert(
           "아이디 또는 비밀번호 오류입니다. 정확한 아이디 또는 비밀번호를 입력해주시길 바립니다."
         );
       }
@@ -82,8 +87,7 @@ export const useLogout = () => {
   const purge = async () => {
     await persistor.purge("cart", "user");
   };
-  const logout = async (e) => {
-    e.preventDefault();
+  const logout = async () => {
     try {
       await axios.post(
         `${SERVER_URL}/auth/logout`,

@@ -8,7 +8,7 @@ import { useRef } from "react";
 import { checkPasswordLogin } from "../../../components/join/JoinRegex";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { SERVER_URL } from "../../../util/urls";
+import { SERVER_URL } from "../../../utils/urls";
 import { useSelector } from "react-redux";
 
 const MIPassPassword = () => {

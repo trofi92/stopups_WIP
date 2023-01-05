@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { API } from "../../util/urls";
+import { API } from "../../utils/urls";
 
 const url = `${API}&Category=분류&Name=`;
 
@@ -61,7 +61,9 @@ const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       const itemId = action.payload;
-      state.cartItems = state.cartItems.filter((item) => item.id !== itemId);
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== itemId
+      );
     },
     removeFromCart(state, action) {
       const itemIds = action.payload;
