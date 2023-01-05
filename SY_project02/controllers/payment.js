@@ -11,28 +11,33 @@ const payment = async (req, res, next) => {
 const success = async (req, res, next) => {
   console.log("success");
   await got
-    .post("https://api.tosspayments.com/v1/payments/" + req.query.paymentKey, {
-      headers: {
-        Authorization:
-          "Basic " + Buffer.from(secretKey + ":").toString("base64"),
-        "Content-Type": "application/json",
-      },
-      json: {
-        orderId: req.query.orderId,
-        amount: req.query.amount,
-      },
-      responseType: "json",
-    })
+    .post(
+      "https://api.tosspayments.com/v1/payments/" +
+        req.query.paymentKey,
+      {
+        headers: {
+          Authorization:
+            "Basic " +
+            Buffer.from(secretKey + ":").toString("base64"),
+          "Content-Type": "application/json",
+        },
+        json: {
+          orderId: req.query.orderId,
+          amount: req.query.amount,
+        },
+        responseType: "json",
+      }
+    )
     .then((response) => {
       console.log(response?.body);
       // TODO: 구매 완료 비즈니스 로직 구현
-      return (
-        res.status(200).json(response?.body, {
-          message: "성공적으로 구매했습니다",
-          amount: response.body.totalAmount,
-        }),
-        next()
-      );
+
+      res.status(200).json({
+        data: response?.body,
+        message: "성공적으로 구매했습니다",
+        amount: response.body.totalAmount,
+      }),
+        next();
     })
 
     .catch((error) => {

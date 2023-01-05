@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { SERVER_URL } from "../../util/urls";
+import { SERVER_URL } from "../../utils/urls";
 import Header from "../../components/Header/Header";
 import * as styled_AB from "../../styled/AllBox";
 import * as styled_Success from "../../styled/Payment/Success";
