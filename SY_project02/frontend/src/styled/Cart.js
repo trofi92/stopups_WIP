@@ -403,6 +403,10 @@ export const GBButton= styled.button`
   float: left;
   margin-top: 15px;
   cursor: pointer;
+
+  :hover {
+    text-decoration: underline;
+  }
 `
 
 export const GBImg = styled.div`
