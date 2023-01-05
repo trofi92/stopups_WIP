@@ -1,7 +1,7 @@
 const { User, Bookmark, Product } = require("../models");
 
 //에러 일괄처리
-const errorHandler = (res, data) => {
+const errorHandler = (data) => {
   if (!data) {
     return res
       .status(400)

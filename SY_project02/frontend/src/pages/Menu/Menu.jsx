@@ -12,8 +12,7 @@ import MenuTheme from "../../image/Menu/MenuTheme.png";
 import { API } from "../../utils/urls";
 
 const Menu = () => {
-  const [ClassificationInValid, setClassificationInValid] =
-    useState(true);
+  const [ClassificationInValid, setClassificationInValid] = useState(true);
   const [DetailBox, setDetailBox] = useState(true);
   const [smallBox, setSmallBox] = useState(false);
   const [hidden, setHidden] = useState("");
@@ -332,7 +331,7 @@ const Menu = () => {
           ) : (
             <>
               <styled_Menu.SmallBox
-                url="http://image.istarbucks.co.kr/common/img/menu/icon_pic_on.png"
+                url="https://image.istarbucks.co.kr/common/img/menu/icon_pic_on.png"
                 onClick={smallBoxFalseHanlder}
                 backgroundColor="#666"
                 color="#fff"
@@ -342,7 +341,7 @@ const Menu = () => {
                 사진으로 보기
               </styled_Menu.SmallBox>
               <styled_Menu.SmallBox
-                url="http://image.istarbucks.co.kr/common/img/menu/icon_ante.png"
+                url="https://image.istarbucks.co.kr/common/img/menu/icon_ante.png"
                 onClick={smallBoxTrueHanlder}
                 backgroundColor="#fff"
                 color="#666"
@@ -354,27 +353,18 @@ const Menu = () => {
           )}
 
           {DetailBox ? (
-            <styled_Menu.ClassificationContainer
-              size="hidden"
-              hidden={hidden}
-            >
-              <styled_Menu.ClassificationBox
-                onClick={detailBoxHandler}
-              >
+            <styled_Menu.ClassificationContainer size="hidden" hidden={hidden}>
+              <styled_Menu.ClassificationBox onClick={detailBoxHandler}>
                 상세분류
               </styled_Menu.ClassificationBox>
             </styled_Menu.ClassificationContainer>
           ) : (
             <styled_Menu.ClassificationContainer>
-              <styled_Menu.ClassificationBox
-                onClick={detailBoxHandler}
-              >
+              <styled_Menu.ClassificationBox onClick={detailBoxHandler}>
                 상세분류
               </styled_Menu.ClassificationBox>
 
-              <styled_Menu.ClassificationList
-                onClick={checkboxHandler}
-              >
+              <styled_Menu.ClassificationList onClick={checkboxHandler}>
                 <input
                   type="checkbox"
                   id="new"
@@ -392,9 +382,7 @@ const Menu = () => {
                   <span>신규 출시된 메뉴</span>{" "}
                 </label>
               </styled_Menu.ClassificationList>
-              <styled_Menu.ClassificationList
-                onClick={checkboxHandler}
-              >
+              <styled_Menu.ClassificationList onClick={checkboxHandler}>
                 <input
                   type="checkbox"
                   id="season"
@@ -425,8 +413,7 @@ const Menu = () => {
           <>
             {dataCategory.map((value, index) => {
               return (
-                (value !== "전체 음료 보기" ||
-                  value !== "전체 푸드 보기") && (
+                (value !== "전체 음료 보기" || value !== "전체 푸드 보기") && (
                   <Nutrition Category={value} key={index} />
                 ) // 전체상품보기가 api에 없기때문에 조건문을 줘서 출력이 되지 않게 함
               );
@@ -438,8 +425,7 @@ const Menu = () => {
             {dataCategory.map((value, index) => {
               console.log(index);
               return (
-                (value !== "전체 푸드 보기" ||
-                  value !== "전체 음료 보기") && (
+                (value !== "전체 푸드 보기" || value !== "전체 음료 보기") && (
                   <MenuCard Category={value} />
                 ) // 전체상품보기가 api에 없기때문에 조건문을 줘서 출력이 되지 않게 함
               );

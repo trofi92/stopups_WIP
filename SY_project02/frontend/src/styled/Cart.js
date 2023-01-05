@@ -211,8 +211,12 @@ export const CFMOption = styled.div`
 `
 
 export const CFMIceHot = styled.span`
-  padding-right: 5px;
+  padding: 0 5px;
   border-right: 1px solid #9E9E9E;
+
+  :first-child {
+    padding-left: 0;
+  }
 `
 
 export const CFMSize = styled.span`
@@ -399,6 +403,10 @@ export const GBButton= styled.button`
   float: left;
   margin-top: 15px;
   cursor: pointer;
+
+  :hover {
+    text-decoration: underline;
+  }
 `
 
 export const GBImg = styled.div`

@@ -40,7 +40,7 @@ export const FFood = () => {
   }, [render]);
 
   const serverData = data?.bookmarkedProducts;
-  console.log(data?.bookmarkedProducts);
+  // console.log(data?.bookmarkedProducts);
 
   const handleAllCheck = (checked) => {
     if (checked) {

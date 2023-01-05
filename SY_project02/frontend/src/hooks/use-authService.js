@@ -47,8 +47,8 @@ export const useLoginService = () => {
             `${SERVER_URL}/auth/login`,
             {
               data: post,
-            },
-            { withCredentials: true }
+            }
+            // { withCredentials: true }
           )
           .then((res) => {
             console.log("로그인 시도=>", res);

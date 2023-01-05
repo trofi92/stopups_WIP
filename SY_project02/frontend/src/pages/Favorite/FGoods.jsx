@@ -50,7 +50,7 @@ export const FGoods = () => {
 
                         <styled_F.FCDTHTbody1>
                             {/*데이터 없을 때*/}
-                            <styled_F.FCDTHTbodyTd1 colSpan={5}>데이터가 없습니다.</styled_F.FCDTHTbodyTd1>
+                            <styled_F.FCDTHTbodyTd1 colSpan={5}>서비스 준비중입니다.</styled_F.FCDTHTbodyTd1>
                         </styled_F.FCDTHTbody1>
                     </styled_F.FCDTable1>
 

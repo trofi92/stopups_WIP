@@ -79,11 +79,9 @@ export const Payment = () => {
   useEffect(() => {
     const event = async () => {
       for (let i = 0; i < cart.cartItems.length; i++) {
-        await axios
-          .get(`${API}&Category=분류&Name=&ProductId=`)
-          .then((res) => {
-            setImg(res.data);
-          });
+        await axios.get(`${API}&Category=분류&Name=&ProductId=`).then((res) => {
+          setImg(res.data);
+        });
       }
     };
     event();
@@ -111,9 +109,7 @@ export const Payment = () => {
             {/*결제 수단*/}
             <styled_Payment.PSection1>
               <div>
-                <styled_Payment.PSTitle1>
-                  결제 수단
-                </styled_Payment.PSTitle1>
+                <styled_Payment.PSTitle1>결제 수단</styled_Payment.PSTitle1>
                 <styled_Payment.PSDiv1>
                   <styled_Payment.PSImg1
                     src={PaymentCard}
@@ -146,18 +142,14 @@ export const Payment = () => {
                         src={PaymentCoupon}
                         alt={"PaymentCoupon"}
                       />
-                      <styled_Payment.PSDSpan4>
-                        쿠폰
-                      </styled_Payment.PSDSpan4>
+                      <styled_Payment.PSDSpan4>쿠폰</styled_Payment.PSDSpan4>
                     </styled_Payment.PSDiv4>
                     <styled_Payment.PSDiv4 onClick={onClickReady}>
                       <styled_Payment.PSImg4
                         src={PaymentGift}
                         alt={"PaymentGift"}
                       />
-                      <styled_Payment.PSDSpan4>
-                        선물
-                      </styled_Payment.PSDSpan4>
+                      <styled_Payment.PSDSpan4>선물</styled_Payment.PSDSpan4>
                     </styled_Payment.PSDiv4>
                     <styled_Payment.PSDiv4 onClick={onClickReady}>
                       <styled_Payment.PSImg4
@@ -177,9 +169,7 @@ export const Payment = () => {
             {/*주문 내역*/}
             <styled_Payment.PSection>
               <div>
-                <styled_Payment.PSTitle>
-                  주문 내역
-                </styled_Payment.PSTitle>
+                <styled_Payment.PSTitle>주문 내역</styled_Payment.PSTitle>
                 {cart.cartItems.map((cart) => {
                   return (
                     <styled_Payment.PSMenuBox key={cart.id}>
@@ -200,10 +190,7 @@ export const Payment = () => {
                             <styled_Payment.PSMBTSpan>
                               {cart.price
                                 .toString()
-                                .replace(
-                                  /\B(?=(\d{3})+(?!\d))/g,
-                                  ","
-                                )}
+                                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                               원
                             </styled_Payment.PSMBTSpan>
                           </styled_C.CFMTitle>
@@ -215,10 +202,16 @@ export const Payment = () => {
                           cart.category === "따뜻한 푸드" ? (
                             <styled_C.CFMOption>
                               <styled_C.CFMIceHot>
-                                워밍 옵션
+                                {cart.cooked
+                                  ? cart.cooked === "Desert"
+                                    ? "따뜻하게 데움"
+                                    : "데우지 않음"
+                                  : "워밍 옵션 없음"}
                               </styled_C.CFMIceHot>
                               <styled_C.CFMIceHot>
-                                테이크 인/아웃
+                                {cart.takeout === "takeout"
+                                  ? "테이크 아웃"
+                                  : "매장"}
                               </styled_C.CFMIceHot>
                               <styled_C.CFMCup>
                                 {cart.quantity}개
@@ -226,23 +219,20 @@ export const Payment = () => {
                               <styled_C.CFMMoney>
                                 {(cart.price * cart.quantity)
                                   .toString()
-                                  .replace(
-                                    /\B(?=(\d{3})+(?!\d))/g,
-                                    ","
-                                  )}
+                                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                                 원
                               </styled_C.CFMMoney>
                             </styled_C.CFMOption>
                           ) : (
                             <styled_C.CFMOption>
                               <styled_C.CFMIceHot>
-                                ICED
+                                {cart.ice}
                               </styled_C.CFMIceHot>
+                              <styled_C.CFMSize>{cart.size}</styled_C.CFMSize>
                               <styled_C.CFMSize>
-                                {cart.size}
-                              </styled_C.CFMSize>
-                              <styled_C.CFMSize>
-                                일회용 컵
+                                {cart.takeout === "takeout"
+                                  ? "일회용 컵"
+                                  : "매장용 컵"}
                               </styled_C.CFMSize>
                               <styled_C.CFMCup>
                                 {cart.quantity}개
@@ -250,10 +240,7 @@ export const Payment = () => {
                               <styled_C.CFMMoney>
                                 {(cart.price * cart.quantity)
                                   .toString()
-                                  .replace(
-                                    /\B(?=(\d{3})+(?!\d))/g,
-                                    ","
-                                  )}
+                                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                                 원
                               </styled_C.CFMMoney>
                             </styled_C.CFMOption>
@@ -297,10 +284,8 @@ export const Payment = () => {
             {/*결제하기 버튼*/}
             <styled_Payment.PSection3>
               <styled_Payment.PS3Button onClick={() => tossPay()}>
-                {cart.total
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                원 결제하기
+                {cart.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+                결제하기
               </styled_Payment.PS3Button>
             </styled_Payment.PSection3>
           </styled_F.FCBox>

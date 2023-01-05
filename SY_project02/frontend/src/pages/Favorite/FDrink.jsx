@@ -202,13 +202,9 @@ export const FDrink = () => {
                         <styled_F.FCDTHThDInput1
                           type={"checkbox"}
                           title={"전체 선택"}
-                          onChange={(e) =>
-                            handleAllCheck(e.target.checked)
-                          }
+                          onChange={(e) => handleAllCheck(e.target.checked)}
                           // 데이터의 수와 체크된 아이템의 수가 다를 때 체크 해제
-                          checked={
-                            checkItems.length === serverData?.length
-                          }
+                          checked={checkItems.length === serverData?.length}
                         />
                       </styled_F.FCDTHThDiv1>
                     </styled_F.FCDTHTh1>
