@@ -211,8 +211,12 @@ export const CFMOption = styled.div`
 `
 
 export const CFMIceHot = styled.span`
-  padding-right: 5px;
+  padding: 0 5px;
   border-right: 1px solid #9E9E9E;
+
+  :first-child {
+    padding-left: 0;
+  }
 `
 
 export const CFMSize = styled.span`

@@ -69,7 +69,6 @@ export const CNoDF = () => {
 
   const onClickAll = () => {
     setClick(!click);
-
     if (!click) {
       const idArray = [];
       cart.cartItems.forEach((el) =>
@@ -80,7 +79,6 @@ export const CNoDF = () => {
           ice: el.ice,
         })
       );
-      console.log(idArray);
       setCheckItems(idArray);
     } else if (click) {
       setCheckItems([]);
@@ -132,9 +130,13 @@ export const CNoDF = () => {
   useEffect(() => {
     const event = async () => {
       for (let i = 0; i < cart.cartItems.length; i++) {
-        await axios.get(`${API}&Category=분류&Name=&ProductId=`).then((res) => {
-          setImg(res.data);
-        });
+        await axios
+          .get(
+            `${API}&Category=분류&Name=&ProductId=`
+          )
+          .then((res) => {
+            setImg(res.data);
+          });
       }
     };
     event();

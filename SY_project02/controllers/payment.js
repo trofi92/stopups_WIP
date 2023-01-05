@@ -1,17 +1,16 @@
 const got = require("got");
 const secretKey = process.env.SECRET_KEY;
 
-const payment = (req, res, next) => {
-  console.log("payment");
-  res.send({
-    message: "payment",
+const payment = async (req, res, next) => {
+  console.log(req?.body);
+  res.json({
+    message: "구매 진행중입니다",
   });
-  next();
 };
 
-const success = (req, res, next) => {
+const success = async (req, res, next) => {
   console.log("success");
-  got
+  await got
     .post(
       "https://api.tosspayments.com/v1/payments/" +
         req.query.paymentKey,
@@ -29,29 +28,32 @@ const success = (req, res, next) => {
         responseType: "json",
       }
     )
-    .then(function (res) {
-      console.log(res.body);
+    .then((response) => {
+      console.log(response?.body);
       // TODO: 구매 완료 비즈니스 로직 구현
-      Payment.create;
-    })
-    .then(function (res) {
-      return res.status(200).send(body);
+      return (
+        res.status(200).json(response?.body, {
+          message: "성공적으로 구매했습니다",
+          amount: response.body.totalAmount,
+        }),
+        next()
+      );
     })
 
-    .catch((err) => {
-      console.error(err);
+    .catch((error) => {
+      console.error(error);
+      return res.status(403).json(response?.body, {
+        message: "결제가 취소되었습니다. 다시 시도해주세요",
+      });
     });
-
-  next(err);
 };
 
-const failed = (req, res, next) => {
+const failed = async (req, res, next) => {
   console.log("failed");
-  res.send({
+  return res.json({
     message: req.query.message,
     code: req.query.code,
   });
-  next();
 };
 
 module.exports = { payment, success, failed };

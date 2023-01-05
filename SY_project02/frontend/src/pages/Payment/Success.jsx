@@ -2,6 +2,9 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SERVER_URL } from "../../util/urls";
+import Header from "../../components/Header/Header";
+import * as styled_AB from "../../styled/AllBox";
+import {SBox} from "../../styled/Payment/Success";
 
 export const Success = () => {
   const navigate = useNavigate();
@@ -16,32 +19,38 @@ export const Success = () => {
     "amount"
   );
 
-  React.useEffect(() => {
-    axios
-      .post(
-        `${SERVER_URL}
-          /payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}}`,
+  const paymentsRequest = async () => {
+    await axios
+      .get(
+        `${SERVER_URL}/payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}`,
         { withCredentials: true }
       )
       .then((res) => {
-        console.log(res.status === 200);
-
-        if (res.status === 200) {
-          alert("결제가 완료되었습니다.");
-        }
+        console.log(res);
+        return alert("결제가 완료되었습니다.");
       })
       .catch((error) => {
         console.error(error);
         navigate("/failed");
       });
+  };
+
+  React.useEffect(() => {
+    paymentsRequest();
+    dispatch(clearCart());
   }, []);
 
   return (
-    <div>
-      <div>success</div>
-      <Link to="/">
-        <button>to main</button>
-      </Link>
-    </div>
+      <styled_AB.AllBox>
+        <Header/>
+
+        <SBox>
+          <div>success</div>
+          <Link to="/">
+            <button>to main</button>
+          </Link>
+        </SBox>
+
+      </styled_AB.AllBox>
   );
 };

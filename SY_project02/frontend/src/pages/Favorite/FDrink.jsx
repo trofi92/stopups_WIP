@@ -1,6 +1,5 @@
 import * as styled_F from "../../styled/Favorite";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart } from "../../features/favorite/favoriteSlice";
 import { useState, useLayoutEffect } from "react";
 import { addToCart } from "../../features/cart/cartSlice";
 import axios from "axios";
@@ -10,13 +9,15 @@ export const FDrink = () => {
   //요청한 데이터
   const [data, setData] = useState(null);
 
+  //렌더링 즉시 유발
+  const [render, setRender] = useState(true);
+
   // 체크된 아이템 담을 배열
   const [checkItems, setCheckItems] = useState([]);
 
   // 전체 선택 버튼 클릭 인지 용
   const [click, setClick] = useState(false);
 
-  const favorite = useSelector((state) => state.favorite);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -30,15 +31,15 @@ export const FDrink = () => {
     const fetchData = async () => {
       const response = await axios.post(
         `${SERVER_URL}/bookmarks/sendBookmarks`,
-        { data: post }
-        // { withCredentials: true }
+        { data: post },
+        { withCredentials: true }
       );
       setData(response.data || null);
     };
     fetchData();
-  }, []);
+  }, [render]);
   const serverData = data?.bookmarkedProducts;
-  // console.log(data?.bookmarkedProducts);
+  console.log(serverData);
 
   const deleteFavoriteReq = async () => {
     await axios
@@ -48,15 +49,35 @@ export const FDrink = () => {
         { withCredentials: true }
       )
       .then((res) => console.log("deleted ==>", res));
+    setRender((prev) => !prev);
+    return alert("선택하신 상품이 삭제되었습니다.");
   };
 
   const handleRemove = () => {
     if (checkItems.length === 0) {
       alert("삭제 할 음료를 선택 하세요.");
     } else {
-      dispatch(removeFromCart(checkItems));
-      deleteFavoriteReq();
-      setCheckItems([]);
+      serverData?.map((drink) => {
+        if (
+          drink?.category !== "브레드" &&
+          drink?.category !== "케이크" &&
+          drink?.category !== "샌드위치" &&
+          drink?.category !== "샐러드" &&
+          drink?.category !== "따뜻한 푸드"
+        ) {
+          if (checkItems.includes(drink.Product.p_id)) {
+            const id = checkItems.filter(
+              (item) => item === drink.Product.p_id
+            );
+            const data = {
+              email: user?.email,
+              items: id,
+            };
+            deleteFavoriteReq(data);
+            setCheckItems([]);
+          }
+        }
+      });
     }
   };
 
@@ -71,7 +92,6 @@ export const FDrink = () => {
       setCheckItems([]);
     }
   };
-  // console.log(serverData?.[0].id);
   console.log("checkItems ==>", checkItems);
 
   const onClickAll = () => {
@@ -100,20 +120,28 @@ export const FDrink = () => {
     if (checkItems.length === 0) {
       alert("장바구니로 이동 할 음료를 선택하세요.");
     } else {
-      favorite.favorites.map((drink) => {
-        if (checkItems.includes(drink.id)) {
-          dispatch(
-            addToCart({
-              id: drink.id,
-              name: drink.name,
-              size: drink.size,
-              ice: drink.ice,
-              takeout: drink.takeout,
-              price: drink.price,
-              category: drink.category,
-              quantity: drink.quantity,
-            })
-          );
+      serverData?.map((drink) => {
+        if (
+          drink?.category !== "브레드" &&
+          drink?.category !== "케이크" &&
+          drink?.category !== "샌드위치" &&
+          drink?.category !== "샐러드" &&
+          drink?.category !== "따뜻한 푸드"
+        ) {
+          if (checkItems.includes(drink.Product.p_id)) {
+            dispatch(
+              addToCart({
+                id: drink.Product.p_id,
+                name: drink.Product.name,
+                size: drink.size,
+                ice: drink.drinkType,
+                takeout: drink.eatType,
+                price: drink.price,
+                category: drink.category,
+                quantity: drink.quantity,
+              })
+            );
+          }
         }
       });
       alert("장바구니로 이동했습니다.");

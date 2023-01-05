@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import Header from "../../../components/Header/Header";
 import { AllBox } from "../../../styled/AllBox";
 import * as styled_Menu from "../../../styled/Menu/Menu";
@@ -23,10 +22,14 @@ const DetailOne = (props) => {
   const favorite = useSelector((state) => state.favorite);
 
   const eatTypeInValid = props.EatType.SHOP || props.EatType.TAKEOUT;
-  const cookedInValid = props.CookType.COOKED || props.CookType.NOTCOOKED;
-  const drinkTypeInValid = props.DrinkType.HOT || props.DrinkType.ICED;
-  const sizeInValid = props.price.Desert !== "0" && props.price.Desert;
-  const replaceNumber = (value) => value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const cookedInValid =
+    props.CookType.COOKED || props.CookType.NOTCOOKED;
+  const drinkTypeInValid =
+    props.DrinkType.HOT || props.DrinkType.ICED;
+  const sizeInValid =
+    props.price.Desert !== "0" && props.price.Desert;
+  const replaceNumber = (value) =>
+    value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   let now = new Date();
   let year = now.getFullYear();
   let todayMont = now.getMonth() + 1;
@@ -57,7 +60,9 @@ const DetailOne = (props) => {
   const data = {
     email: user.email,
     pId: props.productId,
-    price: props.price[sizeData] ? props.price[sizeData] : props.price.Desert,
+    price: props.price[sizeData]
+      ? props.price[sizeData]
+      : props.price.Desert,
     cookType: cooked,
     drinkType: drinkType,
     eatType: takeOut,
@@ -77,8 +82,8 @@ const DetailOne = (props) => {
       `${SERVER_URL}/bookmarks/addBookmarks`,
       {
         data: data,
-      }
-      // { withCredentials: true }
+      },
+      { withCredentials: true }
     );
     setTest(response?.data);
     console.log("test=>", test);
@@ -233,7 +238,9 @@ const DetailOne = (props) => {
             <span>{props.name}</span>
             {props.price.Desert !== "0" && props.price.Desert && (
               <styled_MenuItem.TextBoxSpan>
-                {props.price.Desert && replaceNumber(props.price.Desert)}원
+                {props.price.Desert &&
+                  replaceNumber(props.price.Desert)}
+                원
               </styled_MenuItem.TextBoxSpan>
             )}
             {(cookedInValid || drinkTypeInValid) && (
@@ -253,7 +260,9 @@ const DetailOne = (props) => {
 
                     <label htmlFor="Tall">
                       Tall :
-                      {props.price.Tall && replaceNumber(props.price.Tall)}원
+                      {props.price.Tall &&
+                        replaceNumber(props.price.Tall)}
+                      원
                     </label>
                   </>
                 )}
@@ -291,7 +300,8 @@ const DetailOne = (props) => {
                     />
                     <label htmlFor="Grande">
                       Grande :
-                      {props.price.Grande && replaceNumber(props.price.Grande)}
+                      {props.price.Grande &&
+                        replaceNumber(props.price.Grande)}
                       원
                     </label>
                   </>
@@ -304,7 +314,9 @@ const DetailOne = (props) => {
                     />
                     <label htmlFor="Venti">
                       Venti :
-                      {props.price.Venti && replaceNumber(props.price.Venti)}원
+                      {props.price.Venti &&
+                        replaceNumber(props.price.Venti)}
+                      원
                     </label>
                   </>
                 )}

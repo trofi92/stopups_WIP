@@ -26,7 +26,6 @@ const Header = () => {
 
   const user = useSelector((state) => state.user);
   const amount = useSelector((state) => state.cart.amount);
-  const cartItems = useSelector((state) => state.cart.cartItems);
 
   return (
     <styled_H.HB>

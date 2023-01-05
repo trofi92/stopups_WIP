@@ -3,10 +3,10 @@ import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import * as styled_F from "../../styled/Favorite";
 import MyMenu from "../../image/Favorite/MyMenu.png";
-import { FDrink } from "./FDrink";
+import { FDrink } from "./FDrink3";
 import { FFood } from "./FFood";
 import { FGoods } from "./FGoods";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Favorite = () => {
   const [state, setState] = useState(1);
@@ -14,6 +14,10 @@ const Favorite = () => {
   const onClick = (id) => {
     setState(id);
   };
+
+  useEffect(() => {
+    console.log();
+  }, [state]);
 
   const obj = {
     1: <FDrink />,

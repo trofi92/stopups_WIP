@@ -4,11 +4,12 @@ const {
   payment,
   failed,
 } = require("../controllers/payment");
+const authJwt = require("../middlewares/authJwt");
 
 const router = express.Router();
 
-router.get("/", payment);
-router.post("/success", success);
-router.get("/failed", failed);
+router.get("/", authJwt, payment);
+router.get("/success", authJwt, success);
+router.get("/failed", authJwt, failed);
 
 module.exports = router;

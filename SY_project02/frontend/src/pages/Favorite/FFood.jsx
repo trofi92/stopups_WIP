@@ -1,7 +1,6 @@
 import * as styled_F from "../../styled/Favorite";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useLayoutEffect } from "react";
-import { removeFromCart } from "../../features/favorite/favoriteSlice";
 import { addToCart } from "../../features/cart/cartSlice";
 import { SERVER_URL } from "../../util/urls";
 import axios from "axios";
@@ -9,6 +8,9 @@ import axios from "axios";
 export const FFood = () => {
   //요청한 데이터
   const [data, setData] = useState(null);
+
+  //렌더링 즉시 유발
+  const [render, setRender] = useState(true);
 
   // 체크된 아이템 담을 배열
   const [checkItems, setCheckItems] = useState([]);
@@ -30,16 +32,16 @@ export const FFood = () => {
     const fetchData = async () => {
       const response = await axios.post(
         `${SERVER_URL}/bookmarks/sendBookmarks`,
-        { data: post }
-        // { withCredentials: true }
+        { data: post },
+        { withCredentials: true }
       );
-      // console.log(response?.data);
       setData(response.data || null);
     };
     fetchData();
-  }, []);
+  }, [render]);
+
   const serverData = data?.bookmarkedProducts;
-  console.log(data?.bookmarkedProducts);
+  // console.log(data?.bookmarkedProducts);
 
   const handleAllCheck = (checked) => {
     if (checked) {
@@ -53,8 +55,6 @@ export const FFood = () => {
     }
   };
 
-  console.log(checkItems);
-
   const deleteFavoriteReq = async () => {
     await axios
       .put(
@@ -63,6 +63,8 @@ export const FFood = () => {
         { withCredentials: true }
       )
       .then((res) => console.log(res));
+    setRender((prev) => !prev);
+    return alert("선택하신 상품이 삭제되었습니다.");
   };
 
   const handleSingleCheck = (checked, id) => {
@@ -90,9 +92,19 @@ export const FFood = () => {
     if (checkItems.length === 0) {
       alert("삭제 할 푸드를 선택하세요.");
     } else {
-      dispatch(removeFromCart(checkItems));
-      deleteFavoriteReq();
-      setCheckItems([]);
+      serverData?.map((food) => {
+        if (food?.category === "브레드" || food?.category === "케이크" || food?.category === "샌드위치" || food?.category === "샐러드" || food?.category === "따뜻한 푸드") {
+          if (checkItems.includes(food.Product.p_id)) {
+            const id = checkItems.filter((item) => item === food.Product.p_id)
+            const data = {
+              email: user?.email,
+              items: id,
+            }
+            deleteFavoriteReq(data);
+            setCheckItems([]);
+          }
+        }
+      })
     }
   };
 
@@ -101,51 +113,41 @@ export const FFood = () => {
     if (checkItems.length === 0) {
       alert("장바구니로 이동 할 푸드를 선택하세요.");
     } else {
-      favorite.favorites.map((food) => {
-        if (checkItems.includes(food.id)) {
-          if (food.cooked) {
-            dispatch(
-              addToCart({
-                id: food.id,
-                name: food.name,
-                size: food.size,
-                cooked: food.cooked,
-                takeout: food.takeout,
-                price: food.price,
-                category: food.category,
-                quantity: food.quantity,
-              })
-            );
-          } else {
-            dispatch(
-              addToCart({
-                id: food.id,
-                name: food.name,
-                size: food.size,
-                takeout: food.takeout,
-                price: food.price,
-                category: food.category,
-                quantity: food.quantity,
-              })
-            );
+      serverData?.map((food) => {
+        if (food?.category === "브레드" || food?.category === "케이크" || food?.category === "샌드위치" || food?.category === "샐러드" || food?.category === "따뜻한 푸드") {
+          if(checkItems.includes(food.Product.p_id)) {
+            if (food.cookType) {
+              dispatch(
+                  addToCart({
+                    id: food.Product.p_id,
+                    name: food.name,
+                    size: food.size,
+                    cooked: food.cookType,
+                    takeout: food.eatType,
+                    price: food.price,
+                    category: food.category,
+                    quantity: food.quantity,
+                  })
+              );
+            } else {
+              dispatch(
+                  addToCart({
+                    id: food.Product.p_id,
+                    name: food.name,
+                    size: food.size,
+                    takeout: food.eatType,
+                    price: food.price,
+                    category: food.category,
+                    quantity: food.quantity,
+                  })
+              );
+            }
           }
         }
       });
       alert("장바구니로 이동했습니다.");
     }
   };
-
-  //
-  // useEffect(() => {
-  //     favorite.favorites.map((food) => {
-  //         if (food.category === "브레드" || food.category === "케이크" || food.category === "샌드위치" || food.category === "샐러드" || food.category === "따뜻한 푸드") {
-  //             console.log("22222222=>", food);
-  //             setFood(food);
-  //         }
-  //     })
-  // }, []);
-  //
-  // console.log("food =>", food);
 
   return (
     <styled_F.FCDd1>

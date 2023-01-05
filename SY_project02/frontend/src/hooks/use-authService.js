@@ -9,7 +9,9 @@ import {
   setUTelephone,
   setULogout,
 } from "../features/userInfo/userInfoSlice";
+import { clearCart } from "../features/cart/cartSlice";
 import { persistor } from "../store/index";
+import {clearCart} from "../features/cart/cartSlice";
 
 export const useFormCheck = () => {
   const formCheck = (e, regex, msg, state) => {
@@ -46,8 +48,8 @@ export const useLoginService = () => {
             `${SERVER_URL}/auth/login`,
             {
               data: post,
-            }
-            // { withCredentials: true }
+            },
+            { withCredentials: true }
           )
           .then((res) => {
             console.log("로그인 성공=>", res);
@@ -79,20 +81,21 @@ export const useLogout = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const purge = async () => {
-    await persistor.purge();
+    await persistor.purge("cart", "user");
   };
   const logout = async (e) => {
     e.preventDefault();
     try {
       await axios.post(
-        `${SERVER_URL}/auth/logout`,
-        {}
-        // { withCredentials: true }
-      );
+          `${SERVER_URL}/auth/logout`,
+          {},
+          { withCredentials: true }
+    );
       dispatch(setULogout());
-      await purge();
+      dispatch(clearCart());
       sessionStorage.clear();
-      navigate("/", { replace: true });
+      await purge();
+      navigate("/", { replace: true, state: null });
     } catch (error) {
       console.error(error);
       console.log("RTK user state =>", user);
