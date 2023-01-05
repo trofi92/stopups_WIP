@@ -215,10 +215,14 @@ export const Payment = () => {
                           cart.category === "따뜻한 푸드" ? (
                             <styled_C.CFMOption>
                               <styled_C.CFMIceHot>
-                                워밍 옵션
+                                {cart.cooked
+                                    ? cart.cooked === "Desert"
+                                        ? "따뜻하게 데움"
+                                        : "데우지 않음"
+                                    : "워밍 옵션 없음"}
                               </styled_C.CFMIceHot>
                               <styled_C.CFMIceHot>
-                                테이크 인/아웃
+                                {cart.takeout === "takeout" ? "테이크 아웃" : "매장"}
                               </styled_C.CFMIceHot>
                               <styled_C.CFMCup>
                                 {cart.quantity}개
@@ -236,13 +240,15 @@ export const Payment = () => {
                           ) : (
                             <styled_C.CFMOption>
                               <styled_C.CFMIceHot>
-                                ICED
+                                {cart.ice}
                               </styled_C.CFMIceHot>
                               <styled_C.CFMSize>
                                 {cart.size}
                               </styled_C.CFMSize>
                               <styled_C.CFMSize>
-                                일회용 컵
+                                {cart.takeout === "takeout"
+                                    ? "일회용 컵"
+                                    : "매장용 컵"}
                               </styled_C.CFMSize>
                               <styled_C.CFMCup>
                                 {cart.quantity}개

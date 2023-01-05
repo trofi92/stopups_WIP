@@ -11,7 +11,6 @@ import {
 } from "../features/userInfo/userInfoSlice";
 import { clearCart } from "../features/cart/cartSlice";
 import { persistor } from "../store/index";
-import {clearCart} from "../features/cart/cartSlice";
 
 export const useFormCheck = () => {
   const formCheck = (e, regex, msg, state) => {
