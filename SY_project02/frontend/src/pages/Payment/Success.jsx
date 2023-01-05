@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SERVER_URL } from "../../util/urls";
 import Header from "../../components/Header/Header";
@@ -14,8 +14,43 @@ import * as styled_C from "../../styled/Cart";
 import {Footer} from "../../components/Footer/Footer";
 
 export const Success = () => {
+  // 글자
+  const [text1, setText1] = useState(true);
+  const [text2, setText2] = useState(false);
+  const [text3, setText3] = useState(false);
+  const [text4, setText4] = useState(false);
+  // 라인
+  const [line2, setLien2] = useState(false);
+  const [line3, setLien3] = useState(false);
+  const [line4, setLien4] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const random1 = Math.floor(Math.random() * 70001) + 30000;
+    const random2 = Math.floor(Math.random() * 500001) + 500000;
+    let timer1 = setTimeout(function () {
+      setText1(!text1);
+      setText2(!text2);
+      setLien2(!line2);
+      clearTimeout(timer1)
+    }, random1)
+
+    let timer2 = setTimeout(function () {
+      setText2(false);
+      setText3(!text3);
+      setLien3(!line3);
+      clearTimeout(timer2)
+    }, random1 + random1)
+
+    let timer3 = setTimeout(function () {
+      setText3(false);
+      setText4(!text4);
+      setLien4(!line4);
+      clearTimeout(timer3)
+    }, random1 + random1 + random2)
+  }, [])
 
   let orderId = new URL(window.location.href).searchParams.get(
     "orderId"
@@ -49,6 +84,7 @@ export const Success = () => {
   }, []);
 
   return (
+      // 결제 성공
       <styled_AB.AllBox>
         <Header/>
 
@@ -68,13 +104,20 @@ export const Success = () => {
             {/*매장 및 준비 중*/}
             <styled_Payment.PSection1>
               <styled_Success.STitleBox>
-                <styled_Success.STitle1>
-                  {/*매장 이름*/}
-                  <span>OOO점</span>에서
-                </styled_Success.STitle1>
-                {/*n은 db id값..? A-1도 순차적으로 값 변하게*/}
+                {text4 === true ?
+                    <styled_Success.STitle1>
+                      {/*매장 이름*/}
+                      <span>OOO점</span>에서
+                    </styled_Success.STitle1> :
+                    <styled_Success.STitle11>
+                      {/*매장 이름*/}
+                      <span>OOO점</span>에서
+                    </styled_Success.STitle11>
+                }
+                {/*n이랑 A-1의 숫자는 db의 id값 */}
                 <styled_Success.STitle2>
-                  n번째 메뉴로 준비 중입니다(A-1)
+                  n번째 메뉴로
+                  {text4 === true ? " 완성되었습니다(A-1)" : " 준비 중입니다(A-1)"}
                 </styled_Success.STitle2>
               </styled_Success.STitleBox>
               <styled_Success.STitle3>
@@ -82,7 +125,62 @@ export const Success = () => {
               </styled_Success.STitle3>
               {/*결제 완료, 주문 요청, 주문 승인, 준비 완료*/}
               <styled_Success.STitle4>
-
+                <styled_Success.STestFlex>
+                  {/*일정 시간 지남에 따라 바뀌게*/}
+                  <styled_Success.STF2>
+                    {text1 === true ?
+                        <styled_Success.STest2>
+                          결제 완료
+                        </styled_Success.STest2>:
+                        <styled_Success.STest>
+                          결제 완료
+                        </styled_Success.STest>
+                    }
+                    <styled_Success.STLine2/>
+                  </styled_Success.STF2>
+                  <styled_Success.STF2>
+                    {text2 === true ?
+                        <styled_Success.STest2>
+                          주문 요청
+                        </styled_Success.STest2>:
+                        <styled_Success.STest>
+                          주문 요청
+                        </styled_Success.STest>
+                    }
+                    {line2 === true ?
+                        <styled_Success.STLine2/> :
+                        <styled_Success.STLine/>
+                    }
+                  </styled_Success.STF2>
+                  <styled_Success.STF2>
+                    {text3 === true ?
+                        <styled_Success.STest2>
+                          주문 승인
+                        </styled_Success.STest2>:
+                        <styled_Success.STest>
+                          주문 승인
+                        </styled_Success.STest>
+                    }
+                    {line3 === true ?
+                        <styled_Success.STLine2/> :
+                        <styled_Success.STLine/>
+                    }
+                  </styled_Success.STF2>
+                  <styled_Success.STF2>
+                    {text4 === true ?
+                        <styled_Success.STest2>
+                          준비 완료
+                        </styled_Success.STest2>:
+                        <styled_Success.STest>
+                          준비 완료
+                        </styled_Success.STest>
+                    }
+                    {line4 === true ?
+                        <styled_Success.STLine2/> :
+                        <styled_Success.STLine/>
+                    }
+                  </styled_Success.STF2>
+                </styled_Success.STestFlex>
               </styled_Success.STitle4>
             </styled_Payment.PSection1>
 

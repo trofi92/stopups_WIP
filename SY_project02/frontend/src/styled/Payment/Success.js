@@ -12,7 +12,7 @@ export const SBox = styled.div`
 
 // 준비중
 export const STitleBox = styled.div`
-  width: 483px;
+  width: 508px;
   margin: 0 auto;
 `
 export const STitle1 = styled.div`
@@ -25,6 +25,18 @@ export const STitle1 = styled.div`
     color: #006633;
   }
 `
+export const STitle11 = styled.div`
+  text-align: left;
+  font-size: 27px;
+  font-weight: bold;
+  color: #000;
+  margin-left: 13px;
+  
+  span {
+    color: #006633;
+  }
+`
+
 export const STitle2 = styled.div`
   text-align: center;
   font-size: 35px;
@@ -48,7 +60,7 @@ export const STitle3 = styled.div`
 
 // 결제 완료, 주문 요청, 주문 승인, 준비 완료
 export const STitle4 = styled.div`
-  margin: 10px auto;
+  margin: 10px auto 20px;
   height: 50px;
   width: 483px;
   display: flex;
@@ -117,7 +129,7 @@ export const SSection = styled.section`
   height: 100%;
   padding: 0 3%;
   width: 94%;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 `
 export const SSTitle = styled.div`
   font-size: 25px;
