@@ -8,9 +8,9 @@ import Header from "../../../components/Header/Header";
 import { Footer } from "../../../components/Footer/Footer";
 import * as styled_LFPw from "../../../styled/Login/LFindPw";
 import { useLocation } from "react-router-dom";
-import { decrypt } from "../../../util/crypto-front";
+import { decrypt } from "../../../utils/crypto-front";
 import { checkPassword } from "../../../components/join/JoinRegex";
-import { SERVER_URL } from "../../../util/urls";
+import { SERVER_URL } from "../../../utils/urls";
 import axios from "axios";
 
 const LFindPw = () => {

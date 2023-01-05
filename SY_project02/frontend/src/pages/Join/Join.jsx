@@ -15,8 +15,8 @@ import * as styled_LOG from "../../styled/Login/Login";
 import { Footer } from "../../components/Footer/Footer";
 import * as styled_BU from "../../styled/Button";
 import { NickAgree } from "./NickAgree";
-import { encrypt } from "../../util/crypto-front";
-import { SERVER_URL } from "../../util/urls";
+import { encrypt } from "../../utils/crypto-front";
+import { SERVER_URL } from "../../utils/urls";
 
 const Join = () => {
   const emailRef = useRef();

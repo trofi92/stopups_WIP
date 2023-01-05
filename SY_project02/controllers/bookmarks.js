@@ -1,5 +1,4 @@
 const { User, Bookmark, Product } = require("../models");
-// const { decrypt, encrypt } = require("../middlewares/crypto");
 
 //에러 일괄처리
 const errorHandler = (res, data) => {
@@ -13,16 +12,16 @@ const errorHandler = (res, data) => {
 //찜목록에 상품 추가
 const addBookmarks = async (req, res, next) => {
   const data = req?.body?.data;
+  errorHandler(res, data);
   const reqUser = data.email;
   const user = await User.findUser(reqUser);
   const userId = user?.dataValues?.id;
-  console.log("===========pId=======>", data.pId);
-
-  errorHandler(res, data);
 
   const findProductId = await Product.findOne({
-    where: { pId: data.pId },
+    where: { pId: data?.pId },
   });
+  console.log("========data=======>", data);
+  console.log("====find====>", findProductId);
 
   const pId = findProductId?.id;
   const category = data.category;

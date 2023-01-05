@@ -16,8 +16,8 @@ import HMButton2 from "../../image/Header/HMButton2.png";
 import PaymentCoupon from "../../image/Payment/PaymentCoupon.png";
 import PaymentGift from "../../image/Payment/PaymentGift.png";
 import PaymentPhone from "../../image/Payment/PaymentPhone.png";
-import { decrypt } from "../../util/crypto-front";
-import { API } from "../../util/urls";
+import { decrypt } from "../../utils/crypto-front";
+import { API } from "../../utils/urls";
 
 export const Payment = () => {
   // 주문하기 클릭 시 선택된 제품만 리덕스에 저장

@@ -47,7 +47,8 @@ const login = async (req, res, next) => {
 
     const refreshToken = jwt.sign(
       { id: user.id, name: user.name },
-      jwtSecret
+      jwtSecret,
+      { expiresIn: "30d" }
     );
     res.cookie(
       "refreshJwtToken",

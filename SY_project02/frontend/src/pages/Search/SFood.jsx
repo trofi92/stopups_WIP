@@ -2,7 +2,7 @@ import * as styled_Search from "../../styled/Search";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { API } from "../../util/urls";
+import { API } from "../../utils/urls";
 
 export const SFood = ({ result, state }) => {
   const [allFood, setAllFood] = useState([]);

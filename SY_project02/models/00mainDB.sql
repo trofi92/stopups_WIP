@@ -1,46 +1,6 @@
--- Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'users' AND TABLE_SCHEMA 
--- = 'stopups_project'     
--- Executing (default): CREATE TABLE IF NOT EXISTS 
--- `users` (`id` INTEGER NOT NULL auto_increment , 
--- `email` VARCHAR(1000) UNIQUE, `name` VARCHAR(1000), `nickname` VARCHAR(1500) NOT NULL, `provider` VARCHAR(1000) DEFAULT 
--- 'local', `sns_id` VARCHAR(3000), `password` VARCHAR(1000), `telephone` VARCHAR(1300), `created_at` DATETIME 
--- NOT NULL, `updated_at` DATETIME NOT 
--- NULL, `deleted_at` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 
--- COLLATE utf8_general_ci;Executing (default): SHOW INDEX FROM `users` FROM `stopups_project`     
--- Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'products' AND TABLE_SCHEMA = 'stopups_project'  
--- Executing (default): CREATE TABLE IF NOT EXISTS 
--- `products` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(50) NOT NULL, `p_id` VARCHAR(50), `price` 
--- VARCHAR(400), `drinktype` VARCHAR(200), `eattype` VARCHAR(200), `cooktype` VARCHAR(200), `quantity` INTEGER(10) DEFAULT 
--- 1000, `category` VARCHAR(50), `created_at` DATETIME NOT NULL, `updated_at` DATETIME 
--- NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;       
--- Executing (default): SHOW INDEX FROM `products` 
--- FROM `stopups_project`  
--- Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'orders' AND 
--- TABLE_SCHEMA = 'stopups_project'    
--- Executing (default): CREATE TABLE IF NOT EXISTS 
--- `orders` (`id` INTEGER NOT NULL auto_increment , `user_id` INTEGER NOT NULL, `address` VARCHAR(255), `total` INTEGER UNSIGNED NOT NULL, `created_at` DATETIME, PRIMARY KEY (`id`), FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB DEFAULT 
--- CHARSET=utf8 COLLATE utf8_general_ci;
--- Executing (default): SHOW INDEX FROM `orders` FROM `stopups_project`    
--- Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'payments' AND TABLE_SCHEMA = 'stopups_project'  
--- Executing (default): CREATE TABLE IF NOT EXISTS 
--- `payments` (`id` INTEGER NOT NULL auto_increment , `order_id` INTEGER NOT NULL, `provider` VARCHAR(50), `method` VARCHAR(50), `total` INTEGER UNSIGNED, `payment_key` VARCHAR(100), 
--- `payment_type` VARCHAR(20), `status` VARCHAR(10), `created_at` VARCHAR(100), PRIMARY KEY (`id`), FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;     
--- Executing (default): SHOW INDEX FROM `payments` 
--- FROM `stopups_project`  
--- Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'orderItems' 
--- AND TABLE_SCHEMA = 'stopups_project'Executing (default): CREATE TABLE IF NOT EXISTS 
--- `orderItems` (`id` INTEGER NOT NULL 
--- auto_increment , `order_id` INTEGER 
--- NOT NULL, `product_id` INTEGER NOT NULL, `price` VARCHAR(400), `quantity` INTEGER, `size` VARCHAR(50), `category` VARCHAR(50), `drink_type` VARCHAR(200), `eat_type` VARCHAR(200), `cook_type` VARCHAR(200), `created_at` DATETIME, 
--- PRIMARY KEY 
--- (`id`), FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) 
--- ON DELETE NO ACTION ON UPDATE CASCADE, FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) 
--- ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci; 
--- Executing (default): SHOW INDEX FROM `orderItems` FROM `stopups_project`Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'bookmarks' AND TABLE_SCHEMA = 'stopups_project' 
--- Executing (default): CREATE TABLE IF NOT EXISTS 
--- `bookmarks` 
--- (`id` INTEGER NOT NULL auto_increment , `user_id` INTEGER NOT NULL, `product_id` INTEGER NOT NULL, `price` VARCHAR(400), `size` VARCHAR(50), `category` VARCHAR(50), `drink_type` VARCHAR(200), 
--- `eat_type` VARCHAR(200), `cook_type` VARCHAR(200), `created_at` VARCHAR(100), `updated_at` VARCHAR(100), PRIMARY KEY (`id`), FOREIGN KEY (`user_id`) REFERENCES `users` 
--- (`id`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB 
--- DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
--- Executing (default): SHOW INDEX FROM `bookmarks` FROM `stopups_project`
+CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER NOT NULL auto_increment , `email` VARCHAR(1000) UNIQUE, `name` VARCHAR(1000), `nickname` VARCHAR(1500) NOT NULL, `provider` VARCHAR(1000) DEFAULT 'local', `sns_id` VARCHAR(3000), `password` VARCHAR(1000), `telephone` VARCHAR(1300), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, `deleted_at` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `products` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(50) NOT NULL, `p_id` VARCHAR(50), `price` VARCHAR(400), `drinktype` VARCHAR(200), `eattype` VARCHAR(200), `cooktype` VARCHAR(200), `quantity` INTEGER(10) DEFAULT 1000, `category` VARCHAR(50), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `orders` (`id` INTEGER NOT NULL auto_increment , `user_id` INTEGER NOT NULL, `address` VARCHAR(255), `total` INTEGER UNSIGNED NOT NULL, `created_at` DATETIME, PRIMARY KEY (`id`), FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `payments` (`id` INTEGER NOT NULL auto_increment , `order_id` INTEGER NOT NULL, `provider` VARCHAR(50), `method` VARCHAR(50), `total` INTEGER UNSIGNED, `payment_key` VARCHAR(100), `payment_type` VARCHAR(20), `status` VARCHAR(10), `created_at` VARCHAR(100), PRIMARY KEY (`id`), FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `orderItems` (`id` INTEGER NOT NULL auto_increment , `order_id` INTEGER NOT NULL, `product_id` INTEGER NOT NULL, `price` VARCHAR(400), `quantity` INTEGER, `size` VARCHAR(50), `category` VARCHAR(50), `drink_type` VARCHAR(200), `eat_type` VARCHAR(200), `cook_type` VARCHAR(200), `created_at` DATETIME, PRIMARY KEY (`id`), FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE, FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `bookmarks` (`id` INTEGER NOT NULL auto_increment , `user_id` INTEGER NOT NULL, `product_id` INTEGER NOT NULL, `price` VARCHAR(400), `size` VARCHAR(50), `category` VARCHAR(50), `drink_type` VARCHAR(200), `eat_type` VARCHAR(200), `cook_type` VARCHAR(200), `created_at` VARCHAR(100), `updated_at` VARCHAR(100), PRIMARY KEY (`id`), FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;

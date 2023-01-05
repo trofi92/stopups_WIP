@@ -2,7 +2,7 @@ import * as styled_Event from "../../styled/Event/Event";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { API, IMG } from "../../util/urls";
+import { API, IMG } from "../../utils/urls";
 
 export const EAll = () => {
   // api 서버에서 받아온 event를 배열로 저장

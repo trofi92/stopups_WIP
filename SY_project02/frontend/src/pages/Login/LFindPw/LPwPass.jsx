@@ -7,7 +7,7 @@ import { Footer } from "../../../components/Footer/Footer";
 import * as styled_Pass from "../../../styled/Pass";
 import * as styled_LOG from "../../../styled/Login/Login";
 import * as styled_Join from "../../../styled/Join/Join";
-import { SERVER_URL } from "../../../util/urls";
+import { SERVER_URL } from "../../../utils/urls";
 import {
   usePhoneSubmit,
   useSmsSubmit,

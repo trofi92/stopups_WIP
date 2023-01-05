@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as styled_Menu from "../../../styled/Menu/Menu";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { API } from "../../../util/urls";
+import { API } from "../../../utils/urls";
 
 const MenuCard = (props) => {
   const [data, setData] = useState([]);

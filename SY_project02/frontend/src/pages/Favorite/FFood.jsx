@@ -1,9 +1,8 @@
 import * as styled_F from "../../styled/Favorite";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useLayoutEffect } from "react";
-import { removeFromCart } from "../../features/favorite/favoriteSlice";
 import { addToCart } from "../../features/cart/cartSlice";
-import { SERVER_URL } from "../../util/urls";
+import { SERVER_URL } from "../../utils/urls";
 import axios from "axios";
 
 export const FFood = () => {
@@ -19,7 +18,6 @@ export const FFood = () => {
   // 전체 선택 버튼 클릭 인지 용
   const [click, setClick] = useState(false);
 
-  const favorite = useSelector((state) => state.favorite);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -65,7 +63,6 @@ export const FFood = () => {
       )
       .then((res) => console.log(res));
     setRender((prev) => !prev);
-    return alert("선택하신 상품이 삭제되었습니다.");
   };
 
   const handleSingleCheck = (checked, id) => {
@@ -94,19 +91,28 @@ export const FFood = () => {
       alert("삭제 할 푸드를 선택하세요.");
     } else {
       serverData?.map((food) => {
-        if (food?.category === "브레드" || food?.category === "케이크" || food?.category === "샌드위치" || food?.category === "샐러드" || food?.category === "따뜻한 푸드") {
+        if (
+          food?.category === "브레드" ||
+          food?.category === "케이크" ||
+          food?.category === "샌드위치" ||
+          food?.category === "샐러드" ||
+          food?.category === "따뜻한 푸드"
+        ) {
           if (checkItems.includes(food.Product.p_id)) {
-            const id = checkItems.filter((item) => item === food.Product.p_id)
+            const id = checkItems.filter(
+              (item) => item === food.Product.p_id
+            );
             const data = {
               email: user?.email,
               items: id,
-            }
+            };
             deleteFavoriteReq(data);
             setCheckItems([]);
           }
         }
-      })
+      });
     }
+    return alert("선택하신 상품이 삭제되었습니다.");
   };
 
   // 나중에 워밍 옵션 take in, out 추가 되면 여기다도 넣기
@@ -115,32 +121,38 @@ export const FFood = () => {
       alert("장바구니로 이동 할 푸드를 선택하세요.");
     } else {
       serverData?.map((food) => {
-        if (food?.category === "브레드" || food?.category === "케이크" || food?.category === "샌드위치" || food?.category === "샐러드" || food?.category === "따뜻한 푸드") {
-          if(checkItems.includes(food.Product.p_id)) {
+        if (
+          food?.category === "브레드" ||
+          food?.category === "케이크" ||
+          food?.category === "샌드위치" ||
+          food?.category === "샐러드" ||
+          food?.category === "따뜻한 푸드"
+        ) {
+          if (checkItems.includes(food.Product.p_id)) {
             if (food.cookType) {
               dispatch(
-                  addToCart({
-                    id: food.Product.p_id,
-                    name: food.name,
-                    size: food.size,
-                    cooked: food.cookType,
-                    takeout: food.eatType,
-                    price: food.price,
-                    category: food.category,
-                    quantity: food.quantity,
-                  })
+                addToCart({
+                  id: food.Product.p_id,
+                  name: food.name,
+                  size: food.size,
+                  cooked: food.cookType,
+                  takeout: food.eatType,
+                  price: food.price,
+                  category: food.category,
+                  quantity: food.quantity,
+                })
               );
             } else {
               dispatch(
-                  addToCart({
-                    id: food.Product.p_id,
-                    name: food.name,
-                    size: food.size,
-                    takeout: food.eatType,
-                    price: food.price,
-                    category: food.category,
-                    quantity: food.quantity,
-                  })
+                addToCart({
+                  id: food.Product.p_id,
+                  name: food.name,
+                  size: food.size,
+                  takeout: food.eatType,
+                  price: food.price,
+                  category: food.category,
+                  quantity: food.quantity,
+                })
               );
             }
           }
@@ -209,9 +221,13 @@ export const FFood = () => {
                         <styled_F.FCDTHThDInput1
                           type={"checkbox"}
                           title={"전체 선택"}
-                          onChange={(e) => handleAllCheck(e.target.checked)}
+                          onChange={(e) =>
+                            handleAllCheck(e.target.checked)
+                          }
                           // 데이터의 수와 체크된 아이템의 수가 다를 때 체크 해제
-                          checked={checkItems.length === serverData?.length}
+                          checked={
+                            checkItems.length === serverData?.length
+                          }
                         />
                       </styled_F.FCDTHThDiv1>
                     </styled_F.FCDTHTh1>

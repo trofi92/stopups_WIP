@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { SERVER_URL } from "../../util/urls";
+import { SERVER_URL } from "../../utils/urls";
 import { clearCart } from "../../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 
