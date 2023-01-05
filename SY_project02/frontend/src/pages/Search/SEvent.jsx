@@ -9,11 +9,9 @@ export const SEvent = ({ result, state }) => {
 
   useEffect(() => {
     const all = async () => {
-      await axios
-        .get(`${API}&Event=ALL&Title=&EventId=`)
-        .then((res) => {
-          setAllEvent(res.data);
-        });
+      await axios.get(`${API}&Event=ALL&Title=&EventId=`).then((res) => {
+        setAllEvent(res.data);
+      });
     };
     all();
   }, []);
@@ -37,12 +35,9 @@ export const SEvent = ({ result, state }) => {
       </styled_Search.SSHeader>
       {/*이벤트 내용*/}
       <styled_Search.SSUl>
-        {searchedAllEvent.length === 0 ||
-        (result === "" && state === "") ? (
+        {searchedAllEvent.length === 0 || (result === "" && state === "") ? (
           <styled_Search.SSLi>
-            <styled_Search.SSLP>
-              검색 결과가 없습니다.
-            </styled_Search.SSLP>
+            <styled_Search.SSLP>검색 결과가 없습니다.</styled_Search.SSLP>
           </styled_Search.SSLi>
         ) : (
           searchedAllEvent.map((event) => {
@@ -59,13 +54,9 @@ export const SEvent = ({ result, state }) => {
                   </styled_Search.SEFigure>
                   <styled_Search.SEDiv>
                     <styled_Search.SEDHeader>
-                      <styled_Search.SEDHH3>
-                        {event.Title}
-                      </styled_Search.SEDHH3>
+                      <styled_Search.SEDHH3>{event.Title}</styled_Search.SEDHH3>
                       {event.Proceed === "진행중" ? (
-                        <styled_Search.SEDHSpan>
-                          진행중
-                        </styled_Search.SEDHSpan>
+                        <styled_Search.SEDHSpan>진행중</styled_Search.SEDHSpan>
                       ) : (
                         <styled_Search.SEDHSpanEnd>
                           종료
@@ -80,7 +71,7 @@ export const SEvent = ({ result, state }) => {
                       style={{ textDecoration: "none" }}
                     >
                       <styled_Search.SEDPLink>
-                        http://localhost:3000/event/all/
+                        https://localhost:3000/event/all/
                         {event.EventId}
                       </styled_Search.SEDPLink>
                     </Link>

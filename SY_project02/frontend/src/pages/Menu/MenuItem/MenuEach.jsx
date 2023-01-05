@@ -5,6 +5,7 @@ import Header from "../../../components/Header/Header";
 import { AllBox } from "../../../styled/AllBox";
 import DetailOne from "./MenuOne";
 import { API } from "../../../util/urls";
+import { NotFound } from "../../NotFound";
 
 const DetailEach = () => {
   const [data, setData] = useState([]);
@@ -64,33 +65,7 @@ const DetailEach = () => {
           EatType={EatType}
         />
       ) : (
-        <AllBox>
-          <Header />
-          <h1>
-            원하시는 상품이
-            없습니다0000000000000000000000000000000000000
-          </h1>
-          <h1>
-            원하시는 상품이
-            없습니다0000000000000000000000000000000000000
-          </h1>
-          <h1>
-            원하시는 상품이
-            없습니다0000000000000000000000000000000000000
-          </h1>
-          <h1>
-            원하시는 상품이
-            없습니다0000000000000000000000000000000000000
-          </h1>
-          <h1>
-            원하시는 상품이
-            없습니다0000000000000000000000000000000000000
-          </h1>
-          <h1>
-            원하시는 상품이
-            없습니다0000000000000000000000000000000000000
-          </h1>
-        </AllBox>
+        <NotFound />
       )}
     </>
   );

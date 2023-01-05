@@ -11,7 +11,6 @@ import {
 } from "../features/userInfo/userInfoSlice";
 import { clearCart } from "../features/cart/cartSlice";
 import { persistor } from "../store/index";
-import {clearCart} from "../features/cart/cartSlice";
 
 export const useFormCheck = () => {
   const formCheck = (e, regex, msg, state) => {
@@ -48,8 +47,8 @@ export const useLoginService = () => {
             `${SERVER_URL}/auth/login`,
             {
               data: post,
-            },
-            { withCredentials: true }
+            }
+            // { withCredentials: true }
           )
           .then((res) => {
             console.log("로그인 성공=>", res);
@@ -87,10 +86,10 @@ export const useLogout = () => {
     e.preventDefault();
     try {
       await axios.post(
-          `${SERVER_URL}/auth/logout`,
-          {},
-          { withCredentials: true }
-    );
+        `${SERVER_URL}/auth/logout`,
+        {},
+        { withCredentials: true }
+      );
       dispatch(setULogout());
       dispatch(clearCart());
       sessionStorage.clear();
