@@ -51,14 +51,17 @@ export const CNoDF = () => {
       // 체크 시 체크된 아이템을 배열에 추가
       setCheckItems((prev) => [...prev, { id, size, cooked, ice }]);
     } else {
+      console.log(checkItems);
       // 체크 해제 시 체크된 아이템을 제외한 나머지 배열
       setCheckItems(
         checkItems.filter(
           (el) =>
-            el.id !== id &&
-            el.size !== size &&
-            el.cooked !== cooked &&
-            el.ice !== ice
+            !(
+              el.id === id &&
+              el.size === size &&
+              el.cooked === cooked &&
+              el.ice === ice
+            )
         )
       );
     }
@@ -91,7 +94,6 @@ export const CNoDF = () => {
     if (checkItems.length === 0) {
       alert("삭제 할 음료를 선택하세요.");
     } else {
-      console.log(checkItems, "-handleRemove", cart.cartItems);
       dispatch(removeFromCart(checkItems));
       setCheckItems([]);
     }
@@ -103,12 +105,13 @@ export const CNoDF = () => {
     };
 
     handleTotalCalculate(checkItems);
-  }, [checkItems]);
+  }, [checkItems, cart]);
+  // cart 가 없을때는 선택을 해놓고 + , - 를 누르면 total 이 변경 되지 않고 체크를 한번 풀엇다 다시 체크해야 되서 cart를 넣어서 cart 가 바뀔때마다 랜더링을 시키니까 정상 작동
 
   const onClick = () => {
-    if (cart.amount > 20) {
+    if (cart.totalAmount > 20) {
       alert("총 주문 가능 수량은 20개 입니다.");
-    } else if (cart.amount <= 20) {
+    } else if (cart.totalAmount <= 20) {
       if (user.location === "") {
         alert("주문하실 매장을 선택해 주세요.");
         navigate("/selectMap");
@@ -277,15 +280,18 @@ export const CNoDF = () => {
                     <styled_C.CFMCountBox>
                       <styled_C.CFMCMinus
                         onClick={() => {
+                          console.log(checkItems);
                           if (cart.quantity <= 1) {
                             alert("최소 주문 가능 수량은 1개 입니다.");
                           } else {
+                            console.log(checkItems);
                             dispatch(
                               decrease({
                                 id: cart.id,
                                 size: cart.size,
                                 cooked: cart.cooked,
                                 ice: cart.ice,
+                                quantity: cart.quantity,
                               })
                             );
                           }
@@ -297,15 +303,16 @@ export const CNoDF = () => {
                       <styled_C.CFMCPlus
                         onClick={() => {
                           if (cart.quantity >= 20) {
+                            // <- cart.totalAmount  가 20개가 넘어도 외 작동이 안하는가?
                             alert("총 주문 가능 수량은 20개 입니다.");
                           } else {
-                            console.log(cart.size, cart.cartItems);
                             dispatch(
                               increase({
                                 id: cart.id,
                                 size: cart.size,
                                 cooked: cart.cooked,
                                 ice: cart.ice,
+                                quantity: cart.quantity,
                               })
                             );
                           }
@@ -332,7 +339,7 @@ export const CNoDF = () => {
             <styled_C.CFBAmount>
               총
               <styled_C.CFBAmountColor>
-                {checkItems.length === 0 ? 0 : checkItems.length}
+                {checkItems.length === 0 ? 0 : cart.totalAmount}
               </styled_C.CFBAmountColor>
               개 / 20개
             </styled_C.CFBAmount>
