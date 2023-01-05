@@ -66,7 +66,7 @@ export const STF2 = styled.div`
   flex-direction: column;
 `
 export const STest = styled.a`
-  //width: 100% !important;
+  width: 100% !important;
   float: left;
   box-sizing: border-box;
   height: 40px;
@@ -78,16 +78,35 @@ export const STest = styled.a`
   color: #ddd;
   background: #fff;
   text-decoration: none;
-  width: 100%;
 `
-export const STest2 = styled.p`
+export const STest2 = styled.a`
+  width: 100% !important;
+  float: left;
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 40px;
+  display: block;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
+  background: #fff;
+  text-decoration: none;
+`
+export const STLine = styled.p`
   margin: 0;
   padding: 0;
   width: 100%;
   background: #ddd;
   height: 7px;
 `
-
+export const STLine2 = styled.p`
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #006633;
+  height: 7px;
+`
 
 // 주문 내역
 export const SSection = styled.section`

@@ -1,17 +1,40 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
 import * as styled_AB from "../../styled/AllBox";
 import Header from "../../components/Header/Header";
 import * as styled_Success from "../../styled/Payment/Success";
 import * as styled_F from "../../styled/Favorite";
-import FailedTitle from "../../image/Payment/FailedTitle.png"
 import * as styled_Payment from "../../styled/Payment/Payment";
 import {Footer} from "../../components/Footer/Footer";
 import SuccessTitle from "../../image/Payment/SuccessTitle.png";
 import * as styled_C from "../../styled/Cart";
-import {STest, STest2, STestFlex, STF2} from "../../styled/Payment/Success";
 
 export const Failed = () => {
+    // 글자
+    const [text1, setText1] = useState(true);
+    const [text2, setText2] = useState(false);
+    const [text3, setText3] = useState(false);
+    const [text4, setText4] = useState(false);
+    // 라인
+    const [line2, setLien2] = useState(false);
+    const [line3, setLien3] = useState(false);
+    const [line4, setLien4] = useState(false);
+
+    const changeLine2 = () => {
+        setLien2(!line2)
+    }
+
+    const changeLine3 = () => {
+        setLien3(!line3)
+    }
+
+    const changeLine4 = () => {
+        setLien4(!line4)
+    }
+
+    // setTimeout(changeLine2, 3000)
+    // setTimeout(changeLine3, 6000)
+    // setTimeout(changeLine4, 9000)
+
   return (
       // 결제 성공
       <styled_AB.AllBox>
@@ -48,29 +71,39 @@ export const Failed = () => {
                       {/*결제 완료, 주문 요청, 주문 승인, 준비 완료*/}
                       <styled_Success.STitle4>
                           <styled_Success.STestFlex>
+                              {/*일정 시간 지남에 따라 바뀌게*/}
                               <styled_Success.STF2>
                                   <styled_Success.STest>
                                       결제 완료
                                   </styled_Success.STest>
-                                  <STest2/>
+                                  <styled_Success.STLine2/>
                               </styled_Success.STF2>
                               <styled_Success.STF2>
                                   <styled_Success.STest>
                                       주문 요청
                                   </styled_Success.STest>
-                                  <STest2/>
+                                  {line2 === true ?
+                                      <styled_Success.STLine2/> :
+                                      <styled_Success.STLine/>
+                                  }
                               </styled_Success.STF2>
                               <styled_Success.STF2>
                                   <styled_Success.STest>
                                       주문 승인
                                   </styled_Success.STest>
-                                  <STest2/>
+                                  {line3 === true ?
+                                      <styled_Success.STLine2/> :
+                                      <styled_Success.STLine/>
+                                  }
                               </styled_Success.STF2>
                               <styled_Success.STF2>
                                   <styled_Success.STest>
                                       준비 완료
                                   </styled_Success.STest>
-                                  <STest2/>
+                                  {line4 === true ?
+                                      <styled_Success.STLine2/> :
+                                      <styled_Success.STLine/>
+                                  }
                               </styled_Success.STF2>
                           </styled_Success.STestFlex>
                       </styled_Success.STitle4>

@@ -144,7 +144,7 @@ export const NINInput = styled.input`
 
 // 회원탈퇴 버튼
 export const MIUnsubscribe = styled.button`
-  margin: 160px auto;
+  margin: 50px auto;
   width: 489px;
   height: 38px;
   background: #e2c383;
@@ -156,4 +156,5 @@ export const MIUnsubscribe = styled.button`
   color: #222;
   display: block;
   line-height: 38px;
+  cursor: pointer;
 `;
