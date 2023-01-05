@@ -29,6 +29,7 @@ const initialState = {
   toggle: false,
   totalAmount: 0,
   CartDetailamount: 0,
+  totalAmount: 0,
 };
 
 const cartSlice = createSlice({
@@ -87,7 +88,7 @@ const cartSlice = createSlice({
           item.ice === action.payload.ice
       );
 
-      cartItem.quantity = cartItem.quantity + 1;
+      cartItem.quantity++;
     },
     decrease: (state, action) => {
       const cartItem = state.cartItems.find(
@@ -97,11 +98,12 @@ const cartSlice = createSlice({
           item.cooked === action.payload.cooked &&
           item.ice === action.payload.ice
       );
-      cartItem.quantity = cartItem.quantity - 1;
+      cartItem.quantity--;
     },
     calculateTotals: (state, action) => {
       let CartDetailamount = 0;
       let total = 0;
+      let totalAmount = 0;
 
       const itemIds = action.payload;
 
@@ -119,9 +121,11 @@ const cartSlice = createSlice({
       Item.forEach((item) => {
         CartDetailamount += item.quantity;
         total += item.quantity * item.price;
+        totalAmount += item.quantity;
       });
       state.CartDetailamount = CartDetailamount;
       state.total = total;
+      state.totalAmount = totalAmount;
 
       //      state.amount  = amount <<  이 부분 때문에 자꾸 장바구니 amount 초기화 되서 위에 initialState  에 변수를 하나 더 추가
     },

@@ -14,33 +14,31 @@ import {
   REGISTER,
 } from "redux-persist";
 
-const persistConfig = {
+const userPersistConfig = {
   key: "user",
   storage: storageSession,
 };
+const cartPersistConfig = {
+  key: "cart",
+  storage: storageSession,
+};
 
-export const persistedReducer = persistReducer(
-  persistConfig,
+export const userPersistedReducer = persistReducer(
+  userPersistConfig,
   userInfoReducer
 );
+const cartPersistedReducer = persistReducer(cartPersistConfig, cartReducer);
 
 export const store = configureStore({
   reducer: {
-    cart: cartReducer,
+    cart: cartPersistedReducer,
     favorite: favoritesReducer,
-    user: persistedReducer,
+    user: userPersistedReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [
-          FLUSH,
-          REHYDRATE,
-          PAUSE,
-          PERSIST,
-          PURGE,
-          REGISTER,
-        ],
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
 });
