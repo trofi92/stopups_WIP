@@ -176,13 +176,13 @@ const MyInfo = () => {
                 </styled_Join.RFSection>
                 <styled_Join.RFormP>
                   <b>
-                    * 필수항목을 모두 입력해야 스탑업스 서비스를
+                    * 필수항목을 모두 입력해야 스탑없으 서비스를
                     이용하실 수 있습니다.
                   </b>
                 </styled_Join.RFormP>
                 <styled_BU.LJButton>정보수정</styled_BU.LJButton>
                 <styled_MI.MIUnsubscribe>
-                  스탑업스 리워드 서비스 이용내역 일괄삭제
+                  스탑없으 리워드 서비스 이용내역 일괄삭제
                 </styled_MI.MIUnsubscribe>
               </styled_LOG.LFFFieldset>
             </form>
