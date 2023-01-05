@@ -18,7 +18,6 @@ import { checkNickname } from "../../components/join/JoinRegex";
 import { NotFound } from "../NotFound";
 
 const MyInfo = () => {
-  Link;
   const navigate = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
