@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { SERVER_URL } from "../../utils/urls";
+import {API, SERVER_URL} from "../../utils/urls";
 import Header from "../../components/Header/Header";
 import * as styled_AB from "../../styled/AllBox";
 import * as styled_Success from "../../styled/Payment/Success";
@@ -62,6 +62,23 @@ export const Success = () => {
   let amount = new URL(window.location.href).searchParams.get(
     "amount"
   );
+
+  // api에서 받아온 메뉴
+  // const [img, setImg] = useState([]);
+  //
+  // useEffect(() => {
+  //   const event = async () => {
+  //     // i < 받아온 데이터.length
+  //     for (let i = 0; i < "받아온데이터".length; i++) {
+  //       await axios
+  //           .get(`${API}&Category=분류&Name=&ProductId=`)
+  //           .then((res) => {
+  //             setImg(res.data);
+  //           });
+  //     }
+  //   };
+  //   event();
+  // }, []);
 
   const paymentsRequest = async () => {
     await axios
@@ -210,9 +227,55 @@ export const Success = () => {
             </styled_Success.SSTakeOut>
             {/*결제 완료한 메뉴들 map 사용*/}
             <styled_Payment.PSMenuBox>
+              {/*{img.map((item) => {*/}
+              {/*  return (*/}
+              {/*      <styled_Payment.PSMBox>*/}
+              {/*        /!*이미지*!/*/}
+              {/*        {img.map((img, idx) => {*/}
+              {/*          if (img.ProductId === item.Product.p_id) {*/}
+              {/*            return <styled_Payment.PSMBImg src={img.Image} key={idx}/>*/}
+              {/*          }*/}
+              {/*        })}*/}
+              {/*        <styled_Payment.PSMBImg/>*/}
+              {/*        /!*메뉴 이름*!/*/}
+              {/*        <styled_Payment.PSMBText>*/}
+              {/*          <styled_C.CFMTitle>{item.name}</styled_C.CFMTitle>*/}
+              {/*          {item.category === "브레드" || item.category === "케이크" || item.category === "샌드위치" || item.category === "샐러드" || item.category === "따뜻한 푸드" ? (*/}
+              {/*              <styled_C.CFMOption>*/}
+              {/*                <styled_C.CFMIceHot>*/}
+              {/*                  {item.cooked*/}
+              {/*                      ? item.cooked === "Desert"*/}
+              {/*                          ? "따뜻하게 데움"*/}
+              {/*                          : "데우지 않음"*/}
+              {/*                      : "워밍 옵션 없음"}*/}
+              {/*                </styled_C.CFMIceHot>*/}
+              {/*                <styled_C.CFMSize>*/}
+              {/*                  {item.takeout === "takeout"*/}
+              {/*                      ? "테이크 아웃"*/}
+              {/*                      : "매장"}*/}
+              {/*                </styled_C.CFMSize>*/}
+              {/*                <styled_C.CFMCup>{item.quantity}</styled_C.CFMCup>*/}
+              {/*              </styled_C.CFMOption>*/}
+              {/*          ) : (*/}
+              {/*              <styled_C.CFMOption>*/}
+              {/*                <styled_C.CFMIceHot>{item.ice}</styled_C.CFMIceHot>*/}
+              {/*                <styled_C.CFMSize>{item.size}</styled_C.CFMSize>*/}
+              {/*                <styled_C.CFMSize>*/}
+              {/*                  {item.takeout === "takeout"*/}
+              {/*                      ? "일회용 컵"*/}
+              {/*                      : "매장용 컵"}*/}
+              {/*                </styled_C.CFMSize>*/}
+              {/*                <styled_C.CFMCup>{item.quantity}</styled_C.CFMCup>*/}
+              {/*              </styled_C.CFMOption>*/}
+              {/*          )}*/}
+              {/*          /!*옵션*!/*/}
+              {/*        </styled_Payment.PSMBText>*/}
+              {/*      </styled_Payment.PSMBox>*/}
+              {/*  )*/}
+              {/*})}*/}
               <styled_Payment.PSMBox>
                 {/*이미지*/}
-                <styled_Payment.PSMBImg />
+                <styled_Payment.PSMBImg/>
                 {/*메뉴 이름*/}
                 <styled_Payment.PSMBText>
                   <styled_C.CFMTitle>메뉴 이름</styled_C.CFMTitle>
