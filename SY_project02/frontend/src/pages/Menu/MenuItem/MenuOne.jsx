@@ -11,7 +11,7 @@ import axios from "axios";
 import {SERVER_URL} from "../../../utils/urls";
 import {useEffect} from "react";
 
-const DetailOne = (props) => {
+const MenuOne = (props) => {
     const [test, setTest] = useState("");
     const [sizeData, setSizeData] = useState("");
     const [cooked, setCooked] = useState("");
@@ -396,4 +396,4 @@ const DetailOne = (props) => {
     );
 };
 
-export default DetailOne;
+export default MenuOne;
