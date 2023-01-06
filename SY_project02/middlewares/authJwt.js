@@ -58,7 +58,7 @@ const authJwt = async (req, res, next) => {
 
     if (err) {
       console.error(err);
-      res.status(500).send({
+      res.status(401).send({
         message: "예기치 않은 에러가 발생했습니다.",
       });
     }

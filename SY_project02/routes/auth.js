@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post("/join", join);
 
-router.post("/login", login, authJwt);
+router.post("/login", login);
 
 router.post("/logout", logout, authJwt);
 

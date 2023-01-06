@@ -33,12 +33,11 @@ const Join = () => {
 
   const handleCheckRequest = async (data, reqData) => {
     const reqName = data;
-    console.log(reqName);
     await axios
       .post(
         `${SERVER_URL}/auth/check`,
-        { [reqName]: reqData }
-        // { withCredentials: true }
+        { [reqName]: reqData },
+        { withCredentials: true }
       )
       .then((res) => alert(res.data.message));
   };
