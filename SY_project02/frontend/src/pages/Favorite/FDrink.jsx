@@ -41,11 +41,11 @@ export const FDrink = () => {
   const serverData = data?.bookmarkedProducts;
   console.log(serverData);
 
-  const deleteFavoriteReq = async () => {
+  const deleteFavoriteReq = async (data) => {
     await axios
       .put(
         `${SERVER_URL}/bookmarks/deleteBookmarks`,
-        { data: post },
+        { data: data },
         { withCredentials: true }
       )
       .then((res) => console.log("deleted ==>", res));
@@ -68,15 +68,19 @@ export const FDrink = () => {
             const id = checkItems.filter(
               (item) => item === drink.Product.p_id
             );
+            console.log("id ===>", id)
             const data = {
               email: user?.email,
               items: id,
             };
+            console.log("data ===>", data.items)
             deleteFavoriteReq(data);
             setCheckItems([]);
+
           }
         }
       });
+      alert("선택하신 상품이 삭제되었습니다.")
     }
   };
 

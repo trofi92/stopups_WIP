@@ -15,14 +15,14 @@ export const WInner1 = () => {
                 <styled_HM.NLULi>
                     <Link to={"/event/stopUpsCard"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
-                            스탑업스 카드
+                            스탑없으 카드
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>
                 <styled_HM.NLULi>
                     <Link to={"/event/stopUpsReward"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
-                            스탑업스 리워드
+                            스탑없으 리워드
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>

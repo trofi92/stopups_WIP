@@ -1,13 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Header from "../../../components/Header/Header";
-import { AllBox } from "../../../styled/AllBox";
-import DetailOne from "./MenuOne";
+import MenuOne from "./MenuOne";
 import { API } from "../../../utils/urls";
 import { NotFound } from "../../NotFound";
 
-const DetailEach = () => {
+const MenuEach = () => {
   const [data, setData] = useState([]);
   const [Nutrient, setNutrient] = useState([]);
   const [Price, setPrice] = useState([]);
@@ -41,7 +39,7 @@ const DetailEach = () => {
   return (
     <>
       {data ? (
-        <DetailOne
+        <MenuOne
           key={data.ProductId}
           category={data.Category}
           name={data.Name}
@@ -71,4 +69,4 @@ const DetailEach = () => {
   );
 };
 
-export default DetailEach;
+export default MenuEach;

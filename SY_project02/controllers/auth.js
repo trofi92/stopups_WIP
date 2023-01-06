@@ -9,6 +9,29 @@ const {
   accessJwtTokenOption,
   refreshJwtTokenOption,
 } = require("./auth-options");
+const userDelete = async (req, res, next) => {
+  const { email, password } = req.body.data;
+  console.log(decrypt(email), "email", password);
+
+  try {
+    const users = await User.findAll({
+      attributes: ["email", "password"],
+    });
+    const user = users.find((user) => email === user.email);
+    const decryptedPassword = decrypt(user.password);
+
+    if (password !== decryptedPassword) {
+      return res.status(305).send("비밀번호가 일치하지않습니다.");
+    } else {
+      res.status(200).send("회원 탈퇴 성공");
+      User.destroy({
+        where: { email: user.email },
+      });
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 //로그인
 const login = async (req, res, next) => {
@@ -16,45 +39,29 @@ const login = async (req, res, next) => {
 
   try {
     const users = await User.findAll({
-      attributes: [
-        "email",
-        "name",
-        "nickname",
-        "telephone",
-        "password",
-      ],
+      attributes: ["email", "name", "nickname", "telephone", "password"],
     });
     const user = users.find((user) => email === decrypt(user.email));
 
     // console.log(user);
 
     if (!user) {
-      return res
-        .status(305)
-        .send("유효하지 않은 이메일 혹은 비밀번호 입니다");
+      return res.status(305).send("유효하지 않은 이메일 혹은 비밀번호 입니다");
     }
 
     const decryptedPassword = decrypt(user.password);
 
     if (password !== decryptedPassword) {
-      return res
-        .status(305)
-        .send("유효하지 않은 이메일 혹은 비밀번호 입니다");
+      return res.status(305).send("유효하지 않은 이메일 혹은 비밀번호 입니다");
     }
     const token = User.generateJWT(user);
 
     res.cookie("accessJwtToken", token, accessJwtTokenOption);
 
-    const refreshToken = jwt.sign(
-      { id: user.id, name: user.name },
-      jwtSecret,
-      { expiresIn: "30d" }
-    );
-    res.cookie(
-      "refreshJwtToken",
-      refreshToken,
-      refreshJwtTokenOption
-    );
+    const refreshToken = jwt.sign({ id: user.id, name: user.name }, jwtSecret, {
+      expiresIn: "30d",
+    });
+    res.cookie("refreshJwtToken", refreshToken, refreshJwtTokenOption);
 
     return res.status(200).json({
       code: 200,
@@ -95,9 +102,7 @@ const checkDuplication = async (req, res, next) => {
         message: `사용 가능한 ${msg} 입니다.`,
       });
     else
-      return res
-        .status(200)
-        .json({ message: `이미 존재하는 ${msg} 입니다.` });
+      return res.status(200).json({ message: `이미 존재하는 ${msg} 입니다.` });
   };
 
   //이메일 중복
@@ -140,4 +145,5 @@ module.exports = {
   login,
   logout,
   checkDuplication,
+  userDelete,
 };

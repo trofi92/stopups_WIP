@@ -143,7 +143,6 @@ export const CNoDF = () => {
     event();
   }, []);
 
-  // name, ICED, size, 일회용 컵, amount, price, totalAmount, totalPrice
   return (
     <>
       {cart.cartItems.length === 0 ? (

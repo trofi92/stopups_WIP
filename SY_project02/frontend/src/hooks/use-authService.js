@@ -106,3 +106,46 @@ export const useLogout = () => {
   };
   return { logout };
 };
+
+export const useDelete = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const Delete = (e, email, password) => {
+    e.preventDefault();
+
+    if (password === "") {
+      alert("비밀번호를 입력해 주세요!!");
+    } else {
+      const post = { email, password };
+
+      try {
+        axios
+          .post(`${SERVER_URL}/auth/userDelete`, {
+            data: post,
+          })
+          .then((res) => {
+            console.log(res.status, "-");
+
+            if (res.status === 200) {
+              const yes = prompt(`정말 탈퇴를 원하시면 "예" 를 입력 해주세요!`);
+              if (yes === "예") {
+                dispatch(setULogout());
+                dispatch(clearCart());
+                sessionStorage.clear();
+                navigate("/", { replace: true });
+              } else {
+                alert("탈퇴가 취소되었습니다.");
+              }
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("올바른 비밀번호를 입력 해주세요");
+            console.error(error);
+          });
+      } catch (err) {}
+    }
+  };
+  return { Delete };
+};
