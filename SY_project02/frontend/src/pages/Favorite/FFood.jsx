@@ -117,10 +117,11 @@ export const FFood = () => {
         if (food?.category === "브레드" || food?.category === "케이크" || food?.category === "샌드위치" || food?.category === "샐러드" || food?.category === "따뜻한 푸드") {
           if(checkItems.includes(food.Product.p_id)) {
             if (food.cookType) {
+              console.log(food)
               dispatch(
                   addToCart({
                     id: food.Product.p_id,
-                    name: food.name,
+                    name: food.Product.name,
                     size: food.size,
                     cooked: food.cookType,
                     takeout: food.eatType,
@@ -133,7 +134,7 @@ export const FFood = () => {
               dispatch(
                   addToCart({
                     id: food.Product.p_id,
-                    name: food.name,
+                    name: food.Product.name,
                     size: food.size,
                     takeout: food.eatType,
                     price: food.price,
