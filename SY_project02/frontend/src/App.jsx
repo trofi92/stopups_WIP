@@ -44,6 +44,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/userdelete" element={<UserDelete />} />
         {/*로그인*/}
         <Route path={"/login"} element={<Login />} />
         {/*로그인 요청*/}
@@ -113,7 +114,6 @@ function App() {
         <Route path="/payment" element={<Payment name={"payment"} />} />
         <Route path="/failed" element={<Failed name={"fail"} />} />
         <Route path="/success" element={<Success name={"success"} />} />
-        <Route path="/userDelete" element={<UserDelete />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/menu/*" element={<NotFound />} />
         <Route path="/redirect" element={<Redirect />} />

@@ -12,21 +12,34 @@ import {
 import {
   useLoginService,
   useFormCheck,
+  useLogout,
   useDelete,
 } from "../../hooks/use-authService";
 import { useSelector } from "react-redux";
 import { NotFound } from "../NotFound";
 
-const Login = () => {
+const UserDelete = () => {
   const user = useSelector((state) => state.user);
   const { Delete } = useDelete();
-
+  const { logout } = useLogout();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [check, setCheck] = useState(false);
+  const { loginService } = useLoginService();
   const { formCheck } = useFormCheck();
 
+  // 체크박스
+  const onClickCheckedEmail = () => {
+    setCheck(!check);
+    console.log("check=>", check);
+  };
+
+  // 아이디 저장 체크 시 아이디 및 체크 state 저장
   useEffect(() => {}, [email]);
+
+  const handleEmailChange = (e) => {
+    formCheck(e, checkEmailLogin, "아이디를 입력해 주세요.", setEmail);
+  };
 
   const handlePasswordChange = (e) => {
     formCheck(e, checkPasswordLogin, "비밀번호를 입력해 주세요.", setPassword);
@@ -97,4 +110,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default UserDelete;

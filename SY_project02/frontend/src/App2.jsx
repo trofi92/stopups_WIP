@@ -15,9 +15,7 @@ function App({ children }) {
           console.log(error);
           setError(error);
           Promise.reject(error);
-          return alert(
-            "알 수 없는 문제가 발생했습니다. 다시 시도해주세요."
-          );
+          return; /* alert("알 수 없는 문제가 발생했습니다. 다시 시도해주세요."); */
         }
       );
     };
