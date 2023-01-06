@@ -28,6 +28,7 @@ export const Success = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const random = Math.floor(Math.random() * 9001) + 1000;
     const random1 = Math.floor(Math.random() * 70001) + 30000;
     const random2 = Math.floor(Math.random() * 500001) + 500000;
     let timer1 = setTimeout(function () {
@@ -35,21 +36,21 @@ export const Success = () => {
       setText2(!text2);
       setLien2(!line2);
       clearTimeout(timer1);
-    }, random1);
+    }, random);
 
     let timer2 = setTimeout(function () {
       setText2(false);
       setText3(!text3);
       setLien3(!line3);
       clearTimeout(timer2);
-    }, random1 + random1);
+    }, random + random1);
 
     let timer3 = setTimeout(function () {
       setText3(false);
       setText4(!text4);
       setLien4(!line4);
       clearTimeout(timer3);
-    }, random1 + random1 + random2);
+    }, random + random1 + random2);
   }, []);
 
   let orderId = new URL(window.location.href).searchParams.get(
