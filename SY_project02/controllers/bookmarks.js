@@ -38,8 +38,8 @@ const addBookmarks = async (req, res, next) => {
       where: {
         userId: userId,
         productId: pId,
-        price: price,
-        cookType: cookType,
+        // price: price,
+        // cookType: cookType,
       },
       defaults: {
         userId: userId,
