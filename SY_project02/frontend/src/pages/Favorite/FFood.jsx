@@ -2,7 +2,7 @@ import * as styled_F from "../../styled/Favorite";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useLayoutEffect } from "react";
 import { addToCart } from "../../features/cart/cartSlice";
-import { SERVER_URL } from "../../util/urls";
+import {SERVER_URL} from "../../utils/urls"
 import axios from "axios";
 
 export const FFood = () => {
@@ -46,7 +46,7 @@ export const FFood = () => {
     if (checked) {
       // 체크 시 모든 아이템을 배열에 추가
       let idArray = [];
-      serverData?.forEach((el) => idArray.push(el.id));
+      serverData?.forEach((el) => idArray.push(el.Product.p_id));
       setCheckItems(idArray);
     } else {
       // 체크 해제 시 빈 배열
@@ -54,16 +54,16 @@ export const FFood = () => {
     }
   };
 
-  const deleteFavoriteReq = async () => {
+  const deleteFavoriteReq = async (data) => {
     await axios
       .put(
         `${SERVER_URL}/bookmarks/deleteBookmarks`,
-        { data: post },
+        { data: data },
         { withCredentials: true }
       )
       .then((res) => console.log(res));
     setRender((prev) => !prev);
-    return alert("선택하신 상품이 삭제되었습니다.");
+    // return alert("선택하신 상품이 삭제되었습니다.");
   };
 
   const handleSingleCheck = (checked, id) => {
@@ -80,7 +80,7 @@ export const FFood = () => {
     setClick(!click);
     if (!click) {
       const idArray = [];
-      serverData?.forEach((el) => idArray.push(el.id));
+      serverData?.forEach((el) => idArray.push(el.Product.p_id));
       setCheckItems(idArray);
     } else if (click) {
       setCheckItems([]);
@@ -93,8 +93,8 @@ export const FFood = () => {
     } else {
       serverData?.map((food) => {
         if (food?.category === "브레드" || food?.category === "케이크" || food?.category === "샌드위치" || food?.category === "샐러드" || food?.category === "따뜻한 푸드") {
-          if (checkItems.includes(food.id)) {
-            const id = checkItems.filter((item) => item === food.id)
+          if (checkItems.includes(food.Product.p_id)) {
+            const id = checkItems.filter((item) => item === food.Product.p_id)
             const data = {
               email: user?.email,
               items: id,
@@ -115,7 +115,7 @@ export const FFood = () => {
     } else {
       serverData?.map((food) => {
         if (food?.category === "브레드" || food?.category === "케이크" || food?.category === "샌드위치" || food?.category === "샐러드" || food?.category === "따뜻한 푸드") {
-          if(checkItems.includes(food.id)) {
+          if(checkItems.includes(food.Product.p_id)) {
             if (food.cookType) {
               dispatch(
                   addToCart({
