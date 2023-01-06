@@ -58,7 +58,9 @@ const login = async (req, res, next) => {
 
     res.cookie("accessJwtToken", token, accessJwtTokenOption);
 
-    const refreshToken = jwt.sign({ id: user.id, name: user.name }, jwtSecret);
+    const refreshToken = jwt.sign({ id: user.id, name: user.name }, jwtSecret, {
+      expiresIn: "30d",
+    });
     res.cookie("refreshJwtToken", refreshToken, refreshJwtTokenOption);
 
     return res.status(200).json({

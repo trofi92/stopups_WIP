@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import MSUNoStore from "../image/MyStopUps/MSUNoStore.jpg";
 import { Footer } from "../components/Footer/Footer";
 import { useSelector } from "react-redux";
-import { decrypt } from "../util/crypto-front";
+import { decrypt } from "../utils/crypto-front";
 
 const MyStopUps = () => {
   const user = useSelector((state) => state.user);

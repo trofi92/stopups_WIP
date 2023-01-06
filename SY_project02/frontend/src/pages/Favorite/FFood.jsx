@@ -2,7 +2,7 @@ import * as styled_F from "../../styled/Favorite";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useLayoutEffect } from "react";
 import { addToCart } from "../../features/cart/cartSlice";
-import { SERVER_URL } from "../../util/urls";
+import {SERVER_URL} from "../../utils/urls"
 import axios from "axios";
 
 export const FFood = () => {
@@ -18,7 +18,6 @@ export const FFood = () => {
   // 전체 선택 버튼 클릭 인지 용
   const [click, setClick] = useState(false);
 
-  const favorite = useSelector((state) => state.favorite);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -55,16 +54,16 @@ export const FFood = () => {
     }
   };
 
-  const deleteFavoriteReq = async () => {
+  const deleteFavoriteReq = async (data) => {
     await axios
       .put(
         `${SERVER_URL}/bookmarks/deleteBookmarks`,
-        { data: post },
+        { data: data },
         { withCredentials: true }
       )
       .then((res) => console.log(res));
     setRender((prev) => !prev);
-    return alert("선택하신 상품이 삭제되었습니다.");
+    // return alert("선택하신 상품이 삭제되었습니다.");
   };
 
   const handleSingleCheck = (checked, id) => {
@@ -99,13 +98,14 @@ export const FFood = () => {
             const data = {
               email: user?.email,
               items: id,
-            }
+            };
             deleteFavoriteReq(data);
             setCheckItems([]);
           }
         }
-      })
+      });
     }
+    return alert("선택하신 상품이 삭제되었습니다.");
   };
 
   // 나중에 워밍 옵션 take in, out 추가 되면 여기다도 넣기
@@ -117,10 +117,11 @@ export const FFood = () => {
         if (food?.category === "브레드" || food?.category === "케이크" || food?.category === "샌드위치" || food?.category === "샐러드" || food?.category === "따뜻한 푸드") {
           if(checkItems.includes(food.Product.p_id)) {
             if (food.cookType) {
+              console.log(food)
               dispatch(
                   addToCart({
                     id: food.Product.p_id,
-                    name: food.name,
+                    name: food.Product.name,
                     size: food.size,
                     cooked: food.cookType,
                     takeout: food.eatType,
@@ -133,7 +134,7 @@ export const FFood = () => {
               dispatch(
                   addToCart({
                     id: food.Product.p_id,
-                    name: food.name,
+                    name: food.Product.name,
                     size: food.size,
                     takeout: food.eatType,
                     price: food.price,

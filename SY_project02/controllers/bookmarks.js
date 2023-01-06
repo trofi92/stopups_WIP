@@ -1,5 +1,4 @@
 const { User, Bookmark, Product } = require("../models");
-// const { decrypt, encrypt } = require("../middlewares/crypto");
 
 //에러 일괄처리
 const errorHandler = (data) => {
@@ -13,22 +12,16 @@ const errorHandler = (data) => {
 //찜목록에 상품 추가
 const addBookmarks = async (req, res, next) => {
   const data = req?.body?.data;
+  errorHandler(res, data);
   const reqUser = data.email;
   const user = await User.findUser(reqUser);
   const userId = user?.dataValues?.id;
-  console.log("===========pId=======>", data.pId);
-
-  // errorHandler(res, data);
 
   const findProductId = await Product.findOne({
-    where: { pId: data.pId },
+    where: { pId: data?.pId },
   });
-  // const findProductAll = await Product.findAll({});
-  // console.log(
-  //   "========findProductId========>",
-  //   findProductId,
-  //   findProductAll
-  // );
+  console.log("========data=======>", data);
+  console.log("====find====>", findProductId);
 
   const pId = findProductId?.id;
   const category = data.category;
@@ -77,26 +70,26 @@ const sendBookmarks = async (req, res, next) => {
   const userId = user?.dataValues?.id;
   console.log(data);
 
-  // try {
-  errorHandler(res, data);
-  const bookmarkedProducts = await Bookmark.findAll({
-    include: [
-      {
-        model: Product,
-        attributes: ["id", "name", "p_id"],
-      },
-    ],
-    where: { userId: userId },
-  });
+  try {
+    errorHandler(res, data);
+    const bookmarkedProducts = await Bookmark.findAll({
+      include: [
+        {
+          model: Product,
+          attributes: ["id", "name", "p_id"],
+        },
+      ],
+      where: { userId: userId },
+    });
 
-  console.log(1);
-  console.log(bookmarkedProducts);
+    console.log(1);
+    console.log(bookmarkedProducts);
 
-  return res.status(200).json({ bookmarkedProducts });
-  // } catch (error) {
-  //   console.error(error);
-  //   return res.status(404).json({ message: "failed" });
-  // }
+    return res.status(200).json({ bookmarkedProducts });
+  } catch (error) {
+    console.error(error);
+    return res.status(404).json({ message: error });
+  }
 };
 
 //찜목록 아이템 삭제

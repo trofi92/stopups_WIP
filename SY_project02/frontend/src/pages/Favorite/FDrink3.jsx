@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useState, useLayoutEffect} from "react";
 import {addToCart} from "../../features/cart/cartSlice";
 import axios from "axios";
-import {SERVER_URL} from "../../util/urls";
+import {SERVER_URL} from "../../utils/urls"
 
 export const FDrink = () => {
     //요청한 데이터
@@ -26,33 +26,32 @@ export const FDrink = () => {
         items: checkItems,
     };
 
-    // 목록 요청
-    useLayoutEffect(() => {
-        const fetchData = async () => {
-            const response = await axios.post(
-                `${SERVER_URL}/bookmarks/sendBookmarks`,
-                {data: post},
-                {withCredentials: true}
-            );
-            setData(response?.data || null);
-        };
-        fetchData();
-
-    }, [render]);
-    const serverData = data?.bookmarkedProducts;
-    console.log(serverData);
-    console.log(SERVER_URL)
-    const deleteFavoriteReq = async (data) => {
-        await axios
-            .put(
-                `${SERVER_URL}/bookmarks/deleteBookmarks`,
-                {data: data},
-                // {withCredentials: true}
-            )
-            .then((res) => console.log("deleted ==>", res));
-        setRender((prev) => !prev);
-        return alert("선택하신 상품이 삭제되었습니다.");
+  // 목록 요청
+  useLayoutEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.post(
+        `${SERVER_URL}/bookmarks/sendBookmarks`,
+        { data: post },
+        { withCredentials: true }
+      );
+      setData(response?.data || null);
     };
+    fetchData();
+  }, [render]);
+  const serverData = data?.bookmarkedProducts;
+  console.log(serverData);
+  console.log(SERVER_URL);
+  const deleteFavoriteReq = async (data) => {
+    await axios
+      .put(
+        `${SERVER_URL}/bookmarks/deleteBookmarks`,
+        { data: data }
+        // {withCredentials: true}
+      )
+      .then((res) => console.log("deleted ==>", res));
+    setRender((prev) => !prev);
+    // return alert("선택하신 상품이 삭제되었습니다.");
+  };
 
 
     const handleRemove = () => {
@@ -73,7 +72,8 @@ export const FDrink = () => {
                         setCheckItems([]);
                     }
                 }
-            })
+            });
+            alert("선택하신 상품이 삭제되었습니다.")
         }
     };
 

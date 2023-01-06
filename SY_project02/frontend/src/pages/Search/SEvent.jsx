@@ -2,7 +2,7 @@ import * as styled_Search from "../../styled/Search";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { API, IMG } from "../../util/urls";
+import { API, IMG } from "../../utils/urls";
 
 export const SEvent = ({ result, state }) => {
   const [allEvent, setAllEvent] = useState([]);

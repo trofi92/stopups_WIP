@@ -3,7 +3,7 @@ import IntroHeader from "../image/Introduce/IntroHeader.jpg"
 
 // Introduce 전체 박스
 export const IBox = styled.div`
-  width: 1000px;
+  width: 100%;
   margin: 61px 0 0;
   padding: 0;
   border: 0;

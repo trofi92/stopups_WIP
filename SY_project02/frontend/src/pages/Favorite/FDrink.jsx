@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useLayoutEffect } from "react";
 import { addToCart } from "../../features/cart/cartSlice";
 import axios from "axios";
-import { SERVER_URL } from "../../util/urls";
+import { SERVER_URL } from "../../utils/urls";
 
 export const FDrink = () => {
   //요청한 데이터
@@ -41,16 +41,15 @@ export const FDrink = () => {
   const serverData = data?.bookmarkedProducts;
   console.log(serverData);
 
-  const deleteFavoriteReq = async () => {
+  const deleteFavoriteReq = async (data) => {
     await axios
       .put(
         `${SERVER_URL}/bookmarks/deleteBookmarks`,
-        { data: post },
+        { data: data },
         { withCredentials: true }
       )
       .then((res) => console.log("deleted ==>", res));
     setRender((prev) => !prev);
-    return alert("선택하신 상품이 삭제되었습니다.");
   };
 
   const handleRemove = () => {
@@ -69,15 +68,19 @@ export const FDrink = () => {
             const id = checkItems.filter(
               (item) => item === drink.Product.p_id
             );
+            console.log("id ===>", id)
             const data = {
               email: user?.email,
               items: id,
             };
+            console.log("data ===>", data.items)
             deleteFavoriteReq(data);
             setCheckItems([]);
+
           }
         }
       });
+      alert("선택하신 상품이 삭제되었습니다.")
     }
   };
 

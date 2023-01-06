@@ -1,10 +1,9 @@
 import * as styled_F from "../../styled/Favorite";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart } from "../../features/favorite/favoriteSlice";
 import { useState, useLayoutEffect } from "react";
 import { addToCart } from "../../features/cart/cartSlice";
 import axios from "axios";
-import { SERVER_URL } from "../../util/urls";
+import { SERVER_URL } from "../../utils/urls";
 
 export const FDrink = () => {
   //요청한 데이터
@@ -51,7 +50,6 @@ export const FDrink = () => {
       )
       .then((res) => console.log("deleted ==>", res));
     setRender((prev) => !prev);
-    return alert("선택하신 상품이 삭제되었습니다.");
   };
 
   const handleRemove = () => {

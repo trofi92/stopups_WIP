@@ -18,7 +18,7 @@ import MyInfo from "./pages/MyInfo/MyInfo";
 import MIPass from "./pages/MyInfo/Pass/MIPass";
 import MIPassword from "./pages/MyInfo/MIPassword";
 import MyStopUps from "./pages/MyStopUps";
-import ScrollToTop from "./util/ScrollToTop";
+import ScrollToTop from "./utils/ScrollToTop";
 import { Success } from "./pages/Payment/Success";
 import { Failed } from "./pages/Payment/Failed";
 import { Payment } from "./pages/Payment/Payment";
