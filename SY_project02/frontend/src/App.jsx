@@ -37,6 +37,7 @@ import Introduce from "./pages/Introduce/Introduce";
 import Menu from "./pages/Menu/Menu";
 import MenuEach from "./pages/Menu/MenuItem/MenuEach";
 import { Redirect } from "./Redirect";
+import UserDelete from "./pages/MyInfo/UserDelete";
 
 function App() {
   return (
@@ -112,7 +113,7 @@ function App() {
         <Route path="/payment" element={<Payment name={"payment"} />} />
         <Route path="/failed" element={<Failed name={"fail"} />} />
         <Route path="/success" element={<Success name={"success"} />} />
-        <Route path="/test1" element={<NotFound />} />
+        <Route path="/userDelete" element={<UserDelete />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/menu/*" element={<NotFound />} />
         <Route path="/redirect" element={<Redirect />} />

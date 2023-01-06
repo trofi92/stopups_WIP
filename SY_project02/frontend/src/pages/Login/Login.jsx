@@ -49,6 +49,7 @@ const Login = () => {
   };
 
   const submitIdPassword = (e) => {
+    console.log(password);
     loginService(e, email, password);
   };
 

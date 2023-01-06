@@ -18,7 +18,6 @@ import { checkNickname } from "../../components/join/JoinRegex";
 import { NotFound } from "../NotFound";
 
 const MyInfo = () => {
-  Link;
   const navigate = useNavigate();
   const location = useLocation();
   const { logout } = useLogout();
@@ -179,9 +178,12 @@ const MyInfo = () => {
                   </b>
                 </styled_Join.RFormP>
                 <styled_BU.LJButton>정보수정</styled_BU.LJButton>
-                <styled_MI.MIUnsubscribe>
-                  스탑없으 리워드 서비스 이용내역 일괄삭제
-                </styled_MI.MIUnsubscribe>
+                <Link to={"/userDelete"}>
+                  {" "}
+                  <styled_MI.MIUnsubscribe>
+                    스탑없으 리워드 서비스 이용내역 일괄삭제
+                  </styled_MI.MIUnsubscribe>
+                </Link>
               </styled_LOG.LFFFieldset>
             </form>
           </styled_LOG.LFInner>
