@@ -97,7 +97,7 @@ const JoinAgree = () => {
                                                 타인의 개인정보를 도용하여 가입할 경우 향후 적발 시 서비스 이용제한 및 법적 제재를 받으실 수 있습니다.
                                             </styled_JoinAB.RFSNoticeLi>
                                             <styled_JoinAB.RFSNoticeLi>
-                                                스탑업스 코리아의 공식 홈페이지는 Internet Explorer 9.0이상, Chrome, Firefox, Safari
+                                                스탑없으 코리아의 공식 홈페이지는 Internet Explorer 9.0이상, Chrome, Firefox, Safari
                                                 브라우저에 최적화 되어있습니다.
                                             </styled_JoinAB.RFSNoticeLi>
                                         </styled_JoinAB.RFSNoticeUl>

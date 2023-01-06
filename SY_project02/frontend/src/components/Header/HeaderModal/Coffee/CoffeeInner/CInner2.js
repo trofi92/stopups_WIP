@@ -22,14 +22,14 @@ export const CInner2 = () => {
                 <styled_HM.NLULi>
                     <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
-                            스탑업스 로스트 스펙트럼
+                            스탑없으 로스트 스펙트럼
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>
                 <styled_HM.NLULi>
                     <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
-                            스탑업스 디카페인
+                            스탑없으 디카페인
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>

@@ -22,21 +22,21 @@ export const WInner2 = () => {
                 <styled_HM.NLULi>
                     <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
-                            스탑업스와 문화
+                            스탑없으와 문화
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>
                 <styled_HM.NLULi>
                     <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
-                            스탑업스 사회공헌
+                            스탑없으 사회공헌
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>
                 <styled_HM.NLULi>
                     <Link to={"/serviceReady"} style={{textDecoration: "none"}}>
                         <styled_HM.NLULiP>
-                            스탑업스 카드출시
+                            스탑없으 카드출시
                         </styled_HM.NLULiP>
                     </Link>
                 </styled_HM.NLULi>
