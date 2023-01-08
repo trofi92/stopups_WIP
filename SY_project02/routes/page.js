@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const Product = require("../models/Product");
-const { sequelize } = require("../models");
 const Bookmark = require("../models/Bookmark");
 
 router.put("/test", async (req, res, next) => {

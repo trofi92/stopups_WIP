@@ -28,10 +28,6 @@ function App({ children }) {
       axios.interceptors.response.eject(interceptorId);
     };
   }, []);
-  //404페이지 만들기
-  // if (error) {
-  //   return <div>Error: 문제가 발생했습니다. </div>;
-  // }
   return children;
 }
 

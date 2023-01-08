@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
-import {API, SERVER_URL} from "../../utils/urls";
+import { SERVER_URL } from "../../utils/urls";
 import Header from "../../components/Header/Header";
 import * as styled_AB from "../../styled/AllBox";
 import * as styled_Success from "../../styled/Payment/Success";
@@ -24,8 +24,58 @@ export const Success = () => {
   const [line3, setLien3] = useState(false);
   const [line4, setLien4] = useState(false);
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
+
+  const paymentsDataRequest = async (res) => {
+    await axios.post(
+      `${SERVER_URL}/payment`,
+      {
+        res,
+        email: user?.email,
+      },
+      { withCredentials: true }
+    );
+  };
+  const orderedDataRequest = async () => {
+    await axios
+      .post(
+        `${SERVER_URL}/order`,
+        {
+          email: user?.email,
+          address: user?.location?.content,
+          total: cart?.total,
+          cart: cart,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => console.log(res));
+  };
+  const paymentsRequest = async () => {
+    await axios
+      .get(
+        `${SERVER_URL}/payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}`,
+        { withCredentials: true }
+      )
+      .then((res) => {
+        paymentsDataRequest(res);
+        console.log(res);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  console.log("cart===>", cart);
+  console.log("user===>", user);
+
+  useEffect(() => {
+    orderedDataRequest();
+    paymentsRequest();
+    dispatch(clearCart());
+    return;
+  }, []);
 
   useEffect(() => {
     const random = Math.floor(Math.random() * 9001) + 1000;
@@ -80,27 +130,6 @@ export const Success = () => {
   //   event();
   // }, []);
 
-  const paymentsRequest = async () => {
-    await axios
-      .get(
-        `${SERVER_URL}/payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}`,
-        { withCredentials: true }
-      )
-      .then((res) => {
-        console.log(res);
-        return alert("결제가 완료되었습니다.");
-      })
-      .catch((error) => {
-        console.error(error);
-        navigate("/failed");
-      });
-  };
-
-  React.useEffect(() => {
-    paymentsRequest();
-    dispatch(clearCart());
-  }, []);
-
   return (
     // 결제 성공
     <styled_AB.AllBox>
@@ -125,12 +154,12 @@ export const Success = () => {
               {text4 === true ? (
                 <styled_Success.STitle1>
                   {/*매장 이름*/}
-                  <span>OOO점</span>에서
+                  <span>{user?.location?.content}</span>에서
                 </styled_Success.STitle1>
               ) : (
                 <styled_Success.STitle11>
                   {/*매장 이름*/}
-                  <span>OOO점</span>에서
+                  <span>{user?.location?.content}</span>에서
                 </styled_Success.STitle11>
               )}
               {/*n이랑 A-1의 숫자는 db의 id값 */}
@@ -275,7 +304,7 @@ export const Success = () => {
               {/*})}*/}
               <styled_Payment.PSMBox>
                 {/*이미지*/}
-                <styled_Payment.PSMBImg/>
+                <styled_Payment.PSMBImg />
                 {/*메뉴 이름*/}
                 <styled_Payment.PSMBText>
                   <styled_C.CFMTitle>메뉴 이름</styled_C.CFMTitle>

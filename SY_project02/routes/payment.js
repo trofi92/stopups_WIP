@@ -1,14 +1,13 @@
 const express = require("express");
 const {
+  payments,
   success,
-  payment,
   failed,
 } = require("../controllers/payment");
 const authJwt = require("../middlewares/authJwt");
 
 const router = express.Router();
-
-router.get("/", authJwt, payment);
+router.post("/", authJwt, payments);
 router.get("/success", authJwt, success);
 router.get("/failed", authJwt, failed);
 

@@ -21,12 +21,12 @@ import { API } from "../../utils/urls";
 
 export const Payment = () => {
   // 주문하기 클릭 시 선택된 제품만 리덕스에 저장
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state?.cart);
   // 쿠폰 및 할인 투글용
   const [openCoupon, setOpenCoupon] = useState(false);
   // 구매자 이름 = 유저 닉네임
-  const user = useSelector((state) => state.user);
-  const nickname = decrypt(user.nickname);
+  const user = useSelector((state) => state?.user);
+  const nickname = decrypt(user?.nickname);
 
   const clientKey = process.env.REACT_APP_CLIENT_KEY;
   // payType=> 변수=> ENUM,혹은 배열로 결제 타입을 저장
@@ -42,7 +42,8 @@ export const Payment = () => {
   const couponToggle = () => {
     setOpenCoupon(!openCoupon);
   };
-
+  console.log("cart===>", cart);
+  console.log("user===>", user);
   // 쿠폰 클릭 시 alert 호출
   const onClickReady = () => {
     alert("서비스 준비중입니다.");
@@ -52,11 +53,10 @@ export const Payment = () => {
   const tossPay = () => {
     //orderId가 필요해서 만든 랜덤 아이디값
     const randomId = v4();
-
     loadTossPayments(clientKey).then((tossPayments) => {
       // 카드 결제 메서드 실행
       tossPayments
-        .requestPayment(payType.easy, {
+        .requestPayment(payType.card, {
           amount: cart.total, // 가격
           orderId: `${randomId}`, // 주문 id
           orderName: `StopUps`, // 결제 이름
@@ -73,15 +73,21 @@ export const Payment = () => {
     });
   };
 
+  const handleOrderClick = () => {
+    tossPay();
+  };
+
   // api에서 받아온 메뉴
   const [img, setImg] = useState([]);
 
   useEffect(() => {
     const event = async () => {
       for (let i = 0; i < cart.cartItems.length; i++) {
-        await axios.get(`${API}&Category=분류&Name=&ProductId=`).then((res) => {
-          setImg(res.data);
-        });
+        await axios
+          .get(`${API}&Category=분류&Name=&ProductId=`)
+          .then((res) => {
+            setImg(res.data);
+          });
       }
     };
     event();
@@ -109,7 +115,9 @@ export const Payment = () => {
             {/*결제 수단*/}
             <styled_Payment.PSection1>
               <div>
-                <styled_Payment.PSTitle1>결제 수단</styled_Payment.PSTitle1>
+                <styled_Payment.PSTitle1>
+                  결제 수단
+                </styled_Payment.PSTitle1>
                 <styled_Payment.PSDiv1>
                   <styled_Payment.PSImg1
                     src={PaymentCard}
@@ -142,14 +150,18 @@ export const Payment = () => {
                         src={PaymentCoupon}
                         alt={"PaymentCoupon"}
                       />
-                      <styled_Payment.PSDSpan4>쿠폰</styled_Payment.PSDSpan4>
+                      <styled_Payment.PSDSpan4>
+                        쿠폰
+                      </styled_Payment.PSDSpan4>
                     </styled_Payment.PSDiv4>
                     <styled_Payment.PSDiv4 onClick={onClickReady}>
                       <styled_Payment.PSImg4
                         src={PaymentGift}
                         alt={"PaymentGift"}
                       />
-                      <styled_Payment.PSDSpan4>선물</styled_Payment.PSDSpan4>
+                      <styled_Payment.PSDSpan4>
+                        선물
+                      </styled_Payment.PSDSpan4>
                     </styled_Payment.PSDiv4>
                     <styled_Payment.PSDiv4 onClick={onClickReady}>
                       <styled_Payment.PSImg4
@@ -169,7 +181,9 @@ export const Payment = () => {
             {/*주문 내역*/}
             <styled_Payment.PSection>
               <div>
-                <styled_Payment.PSTitle>주문 내역</styled_Payment.PSTitle>
+                <styled_Payment.PSTitle>
+                  주문 내역
+                </styled_Payment.PSTitle>
                 {cart.cartItems.map((cart) => {
                   return (
                     <styled_Payment.PSMenuBox key={cart.id}>
@@ -190,7 +204,10 @@ export const Payment = () => {
                             <styled_Payment.PSMBTSpan>
                               {cart.price
                                 .toString()
-                                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                                .replace(
+                                  /\B(?=(\d{3})+(?!\d))/g,
+                                  ","
+                                )}
                               원
                             </styled_Payment.PSMBTSpan>
                           </styled_C.CFMTitle>
@@ -219,7 +236,10 @@ export const Payment = () => {
                               <styled_C.CFMMoney>
                                 {(cart.price * cart.quantity)
                                   .toString()
-                                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                                  .replace(
+                                    /\B(?=(\d{3})+(?!\d))/g,
+                                    ","
+                                  )}
                                 원
                               </styled_C.CFMMoney>
                             </styled_C.CFMOption>
@@ -228,7 +248,9 @@ export const Payment = () => {
                               <styled_C.CFMIceHot>
                                 {cart.ice}
                               </styled_C.CFMIceHot>
-                              <styled_C.CFMSize>{cart.size}</styled_C.CFMSize>
+                              <styled_C.CFMSize>
+                                {cart.size}
+                              </styled_C.CFMSize>
                               <styled_C.CFMSize>
                                 {cart.takeout === "takeout"
                                   ? "일회용 컵"
@@ -240,7 +262,10 @@ export const Payment = () => {
                               <styled_C.CFMMoney>
                                 {(cart.price * cart.quantity)
                                   .toString()
-                                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                                  .replace(
+                                    /\B(?=(\d{3})+(?!\d))/g,
+                                    ","
+                                  )}
                                 원
                               </styled_C.CFMMoney>
                             </styled_C.CFMOption>
@@ -283,9 +308,11 @@ export const Payment = () => {
             </styled_Payment.PSection2>
             {/*결제하기 버튼*/}
             <styled_Payment.PSection3>
-              <styled_Payment.PS3Button onClick={() => tossPay()}>
-                {cart.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
-                결제하기
+              <styled_Payment.PS3Button onClick={handleOrderClick}>
+                {cart.total
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                원 결제하기
               </styled_Payment.PS3Button>
             </styled_Payment.PSection3>
           </styled_F.FCBox>

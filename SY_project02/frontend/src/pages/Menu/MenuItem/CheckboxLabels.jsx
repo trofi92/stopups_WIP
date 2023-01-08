@@ -11,9 +11,12 @@ const CheckboxLabels = ({
   const [bChecked, setChecked] = useState(false);
 
   const checkHandler = ({ target }) => {
-    // p1.delete(Category);
-
-    checkedItemHandler(target.parentNode, target.value, target.checked, target);
+    checkedItemHandler(
+      target.parentNode,
+      target.value,
+      target.checked,
+      target
+    );
 
     setChecked(!bChecked);
 
