@@ -101,16 +101,25 @@ const login = async (req, res, next) => {
 
 //로그아웃
 const logout = async (req, res, next) => {
-  await res.cookie("accessJwtToken", "", {
-    maxAge: 0,
-  });
-  await res.cookie("refreshJwtToken", "", {
-    maxAge: 0,
-  });
-  return res.status(200).json({
-    code: 200,
-    message: "정상적으로 로그아웃 되었습니다.",
-  });
+  try {
+    await res.cookie("accessJwtToken", "", {
+      maxAge: 0,
+    });
+    // await res.cookie("refreshJwtToken", "", {
+    //   maxAge: 0,
+    // });
+    return res.status(200).json({
+      message: "정상적으로 로그아웃 되었습니다.",
+    });
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(204)
+      .json({
+        message:
+          "알 수  없는 오류가 발생했습니다. 다시 시도해주세요.",
+      });
+  }
 };
 
 //가입정보 중복체크
