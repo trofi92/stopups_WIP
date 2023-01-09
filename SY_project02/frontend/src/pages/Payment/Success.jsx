@@ -24,48 +24,78 @@ export const Success = () => {
   const [line3, setLien3] = useState(false);
   const [line4, setLien4] = useState(false);
 
+  const [paymentData, setPaymentData] = useState();
+
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user);
 
   const paymentsDataRequest = async (res) => {
-    await axios.post(
-      `${SERVER_URL}/payment`,
-      {
-        res,
-        email: user?.email,
-      },
-      { withCredentials: true }
-    );
-  };
-  const orderedDataRequest = async () => {
-    await axios
-      .post(
-        `${SERVER_URL}/order`,
+    try {
+      await axios.post(
+        `${SERVER_URL}/payment`,
         {
+          res,
           email: user?.email,
-          address: user?.location?.content,
-          total: cart?.total,
-          cart: cart,
         },
         { withCredentials: true }
-      )
-      .then((res) => console.log(res));
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  const orderedItemsRequest = async (data) => {
+    try {
+      await axios
+        .post(
+          `${SERVER_URL}/order/orderedItems`,
+          { orderId: data },
+          { withCredentials: true }
+        )
+        .then((res) => {
+          console.log("order Item ===>", res);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const orderedDataRequest = async () => {
+    try {
+      await axios
+        .post(
+          `${SERVER_URL}/order`,
+          {
+            email: user?.email,
+            address: user?.location?.content,
+            total: cart?.total,
+            cart: cart,
+          },
+          { withCredentials: true }
+        )
+        .then((res) => orderedItemsRequest(res?.data?.orderId));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const paymentsRequest = async () => {
-    await axios
-      .get(
-        `${SERVER_URL}/payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}`,
-        { withCredentials: true }
-      )
-      .then((res) => {
-        paymentsDataRequest(res);
-        console.log(res);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    try {
+      await axios
+        .get(
+          `${SERVER_URL}/payment/success?orderId=${orderId}&paymentKey=${paymentKey}&amount=${amount}`,
+          { withCredentials: true }
+        )
+        .then((res) => {
+          paymentsDataRequest(res);
+          console.log(res);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
+  // console.log("payment data===>", paymentData);
 
   console.log("cart===>", cart);
   console.log("user===>", user);
@@ -74,9 +104,10 @@ export const Success = () => {
     orderedDataRequest();
     paymentsRequest();
     dispatch(clearCart());
+    orderedItemsRequest();
     return;
   }, []);
-
+  console.log("payment data===>", paymentData);
   useEffect(() => {
     const random = Math.floor(Math.random() * 9001) + 1000;
     const random1 = Math.floor(Math.random() * 70001) + 30000;

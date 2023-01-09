@@ -11,10 +11,9 @@ const payments = async (req, res, next) => {
     const orderList = await Order.findAll({
       where: { userId: user?.id },
     });
-    const findOrder = orderList?.length - 1;
-
+    const findOrderId = orderList[orderList?.length - 1].id;
     await Payment.create({
-      orderId: findOrder,
+      orderId: findOrderId,
       provider: reqData?.card?.provider,
       method: reqData?.method,
       total: reqData?.totalAmount,
@@ -25,7 +24,7 @@ const payments = async (req, res, next) => {
     });
 
     const orderItemList = await OrderItem.findAll({
-      where: { orderId: findOrder },
+      where: { orderId: findOrderId },
     });
 
     return res.status(200).json({
@@ -59,7 +58,7 @@ const success = async (req, res, next) => {
         }
       )
       .then((response) => {
-        console.log(response?.body);
+        // console.log(response?.body);
         res.status(200).json({
           data: response?.body,
           message: "성공적으로 구매했습니다",

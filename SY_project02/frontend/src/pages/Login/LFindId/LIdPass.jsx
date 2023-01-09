@@ -30,8 +30,8 @@ const LIdPass = () => {
         `${SERVER_URL}/myInfo/findEmail`,
         {
           phoneNumber: telephone,
-        }
-        // { withCredentials: true }
+        },
+        { withCredentials: true }
       )
       .catch((error) => {
         console.error(error);
