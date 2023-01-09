@@ -24,8 +24,6 @@ export const Success = () => {
   const [line3, setLien3] = useState(false);
   const [line4, setLien4] = useState(false);
 
-  const [paymentData, setPaymentData] = useState();
-
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user);
@@ -95,7 +93,6 @@ export const Success = () => {
       console.log(error);
     }
   };
-  // console.log("payment data===>", paymentData);
 
   console.log("cart===>", cart);
   console.log("user===>", user);
@@ -104,10 +101,9 @@ export const Success = () => {
     orderedDataRequest();
     paymentsRequest();
     dispatch(clearCart());
-    orderedItemsRequest();
     return;
   }, []);
-  console.log("payment data===>", paymentData);
+
   useEffect(() => {
     const random = Math.floor(Math.random() * 9001) + 1000;
     const random1 = Math.floor(Math.random() * 70001) + 30000;
