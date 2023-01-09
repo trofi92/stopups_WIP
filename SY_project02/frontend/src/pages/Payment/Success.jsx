@@ -12,7 +12,7 @@ import SuccessTitle from "../../image/Payment/SuccessTitle.png";
 import * as styled_Payment from "../../styled/Payment/Payment";
 import * as styled_C from "../../styled/Cart";
 import { Footer } from "../../components/Footer/Footer";
-import {SuccessSetTimeOut} from "./SuccessSetTimeOut";
+import { SuccessSetTimeOut } from "./SuccessSetTimeOut";
 import { API } from "../../utils/urls";
 
 export const Success = () => {
@@ -93,16 +93,15 @@ export const Success = () => {
   console.log("user===>", user);
 
   const event = async () => {
-    for (let i = 0; i < menu.length; i++) {
-      await axios
-          .get(`${API}&Category=분류&Name=&ProductId=`)
-          .then((res) => {
-            console.log("aaaaaaaa=>",res.data)
-            setImg(res.data);
-          });
-    }
+    // for (let i = 0; i < menu.length; i++) {
+    await axios
+      .get(`${API}&Category=분류&Name=&ProductId=`)
+      .then((res) => {
+        console.log("aaaaaaaa=>", res.data);
+        setImg(res.data);
+      });
+    // }
   };
-
 
   useEffect(() => {
     event();
@@ -126,10 +125,9 @@ export const Success = () => {
   // api에서 받아온 메뉴
   const [img, setImg] = useState([]);
 
-
-  console.log("menu====>", menu)
+  console.log("menu====>", menu);
   console.log("menu====>", menu.length);
-  console.log("에=>", img)
+  console.log("에=>", img);
 
   return (
     // 결제 성공
@@ -150,7 +148,7 @@ export const Success = () => {
 
         <styled_F.FContentsAllBox>
           {/*매장 및 준비 중*/}
-          <SuccessSetTimeOut/>
+          <SuccessSetTimeOut />
 
           {/*주문 내역*/}
           <styled_Success.SSection>
@@ -167,51 +165,70 @@ export const Success = () => {
             {/*결제 완료한 메뉴들 map 사용*/}
             <styled_Payment.PSMenuBox>
               {menu.map((item) => {
-                console.log(item)
+                console.log(item);
                 return (
-                    <styled_Payment.PSMBox key={item.Product.p_id}>
-                      {/*이미지*/}
-                      {img.map((img, idx) => {
-                        if (img.ProductId === item.Product.p_id) {
-                          return <styled_Payment.PSMBImg src={img.Image} key={idx}/>
-                        }
-                      })}
-                      <styled_Payment.PSMBImg/>
-                      {/*메뉴 이름*/}
-                      <styled_Payment.PSMBText>
-                        <styled_C.CFMTitle>{item.Product.name}</styled_C.CFMTitle>
-                        {item.category === "브레드" || item.category === "케이크" || item.category === "샌드위치" || item.category === "샐러드" || item.category === "따뜻한 푸드" ? (
-                            <styled_C.CFMOption>
-                              <styled_C.CFMIceHot>
-                                {item.cookType
-                                    ? item.cookType === "Desert"
-                                        ? "따뜻하게 데움"
-                                        : "데우지 않음"
-                                    : "워밍 옵션 없음"}
-                              </styled_C.CFMIceHot>
-                              <styled_C.CFMSize>
-                                {item.eatType === "takeout"
-                                    ? "테이크 아웃"
-                                    : "매장"}
-                              </styled_C.CFMSize>
-                              <styled_C.CFMCup>{item.quantity}개</styled_C.CFMCup>
-                            </styled_C.CFMOption>
-                        ) : (
-                            <styled_C.CFMOption>
-                              <styled_C.CFMIceHot>{item.drinkType}</styled_C.CFMIceHot>
-                              <styled_C.CFMSize>{item.size}</styled_C.CFMSize>
-                              <styled_C.CFMSize>
-                                {item.eatType === "takeout"
-                                    ? "일회용 컵"
-                                    : "매장용 컵"}
-                              </styled_C.CFMSize>
-                              <styled_C.CFMCup>{item.quantity}개</styled_C.CFMCup>
-                            </styled_C.CFMOption>
-                        )}
-                        {/*옵션*/}
-                      </styled_Payment.PSMBText>
-                    </styled_Payment.PSMBox>
-                )
+                  <styled_Payment.PSMBox key={item.Product.p_id}>
+                    {/*이미지*/}
+                    {img.map((img, idx) => {
+                      if (img.ProductId === item.Product.p_id) {
+                        return (
+                          <styled_Payment.PSMBImg
+                            src={img.Image}
+                            key={idx}
+                          />
+                        );
+                      }
+                    })}
+                    <styled_Payment.PSMBImg />
+                    {/*메뉴 이름*/}
+                    <styled_Payment.PSMBText>
+                      <styled_C.CFMTitle>
+                        {item.Product.name}
+                      </styled_C.CFMTitle>
+                      {item.category === "브레드" ||
+                      item.category === "케이크" ||
+                      item.category === "샌드위치" ||
+                      item.category === "샐러드" ||
+                      item.category === "따뜻한 푸드" ? (
+                        <styled_C.CFMOption>
+                          <styled_C.CFMIceHot>
+                            {item.cookType
+                              ? item.cookType === "Desert"
+                                ? "따뜻하게 데움"
+                                : "데우지 않음"
+                              : "워밍 옵션 없음"}
+                          </styled_C.CFMIceHot>
+                          <styled_C.CFMSize>
+                            {item.eatType === "takeout"
+                              ? "테이크 아웃"
+                              : "매장"}
+                          </styled_C.CFMSize>
+                          <styled_C.CFMCup>
+                            {item.quantity}개
+                          </styled_C.CFMCup>
+                        </styled_C.CFMOption>
+                      ) : (
+                        <styled_C.CFMOption>
+                          <styled_C.CFMIceHot>
+                            {item.drinkType}
+                          </styled_C.CFMIceHot>
+                          <styled_C.CFMSize>
+                            {item.size}
+                          </styled_C.CFMSize>
+                          <styled_C.CFMSize>
+                            {item.eatType === "takeout"
+                              ? "일회용 컵"
+                              : "매장용 컵"}
+                          </styled_C.CFMSize>
+                          <styled_C.CFMCup>
+                            {item.quantity}개
+                          </styled_C.CFMCup>
+                        </styled_C.CFMOption>
+                      )}
+                      {/*옵션*/}
+                    </styled_Payment.PSMBText>
+                  </styled_Payment.PSMBox>
+                );
               })}
               {/*<styled_Payment.PSMBox>*/}
               {/*  /!*이미지*!/*/}
@@ -228,7 +245,6 @@ export const Success = () => {
               {/*    </styled_C.CFMOption>*/}
               {/*  </styled_Payment.PSMBText>*/}
               {/*</styled_Payment.PSMBox>*/}
-
             </styled_Payment.PSMenuBox>
           </styled_Success.SSection>
         </styled_F.FContentsAllBox>
