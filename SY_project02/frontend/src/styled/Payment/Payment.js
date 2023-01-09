@@ -142,6 +142,7 @@ export const PSMBox = styled.div`
   //margin: 0 auto;
   display: flex;
   flex-direction: row;
+  margin-bottom: 20px;
 `
 
 export const PSMBImg = styled.img`
