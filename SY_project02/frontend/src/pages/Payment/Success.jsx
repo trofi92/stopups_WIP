@@ -179,7 +179,7 @@ export const Success = () => {
                         );
                       }
                     })}
-                    <styled_Payment.PSMBImg />
+                    {/* <styled_Payment.PSMBImg /> */}
                     {/*메뉴 이름*/}
                     <styled_Payment.PSMBText>
                       <styled_C.CFMTitle>
