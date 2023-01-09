@@ -16,12 +16,10 @@ const order = async (req, res, next) => {
       where: { userId: user?.id },
     });
 
-    //   console.log("data=====>", findOrder);
     for (let i = 0; i <= cartItems?.length - 1; i++) {
       const findProduct = await Product.findOne({
         where: { pId: cartItems[i]?.id },
       });
-      // console.log("data======>", findProduct.dataValues.id);
       await OrderItem.create({
         orderId: findOrder[findOrder?.length - 1]?.id,
         productId: findProduct?.dataValues?.id,
@@ -36,13 +34,39 @@ const order = async (req, res, next) => {
     }
 
     return res.status(200).json({
-      orderId: findOrder?.length - 1,
-      message: "결제에 성공했습니다.",
+      orderId: findOrder[findOrder?.length - 1]?.id,
     });
   } catch (error) {
     console.error(error);
-    return res.status(400).json({ message: "결제에 실패했습니다." });
+    return res
+      .status(400)
+      .json({ message: "주문과정에 문제가 발생했습니다." });
   }
 };
 
-module.exports = { order };
+const orderedItems = async (req, res, next) => {
+  const reqData = req?.body;
+  console.log("orderId ====>", reqData?.orderId);
+  try {
+    const orderedItemsList = await OrderItem.findAll({
+      include: [
+        {
+          model: Product,
+          attributes: ["id", "name", "p_id"],
+        },
+      ],
+      where: {
+        orderId: reqData?.orderId,
+      },
+    });
+
+    return res.status(200).json({ orderedItemsList });
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(400)
+      .json({ message: "처리할 수 없는 요청입니다." });
+  }
+};
+
+module.exports = { order, orderedItems };

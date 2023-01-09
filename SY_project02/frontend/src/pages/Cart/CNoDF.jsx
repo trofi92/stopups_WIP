@@ -122,7 +122,7 @@ export const CNoDF = () => {
         alert("결제 페이지로 이동합니다.");
         navigate("/payment");
         // 선택된 제품만 redux에 남기고 나머지 삭제
-        dispatch(saveCart(checkItems));
+        // dispatch(saveCart(checkItems));
       }
     }
   };

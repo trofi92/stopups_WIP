@@ -12,7 +12,7 @@ module.exports = class User extends Sequelize.Model {
   static findUser(email) {
     return this.findOne({
       where: {
-        email,
+        email: email,
       },
     });
   }

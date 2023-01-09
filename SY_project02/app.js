@@ -14,9 +14,6 @@ const myInfo = require("./routes/myInfo");
 const bookmarks = require("./routes/bookmarks");
 const order = require("./routes/order");
 
-const swaggerUi = require("swagger-ui-express");
-const swaggerFile = require("./swagger-output");
-
 const { sequelize } = require("./models");
 const authJwt = require("./middlewares/authJwt");
 
@@ -50,11 +47,10 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use("/page", page);
 app.use("/auth", auth);
 app.use("/", index);
-app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
-app.use("/order", order);
 app.use(authJwt);
-app.use("/bookmarks", bookmarks);
 app.use("/payment", payment);
+app.use("/order", order);
+app.use("/bookmarks", bookmarks);
 app.use("/myInfo", myInfo);
 
 app.use((err, req, res, next) => {
