@@ -70,9 +70,6 @@ const Menu = () => {
             params.Category === "샌드위치" ||
             params.Category === "따뜻한 푸드" ||
             params.Category === "샐러드"
-
-            // 왜 밑에 코드랑 같은건데 왜 다르게 출력되는거?
-            // params.Category === paramsInValid
           );
         });
         filterData.forEach((v) => {
@@ -132,7 +129,6 @@ const Menu = () => {
 
   const classificationInValidHandler = () => {
     setClassificationInValid(!ClassificationInValid);
-    console.log(dataCategory, params.Category);
 
     // 화살표를 누르면 상세보기가 켜지는 함수
   };
@@ -150,7 +146,6 @@ const Menu = () => {
   const smallBoxFalseHanlder = () => {
     setSmallBox(false);
     setHidden("");
-    console.log();
     // 사진으로 보기 , 영양정보로 true , false 로 출력되는 화면이 달라짐
   };
 
@@ -192,6 +187,103 @@ const Menu = () => {
                 onClick={classificationInValidHandler}
               />
             </styled_Menu.MainInner>
+            <styled_Menu.CategoryBox>
+              {categoryTheme ? (
+                <>
+                  <styled_Menu.ButtonBoxCotainer>
+                    <ButtonBox
+                      onClick={categoryThemaTrueHandler}
+                      background="#006633"
+                      color="#fff"
+                      underline="underline"
+                    >
+                      <span>카테고리</span>
+                    </ButtonBox>
+                    <ButtonBox
+                      onClick={categoryThemaFalseHandler}
+                      background="#f4f4f1"
+                    >
+                      <span>테마</span>
+                    </ButtonBox>
+                  </styled_Menu.ButtonBoxCotainer>
+
+                  <styled_Menu.CheckBox>
+                    {paramsInValid
+                      ? dataCategory.map((value, index) => {
+                          return (
+                            <CheckboxLabels
+                              checkedItemHandler={checkedItemHandler}
+                              Category={value}
+                              params={params}
+                              checkedItems={checkedItems}
+                            >
+                              {value.Category}
+                            </CheckboxLabels>
+                          );
+                        })
+                      : dataCategory.map((value, index) => {
+                          return (
+                            <CheckboxLabels
+                              checkedItemHandler={checkedItemHandler}
+                              Category={value}
+                              params={params}
+                              checkedItems={checkedItems}
+                            >
+                              {value.Category}
+                            </CheckboxLabels>
+                          );
+                        })}
+                  </styled_Menu.CheckBox>
+                </>
+              ) : (
+                <>
+                  <styled_Menu.ButtonBoxCotainer>
+                    <ButtonBox
+                      onClick={categoryThemaTrueHandler}
+                      background="#f4f4f1"
+                    >
+                      <span>카테고리</span>
+                    </ButtonBox>
+                    <ButtonBox
+                      onClick={categoryThemaFalseHandler}
+                      background="#006633"
+                      color="#fff"
+                      underline="underline"
+                    >
+                      <span>테마</span>
+                    </ButtonBox>
+                  </styled_Menu.ButtonBoxCotainer>
+                  <styled_Menu.CheckBox none="none">
+                    {paramsInValid
+                      ? dataCategory.map((value, index) => {
+                          return (
+                            <CheckboxLabels
+                              checkedItemHandler={checkedItemHandler}
+                              Category={value}
+                              params={params}
+                              checkedItems={checkedItems}
+                            >
+                              {value.Category}
+                            </CheckboxLabels>
+                          );
+                        })
+                      : dataCategory.map((value, index) => {
+                          return (
+                            <CheckboxLabels
+                              checkedItemHandler={checkedItemHandler}
+                              Category={value}
+                              params={params}
+                              checkedItems={checkedItems}
+                            >
+                              {value.Category}
+                            </CheckboxLabels>
+                          );
+                        })}
+                  </styled_Menu.CheckBox>
+                  <img alt="이미지가 없습니다" src={MenuTheme} />
+                </>
+              )}
+            </styled_Menu.CategoryBox>
           </styled_Menu.FirstContainer>
         ) : (
           <styled_Menu.FirstContainer height="260">
