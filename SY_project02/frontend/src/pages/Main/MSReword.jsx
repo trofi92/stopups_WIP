@@ -121,7 +121,7 @@ export const MSReword = () => {
                 <br />
                 등록된 카드가 없습니다.
                 <br />
-                새로우 카드를 등록하세요.
+                새로운 카드를 등록하세요.
               </styled_Main.MSRLCPTxt>
             </styled_Main.MSRLCard>
           </Link>

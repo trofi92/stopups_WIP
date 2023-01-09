@@ -247,12 +247,14 @@ export const CFMCMinus = styled.span`
   vertical-align: middle;
   color: #666;
   margin-right: 20px;
+  cursor: pointer;
 `
 
 export const CFMCPlus = styled.span`
   vertical-align: middle;
   color: #666;
   margin-left: 20px;
+  cursor: pointer;
 `
 
 export const CFMTotalMoney = styled.span`
