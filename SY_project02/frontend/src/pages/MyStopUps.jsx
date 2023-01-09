@@ -68,7 +68,7 @@ const MyStopUps = () => {
               <styled_MSU.MSU1ArticleR>
                 {/*위*/}
                 <styled_MSU.HSU1RDivU>
-                  <Link to={"#"}>
+                  <Link to={"/serviceReady"}>
                     <styled_MSU.HSU1RULink>
                       <styled_MSU.HSU1RUImg />
                       <styled_MSU.HSU1RUText>
@@ -84,7 +84,7 @@ const MyStopUps = () => {
                 </styled_MSU.HSU1RDivU>
                 {/*아래*/}
                 <styled_MSU.HSU1RDivD>
-                  <Link to={"/event"}>
+                  <Link to={"/event/all"}>
                     <styled_MSU.HSU1RULink>
                       <styled_MSU.HSU1RDImg />
                       <styled_MSU.HSU1RDText>
