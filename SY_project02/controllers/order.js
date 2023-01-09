@@ -35,11 +35,12 @@ const order = async (req, res, next) => {
 
     return res.status(200).json({
       orderId: findOrder[findOrder?.length - 1]?.id,
-      message: "결제에 성공했습니다.",
     });
   } catch (error) {
     console.error(error);
-    return res.status(400).json({ message: "결제에 실패했습니다." });
+    return res
+      .status(400)
+      .json({ message: "주문과정에 문제가 발생했습니다." });
   }
 };
 

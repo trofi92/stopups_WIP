@@ -7,6 +7,8 @@ const payments = async (req, res, next) => {
   const reqEmail = req?.body?.email;
   const user = await User.findUser(reqEmail);
 
+  console.log("payments req data=====> ", reqData);
+
   try {
     const orderList = await Order.findAll({
       where: { userId: user?.id },
@@ -58,7 +60,6 @@ const success = async (req, res, next) => {
         }
       )
       .then((response) => {
-        // console.log(response?.body);
         res.status(200).json({
           data: response?.body,
           message: "성공적으로 구매했습니다",
