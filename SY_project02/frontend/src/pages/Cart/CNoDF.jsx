@@ -11,7 +11,6 @@ import {
   calculateTotals,
   increase,
   decrease,
-  saveCart,
 } from "../../features/cart/cartSlice";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -132,13 +131,11 @@ export const CNoDF = () => {
 
   useEffect(() => {
     const event = async () => {
-      for (let i = 0; i < cart.cartItems.length; i++) {
-        await axios
-          .get(`${API}&Category=분류&Name=&ProductId=`)
-          .then((res) => {
-            setImg(res.data);
-          });
-      }
+      await axios
+        .get(`${API}&Category=분류&Name=&ProductId=`)
+        .then((res) => {
+          setImg(res.data);
+        });
     };
     event();
   }, []);
