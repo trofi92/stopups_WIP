@@ -6,8 +6,6 @@ const cors = require("cors");
 const helmet = require("helmet");
 require("dotenv").config();
 
-const index = require("./routes/index");
-const page = require("./routes/page");
 const payment = require("./routes/payment");
 const auth = require("./routes/auth");
 const myInfo = require("./routes/myInfo");
@@ -44,14 +42,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use("/page", page);
 app.use("/auth", auth);
-app.use("/", index);
+app.use("/myInfo", myInfo);
 app.use(authJwt);
 app.use("/payment", payment);
 app.use("/order", order);
 app.use("/bookmarks", bookmarks);
-app.use("/myInfo", myInfo);
 
 app.use((err, req, res, next) => {
   res.locals.message = err.message;
