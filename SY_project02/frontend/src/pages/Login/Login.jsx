@@ -8,8 +8,11 @@ import { Footer } from "../../components/Footer/Footer";
 import {
   checkEmailLogin,
   checkPasswordLogin,
-} from "../../components/join/JoinRegex";
-import { useLoginService, useFormCheck } from "../../hooks/use-authService";
+} from "../../components/Join/JoinRegex";
+import {
+  useLoginService,
+  useFormCheck,
+} from "../../hooks/use-authService";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -41,11 +44,21 @@ const Login = () => {
   }, [email]);
 
   const handleEmailChange = (e) => {
-    formCheck(e, checkEmailLogin, "아이디를 입력해 주세요.", setEmail);
+    formCheck(
+      e,
+      checkEmailLogin,
+      "아이디를 입력해 주세요.",
+      setEmail
+    );
   };
 
   const handlePasswordChange = (e) => {
-    formCheck(e, checkPasswordLogin, "비밀번호를 입력해 주세요.", setPassword);
+    formCheck(
+      e,
+      checkPasswordLogin,
+      "비밀번호를 입력해 주세요.",
+      setPassword
+    );
   };
 
   const submitIdPassword = (e) => {
@@ -96,18 +109,20 @@ const Login = () => {
                         onClick={onClickCheckedEmail}
                         check={check}
                       />
-                      <styled_LOG.LFICSpan>아이디 저장</styled_LOG.LFICSpan>
+                      <styled_LOG.LFICSpan>
+                        아이디 저장
+                      </styled_LOG.LFICSpan>
                     </styled_LOG.LFIdCheck>
                     <styled_BU.LJButton onClick={submitIdPassword}>
                       로그인
                     </styled_BU.LJButton>
                     <styled_LOG.LFText>
-                      * 타 사이트와 비밀번호를 동일하게 사용할 경우 도용의
-                      위험이 있으므로, 정기적인 비밀번호 변경을 해주시길
-                      바랍니다.
-                      <br />* 스타벅스 코리아의 공식 홈페이지는 Internet
-                      Explorer 9.0 이상, Chrome, Firefox, Safari 브라우저에
-                      최적화 되어있습니다.
+                      * 타 사이트와 비밀번호를 동일하게 사용할 경우
+                      도용의 위험이 있으므로, 정기적인 비밀번호 변경을
+                      해주시길 바랍니다.
+                      <br />* 스타벅스 코리아의 공식 홈페이지는
+                      Internet Explorer 9.0 이상, Chrome, Firefox,
+                      Safari 브라우저에 최적화 되어있습니다.
                     </styled_LOG.LFText>
                   </styled_LOG.LFInputBox>
                   {/* 버튼 */}
@@ -118,7 +133,9 @@ const Login = () => {
                           to={"/joinAgree"}
                           style={{ textDecoration: "none" }}
                         >
-                          <styled_LOG.LFBListP>회원가입</styled_LOG.LFBListP>
+                          <styled_LOG.LFBListP>
+                            회원가입
+                          </styled_LOG.LFBListP>
                         </Link>
                       </styled_LOG.LFBLi>
                       <styled_LOG.LFBLi>
@@ -126,7 +143,9 @@ const Login = () => {
                           to={"/findIdAgree"}
                           style={{ textDecoration: "none" }}
                         >
-                          <styled_LOG.LFBListP>아이디 찾기</styled_LOG.LFBListP>
+                          <styled_LOG.LFBListP>
+                            아이디 찾기
+                          </styled_LOG.LFBListP>
                         </Link>
                       </styled_LOG.LFBLi>
                       <styled_LOG.LFBLi>

@@ -60,6 +60,10 @@ module.exports = class Payment extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.Payment.belongsTo(db.Order, { foreignKey: "orderId" });
+    db.Payment.belongsTo(db.Order, {
+      foreignKey: "orderId",
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    });
   }
 };

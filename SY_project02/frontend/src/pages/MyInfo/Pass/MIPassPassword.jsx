@@ -5,7 +5,7 @@ import * as styled_LOG from "../../../styled/Login/Login";
 import * as styled_Join from "../../../styled/Join/Join";
 import * as styled_Pass from "../../../styled/Pass";
 import { useRef } from "react";
-import { checkPasswordLogin } from "../../../components/join/JoinRegex";
+import { checkPasswordLogin } from "../../../components/Join/JoinRegex";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SERVER_URL } from "../../../utils/urls";

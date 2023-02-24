@@ -154,6 +154,34 @@ const findEmailByPhoneNumber = async (req, res, next) => {
     });
 };
 
+//회원탈퇴
+const deleteUser = async (req, res, next) => {
+  const { email, password } = req?.body?.data;
+  console.log(decrypt(email), "email", password);
+
+  try {
+    const users = await User.findAll({
+      attributes: ["email", "password"],
+    });
+    const user = users.find((user) => email === user.email);
+    const decryptedPassword = decrypt(user.password);
+
+    if (password !== decryptedPassword) {
+      return res.status(305).send("비밀번호가 일치하지 않습니다.");
+    } else {
+      res.status(200).send("회원 탈퇴 성공");
+      User.destroy({
+        where: { email: user.email },
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    return res
+      .status(500)
+      .json({ message: "알 수 없는 문제가 발생했습니다." });
+  }
+};
+
 module.exports = {
   updatePw,
   updatePhoneAndNickname,
@@ -161,4 +189,5 @@ module.exports = {
   findEmailByPhoneNumber,
   updatePwWithEmail,
   forgetAndModifyPw,
+  deleteUser,
 };

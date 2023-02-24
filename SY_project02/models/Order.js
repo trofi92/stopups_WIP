@@ -38,8 +38,16 @@ module.exports = class Order extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.Order.belongsTo(db.User, { foreignKey: "userId" });
-    db.Order.hasMany(db.OrderItem, { foreignKey: "orderId" });
+    db.Order.belongsTo(db.User, {
+      foreignKey: "userId",
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    });
+    db.Order.hasMany(db.OrderItem, {
+      foreignKey: "orderId",
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    });
     // db.Order.belongsToMany(db.Payment, {
     //   through: "checkouts",
     // });

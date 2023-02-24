@@ -5,7 +5,7 @@ import {
   checkNickname,
   checkPassword,
   checkPhone,
-} from "../../components/join/JoinRegex";
+} from "../../components/Join/JoinRegex";
 import { useState, useRef } from "react";
 import axios from "axios";
 import Header from "../../components/Header/Header";

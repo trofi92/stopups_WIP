@@ -12,7 +12,7 @@ import {
   usePhoneSubmit,
   useSmsSubmit,
 } from "../../../hooks/use-submit";
-import { checkEmail } from "../../../components/join/JoinRegex";
+import { checkEmail } from "../../../components/Join/JoinRegex";
 
 const LIdPass = () => {
   const [telephone, setTelephone] = useState("");

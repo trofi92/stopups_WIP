@@ -7,6 +7,7 @@ const {
   findEmailByPhoneNumber,
   updatePwWithEmail,
   forgetAndModifyPw,
+  deleteUser,
 } = require("../controllers/info");
 const authJwt = require("../middlewares/authJwt");
 
@@ -21,5 +22,6 @@ router.post(
 router.post("/passwordAuth", authJwt, passwordAuth);
 router.post("/findEmail", findEmailByPhoneNumber);
 router.post("/updatePwWithEmail", updatePwWithEmail);
+router.post("/deleteUser", deleteUser);
 
 module.exports = router;

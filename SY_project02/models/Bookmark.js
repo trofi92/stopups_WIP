@@ -65,7 +65,15 @@ module.exports = class Bookmark extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.Bookmark.belongsTo(db.User, { foreignKey: "userId" });
-    db.Bookmark.belongsTo(db.Product, { foreignKey: "productId" });
+    db.Bookmark.belongsTo(db.User, {
+      foreignKey: "userId",
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    });
+    db.Bookmark.belongsTo(db.Product, {
+      foreignKey: "productId",
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    });
   }
 };

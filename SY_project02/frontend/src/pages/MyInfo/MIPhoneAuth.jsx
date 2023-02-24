@@ -2,7 +2,7 @@ import React from "react";
 import * as styled_Join from "../../styled/Join/Join";
 import * as styled_MI from "../../styled/MyInfo/MyInfo";
 import { usePhoneSubmit, useSmsSubmit } from "../../hooks/use-submit";
-import { checkPhone } from "../../components/join/JoinRegex";
+import { checkPhone } from "../../components/Join/JoinRegex";
 import { useNavigate } from "react-router-dom";
 
 export const MIPhoneAuth = () => {

@@ -67,9 +67,13 @@ module.exports = class OrderItem extends Sequelize.Model {
   static associate(db) {
     db.OrderItem.belongsTo(db.Product, {
       foreignKey: "productId",
+      onDelete: "cascade",
+      onUpdate: "cascade",
     });
     db.OrderItem.belongsTo(db.Order, {
       foreignKey: "orderId",
+      onDelete: "cascade",
+      onUpdate: "cascade",
     });
   }
 };

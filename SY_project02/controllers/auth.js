@@ -10,33 +10,6 @@ const {
   refreshJwtTokenOption,
 } = require("./auth-options");
 
-const userDelete = async (req, res, next) => {
-  const { email, password } = req.body.data;
-  console.log(decrypt(email), "email", password);
-
-  try {
-    const users = await User.findAll({
-      attributes: ["email", "password"],
-    });
-    const user = users.find((user) => email === user.email);
-    const decryptedPassword = decrypt(user.password);
-
-    if (password !== decryptedPassword) {
-      return res.status(305).send("비밀번호가 일치하지않습니다.");
-    } else {
-      res.status(200).send("회원 탈퇴 성공");
-      User.destroy({
-        where: { email: user.email },
-      });
-    }
-  } catch (err) {
-    console.error(err);
-    return res
-      .status(500)
-      .json({ message: "알 수 없는 문제가 발생했습니다." });
-  }
-};
-
 //로그인
 const login = async (req, res, next) => {
   const { email, password } = req.body.data;
@@ -113,12 +86,9 @@ const logout = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    return res
-      .status(204)
-      .json({
-        message:
-          "알 수  없는 오류가 발생했습니다. 다시 시도해주세요.",
-      });
+    return res.status(204).json({
+      message: "알 수  없는 오류가 발생했습니다. 다시 시도해주세요.",
+    });
   }
 };
 
@@ -178,5 +148,4 @@ module.exports = {
   login,
   logout,
   checkDuplication,
-  userDelete,
 };

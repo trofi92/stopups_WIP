@@ -14,7 +14,7 @@ import { SERVER_URL } from "../../utils/urls";
 import { useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLogout } from "../../hooks/use-authService";
-import { checkNickname } from "../../components/join/JoinRegex";
+import { checkNickname } from "../../components/Join/JoinRegex";
 
 const MyInfo = () => {
   const navigate = useNavigate();

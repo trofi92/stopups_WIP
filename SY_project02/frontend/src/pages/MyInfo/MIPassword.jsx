@@ -11,7 +11,7 @@ import axios from "axios";
 import {
   checkPasswordConfirm,
   checkPasswordLogin,
-} from "../../components/join/JoinRegex";
+} from "../../components/Join/JoinRegex";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { decrypt } from "../../utils/crypto-front";
