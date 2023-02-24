@@ -17,12 +17,24 @@ const authJwt = require("./middlewares/authJwt");
 
 const app = express();
 app.use(helmet());
+
+app.use((req, res, next) => {
+  res.set("Access-Control-Allow-Origin", [
+    "https://www.stopups.shop",
+    "https://www.stopups.shop:8000",
+  ]);
+  res.set("Access-Control-Allow-Credentials", true);
+  next();
+});
+
 app.use(
   cors({
-    // true = * =>credentials가 true(=include)일 경우
-    // origin은 *을 제외한 상세설정을 필요로 함
-    origin: true,
+    origin: [
+      "https://www.stopups.shop",
+      "https://www.stopups.shop:8000",
+    ],
     credentials: true,
+    optionsSuccessStatus: 200,
   })
 );
 
