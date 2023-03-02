@@ -18,21 +18,10 @@ const authJwt = require("./middlewares/authJwt");
 const app = express();
 app.use(helmet());
 
-app.use((req, res, next) => {
-  res.set("Access-Control-Allow-Origin", [
-    "https://www.stopups.shop",
-    "https://www.stopups.shop:8000",
-  ]);
-  res.set("Access-Control-Allow-Credentials", true);
-  next();
-});
-
 app.use(
   cors({
-    origin: [
-      "https://www.stopups.shop",
-      "https://www.stopups.shop:8000",
-    ],
+    // origin: "https://www.stopups.shop",
+    origin: "http://localhost:3000",
     credentials: true,
     optionsSuccessStatus: 200,
   })
