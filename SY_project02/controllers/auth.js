@@ -26,8 +26,6 @@ const login = async (req, res, next) => {
     });
     const user = users.find((user) => email === decrypt(user.email));
 
-    // console.log(user);
-
     if (!user) {
       return res
         .status(305)

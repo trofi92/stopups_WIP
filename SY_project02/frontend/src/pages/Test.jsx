@@ -12,13 +12,11 @@ export const Test = () => {
   };
 
   const sendRequest = async () => {
-    await axios
-      .put(
-        `${SERVER_URL}/page/test`,
-        { data: post },
-        { withCredentials: true }
-      )
-      .then((res) => console.log(res?.data));
+    await axios.put(
+      `${SERVER_URL}/page/test`,
+      { data: post },
+      { withCredentials: true }
+    );
   };
   const handleChange = (e) => {
     setName(e.target.value);

@@ -13,7 +13,7 @@ router.post("/join", join);
 
 router.post("/login", login);
 
-router.post("/logout", logout, authJwt);
+router.post("/logout", logout);
 
 router.post("/check", checkDuplication);
 

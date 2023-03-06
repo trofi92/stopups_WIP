@@ -38,9 +38,7 @@ const order = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    return res
-      .status(400)
-      .json({ message: "주문과정에 문제가 발생했습니다." });
+    return res.status(200).json({ error });
   }
 };
 

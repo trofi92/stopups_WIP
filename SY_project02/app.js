@@ -20,7 +20,6 @@ app.use(helmet());
 
 app.use(
   cors({
-    // origin: "https://www.stopups.shop",
     origin: "http://localhost:3000",
     credentials: true,
     optionsSuccessStatus: 200,
