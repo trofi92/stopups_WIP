@@ -5,7 +5,6 @@ import axios from "axios";
 import { API, IMG } from "../../utils/urls";
 
 export const EAll = () => {
-  // api 서버에서 받아온 event를 배열로 저장
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -23,11 +22,9 @@ export const EAll = () => {
     <styled_Event.ESArticle>
       <styled_Event.ESList>
         <styled_Event.ESDl>
-          {/*진행 이벤트*/}
           <styled_Event.ESDt>진행 이벤트</styled_Event.ESDt>
           <styled_Event.ESDd>
             <styled_Event.ESDUl>
-              {/*각각 이벤트*/}
               {events.map((event) => {
                 const img = `${IMG}`;
                 return (
@@ -57,7 +54,6 @@ export const EAll = () => {
               })}
             </styled_Event.ESDUl>
           </styled_Event.ESDd>
-          {/*종료 이벤트*/}
           <styled_Event.ESDt>종료 이벤트</styled_Event.ESDt>
           <styled_Event.ESDd></styled_Event.ESDd>
         </styled_Event.ESDl>

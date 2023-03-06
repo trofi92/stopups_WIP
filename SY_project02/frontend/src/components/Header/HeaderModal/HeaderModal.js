@@ -11,9 +11,7 @@ import { CorporateSales } from "./CorporateSales/CorporateSales";
 import { WhatsNew } from "./WhatsNew/WhatsNew";
 import { useNavigate } from "react-router-dom";
 
-// Header의 modalClose 받아옴
 const HeaderModal = ({ modalClose }) => {
-  // search input 값
   const [search, setSearch] = useState("");
   const searchRef = useRef(null);
   const navigate = useNavigate();
@@ -62,7 +60,6 @@ const HeaderModal = ({ modalClose }) => {
     setSearch(e.target.value);
   };
 
-  // 검색어 입력 후 Search 버튼 클릭 시 검색어 /search로 보내줌
   const onSearchSubmit = () => {
     if (search === "") {
       alert("검색어를 입력하세요.");
@@ -75,17 +72,12 @@ const HeaderModal = ({ modalClose }) => {
 
   return (
     <styled_HM.HM>
-      {/*모달 뒷배경*/}
       <styled_HM.HMBg />
-      {/*모달 전체 박스*/}
       <styled_HM.HMBox>
         <styled_HM.HMBInner>
-          {/*닫기 버튼*/}
           <styled_HM.HMBIAside>
             <styled_HM.HMBIAsideP onClick={modalClose} />
           </styled_HM.HMBIAside>
-          {/*검색*/}
-          {/*공백이 아닐 경우 값과 함께 /serach 페이지로 이동*/}
           <styled_HM.HMSearch>
             <styled_HM.HMSInner>
               <styled_HM.HMSIInput
@@ -99,16 +91,15 @@ const HeaderModal = ({ modalClose }) => {
               </styled_HM.HMSIP>
             </styled_HM.HMSInner>
           </styled_HM.HMSearch>
-          {/*Nav*/}
           <styled_HM.Nav>
             <styled_HM.NUl>
               <styled_HM.NLiFirstTitle>
                 <styled_HM.NLiTitleP onClick={myStopUpsToggle}>
                   My StopUps
                   {openMyStopUps ? (
-                      <styled_BU.HMTButtonClicked />
+                    <styled_BU.HMTButtonClicked />
                   ) : (
-                      <styled_BU.HMTButton />
+                    <styled_BU.HMTButton />
                   )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiFirstTitle>
@@ -117,9 +108,9 @@ const HeaderModal = ({ modalClose }) => {
                 <styled_HM.NLiTitleP>
                   COFFEE
                   {openCoffee ? (
-                      <styled_BU.HMTButtonClicked />
+                    <styled_BU.HMTButtonClicked />
                   ) : (
-                      <styled_BU.HMTButton />
+                    <styled_BU.HMTButton />
                   )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>
@@ -128,9 +119,9 @@ const HeaderModal = ({ modalClose }) => {
                 <styled_HM.NLiTitleP>
                   MENU
                   {openMenu ? (
-                      <styled_BU.HMTButtonClicked />
+                    <styled_BU.HMTButtonClicked />
                   ) : (
-                      <styled_BU.HMTButton />
+                    <styled_BU.HMTButton />
                   )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>
@@ -139,9 +130,9 @@ const HeaderModal = ({ modalClose }) => {
                 <styled_HM.NLiTitleP>
                   STORE
                   {openStore ? (
-                      <styled_BU.HMTButtonClicked />
+                    <styled_BU.HMTButtonClicked />
                   ) : (
-                      <styled_BU.HMTButton />
+                    <styled_BU.HMTButton />
                   )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>
@@ -150,9 +141,9 @@ const HeaderModal = ({ modalClose }) => {
                 <styled_HM.NLiTitleP>
                   RESPONSIBILITY
                   {openResponsibility ? (
-                      <styled_BU.HMTButtonClicked />
+                    <styled_BU.HMTButtonClicked />
                   ) : (
-                      <styled_BU.HMTButton />
+                    <styled_BU.HMTButton />
                   )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>
@@ -163,9 +154,9 @@ const HeaderModal = ({ modalClose }) => {
                 <styled_HM.NLiTitleP>
                   StopUps Rewards
                   {openStopUpsRewards ? (
-                      <styled_BU.HMTButtonClicked />
+                    <styled_BU.HMTButtonClicked />
                   ) : (
-                      <styled_BU.HMTButton />
+                    <styled_BU.HMTButton />
                   )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>
@@ -176,9 +167,9 @@ const HeaderModal = ({ modalClose }) => {
                 <styled_HM.NLiTitleP>
                   CORPORATE SALES
                   {openCorporateSales ? (
-                      <styled_BU.HMTButtonClicked />
+                    <styled_BU.HMTButtonClicked />
                   ) : (
-                      <styled_BU.HMTButton />
+                    <styled_BU.HMTButton />
                   )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>
@@ -189,9 +180,9 @@ const HeaderModal = ({ modalClose }) => {
                 <styled_HM.NLiTitleP>
                   WHAT'S NEW
                   {openWhatsNew ? (
-                      <styled_BU.HMTButtonClicked />
+                    <styled_BU.HMTButtonClicked />
                   ) : (
-                      <styled_BU.HMTButton />
+                    <styled_BU.HMTButton />
                   )}
                 </styled_HM.NLiTitleP>
               </styled_HM.NLiTitle>

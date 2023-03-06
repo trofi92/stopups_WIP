@@ -3,7 +3,6 @@ import axios from "axios";
 import { SMS } from "../utils/urls";
 import { useNavigate } from "react-router-dom";
 
-// 휴대전화 번호 인증시
 export const usePhoneSubmit = () => {
   axios.defaults.withCredentials = false;
   const [show, setShow] = useState(false);
@@ -43,7 +42,6 @@ export const usePhoneSubmit = () => {
   };
 };
 
-// 발송된 인증번호 확인시
 export const useSmsSubmit = (rnd, number, path) => {
   axios.defaults.withCredentials = false;
   const [show, setShow] = useState(false);
@@ -53,9 +51,6 @@ export const useSmsSubmit = (rnd, number, path) => {
     e.preventDefault();
     try {
       const smsAuth = val;
-      //데이터 입력여부 확인
-      console.log("random ID 값 :", smsAuth, "유저입력값 :", rnd);
-
       if (smsAuth !== rnd || rnd === "" || smsAuth === "") {
         alert("인증정보가 올바르지 않습니다. 다시 시도해 주세요.");
         return navigate(-1, { replace: true, state: null });
@@ -66,14 +61,11 @@ export const useSmsSubmit = (rnd, number, path) => {
         setShow(!show);
       }
 
-      console.log("SMS submit number : ", number);
-
       if (path === null || path === undefined) {
         return;
       }
       return navigate(path, { replace: true });
     } catch (error) {
-      console.error(error);
       alert("문제가 발생했습니다. 다시 시도해 주세요.");
       return navigate(-1, { replace: true, state: null });
     }

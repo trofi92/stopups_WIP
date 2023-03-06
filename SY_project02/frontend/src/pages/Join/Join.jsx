@@ -26,11 +26,6 @@ const Join = () => {
   const requestEmail = emailRef?.current?.value;
   const requestPhoneNumber = phoneNumberRef?.current?.value;
   const requestNickname = nicknameRef?.current?.value;
-
-  console.log("refEmail ==>", requestEmail);
-  console.log("refNumber ==>", requestPhoneNumber);
-  console.log("refNickname ==>", requestNickname);
-
   const handleCheckRequest = async (data, reqData) => {
     const reqName = data;
     await axios
@@ -42,7 +37,6 @@ const Join = () => {
       .then((res) => alert(res.data.message));
   };
 
-  // 회원가입 각 input란 입력 값들
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -57,7 +51,6 @@ const Join = () => {
   const ePassword = encrypt(password);
   const eTelephone = encrypt(telephone);
 
-  // 정규식 검사에 따른 멘트 저장용
   const [emailMsg, setEmailMsg] = useState("");
   const [passwordMsg, setPasswordMsg] = useState("");
   const [passwordConfirmMsg, setPasswordConfirmMsg] = useState("");
@@ -65,7 +58,6 @@ const Join = () => {
   const [telephoneMsg, setTelephoneMsg] = useState("");
   const [nicknameMsg, setNicknameMsg] = useState("");
 
-  // 정규식 검사에 따른 값 저장 => 나오는 값에 따라 css 변경
   const emailValid = checkEmail(email);
   const passwordValid = checkPassword(password);
   const passwordConfirmValid = password === passwordConfirm;
@@ -146,7 +138,6 @@ const Join = () => {
     setCheckedNick(!checkedNick);
   };
 
-  // 아이디, 휴대전화, 닉네임 중복체크 alert("") 추가 하기
   const submitIdPassword = (e) => {
     e.preventDefault();
     if (email === "") {
@@ -178,18 +169,17 @@ const Join = () => {
           `${SERVER_URL}/auth/join`,
           {
             data: post,
-          }
-          // { withCredentials: true }
+          },
+          { withCredentials: true }
         )
         .then((res) => {
-          console.log("회원가입 성공=>", res);
           navigate("/joinSuccess", {
             replace: true,
-            state: email, // 회원가입 성공 시 /joinSuccess로 유저 email 전달
+            state: email,
           });
         })
         .catch((error) => {
-          console.error("회원가입 실패", error);
+          alert("문제가 발생했습니다. 다시 시도해주세요.");
         });
     }
   };
@@ -201,7 +191,6 @@ const Join = () => {
       <styled_Join.RB>
         <styled_LOG.LFB>
           <styled_LOG.LFInner>
-            {/*회원가입 폼*/}
             <form
               method={"post"}
               onSubmit={(e) => e.preventDefault()}
@@ -219,7 +208,6 @@ const Join = () => {
                       <styled_Join.RFSectionSpan>
                         (필수)
                       </styled_Join.RFSectionSpan>
-                      {/*중복 확인 되면 RFSectionSpanRightCheckd 중복 확인 완료로 바꾸기*/}
                       <styled_Join.RFSectionSpanRight
                         onClick={() =>
                           handleCheckRequest("email", requestEmail)
@@ -227,9 +215,6 @@ const Join = () => {
                       >
                         중복 확인
                       </styled_Join.RFSectionSpanRight>
-                      {/*<styled_Join.RFSectionSpanRightChecked>*/}
-                      {/*  중복 확인 완료*/}
-                      {/*</styled_Join.RFSectionSpanRightChecked>*/}
                     </styled_Join.RFSectionStrong>
                     <styled_Join.RFSDInput
                       ref={emailRef}
@@ -331,9 +316,6 @@ const Join = () => {
                       >
                         중복 확인
                       </styled_Join.RFSectionSpanRight>
-                      {/*<styled_Join.RFSectionSpanRightChecked>*/}
-                      {/*  중복 확인 완료*/}
-                      {/*</styled_Join.RFSectionSpanRightChecked>*/}
                     </styled_Join.RFSectionStrong>
                     <styled_Join.RFSDInput
                       ref={phoneNumberRef}
@@ -374,9 +356,6 @@ const Join = () => {
                       >
                         중복 확인
                       </styled_Join.RFSectionSpanRight>
-                      {/*<styled_Join.RFSectionSpanRightChecked>*/}
-                      {/*  중복 확인 완료*/}
-                      {/*</styled_Join.RFSectionSpanRightChecked>*/}
                     </styled_Join.RFSectionStrong>
                     <styled_Join.RFSDInput
                       ref={nicknameRef}
@@ -393,7 +372,6 @@ const Join = () => {
                       {nicknameMsg}
                     </styled_Join.RFSDDiv>
                     <styled_Join.AgreeSpan>
-                      {/*체크 토글 버튼 만들기*/}
                       <styled_Join.AIN
                         type={"checkbox"}
                         checkedNick={checkedNick}
@@ -403,7 +381,6 @@ const Join = () => {
                         checkedNick={checkedNick}
                       />
                     </styled_Join.AgreeSpan>
-                    {/*닉네임 이용약관 동의*/}
                     <NickAgree />
                   </styled_Join.RFSectionDiv>
                 </styled_Join.RFSection>

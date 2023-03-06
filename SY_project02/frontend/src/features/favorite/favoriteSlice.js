@@ -27,9 +27,8 @@ const favoritesSlice = createSlice({
     },
     removeFromCart(state, action) {
       const itemIds = action.payload;
-      // Filter out the items with the specified IDs
       state.favorites = state.favorites.filter(
-          (item) => !itemIds.includes(item.id)
+        (item) => !itemIds.includes(item.id)
       );
     },
     removeAllItem: (state) => {
@@ -46,5 +45,5 @@ export const {
   addToFavorites,
   removeItem,
   removeFromCart,
-  removeAllItem
+  removeAllItem,
 } = favoritesSlice.actions;

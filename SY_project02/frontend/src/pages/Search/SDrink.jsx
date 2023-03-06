@@ -2,7 +2,7 @@ import * as styled_Search from "../../styled/Search";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { API } from "../../utils/urls";
+import { API, CLIENT_URL } from "../../utils/urls";
 
 export const SDrink = ({ result, state }) => {
   const [allDrink, setAllDrink] = useState([]);
@@ -34,18 +34,19 @@ export const SDrink = ({ result, state }) => {
 
   return (
     <styled_Search.SSection>
-      {/*음료 헤더*/}
       <styled_Search.SSHeader>
         <styled_Search.SSHH2>음료</styled_Search.SSHH2>
         <Link to={"/event"}>
           <styled_Search.SSHP>음료 더보기</styled_Search.SSHP>
         </Link>
       </styled_Search.SSHeader>
-      {/*음료 내용*/}
       <styled_Search.SSUl>
-        {searchedAllDrink.length === 0 || (result === "" && state === "") ? (
+        {searchedAllDrink.length === 0 ||
+        (result === "" && state === "") ? (
           <styled_Search.SSLi>
-            <styled_Search.SSLP>검색 결과가 없습니다.</styled_Search.SSLP>
+            <styled_Search.SSLP>
+              검색 결과가 없습니다.
+            </styled_Search.SSLP>
           </styled_Search.SSLi>
         ) : (
           searchedAllDrink.map((drink) => {
@@ -60,15 +61,18 @@ export const SDrink = ({ result, state }) => {
                   </styled_Search.SDFigure>
                   <styled_Search.SDDiv>
                     <styled_Search.SEDHeader>
-                      <styled_Search.SEDHH3>{drink.Name}</styled_Search.SEDHH3>
+                      <styled_Search.SEDHH3>
+                        {drink.Name}
+                      </styled_Search.SEDHH3>
                     </styled_Search.SEDHeader>
                     <styled_Search.SDDPText>
                       {drink.Desc}
                     </styled_Search.SDDPText>
-                    <Link to={`/menu/${drink.Category}/${drink.ProductId}`}>
+                    <Link
+                      to={`${CLIENT_URL}/menu/${drink.Category}/${drink.ProductId}`}
+                    >
                       <styled_Search.SEDPLink>
-                        http://localhost:3000/menu/{drink.Category}/
-                        {drink.ProductId}
+                        {drink.Category}/{drink.ProductId}
                       </styled_Search.SEDPLink>
                     </Link>
                   </styled_Search.SDDiv>

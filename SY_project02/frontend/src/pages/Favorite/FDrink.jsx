@@ -6,18 +6,10 @@ import axios from "axios";
 import { SERVER_URL } from "../../utils/urls";
 
 export const FDrink = () => {
-  //요청한 데이터
   const [data, setData] = useState(null);
-
-  //렌더링 즉시 유발
   const [render, setRender] = useState(true);
-
-  // 체크된 아이템 담을 배열
   const [checkItems, setCheckItems] = useState([]);
-
-  // 전체 선택 버튼 클릭 인지 용
   const [click, setClick] = useState(false);
-
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -26,7 +18,6 @@ export const FDrink = () => {
     items: checkItems,
   };
 
-  // 목록 요청
   useLayoutEffect(() => {
     const fetchData = async () => {
       const response = await axios.post(
@@ -39,16 +30,13 @@ export const FDrink = () => {
     fetchData();
   }, [render]);
   const serverData = data?.bookmarkedProducts;
-  console.log(serverData);
 
   const deleteFavoriteReq = async (data) => {
-    await axios
-      .put(
-        `${SERVER_URL}/bookmarks/deleteBookmarks`,
-        { data: data },
-        { withCredentials: true }
-      )
-      .then((res) => console.log("deleted ==>", res));
+    await axios.put(
+      `${SERVER_URL}/bookmarks/deleteBookmarks`,
+      { data: data },
+      { withCredentials: true }
+    );
     setRender((prev) => !prev);
   };
 
@@ -68,34 +56,28 @@ export const FDrink = () => {
             const id = checkItems.filter(
               (item) => item === drink.Product.p_id
             );
-            console.log("id ===>", id)
             const data = {
               email: user?.email,
               items: id,
             };
-            console.log("data ===>", data.items)
             deleteFavoriteReq(data);
             setCheckItems([]);
-
           }
         }
       });
-      alert("선택하신 상품이 삭제되었습니다.")
+      alert("선택하신 상품이 삭제되었습니다.");
     }
   };
 
   const handleAllCheck = (checked) => {
     if (checked) {
-      // 체크 시 모든 아이템을 배열에 추가
       let idArray = [];
       serverData?.forEach((el) => idArray.push(el.Product.p_id));
       setCheckItems(idArray);
     } else {
-      // 체크 해제 시 빈 배열
       setCheckItems([]);
     }
   };
-  console.log("checkItems ==>", checkItems);
 
   const onClickAll = () => {
     setClick(!click);
@@ -110,15 +92,12 @@ export const FDrink = () => {
 
   const handleSingleCheck = (checked, id) => {
     if (checked) {
-      // 체크 시 체크된 아이템을 배열에 추가
       setCheckItems((prev) => [...prev, id]);
     } else {
-      // 체크 해제 시 체크된 아이템을 제외한 나머지 배열
       setCheckItems(checkItems.filter((el) => el !== id));
     }
   };
 
-  // 나중에 ice, hot, take in, out 추가 되면 여기다도 넣기
   const onClick = () => {
     if (checkItems.length === 0) {
       alert("장바구니로 이동 할 음료를 선택하세요.");
@@ -168,7 +147,6 @@ export const FDrink = () => {
               <styled_F.FCDTHead1>
                 <styled_F.FCDTHTr1>
                   <styled_F.FCDTHTh1>
-                    {/*체크박스 체크시 이미지 변경*/}
                     <styled_F.FCDTHThDiv1>
                       <styled_F.FCDTHThDInput1
                         type={"checkbox"}
@@ -206,9 +184,12 @@ export const FDrink = () => {
                         <styled_F.FCDTHThDInput1
                           type={"checkbox"}
                           title={"전체 선택"}
-                          onChange={(e) => handleAllCheck(e.target.checked)}
-                          // 데이터의 수와 체크된 아이템의 수가 다를 때 체크 해제
-                          checked={checkItems.length === serverData?.length}
+                          onChange={(e) =>
+                            handleAllCheck(e.target.checked)
+                          }
+                          checked={
+                            checkItems.length === serverData?.length
+                          }
                         />
                       </styled_F.FCDTHThDiv1>
                     </styled_F.FCDTHTh1>
@@ -219,7 +200,6 @@ export const FDrink = () => {
                   </styled_F.FCDTHTr1>
                 </styled_F.FCDTHead1>
                 {serverData?.map((sData) => {
-                  // console.log(sData);
                   if (
                     sData?.category !== "브레드" &&
                     sData?.category !== "케이크" &&
@@ -240,7 +220,6 @@ export const FDrink = () => {
                                   sData?.Product?.p_id
                                 )
                               }
-                              // 체크된 아이템 배열에 해당 데이터가 있을 경우 활성화
                               checked={checkItems.includes(
                                 sData?.Product?.p_id
                               )}

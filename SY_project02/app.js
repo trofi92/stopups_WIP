@@ -18,9 +18,13 @@ const authJwt = require("./middlewares/authJwt");
 const app = express();
 app.use(helmet());
 
+const domains = ["https://www.stopups.shop", "https://stopups.shop"];
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: function (origin, callback) {
+      const isTrue = domains.indexOf(origin) !== -1;
+      callback(null, isTrue);
+    },
     credentials: true,
     optionsSuccessStatus: 200,
   })

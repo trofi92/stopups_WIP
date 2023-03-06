@@ -19,7 +19,6 @@ const MyStopUps = () => {
       <Header />
 
       <styled_F.FBox>
-        {/*My StopUps 헤더*/}
         <styled_F.FHeader>
           <styled_F.FHTitle>
             <styled_F.FHTInner>
@@ -34,13 +33,10 @@ const MyStopUps = () => {
         </styled_F.FHeader>
       </styled_F.FBox>
 
-      {/*My StopUps 내용 전체 박스*/}
       <styled_F.FContentsAllBox>
         <styled_F.FCBox>
           <styled_MSU.MSUDiv>
-            {/*개인정보, 비밀번호, 매장 및 전체 이벤트 섹션*/}
             <styled_MSU.MSUSection1>
-              {/*왼쪽*/}
               <styled_MSU.MSU1ArticleL>
                 <styled_MSU.MSU1LP>
                   <styled_MSU.MSU1LPStrong>
@@ -64,9 +60,7 @@ const MyStopUps = () => {
                   </styled_MSU.MSU1LButton>
                 </Link>
               </styled_MSU.MSU1ArticleL>
-              {/*오른쪽*/}
               <styled_MSU.MSU1ArticleR>
-                {/*위*/}
                 <styled_MSU.HSU1RDivU>
                   <Link to={"/serviceReady"}>
                     <styled_MSU.HSU1RULink>
@@ -82,7 +76,6 @@ const MyStopUps = () => {
                     </styled_MSU.HSU1RULink>
                   </Link>
                 </styled_MSU.HSU1RDivU>
-                {/*아래*/}
                 <styled_MSU.HSU1RDivD>
                   <Link to={"/event/all"}>
                     <styled_MSU.HSU1RULink>
@@ -102,16 +95,11 @@ const MyStopUps = () => {
               </styled_MSU.MSU1ArticleR>
             </styled_MSU.MSUSection1>
 
-            {/*카드 및 혜택 보기, 카드 구매 섹션*/}
-            {/*구현 미지수*/}
             <styled_MSU.MSUSection2>
-              {/*위*/}
               <styled_MSU.MSU2DivU>
-                {/*이미지*/}
                 <styled_MSU.MSU2DUIconBox>
                   <styled_MSU.MSU2DUIcon />
                 </styled_MSU.MSU2DUIconBox>
-                {/*텍스트*/}
                 <styled_MSU.MSU2DUContBox>
                   <styled_MSU.MSU2DUCont>
                     <styled_MSU.MSU2DUCStrong>
@@ -136,13 +124,10 @@ const MyStopUps = () => {
                   </Link>
                 </styled_MSU.MSU2DUContBox>
               </styled_MSU.MSU2DivU>
-              {/*아래*/}
               <styled_MSU.MSU2DivD>
-                {/*이미지*/}
                 <styled_MSU.MSU2DUIconBox>
                   <styled_MSU.MSU2DDIcon />
                 </styled_MSU.MSU2DUIconBox>
-                {/*텍스트*/}
                 <styled_MSU.MSU2DUContBox>
                   <styled_MSU.MSU2DDCont>
                     <styled_MSU.MSU2DUCStrong>
@@ -162,12 +147,8 @@ const MyStopUps = () => {
               </styled_MSU.MSU2DivD>
             </styled_MSU.MSUSection2>
 
-            {/*새 매장 소개, 카드 등록, 충전, 영수증, 캘린더, 쿠폰*/}
-            {/*구현 미지수*/}
             <styled_MSU.MSUSection3>
-              {/*왼쪽*/}
               <styled_MSU.MSU3ArticleL>
-                {/*헤더*/}
                 <styled_MSU.MSU3LHeader>
                   <styled_MSU.MSU3LHStrong>
                     새로운 스탑업스 매장을 소개합니다.
@@ -175,8 +156,6 @@ const MyStopUps = () => {
                   <br />
                   전국의 새로운 스탑업스의 얼굴들을 만나보세요~!
                 </styled_MSU.MSU3LHeader>
-                {/*내용*/}
-                {/*신규 매장 없을 때로 만듬*/}
                 <styled_MSU.MSU3LSlider>
                   <styled_MSU.MSUDiv>
                     <styled_MSU.MSU3LSFigure>
@@ -191,9 +170,7 @@ const MyStopUps = () => {
                   </styled_MSU.MSUDiv>
                 </styled_MSU.MSU3LSlider>
               </styled_MSU.MSU3ArticleL>
-              {/*오른쪽*/}
               <styled_MSU.MSU3ArticleR>
-                {/*카드 등록*/}
                 <styled_MSU.MSU3RRegiCard>
                   <Link to={"/serviceReady"}>
                     <styled_MSU.MSU3RRCFigure />
@@ -206,7 +183,6 @@ const MyStopUps = () => {
                     </styled_MSU.MSU3RRCP>
                   </Link>
                 </styled_MSU.MSU3RRegiCard>
-                {/*카드 충전*/}
                 <styled_MSU.MSU3RChargeCare>
                   <Link to={"/serviceReady"}>
                     <styled_MSU.MSU3RCCFigure />
@@ -219,9 +195,7 @@ const MyStopUps = () => {
                     </styled_MSU.MSU3CCP>
                   </Link>
                 </styled_MSU.MSU3RChargeCare>
-                {/*나머지 아이콘들*/}
                 <styled_MSU.MSU3RIconsBox>
-                  {/*왼쪽*/}
                   <Link to={"/serviceReady"}>
                     <styled_MSU.MSU3RIBLink1>
                       <styled_MSU.MSU3RIBIconSpan1 />
@@ -230,7 +204,6 @@ const MyStopUps = () => {
                       </styled_MSU.MSU3RIBTextSpan>
                     </styled_MSU.MSU3RIBLink1>
                   </Link>
-                  {/*가운데*/}
                   <Link to={"/serviceReady"}>
                     <styled_MSU.MSU3RIBLink2>
                       <styled_MSU.MSU3RIBIconSpan2 />
@@ -239,7 +212,6 @@ const MyStopUps = () => {
                       </styled_MSU.MSU3RIBTextSpan>
                     </styled_MSU.MSU3RIBLink2>
                   </Link>
-                  {/*중간*/}
                   <Link to={"/serviceReady"}>
                     <styled_MSU.MSU3RIBLink3>
                       <styled_MSU.MSU3RIBIconSpan3>

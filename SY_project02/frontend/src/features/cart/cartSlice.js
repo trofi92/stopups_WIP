@@ -9,7 +9,7 @@ export const getCartItems = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       console.log(thunkAPI);
-      const response = await axios(url); // url에 get요청
+      const response = await axios(url);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
@@ -21,9 +21,9 @@ export const getCartItems = createAsyncThunk(
 );
 
 const initialState = {
-  cartItems: [], // 상품 종류
-  amount: 0, // 각 상품의 갯수
-  total: 0, // 총 가격
+  cartItems: [],
+  amount: 0,
+  total: 0,
   isLoading: true,
   statusByName: {},
   toggle: false,
@@ -35,7 +35,6 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    //장바구니에 상품 추가
     addToCart: (state, action) => {
       console.log(state.cartItems);
       const itemInCarts = state.cartItems.find(
@@ -54,9 +53,8 @@ const cartSlice = createSlice({
       }
     },
     clearCart: (state) => {
-      state.cartItems = []; //is equal to next line ;
+      state.cartItems = [];
       state.amount = 0;
-      //   return { cartItems: [] }; =  많은 수의 input을 한꺼번에 제어해야할때 유용하게 쓰일 수 있음
     },
     removeItem: (state, action) => {
       const itemId = action.payload;
@@ -118,7 +116,6 @@ const cartSlice = createSlice({
         )
       );
 
-      // Item에 있는 아이템들의 총합과 총량을 state.amount, state.total에 저장
       Item.forEach((item) => {
         CartDetailamount += item.quantity;
         total += item.quantity * item.price;
@@ -127,21 +124,15 @@ const cartSlice = createSlice({
       state.CartDetailamount = CartDetailamount;
       state.total = total;
       state.totalAmount = totalAmount;
-
-      //      state.amount  = amount <<  이 부분 때문에 자꾸 장바구니 amount 초기화 되서 위에 initialState  에 변수를 하나 더 추가
     },
     saveCart(state, action) {
       const itemIds = action.payload;
-      // 특정 id값에 해당하는 상품만을 제거 = 선택된 아이템만 제거
       state.cartItems = state.cartItems.filter((item) =>
         itemIds.includes(item.id)
       );
     },
   },
 
-  // 비동기 처리를 위한 createAsyncThunk reducer 함수들
-  // 반환되는 promise의 상태에 따라 로딩 상태를 변경시킴
-  // 이하 코드는 RTK Query 도입시 사용
   extraReducers: (builder) => {
     builder
       .addCase(getCartItems.pending, (state, action) => {

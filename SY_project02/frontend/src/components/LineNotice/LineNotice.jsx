@@ -33,12 +33,9 @@ export const LineNotice = () => {
 
   return (
     <>
-      {/*라인 공지*/}
       <styled_LN.LN>
-        {/*라인 공지 왼쪽*/}
         <styled_LN.LNLeft>
           <styled_LN.LNLeftInner>
-            {/*라인 공지 왼쪽의 공지사항 및 내용*/}
             <styled_LN.LNLeftInnerDl>
               <styled_LN.LNLeftInnerLDt>
                 <styled_LN.LNLeftInnerLDtImg
@@ -46,7 +43,6 @@ export const LineNotice = () => {
                   alt={"mainPromotionBannerLeft"}
                 />
               </styled_LN.LNLeftInnerLDt>
-              {/*나중에 공지사항 생기면 dd 추가 + 움직임 이벤트 + 해당 공지사항 이동 링크*/}
               <styled_LN.LNLeftInnerLDd>
                 <styled_LN.LNLeftInnerLDUl>
                   <styled_LN.LNLeftInnerLDLi>
@@ -62,8 +58,6 @@ export const LineNotice = () => {
                 </styled_LN.LNLeftInnerLDUl>
               </styled_LN.LNLeftInnerLDd>
             </styled_LN.LNLeftInnerDl>
-            {/*라인 공지 왼쪽의 오른쪽 버튼*/}{" "}
-            {/*추후 공지사항으로 이동 링크*/}
             <styled_LN.LNLeftInnerP>
               <Link to={"/notice"}>
                 <styled_LN.LNLeftInnerPImg
@@ -73,10 +67,8 @@ export const LineNotice = () => {
               </Link>
             </styled_LN.LNLeftInnerP>
           </styled_LN.LNLeftInner>
-          {/*라인 공지 오른쪽 버튼*/}
         </styled_LN.LNLeft>
 
-        {/*라인 공지 오른쪽*/}
         <styled_LN.LNRight>
           <styled_LN.LNRightA>
             <styled_LN.LNRightAImg
@@ -85,7 +77,6 @@ export const LineNotice = () => {
             />
           </styled_LN.LNRightA>
           <styled_LN.LNRightSpan onClick={promotionToggle}>
-            {/*클릭 시 밑에 창 뜨고 닫히는 토글 버튼*/}
             {openPromotion === true ? (
               <styled_LN.LNRightSpanImg src={MLNRightToggle2} />
             ) : (
@@ -95,14 +86,11 @@ export const LineNotice = () => {
         </styled_LN.LNRight>
       </styled_LN.LN>
 
-      {/*라인 토글 버튼 클릭 시 뜨는 프로모션 창*/}
       {openPromotion === true ? (
         <styled_LN.PB>
           <styled_LN.PBInnerBox>
-            {/*프로모션 내용*/}
             <styled_LN.PBContBox>
               <styled_LN.PBCont>
-                {/*<PBCUl>*/}
                 <Slider {...settings}>
                   <styled_LN.PBCLi>
                     <Link to={"/summerEvent"}>
@@ -119,7 +107,6 @@ export const LineNotice = () => {
                     />
                   </styled_LN.PBCLi>
                 </Slider>
-                {/*</PBCUl>*/}
               </styled_LN.PBCont>
             </styled_LN.PBContBox>
           </styled_LN.PBInnerBox>

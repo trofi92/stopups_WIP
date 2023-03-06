@@ -31,7 +31,6 @@ const Event = () => {
     <styled_AB.AllBox>
       <Header />
 
-      {/*이벤트 타이틀*/}
       <styled_Notice.NTitleBox>
         <styled_Notice.NTInner>
           <styled_Notice.NTIH2>
@@ -39,15 +38,11 @@ const Event = () => {
           </styled_Notice.NTIH2>
         </styled_Notice.NTInner>
       </styled_Notice.NTitleBox>
-      {/*이벤트 전체 박스*/}
       <styled_Event.EBox>
         <styled_Event.EBPosition>
           <styled_Event.ESection>
-            {/*이벤트 종류 버튼 박스*/}
             <styled_Event.ESDiv />
-            {/*이벤트 종류 버튼*/}
             <styled_Event.ESH31>
-              {/*클릭된 이벤트 종류*/}
               {state === 1 ? (
                 <styled_Event.ESA1G
                   href={"#"}

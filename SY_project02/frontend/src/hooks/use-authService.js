@@ -1,7 +1,7 @@
 import axios from "axios";
 import { SERVER_URL } from "../utils/urls";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   setUEmail,
   setUName,
@@ -16,7 +16,6 @@ export const useFormCheck = () => {
   const formCheck = (e, regex, msg, state) => {
     regex(e);
     if (e.target.value === "" || e.target.value === undefined) {
-      console.log(msg);
       return false;
     } else {
       state(e.target.value);
@@ -28,7 +27,6 @@ export const useFormCheck = () => {
 export const useLoginService = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
 
   const loginService = (e, email, password) => {
     e.preventDefault();
@@ -51,14 +49,11 @@ export const useLoginService = () => {
             { withCredentials: true }
           )
           .then((res) => {
-            console.log("로그인 시도=>", res);
             if (res === undefined) {
               return alert(
                 "아이디 또는 비밀번호 오류입니다. 정확한 아이디 또는 비밀번호를 입력해주시길 바립니다."
               );
             }
-
-            //RTK 집어넣기
             dispatch(setUEmail(res?.data?.email));
             dispatch(setUName(res?.data?.name));
             dispatch(setUNickname(res?.data?.nickname));
@@ -69,21 +64,16 @@ export const useLoginService = () => {
             return navigate("/", { replace: true });
           });
       } catch (err) {
-        console.error(err);
-        return alert(
-          "아이디 또는 비밀번호 오류입니다. 정확한 아이디 또는 비밀번호를 입력해주시길 바립니다."
-        );
+        alert("문제가 발생했습니다. 다시 시도해주세요.");
       }
     }
   };
-  console.log(user);
   return { loginService };
 };
 
 export const useLogout = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
   const purge = async () => {
     await persistor.purge("cart", "user");
   };
@@ -100,8 +90,7 @@ export const useLogout = () => {
       await purge();
       navigate("/", { replace: true, state: null });
     } catch (error) {
-      console.error(error);
-      console.log("RTK user state =>", user);
+      alert("문제가 발생했습니다. 다시 시도해주세요.");
     }
   };
   return { logout };
@@ -125,8 +114,6 @@ export const useDelete = () => {
             data: post,
           })
           .then((res) => {
-            console.log(res.status, "-");
-
             if (res.status === 200) {
               const yes = prompt(
                 `정말 탈퇴를 원하시면 "예" 를 입력 해주세요!`
@@ -142,7 +129,6 @@ export const useDelete = () => {
             }
           });
       } catch (error) {
-        console.log(error);
         alert("올바른 비밀번호를 입력 해주세요");
       }
     }

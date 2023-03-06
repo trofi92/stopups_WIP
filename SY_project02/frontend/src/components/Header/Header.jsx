@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 const Header = () => {
-  // 모달 여닫기 true, false 값 저장용
   const [modalOpen, setModalOpen] = useState(true);
 
   const { pathname } = useLocation();
@@ -40,7 +39,6 @@ const Header = () => {
           <styled_H.HNUl>
             <styled_H.HNLi></styled_H.HNLi>
             <styled_H.HNLi>
-              {/*로그인 여부에 따라 클릭 시 이동 페이지 다르게*/}
               {user.email === "" ? (
                 <Link to={"/login"}>
                   <styled_H.HIconUser
@@ -64,8 +62,6 @@ const Header = () => {
               </Link>
             </styled_H.HNLi>
 
-            {/*숫자 1px 정도 위로 올라가면 좋겠는데 흠*/}
-            {/*장바구니 들어가면 숫자가 사라짐 원래 이렇게 만드신거면 놔두고 아니면 수정*/}
             <styled_H.HNLi>
               <Link to={"/cart"}>
                 {amount !== 0 && (

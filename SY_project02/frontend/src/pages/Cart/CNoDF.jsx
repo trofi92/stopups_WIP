@@ -17,13 +17,9 @@ import axios from "axios";
 import { API } from "../../utils/urls";
 
 export const CNoDF = () => {
-  // 체크된 아이템 담을 배열
   const [checkItems, setCheckItems] = useState([]);
-  // 전체 선택 버튼 클릭 인지 용
   const [click, setClick] = useState(false);
-  // 상품 종류
   const cart = useSelector((state) => state.cart);
-  // location 확인 용
   const user = useSelector((state) => state.user);
 
   const navigate = useNavigate();
@@ -31,7 +27,6 @@ export const CNoDF = () => {
 
   const handleAllCheck = (checked) => {
     if (checked) {
-      // 체크 시 모든 아이템을 배열에 추가
       const idArray = [];
       cart.cartItems.forEach((el) =>
         idArray.push({
@@ -43,18 +38,14 @@ export const CNoDF = () => {
       );
       setCheckItems(idArray);
     } else {
-      // 체크 해제 시 빈 배열
       setCheckItems([]);
     }
   };
 
   const handleSingleCheck = (checked, id, size, cooked, ice) => {
     if (checked) {
-      // 체크 시 체크된 아이템을 배열에 추가
       setCheckItems((prev) => [...prev, { id, size, cooked, ice }]);
     } else {
-      console.log(checkItems);
-      // 체크 해제 시 체크된 아이템을 제외한 나머지 배열
       setCheckItems(
         checkItems.filter(
           (el) =>
@@ -108,7 +99,6 @@ export const CNoDF = () => {
 
     handleTotalCalculate(checkItems);
   }, [checkItems, cart]);
-  // cart 가 없을때는 선택을 해놓고 + , - 를 누르면 total 이 변경 되지 않고 체크를 한번 풀엇다 다시 체크해야 되서 cart를 넣어서 cart 가 바뀔때마다 랜더링을 시키니까 정상 작동
 
   const onClick = () => {
     if (cart.totalAmount > 20) {
@@ -120,13 +110,10 @@ export const CNoDF = () => {
       } else {
         alert("결제 페이지로 이동합니다.");
         navigate("/payment");
-        // 선택된 제품만 redux에 남기고 나머지 삭제
-        // dispatch(saveCart(checkItems));
       }
     }
   };
 
-  // api에서 받아온 메뉴
   const [img, setImg] = useState([]);
 
   useEffect(() => {
@@ -166,7 +153,6 @@ export const CNoDF = () => {
         </styled_C.GBoxs>
       ) : (
         <styled_C.CFBoxs>
-          {/*주문 메뉴*/}
           <styled_C.CFBox>
             <styled_C.CBTitle>주문 메뉴</styled_C.CBTitle>
             <styled_C.CBTSpan>
@@ -174,7 +160,6 @@ export const CNoDF = () => {
               <styled_C.CBTSpanColor>20</styled_C.CBTSpanColor>개
             </styled_C.CBTSpan>
           </styled_C.CFBox>
-          {/*전체 선택, 선택삭제, 전체삭제*/}
           <styled_C.CFAllCheckBox>
             <styled_C.CFAllCheck>
               <styled_C.CFACInput
@@ -183,7 +168,6 @@ export const CNoDF = () => {
                 onChange={(e) => {
                   handleAllCheck(e.target.checked);
                 }}
-                // 데이터의 수와 체크된 아이템의 수가 다를 때 체크 해제
                 checked={checkItems.length === cart.cartItems.length}
               />
             </styled_C.CFAllCheck>
@@ -198,7 +182,6 @@ export const CNoDF = () => {
             </styled_C.CFCAllDelete>
           </styled_C.CFAllCheckBox>
 
-          {/*메뉴 map 사용*/}
           {cart.cartItems.map((cart) => {
             return (
               <styled_C.CFMenuBox
@@ -217,7 +200,6 @@ export const CNoDF = () => {
                         cart.ice
                       )
                     }
-                    // 체크된 아이템 배열에 해당 데이터가 있을 경우 활성화
                     checked={checkItems.some(
                       (item) =>
                         item.id === cart.id &&
@@ -227,7 +209,6 @@ export const CNoDF = () => {
                     )}
                   />
                 </styled_C.CMCheck>
-                {/*상품 이미지, 이름 등*/}
                 <styled_C.CMBox>
                   {img.map((img, idx) => {
                     if (img.ProductId === cart.id) {
@@ -287,13 +268,11 @@ export const CNoDF = () => {
                     <styled_C.CFMCountBox>
                       <styled_C.CFMCMinus
                         onClick={() => {
-                          console.log(checkItems);
                           if (cart.quantity <= 1) {
                             alert(
                               "최소 주문 가능 수량은 1개 입니다."
                             );
                           } else {
-                            console.log(checkItems);
                             dispatch(
                               decrease({
                                 id: cart.id,
@@ -316,7 +295,6 @@ export const CNoDF = () => {
                       <styled_C.CFMCPlus
                         onClick={() => {
                           if (cart.quantity >= 20) {
-                            // <- cart.totalAmount  가 20개가 넘어도 외 작동이 안하는가?
                             alert("총 주문 가능 수량은 20개 입니다.");
                           } else {
                             dispatch(
@@ -329,7 +307,6 @@ export const CNoDF = () => {
                               })
                             );
                           }
-                          // id: cart.id, size: cart.size, cooked: cart.cooked, drinkType: cart.ice,
                         }}
                       >
                         <AiOutlinePlusCircle
@@ -349,7 +326,6 @@ export const CNoDF = () => {
             );
           })}
 
-          {/*총 갯수 박스*/}
           <styled_C.CFButtonBox>
             <styled_C.CFBAmount>
               총

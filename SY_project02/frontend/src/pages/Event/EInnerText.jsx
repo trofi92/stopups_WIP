@@ -44,11 +44,9 @@ const EInnerText = () => {
                   </styled_Notice.NTIH2>
                 </styled_Notice.NTInner>
               </styled_Notice.NTitleBox>
-              {/*이벤트 전체 박스*/}
               <styled_ESummer.ESBox>
                 <styled_ESummer.ESBPosition>
                   <styled_ESummer.ESSection>
-                    {/*섹션의 헤더*/}
                     <styled_ESummer.ESSHeader>
                       <styled_ESummer.ESSHH3>
                         {event.Title}
@@ -67,40 +65,34 @@ const EInnerText = () => {
                         </styled_ESummer.ESSLi>
                       </styled_ESummer.ESSUl>
                     </styled_ESummer.ESSHeader>
-                    {/*섹션의 아티클*/}
                     <styled_ESummer.ESArticle>
                       <styled_ESummer.ESADiv>
                         <styled_ESummer.ESADiv2>
                           <styled_ESummer.ESADiv3>
-                            {/*음료*/}
                             <styled_ESummer.ESADiv4>
                               <styled_ESummer.ESADImg
                                 src={img + event.Image[1]}
                                 alt={"ESMenu"}
                               />
                             </styled_ESummer.ESADiv4>
-                            {/*디저트*/}
                             <styled_ESummer.ESADiv4>
                               <styled_ESummer.ESADImg
                                 src={img + event.Image[2]}
                                 alt={"ESDessert"}
                               />
                             </styled_ESummer.ESADiv4>
-                            {/*MD*/}
                             <styled_ESummer.ESADiv4>
                               <styled_ESummer.ESADImg
                                 src={img + event.Image[3]}
                                 alt={"ESMD"}
                               />
                             </styled_ESummer.ESADiv4>
-                            {/*블랜드*/}
                             <styled_ESummer.ESADiv4>
                               <styled_ESummer.ESADImg
                                 src={img + event.Image[4]}
                                 alt={"ESBlend"}
                               />
                             </styled_ESummer.ESADiv4>
-                            {/*카드*/}
                             <styled_ESummer.ESADiv4>
                               <styled_ESummer.ESADImg
                                 src={img + event.Image[5]}
@@ -116,7 +108,6 @@ const EInnerText = () => {
                         </styled_ESummer.ESADiv2>
                       </styled_ESummer.ESADiv>
                     </styled_ESummer.ESArticle>
-                    {/*목록 버튼*/}
                     <styled_ESummer.ESButtonBox>
                       <Link
                         to={"/event/all"}

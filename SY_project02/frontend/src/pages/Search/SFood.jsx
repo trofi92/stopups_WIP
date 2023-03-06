@@ -34,18 +34,19 @@ export const SFood = ({ result, state }) => {
 
   return (
     <styled_Search.SSection>
-      {/*푸드 헤더*/}
       <styled_Search.SSHeader>
         <styled_Search.SSHH2>푸드</styled_Search.SSHH2>
         <Link to={"/event"}>
           <styled_Search.SSHP>푸드 더보기</styled_Search.SSHP>
         </Link>
       </styled_Search.SSHeader>
-      {/*푸드 내용*/}
       <styled_Search.SSUl>
-        {searchedAllFood.length === 0 || (result === "" && state === "") ? (
+        {searchedAllFood.length === 0 ||
+        (result === "" && state === "") ? (
           <styled_Search.SSLi>
-            <styled_Search.SSLP>검색 결과가 없습니다.</styled_Search.SSLP>
+            <styled_Search.SSLP>
+              검색 결과가 없습니다.
+            </styled_Search.SSLP>
           </styled_Search.SSLi>
         ) : (
           searchedAllFood.map((food) => {
@@ -60,10 +61,16 @@ export const SFood = ({ result, state }) => {
                   </styled_Search.SDFigure>
                   <styled_Search.SDDiv>
                     <styled_Search.SEDHeader>
-                      <styled_Search.SEDHH3>{food.Name}</styled_Search.SEDHH3>
+                      <styled_Search.SEDHH3>
+                        {food.Name}
+                      </styled_Search.SEDHH3>
                     </styled_Search.SEDHeader>
-                    <styled_Search.SDDPText>{food.Desc}</styled_Search.SDDPText>
-                    <Link to={`/menu/${food.Category}/${food.ProductId}`}>
+                    <styled_Search.SDDPText>
+                      {food.Desc}
+                    </styled_Search.SDDPText>
+                    <Link
+                      to={`/menu/${food.Category}/${food.ProductId}`}
+                    >
                       <styled_Search.SEDPLink>
                         https://localhost:3000/menu/{food.Category}/
                         {food.ProductId}

@@ -33,9 +33,7 @@ export const Footer = () => {
 
   return (
     <>
-      {/*푸터*/}
       <styled_Footer.F>
-        {/*메뉴*/}
         <styled_Footer.FWrap>
           <styled_Footer.FWInner>
             <styled_Footer.FWUl>
@@ -279,7 +277,6 @@ export const Footer = () => {
           </styled_Footer.FWInner>
         </styled_Footer.FWrap>
 
-        {/*유틸 버튼*/}
         <styled_Footer.FUButton>
           <styled_Footer.FUBUl>
             <styled_Footer.FUBLi>
@@ -290,10 +287,8 @@ export const Footer = () => {
                 <styled_Footer.FUBLiP>HOME</styled_Footer.FUBLiP>
               </Link>
             </styled_Footer.FUBLi>
-            {/*로그인 여부에 버튼 다르게 나오기*/}
             {user.email === "" ? (
               <>
-                {/*로그인 X => 로그인, 회원가입 버튼*/}
                 <styled_Footer.FUBLi>
                   <Link
                     to={"/login"}
@@ -317,7 +312,6 @@ export const Footer = () => {
               </>
             ) : (
               <>
-                {/*로그인 O => 로그아웃 버튼*/}
                 <styled_Footer.FUBLi>
                   <Link
                     to={"/"}
@@ -333,7 +327,6 @@ export const Footer = () => {
           </styled_Footer.FUBUl>
         </styled_Footer.FUButton>
 
-        {/*수상 내역 => Slider 사용, 2초 간격으로 3개씩 넘어감*/}
         <styled_Footer.FAward>
           <styled_Footer.FAInner>
             <FAIDive>
@@ -356,7 +349,6 @@ export const Footer = () => {
                 <FAIDLi>
                   <FAIDLImg src={FAward7} alt={"FAward7"} />
                 </FAIDLi>
-                {/*3개씩 넘어가게 만들려고 FAward1 양 옆에 공백*/}
                 <FAIDLi>
                   <FAIDLImg />
                 </FAIDLi>
@@ -371,7 +363,6 @@ export const Footer = () => {
           </styled_Footer.FAInner>
         </styled_Footer.FAward>
 
-        {/*그외 기타*/}
         <styled_Footer.FAside>
           <Link
             to={"/serviceReady"}

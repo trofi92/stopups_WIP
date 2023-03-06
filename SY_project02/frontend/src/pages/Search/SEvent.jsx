@@ -2,16 +2,18 @@ import * as styled_Search from "../../styled/Search";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { API, IMG } from "../../utils/urls";
+import { API, IMG, CLIENT_URL } from "../../utils/urls";
 
 export const SEvent = ({ result, state }) => {
   const [allEvent, setAllEvent] = useState([]);
 
   useEffect(() => {
     const all = async () => {
-      await axios.get(`${API}&Event=ALL&Title=&EventId=`).then((res) => {
-        setAllEvent(res.data);
-      });
+      await axios
+        .get(`${API}&Event=ALL&Title=&EventId=`)
+        .then((res) => {
+          setAllEvent(res.data);
+        });
     };
     all();
   }, []);
@@ -26,22 +28,22 @@ export const SEvent = ({ result, state }) => {
 
   return (
     <styled_Search.SSection>
-      {/*이벤트 헤더*/}
       <styled_Search.SSHeader>
         <styled_Search.SSHH2>이벤트</styled_Search.SSHH2>
         <Link to={"/event"}>
           <styled_Search.SSHP>이벤트 더보기</styled_Search.SSHP>
         </Link>
       </styled_Search.SSHeader>
-      {/*이벤트 내용*/}
       <styled_Search.SSUl>
-        {searchedAllEvent.length === 0 || (result === "" && state === "") ? (
+        {searchedAllEvent.length === 0 ||
+        (result === "" && state === "") ? (
           <styled_Search.SSLi>
-            <styled_Search.SSLP>검색 결과가 없습니다.</styled_Search.SSLP>
+            <styled_Search.SSLP>
+              검색 결과가 없습니다.
+            </styled_Search.SSLP>
           </styled_Search.SSLi>
         ) : (
           searchedAllEvent.map((event) => {
-            console.log(event);
             if (event) {
               const img = `${IMG}`;
               return (
@@ -54,9 +56,13 @@ export const SEvent = ({ result, state }) => {
                   </styled_Search.SEFigure>
                   <styled_Search.SEDiv>
                     <styled_Search.SEDHeader>
-                      <styled_Search.SEDHH3>{event.Title}</styled_Search.SEDHH3>
+                      <styled_Search.SEDHH3>
+                        {event.Title}
+                      </styled_Search.SEDHH3>
                       {event.Proceed === "진행중" ? (
-                        <styled_Search.SEDHSpan>진행중</styled_Search.SEDHSpan>
+                        <styled_Search.SEDHSpan>
+                          진행중
+                        </styled_Search.SEDHSpan>
                       ) : (
                         <styled_Search.SEDHSpanEnd>
                           종료
@@ -71,7 +77,7 @@ export const SEvent = ({ result, state }) => {
                       style={{ textDecoration: "none" }}
                     >
                       <styled_Search.SEDPLink>
-                        https://localhost:3000/event/all/
+                        {`${CLIENT_URL}/event/all/`}
                         {event.EventId}
                       </styled_Search.SEDPLink>
                     </Link>

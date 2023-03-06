@@ -6,7 +6,7 @@ import MyMenu from "../../image/Favorite/MyMenu.png";
 import { FDrink } from "./FDrink";
 import { FFood } from "./FFood";
 import { FGoods } from "./FGoods";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Favorite = () => {
   const [state, setState] = useState(1);
@@ -14,10 +14,6 @@ const Favorite = () => {
   const onClick = (id) => {
     setState(id);
   };
-
-  useEffect(() => {
-    console.log();
-  }, [state]);
 
   const obj = {
     1: <FDrink />,
@@ -30,7 +26,6 @@ const Favorite = () => {
       <Header />
 
       <styled_F.FBox>
-        {/*My 메뉴의 헤더*/}
         <styled_F.FHeader>
           <styled_F.FHTitle>
             <styled_F.FHTInner>
@@ -41,16 +36,11 @@ const Favorite = () => {
           </styled_F.FHTitle>
         </styled_F.FHeader>
 
-        {/*My 메뉴의 내용*/}
         <styled_F.FContentsAllBox>
           <styled_F.FCBox>
-            {/*최근 마신 음료 안내*/}
             <styled_F.FCSection1>
-              <styled_F.FCSectionP>
-                {/*strong 3개 더 들어가야하는데 샘플이 없어서 못 만드는 중*/}
-              </styled_F.FCSectionP>
+              <styled_F.FCSectionP></styled_F.FCSectionP>
             </styled_F.FCSection1>
-            {/*찜 목록 내역*/}
             <styled_F.FCSection2>
               <div>
                 <styled_F.FCSDl>
@@ -112,7 +102,6 @@ const Favorite = () => {
                     </styled_F.FCSH5>
                   </styled_F.FCSDt3>
 
-                  {/*각 테이블*/}
                   {obj[state]}
                 </styled_F.FCSDl>
               </div>

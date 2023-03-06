@@ -17,7 +17,6 @@ export const FGoods = () => {
             <styled_F.FCDTHead1>
               <styled_F.FCDTHTr1>
                 <styled_F.FCDTHTh1>
-                  {/*체크박스 체크시 이미지 변경*/}
                   <styled_F.FCDTHThDiv1>
                     <styled_F.FCDTHThDInput1
                       type={"checkbox"}
@@ -49,7 +48,6 @@ export const FGoods = () => {
             {/*</styled_F.FCDTHTbody1>*/}
 
             <styled_F.FCDTHTbody1>
-              {/*데이터 없을 때*/}
               <styled_F.FCDTHTbodyTd1 colSpan={5}>
                 서비스 준비중입니다.
               </styled_F.FCDTHTbodyTd1>

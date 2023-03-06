@@ -14,7 +14,6 @@ const JPass = () => {
 
   const handlePhoneSubmit = (e) => {
     setNumber(e.target.phone_number.value);
-    console.log("state number", number);
     phoneSubmit(e, e.target.phone_number.value);
   };
 
@@ -39,7 +38,6 @@ const JPass = () => {
                     휴대폰 문자(SMS) 인증단계입니다.
                   </styled_Join.RFSectionP>
                   <styled_Pass.PSectionDiv>
-                    {/*번호 입력란*/}
                     <styled_Join.RFSectionStrong>
                       휴대폰번호
                     </styled_Join.RFSectionStrong>
@@ -55,7 +53,6 @@ const JPass = () => {
                       </form>
                     </styled_Pass.PInputBox>
 
-                    {/*인증번호 입력란*/}
                     <styled_Join.RFSectionStrong>
                       인증번호
                     </styled_Join.RFSectionStrong>
