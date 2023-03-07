@@ -100,7 +100,7 @@ export const useDelete = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const Delete = (e, email, password) => {
+  const Delete = async (e, email, password) => {
     e.preventDefault();
 
     if (password === "") {

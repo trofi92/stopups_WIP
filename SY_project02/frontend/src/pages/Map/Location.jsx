@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { useDebounce } from "../../hooks/use-debounce";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setULocation } from "../../features/userInfo/userInfoSlice";
 import * as styled_Map from "../../styled/Map";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -14,7 +14,6 @@ document.head.appendChild(mapScript);
 export const Location = () => {
   const { kakao } = window;
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
@@ -55,13 +54,17 @@ export const Location = () => {
     };
 
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setPosition({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-          title: "현재 위치",
-        });
-      }, geoOption);
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setPosition({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+            title: "현재 위치",
+          });
+        },
+        (e) => {},
+        geoOption
+      );
     }
     if (!map) return;
     const ps = new kakao.maps.services.Places();
@@ -72,6 +75,7 @@ export const Location = () => {
         let markers = [];
 
         for (let i = 0; i < data.length; i++) {
+          // @ts-ignore
           markers.push({
             position: {
               lat: data[i].y,
@@ -79,9 +83,11 @@ export const Location = () => {
             },
             content: data[i].place_name,
           });
+          // @ts-ignore
           bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
         setMarkers(markers);
+
         map.setBounds(bounds);
       }
     });
@@ -154,6 +160,13 @@ export const Location = () => {
           </MapMarker>
         ))}
       </Map>
+      {/*<details>*/}
+      {/*  <summary>매장 선택하기</summary>*/}
+      {/*  검색어 입력 후 나타난 지도 위의 체커를 선택한 후 버튼을*/}
+      {/*  클릭해주세요.*/}
+      {/*</details>*/}
+      {/*<input type="text" onChange={handleKeywords} />*/}
+      {/*<button onClick={handleInfo}>픽업 위치 지정</button>*/}
     </>
   );
 };
