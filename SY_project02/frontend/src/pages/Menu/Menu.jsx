@@ -511,7 +511,6 @@ const Menu = () => {
           checkedItems.has("전체 음료 보기") ? (
           <>
             {dataCategory.map((value, index) => {
-              console.log(index);
               return (
                 (value !== "전체 푸드 보기" ||
                   value !== "전체 음료 보기") && (
