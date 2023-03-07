@@ -20,54 +20,41 @@ import { decrypt } from "../../utils/crypto-front";
 import { API } from "../../utils/urls";
 
 export const Payment = () => {
-  // 주문하기 클릭 시 선택된 제품만 리덕스에 저장
   const cart = useSelector((state) => state?.cart);
-  // 쿠폰 및 할인 투글용
   const [openCoupon, setOpenCoupon] = useState(false);
-  // 구매자 이름 = 유저 닉네임
   const user = useSelector((state) => state?.user);
   const nickname = decrypt(user?.nickname);
 
   const clientKey = process.env.REACT_APP_CLIENT_KEY;
-  // payType=> 변수=> ENUM,혹은 배열로 결제 타입을 저장
   const payType = {
     easy: "간편결제",
     card: "카드",
     virtual: "가상계좌",
   };
   Object.freeze(payType);
-  //불변성 부여
 
-  // 쿠폰 및 할인 투글 버튼
   const couponToggle = () => {
     setOpenCoupon(!openCoupon);
   };
-  console.log("cart===>", cart);
-  console.log("user===>", user);
-  // 쿠폰 클릭 시 alert 호출
   const onClickReady = () => {
     alert("서비스 준비중입니다.");
   };
 
-  // 결제 요청 이벤트 발생시 호출
   const tossPay = () => {
-    //orderId가 필요해서 만든 랜덤 아이디값
     const randomId = v4();
     loadTossPayments(clientKey).then((tossPayments) => {
-      // 카드 결제 메서드 실행
       tossPayments
         .requestPayment(payType.card, {
-          amount: cart.total, // 가격
-          orderId: `${randomId}`, // 주문 id
-          orderName: `StopUps`, // 결제 이름
-          customerName: `${nickname}`, // 구매자, 구매처 이름
-          successUrl: "http://localhost:3000/success", // 성공시 리다이렉트 주소
-          failUrl: "http://localhost:3000/failed", // 실패시 리다이렉트 주소
+          amount: cart.total,
+          orderId: `${randomId}`,
+          orderName: `StopUps`,
+          customerName: `${nickname}`,
+          successUrl: "http://localhost:3000/success",
+          failUrl: "http://localhost:3000/failed",
           windowTarget: "iframe",
         })
         .catch(function (error) {
           if (error.code === "PAY_PROCESS_ABORTED") {
-            console.error(error);
           }
         });
     });
@@ -77,7 +64,6 @@ export const Payment = () => {
     tossPay();
   };
 
-  // api에서 받아온 메뉴
   const [img, setImg] = useState([]);
 
   useEffect(() => {
@@ -98,7 +84,6 @@ export const Payment = () => {
       <Header />
 
       <styled_Payment.PBox>
-        {/*결제 헤더*/}
         <styled_F.FHeader>
           <styled_F.FHTitle>
             <styled_F.FHTInner>
@@ -109,10 +94,8 @@ export const Payment = () => {
           </styled_F.FHTitle>
         </styled_F.FHeader>
 
-        {/*결제 내용*/}
         <styled_F.FContentsAllBox>
           <styled_F.FCBox>
-            {/*결제 수단*/}
             <styled_Payment.PSection1>
               <div>
                 <styled_Payment.PSTitle1>
@@ -129,7 +112,6 @@ export const Payment = () => {
                 </styled_Payment.PSDiv1>
               </div>
             </styled_Payment.PSection1>
-            {/*쿠폰 및 할인*/}
             <styled_Payment.PSection4>
               <div>
                 <styled_Payment.PSTitle4 onClick={couponToggle}>
@@ -178,7 +160,6 @@ export const Payment = () => {
                 )}
               </div>
             </styled_Payment.PSection4>
-            {/*주문 내역*/}
             <styled_Payment.PSection>
               <div>
                 <styled_Payment.PSTitle>
@@ -211,7 +192,6 @@ export const Payment = () => {
                               원
                             </styled_Payment.PSMBTSpan>
                           </styled_C.CFMTitle>
-                          {/*음료*/}
                           {cart.category === "브레드" ||
                           cart.category === "케이크" ||
                           cart.category === "샌드위치" ||
@@ -277,7 +257,6 @@ export const Payment = () => {
                 })}
               </div>
             </styled_Payment.PSection>
-            {/*금액*/}
             <styled_Payment.PSection2>
               <div>
                 <styled_Payment.PSPriceTitle>
@@ -306,7 +285,6 @@ export const Payment = () => {
                 </styled_Payment.PSTotalPriceTitle>
               </styled_Payment.PSTotalPrice>
             </styled_Payment.PSection2>
-            {/*결제하기 버튼*/}
             <styled_Payment.PSection3>
               <styled_Payment.PS3Button onClick={handleOrderClick}>
                 {cart.total

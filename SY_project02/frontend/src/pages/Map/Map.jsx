@@ -26,14 +26,11 @@ const Map = () => {
     <styled_AB.AllBox>
       <Header />
 
-      {/*지도 전체 박스*/}
       <styled_Map.MBox>
         <styled_Map.MSection>
-          {/*지도*/}
           <Location />
         </styled_Map.MSection>
 
-        {/*매장에서 진행되는 이벤트*/}
         <styled_Map.MBSection>
           <styled_Map.MBSP>매장에서 진행되는 이벤트</styled_Map.MBSP>
           <styled_Map.MBSDiv>
@@ -65,7 +62,6 @@ const Map = () => {
                 </styled_Map.MSDDLi>
               </Slider>
             </styled_Map.MSDDiv>
-            {/*이전, 다음 버튼*/}
             <styled_Map.MSButtonBox></styled_Map.MSButtonBox>
           </styled_Map.MBSDiv>
         </styled_Map.MBSection>

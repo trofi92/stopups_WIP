@@ -17,9 +17,6 @@ export const usePhoneSubmit = () => {
     const rnd_number = Math.floor(Math.random() * 8999) + 1000;
     setRnd(rnd_number.toString());
 
-    console.log(phone_number, rnd_number);
-    console.log("setRnd: ", rnd);
-
     await axios.post(SMS, {
       phone_number,
       rnd_number,

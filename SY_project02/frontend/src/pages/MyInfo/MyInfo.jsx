@@ -32,28 +32,22 @@ const MyInfo = () => {
         { withCredentials: true }
       );
       const reqData = await request.data;
-      console.log(request);
       alert(reqData.message);
       logout(e);
       return navigate("/login", { replace: true });
     } catch (error) {
-      console.error("회원정보 수정 실패 =>", error);
       alert("회원정보 수정에 실패했습니다.");
     }
   };
 
-  // setNickname에 유저 닉네임 디폴트로 넣어주기
   const [nickname, setNickname] = useState("");
   const [nicknameMsg, setNicknameMsg] = useState("");
   const nicknameValid = checkNickname(nickname);
 
-  // 인증 성공하면 여기에 true 값 넣어주기
   const [checkedNick, setCheckedNick] = useState(false);
 
-  // 로그인 되어있는 유저의 정보를 통해 폼 안에 데이터 세팅
   const user = useSelector((state) => state.user);
 
-  // MIPhoneAuth 컴포넌트의 인증 상태값을 가져옴
   const certification = location?.state?.certification;
   const telephone = location?.state?.telephone;
 
@@ -94,7 +88,6 @@ const MyInfo = () => {
     }
   };
 
-  console.log(nickname);
   return (
     <styled_AB.AllBox>
       <Header />
@@ -128,11 +121,9 @@ const MyInfo = () => {
                     </styled_MI.MIEmailInput>
                   </styled_Join.RFSectionDiv>
                 </styled_Join.RFSection>
-                {/* 문자인증분리 */}
                 <styled_Join.RFSection>
                   <MIPhoneAuth />
                 </styled_Join.RFSection>
-                {/*닉네임*/}
                 <styled_Join.RFSection>
                   <styled_Join.RFSDFigure />
                   <styled_Join.RFSDivP>
@@ -149,17 +140,14 @@ const MyInfo = () => {
                         선택적 개인정보 수집동의 및 이용약관
                       </styled_MI.MINSH5>
                       <styled_MI.MINSAgree>
-                        {/*체크 토글 버튼 만들기*/}
                         <styled_MI.MINSAgreeInput
                           type={"checkbox"}
                           onClick={onClickCheckedNick}
                           checkedNick={checkedNick}
                         />
                       </styled_MI.MINSAgree>
-                      {/*닉네임 이용약관 동의*/}
                       <NickAgree />
                     </styled_MI.MINIckSection>
-                    {/*체크박스 선택 시 입력 가능*/}
                     <styled_MI.NINInput
                       onChange={onChangeNickname}
                       placeholder={

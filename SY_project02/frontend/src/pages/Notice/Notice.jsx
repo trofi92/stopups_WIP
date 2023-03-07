@@ -40,21 +40,19 @@ const Notice = () => {
     notice();
   }, []);
 
-  const [page, setPage] = useState(1); //페이지
-  const limit = 10; // notice가 보일 최대 갯수
-  const offset = (page - 1) * limit; // 시작점과 끝점을 구하는 offset
+  const [page, setPage] = useState(1);
+  const limit = 10;
+  const offset = (page - 1) * limit;
 
   const postsData = (posts) => {
     if (posts) {
-      return posts.slice(offset, offset + limit); // 1번 페이지 0~9까지, 2번 페이지 10~19까지...
+      return posts.slice(offset, offset + limit);
     }
   };
 
   return (
     <styled_AB.AllBox>
       <Header />
-
-      {/*공지사항 타이틀*/}
       <styled_Notice.NTitleBox>
         <styled_Notice.NTInner>
           <styled_Notice.NTIH2>
@@ -62,11 +60,8 @@ const Notice = () => {
           </styled_Notice.NTIH2>
         </styled_Notice.NTInner>
       </styled_Notice.NTitleBox>
-
-      {/*공지사항*/}
       <styled_Notice.NB>
         <styled_Notice.NBPosition>
-          {/*공지사항 검색창*/}
           <styled_Notice.NInput>
             <styled_Notice.NIP>
               <styled_Notice.NIPInput
@@ -84,16 +79,13 @@ const Notice = () => {
               </styled_Notice.NIPA>
             </styled_Notice.NIP>
           </styled_Notice.NInput>
-          {/*공지사항 게시글들*/}
           <styled_Notice.NTable>
-            {/*넓이*/}
             <styled_Notice.NColgroup>
               <col width={"5.45454%"} />
               <col width={"74.5454%"} />
               <col width={"10.90909%"} />
               <col width={"*"} />
             </styled_Notice.NColgroup>
-            {/*게시글들 헤드*/}
             <styled_Notice.NThead>
               <styled_Notice.NTr>
                 <styled_Notice.NTh scope={"col"}>
@@ -110,24 +102,20 @@ const Notice = () => {
                 </styled_Notice.NTh>
               </styled_Notice.NTr>
             </styled_Notice.NThead>
-            {/*게시글들 박스*/}
             <styled_Notice.NTbody>
-              {/*각각 게시글*/}
               <NoticeInner
                 result={result}
                 notice={postsData(notice)}
               />
             </styled_Notice.NTbody>
           </styled_Notice.NTable>
-          {/*게시글 페이지*/}
           <styled_Notice.NPagination>
             <Pagination
-              limit={limit} // 한번에 뿌려질 notice의 최대 갯수 = 10개
-              page={page} // 현재 페이지
-              totalPosts={notice.length} // 데이터의 총 notice 갯수
-              setPage={setPage} // 변경될 페이지를 만들 useState 함수
+              limit={limit}
+              page={page}
+              totalPosts={notice.length}
+              setPage={setPage}
             />
-            {/*숫자*/}
           </styled_Notice.NPagination>
         </styled_Notice.NBPosition>
       </styled_Notice.NB>

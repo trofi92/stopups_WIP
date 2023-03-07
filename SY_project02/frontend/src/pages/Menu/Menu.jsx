@@ -12,13 +12,14 @@ import MenuTheme from "../../image/Menu/MenuTheme.png";
 import { API } from "../../utils/urls";
 
 const Menu = () => {
-  const [ClassificationInValid, setClassificationInValid] = useState(true);
+  const [ClassificationInValid, setClassificationInValid] =
+    useState(true);
   const [DetailBox, setDetailBox] = useState(true);
   const [smallBox, setSmallBox] = useState(false);
   const [hidden, setHidden] = useState("");
   const [categoryTheme, setCategoryThema] = useState(true);
-  const [data, setData] = useState([]); //  <- 필요없는 거 랜더링 이슈 때문에 일단 만들어 놓음
-  const [checkedItems, setCheckedItems] = useState(new Set()); //set을 만들어 has ,add 를 이용하여 체크박스안에 value , category 를 이용해서 어떤 체크박스가 선택됫는지 확인 ,식별을 할 수 있게 사용
+  const [data, setData] = useState([]);
+  const [checkedItems, setCheckedItems] = useState(new Set());
   const [dataCategory, setDataCategory] = useState([]);
   const [newInValid, setNewInValid] = useState(false);
   const [limitInValid, setLimitInValid] = useState(false);
@@ -34,7 +35,7 @@ const Menu = () => {
 
   const checkedItemHandler = (box, id, isChecked, target) => {
     if (isChecked) {
-      setData([]); // 이게 없어지면 랜더링이 안되서 실시간으로 변경이 안됨 이유를 모르겠음 밑에 setCheckedItems 도 잇는데 왜 하나를 더 사용해야 렌더링이 되는지
+      setData([]);
       checkedItems.add(id);
       setCheckedItems(checkedItems);
     } else if (!isChecked && checkedItems.has(id)) {
@@ -52,15 +53,8 @@ const Menu = () => {
 
     let p2 = [];
     const fetchData = async () => {
-      const response = await axios.get(
-        `${API}&Category=분류&Name=`
-        // {},
-        // {
-        //   withCredentials: true,
-        // }
-      );
+      const response = await axios.get(`${API}&Category=분류&Name=`);
 
-      // <- 전체 상품을 보려고 먼저 데이터에 들어오는 카테고리를 빼서 DataCategory 에 넣어준 후 이 배열을 사용해서  map 함수를 사용한다.
       if (paramsInValid) {
         p2 = ["전체 푸드 보기"];
         const filterData = response.data.filter((params) => {
@@ -87,9 +81,6 @@ const Menu = () => {
             params.Category === "샌드위치" ||
             params.Category === "따뜻한 푸드" ||
             params.Category === "샐러드"
-
-            // 왜 밑에 코드랑 같은건데 왜 다르게 출력되는거?
-            // params.Category === paramsInValid
           );
         });
 
@@ -122,44 +113,40 @@ const Menu = () => {
       setDataCategory(p2);
 
       checkedItems.add(params.Category);
-      setCheckedItems(checkedItems); // params 를 통해서 들어오는 params 를 통해서 set 안에 params 를 넣고 그걸 props 로 보내주면 만약 콜드브루 면 처음에 콜드브루가 checkedItems 에 담기게 되서 제일 처음에 콜드브루가 화면에 보이게 된다.
+      setCheckedItems(checkedItems);
     };
     fetchData();
   }, [params.Category, checkedItems]);
 
   const classificationInValidHandler = () => {
     setClassificationInValid(!ClassificationInValid);
-
-    // 화살표를 누르면 상세보기가 켜지는 함수
   };
 
   const detailBoxHandler = () => {
     setDetailBox(!DetailBox);
-  }; // 상세분류 박스가 누르면 true , false 로 밑에 박스가 출력되거나 사라지게 하는 함수
+  };
 
   const smallBoxTrueHanlder = () => {
     setSmallBox(true);
     setHidden("hidden");
-    console.log(setCheckedItems);
-  }; // 사진으로 보기 , 영양정보로 true , false 로 출력되는 화면이 달라짐
+  };
 
   const smallBoxFalseHanlder = () => {
     setSmallBox(false);
     setHidden("");
-    // 사진으로 보기 , 영양정보로 true , false 로 출력되는 화면이 달라짐
   };
 
   const checkboxHandler = () => {
     setDetailBox(false);
-  }; // 상세분류의 box 를 화면에 고정시키기 위해 만든 함수
+  };
 
   const categoryThemaTrueHandler = () => {
     setCategoryThema(true);
-  }; // thema 를 true 로 만들면 checkbox 가 보이게 된다 false 가 되면 테마 박스가 보이게 된다.
+  };
 
   const categoryThemaFalseHandler = () => {
     setCategoryThema(false);
-  }; // thema 를 true 로 만들면 checkbox 가 보이게 된다 false 가 되면 테마 박스가 보이게 된다.
+  };
 
   return (
     <AllBox>
@@ -363,9 +350,6 @@ const Menu = () => {
                     </ButtonBox>
                   </styled_Menu.ButtonBoxCotainer>
                   <styled_Menu.CheckBox none="none">
-                    {/* 처음에 none 으로 두지 않고 밑에 checkbox 를 전부 없애고 true 일때만 체크박스가 나오게 했는데 이렇게 되는경우 렌더링 때문에 issue
-                  때문에 checkbox 가 풀려서 일단은 none 으로 두고 기능을 구현을 했는데 별로 좋은코드는 아닌거 같다. 왜 그런지 정확한 이유는 모르겠다. 한번 다음에 제대로 공부를 해서
-                  더 좋은 코드로 작성을 해야한다.   */}
                     {paramsInValid
                       ? dataCategory.map((value, index) => {
                           return (
@@ -445,18 +429,27 @@ const Menu = () => {
           )}
 
           {DetailBox ? (
-            <styled_Menu.ClassificationContainer size="hidden" hidden={hidden}>
-              <styled_Menu.ClassificationBox onClick={detailBoxHandler}>
+            <styled_Menu.ClassificationContainer
+              size="hidden"
+              hidden={hidden}
+            >
+              <styled_Menu.ClassificationBox
+                onClick={detailBoxHandler}
+              >
                 상세분류
               </styled_Menu.ClassificationBox>
             </styled_Menu.ClassificationContainer>
           ) : (
             <styled_Menu.ClassificationContainer>
-              <styled_Menu.ClassificationBox onClick={detailBoxHandler}>
+              <styled_Menu.ClassificationBox
+                onClick={detailBoxHandler}
+              >
                 상세분류
               </styled_Menu.ClassificationBox>
 
-              <styled_Menu.ClassificationList onClick={checkboxHandler}>
+              <styled_Menu.ClassificationList
+                onClick={checkboxHandler}
+              >
                 <input
                   type="checkbox"
                   id="new"
@@ -474,7 +467,9 @@ const Menu = () => {
                   <span>신규 출시된 메뉴</span>{" "}
                 </label>
               </styled_Menu.ClassificationList>
-              <styled_Menu.ClassificationList onClick={checkboxHandler}>
+              <styled_Menu.ClassificationList
+                onClick={checkboxHandler}
+              >
                 <input
                   type="checkbox"
                   id="season"
@@ -505,9 +500,10 @@ const Menu = () => {
           <>
             {dataCategory.map((value, index) => {
               return (
-                (value !== "전체 음료 보기" || value !== "전체 푸드 보기") && (
+                (value !== "전체 음료 보기" ||
+                  value !== "전체 푸드 보기") && (
                   <Nutrition Category={value} key={index} />
-                ) // 전체상품보기가 api에 없기때문에 조건문을 줘서 출력이 되지 않게 함
+                )
               );
             })}
           </>
@@ -517,9 +513,10 @@ const Menu = () => {
             {dataCategory.map((value, index) => {
               console.log(index);
               return (
-                (value !== "전체 푸드 보기" || value !== "전체 음료 보기") && (
+                (value !== "전체 푸드 보기" ||
+                  value !== "전체 음료 보기") && (
                   <MenuCard Category={value} />
-                ) // 전체상품보기가 api에 없기때문에 조건문을 줘서 출력이 되지 않게 함
+                )
               );
             })}
           </>

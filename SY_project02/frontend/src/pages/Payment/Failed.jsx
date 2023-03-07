@@ -12,9 +12,7 @@ import { SERVER_URL } from "../../utils/urls";
 
 export const Failed = () => {
   const failedResponseData = async () => {
-    await axios
-      .get(`${SERVER_URL}/payment/failed`)
-      .then((res) => console.log(res));
+    await axios.get(`${SERVER_URL}/payment/failed`);
   };
 
   React.useEffect(() => {
@@ -24,12 +22,10 @@ export const Failed = () => {
   }, []);
 
   return (
-    // 결제 실패
     <styled_AB.AllBox>
       <Header />
 
       <styled_Success.SBox>
-        {/*실패 헤더*/}
         <styled_F.FHeader>
           <styled_F.FHTitle>
             <styled_F.FHTInner>
@@ -41,7 +37,6 @@ export const Failed = () => {
         </styled_F.FHeader>
 
         <styled_F.FContentsAllBox>
-          {/*결제 실패*/}
           <styled_Payment.PSection1>
             <styled_Success.STitleBox>
               <styled_Success.STitle1></styled_Success.STitle1>
@@ -53,7 +48,6 @@ export const Failed = () => {
                 주세요.
               </styled_Success.STitle3>
             </styled_Success.STitleBox>
-            {/*버튼*/}
             <styled_Success.SButtonBox>
               <Link to={"/"} style={{ textDecoration: "none" }}>
                 <styled_Success.SButton2>

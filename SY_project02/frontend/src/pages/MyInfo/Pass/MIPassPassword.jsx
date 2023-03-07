@@ -37,7 +37,6 @@ const MIPassPassword = () => {
     }
   };
 
-  // 유저 비밀번호 끌고오기!
   const submitPassword = (e) => {
     e.preventDefault();
     if (passwordRef?.current?.value === "") {
@@ -62,7 +61,6 @@ const MIPassPassword = () => {
                   비밀번호 인증단계입니다.
                 </styled_Join.RFSectionP>
                 <styled_Pass.PSectionDiv>
-                  {/*번호 입력란*/}
                   <styled_Join.RFSectionStrong>
                     비밀번호
                   </styled_Join.RFSectionStrong>

@@ -15,15 +15,15 @@ const checkEmail = (data) => {
 };
 
 const accessJwtTokenOption = {
-  maxAge: 1000 * 60 * 60 * 24 * 1, //쿠키 수명 1일
+  maxAge: 1000 * 60 * 60 * 24 * 1,
   httpOnly: true,
   overwrite: true,
-  expires: new Date(Date.now() - 1), //브라우저 종료시 즉시 삭제
+  expires: new Date(Date.now() - 1),
   secure: true,
   sameSite: "strict",
 };
 const refreshJwtTokenOption = {
-  maxAge: 1000 * 60 * 60 * 24 * 30, //쿠키 수명 1달
+  maxAge: 1000 * 60 * 60 * 24 * 30,
   httpOnly: true,
   overwrite: true,
   secure: true,

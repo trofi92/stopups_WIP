@@ -12,31 +12,22 @@ import { MainReserve } from "./MainReserve";
 export const Main = () => {
   return (
     <styled_AB.AllBox>
-      {/*헤더*/}
       <Header />
 
-      {/*여름 시즌 메뉴*/}
       <MSeason />
 
-      {/*라인 공지 + 프로모션*/}
       <LineNotice />
 
-      {/*스탑업스 리워드*/}
       <MSReword />
 
-      {/*시즌 프로모션 배너*/}
       <MSPromotionBanner />
 
-      {/*메인 리저브*/}
       <MainReserve />
 
-      {/*리저브 매거진*/}
       <MRMagazine />
 
-      {/*매장 찾기*/}
       <MainStore />
 
-      {/*푸터*/}
       <Footer />
     </styled_AB.AllBox>
   );

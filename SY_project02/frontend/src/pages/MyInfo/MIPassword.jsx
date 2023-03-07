@@ -53,7 +53,6 @@ const MIPassword = () => {
     axios.defaults.withCredentials = true;
     if (currentPassword === "") {
       alert("비밀번호를 입력해 주세요.");
-      // 이 밑에 바로 else if로 현재 비번이랑 비교
     } else if (newPassword === "") {
       alert("새 비밀번호를 입력해 주세요.");
     } else if (currentPassword === newPassword) {
@@ -63,10 +62,6 @@ const MIPassword = () => {
     } else if (newPassword !== passwordConfirm) {
       alert("비밀번호가 같지 않습니다. 다시 입력해 주세요.");
     } else {
-      console.log("비밀번호 변경 예시");
-
-      // 라우트 해주시면 주소 적기...
-      // 그것을 해드렸습니다!
       await axios
         .post(
           `${SERVER_URL}/myInfo/updatePw`,
@@ -78,13 +73,11 @@ const MIPassword = () => {
             alert(res.data.message);
             return;
           }
-          console.log(res);
           logout(e);
           alert(res.data.message);
           navigate("/", { replace: true });
         })
         .catch((error) => {
-          console.error("비밀번호 변경 실패=>", error);
           alert("비밀번호 변경이 실패했습니다. 다시 시도해 주세요.");
         });
     }
@@ -119,8 +112,6 @@ const MIPassword = () => {
                     <styled_Join.RFSectionStrong>
                       현재 비밀번호
                     </styled_Join.RFSectionStrong>
-                    {/*비밀번호를 입력하지 않은 경우 표시*/}
-                    {/*현재 비밀번호와 같지 않을 경우 표시*/}
                     <styled_Join.RFSDInput
                       type={"password"}
                       id={"currentPassword"}
@@ -154,7 +145,6 @@ const MIPassword = () => {
                       onChange={handlePasswordChangeConfirm}
                       required
                     />
-                    {/*일치할 경우 "비밀번호가 일치합니다" 여기에 뜨게 만들기*/}
                   </styled_MIP.MIPDiv>
                 </styled_Join.RFSection>
               </styled_LOG.LFFFieldset>

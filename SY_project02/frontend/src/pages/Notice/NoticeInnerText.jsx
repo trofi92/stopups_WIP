@@ -28,12 +28,9 @@ const NoticeInnerText = () => {
     notice();
   }, []);
 
-  console.log(notices);
-
   return (
     <styled_AB.AllBox>
       <Header />
-      {/*공지사항 타이틀*/}
       <styled_Notice.NTitleBox>
         <styled_Notice.NTInner>
           <styled_Notice.NTIH2>
@@ -42,16 +39,12 @@ const NoticeInnerText = () => {
         </styled_Notice.NTInner>
       </styled_Notice.NTitleBox>
 
-      {/*공지사항 내용*/}
       {notices.map((notice, idx) => {
-        // 주소랑 notice.Num이 같은 경우만 출력
         if (location.pathname === `/notice/${notice.Num}`) {
           return (
             <styled_NoticeIT.NITBox key={idx}>
               <styled_NoticeIT.NITInnerBox>
-                {/*본문*/}
                 <styled_NoticeIT.NITSection>
-                  {/*제목*/}
                   <styled_NoticeIT.NITHeader>
                     <styled_NoticeIT.NITH3>
                       {notice.Title}
@@ -66,10 +59,8 @@ const NoticeInnerText = () => {
                       </styled_NoticeIT.NITLi>
                     </styled_NoticeIT.NITUl>
                   </styled_NoticeIT.NITHeader>
-                  {/*본문 내용*/}
                   <styled_NoticeIT.NITArticle>
                     <styled_NoticeIT.NITAInner>
-                      {/*한 줄씩 받아와서 적기*/}
                       <styled_NoticeIT.NITAP>
                         <styled_NoticeIT.NITASpan>
                           {notice.Desc}
@@ -77,7 +68,6 @@ const NoticeInnerText = () => {
                       </styled_NoticeIT.NITAP>
                     </styled_NoticeIT.NITAInner>
                   </styled_NoticeIT.NITArticle>
-                  {/*목록 버튼*/}
                   <styled_NoticeIT.NITButtonBox>
                     <Link to={"/notice"}>
                       <styled_NoticeIT.NITButton>
@@ -86,8 +76,6 @@ const NoticeInnerText = () => {
                     </Link>
                   </styled_NoticeIT.NITButtonBox>
                 </styled_NoticeIT.NITSection>
-
-                {/*윗글, 아랫글*/}
                 <styled_NoticeIT.NITTable>
                   <colgroup>
                     <col width={"18.181818%"} />

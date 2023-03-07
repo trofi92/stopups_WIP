@@ -1,7 +1,6 @@
 import * as styled_AB from "../../styled/AllBox";
 import * as styled_BU from "../../styled/Button";
 import * as styled_LOG from "../../styled/Login/Login";
-
 import { useState } from "react";
 import Header from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
@@ -13,12 +12,8 @@ import { NotFound } from "../NotFound";
 const UserDelete = () => {
   const user = useSelector((state) => state.user);
   const { Delete } = useDelete();
-
   const [password, setPassword] = useState("");
-
   const { formCheck } = useFormCheck();
-
-  // 체크박스
 
   const handlePasswordChange = (e) => {
     formCheck(
@@ -31,7 +26,6 @@ const UserDelete = () => {
 
   const submitIdPassword = (e) => {
     Delete(e, user.email, password);
-    console.log(user.email);
   };
 
   return (
@@ -40,19 +34,14 @@ const UserDelete = () => {
         <styled_AB.AllBox>
           <Header />
 
-          {/*로그인 전체 박스*/}
           <styled_LOG.LB>
-            {/*로그인 정렬*/}
             <styled_LOG.LFB>
-              {/*로그인 안쪽 정렬*/}
               <styled_LOG.LFInner>
-                {/*전체 폼*/}
                 <form onSubmit={(e) => e.preventDefault()}>
                   <styled_LOG.LFFFieldset>
                     <styled_LOG.LFFFStrong>
                       회원 탈퇴
                     </styled_LOG.LFFFStrong>
-                    {/*로그인 폼*/}
                     <styled_LOG.LFFFSection>
                       <styled_LOG.LFP>
                         <styled_LOG.LEPBr />
@@ -61,7 +50,6 @@ const UserDelete = () => {
                           해주세요!
                         </styled_LOG.LEPSpan>
                       </styled_LOG.LFP>
-                      {/*input 박스*/}
                       <styled_LOG.LFInputBox>
                         <styled_LOG.LFInput
                           type={"password"}
@@ -82,7 +70,6 @@ const UserDelete = () => {
                           <br />
                         </styled_LOG.LFText>
                       </styled_LOG.LFInputBox>
-                      {/* 버튼 */}
                     </styled_LOG.LFFFSection>
                   </styled_LOG.LFFFieldset>
                 </form>

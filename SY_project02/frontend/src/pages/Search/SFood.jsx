@@ -2,7 +2,7 @@ import * as styled_Search from "../../styled/Search";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { API } from "../../utils/urls";
+import { API, CLIENT_URL } from "../../utils/urls";
 
 export const SFood = ({ result, state }) => {
   const [allFood, setAllFood] = useState([]);
@@ -69,12 +69,9 @@ export const SFood = ({ result, state }) => {
                       {food.Desc}
                     </styled_Search.SDDPText>
                     <Link
-                      to={`/menu/${food.Category}/${food.ProductId}`}
+                      to={`${CLIENT_URL}/menu/${food.Category}/${food.ProductId}`}
                     >
-                      <styled_Search.SEDPLink>
-                        https://localhost:3000/menu/{food.Category}/
-                        {food.ProductId}
-                      </styled_Search.SEDPLink>
+                      <styled_Search.SEDPLink></styled_Search.SEDPLink>
                     </Link>
                   </styled_Search.SDDiv>
                 </styled_Search.SSLi>

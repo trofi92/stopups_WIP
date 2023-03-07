@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useState, useRef } from "react"; // 상태 값 저장
-import { useNavigate } from "react-router-dom"; // 페이지 리렌더링 용도
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import * as styled_AB from "../../../styled/AllBox";
 import Header from "../../../components/Header/Header";
 import { Footer } from "../../../components/Footer/Footer";
@@ -16,32 +16,28 @@ import { checkEmail } from "../../../components/Join/JoinRegex";
 
 const LIdPass = () => {
   const [telephone, setTelephone] = useState("");
-  const [authForm, setAuthForm] = useState(false); // 인증 상태 값 저장
+  const [authForm, setAuthForm] = useState(false);
   const [responseEmail, setResponseEmail] = useState("");
-  const [rndNum, setRndNum] = useState(""); // 임의의 비밀번호 4자리 값 저장
+  const [rndNum, setRndNum] = useState("");
 
   const emailRef = useRef();
   const reqEmailRef = emailRef?.current?.value;
-  console.log("request email==>", reqEmailRef);
 
   const { phoneSubmit, rnd } = usePhoneSubmit();
   const { smsSubmit } = useSmsSubmit(rnd, telephone, null);
 
   const navigate = useNavigate();
 
-  //서버 요청
   const requestCheckPhoneNumber = async () => {
     if (reqEmailRef === "" || !checkEmail(reqEmailRef)) {
       return alert("이메일을 확인해주세요.");
     }
     const request = await axios
-      .post(
-        `${SERVER_URL}/myInfo/updatePwWithEmail`,
-        { email: reqEmailRef, phoneNumber: telephone }
-        // { withCredentials: true }
-      )
+      .post(`${SERVER_URL}/myInfo/updatePwWithEmail`, {
+        email: reqEmailRef,
+        phoneNumber: telephone,
+      })
       .catch((error) => {
-        console.error(error);
         alert(
           "알 수 없는 에러가 발생했습니다. 메인 화면으로 이동합니다"
         );
@@ -57,7 +53,6 @@ const LIdPass = () => {
       return navigate("/", { replace: true, state: null });
     }
     setResponseEmail(resData);
-    console.log("responseEmail==>", responseEmail);
     return navigate("/findPw", {
       state: {
         email: resData.email,
@@ -68,17 +63,13 @@ const LIdPass = () => {
   };
 
   const handlePhoneSubmit = async (e) => {
-    // SMS 인증요청
     e.preventDefault();
     if (telephone === "") {
       return alert("휴대전화 번호를 입력해 주세요.");
     }
     phoneSubmit(e, telephone);
   };
-  console.log("state number =>", telephone);
-  console.log("rnd ref =>", rndNum);
 
-  //인증번호 확인
   const handleSmsSubmit = (e) => {
     e.preventDefault();
     smsSubmit(e, rndNum);

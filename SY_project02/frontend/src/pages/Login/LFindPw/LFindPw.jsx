@@ -18,19 +18,13 @@ const LFindPw = () => {
   const [passwordConfirm, setPasswordConfirm] = React.useState("");
   const navigate = useNavigate();
 
-  //서버 요청
   const modifyPassword = async () => {
     const request = await axios
-      .post(
-        `${SERVER_URL}/myInfo/forgetAndModifyPw`,
-        {
-          email: location.state.email,
-          password: password,
-        }
-        // { withCredentials: true }
-      )
+      .post(`${SERVER_URL}/myInfo/forgetAndModifyPw`, {
+        email: location.state.email,
+        password: password,
+      })
       .catch((error) => {
-        console.error(error);
         alert(
           "알 수 없는 에러가 발생했습니다. 메인 화면으로 이동합니다"
         );
@@ -58,7 +52,6 @@ const LFindPw = () => {
   };
 
   const location = useLocation();
-  console.log(location);
 
   return (
     <styled_AB.AllBox>
@@ -87,7 +80,6 @@ const LFindPw = () => {
                     </styled_LFId.LFIDSpan>
                   </styled_LFId.LFIDP>
                 </styled_LFId.LFIDDiv>
-                {/*새 비밀번호*/}
                 <styled_LFPw.LFPDiv>
                   <label>
                     <styled_LFPw.LFPDStrong>
@@ -100,13 +92,11 @@ const LFindPw = () => {
                     placeholder={"비밀번호를 입력해 주세요."}
                     required
                   />
-                  {/*비밀번호 양식 틀릴 경우 보이게 만들기*/}
                   <styled_LFPw.LFPDP>
                     영문/숫자/특수기호를 혼합하여 8자리 이상 16자리
                     이하로 입력하세요.
                   </styled_LFPw.LFPDP>
                 </styled_LFPw.LFPDiv>
-                {/*새 비밀번호 확인*/}
                 <styled_LFPw.LFPDiv>
                   <label>
                     <styled_LFPw.LFPDStrong>
@@ -123,12 +113,10 @@ const LFindPw = () => {
                     }
                     required
                   />
-                  {/*비밀번호와 같지 않을 경우 보이게 만들기*/}
                   <styled_LFPw.LFPDP>
                     일치하지 않습니다.
                   </styled_LFPw.LFPDP>
                 </styled_LFPw.LFPDiv>
-                {/*안전한 비밀번호 만들기*/}
                 <styled_LFPw.LFPSafe>
                   <styled_LFPw.LEPSStrong>
                     안전한 비밀번호 만들기
@@ -153,14 +141,11 @@ const LFindPw = () => {
                   </styled_LFPw.LEPSUl>
                 </styled_LFPw.LFPSafe>
               </styled_Join.RFSection>
-              {/*취소, 확인 버튼*/}
               <styled_LFPw.LEPBtnBox>
                 <styled_LFPw.LEPSUl>
-                  {/*취소*/}
                   <styled_LFPw.LEPBtn1>
                     <styled_LFPw.LEPBtn1P>취소</styled_LFPw.LEPBtn1P>
                   </styled_LFPw.LEPBtn1>
-                  {/*비밀번호 변경 후 확인 alert("비밀번호가 변경되었습니다")*/}
                   <styled_LFPw.LEPBtn2>
                     <styled_LFPw.LEPBtn1P
                       onClick={(e) => handlePasswordModify(e)}

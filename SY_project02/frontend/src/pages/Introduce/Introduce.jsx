@@ -11,7 +11,6 @@ const Introduce = () => {
       <Header />
 
       <styled_Intro.IBox>
-        {/*헤더*/}
         <styled_F.FHeader>
           <styled_Intro.IBTitle>
             <styled_F.FHTInner>

@@ -13,7 +13,6 @@ const MenuCard = (props) => {
         `${API}&Category=${props.Category}&Name=`
       );
       setData(response.data);
-      console.log(props, response.data, data.length);
     };
     fetchData();
   }, [props.Category]);
@@ -37,14 +36,18 @@ const MenuCard = (props) => {
               {data.map((value, index) => {
                 return (
                   <styled_Menu.CardContainer key={index}>
-                    <Link to={`/menu/${value.Category}/${value.ProductId}`}>
+                    <Link
+                      to={`/menu/${value.Category}/${value.ProductId}`}
+                    >
                       <styled_Menu.Card
                         url={value.Image}
                         productId={value.ProductId}
                         category={value.category}
                       />
                     </Link>
-                    <styled_Menu.CardText>{value.Name}</styled_Menu.CardText>
+                    <styled_Menu.CardText>
+                      {value.Name}
+                    </styled_Menu.CardText>
                   </styled_Menu.CardContainer>
                 );
               })}
@@ -60,7 +63,9 @@ const MenuCard = (props) => {
                 src="//image.istarbucks.co.kr/common/img/menu/logo_decaf.png"
                 alt=""
               />
-              <span>디카페인 에스프레소 샷 추가 가능(일부 음료 제외)</span>
+              <span>
+                디카페인 에스프레소 샷 추가 가능(일부 음료 제외)
+              </span>
             </styled_Menu.ColorBox>
           )}
           {data.length !== 0 && (
@@ -68,14 +73,18 @@ const MenuCard = (props) => {
               {data.map((value, index) => {
                 return (
                   <styled_Menu.CardContainer key={index}>
-                    <Link to={`/menu/${value.Category}/${value.ProductId}`}>
+                    <Link
+                      to={`/menu/${value.Category}/${value.ProductId}`}
+                    >
                       <styled_Menu.Card
                         url={value.Image}
                         productId={value.ProductId}
                         category={value.category}
                       />
                     </Link>
-                    <styled_Menu.CardText>{value.Name}</styled_Menu.CardText>
+                    <styled_Menu.CardText>
+                      {value.Name}
+                    </styled_Menu.CardText>
                   </styled_Menu.CardContainer>
                 );
               })}

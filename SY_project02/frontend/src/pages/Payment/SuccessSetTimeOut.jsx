@@ -63,10 +63,8 @@ export const SuccessSetTimeOut = () => {
         주문 승인 즉시 메뉴 준비가 시작됩니다. 완성 후, 빠르게 픽업해
         주세요.
       </styled_Success.STitle3>
-      {/*결제 완료, 주문 요청, 주문 승인, 준비 완료*/}
       <styled_Success.STitle4>
         <styled_Success.STestFlex>
-          {/*일정 시간 지남에 따라 바뀌게*/}
           <styled_Success.STF2>
             {text1 === true ? (
               <styled_Success.STest2>결제 완료</styled_Success.STest2>

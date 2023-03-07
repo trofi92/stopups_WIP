@@ -44,7 +44,6 @@ const order = async (req, res, next) => {
 
 const orderedItems = async (req, res, next) => {
   const reqData = req?.body;
-  console.log("orderId ====>", reqData?.orderId);
   try {
     const orderedItemsList = await OrderItem.findAll({
       include: [

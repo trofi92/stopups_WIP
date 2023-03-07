@@ -7,8 +7,6 @@ const payments = async (req, res, next) => {
   const reqEmail = req?.body?.email;
   const user = await User.findUser(reqEmail);
 
-  console.log("payments req data=====> ", reqData);
-
   try {
     const orderList = await Order.findAll({
       where: { userId: user?.id },
@@ -77,7 +75,6 @@ const success = async (req, res, next) => {
 };
 
 const failed = async (req, res, next) => {
-  console.log("결제 실패");
   return res.json({
     message: req?.query?.message,
     code: req?.query?.code,

@@ -10,7 +10,6 @@ import { ESCard } from "./ESCard";
 import { ESReward } from "./ESReward";
 import { EOnline } from "./EOnline";
 
-// axios.defaults.headers["Access-Control-Allow-Origin"] = "*";
 axios.defaults.withCredentials = false;
 
 const Event = () => {

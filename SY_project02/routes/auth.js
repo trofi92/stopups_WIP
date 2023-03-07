@@ -5,7 +5,6 @@ const {
   logout,
   checkDuplication,
 } = require("../controllers/auth");
-const authJwt = require("../middlewares/authJwt");
 
 const router = express.Router();
 

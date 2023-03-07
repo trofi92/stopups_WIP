@@ -9,7 +9,6 @@ import { Footer } from "../../../components/Footer/Footer";
 
 const LFindId = () => {
   const location = useLocation();
-  console.log(location);
   return (
     <styled_AB.AllBox>
       <Header />

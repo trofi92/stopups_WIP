@@ -24,9 +24,6 @@ export const MIPhoneAuth = () => {
     phoneSubmit(e, telephone);
   };
 
-  console.log("state number =>", phoneRef);
-  console.log("rnd ref =>", rndNum);
-
   const handleSmsSubmit = (e) => {
     document.getElementById("au_number").value = "";
     if (!rnd || rnd !== rndNum) {

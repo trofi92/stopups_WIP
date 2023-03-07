@@ -8,13 +8,11 @@ export const getCartItems = createAsyncThunk(
   "cart/getCartItems",
   async (_, thunkAPI) => {
     try {
-      console.log(thunkAPI);
       const response = await axios(url);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        "문제가 발생했습니다. 다시 시도해주세요.",
-        console.error(error)
+        "문제가 발생했습니다. 다시 시도해주세요."
       );
     }
   }
@@ -36,7 +34,6 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      console.log(state.cartItems);
       const itemInCarts = state.cartItems.find(
         (item) =>
           item.id === action.payload.id &&
@@ -64,8 +61,6 @@ const cartSlice = createSlice({
     },
     removeFromCart(state, action) {
       const itemIds = action.payload;
-      console.log(action.payload, "removeFromCart");
-
       state.cartItems = state.cartItems.filter(
         (item) =>
           !itemIds.find(

@@ -22,13 +22,10 @@ const Login = () => {
   const { loginService } = useLoginService();
   const { formCheck } = useFormCheck();
 
-  // 체크박스
   const onClickCheckedEmail = () => {
     setCheck(!check);
-    console.log("check=>", check);
   };
 
-  // 아이디 저장 체크 시 아이디 및 체크 state 저장
   useEffect(() => {
     if (email !== "") {
       if (check === true) {
@@ -69,24 +66,18 @@ const Login = () => {
     <styled_AB.AllBox>
       <Header />
 
-      {/*로그인 전체 박스*/}
       <styled_LOG.LB>
-        {/*로그인 정렬*/}
         <styled_LOG.LFB>
-          {/*로그인 안쪽 정렬*/}
           <styled_LOG.LFInner>
-            {/*전체 폼*/}
             <form onSubmit={(e) => e.preventDefault()}>
               <styled_LOG.LFFFieldset>
                 <styled_LOG.LFFFStrong>로그인</styled_LOG.LFFFStrong>
-                {/*로그인 폼*/}
                 <styled_LOG.LFFFSection>
                   <styled_LOG.LFP>
                     <styled_LOG.LEPSpan>Welcome!</styled_LOG.LEPSpan>
                     <styled_LOG.LEPBr />
                     &nbsp; 스타벅스 코리아에 오신 것을 환영합니다.
                   </styled_LOG.LFP>
-                  {/*input 박스*/}
                   <styled_LOG.LFInputBox>
                     <styled_LOG.LFInput
                       type={"email"}
@@ -103,7 +94,6 @@ const Login = () => {
                       required
                     />
                     <styled_LOG.LFIdCheck>
-                      {/*아이디 저장 체크박스 클릭시 background 이미지 토글 + 토글 이벤트 재사용*/}
                       <styled_LOG.LFICInput
                         type={"checkbox"}
                         onClick={onClickCheckedEmail}
@@ -125,7 +115,6 @@ const Login = () => {
                       Safari 브라우저에 최적화 되어있습니다.
                     </styled_LOG.LFText>
                   </styled_LOG.LFInputBox>
-                  {/* 버튼 */}
                   <styled_LOG.LFButtonBox>
                     <styled_LOG.LFBUl>
                       <styled_LOG.LFBLi>

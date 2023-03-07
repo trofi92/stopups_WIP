@@ -1,7 +1,6 @@
 const { User } = require("../models");
 const { decrypt, encrypt } = require("../middlewares/crypto");
 
-//비밀번호 변경하기(휴대전화 인증 후 접근)
 const updatePw = async (req, res, next) => {
   const encryptedEmail = req?.body?.data?.encryptedEmail;
   const clientPassword = req?.body?.data?.currentPassword;
@@ -9,9 +8,6 @@ const updatePw = async (req, res, next) => {
 
   const user = await User.findUser(encryptedEmail);
   const userPw = decrypt(user?.password);
-
-  console.log(clientPassword);
-  console.log(userPw);
 
   if (userPw !== clientPassword) {
     return res.status(200).json({
@@ -28,7 +24,6 @@ const updatePw = async (req, res, next) => {
   });
 };
 
-//비밀번호 변경(이메일 && 전화번호 입력 후 변경 폼 접근)
 const updatePwWithEmail = async (req, res, next) => {
   const reqData = req?.body;
   const findAllUser = await User.findAll({
@@ -38,7 +33,6 @@ const updatePwWithEmail = async (req, res, next) => {
     (user) => reqData.email === decrypt(user?.email)
   );
 
-  //예외 처리
   if (
     !findOneUser ||
     findOneUser === undefined ||
@@ -55,11 +49,9 @@ const updatePwWithEmail = async (req, res, next) => {
     });
 };
 
-//비밀번호 변경(변경 요청 처리)
 const forgetAndModifyPw = async (req, res, next) => {
   const reqData = req?.body;
   const user = await User.findUser(reqData?.email);
-  console.log(user);
   if (!user)
     return res.status(404).json({
       message: "존재하지 않는 유저입니다",
@@ -76,9 +68,7 @@ const forgetAndModifyPw = async (req, res, next) => {
   });
 };
 
-//연락처, 닉네임 변경하기
 const updatePhoneAndNickname = async (res, req, next) => {
-  console.log(res?.body);
   const encryptedEmail = res?.body?.data?.email;
   const newTelephone = res?.body?.data?.telephone;
   const newNickname = res?.body?.data?.nickname;
@@ -105,12 +95,9 @@ const updatePhoneAndNickname = async (res, req, next) => {
   }
 };
 
-//비밀번호로 인증하기
 const passwordAuth = async (req, res, next) => {
   const data = req?.body;
   const user = await User.findUser(data?.email);
-  console.log(data);
-  console.log(decrypt(user.password));
   try {
     if (decrypt(user.password) !== data?.password) {
       return res.status(401).json({
@@ -129,19 +116,14 @@ const passwordAuth = async (req, res, next) => {
   }
 };
 
-//아이디 찾기
 const findEmailByPhoneNumber = async (req, res, next) => {
-  //요청 데이터
   const reqData = req?.body;
-  //유저 데이터 가져오기
   const findAllPhoneNumber = await User.findAll({
     attributes: ["email", "telephone"],
   });
-  //유저 데이터 찾기
   const phoneNumber = findAllPhoneNumber.find(
     (user) => reqData.phoneNumber === decrypt(user?.telephone)
   );
-  //예외 처리
   if (!phoneNumber || undefined || null)
     return res.status(401).json({
       message:
@@ -154,11 +136,8 @@ const findEmailByPhoneNumber = async (req, res, next) => {
     });
 };
 
-//회원탈퇴
 const deleteUser = async (req, res, next) => {
   const { email, password } = req?.body?.data;
-  console.log(decrypt(email), "email", password);
-
   try {
     const users = await User.findAll({
       attributes: ["email", "password"],
@@ -174,8 +153,8 @@ const deleteUser = async (req, res, next) => {
         where: { email: user.email },
       });
     }
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
     return res
       .status(500)
       .json({ message: "알 수 없는 문제가 발생했습니다." });

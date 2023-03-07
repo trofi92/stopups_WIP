@@ -17,7 +17,6 @@ module.exports = class Order extends Sequelize.Model {
           allowNull: true,
         },
         total: {
-          //총 결제 금액
           type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
         },
@@ -48,8 +47,5 @@ module.exports = class Order extends Sequelize.Model {
       onDelete: "cascade",
       onUpdate: "cascade",
     });
-    // db.Order.belongsToMany(db.Payment, {
-    //   through: "checkouts",
-    // });
   }
 };

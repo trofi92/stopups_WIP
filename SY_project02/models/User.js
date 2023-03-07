@@ -21,33 +21,33 @@ module.exports = class User extends Sequelize.Model {
     return super.init(
       {
         email: {
-          type: Sequelize.STRING(1000), //500
+          type: Sequelize.STRING(1000),
           allowNull: true,
           unique: true,
         },
         name: {
-          type: Sequelize.STRING(1000), //100
+          type: Sequelize.STRING(1000),
           allowNull: true,
         },
         nickname: {
-          type: Sequelize.STRING(1500), //15
+          type: Sequelize.STRING(1500),
           allowNull: false,
         },
         provider: {
-          type: Sequelize.STRING(1000), //10
+          type: Sequelize.STRING(1000),
           allowNull: true,
           defaultValue: "local",
         },
         snsId: {
-          type: Sequelize.STRING(3000), //30
+          type: Sequelize.STRING(3000),
           allowNull: true,
         },
         password: {
-          type: Sequelize.STRING(1000), //500
+          type: Sequelize.STRING(1000),
           allowNull: true,
         },
         telephone: {
-          type: Sequelize.STRING(1300), //13
+          type: Sequelize.STRING(1300),
           allowNull: true,
         },
       },

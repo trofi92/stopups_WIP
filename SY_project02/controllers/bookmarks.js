@@ -1,6 +1,5 @@
 const { User, Bookmark, Product } = require("../models");
 
-//에러 일괄처리
 const errorHandler = (data) => {
   if (!data) {
     return res
@@ -9,7 +8,6 @@ const errorHandler = (data) => {
   }
 };
 
-//찜목록에 상품 추가
 const addBookmarks = async (req, res, next) => {
   const data = req?.body?.data;
   errorHandler(res, data);
@@ -20,8 +18,6 @@ const addBookmarks = async (req, res, next) => {
   const findProductId = await Product.findOne({
     where: { pId: data?.pId },
   });
-  console.log("========data=======>", data);
-  console.log("====find====>", findProductId);
 
   const pId = findProductId?.id;
   const category = data.category;
@@ -38,8 +34,6 @@ const addBookmarks = async (req, res, next) => {
       where: {
         userId: userId,
         productId: pId,
-        // price: price,
-        // cookType: cookType,
       },
       defaults: {
         userId: userId,
@@ -62,13 +56,11 @@ const addBookmarks = async (req, res, next) => {
   });
 };
 
-//찜목록 확인 및 전송
 const sendBookmarks = async (req, res, next) => {
   const data = req?.body?.data;
   const reqUser = data.email;
   const user = await User.findUser(reqUser);
   const userId = user?.dataValues?.id;
-  console.log(data);
 
   try {
     errorHandler(res, data);
@@ -82,9 +74,6 @@ const sendBookmarks = async (req, res, next) => {
       where: { userId: userId },
     });
 
-    console.log(1);
-    console.log(bookmarkedProducts);
-
     return res.status(200).json({ bookmarkedProducts });
   } catch (error) {
     console.error(error);
@@ -92,14 +81,11 @@ const sendBookmarks = async (req, res, next) => {
   }
 };
 
-//찜목록 아이템 삭제
 const deleteBookmarks = async (req, res, next) => {
   const data = req?.body?.data;
   const email = data?.email;
   const items = data?.items;
   const user = await User.findUser(email);
-  console.log(data);
-  console.log("uid ==>", user.id, "pid ==>", items);
 
   try {
     errorHandler(res, data);

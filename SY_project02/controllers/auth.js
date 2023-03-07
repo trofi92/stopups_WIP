@@ -10,7 +10,6 @@ const {
   refreshJwtTokenOption,
 } = require("./auth-options");
 
-//로그인
 const login = async (req, res, next) => {
   const { email, password } = req.body.data;
 
@@ -65,20 +64,16 @@ const login = async (req, res, next) => {
       nickname: user.nickname,
       telephone: user.telephone,
     });
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
   }
 };
 
-//로그아웃
 const logout = async (req, res, next) => {
   try {
     await res.cookie("accessJwtToken", "", {
       maxAge: 0,
     });
-    // await res.cookie("refreshJwtToken", "", {
-    //   maxAge: 0,
-    // });
     return res.status(200).json({
       message: "정상적으로 로그아웃 되었습니다.",
     });
@@ -90,11 +85,8 @@ const logout = async (req, res, next) => {
   }
 };
 
-//가입정보 중복체크
 const checkDuplication = async (req, res, next) => {
-  //요청 데이터
   const reqData = req?.body;
-  //응답 메시지
   const messageResponse = (data, msg) => {
     if (!data || undefined || null)
       return res.status(200).json({
@@ -106,7 +98,6 @@ const checkDuplication = async (req, res, next) => {
         .json({ message: `이미 존재하는 ${msg} 입니다.` });
   };
 
-  //이메일 중복
   if (checkEmail(reqData?.email)) {
     const findAllUsers = await User.findAll({
       attributes: ["email"],
@@ -117,7 +108,6 @@ const checkDuplication = async (req, res, next) => {
     );
     messageResponse(user, "이메일");
   }
-  //휴대전화 번호 중복
   if (checkPhone(reqData?.phoneNumber)) {
     const findAllPhoneNumber = await User.findAll({
       attributes: ["telephone"],
@@ -129,7 +119,6 @@ const checkDuplication = async (req, res, next) => {
     messageResponse(phoneNumber, "연락처");
   }
 
-  //닉네임 중복
   if (checkNickname(reqData?.nickname)) {
     const findAllNickname = await User.findAll({
       attributes: ["nickname"],

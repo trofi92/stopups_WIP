@@ -34,9 +34,7 @@ const authJwt = async (req, res, next) => {
       });
     }
 
-    //재발급
     const now = Math.floor(Date.now() / 1000);
-    // 1주일의 유효기간을 지닌 새로운 쿠키 발급
     if (decoded.exp - now < 60 * 60 && refreshToken) {
       const decodedRefresh = jwt.verify(refreshToken, jwtSecret);
       console.log(decodedRefresh);
