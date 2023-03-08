@@ -390,7 +390,7 @@ const Menu = () => {
                 onClick={smallBoxFalseHanlder}
                 backgroundColor="#fff"
                 color="#666"
-                width="69"
+                width="80px"
               >
                 사진으로 보기
               </styled_Menu.SmallBox>
@@ -399,7 +399,8 @@ const Menu = () => {
                 onClick={smallBoxTrueHanlder}
                 backgroundColor="#666"
                 color="#fff"
-                width="80"
+                width="80px"
+                fontSize="1px"
               >
                 영양정보로 보기
               </styled_Menu.SmallBox>
@@ -412,7 +413,7 @@ const Menu = () => {
                 backgroundColor="#666"
                 color="#fff"
                 underline="underline"
-                width="69"
+                width="80px"
               >
                 사진으로 보기
               </styled_Menu.SmallBox>
@@ -421,7 +422,7 @@ const Menu = () => {
                 onClick={smallBoxTrueHanlder}
                 backgroundColor="#fff"
                 color="#666"
-                width="80"
+                width="80px"
               >
                 영양정보로 보기
               </styled_Menu.SmallBox>

@@ -116,6 +116,7 @@ function App() {
               <Route path={"/joinAgree"} element={<JoinAgree />} />
               <Route path={"/joinPass"} element={<JPass />} />
               <Route path={"/join"} element={<Join />} />
+              <Route path={"/menu/:Category"} element={<Menu />} />
               <Route
                 path={"/joinSuccess"}
                 element={<JoinSuccess />}
