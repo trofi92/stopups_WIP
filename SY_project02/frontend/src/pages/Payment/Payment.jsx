@@ -17,7 +17,7 @@ import PaymentCoupon from "../../image/Payment/PaymentCoupon.png";
 import PaymentGift from "../../image/Payment/PaymentGift.png";
 import PaymentPhone from "../../image/Payment/PaymentPhone.png";
 import { decrypt } from "../../utils/crypto-front";
-import { API } from "../../utils/urls";
+import { API, CLIENT_PAYMENT_URL } from "../../utils/urls";
 
 export const Payment = () => {
   const cart = useSelector((state) => state?.cart);
@@ -49,8 +49,8 @@ export const Payment = () => {
           orderId: `${randomId}`,
           orderName: `StopUps`,
           customerName: `${nickname}`,
-          successUrl: "http://localhost:3000/success",
-          failUrl: "http://localhost:3000/failed",
+          successUrl: `${CLIENT_PAYMENT_URL}/success`,
+          failUrl: `${CLIENT_PAYMENT_URL}/failed`,
           windowTarget: "iframe",
         })
         .catch(function (error) {
